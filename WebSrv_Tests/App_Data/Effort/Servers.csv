@@ -1,0 +1,4 @@
+ServerId,CompanyId,ServerShortName,ServerName,ServerDescription,WebSite,ServerLocation,FromName,FromNicName,FromEmailAddress,TimeZone,DST,TimeZone_DST,DST_Start,DST_End
+1,1,"NSG Memb","Members Web-site","Public facing members Web-site","Web-site address: www.mimilk.com","We are in Michigan, USA.","Phil Huhn","Phil","PhilHuhn@yahoo.com","EST (UTC-5)",True,"EDT (UTC-4)",03/11/2018 02:00:00,11/04/2018 02:00:00
+4,1,"NSG Router","NSG Router","Router","N/A","We are in Michigan","Phil Huhn","Phil","PhilHuhn@yahoo.com","EST (UTC-5)",True,"EDT (UTC-4)",03/11/2018 02:00:00,11/04/2018 02:00:00
+8,5,"MMPA Site","MMPA Site","MMPA Site","MMPA Site","We are in Michigan, USA.","Phil Huhn","Phil","PhilHuhn@yahoo.com","EST (UTC-5)",True,"EDT (UTC-4)",03/11/2018 02:00:00,11/04/2018 02:00:00

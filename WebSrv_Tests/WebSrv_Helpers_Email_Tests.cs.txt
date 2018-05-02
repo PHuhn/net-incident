@@ -1,0 +1,145 @@
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Configuration;
+using System.Threading.Tasks;
+//
+using FluentEmail.Core;
+using FluentEmail.Core.Interfaces;
+using FluentEmail.Core.Models;
+using FluentEmail.Smtp;
+using FluentEmail.SendGrid;
+using FluentEmail.Mailgun;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+//
+using WebSrv.Helpers;
+using System.Net.Mail;
+//
+namespace WebSrv_Tests
+{
+    [TestClass]
+    public class WebSrv_Helpers_Email_Tests
+    {
+        //
+        [TestMethod]
+        public void WebSrv_Helpers_Email_GetFluentEmailSender_Smtp_Test()
+        {
+            ISender _sender = Helpers.GetFluentEmailSender("SMTP");
+            Assert.IsTrue(_sender is FluentEmail.Smtp.SmtpSender);
+        }
+        //
+        [TestMethod]
+        public void WebSrv_Helpers_Email_GetFluentEmailSender_SendGrid_Test()
+        {
+            ISender _sender = Helpers.GetFluentEmailSender("SendGrid");
+            Assert.IsTrue(_sender is FluentEmail.SendGrid.SendGridSender);
+        }
+        //
+        [TestMethod]
+        public void WebSrv_Helpers_Email_GetFluentEmailSender_Mailgun_Test()
+        {
+            ISender _sender = Helpers.GetFluentEmailSender("Mailgun");
+            Assert.IsTrue(_sender is FluentEmail.Mailgun.MailgunSender);
+        }
+        //
+        //[TestMethod]
+        public void WebSrv_Helpers_Email_GetFluentEmailSender_Default_Test()
+        {
+            ISender _sender = Helpers.GetFluentEmailSender("Default");
+            Assert.IsTrue(_sender is FluentEmail.Smtp.SmtpSender);
+        }
+        //
+        [TestMethod]
+        public void WebSrv_Helpers_Email_FluentEmailFromToSubjectBody_Test()
+        {
+            string _fromAddress = "from@AnyNet.com";
+            string _fromName = "From Admin";
+            string _to = "to@AnyNet.com";
+            string _subject = "Testing Configured Mail Service";
+            string _text = "This is a test of the national broadcasting system's, mail service";
+            IFluentEmail _email = Helpers.FluentEmailFromToSubjectBody(_fromAddress, _fromName, _to, _subject, _text);
+            Assert.AreEqual(_fromAddress, _email.Data.FromAddress.EmailAddress);
+            Assert.AreEqual(_fromName, _email.Data.FromAddress.Name);
+            Assert.AreEqual(_subject, _email.Data.Subject);
+            Assert.AreEqual(_text, _email.Data.Body);
+            Assert.AreNotEqual(_to, _email.Data.ToAddresses[0].EmailAddress);
+            Assert.AreEqual("philhuhn@yahoo.com", _email.Data.ToAddresses[0].EmailAddress.ToLower());
+        }
+        //
+        [TestMethod]
+        public void WebSrv_Helpers_Email_SendFluentEmail_Test()
+        {
+            string _fromAddress = "from@AnyNet.com";
+            string _fromName = "From Admin";
+            string _to = "to@AnyNet.com";
+            string _subject = "Testing Configured Mail Service";
+            string _text = "This is a test of the national broadcasting system's, mail service";
+            //
+            IFluentEmail _email = Helpers.FluentEmailFromToSubjectBody(
+                _fromAddress, _fromName, _to, _subject, _text);
+            Helpers.SendFluentEmail(_email);
+            //
+        }
+        //
+        // [TestMethod]
+        public void WebSrv_Helpers_SendGrid_Test()
+        {
+            string _fromAddress = "Phil.N.Huhn@gmail.com";
+            string _fromName = "Phil Huhn";
+            string _toAddress = "PhilHuhn@yahoo.com";
+            string _toName = "Phil Huhn";
+            string _subject = "Testing Configured Mail Service";
+            string _text = "This is a test of the national broadcasting system's, mail service";
+            //
+            //var _from = new EmailAddress("test@example.com", "Example User");
+            //var _to = new EmailAddress("test@example.com", "Example User");
+            //string _subject = "Sending with SendGrid is Fun";
+            string _apiKey = ConfigurationManager.AppSettings["Email:ApiKey"].ToString();
+            var client = new SendGridClient(_apiKey);
+            var _to = new EmailAddress(_fromAddress, _fromName);
+            var _from = new EmailAddress(_toAddress, _toName);
+            var _msg = MailHelper.CreateSingleEmail(_from, _to, _subject, _text, "");
+            Task.Run(async () =>
+            {
+                var _response = await client.SendEmailAsync(_msg);
+                Console.WriteLine("From: " + _msg.From.Email + 
+                    ", To: " + _to.Email + ", Subject: " + _msg.Subject + 
+                    ", " + _response.StatusCode.ToString());
+                if (_response.StatusCode == 0)
+                {
+                    throw new ApplicationException( _response.ToString());
+                }
+            }).GetAwaiter().GetResult();
+            //
+        }
+        //
+        // <system.net>
+        //  <mailSettings>
+        //   <smtp deliveryMethod="Network">
+        //    <network host="localhost" port="25" enableSsl="false" />
+        //   </smtp>
+        //  </mailSettings>
+        // </system.net>
+        [TestMethod]
+        public void MailSettings_Configuration_Test()
+        {
+            string _fromAddress = "from@AnyNet.com";
+            string _toAddress = "to@AnyNet.com";
+            string _subject = "Testing Configured Mail Service " + DateTime.Now.ToShortTimeString();
+            string _text = "This is a test of the national broadcasting system's, mail service";
+            SmtpClient _client = new SmtpClient();
+            MailMessage _msg = new MailMessage(_fromAddress, _toAddress, _subject, _text);
+            try
+            {
+                _client.Send(_msg);
+            }
+            catch (Exception _ex)
+            {
+                var _exp = _ex.GetBaseException();
+                Assert.Fail(_exp.Message);
+            }
+            //
+        }
+    }
+}
+//

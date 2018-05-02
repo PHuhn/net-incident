@@ -1,0 +1,2 @@
+Id,FirstName,LastName,FullName,UserNicName,CompanyId,CreateDate,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName
+"e0fcb3e8-252a-4311-b782-7e094f0737aa","Phillip","Huhn","Phillip Huhn","Phil",1,02/27/2018 19:19:05,"PhilHuhn@yahoo.com",True,"AKZ1sbHlFxeD4h/lGyNz8x7s/DlsrzwQ2Pz0KUGy5YAj653m0pJjhB+hbzFijG+VJA==","3dcac7f9-0732-49ee-8abc-b4c7e7582ddf","734-545-5845",True,False,,False,0,"Phil"

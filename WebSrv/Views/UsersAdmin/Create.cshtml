@@ -1,0 +1,59 @@
+﻿@model NSG.Identity.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>User (Create)</h2>
+
+@using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <div class="nsg-float-left text-left">
+            <span>
+                @Html.ActionLink("Back to List", "Index")
+            </span>
+        </div>
+        <div class="nsg-float-right text-right">
+            <span>
+                <input type="submit" value="Create" class="btn btn-info" />
+            </span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-error" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">
+            Select User Role
+        </label>
+        <div class="col-md-10">
+            @foreach (var item in (SelectList)ViewBag.RoleId)
+            {
+                <input type="checkbox" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />
+                @Html.Label(item.Value, new { @class = "control-label" })
+            }
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

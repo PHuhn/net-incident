@@ -1,0 +1,88 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default 
+*/
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+/*
+* Bootstrap styles
+*/
+accordion-toggle {
+    text-decoration: underline !important;
+}
+/*
+* NSG specific styles
+*/
+/* .validation-summary-errors */
+.nsg-msg-alerts {
+    width: 300px;
+    min-height: 35px;
+    margin: 2px 0 0 0;
+    padding: 8px 1px 1px 1px;
+    position: fixed;
+    top: 55px;
+    right: 10px;
+    z-index: 20000;
+    background-position: -312px 0;
+    border: 1px solid red;
+    font-weight: bold;
+    background-color: #ffffff;
+}
+/* background: #ffffff top left no-repeat 14px 14px; */
+/* unordered list of alerts */
+nsg-alerts-msg-ul { background-color: white; list-style: square; }
+/* Info */
+.nsg-msg-info { color: dodgerblue; background-color: white; }
+/* Success */
+.nsg-msg-success { color: forestgreen; background-color: white; }
+/* Warning */
+.nsg-msg-warn { color: darkorange; background-color: white; }
+/* Error/Danger */
+.nsg-msg-error { color: red; background-color: white; }
+.nsg-td-label {
+ padding: 0 2px 0 5px;
+ text-align: right;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ font-weight: bold;
+}
+.nsg-bold {
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ font-weight: bold;
+}
+.nsg-label {
+ text-align: right;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ font-weight: bold;
+}
+.nsg-md-1-1 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.nsg-float-left { float: left; }
+.nsg-float-right { float: right; }
+.nsg-clear-left { clear: left; }
+.nsg-clear-both { clear: both; }
+@media (min-width: 992px) {
+    /*@media all and (min-width:992px)*/
+    .nsg-md-1-1 {
+        width: 12.48%;
+        float: left;
+    }
+}

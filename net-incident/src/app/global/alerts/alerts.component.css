@@ -1,0 +1,6 @@
+
+.alertMessages {width: 300px; margin: 2px; padding-left: 0px; 
+    position: fixed; top: 0; right: 10px; z-index: 20000; 
+    background-position: -312px 0px; 
+    background: fff
+    top left no-repeat 14px 14px;}

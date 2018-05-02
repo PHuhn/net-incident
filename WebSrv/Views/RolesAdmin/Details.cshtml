@@ -1,0 +1,22 @@
+﻿@model NSG.Identity.ApplicationRole
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Roles (Details)</h2>
+<div>
+    <div class="form-actions no-color">
+        <div class="nsg-float-left text-left">
+            <span>
+                @Html.ActionLink("Back to List", "Index")
+            </span>
+        </div>
+        <div class="nsg-float-right text-right">
+            <span>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+            </span>
+        </div>
+        <div class="nsg-clear-both"></div>
+    </div>
+</div>
+@Html.Partial("./RolesDetailPartial", Model)

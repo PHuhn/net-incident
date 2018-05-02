@@ -1,0 +1,130 @@
+<!-- Incident-Grid.component.html -->
+<div class='ui-grid ui-grid-responsive ui-fluid'>
+  <div class='nsg-content'>
+    <div class='ui-grid-row ui-inputgroup nsg-primary-color'>
+      <label for='Mailed'>Mailed:&nbsp;</label>
+      <input type='checkbox' id='mailed' name='mailed' [(ngModel)]='mailed' (change)='onCheckboxChanged( $event )' />
+      &nbsp; &nbsp;
+      <label for='Closed'>Closed:&nbsp;</label>
+      <input type='checkbox' id='closed' name='closed' [(ngModel)]='closed' (change)='onCheckboxChanged( $event )' />
+      &nbsp; &nbsp;
+      <label for='Special'>Special:&nbsp;</label>
+      <input type='checkbox' id='special' name='special' [(ngModel)]='special' (change)='onCheckboxChanged( $event )' />
+      &nbsp; &nbsp;
+      <div class='ui-inputgroup nsg-primary-color'>
+        <div><label for='ServerName'>Server:&nbsp;</label></div>
+        <a class='nsg-link-div' id='ServerName' (click)='onChangeServer( "server" )'>{{user.Server.ServerName}} ({{user.Server.ServerShortName}})</a>
+      </div>
+    </div>
+    <p-dataTable id='incidents-grid' [value]='incidents' [totalRecords]='totalRecords'
+        expandableRows='true' [stacked]='stacked'
+        [rows]='5' [paginator]='true' [rowsPerPageOptions]='[5,10,50]'
+        [responsive]='true'>
+      <p-column expander='true' styleClass='col-icon' [style]="{'width':'40px'}"></p-column>
+      <p-column [style]="{'width':'40px'}">
+        <ng-template pTemplate='header'>
+          <button (click)="addItemClicked( )" pButton type="button" icon="fa-plus" class="ui-button-primary"></button>
+        </ng-template>
+        <ng-template pTemplate='body' let-incidents='rowData'>
+          <button (click)="editItemClicked( incidents )" pButton type="button" icon="fa-edit" class="ui-button-primary"></button>
+        </ng-template>
+      </p-column>
+      <p-column header='Id' field='IncidentId'
+        [sortable]='true'
+        [style]="{'width':'60px'}">
+      </p-column>
+			<p-column header='IP Address' field='IPAddress'
+        [sortable]='true'
+        [style]="{'width':'150px'}">
+      </p-column>
+      <p-column header='NIC' field='NIC' [sortable]='true'
+        [style]="{'width':'100px'}">
+      </p-column>
+      <p-column header='Network Name' field='NetworkName'
+        [style]="{'width':'200px'}">
+      </p-column>
+      <p-column header='Abuse Email Address' field='AbuseEmailAddress'>
+      </p-column>
+      <p-column header='Mailed' field='Mailed'
+        [style]="{'width':'60px'}">
+          <ng-template let-row='rowData' let-col pTemplate type='body'>
+            <input type='checkbox' #mailed='ngModel' [(ngModel)]='row[col.field]' disabled />
+          </ng-template>
+      </p-column>
+      <p-column header='Closed' field='Closed'
+        [style]="{'width':'60px'}">
+          <ng-template let-row='rowData' let-col pTemplate type='body'>
+            <input type='checkbox' #closed='ngModel' [(ngModel)]='row[col.field]' disabled />
+          </ng-template>
+      </p-column>
+      <p-column header='Special' field='Special'
+        [style]="{'width':'60px'}">
+          <ng-template let-row='rowData' let-col pTemplate type='body'>
+            <input type='checkbox' #special='ngModel' [(ngModel)]='row[col.field]' disabled />
+          </ng-template>
+      </p-column>
+      <p-column header='' [style]="{'width':'40px'}">
+        <ng-template pTemplate='header'></ng-template>
+        <ng-template pTemplate='body' let-incident='rowData'>
+          <button (click)="deleteItemClicked( incident )" pButton type="button" icon="fa-trash" class="ui-button-danger"></button>
+        </ng-template>
+      </p-column>
+      <ng-template let-incident pTemplate='rowexpansion'>
+        <div class='ui-grid-responsive ui-fluid'>
+          <div class='ui-grid-row ui-inputgroup'>
+            <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='IncidentId'>Id:&nbsp;</label></div>
+            <div class='ui-grid-col-9' id='IncidentId'>{{incident.IncidentId}}</div>
+          </div>
+          <div class='ui-grid-row ui-inputgroup'>
+            <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='CompanyId'>Co:&nbsp;</label></div>
+            <div class='ui-grid-col-9' id='CompanyId'>{{incident.CompanyId}}</div>
+          </div>
+					<div class='ui-grid-row ui-inputgroup'>
+						<div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='IPAddress'>I P Address:&nbsp;</label></div>
+						<div class='ui-grid-col-9' id='IPAddress'>{{incident.IPAddress}}</div>
+					</div>
+          <div class='ui-grid-row ui-inputgroup'>
+            <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NIC'>N I C:&nbsp;</label></div>
+            <div class='ui-grid-col-9' id='NIC'>{{incident.NIC}}</div>
+          </div>
+          <div class='ui-grid-row ui-inputgroup'>
+            <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NetworkName'>Network Name:&nbsp;</label></div>
+            <div class='ui-grid-col-9' id='NetworkName'>{{incident.NetworkName}}</div>
+          </div>
+          <div class='ui-grid-row ui-inputgroup'>
+            <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='AbuseEmailAddress'>Abuse Email Address:&nbsp;</label></div>
+            <div class='ui-grid-col-9' id='AbuseEmailAddress'>{{incident.AbuseEmailAddress}}</div>
+          </div>
+          <div class='ui-grid-row ui-inputgroup'>
+            <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'>
+              <label for='ISPTicketNumber'>I S P Ticket Number:&nbsp;</label>
+            </div>
+            <div class='ui-grid-col-9' id='ISPTicketNumber'>{{incident.ISPTicketNumber}}</div>
+          </div>
+          <div class='ui-grid-row ui-inputgroup'>
+            <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'>
+              <label for='Mailed'>Mailed</label>/<label for='Closed'>Closed</label>/<label for='Special'>Special:&nbsp;</label>
+            </div>
+            <input type='checkbox' id='mailed' name='mailed' [ngModel]='incident.Mailed' disabled /> &nbsp; &nbsp;
+            <input type='checkbox' id='closed' name='closed' [ngModel]='incident.Closed' disabled /> &nbsp; &nbsp;
+            <input type='checkbox' id='special' name='special' [ngModel]='incident.Special' disabled />
+          </div>
+          <div class='ui-grid-row ui-inputgroup'>
+            <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='Notes'>Notes:&nbsp;</label></div>
+            <div class='ui-grid-col-9' id='Notes'>{{incident.Notes}}</div>
+          </div>
+          <div class='ui-grid-row ui-inputgroup'>
+            <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='CreatedDate'>Created Date:&nbsp;</label></div>
+            <div class='ui-grid-col-9' id='CreatedDate'>{{incident.CreatedDate | date: 'MM/dd/yyyy'}}</div>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataTable>
+  </div>
+</div>
+<!-- modal edit window -->
+<app-incident-detail-window id='detailWindow' name='detailWindow' [displayWin]='windowDisplay' 
+  [detailWindowInput]='detailWindow' (onClose)='onClose($event)'></app-incident-detail-window>
+<app-server-selection-window id='selectionWindow' [selectItems]='selectItemsWindow'
+	[displayWin]='displayServersWindow' (onClose)='onServerSelected($event)'></app-server-selection-window>
+<!-- End of incident.grid.component.html -->

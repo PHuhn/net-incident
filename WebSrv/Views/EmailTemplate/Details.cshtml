@@ -1,0 +1,20 @@
+﻿@model WebSrv.Models.IncidentTypeData
+@{
+    ViewBag.Title = "Details";
+    var a = Model.ToString();
+}
+<h2>Incident Type/EMail Templete (Details)</h2>
+<div class="form-actions no-color">
+    <div class="nsg-float-left text-left">
+        <span>
+            @Html.ActionLink("Back to List", "Index")
+        </span>
+    </div>
+    <div  class="nsg-float-right text-right">
+        <span>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.IncidentTypeId })
+        </span>
+    </div>
+    <div class="nsg-clear-both"></div>
+</div>
+@Html.Partial("./TemplateDetailsPartial", Model)

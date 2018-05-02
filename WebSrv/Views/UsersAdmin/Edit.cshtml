@@ -1,0 +1,123 @@
+﻿@model NSG.Identity.Models.EditUserViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>User (Edit)</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <div class="nsg-float-left text-left">
+            <span>
+                @Html.ActionLink("Back to List", "Index")
+            </span>
+        </div>
+        <div class="nsg-float-right text-right">
+            <span>
+                <input type="submit" value="Save" class="btn btn-info" />
+            </span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <hr />
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FullName, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FullName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserNicName, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.UserNicName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserNicName)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+                </div>
+            </div>
+        </div>
+        <hr />
+
+        <div class="col-md-12">
+            <div class="form-group row">
+                @Html.Label("Roles", new { @class = "control-label col-md-1" })
+                <div class="col-md-10">
+                    @foreach (var item in Model.RolesList)
+                    {
+                        <div style="padding:0 12px 0 0; float: left;">
+                            @Html.HiddenFor( m => item.Value)
+                            <input type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
+                            @Html.Label(item.Value, new { @class = "control-label" })
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Servers", new { @class = "control-label col-md-1" })
+                <div class="col-md-10">
+                    @for (int i = 0; i < Model.ServersList.Count(); i++)
+                    {
+                        SelectListItem item = Model.ServersList[i];
+                        <div style="padding:0 12px 0 0; float: left;">
+                            @Html.HiddenFor(m => m.ServersList[i].Value)
+                            @Html.CheckBoxFor(m => m.ServersList[i].Selected)
+                            @Html.LabelFor(m => m.ServersList[i].Selected, Model.ServersList[i].Value)
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<hr />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

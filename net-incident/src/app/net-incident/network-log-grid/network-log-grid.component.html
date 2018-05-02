@@ -1,0 +1,69 @@
+<!-- NetworkLog-Grid.component.html  -->
+<div *ngIf='networkIncident != undefined' class='nsg-text-left'>
+  <p-dataTable #grid id='networklogsGrid' name='networklogsGrid' [value]='networkIncident.networkLogs'
+      [showHeaderCheckbox]='false' [(selection)]='selectedLogs' [dataKey]='NetworkLogId'
+      (onRowSelect)='handleRowSelect($event)' (onRowUnselect)='handleRowUnSelect($event)'
+      [globalFilter]='ip' expandableRows='true' [stacked]='stacked' [responsive]='true'>
+    <p-column expander='true' styleClass='col-icon' [style]="{'width':'30px', 'text-align':'center'}"></p-column>
+    <p-column field='Selected' [style]="{'width':'38px'}" selectionMode='multiple' *ngIf='!disabled' ></p-column>
+    <p-column header='IP' field='IPAddress' [filter]="true" filterMatchMode="equals" [style]="{'width':'125px'}">
+      <ng-template pTemplate="filter" let-col>
+        <input id='fltr' name='fltr' #IpFilter type="hidden" pInputText [(ngModel)]="ipFilter" (input)="grid.filter($event.srcElement.value,col.field,col.filterMatchMode);" />
+      </ng-template>
+    </p-column>
+    <p-column header='Date' field='NetworkLogDate' [style]="{'width':'45px'}">
+      <ng-template let-row='rowData' let-col pTemplate type='body'>
+        {{row[col.field] | date: 'MM/dd'}}
+      </ng-template>
+    </p-column>
+    <p-column header='Type' field='IncidentTypeShortDesc' [style]="{'width':'50px'}">
+    </p-column>
+    <p-column header='Log' field='Log' [style]="{'width':'185px'}">
+      <ng-template let-row='rowData' let-col pTemplate type='body'>
+        {{row[col.field] | truncate:[20, '...']}}
+      </ng-template>
+    </p-column>
+    <p-column header='' [style]="{'width':'38px'}" *ngIf='!disabled'>
+      <ng-template pTemplate='body' let-networklog='rowData'>
+        <button (click)='deleteItemClicked( networklog )' pButton type='button' icon='fa-trash' class='ui-button-danger' *ngIf='!disabled'></button>
+      </ng-template>
+    </p-column>
+    <ng-template let-networklog pTemplate='rowexpansion'>
+      <div class='ui-grid ui-grid-responsive ui-fluid nsg-text-left'>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NetworkLogId'>Selected:&nbsp;</label></div>
+          <input type='checkbox' id='selected' name='selected' [ngModel]='networklog.Selected' disabled />
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NetworkLogId'>Log Id:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='NetworkLogId'>{{networklog.NetworkLogId}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='ServerId'>Server:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='ServerId'>{{networklog.ServerId}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='IncidentId'>Incident Id:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='IncidentId'>{{networklog.IncidentId}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='IPAddress'>IP:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='IPAddress'>{{networklog.IPAddress}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NetworkLogDate'>Log Date:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='NetworkLogDate'>{{networklog.NetworkLogDate | date: 'MM/dd/yyyy HH:mm:ss'}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='IncidentTypeId'>Type:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='IncidentTypeId'>{{networklog.IncidentTypeId}} - {{networklog.IncidentTypeShortDesc}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='Log'>Log:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='Log'>{{networklog.Log}}</div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataTable>
+</div>
+<!-- End of NetworkLog-Grid.component.html -->

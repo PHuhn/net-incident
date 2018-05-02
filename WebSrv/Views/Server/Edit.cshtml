@@ -1,0 +1,124 @@
+﻿@model WebSrv.Models.CompanyServerData
+@{
+    ViewBag.Title = "Company/Server Edit";
+    // create the server-create-partial w/ pre-initialized values from 1st row
+    WebSrv.Models.ServerData createServer = new WebSrv.Models.ServerData();
+    createServer.CompanyId = Model.CompanyId;
+    createServer.CompanyName = Model.CompanyName;
+    if (Model != null)
+    {
+        if (Model.Servers != null)
+        {
+            if (Model.Servers.Count > 0)
+            {
+                WebSrv.Models.ServerData server = Model.Servers[0];
+                createServer.ServerLocation = server.ServerLocation;
+                createServer.FromName = server.FromName;
+                createServer.FromNicName = server.FromNicName;
+                createServer.FromEmailAddress = server.FromEmailAddress;
+                createServer.TimeZone = server.TimeZone;
+                createServer.DST = server.DST;
+                createServer.TimeZone_DST = server.TimeZone_DST;
+                createServer.DST_Start = server.DST_Start;
+                createServer.DST_End = server.DST_End;
+            }
+        }
+    }
+}
+<h2>Company/Server Edit</h2>
+@using (Html.BeginForm("CompanyEdit", "Server", new { id = @Model.CompanyId }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <div class="nsg-float-left text-left">
+            <span>
+                @Html.ActionLink("Back to List", "Index")
+            </span>
+        </div>
+        <div class="nsg-float-right text-right">
+            <span>
+                <input type="submit" value="Save" class="btn btn-info" />
+            </span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <hr />
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CompanyId)
+        <div class="form-group">
+            <label class="col-md-2 nsg-label" for="ServerId">Id</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.CompanyId)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 nsg-label" for="CompanyShortName">Short Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyShortName, new { htmlAttributes = new { @class = "form-control", @maxlength = "12", @style = "width:160px" } })
+                @Html.ValidationMessageFor(model => model.CompanyShortName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 nsg-label" for="CompanyName">Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @maxlength = "80", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="nsg-clear-left"></div>
+}
+<div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="panel-new">
+                <div class="panel-title">
+                    <a class="collapsed accordion-toggle" role="button" data-toggle="collapse"
+                       data-parent="#accordion"
+                       href="#collapse-new"
+                       aria-expanded="false" aria-controls="collapse-new">
+                        <div class="nsg-bold col-md-12">
+                            Add Server
+                        </div>
+                        <div class="nsg-clear-left"></div>
+                    </a>
+                </div>
+            </div>
+            <div id="collapse-new" class="panel-collapse collapse" role="tabpanel" aria-labelledby="panel-new">
+                <div class="panel-body">
+                    @Html.Partial("ServerCreatePartial", createServer)
+                </div>
+            </div>
+        </div>
+        @if ( Model != null )
+        {
+            foreach (var srv in Model.Servers)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="@string.Format("panel-{0}",srv.ServerId)">
+                        <div class="panel-title">
+                            <a class="collapsed accordion-toggle" role="button" data-toggle="collapse"
+                               data-parent="#accordion"
+                               href="@string.Format("#collapse-{0}",srv.ServerId)"
+                               aria-expanded="false" aria-controls="@string.Format("collapse-{0}",srv.ServerId)">
+                                <label class="col-md-1 nsg-label" for="ServerShortName">Edit:</label>
+                                <div class="col-md-11">
+                                    @Html.DisplayFor(model => srv.ServerShortName)
+                                    (@Html.DisplayFor(model => srv.ServerId))
+                                    - @Html.DisplayFor(model => srv.ServerName)
+                                </div>
+                                <div class="nsg-clear-left"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="@string.Format("collapse-{0}",srv.ServerId)" class="panel-collapse collapse" role="tabpanel" aria-labelledby="@string.Format("panel-{0}",srv.ServerId)">
+                        <div class="panel-body">
+                            @Html.Partial("ServerEditPartial", srv)
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

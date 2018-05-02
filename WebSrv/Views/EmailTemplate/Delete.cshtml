@@ -1,0 +1,28 @@
+﻿@model WebSrv.Models.IncidentTypeData
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Incident Type/EMail Templete (Delete)</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <div class="nsg-float-left text-left">
+                <span>
+                    @Html.ActionLink("Back to List", "Index")
+                </span>
+            </div>
+            <div class="nsg-float-right text-right">
+                <span>
+                    <strong>Are you sure you want to delete this?</strong>
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </span>
+            </div>
+            <div class="nsg-clear-both"></div>
+        </div>
+    }
+</div>
+@Html.Partial("./TemplateDetailsPartial", Model)

@@ -1,0 +1,32 @@
+﻿@using WebSrv.Models;
+@{
+    ViewBag.Title = "Index";
+    ViewBag.applicationName = "Network Incident Web API";
+    ViewBag.companyName = "Northern Software Group";
+    ViewBag.copyright = "Copyright © 2018";
+    ViewBag.version = "Alpha";
+}
+<div class="jumbotron">
+    <h2>About</h2>
+    <div class="row">
+        <div class='col-sm-2 text-right'><label for='applicationName'>Application: </label></div>
+        <div id='applicationName' class='col-sm-10'>@Model.Product</div>
+    </div>
+    <div class="row">
+        <div class='col-sm-2 text-right'><label for='companyName'>Company: </label></div>
+        <div id='companyName' class='col-sm-10'>@Model.Company</div>
+    </div>
+    <div class="row">
+        <div class='col-sm-2 text-right'><label for='copyright'>Copyright: </label></div>
+        <div id='copyright' class='col-sm-10'>@Model.Copyright</div>
+    </div>
+    <div class="row">
+        <div class='col-sm-2 text-right'><label for='description'>Description: </label></div>
+        <div id='description' class='col-sm-10'>@Model.Description</div>
+    </div>
+    <div class="row">
+        <div class='col-sm-2 text-right'><label for='version'>Version: </label></div>
+        <div id='version' class='col-sm-10'>@Model.Version</div>
+    </div>
+</div>
+<!--  -->

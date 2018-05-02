@@ -1,0 +1,74 @@
+﻿@model WebSrv.Models.CompanyServerData
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Company/Server Details</h2>
+<div>
+    <div class="form-actions no-color">
+        <div class="nsg-float-left text-left">
+            <span>
+                @Html.ActionLink("Back to List", "Index")
+            </span>
+        </div>
+        <div class="nsg-float-right text-right">
+            <span>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.CompanyId })
+            </span>
+        </div>
+        <div class="nsg-clear-both"></div>
+    </div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyId):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompanyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyShortName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompanyShortName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName):
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+    </dl>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        @if (Model != null)
+        {
+            foreach (var srv in Model.Servers)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="@string.Format("panel-{0}", srv.ServerId)">
+                        <div class="panel-title">
+                            <a class="collapsed accordion-toggle" role="button" data-toggle="collapse"
+                               data-parent="#accordion"
+                               href="@string.Format("#collapse-{0}", srv.ServerId)"
+                               aria-expanded="false" aria-controls="@string.Format("collapse-{0}", srv.ServerId)">
+                                <label class="col-md-1 nsg-label" for="ServerShortName">Server:</label>
+                                <div class="col-md-11">
+                                    @Html.DisplayFor(model => srv.ServerShortName)
+                                    (@Html.DisplayFor(model => srv.ServerId))
+                                    - @Html.DisplayFor(model => srv.ServerName)
+                                </div>
+                                <div class="nsg-clear-left"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="@string.Format("collapse-{0}", srv.ServerId)" class="panel-collapse collapse" role="tabpanel" aria-labelledby="@string.Format("panel-{0}", srv.ServerId)">
+                        <div class="panel-body">
+                            @Html.Partial("ServerDetailPartial", srv)
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

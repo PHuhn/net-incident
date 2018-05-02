@@ -1,0 +1,12 @@
+NIC_Id,NICDescription,NICAbuseEmailAddress,NICRestService,NICWebSite
+"afrinic.net","Africian Network Information Centre"," ","http://www.afrinic.net/","http://www.afrinic.net/"
+"apnic.net","Asian-Pacfic Network Information Centre","abuse@org.apnic.net","https://wq.apnic.net/whois-search/static/search.html?query="," "
+"arin.net","Americian (North) Registry of Internet Numbers","abuse@arin.net","http://whois.arin.net/rest/ip/","https://www.arin.net/"
+"hostwinds.com","hostwinds NIC"," "," ","https://www.hostwinds.com/"
+"jpnic.net","Japan"," ","https://wq.apnic.net/whois-search/static/search.html?query="," "
+"lacnic.net","Latin America and Caribbean Network Information Centre","abuse@lacnic.net","https://rdap.lacnic.net/rdap-web/home","http://www.lacnic.net/web/lacnic/inicio"
+"nic.br","Brazilian Network Information Center","cert@cert.br","https://registro.br/2/whois?query="," "
+"other","Other"," "," "," "
+"ripe.net","Réseaux IP Européens Network Coordination Centre (Europe)","abuse@ripe.net","https://apps.db.ripe.net/db-web-ui/#/query?searchtext=","https://www.ripe.net/"
+"twnic.net","Taiwan NIC"," ","https://www.twnic.net.tw/en_index.php","https://www.twnic.net.tw/"
+"unknown","Unknown"," "," "," "

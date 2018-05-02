@@ -1,0 +1,60 @@
+﻿-- To Dos ---------------------------
+In AccountController:
+	External login
+
+reapply constants
+
+Company defined email template 
+	Split off IncidentType and the EmailTemplate (think about it...)
+
+	DECLARE @cmp INT = 1
+	SELECT COALESCE( typ.IncidentTypeId, def.IncidentTypeId ) AS IncidentTypeId,
+		COALESCE( typ.IncidentTypeDesc, def.IncidentTypeDesc ) AS IncidentTypeDesc,
+		COALESCE( typ.IncidentTypeSubjectLine, def.IncidentTypeSubjectLine ) AS IncidentTypeSubjectLine
+	  FROM dbo.IncidentType2 AS typ
+	  LEFT OUTER JOIN dbo.IncidentType2 AS def ON ( typ.CompanyId = def.CompanyId AND typ.IncidentTypeId = def.IncidentTypeId )
+	  WHERE ( typ.CompanyId = @cmp OR def.CompanyId = -1 )
+
+
+-- completed ------------------------
+In AccountController:
+	Implement 'ConfirmEmail' for e-mail verification. (2018-02-27)
+	Using smtp-fake (node.js utility, following e-mail)
+		From: philhuhn@yahoo.com
+		To: pnh@any.net
+		Subject: Confirm your account
+		Thank-you for registering, but your new account requires the e-mail address to be confirmed. Please confirm your account by clicking this link: link
+
+Effort testing of the 'data' models (2018-03-01)
+	https://www.codeproject.com/Articles/871786/Unit-Testing-in-Csharp-using-xUnit-Entity-Framewor
+
+List string sender for EMail (2018-03-01)
+
+Override validation to protect against duplicates (2018-03-01)
+	See ApplicationDbContextValidation.cs
+
+List string sender: added attachment (2018-03-03)
+
+Remove 2nd ConfirmEmail (2018-03-10)
+
+Apply AspNetIdentity2ExtensibleTemplate's views (2018-03-11)
+
+Add company/server CRUD (2018-03-15)
+
+Add server to UsersAdmin controller (2018-03-18)
+
+Convert  _incidentType.IncidentTypeFromCompany = incidentTypeFromServer; (2018-03-19)
+
+many jasmine tests updated (2018-03-30)
+
+list of servers login and change context (2018-04-01)
+
+roles (2018-04-25)
+	https://blog.angular-university.io/angular-jwt-authentication/
+
+Deploy to github
+	NSG.Library (2018-04-29)
+	NSG.WebSrv
+
+Manage email templates (2018-05-02)
+

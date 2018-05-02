@@ -1,0 +1,137 @@
+/* You can add global styles to this file, and also import other style files */
+/* prime-face prime-ng
+!omega, cruze, !cupertino, darkness, !flick, home, kasper, lightness, ludvig, 
+    pepper-grinder, !redmond, rocket, south-street, !start, trontastic, voclain
+*/
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../node_modules/primeng/resources/themes/flick/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+/*
+==============================================================================
+custom html styling
+*/
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1.0rem;
+    line-height: 1.5; /* 1.5 */
+	color: #000;
+	background-color: #fff;
+}
+
+form {
+	font-size: 1.2rem;
+}
+
+optgroup, select, textarea {
+	font-family: sans-serif;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+}
+
+button, input, select, textarea {
+    line-height: inherit;
+    font-family: sans-serif;
+    font-size: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 500;  line-height: 1.1;
+	margin-top: 0; margin-bottom: .5rem;
+}
+h1 { font-size: 2.25rem; }
+h2 { font-size: 2.00rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.60rem; }
+h5 { font-size: 1.45rem; }
+h6 { font-size: 1.30rem; }
+/*
+==============================================================================
+PrimeNg
+*/
+.ui-inputtext {
+    padding: 0px 0 2px 0;
+}
+/*
+.ui-dialog-title { color: #0073ea; }
+==============================================================================
+NSG
+*/
+/* Info */
+.nsg-msg-info {
+    background-color: #7bd5ee;
+    border-color: #5bc0de;
+    color: #000000;
+    font-weight: bold;
+}
+/* Success */
+.nsg-msg-success {
+    background-color: #dff0d8;
+    border-color: #5cb85c;
+    color: #000000;
+    font-weight: bold;
+}
+/* Warning */
+.nsg-msg-warning {
+    background-color: #fcf8e3;
+    border-color: #f0ad4e;
+    color: #000000;
+    font-weight: bold;
+}
+/* Danger */
+.nsg-msg-danger {
+    background-color: #f2dede;
+    border-color: #d9534f;
+    color: #000000;
+    font-weight: bold;
+}
+/* custom appearance and positioning styles */
+.nsg-header {
+    height: 60px; padding-top: 12px;
+}
+.nsg-jumbotron {
+    padding: 48px 32px 48px 32px;
+}
+/* https://www.sessions.edu/color-calculator/ */
+.nsg-primary-color { color: #0073ea; } /* #0073ea .ui-state-default */
+.nsg-color-back { color: #000000; } /* black */
+.nsg-bold { font-weight: bold; }
+.nsg-complementary-color { color: #ea5a00; }
+.nsg-triadic-lite-color { color: #eacf00; }
+.nsg-triadic-dark-color { color: #ea003b; }
+.nsg-alert-color { color: red; }
+.nsg-primary-bgcolor { background-color: #f6f6f6; }
+.nsg-text-left { text-align: left !important; }
+.nsg-text-right { text-align: right !important; }
+.nsg-text-center { text-align: center !important; }
+.nsg-spacer25 { height: 25px; }
+.nsg-button-div { width: 40px; height: 32px; padding: 0; margin: 0; }
+.nsg-icon-button { width: 110px; }
+.nsg-link-div { color: #0073ea; text-decoration: underline; }
+/* custom content sizing style */
+/* media queries must appear in low to high order */
+.nsg-content {
+    margin: auto;
+    position: relative;
+}
+.nsg-block-center { text-align: center; }
+/*
+@media (min-width: 481px) { .nsg-content { width: 480px; max-width: 100%; } }
+@media (min-width: 641px) { .nsg-content { width: 640px; max-width: 100%; } }
+*/
+@media (max-width: 641px) {
+    .nsg-text-right { text-align: left !important; }
+}
+@media (min-width: 769px) {
+    .nsg-content { width: 768px; max-width: 100%; }
+}
+@media (min-width: 961px) {
+    .nsg-content { width: 960px; max-width: 100%; }
+}
+@media (min-width: 1141px) {
+    .nsg-content { width: 1140px; max-width: 100%; }
+}
+@media (min-width: 1345px) {
+    .nsg-content { width: 1344px; max-width: 100%; }
+}
+/* End of style.css */

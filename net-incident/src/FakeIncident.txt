@@ -1,0 +1,137 @@
+// ===========================================================================
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { environment } from '../environments/environment';
+//
+import { DataTableModule } from './../../node_modules/primeng/components/datatable/datatable';
+import { DataTable } from './../../node_modules/primeng/components/datatable/datatable';
+import { Dropdown, DropdownModule } from './../../node_modules/primeng/components/dropdown/dropdown';
+//
+import { AlertsService } from './global/alerts/alerts.service';
+import { UserService } from './net-incident/services/user.service';
+import { ServicesService } from './net-incident/services/services.service';
+import { IncidentGridComponent } from 
+  './net-incident/incident-grid/incident-grid.component';
+import { IncidentDetailWindowComponent } from 
+  './net-incident/incident-detail-window/incident-detail-window.component';
+import { IUser, User } from './net-incident/user';
+//
+import { INetworkLog, NetworkLog } from './net-incident/network-log';
+import { IIncident, Incident } from './net-incident/incident';
+import { NetworkLogGridComponent } from './net-incident/network-log-grid/network-log-grid.component'
+//
+import { IIncidentNote, IncidentNote } from './net-incident/incident-note';
+import { IncidentNoteGridComponent } from './net-incident/incident-note-grid/incident-note-grid.component';
+import { SelectItem } from '../../node_modules/primeng/components/common/selectitem';
+import { SelectItemClass } from './net-incident/select-item-class';
+import { NetworkIncident } from './net-incident/network-incident';
+import { NetworkIncidentService } from './net-incident/services/network-incident.service';
+// import { AbuseEmailReport } from './net-incident/abuse-email-report';
+// import { EmailAddress, EmailRequest } from './net-incident/email';
+//
+export class AppComponent implements OnInit, AfterViewInit {
+  title: string = 'Network Incidents';
+  //
+  authenticated: boolean = false;
+  userAccount: string = environment.defaultUserAccount;
+  userPassword: string = '';
+  user: User = undefined;
+  //
+  // ----------------
+  testDate: Date = new Date('2017-01-09T09:30:45');
+  incident: Incident = 
+    new Incident( 1,1,'145.255.1.48','ripe','Some ISP','abuse@ripe.net','',false,false,false,'Some note',this.testDate );
+  networklogs = [
+    new NetworkLog( 1,1,1,'145.255.1.48',this.testDate,'123456789 123456789 1234567890',1, 'SQL',true ),
+    new NetworkLog( 2,1,0,'94.41.54.105',this.testDate,'987654321 987654321 9876543210',1, 'SQL',false ),
+    new NetworkLog( 3,1,0,'145.255.1.48',this.testDate,'n 3',2, 'PHP',true ),
+    new NetworkLog( 4,1,0,'246.161.212.245',this.testDate,'n 4',1, 'SQL',false )
+  ];
+  incidentnotes = [
+	 	new IncidentNote( 1,1,1,'Ping','Pinging 145.255.1.48.dynamic.ufanet.ru [145.255.1.48] with 32 bytes of data: Request timed out.',new Date( '2000-01-01T00:00:00' ),false ),
+	 	new IncidentNote( 2,1,2,'WhoIs','i 2',new Date( '2000-01-02T00:00:00' ),false ),
+	 	new IncidentNote( 3,1,2,'Report','i 3',new Date( '2000-01-02T00:00:00' ),false ),
+	 	new IncidentNote( 4,1,2,'Response','i 4',new Date( '2000-01-03T00:00:00' ),false ),
+	 	new IncidentNote( 5,1,2,'Report','123456789 123456789 1234567890',new Date( '2000-01-04T00:00:00' ),false ),
+	 	new IncidentNote( 6,1,2,'Response','987654321 987654321 9876543210',new Date( '2000-01-05T00:00:00' ),false )
+  ];
+  // notetype: number = 0;
+  notetypes: SelectItem[] = [
+    new SelectItemClass( 1, 'Ping' ),
+    new SelectItemClass( 2, 'WhoIs' ),
+    new SelectItemClass( 3, 'ISP Rpt' ),
+    new SelectItemClass( 4, 'ISP Addl' ),
+    new SelectItemClass( 5, 'ISP Resp' )
+  ];
+  nics: SelectItem[] = [
+    new SelectItemClass( 'afrinic.net', 'afrinic.net' ),
+    new SelectItemClass( 'apnic.net',   'apnic.net' ),
+    new SelectItemClass( 'arin.net', 'arin.net' ),
+    new SelectItemClass( 'hostwinds.com', 'hostwinds.com' ),
+    new SelectItemClass( 'jpnic.net', 'jpnic.net' ),
+    new SelectItemClass( 'lacnic.net', 'lacnic.net' ),
+    new SelectItemClass( 'other', 'other' ),
+    new SelectItemClass( 'ripe.net', 'ripe.net' ),
+    new SelectItemClass( 'twnic.net', 'twnic.net' ),
+    new SelectItemClass( 'Unknown', 'Unknown' )
+  ];
+  //
+  networkIncident: NetworkIncident;
+  //
+  //
+  constructor(
+		private _alerts: AlertsService,
+    private _netIncident: NetworkIncidentService,
+		private _services: ServicesService,
+    private _user: UserService ) {  }
+  //
+  ngOnInit() {
+    console.log( 'ngOnInit: networkIncident: ...' );
+    //
+    console.log( '==========================' );
+    //
+    this.getNetIncidents( 2, 1 );
+      // get the user record
+      this._user.getUser( this.userAccount ).subscribe( ( data: User ) => {
+        this.user = data;
+      },
+      error =>  this.serviceErrorHandler(
+        `User not found: ${this.userAccount}`, error ));
+  }
+  //
+  //  get the complete requested incident (unit-of-work).
+  //
+	getNetIncidents( incidentId: number, company: number ): void {
+		this._netIncident.getNetworkIncident( incidentId, company ).subscribe((netIncidentData) => {
+      this.networkIncident = netIncidentData;
+      this.networkIncident.user = this.user;
+      // let abuseReport: AbuseEmailReport = new AbuseEmailReport( this.networkIncident );
+      // console.log( 'AbuseEmailReport: ' + String( abuseReport.IsValid() ) );
+      // let ar = abuseReport.ComposeEmail( );
+      // console.log( ar.replace(/\\n/g, '\n') );
+      //
+    }, ( error ) =>
+			this.serviceErrorHandler(
+				'Incident-Detail Get Network Incident', error ));
+  }
+  //
+  LoadFakeIncident(): void {
+    let ipAddress: string = '145.255.1.48';
+    this.networkIncident = new NetworkIncident( );
+    this.networkIncident.incident = this.incident,
+    this.networkIncident.incident.IPAddress = ipAddress;
+    this.networkIncident.incidentNotes = this.incidentnotes;
+    this.networkIncident.networkLogs = this.networklogs;
+    this.networkIncident.deletedNotes = [];
+    this.networkIncident.deletedLogs = [];
+    this.networkIncident.NICs = [];
+    this.networkIncident.incidentTypes = [];
+    this.networkIncident.noteTypes = this.notetypes;
+    this.networkIncident.message = '';
+    // this.ni = new NetworkIncident();
+    // this.ni.incident = netIncidentData.incident;
+    // this.ni.networkLogs = [...netIncidentData.networkLogs];
+    // this.ni.incidentNotes = [...netIncidentData.incidentNotes];
+    // this.ni.ipAddress = '';
+    // this.ni.deletedNotes = [];
+    // this.ni.deletedLogs = [];
+  }

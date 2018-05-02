@@ -1,0 +1,19 @@
+﻿@using WebSrv.Controllers
+@{
+}
+@if (TempData["AlertsCount"] != null)
+{
+    if (TempData["AlertsCount"].ToString() == "1")
+    {
+        <div id="nsg-alerts" class="nsg-msg-alerts">
+            <ul id="nsg-alerts-ul" class="nsg-msg-alerts-ul">
+                @foreach (AlertMessage msg in ((List<AlertMessage>)TempData["Alerts"]))
+                {
+                    <li class="@("nsg-msg-" + msg.Level)">
+                        @msg.Message
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+}

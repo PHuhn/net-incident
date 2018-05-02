@@ -1,0 +1,47 @@
+﻿@model WebSrv.Models.CompanyServerData
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Company/Server Create</h2>
+@using (Html.BeginForm("CompanyCreate", "Server", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-actions no-color">
+        <div class="nsg-float-left text-left">
+            <span>
+                @Html.ActionLink("Back to List", "Index")
+            </span>
+        </div>
+        <div class="nsg-float-right text-right">
+            <span>
+                <input type="submit" value="Create" class="btn btn-info" />
+            </span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <hr />
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-md-2 nsg-label" for="ServerId">Id</label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.CompanyId)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 nsg-label" for="CompanyShortName">Short Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyShortName, new { htmlAttributes = new { @class = "form-control", @maxlength = "12", @style = "width:160px" } })
+                @Html.ValidationMessageFor(model => model.CompanyShortName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 nsg-label" for="CompanyName">Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @maxlength = "80", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="nsg-clear-left"></div>
+}

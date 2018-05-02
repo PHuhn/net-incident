@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebSrv.Models.IncidentTypeData>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Incident Type/E-Mail Templete</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            Short Desc
+        </th>
+        <th>
+            Type Desc
+        </th>
+        <th style="width: 100px;">
+            Use Server Values
+        </th>
+        <th>
+            Subject Line
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.IncidentTypeId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.IncidentTypeId })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentTypeShortDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentTypeDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentTypeFromServer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentTypeSubjectLine)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.IncidentTypeId }, new { @style = "color: red;" })
+        </td>
+    </tr>
+}
+
+</table>

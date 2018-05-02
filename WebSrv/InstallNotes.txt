@@ -1,0 +1,189 @@
+﻿The Identity is based on John Atten's two articles and downloads
+	https://github.com/TypecastException/AspNetIdentity2WebApi-RBA
+and:
+	AspNet-Identity-2-Extensible-Project-Template-master.zip
+	https://github.com/TypecastException/AspNet-Identity-2-Extensible-Project-Template
+
+Install-Package Microsoft.AspNet.Identity.Owin
+Install-Package Microsoft.AspNet.Identity.EntityFramework
+Install-Package EntityFramework
+Install-Package Microsoft.Owin.Security
+Install-Package Microsoft.Owin.Security.Cookies
+Install-Package Microsoft.Owin.Security.OAuth
+Install-Package Microsoft.Owin.Security.Google
+Install-Package Microsoft.Owin.Security.MicrosoftAccount
+Install-Package Microsoft.Owin.Host.SystemWeb
+Install-Package Microsoft.Owin.Cors
+Install-Package Microsoft.AspNet.WebApi.Owin
+Install-Package Microsoft.AspNet.WebApi.WebHost
+Install-Package Microsoft.AspNet.WebApi.Cors
+// install-package fluent-email
+Install-Package SendGrid -version 9.2.0
+
+Install-Package knockoutjs -version 3.2.0
+Install-Package Newtonsoft.Json
+
+
+
+In WebApiConfig.cs, added...
+using Microsoft.Owin.Security.OAuth;
+	...
+            // Web API configuration and services
+            // Configure Web API to use only bearer token authentication.
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+	...
+            //
+            // Enforce HTTPS
+            if (NSG.Identity.Constants.RequireSSL)
+                config.Filters.Add(new NSG.Identity.Filters.RequireHttpsAttribute());
+
+
+In FilterConfig.cs, added...
+            if(NSG.Identity.Constants.RequireSSL)
+                filters.Add(new RequireHttpsAttribute());
+
+	Enable-Migrations
+	Add-Migration InitialCreate
+	Update-Database -verbose
+	Add-Migration "Update-2018-01-26-v1"
+	Update-Database -verbose
+	Add-Migration "Update-2018-01-27-v1"
+	Add-Migration "Update-2018-03-30-v1"
+	Update-Database -verbose
+
+Emailing:
+KB78618381: How to Configure IIS SMTP Server to forward emails using a Gmail account
+https://wiki.esko.com/display/KBA/KB78618381%3A+How+to+Configure+IIS+SMTP+Server+to+forward+emails+using+a+Gmail+account
+
+* https://sourceforge.net/projects/winsmtpserver/
+* https://www.hmailserver.com/ YouTube: https://www.youtube.com/watch?v=kxcYVL25erA
+Mocks
+* http://docs.nethserver.org/en/v7/mail.html
+* npm install fake-smtp-server -g
+
+SendGrid
+https://app.sendgrid.com/guide/integrate
+
+fake-smtp-server --smtp-port 25 --http-port 10080 --max 10
+
+Grant reader and writer to: NT AUTHORITY\NETWORK SERVICE
+tested with postman, the following returned from api/token call:
+{
+    "access_token": "5Zw8K3NVq3Ac3KSgFvcZkqpy5MWow1XIzoiplsH3wpTxdhZfX1wKDXToXO9aaGp8tOE_xBxzPBkX_v-6SDmtYBXAQIll-WEr6lKbs_2t5-iulwI77hZ01vhhOcoCPw3s_Yyrfs0zfbbAEFjLwm2FijxCacjy3iYwN4-0o6vz8ZpN9sSrnBYJdc5t8l_4q1TY2ajb3IpbW0IkU6MpgJ8NYmcoXKqriBSyayKW-GnUGa8o1rYsogmyrnA8jQa9_2QylriXcZsfJ9_U2EGwAHxe0N6ak1_ghu1jK3vwFjY7QTvfkSg6Apl5VNWiuqNe7mqOKopE3fnxuZ3vz-2MEZiI0j6jBFR1-W9PS00PPmf3jRN9ZLmyk2O8tY0rizfWQFy9_MrB-gb0xhCbBSEuJ_qjdSB9dlZUem7tnW5FSrrCQ6TOUiXb3q9NOnC44k9YNxJ_wVA94ElnReiIXs7Uqp002zeaK4JH_pq3RyldcbFaRX0shY5L_RtfOB83Q5GZu-mgNoD8nuck4nMr60E6l8KKZQ",
+    "token_type": "bearer",
+    "expires_in": 14399,
+    "userName": "Phil",
+    ".issued": "Tue, 20 Mar 2018 01:23:38 GMT",
+    ".expires": "Tue, 20 Mar 2018 05:23:38 GMT"
+}
+
+PROBLEM:
+========
+CS0246	The type or namespace name 'EnableCors' could not be found (are you missing a
+using directive or an assembly reference?)
+SOLUTION:
+	Install-Package Microsoft.AspNet.WebApi.Cors
+
+PROBLEM:
+========
+ In Configuration.cs:
+	The entity type ApplicationRole is not part of the model for the current context.
+SOLUTION:
+	var _roleManager = new RoleManager<IdentityRole, string>(new RoleStore<IdentityRole>(context));
+
+PROBLEM:
+========
+ Not calling configured OwinStartup
+SOLUTION:
+	Install-Package Microsoft.Owin.Host.SystemWeb
+	https://stackoverflow.com/questions/20203982/owinstartup-not-firing
+
+PROBLEM:
+========
+ Test stopped showing up
+SOLUTION:
+ install-package MSTest.TestAdapter
+ Install-Package MSTest.TestFramework
+
+PROBLEM:
+========
+ Test stopped showing up
+SOLUTION:
+ Rename C:\Users\Phil\AppData\Local\Temp\VisualStudioTestExplorerExtensions.bak
+
+PROBLEM:
+========
+ Could not load file or assembly 'Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+
+PROBLEM:
+========
+SendGrid attachment status code BadRequest
+ The attachment content must be base64 encoded.	
+ The attachment content must be a string at least one character in length.
+
+
+PROBLEM:
+========
+Argument 1: cannot convert from 'WebSrv.ApplicationUserManager' to 
+'Microsoft.AspNet.Identity.UserManager<NSG.Identity.Models.ApplicationUser>'	ApplicationOAuthProvider.cs	56
+	ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
+		OAuthDefaults.AuthenticationType);
+
+PROBLEM:
+========
+ Login failed with 500 internal error
+SOLUTION:
+ in the network f12 tools the resonse body said it need Newtonsoft.Json v10
+	packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll
+
+PROBLEM:
+========
+	Failed to load http://localhost:9111/api/Token/: 
+	Response to preflight request doesn't pass access control check: 
+	No 'Access-Control-Allow-Origin' header is present on the requested 
+	resource. Origin 'http://localhost:4200' is therefore not allowed
+	access. The response had HTTP status code 404.
+SOLUTION:
+	remove last /
+
+PROBLEM:
+========
+	Response with status: 400 Bad Request for URL: http://localhost:63074/api/Token
+	{"error":"unsupported_grant_type"} 
+SOLUTION:
+	Changed JSON.stringify ...
+	{"grant_type":"password","username":"Phil","password":"p@ssW0rd"}
+	or class ...
+	{
+	  "username": "Phil",
+	  "password": "p@ssW0rd",
+	  "grant_type": "password"
+	}
+	to ....
+    let body = `grant_type=password&username=${loginViewModel.username}&password=${loginViewModel.password}`;
+
+PROBLEM:
+========
+http://localhost:63074/api/services/ping/192.169.3.2
+HTTP Error 404.0 - Not Found
+The resource you are looking for has been removed, had its name changed, or is temporarily unavailable.
+
+SOLUTION:
+https://stackoverflow.com/questions/11728846/dots-in-url-causes-404-with-asp-net-mvc-and-iis
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true" />
+    <handlers>
+or ...
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true">
+      < ...
+    </modules>
+
+
+
+import { environment } from '../environments/environment';
+  logLevel: number = 1;
+		// 1=error, 2=warning, 3=info, 4=verbose
+		this.logLevel = environment.logLevel;
+    if( this.logLevel >= 4 )

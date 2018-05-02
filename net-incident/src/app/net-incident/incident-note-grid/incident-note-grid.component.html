@@ -1,0 +1,68 @@
+<!-- IncidentNote-Grid.component.html -->
+<div *ngIf='networkIncident != undefined' class='nsg-text-left'>
+  <p-dataTable id='incidentnotes-grid' [value]='networkIncident.incidentNotes' [totalRecords]='totalRecords'
+      expandableRows='true' [stacked]='stacked'
+      [rows]='10' [paginator]='true' [rowsPerPageOptions]='[10,50]'
+      [responsive]='true' [immutable]='true'>
+    <p-column expander='true' styleClass='col-icon' [style]="{'width':'38px'}"></p-column>
+    <p-column [style]="{'width':'38px'}">
+      <ng-template pTemplate='header'>
+        <button (click)="addItemClicked( )" pButton type="button" icon="fa-plus" class="ui-button-primary"></button>
+      </ng-template>
+      <ng-template pTemplate='body' let-incidentnotes='rowData'>
+        <button (click)="editItemClicked( incidentnotes )" pButton type="button" icon="fa-edit" class="ui-button-primary"></button>
+      </ng-template>
+    </p-column>
+    <p-column header='Type' field='NoteTypeShortDesc'
+      [sortable]='true'
+      [style]="{'width':'80px'}">
+    </p-column>
+    <p-column header='Note' field='Note' [style]="{'width':'200px'}">
+      <ng-template let-row='rowData' let-col pTemplate type='body'>
+        {{row[col.field] | truncate:[24, '...']}}
+      </ng-template>
+    </p-column>
+    <p-column header='Date' field='CreatedDate'
+      [style]="{'width':'45px'}">
+        <ng-template let-row='rowData' let-col pTemplate type='body'>
+          {{row[col.field] | date: 'MM/dd'}}
+        </ng-template>
+    </p-column>
+    <p-column header='' [style]="{'width':'38px'}">
+      <ng-template pTemplate='header'></ng-template>
+      <ng-template pTemplate='body' let-incidentnote='rowData'>
+        <button (click)="deleteItemClicked( incidentnote )" pButton type="button" icon="fa-trash" class="ui-button-danger"></button>
+      </ng-template>
+    </p-column>
+    <ng-template let-incidentnote pTemplate='rowexpansion'>
+      <div class='ui-grid ui-grid-responsive ui-fluid nsg-text-left'>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='IncidentNoteId'>Note Id:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='IncidentNoteId'>{{incidentnote.IncidentNoteId}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NoteTypeId'>Type Id:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='NoteTypeId'>{{incidentnote.NoteTypeId}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NoteTypeShortDesc'>Type Desc:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='NoteTypeShortDesc'>{{incidentnote.NoteTypeShortDesc}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='Note'>Note:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='Note'>{{incidentnote.Note}}</div>
+        </div>
+        <div class='ui-grid-row ui-inputgroup'>
+          <div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='CreatedDate'>Created Date:&nbsp;</label></div>
+          <div class='ui-grid-col-9' id='CreatedDate'>{{incidentnote.CreatedDate | date: 'MM/dd/yyyy HH:mm'}}</div>
+        </div>
+      </div>
+    </ng-template>
+  </p-dataTable>
+  <!-- modal edit window -->
+  <app-incident-note-detail-window [incidentnote]='windowIncidentNote'
+    [networkIncident]='networkIncident'
+    [displayWin]='windowDisplay' (onClose)='onClose($event)'>
+  </app-incident-note-detail-window>
+  <!-- End of incidentnote.grid.component.html -->
+</div>

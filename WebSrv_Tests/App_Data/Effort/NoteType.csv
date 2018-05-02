@@ -1,0 +1,6 @@
+NoteTypeId,NoteTypeDesc,NoteTypeShortDesc
+1,"Ping","Ping"
+2,"WhoIs","WhoIs"
+3,"Abuse Report to ISP","ISP Rpt"
+4,"Additional Communication from ISP","ISP Addl"
+5,"ISP Response","ISP Resp"

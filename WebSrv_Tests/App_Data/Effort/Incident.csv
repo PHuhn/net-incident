@@ -1,0 +1,3 @@
+IncidentId,ServerId,IPAddress,NIC_Id,NetworkName,AbuseEmailAddress,ISPTicketNumber,Mailed,Closed,Special,Notes,CreatedDate
+1,1,"145.255.1.48","ripe.net","A","abuse@ufanet.ru",,True,True,False,"",04/24/2016 11:51:23
+2,1,"94.41.54.105","ripe.net","UBN","abuse@ufanet.ru","",False,False,False,"123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 ",04/24/2016 11:52:30

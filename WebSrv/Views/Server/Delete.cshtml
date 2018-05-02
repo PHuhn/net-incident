@@ -1,0 +1,92 @@
+﻿@model WebSrv.Models.CompanyServerData
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Company/Server Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    @using (Html.BeginForm("CompanyDelete", "Server", new { id = @Model.CompanyId }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.CompanyId)
+        @Html.HiddenFor(model => model.CompanyShortName)
+        @Html.HiddenFor(model => model.CompanyName)
+        <div class="row">
+            <div class="col-md-11">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CompanyId):
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CompanyId)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CompanyShortName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CompanyShortName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CompanyName)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-1">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+        </div>
+    }
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        @if (Model != null)
+        {
+            foreach (var srv in Model.Servers)
+            {
+                using (Html.BeginForm("ServerDelete", "Server", new { id = srv.ServerId }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.CompanyId)
+                    @Html.HiddenFor(model => model.CompanyShortName)
+                    @Html.HiddenFor(model => model.CompanyName)
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="@string.Format("panel-{0}", srv.ServerId)">
+                            <div class="panel-title">
+                                <a class="collapsed accordion-toggle" role="button" data-toggle="collapse"
+                                   data-parent="#accordion"
+                                   href="@string.Format("#collapse-{0}", srv.ServerId)"
+                                   aria-expanded="false" aria-controls="@string.Format("collapse-{0}", srv.ServerId)">
+                                    <label class="col-md-1 nsg-label" for="ServerShortName">Server:</label>
+                                    <div class="col-md-11">
+                                        @Html.DisplayFor(model => srv.ServerShortName)
+                                        (@Html.DisplayFor(model => srv.ServerId))
+                                        - @Html.DisplayFor(model => srv.ServerName)
+                                    </div>
+                                    <div class="nsg-clear-left"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="@string.Format("collapse-{0}", srv.ServerId)" class="panel-collapse collapse" role="tabpanel" aria-labelledby="@string.Format("panel-{0}", srv.ServerId)">
+                            <div class="panel-body">
+                                <div class="col-md-11">
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+                                </div>
+                                @Html.Partial("ServerDetailPartial", srv)
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+
+    @Html.ActionLink("Back to List", "Index")
+
+</div>

@@ -1,0 +1,130 @@
+﻿@model NSG.Identity.ApplicationUser
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2>User (Details)</h2>
+<div>
+    <div class="form-actions no-color">
+        <div class="nsg-float-left text-left">
+            <span>
+                @Html.ActionLink("Back to List", "Index")
+            </span>
+        </div>
+        <div class="nsg-float-right text-right">
+            <span>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+            </span>
+        </div>
+        <div class="nsg-clear-both"></div>
+    </div>
+    <hr />
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserNicName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserNicName)
+            </dd>
+        </dl>
+    </div>
+
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+        </dl>
+        
+        <dl class="dl-horizontal">
+            &nbsp;
+        </dl>
+    </div>
+</div>
+<div class="col-md-12">
+    <hr />
+    @if (ViewBag.RoleNames.Count == 0)
+    {
+        <p>No roles found for this user.</p>
+    }
+    <dl class="dl-horizontal">
+        <dt>
+            Roles
+        </dt>
+        <dd>
+            @foreach (var item in ViewBag.RoleNames)
+            {
+                <div style="padding:0 18px 8px 0; float: left;">
+                    @item
+                </div>
+            }
+        </dd>
+    </dl>
+    <div style="clear: left;"></div>
+    @if (ViewBag.RoleNames.Count == 0)
+    {
+        <p>No servers found for this user.</p>
+    }
+    <dl class="dl-horizontal">
+        <dt>
+            Servers
+        </dt>
+        <dd>
+            @foreach (var item in ViewBag.ServerNames)
+            {
+                <div style="padding:0 18px 8px 0; float: left;">
+                    @item
+                </div>
+            }
+        </dd>
+    </dl>
+    <div class="nsg-clear-left"></div>
+</div>

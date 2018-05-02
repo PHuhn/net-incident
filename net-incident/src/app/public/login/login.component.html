@@ -1,0 +1,46 @@
+<!-- -->
+<div class='ui-grid ui-grid-responsive ui-fluid nsg-content'>
+  <div class='ui-grid-col-6'>
+    <div class='nsg-primary-color nsg-block-center'>
+      <h3>Login</h3>
+    </div>
+    <div class='ui-grid-row ui-inputgroup'>
+      <div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='userName'>User Name:</label></div>
+      <div class='ui-grid-col-8  ui-inputtext'>
+        <input type='text' id='userName' name='userName' maxlength='256' size='40'
+          #UserName='ngModel' [(ngModel)]='model.UserName' />
+      </div>
+    </div>
+    <div class='ui-grid-row ui-inputgroup'>
+      <div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='password'>Password:</label></div>
+      <div class='ui-grid-col-8 ui-inputtext'>
+        <input type='text' id='password' name='password' type='password' maxlength='128' size='40'
+          #Password='ngModel' [(ngModel)]='model.Password' />
+      </div>
+    </div>
+    <div class='ui-grid-row ui-inputgroup'>
+      <div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='serverShortName'>Server/Device:</label></div>
+      <div class='ui-grid-col-8 ui-inputtext'>
+        <input type='text' id='serverShortName' name='serverShortName' maxlength='12' size='12'
+          #ServerShortName='ngModel' [(ngModel)]='model.ServerShortName' />
+      </div>
+    </div>
+    <div class='ui-grid-row'>
+      <div class='ui-grid-col-4'>&nbsp;</div>
+      <div class='ui-grid-col-8'>
+        <div class='nsg-icon-button'>
+          <button pButton label='Login' icon='fa-sign-in' (click)='loginUser()' class='ui-button-primary'></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='ui-grid-col-6'>
+    <!-- register component
+    <div class='ui-grid-row'>&nbsp;</div>
+    <app-register></app-register>
+    -->
+  </div>
+  <app-server-selection-window [selectItems]='selectItemsWindow'
+	[displayWin]='displayServersWindow' (onClose)='onServerSelected($event)'></app-server-selection-window>
+</div>
+<!-- -->

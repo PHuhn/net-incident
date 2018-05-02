@@ -1,0 +1,748 @@
+Microsoft Windows [Version 10.0.15063]
+(c) 2017 Microsoft Corporation. All rights reserved.
+
+C:\dat>cd dat\nsg\l\web\12\
+The system cannot find the path specified.
+
+C:\dat>cd .\nsg\l\web\12\
+
+C:\Dat\Nsg\L\Web\12>dir
+ Volume in drive C is Windows
+ Volume Serial Number is 1065-8FCA
+
+ Directory of C:\Dat\Nsg\L\Web\12
+
+11/14/2017  02:30 PM    <DIR>          .
+11/14/2017  02:30 PM    <DIR>          ..
+07/23/2017  12:28 PM    <DIR>          BackboneApp
+09/30/2017  09:47 AM    <DIR>          demo
+03/17/2017  12:47 PM        26,498,539 KendoUI-02.zip
+07/23/2017  12:28 PM    <DIR>          KendoUI02
+11/14/2017  01:52 PM    <DIR>          MilcEffort
+07/23/2017  12:28 PM    <DIR>          NetIncident
+11/18/2017  12:57 PM    <DIR>          NetIncidents
+11/14/2017  02:30 PM    <DIR>          New folder
+07/23/2017  12:28 PM    <DIR>          NSG.Libraryx86
+07/23/2017  12:28 PM    <DIR>          Provider01
+07/23/2017  12:29 PM    <DIR>          Testing01
+07/24/2016  03:23 PM        24,409,621 Testing01-07-24.zip
+07/23/2017  12:29 PM    <DIR>          UnderscoreBackbone
+07/23/2017  12:29 PM    <DIR>          WebSite
+08/13/2017  01:07 PM    <DIR>          WepApp12
+               2 File(s)     50,908,160 bytes
+              15 Dir(s)  163,656,179,712 bytes free
+
+C:\Dat\Nsg\L\Web\12>cd net*s
+
+C:\Dat\Nsg\L\Web\12\NetIncidents>cd webp*
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>open index.html
+'open' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>npm run build
+
+> webpack-demo@1.0.0 build C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo
+> webpack -p
+
+
+Webpack is watching the files�
+
+Hash: 8fb539b6bcf09efb118b
+Version: webpack 3.8.1
+Time: 561ms
+    Asset       Size  Chunks             Chunk Names
+bundle.js  925 bytes       0  [emitted]  main
+   [0] multi ./main.js ./abuse.js 40 bytes {0} [built]
+   [1] ./main.js 127 bytes {0} [built]
+   [2] ./abuse.js 3.84 kB {0} [built]
+    + 1 hidden module
+Terminate batch job (Y/N)? y
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>notepad .babelrc
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>cd src
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo\src>dir
+ Volume in drive C is Windows
+ Volume Serial Number is 1065-8FCA
+
+ Directory of C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo\src
+
+11/18/2017  04:30 PM    <DIR>          .
+11/18/2017  04:30 PM    <DIR>          ..
+11/18/2017  06:05 PM             3,048 abuse.js
+11/18/2017  04:20 PM               132 main.js
+               2 File(s)          3,180 bytes
+               2 Dir(s)  163,433,549,824 bytes free
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo\src>notepad index.js
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo\src>cd ..
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>npm install --save-dev json-loader
+npm WARN webpack-demo@1.0.0 No description
+npm WARN webpack-demo@1.0.0 No repository field.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ json-loader@0.5.7
+added 116 packages and updated 1 package in 11.426s
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>npm run build
+
+> webpack-demo@1.0.0 build C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo
+> webpack -p
+
+
+Webpack is watching the files�
+
+Hash: 8a052bb76be8076360d4
+Version: webpack 3.8.1
+Time: 1224ms
+    Asset     Size  Chunks             Chunk Names
+bundle.js  54.5 kB       0  [emitted]  main
+   [3] multi ./index.js ./abuse.js 40 bytes {0} [built]
+   [4] ./index.js 461 bytes {0} [built]
+  [16] ./abuse.js 5.36 kB {0} [built]
+    + 15 hidden modules
+
+ERROR in ../node_modules/node-whois/index.js
+Module not found: Error: Can't resolve 'net' in 'C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo\node_modules\node-whois'
+ @ ../node_modules/node-whois/index.js 7:8-22
+ @ ./index.js
+ @ multi ./index.js ./abuse.js
+Terminate batch job (Y/N)? y
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>dir
+ Volume in drive C is Windows
+ Volume Serial Number is 1065-8FCA
+
+ Directory of C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo
+
+11/18/2017  06:42 PM    <DIR>          .
+11/18/2017  06:42 PM    <DIR>          ..
+11/18/2017  05:39 PM                31 .babelrc
+11/18/2017  01:10 PM    <DIR>          dist
+11/18/2017  06:08 PM               265 index.html
+11/18/2017  06:42 PM    <DIR>          node_modules
+11/18/2017  04:42 PM           104,569 package-lock.json
+11/18/2017  06:42 PM               429 package.json
+11/18/2017  06:09 PM    <DIR>          src
+11/18/2017  07:44 PM               516 webpack.config.js
+               5 File(s)        105,810 bytes
+               5 Dir(s)  163,422,724,096 bytes free
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>dir src
+ Volume in drive C is Windows
+ Volume Serial Number is 1065-8FCA
+
+ Directory of C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo\src
+
+11/18/2017  06:09 PM    <DIR>          .
+11/18/2017  06:09 PM    <DIR>          ..
+11/18/2017  06:05 PM             3,048 abuse.js
+11/18/2017  06:25 PM               449 index.js
+11/18/2017  04:20 PM               132 main.js
+               3 File(s)          3,629 bytes
+               2 Dir(s)  163,421,675,520 bytes free
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>node
+> import { WhoisAbuse } from './src/abuse';
+...
+...
+> var WhoisAbuse = require( './src/abuse' );
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo\src\abuse.js:2
+import { parser } from 'parse-whois';
+^^^^^^
+
+SyntaxError: Unexpected token import
+
+>
+> var WhoisAbuse = require( './src/abuse' );
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo\src\abuse.js:2
+import { parser } from 'parse-whois';
+^^^^^^
+
+SyntaxError: Unexpected token import
+
+>
+(To exit, press ^C again or type .exit)
+>
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>node
+> var WhoisAbuse = require( './src/abuse' );
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo\src\abuse.js:2
+import { parser } from 'parse-whois';
+^^^^^^
+
+SyntaxError: Unexpected token import
+
+>
+>
+>
+>
+(To exit, press ^C again or type .exit)
+>
+
+C:\Dat\Nsg\L\Web\12\NetIncidents\webpack-demo>cd ..
+
+C:\Dat\Nsg\L\Web\12\NetIncidents>cd ..
+
+C:\Dat\Nsg\L\Web\12>cd ..
+
+C:\Dat\Nsg\L\Web>cd ng
+
+C:\Dat\Nsg\L\Web\Ng>dir
+ Volume in drive C is Windows
+ Volume Serial Number is 1065-8FCA
+
+ Directory of C:\Dat\Nsg\L\Web\Ng
+
+11/12/2017  12:52 PM    <DIR>          .
+11/12/2017  12:52 PM    <DIR>          ..
+07/23/2017  12:33 PM    <DIR>          1st-spec
+01/16/2017  05:42 PM             1,683 alerts.service.ts
+07/23/2017  12:33 PM    <DIR>          angular2-forms
+07/23/2017  12:33 PM    <DIR>          cli-bak
+02/19/2017  09:02 AM        38,029,144 cli6_After_G.zip
+03/28/2017  07:04 PM               660 Confirm-Component.html
+03/28/2017  07:04 PM             1,356 Confirm-Component.ts
+07/23/2017  12:33 PM    <DIR>          Demo
+08/02/2017  12:39 PM    <DIR>          Example
+10/09/2017  02:51 PM         3,907,521 Font-Awesome-master.zip
+01/16/2017  05:39 PM               176 message.ts
+08/07/2017  02:59 PM    <DIR>          n4
+06/23/2017  11:19 PM            18,424 ng-commands.txt
+07/23/2017  12:33 PM    <DIR>          ng-select
+07/26/2017  01:22 PM            20,047 ng.txt
+07/23/2017  12:33 PM    <DIR>          ng2
+07/23/2017  12:33 PM    <DIR>          ng2_s
+11/07/2017  12:42 PM    <DIR>          ng4-cli-png08
+08/04/2017  02:33 PM    <DIR>          ng4-cli-rte07
+07/26/2017  09:38 AM    <DIR>          Ng4-cli02
+07/23/2017  12:33 PM    <DIR>          ng4-cli05
+07/25/2017  08:44 AM    <DIR>          ng4-cli06
+07/19/2017  01:05 PM            30,797 ngb-modal.txt
+11/14/2017  08:37 PM    <DIR>          ni
+07/09/2017  08:18 AM            22,226 ProdCategoriesV4.txt
+07/27/2017  03:24 PM            39,211 ProductV4.txt
+07/23/2017  12:33 PM    <DIR>          TalkDemo
+10/26/2017  08:18 AM    <DIR>          ws
+              11 File(s)     42,071,245 bytes
+              19 Dir(s)  163,428,212,736 bytes free
+
+C:\Dat\Nsg\L\Web\Ng>ng new net-incident
+installing ng
+  create .editorconfig
+  create README.md
+  create src\app\app.component.css
+  create src\app\app.component.html
+  create src\app\app.component.spec.ts
+  create src\app\app.component.ts
+  create src\app\app.module.ts
+  create src\assets\.gitkeep
+  create src\environments\environment.prod.ts
+  create src\environments\environment.ts
+  create src\favicon.ico
+  create src\index.html
+  create src\main.ts
+  create src\polyfills.ts
+  create src\styles.css
+  create src\test.ts
+  create src\tsconfig.app.json
+  create src\tsconfig.spec.json
+  create src\typings.d.ts
+  create .angular-cli.json
+  create e2e\app.e2e-spec.ts
+  create e2e\app.po.ts
+  create e2e\tsconfig.e2e.json
+  create .gitignore
+  create karma.conf.js
+  create package.json
+  create protractor.conf.js
+  create tsconfig.json
+  create tslint.json
+Installing packages for tooling via npm.
+Installed packages for tooling via npm.
+Successfully initialized git.
+Project 'net-incident' successfully created.
+
+C:\Dat\Nsg\L\Web\Ng>ng serve
+node_modules appears empty, you may need to run `npm install`
+
+C:\Dat\Nsg\L\Web\Ng>npm install
+npm WARN saveError ENOENT: no such file or directory, open 'C:\Dat\Nsg\L\Web\Ng\package.json'
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN enoent ENOENT: no such file or directory, open 'C:\Dat\Nsg\L\Web\Ng\package.json'
+npm WARN Ng No description
+npm WARN Ng No repository field.
+npm WARN Ng No README data
+npm WARN Ng No license field.
+
+up to date in 0.188s
+
+C:\Dat\Nsg\L\Web\Ng>cd net-*
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng serve
+** NG Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200 **
+Hash: 6de1d7b1eec3724f6bfd
+Time: 6733ms
+chunk    {0} polyfills.bundle.js, polyfills.bundle.js.map (polyfills) 191 kB {4} [initial] [rendered]
+chunk    {1} main.bundle.js, main.bundle.js.map (main) 5.34 kB {3} [initial] [rendered]
+chunk    {2} styles.bundle.js, styles.bundle.js.map (styles) 10.5 kB {4} [initial] [rendered]
+chunk    {3} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.21 MB [initial] [rendered]
+chunk    {4} inline.bundle.js, inline.bundle.js.map (inline) 0 bytes [entry] [rendered]
+webpack: Compiled successfully.
+^CTerminate batch job (Y/N)? y
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>cd ..
+
+C:\Dat\Nsg\L\Web\Ng>cd net-*
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>code .
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g component Public\Home
+installing component
+  create src\app\public\home\home.component.css
+  create src\app\public\home\home.component.html
+  create src\app\public\home\home.component.spec.ts
+  create src\app\public\home\home.component.ts
+  update src\app\app.module.ts
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g component Public\About
+installing component
+  create src\app\Public\about\about.component.css
+  create src\app\Public\about\about.component.html
+  create src\app\Public\about\about.component.spec.ts
+  create src\app\Public\about\about.component.ts
+  update src\app\app.module.ts
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g component Public\Contact
+installing component
+  create src\app\Public\contact\contact.component.css
+  create src\app\Public\contact\contact.component.html
+  create src\app\Public\contact\contact.component.spec.ts
+  create src\app\Public\contact\contact.component.ts
+  update src\app\app.module.ts
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g module Global
+installing module
+  create src\app\global\global.module.ts
+  WARNING Module is generated but not provided, it must be provided to be used
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>npm install --save-dev parse-whois
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ parse-whois@1.0.0
+added 116 packages in 21.749s
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>npm install --save-dev node-whois
+npm WARN deprecated node-whois@2.1.3: WARNING: This project has been renamed from node-whois to whois. Install using whois instead.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ node-whois@2.1.3
+added 118 packages in 15.276s
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>npm install --save-dev underscore
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ underscore@1.8.3
+added 116 packages and updated 1 package in 16.673s
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>npm install --save @types/underscore
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @types/underscore@1.8.5
+added 116 packages in 15.669s
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>npm install --save-dev parse-whois
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ parse-whois@1.0.0
+added 115 packages and updated 1 package in 15.411s
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>npm install --save underscore
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ underscore@1.8.3
+added 115 packages and updated 1 package in 15.724s
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>tsd install node-whois
+'tsd' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g module Net-Incident
+installing module
+  create src\app\net-incident\net-incident.module.ts
+  WARNING Module is generated but not provided, it must be provided to be used
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g component Net-Incident\Incident-Grid
+installing component
+  create src\app\Net-Incident\incident-grid\incident-grid.component.css
+  create src\app\Net-Incident\incident-grid\incident-grid.component.html
+  create src\app\Net-Incident\incident-grid\incident-grid.component.spec.ts
+  create src\app\Net-Incident\incident-grid\incident-grid.component.ts
+  update src\app\Net-Incident\net-incident.module.ts
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g component Net-Incident\Incident-Detail-Window
+installing component
+  create src\app\Net-Incident\incident-detail-window\incident-detail-window.component.css
+  create src\app\Net-Incident\incident-detail-window\incident-detail-window.component.html
+  create src\app\Net-Incident\incident-detail-window\incident-detail-window.component.spec.ts
+  create src\app\Net-Incident\incident-detail-window\incident-detail-window.component.ts
+  update src\app\Net-Incident\net-incident.module.ts
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g component Net-Incident\NetworkLog-Window
+installing component
+  create src\app\Net-Incident\network-log-window\network-log-window.component.css
+  create src\app\Net-Incident\network-log-window\network-log-window.component.html
+  create src\app\Net-Incident\network-log-window\network-log-window.component.spec.ts
+  create src\app\Net-Incident\network-log-window\network-log-window.component.ts
+  update src\app\Net-Incident\net-incident.module.ts
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g component Net-Incident\IncidentNote-Window
+installing component
+  create src\app\Net-Incident\incident-note-window\incident-note-window.component.css
+  create src\app\Net-Incident\incident-note-window\incident-note-window.component.html
+  create src\app\Net-Incident\incident-note-window\incident-note-window.component.spec.ts
+  create src\app\Net-Incident\incident-note-window\incident-note-window.component.ts
+C:\Dat\Nsg\L\Web\Ng\net-incident>ng g service Net-Incident\Incident
+installing service
+  create src\app\Net-Incident\incident.service.spec.ts
+  create src\app\Net-Incident\incident.service.ts
+  WARNING Service is generated but not provided, it must be provided to be used
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>npm install --save-dev primeng
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ primeng@5.0.0
+added 116 packages in 25.712s
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>
+
+
+npm install --save-dev primeng
+npm install --save font-awesome
+copy into place style.css
+
+npm WARN @angular/compiler-cli@5.0.2 requires a peer of typescript@>=2.4.2 <2.5 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@3.0.1 requires a peer of @angular/compiler@^2.3.1 || >=4.0.0-beta <5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@3.0.1 requires a peer of @angular/core@^2.3.1 || >=4.0.0-beta <5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN tsickle@0.24.1 requires a peer of typescript@2.4.2 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+npm --save-dev install typescript@2.4.2
+
+2017-12-08
+C:\Dat\Nsg\L\Web\Ng\net-incident>npm i express-es6-template-engine --save-dev
+npm WARN codelyzer@3.0.1 requires a peer of @angular/compiler@^2.3.1 || >=4.0.0-beta <5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@3.0.1 requires a peer of @angular/core@^2.3.1 || >=4.0.0-beta <5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ express-es6-template-engine@2.0.2
+added 116 packages and removed 5 packages in 60.222s
+
+
+   ╭─────────────────────────────────────╮
+   │                                     │
+   │   Update available 5.5.1 → 5.6.0    │
+   │     Run npm i -g npm to update      │
+   │                                     │
+   ╰─────────────────────────────────────╯
+
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>npm update
+npm WARN @angular/compiler-cli@5.1.0 requires a peer of typescript@>=2.4.2 <2.6 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@3.0.1 requires a peer of @angular/compiler@^2.3.1 || >=4.0.0-beta <5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@3.0.1 requires a peer of @angular/core@^2.3.1 || >=4.0.0-beta <5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN @schematics/angular@0.1.10 requires a peer of @angular-devkit/schematics@0.0.40 but none is installed. You must install peer dependencies yourself.
+npm WARN @schematics/schematics@0.0.10 requires a peer of @angular-devkit/schematics@0.0.40 but none is installed. You must install peer dependencies yourself.
+npm WARN tsickle@0.25.5 requires a peer of typescript@>=2.4.2 <2.6 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @angular/language-service@5.1.0
++ @angular/compiler@5.1.0
++ @angular/compiler-cli@5.1.0
++ @angular/forms@5.1.0
++ @angular/animations@5.1.0
++ @angular/cli@1.6.0
++ @angular/core@5.1.0
++ @angular/platform-browser@5.1.0
++ @angular/common@5.1.0
++ @angular/http@5.1.0
++ rxjs@5.5.5
++ karma-jasmine@1.1.1
++ @angular/router@5.1.0
++ @angular/platform-server@5.1.0
++ typescript@2.6.2
++ primeng@5.0.2
++ @angular/platform-browser-dynamic@5.1.0
++ webpack@3.10.0
+added 117 packages, removed 1 package, updated 51 packages and moved 1 package in 144.568s
+
+C:\Dat\Nsg\L\Web\Ng\net-incident>
+
+
+=======
+PROBLEM
+Uncaught Error: Template parse errors:
+Can't bind to 'networklogs' since it isn't a known property of 'app-networklog-grid'.
+1. If 'app-networklog-grid' is an Angular component and it has 'networklogs' input, then verify that it is part of this module.
+2. If 'app-networklog-grid' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component. ("
+  </h1>
+</div>
+<app-networklog-grid [ERROR ->][networklogs]='networklogs'></app-networklog-grid>
+<div class='ui-grid ui-grid-responsive ui-fluid'>
+"): ng:///AppModule/AppComponent.html@7:21
+'app-networklog-grid' is not a known element:
+1. If 'app-networklog-grid' is an Angular component, then verify that it is part of this module.
+2. If 'app-networklog-grid' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message. ("
+  </h1>
+</div>
+[ERROR ->]<app-networklog-grid [networklogs]='networklogs'></app-networklog-grid>
+<div class='ui-grid ui-grid-r"): ng:///AppModule/AppComponent.html@7:0
+    at syntaxError (compiler.js:466)
+    at TemplateParser.parse (compiler.js:24329)
+    at JitCompiler._parseTemplate (compiler.js:33716)
+    at JitCompiler._compileTemplate (compiler.js:33691)
+    at eval (compiler.js:33593)
+    at Set.forEach (<anonymous>)
+    at JitCompiler._compileComponents (compiler.js:33593)
+    at eval (compiler.js:33463)
+    at Object.then (compiler.js:455)
+    at JitCompiler._compileModuleAndComponents (compiler.js:33462)
+
+SOLUTION: when pasted the component from MyGeneration the file naming did not match
+=======
+PROBLEM:
+ERROR in ./src/app/net-incident/NetworkLog.ts
+Module build failed: Error: C:\Dat\Nsg\L\Web\Ng\net-incident\src\app\net-incident\NetworkLog.ts is not part of the compilation. Please make sure it is in your tsconfig via the 'files' or 'include' property.
+    at AngularCompilerPlugin.getCompiledFile (C:\Dat\Nsg\L\Web\Ng\net-incident\node_modules\@ngtools\webpack\src\angular_compiler_plugin.js:619:23)
+    at plugin.done.then (C:\Dat\Nsg\L\Web\Ng\net-incident\node_modules\@ngtools\webpack\src\loader.js:467:39)
+    at <anonymous>
+ @ ./src/app/app.component.ts 17:0-55
+ @ ./src/app/app.module.ts
+ @ ./src/main.ts
+ @ multi webpack-dev-server/client?http://0.0.0.0:0 ./src/main.ts
+
+webpack: Failed to compile.
+SOLUTION:
+Deleted and let CLI create the class
+========
+PROBLEM:
+The pipe 'truncate' could not be found ("yle]="{'width':'200px'}">
+    <ng-template let-row='rowData' let-col pTemplate type='body'>
+      {{[ERROR ->]row[col.field] | truncate:[25, '...']}}
+    </ng-template>
+  </p-column>
+SOLUTION:
+  moved declaration from global module to app-module
+========
+PROBLEM:
+ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: 'undefined'. Current value: '145.255.1.48'.
+    at viewDebugError (core.js:9515)
+    at expressionChangedAfterItHasBeenCheckedError (core.js:9493)
+    at checkBindingNoChanges (core.js:9662)
+    at checkNoChangesNodeInline (core.js:13677)
+    at checkNoChangesNode (core.js:13647)
+    at debugCheckNoChangesNode (core.js:14455)
+    at debugCheckDirectivesFn (core.js:14357)
+    at Object.eval [as updateDirectives] (NetworkLogGridComponent.html:3)
+    at Object.debugUpdateDirectives [as updateDirectives] (core.js:14339)
+    at checkNoChangesView (core.js:13487)
+SOLUTION:
+	ngAfterViewInit() {
+		setTimeout(() => {  // <- solution
+			...
+    }, 10); 
+  }
+
+========
+PROBLEM:
+./src/app/Public/testing/testing.component.ts
+18:16-28 "export 'DropDownItem' was not found in '../../net-incident/dropdown-item'
+SOLUTION:
+  deleted the class and recreated it.
+  ng g class net-incident\DropDownItem
+    create src/app/net-incident/drop-down-item.ts (30 bytes)
+
+========
+PROBLEM:
+'p-dropdown' is not a known element:
+1. If 'p-dropdown' is an Angular component, then verify that it is part of this module.
+2. If 'p-dropdown' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the
+  '@NgModule.schemas' of this component to suppress this message. ("[ERROR ->]<p-dropdown [options]="cars" [(ngModel)]="selectedCar" [style]="{'width':'150px'}" editable="true" pl"): 
+SOLUTION:
+added to AppModule:
+import { DropdownModule } from '../../node_modules/primeng/components/dropdown/dropdown';
+and export of DropdownModule
+========
+PROBLEM:
+  Primeng datatable not refreshing when data is added.
+SOLUTION:
+  https://github.com/primefaces/primeng/issues/2219
+  this.networkIncident.incidentNotes =
+    [...this.networkIncident.incidentNotes, this.model];
+  // add
+  inotes = [ {"id":1,"type":"Ping","note":"Pinging 145.255.1.48.dynamic.ufanet.ru [145.255.1.48]"}, {"id":2,"type":"Rpt","note":"SQL Injection"}, {"id":3,"type":"Rsp","note":"Na na na"} ]
+  inotes = [...inotes, {"id":3,"type":"Rsp","note":"na na na"}]
+  inotes = [...inotes, {"id":4,"type":"Rsp","note":"hey hey"}]
+  // update
+  model = {"id":4,"type":"Rsp","note":"hey hey..."}
+  inotes = inotes.map( el => el.id == 4 ? model : el )
+  // delete
+	inotes = inotes.filter( (el) => { return el.id !== 4; } );
+  let numbers = [65, 44, 12, 4];
+  let cnt = numbers.reduce((count, num) => { 
+     return count + (num < 24 ? 1 : 0); },0);
+  }
+
+========
+membership ...
+https://msdn.microsoft.com/en-us/library/dd483479(v=vs.100).aspx
+copied to talks\web\ng
+https://poznajprogramowanie.pl/getting-started-on-asp-net-core-react-episode-02/
+========
+dialog issues
+100% https://github.com/primefaces/primeng/issues/740
+@media screen and (max-width: 40em) {
+    .ui-dialog.ui-dialog-responsive {
+        width: 90% !important;
+    }
+}
+========
+PROBLEM:
+  dialog containing a dialog
+SOLUTION:
+  appendTo='body'
+
+
+========
+PROBLEM:
+  ran NPM UPDATE
+  @angular/compiler-cli@5.2.9 requires typescript@'>=2.4.2 <2.7.0' but 2.8.1 was found instead.
+
+SOLUTION:
+  npm install typescript@2.6.2
+
+
+========
+PROBLEM:
+  in jasmine tests of IncidentGridComponent, test is passing, but failing with:
+  Error: 2 periodic timer(s) still in the queue.
+
+SOLUTION:
+	it('should run async test with successful delayed Observable', fakeAsync(() => {
+		let actuallyDone = false;
+		let source = Observable.of( true ).delay( 10 );
+		source.subscribe(
+			val => {
+				actuallyDone = true;
+				console.log( `** Actually-done ${new Date().toISOString()}` )
+			},
+			err => {
+				console.log( '******* Actually-done fail *******' );
+				fail(err);
+			}
+		);
+		console.log( `** ${new Date().toISOString()}` )
+		tick( 5000 ); // here need to tick 10
+		console.log( `** ${new Date().toISOString()}` )
+		expect( actuallyDone ).toEqual( true );
+	}));
+
+========
+PROBLEM:
+  Angular 4.3 AuthInterceptorService not working
+
+SOLUTION:
+  Http to HttpClient and HttpModule to HttpClientModule
+	https://stackoverflow.com/questions/45418477/angular-4-3-interceptor-not-working
+  Migrating to HttpClient
+  http://brianflove.com/2017/07/21/migrating-to-http-client/
+  https://medium.com/netscape/testing-with-the-angular-httpclient-api-648203820712
+
+========
+PROBLEM:
+  Angular 4.3 HttpClient conversion of testing ...
+  Error: Invalid provider for the NgModule 'DynamicTestModule'
+   - only instances of Provider and Type are allowed, got: [?[object Object]?, ...]
+
+SOLUTION:
+  Changed:
+  	{ provider: UserService, useClass: UserServiceMock }
+  to:
+  	{ provide: UserService, useClass: UserServiceMock }
+
+========
+PROBLEM:
+  Angular 4.3 HttpClient conversion of testing ...
+  Error: StaticInjectorError(DynamicTestModule)[AuthService -> HttpClient]: 
+    StaticInjectorError(Platform: core)[AuthService -> HttpClient]: 
+      NullInjectorError: No provider for HttpClient!
+SOLUTION:
+  Changed:
+  	AuthService
+  to:
+		{ provide: AuthService, useValue: authService },
+
+========
+PROBLEM:
+  Angular 4.3 HttpClient conversion of testing ...
+    TypeError: ctor is not a constructor
+SOLUTION:
+  Changed:
+		{ provide: AuthService, useClass: authService },
+  to:
+		{ provide: AuthService, useValue: authService },
+
+========
+PROBLEM:
+  Angular 4.3 HttpClient conversion of testing ...
+    Uncaught Error: ViewDestroyedError: Attempt to use a destroyed view: detectChanges at viewDestroyedError
+    in IncidentGridComponent should be created ...
+    but occurred when IncidentDetailWindowComponent should get the mock data... was added
+
+SOLUTION:
+  Changed passing parameters to IncidentDetailWindowComponent via single input
+  and cleaned up time-out and then interval in 
+  NetworkLogGridComponent.ngAfterViewInit()
+	removed all jasmine.clock().tick( 
+
+===================================================
+Done:
+  service logging 12/22
+  saving incidentNotes  12/22
+  WhoisLink 12/24
+  cleanup app.component 12/25
+  Email...
+    FluentEmail required core, so wrote my own
+    https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html
+  service tests
+  jasmine app tests
+
+To Do's:
+  authenication
+  registration
+
+===================================================

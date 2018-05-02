@@ -1,0 +1,201 @@
+﻿//
+// ---------------------------------------------------------------------------
+// Brief Description: 
+//  Static helper methods in support to FluentEmail library.  This uses the 
+//  configuration file to establish what service is used to send out emails
+//  by FluentEmail library.
+//
+//  Configuration file AppSetting:
+//    <add key="production" value="false" />
+//    <add key="Email:Enabled" value="true" />
+//    <add key="Email:TestEmailName" value="SomeBody@gmail.com" />
+//    <add key="Email:UseService" value="SendGrid" />
+//    <add key="Email:Smtp:Host" value="localhost"/>
+//    <add key="Email:ApiKey" value="11111111111" />
+//    <add key="Email:MailgunDomain" value="11111111111" />
+//
+// KB78618381: How to Configure IIS SMTP Server to forward emails using a Gmail account
+// https://wiki.esko.com/display/KBA/KB78618381%3A+How+to+Configure+IIS+SMTP+Server+to+forward+emails+using+a+Gmail+account
+//   <system.net>
+//     <mailSettings>
+//       <smtp from="test@test.test">
+//         <network host="smtphost" port="25" username="user" password="password" defaultCredentials="true" />
+//       </smtp>
+//     </mailSettings>
+//   </system.net>
+//
+// Author: Phil Huhn
+// Created Date: 2018/02/05
+// ---------------------------------------------------------------------------
+// Modified By:
+// Modification Date:
+// Purpose of Modification:
+// ---------------------------------------------------------------------------
+//
+using System;
+using System.Net.Mail;
+using System.Threading.Tasks;
+//
+using FluentEmail.Core;
+using FluentEmail.Smtp;
+using FluentEmail.SendGrid;
+using FluentEmail.Mailgun;
+//
+using NSG.Identity.Models;
+//
+namespace WebSrv.Helpers
+{
+    public static partial class Helpers
+    {
+        //
+        /// <summary>
+        /// Send out an email with the following parameters.
+        /// </summary>
+        /// <param name="from">email address</param>
+        /// <param name="fromName">from email address name</param>
+        /// <param name="to">email address</param>
+        /// <param name="subject">subject of the email</param>
+        /// <param name="bodyText">the body's text</param>
+        public static void EmailFromToSubjectBody(string from, string fromName, string to, string subject, string bodyText)
+        {
+            SendFluentEmail(
+                FluentEmailFromToSubjectBody(from, fromName, to, subject, bodyText));
+        }
+        //
+        /// <summary>
+        /// Construct an IFluentEmail structure with the following parameters.
+        /// This is composable with SendFluentEmail method.
+        /// </summary>
+        /// <param name="from">email address</param>
+        /// <param name="fromName">from email address name</param>
+        /// <param name="to">email address</param>
+        /// <param name="subject">subject of the email</param>
+        /// <param name="bodyText">the body's text</param>
+        /// <returns>IFluentEmail structure</returns>
+        public static IFluentEmail FluentEmailFromToSubjectBody(string from, string fromName, string to, string subject, string bodyText)
+        {
+            bool _prod = Convert.ToBoolean(GetAppSettingConfigValue("production", "false"));
+            if( !_prod )
+            {
+                to = GetAppSettingConfigValue("Email:TestEmailName", "NoBody@AnyCompany.com");
+            }
+            // What email service to use values: SendGrid / Smtp-- >
+            // "Email:UseService" value = "SendGrid" />
+            var _email = Email
+                .From(from, fromName).To(to)
+                .Subject(subject)
+                .Body(bodyText);
+            //
+            return _email;
+        }
+        //
+        /// <summary>
+        /// 
+        /// Send out a FluentEmail.
+        /// This is composable with FluentEmailFromToSubjectBody method.
+        /// </summary>
+        /// <param name="email">IFluentEmail structure</param>
+        public static void SendFluentEmail(IFluentEmail email)
+        {
+            //
+            if (email == null) return;
+            // WithCredentials("info@gorollo.com", "password")
+            bool _enabled = Convert.ToBoolean(GetAppSettingConfigValue("Email:Enabled", "false"));
+            if (_enabled)
+            {
+                // Use Smtp/SendGrid/Mailgun sender package
+                email.Sender = GetFluentEmailSender(GetAppSettingConfigValue("Email:UseService", "-"));
+                //send asynchronously
+                Task.Run(async () =>
+                {
+                    try
+                    {
+                        FluentEmail.Core.Models.SendResponse _response
+                            = await email.SendAsync();
+                        Console.WriteLine(_response.ToString());
+                        if( _response.Successful == false )
+                        {
+                            throw new ApplicationException(
+                                String.Join(", ", _response.ErrorMessages));
+                        }
+                    }
+                    catch (Exception _ex)
+                    {
+                        var _exp = _ex.GetBaseException();
+                        ApplicationDbContext _niEntities = ApplicationDbContext.Create();
+                        WebSrv.Models.Logger _logging = new WebSrv.Models.Logger(_niEntities, WebSrv.Models.Constants.ApplicationName);
+                        _logging.Log((byte)1, 0, "unknown", "Helpers.EmailFromToSubjectBody", 
+                            _exp.Message + ", Email: " + FluentEmailToString(email), _ex);
+                    }
+                }).GetAwaiter().GetResult();
+                //
+            }
+        }
+        //
+        /// <summary>
+        /// Based on the web.config, define the sender for FluentEmail
+        /// </summary>
+        /// <param name="emailService">
+        ///   SendGrid/Mailgun/Smtp
+        ///   &lt;add key="Email:UseService" value="SendGrid" /&gt;
+        /// </param>
+        /// <returns></returns>
+        public static FluentEmail.Core.Interfaces.ISender GetFluentEmailSender(string emailService)
+        {
+            string _codeName = "Helpers_Email.GetFluentEmailSender";
+            try
+            {
+                emailService = emailService.ToLower();
+                if (emailService == "smtp")
+                {
+                    // Use <system.net><mailSettings> to configure SMTP, see top comments...
+                    var _client = new SmtpClient();
+                    var _sender = new SmtpSender(_client)
+                    {
+                        UseSsl = _client.EnableSsl
+                    };
+                    return _sender;
+                }
+                //
+                string _apiKey = GetAppSettingConfigValue("Email:ApiKey", "-").ToLower();
+                switch (emailService)
+                {
+                    case "sendgrid":
+                        // SendGridSender(string apiKey, bool sandBoxMode = false)
+                        return new SendGridSender(_apiKey, false);
+                        // break;
+                    case "mailgun":
+                        // var sender = new MailgunSender(<Mailgun Domain>, <Mailgun API Key>);
+                        string _domain = GetAppSettingConfigValue("Email:MailgunDomain", "-").ToLower();
+                        return new MailgunSender(_domain, _apiKey);
+                        // break;
+                    default:
+                        ApplicationDbContext _niEntities = ApplicationDbContext.Create();
+                        WebSrv.Models.Logger _logging = new WebSrv.Models.Logger(_niEntities, WebSrv.Models.Constants.ApplicationName);
+                        _logging.Log((byte)1, 0, "unknown", _codeName, _codeName + " defaulting to Smtp");
+                        break;
+                }
+            }
+            catch (Exception _ex)
+            {
+                var _exp = _ex.GetBaseException();
+                ApplicationDbContext _niEntities = ApplicationDbContext.Create();
+                WebSrv.Models.Logger _logging = new WebSrv.Models.Logger(_niEntities, WebSrv.Models.Constants.ApplicationName);
+                _logging.Log((byte)1, 0, "unknown", _codeName, _exp.Message, _ex);
+            }
+            //
+            return new SmtpSender();
+        }
+        //
+        public static string FluentEmailToString(IFluentEmail email)
+        {
+            return String.Format( "From: {0}, To: {1}, Subject: {2}, Body: {3}",
+                email.Data.FromAddress.EmailAddress,
+                email.Data.ToAddresses[0].EmailAddress,
+                email.Data.Subject, email.Data.Body);
+        }
+
+
+    }
+}
+//

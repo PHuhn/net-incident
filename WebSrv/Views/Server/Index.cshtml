@@ -1,0 +1,49 @@
+﻿@model IEnumerable<NSG.Identity.Incidents.Company>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Companies/Servers Management</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="width: 120px;">
+            @Html.ActionLink("Details", "Details", new { id = item.CompanyId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.CompanyId })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+            ( @Html.DisplayFor(modelItem => item.CompanyId)
+            - @Html.DisplayFor(modelItem => item.CompanyShortName) )
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.CompanyId }, new { @style = "color: red;" })
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" style="border-top: none;">
+            <div class="nsg-label" style="width: 120px; float: left; padding-right: 15px;">
+                Servers:
+            </div>
+            @foreach (var srv in item.Servers)
+            {
+                <div style="width: 100px; float: left;">
+                    @Html.ActionLink(srv.ServerShortName, "Edit", new { id = item.CompanyId })
+                </div>
+            }
+            <div style="clear: left;"></div>
+        </td>
+    </tr>
+}
+
+</table>

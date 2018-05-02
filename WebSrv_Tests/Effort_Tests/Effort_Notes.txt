@@ -1,0 +1,91 @@
+﻿Notes for Net Incidence Effort unit tests
+	Effort stands for the Entity Framework Fake ObjectContext Realization Tool.
+	Effort is an in-memory implementaion of the database.
+	The data is stored in CSV files in the App_Data\Effort folder.
+
+CSV export ...
+Launched Solution in VS2012, click green Start |> button
+
+Provider:
+SQL Client Data Provider
+
+Connection String:
+Persist Security Info=False;Integrated Security=true;Initial Catalog=NetIncident2;server=(local)\Express
+
+Export Path:
+	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\WebSrv_Tests\App_Data\Effort
+in vs create the Effort folder and copy existing files to the new folder.
+
+=====================
+
+install-package entityFramework
+install-package Effort.EF6
+
+Effort...
+
+PM> install-package entityFramework
+Package 'entityFramework.6.2.0' already exists in project 'WebSrv_Tests'
+Time Elapsed: 00:00:00.2043723
+PM> install-package Effort.EF6
+
+
+Attempting to gather dependency information for package 'Effort.EF6.1.3.0' with respect to project 'WebSrv_Tests', targeting '.NETFramework,Version=v4.6.1'
+Gathering dependency information took 1.94 sec
+Attempting to resolve dependencies for package 'Effort.EF6.1.3.0' with DependencyBehavior 'Lowest'
+Resolving dependency information took 0 ms
+Resolving actions to install package 'Effort.EF6.1.3.0'
+Resolved actions to install package 'Effort.EF6.1.3.0'
+Retrieving package 'Effort.EF6 1.3.0' from 'nuget.org'.
+Retrieving package 'NMemory 1.1.0' from 'nuget.org'.
+  GET https://api.nuget.org/v3-flatcontainer/effort.ef6/1.3.0/effort.ef6.1.3.0.nupkg
+  GET https://api.nuget.org/v3-flatcontainer/nmemory/1.1.0/nmemory.1.1.0.nupkg
+  OK https://api.nuget.org/v3-flatcontainer/nmemory/1.1.0/nmemory.1.1.0.nupkg 38ms
+Installing NMemory 1.1.0.
+  OK https://api.nuget.org/v3-flatcontainer/effort.ef6/1.3.0/effort.ef6.1.3.0.nupkg 60ms
+Installing Effort.EF6 1.3.0.
+Adding package 'NMemory.1.1.0' to folder 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\packages'
+Added package 'NMemory.1.1.0' to folder 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\packages'
+Added package 'NMemory.1.1.0' to 'packages.config'
+Successfully installed 'NMemory 1.1.0' to WebSrv_Tests
+Adding package 'Effort.EF6.1.3.0' to folder 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\packages'
+Added package 'Effort.EF6.1.3.0' to folder 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\packages'
+Added package 'Effort.EF6.1.3.0' to 'packages.config'
+Successfully installed 'Effort.EF6 1.3.0' to WebSrv_Tests
+Executing nuget actions took 1.86 sec
+Time Elapsed: 00:00:03.9466832
+PM> 
+
+Added reference System.Configuration
+Added reference System.Data and System.Data.Entity to resolve
+	using System.Data.EntityClient; error
+
+Added this to the model and also added reference System.Data.Entity to resolve
+	using System.Data.EntityClient; error
+
+namespace WebSrv.model
+{
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    //
+    using System.Data.EntityClient; // EntityConnection
+    using System.Data.Common; // DbConnection for in memory
+    //
+    public partial class NetIncidentEntities : DbContext
+    {
+        // this constructor in NetIncidentEntities.Context.cs
+        //public NetIncidentEntities()
+        //    : base("name=NetIncidentEntities")
+        //{
+        //}
+        public NetIncidentEntities(EntityConnection connection)
+            : base(connection, true)
+        {
+        }
+        public NetIncidentEntities(DbConnection connection)
+            : base(connection, true)
+        {
+        }
+    }
+}
+
