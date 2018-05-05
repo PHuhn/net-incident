@@ -2,7 +2,12 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Web.Script.Serialization;
+using System.Net.Mail;
+using SendGrid.Helpers.Mail;
+using NSG.Library.EMail;
+using NSG.Library.Helpers;
+//
 namespace WebSrv_Tests
 {
     /// <summary>
@@ -64,6 +69,40 @@ namespace WebSrv_Tests
             Console.WriteLine(4 * 60 * 60);
             Console.WriteLine(TimeSpan.FromHours(4));
             Console.WriteLine(TimeSpan.FromSeconds(4*60*60));
+        }
+
+        [TestMethod]
+        public void Deser_Test()
+        {
+            string sgEmail = "{\"contents\":[{\"value\":\"Hi\",\"type\":\"text/plain\"}],\"personalizations\":[{\"tos\":[{\"email\":\"abuse@internap.com\"}],\"ccs\":[],\"bccs\":[],\"subject\":\"Denial-of-service attack from 63.251.98.12\"}],\"from\":{\"email\":\"PhilHuhn@yahoo.com\",\"name\":\"Phil Huhn\"},\"subject\":\"Denial-of-service attack from 63.251.98.12\",\"plainTextContent\":\"\"}";
+            JavaScriptSerializer j = new JavaScriptSerializer();
+            SendGridMessage _sgm = (SendGridMessage)j.Deserialize(sgEmail, typeof(SendGridMessage));
+            IEMail _email = new EMail().NewMailMessage(_sgm);
+            Assert.AreEqual("Hi", ((MailMessage)_email.GetMailMessage()).Body);
+        }
+
+        public enum LogLevel
+        {
+            Audit = 0,
+            Error = 1,
+            Warning = 2,
+            [System.ComponentModel.Description("Information")]Info = 3,
+            Debug = 4,
+            Verbose = 5
+        };
+        [TestMethod]
+        public void Enum_GetName_Test()
+        {
+            string _actual = LogLevel.Warning.GetName();
+            Console.WriteLine(_actual);
+            Assert.AreEqual("Warning", _actual);
+        }
+        [TestMethod]
+        public void Enum_GetDescription_Test()
+        {
+            string _actual = LogLevel.Info.GetDescription();
+            Console.WriteLine(_actual);
+            Assert.AreEqual("Information", _actual);
         }
     }
 }

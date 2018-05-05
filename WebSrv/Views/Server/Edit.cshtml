@@ -25,7 +25,8 @@
         }
     }
 }
-<h2>Company/Server Edit</h2>
+<h2>Company/Server (Edit)</h2>
+<hr />
 @using (Html.BeginForm("CompanyEdit", "Server", new { id = @Model.CompanyId }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -42,7 +43,6 @@
         </div>
         <div style="clear: both;"></div>
     </div>
-    <hr />
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CompanyId)
@@ -120,5 +120,25 @@
                 </div>
             }
         }
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="panel-help">
+                <div class="panel-title">
+                    <a class="collapsed accordion-toggle" role="button" data-toggle="collapse"
+                       data-parent="#accordion"
+                       href="#collapse-help"
+                       aria-expanded="false" aria-controls="collapse-help">
+                        <div class="nsg-bold col-md-12">
+                            E-Mail Template Variable List
+                        </div>
+                        <div class="nsg-clear-left"></div>
+                    </a>
+                </div>
+            </div>
+            <div id="collapse-help" class="panel-collapse collapse" role="tabpanel" aria-labelledby="panel-help">
+                <div class="panel-body">
+                    @Html.Partial("../Shared/EmailTemplateHelpPartial")
+                </div>
+            </div>
+        </div>
     </div>
 </div>

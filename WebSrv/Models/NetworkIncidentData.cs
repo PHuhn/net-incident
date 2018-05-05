@@ -14,6 +14,7 @@ using NSG.Library.EMail;
 using NSG.Identity;
 using NSG.Identity.Incidents;
 using System.Web.Script.Serialization;
+using System.Threading.Tasks;
 //
 namespace WebSrv.Models
 {
@@ -86,10 +87,17 @@ namespace WebSrv.Models
         //
         // -------------------------------------------------------------------
         //
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="incidentId"></param>
+        /// <param name="serverId"></param>
+        /// <returns></returns>
         public NetworkIncidentData GetByPrimaryKey( long incidentId, int serverId )
         {
+            string _user = Helpers.Helpers.GetUserAccount( );
             string _params = string.Format("Entering with: incidentId: {0}, serverId: {1}", incidentId, serverId);
-            Log.Logger.Log(LoggingLevel.Debug, "unknown", MethodBase.GetCurrentMethod(), _params);
+            Log.Logger.Log(LoggingLevel.Debug, _user, MethodBase.GetCurrentMethod(), _params);
             System.Diagnostics.Debug.WriteLine(_params);
             //
             NetworkIncidentData _data = new NetworkIncidentData();
@@ -128,7 +136,7 @@ namespace WebSrv.Models
                 //
             }
             else
-                Log.Logger.Log(LoggingLevel.Error, "unknown", MethodBase.GetCurrentMethod(), "Incident is null.");
+                Log.Logger.Log(LoggingLevel.Error, _user, MethodBase.GetCurrentMethod(), "Incident is null.");
             //
             return _data;
         }
@@ -148,7 +156,7 @@ namespace WebSrv.Models
             //
             try
             {
-                Log.Logger.Log(LoggingLevel.Info, data.user.UserName, MethodBase.GetCurrentMethod(), data.incident.ToString());
+                Log.Logger.Log(LoggingLevel.Debug, data.user.UserName, MethodBase.GetCurrentMethod(), data.incident.ToString());
                 IncidentAccess _ia = new IncidentAccess(_niEntities);
                 NetworkLogAccess _nla = new NetworkLogAccess(_niEntities);
                 Incident _incident = _ia.Insert(data.incident);
@@ -191,11 +199,10 @@ namespace WebSrv.Models
             System.Diagnostics.Debug.WriteLine(_params);
             //
             long _id = data.incident.IncidentId;
-            int _company = data.incident.ServerId;
             Incident _incident = null;
             try
             {
-                Log.Logger.Log(LoggingLevel.Info, data.user.UserName, MethodBase.GetCurrentMethod(), data.incident.ToString());
+                Log.Logger.Log(LoggingLevel.Debug, data.user.UserName, MethodBase.GetCurrentMethod(), "Entering ... " + data.incident.ToString());
                 IncidentAccess _ia = new IncidentAccess(_niEntities);
                 NetworkLogAccess _nla = new NetworkLogAccess(_niEntities);
                 IncidentNoteAccess _ina = new IncidentNoteAccess(_niEntities);
@@ -227,9 +234,17 @@ namespace WebSrv.Models
                     if( _nl.Selected == false )
                         _nla.Delete(_nl.NetworkLogId);
                 }
+                //
                 _niEntities.SaveChanges();
-                if(_incidentBefore.Mailed == false && data.incident.Mailed == true)
-                    EMailIspReport( data );
+                Log.Logger.Log(LoggingLevel.Info, data.user.UserName, MethodBase.GetCurrentMethod(), "Inside, after save ... id: " + data.incident.IncidentId.ToString());
+                //
+                if (_incidentBefore.Mailed == false && data.incident.Mailed == true)
+                {
+                    Task.Run(() =>
+                    {
+                        EMailIspReport(data);
+                    });
+                }
             }
             catch (DbEntityValidationException _entityEx)
             {
@@ -245,6 +260,7 @@ namespace WebSrv.Models
             }
             NetworkIncidentData _networkIncident =
                 GetByPrimaryKey(data.incident.IncidentId, data.incident.ServerId);
+            Log.Logger.Log(LoggingLevel.Debug, data.user.UserName, MethodBase.GetCurrentMethod(), "Exiting ... " + _networkIncident.incident.ToString());
             return _networkIncident;
         }
         //
@@ -254,6 +270,7 @@ namespace WebSrv.Models
         /// <param name="data"></param>
         private void EMailIspReport(NetworkIncidentSave data )
         {
+            Log.Logger.Log(LoggingLevel.Debug, data.user.UserName, MethodBase.GetCurrentMethod(), string.Format( "Entering, Mailing: {0}, incident: {1}", data.incident.AbuseEmailAddress, data.incident.IncidentId) );
             var _notes = _niEntities.Incidents.Where( i => i.IncidentId == data.incident.IncidentId ).FirstOrDefault()
                 .IncidentNotes.Where( n => n.NoteTypeId == Constants.incidentTypeIdOfIspReport ).ToList( );
             if (_notes.Count > 0)
@@ -261,16 +278,17 @@ namespace WebSrv.Models
                 try
                 {
                     IncidentNote _note = _notes[ _notes.Count - 1 ]; // last ISP Rpt
-                    // translate the message from json string of sendgring type
+                    // translate the message from json string of sendgrid type
                     JavaScriptSerializer j = new JavaScriptSerializer();
                     SendGridMessage _sgm = (SendGridMessage)j.Deserialize(_note.Note, typeof(SendGridMessage));
                     IEMail _email = new EMail( Log.Logger ).NewMailMessage( _sgm ).Send( );
                 }
                 catch( Exception _ex )
                 {
-                    Log.Logger.Log(LoggingLevel.Error, data.user.UserName, MethodBase.GetCurrentMethod(), data.incident.ToString() + _ex.Message, _ex);
+                    Log.Logger.Log(LoggingLevel.Error, data.user.UserName, MethodBase.GetCurrentMethod(), _ex.Message + ", " + data.incident.ToString(), _ex);
                 }
             }
+            Log.Logger.Log(LoggingLevel.Debug, data.user.UserName, MethodBase.GetCurrentMethod(), string.Format("Exiting, Mailing: {0}, incident: {1}", data.incident.AbuseEmailAddress, data.incident.IncidentId));
         }
     }
 }

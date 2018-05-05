@@ -1,0 +1,26 @@
+[Admin login] from source 192.168.8.27, Thursday, May 03,2018 07:58:47
+[DHCP IP: (192.168.8.27)] to MAC address 00:21:CC:6F:E3:23, Thursday, May 03,2018 07:56:51
+[DHCP IP: (192.168.8.22)] to MAC address 74:E5:0B:69:9A:D6, Thursday, May 03,2018 07:48:52
+[DHCP IP: (192.168.8.21)] to MAC address 34:F6:4B:6C:31:D0, Thursday, May 03,2018 06:16:32
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [63.251.98.12], Thursday, May 03,2018 05:46:58
+[DHCP IP: (192.168.8.21)] to MAC address 34:F6:4B:6C:31:D0, Thursday, May 03,2018 05:31:29
+[DHCP IP: (192.168.8.21)] to MAC address 34:F6:4B:6C:31:D0, Wednesday, May 02,2018 10:53:46
+[DHCP IP: (192.168.8.22)] to MAC address 74:E5:0B:69:9A:D6, Wednesday, May 02,2018 10:42:39
+[Time synchronized with NTP server] Wednesday, May 02,2018 10:01:53
+[Internet connected] IP address: 68.42.193.79, Wednesday, May 02,2018 10:01:52
+[DHCP IP: (192.168.8.22)] to MAC address 74:E5:0B:69:9A:D6, Wednesday, May 02,2018 09:19:12
+[Time synchronized with NTP server] Wednesday, May 02,2018 08:31:42
+[Internet connected] IP address: 68.42.193.79, Wednesday, May 02,2018 08:31:41
+[DHCP IP: (192.168.8.26)] to MAC address 5C:AF:06:88:97:ED, Wednesday, May 02,2018 08:12:08
+[Time synchronized with NTP server] Wednesday, May 02,2018 07:31:22
+[Internet connected] IP address: 68.42.193.79, Wednesday, May 02,2018 07:31:21
+[Time synchronized with NTP server] Wednesday, May 02,2018 06:30:51
+[Internet connected] IP address: 68.42.193.79, Wednesday, May 02,2018 06:30:51
+[DHCP IP: (192.168.8.21)] to MAC address 34:F6:4B:6C:31:D0, Wednesday, May 02,2018 05:37:43
+[Time synchronized with NTP server] Wednesday, May 02,2018 05:30:27
+[Internet connected] IP address: 68.42.193.79, Wednesday, May 02,2018 05:30:27
+[Time synchronized with NTP server] Wednesday, May 02,2018 04:30:24
+[Internet connected] IP address: 68.42.193.79, Wednesday, May 02,2018 04:30:23
+[Time synchronized with NTP server] Wednesday, May 02,2018 03:30:24
+[Internet connected] IP address: 68.42.193.79, Wednesday, May 02,2018 03:30:24
+[Time synchronized with NTP server] Wednesday, May 02,2018 02:30:22

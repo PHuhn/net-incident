@@ -55,18 +55,12 @@ export class EmailRequest {
         subject: string,
         body: string
     ) {
-        //this.personalizations = [];
         this.contents = [];
         this.personalizations = [];
         this.from = new EmailAddress( from );
         this.personalizations.push( new EmailPersonalization( to, subject ) );
-        // this.contents = [ ...this.contents, body ];
         this.contents.push( new EmailContent( body ) );
         this.subject = subject;
-        if( body.substring(0,1) === '<' )
-            this.htmlContent = body;
-        else
-            this.plainTextContent = body;
     }
 }
 // ===========================================================================

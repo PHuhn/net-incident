@@ -200,6 +200,7 @@
     <Compile Include="Controllers\ServerController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Helpers\Helpers_Context.cs" />
     <Compile Include="Helpers\Helpers_IpServices.cs" />
     <Compile Include="Identity\ApplicationDbContextValidation.cs" />
     <Compile Include="Identity\Incidents\ApplicationServer.cs" />
@@ -306,7 +307,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="ToDo.txt" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -372,6 +375,8 @@
     <Content Include="Views\EmailTemplate\Index.cshtml" />
     <Content Include="Views\EmailTemplate\TemplateDetailsPartial.cshtml" />
     <Content Include="Views\RolesAdmin\RolesDetailPartial.cshtml" />
+    <Content Include="Views\Server\ServerTemplateHelpPartial.cshtml" />
+    <Content Include="Views\Shared\EmailTemplateHelpPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802251418244_InitialCreate.resx">

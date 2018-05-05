@@ -23,7 +23,28 @@
         </div>
         <div style="clear: both;"></div>
     </div>
-    <hr />
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="panel-help">
+                <div class="panel-title">
+                    <a class="collapsed accordion-toggle" role="button" data-toggle="collapse"
+                       data-parent="#accordion"
+                       href="#collapse-help"
+                       aria-expanded="false" aria-controls="collapse-help">
+                        <div class="nsg-bold col-md-12">
+                            E-Mail Template Variable List
+                        </div>
+                        <div class="nsg-clear-left"></div>
+                    </a>
+                </div>
+            </div>
+            <div id="collapse-help" class="panel-collapse collapse" role="tabpanel" aria-labelledby="panel-help">
+                <div class="panel-body">
+                    @Html.Partial("../Shared/EmailTemplateHelpPartial")
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="form-horizontal">
         <div class="form-group">
             <label for='IncidentTypeShortDesc' class='control-label col-md-2'>Short Desc</label>
@@ -47,6 +68,7 @@
                 <div class="checkbox">
                     @Html.EditorFor(model => model.IncidentTypeFromServer)
                     @Html.ValidationMessageFor(model => model.IncidentTypeFromServer, "", new { @class = "text-danger" })
+                    <strong><= From e-mail name and address</strong>
                 </div>
             </div>
         </div>

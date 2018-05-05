@@ -80,7 +80,7 @@ namespace WebSrv.Models
         /// <summary>
         /// For column ServerLocation
         /// </summary>
-        [Required(ErrorMessage = "'Web-Site' is required."), MaxLength(255, ErrorMessage = "'Web-Site' must be 255 or less characters.")]
+        [Required(ErrorMessage = "'Device' is required."), MaxLength(255, ErrorMessage = "'Device' must be 255 or less characters.")]
         public string WebSite { get; set; }
         //
         /// <summary>

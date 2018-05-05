@@ -78,20 +78,23 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 			this.errMsgs.push( new Message( 'UserEmailAddress-1', "From User, 'User Email Address' is required." ) );
 		}
         // from server
+		if( this.networkIncident.user.Server.ServerName === '' || this.networkIncident.user.Server.ServerName === undefined ) {
+			this.errMsgs.push( new Message( 'ServerName-1', "From Server, 'Server Name' is required." ) );
+		}
 		if( this.networkIncident.user.Server.WebSite === '' || this.networkIncident.user.Server.WebSite === undefined ) {
-			this.errMsgs.push( new Message( 'WebSite-1', "From Company, 'Web Site' is required." ) );
+			this.errMsgs.push( new Message( 'Device-1', "From Server, 'Web Site' is required." ) );
 		}
 		if( this.networkIncident.user.Server.ServerLocation === '' || this.networkIncident.user.Server.ServerLocation === undefined ) {
-			this.errMsgs.push( new Message( 'ServerLocation-1', "From Company, 'Server Location' is required." ) );
+			this.errMsgs.push( new Message( 'ServerLocation-1', "From Server, 'Server Location' is required." ) );
 		}
         if( this.networkIncident.user.Server.FromName === '' || this.networkIncident.user.Server.FromName === undefined ) {
-			this.errMsgs.push( new Message( 'FromName-1', "From Company, 'From Name' is required." ) );
+			this.errMsgs.push( new Message( 'FromName-1', "From Server, 'From Name' is required." ) );
 		}
 		if( this.networkIncident.user.Server.FromNicName === '' || this.networkIncident.user.Server.FromNicName === undefined ) {
-			this.errMsgs.push( new Message( 'FromNicName-1', "From Company, 'From Nic Name' is required." ) );
+			this.errMsgs.push( new Message( 'FromNicName-1', "From Server, 'From Nic Name' is required." ) );
 		}
 		if( this.networkIncident.user.Server.FromEmailAddress === '' || this.networkIncident.user.Server.FromEmailAddress === undefined ) {
-			this.errMsgs.push( new Message( 'FromEmailAddress-1', "From Company, 'From Email Address' is required." ) );
+			this.errMsgs.push( new Message( 'FromEmailAddress-1', "From Server, 'From Email Address' is required." ) );
         }
         // detail logs
 		if( this.selectedLogs.length === 0 ) {
@@ -158,17 +161,19 @@ export class AbuseEmailReport implements IAbuseEmailReport {
         }
         try {
             const abuse: string = this.networkIncident.incident.AbuseEmailAddress;
+            // Changes here need to also happen in the validation.
             const headerValues = {
                 IncidentId: this.networkIncident.incident.IncidentId,
                 AbuseEmailAddress: abuse,
                 IPAddress: this.networkIncident.incident.IPAddress,
                 IncidentTypeShortDesc: template.IncidentTypeShortDesc,
                 IncidentTypeDesc: template.IncidentTypeDesc,
-                WebSite: this.networkIncident.user.Server.WebSite,
-                ServerLocation: this.networkIncident.user.Server.ServerLocation,
                 UserName: this.networkIncident.user.UserName,
                 UserNicName: this.networkIncident.user.UserNicName,
                 UserEmailAddress: this.networkIncident.user.Email,
+                ServerName: this.networkIncident.user.Server.ServerName,
+                Device: this.networkIncident.user.Server.WebSite,
+                ServerLocation: this.networkIncident.user.Server.ServerLocation,
                 FromName: this.networkIncident.user.Server.FromName,
                 FromNicName: this.networkIncident.user.Server.FromNicName,
                 FromEmailAddress: this.networkIncident.user.Server.FromEmailAddress

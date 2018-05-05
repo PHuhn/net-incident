@@ -69,6 +69,7 @@ nsg-alerts-msg-ul { background-color: white; list-style: square; }
  white-space: nowrap;
  font-weight: bold;
 }
+.nsg-container { width: 100%; display: inline-block; }
 .nsg-md-1-1 {
     position: relative;
     min-height: 1px;

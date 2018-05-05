@@ -32,7 +32,7 @@ namespace NSG.Identity.Incidents
         public string ServerName { get; set; }      // internal 
         [Required(ErrorMessage = "'Server Description' is required."), MaxLength(255, ErrorMessage = "'Server Description' must be 255 or less characters.")]
         public string ServerDescription { get; set; } // line as appears on report to ISP
-        [Required(ErrorMessage = "'Web-Site' is required."), MaxLength(255, ErrorMessage = "'Web-Site' must be 255 or less characters.")]
+        [Required(ErrorMessage = "'Device' is required."), MaxLength(255, ErrorMessage = "'Device' must be 255 or less characters.")]
         public string WebSite { get; set; }  // line as appears on report to ISP
         [Required(ErrorMessage = "'Server Location' is required."), MaxLength(255, ErrorMessage = "'Server Location' must be 255 or less characters.")]
         public string ServerLocation { get; set; }  // line as appears on report to ISP

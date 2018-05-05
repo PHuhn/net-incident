@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Create";
 }
-<h2>Company/Server Create</h2>
+<h2>Company/Server (Create)</h2>
+<hr />
 @using (Html.BeginForm("CompanyCreate", "Server", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -20,7 +21,6 @@
         </div>
         <div style="clear: both;"></div>
     </div>
-    <hr />
     <div class="form-horizontal">
         <div class="form-group">
             <label class="col-md-2 nsg-label" for="ServerId">Id</label>

@@ -1,0 +1,6 @@
+cd C:\Dat\Nsg\L\Web\Ng\NetIncidents3\logs
+
+get-help .\LogsLoad-NG.ps1 -full
+
+.\LogsLoad-NG.ps1 -server ".\Express" -filePath "C:\Dat\Nsg\L\Web\Ng\NetIncidents3\logs\ng-300-2018-05-04-probe.txt" -serverId 4 -incidentTypeId 1026
+ 

@@ -47,7 +47,7 @@ namespace WebSrv.Models
         /// <param name="exception"></param>
         public long Log(NSG.Library.Logger.LoggingLevel severity, string user, MethodBase method, string message, Exception exception = null)
         {
-            string _method = method.Module.FullyQualifiedName;
+            string _method = method.DeclaringType.FullName + "." + method.Name;
             string _exception = (exception == null ? "" : exception.ToString());
             return Log((byte)severity, user, _method, message, _exception);
         }
@@ -65,16 +65,17 @@ namespace WebSrv.Models
             long _ret = 0;
             try
             {
-                byte _logLevel = (byte)severity;
                 int _configLevel = NSG.Library.Helpers.Config.GetIntAppSettingConfigValue("LogLevel", 2);
-                if (_logLevel <= Convert.ToByte(_configLevel))
+                if (severity <= Convert.ToByte(_configLevel))
                 {
+                    NSG.Library.Logger.LoggingLevel _logLevel =
+                        (NSG.Library.Logger.LoggingLevel)severity;
                     NSG.Library.Logger.LogData _log = new NSG.Library.Logger.LogData();
                     _log.Date = DateTime.Now;
                     _log.Application = _application;
                     _log.Method = (method.Length > 255 ? method.Substring(0, 255) : method);
-                    _log.LogLevel = _logLevel;
-                    _log.Level = severity.ToString();
+                    _log.LogLevel = severity;
+                    _log.Level = _logLevel.GetName();  // extension method in Helpers
                     _log.UserAccount = user;
                     _log.Message = (message.Length > 4000 ? message.Substring(0, 4000) : message);
                     _log.Exception = (exception == null ? "" : exception.ToString());

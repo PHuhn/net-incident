@@ -2,45 +2,51 @@
 @{
     ViewBag.Title = "Delete";
 }
-<h2>Company/Server Delete</h2>
-<h3>Are you sure you want to delete this?</h3>
+<h2>Company/Server (Delete)</h2>
 <div>
     <hr />
     @using (Html.BeginForm("CompanyDelete", "Server", new { id = @Model.CompanyId }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <div class="nsg-float-left text-left">
+                <span>
+                    @Html.ActionLink("Back to List", "Index")
+                </span>
+            </div>
+            <div class="nsg-float-right text-right">
+                <span>
+                    <strong>Are you sure you want to delete this Company?</strong>
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </span>
+            </div>
+            <div class="nsg-clear-both"></div>
+        </div>
         @Html.HiddenFor(model => model.CompanyId)
         @Html.HiddenFor(model => model.CompanyShortName)
         @Html.HiddenFor(model => model.CompanyName)
-        <div class="row">
-            <div class="col-md-11">
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CompanyId):
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.CompanyId)
-                    </dd>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CompanyId):
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CompanyId)
+            </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CompanyShortName)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.CompanyShortName)
-                    </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompanyShortName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CompanyShortName)
+            </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.CompanyName)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.CompanyName)
-                    </dd>
-                </dl>
-            </div>
-            <div class="col-md-1">
-                <input type="submit" value="Delete" class="btn btn-danger" />
-            </div>
-        </div>
+            <dt>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CompanyName)
+            </dd>
+        </dl>
     }
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -86,7 +92,4 @@
             }
         }
     </div>
-
-    @Html.ActionLink("Back to List", "Index")
-
 </div>
