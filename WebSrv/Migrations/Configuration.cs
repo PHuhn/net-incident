@@ -145,6 +145,33 @@ namespace WebSrv.Migrations
                 throw (_ex);
             }
             //
+            //  Add a couple of fake network incident logs.
+            //
+            if( context.NetworkLogs.Count() == 0 )
+            {
+                try
+                {
+                    DateTime _dt = DateTime.Now.AddDays(-1);
+                    context.NetworkLogs.AddOrUpdate(n => n.NetworkLogId,
+                        new NetworkLog() { ServerId = 1, IncidentId = null, IPAddress = "94.41.54.105", NetworkLogDate = _dt.AddMilliseconds(15), Log = "Fake log 1, Fake log 1, Fake log 1", IncidentTypeId = 2 },
+                        new NetworkLog() { ServerId = 1, IncidentId = null, IPAddress = "104.42.229.49", NetworkLogDate = _dt.AddMinutes(4), Log = "Fake log 2, Fake log 2, Fake log 2", IncidentTypeId = 2 },
+                        new NetworkLog() { ServerId = 1, IncidentId = null, IPAddress = "104.42.229.49", NetworkLogDate = _dt.AddMinutes(5), Log = "Fake log 3, Fake log 3, Fake log 3", IncidentTypeId = 2 },
+                        new NetworkLog() { ServerId = 1, IncidentId = null, IPAddress = "54.183.209.144", NetworkLogDate = _dt.AddMinutes(10), Log = "Fake log 4, Fake log 4, Fake log 4", IncidentTypeId = 2 }
+                    );
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException _entityEx)
+                {
+                    // extension method
+                    string _errors = _entityEx.EntityValidationErrors.GetDbValidationErrors();
+                    System.Diagnostics.Debug.WriteLine(_errors);
+                }
+                catch (Exception _ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(_ex.ToString());
+                }
+            }
+            //
         }
         public void SeedDebug(ApplicationDbContext context)
         {
