@@ -28,7 +28,7 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	private codeName: string = 'Incident-Note-Detail-Window';
 	private logLevel: number = 1;
 	private add: boolean = false;
-	private id: number = 0;
+	id: number = 0;
 	private httpSubscription: Subscription;
 	model: IncidentNote;
 	//private company: number; 

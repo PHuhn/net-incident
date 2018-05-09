@@ -34,8 +34,8 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	private codeName: string = 'Incident-Detail-Window'; 
 	private add: boolean = false;
-	private id: number = -1;
-	private ip: string = '';
+	id: number = -1;
+	ip: string = '';
 	private serverId: number = -1;
 	private userWaitTimeout: any;
 	private displayWinTimeout: any;

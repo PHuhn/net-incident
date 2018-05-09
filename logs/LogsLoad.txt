@@ -1,6 +1,31 @@
-cd C:\Dat\Nsg\L\Web\Ng\NetIncidents3\logs
+#
+# 
+#
+I have a Netgear 300 wireless router.  The router logs are available by e-mail, 
+or logging on as the administrator copying the logs to a text file.  I did the latter.
+I save the file as NG-300-2018-05-03.txt
+I ran the following batch command (text file name minus the extent of txt).
 
-get-help .\LogsLoad-NG.ps1 -full
+C:\...\logs> LogFilter NG-300-2018-05-03
 
-.\LogsLoad-NG.ps1 -server ".\Express" -filePath "C:\Dat\Nsg\L\Web\Ng\NetIncidents3\logs\ng-300-2018-05-04-probe.txt" -serverId 4 -incidentTypeId 1026
- 
+This should create two files 
+
+* NG-300-2018-05-03.admin.txt
+* NG-300-2018-05-03.probe.txt
+
+Launch the PowerShell ISE
+
+Change directory as follows to the working directory:
+
+PS C:> cd C:\Dat\Nsg\L\Web\Ng\NetIncidents3\logs
+
+You can get help for the logs load Netgear powershell script as follows:
+
+PS C:> get-help .\LogsLoad-NG.ps1 -full
+
+You can run the logs load Netgear powershell script as follows:
+
+PS C:> .\LogsLoad-NG.ps1 -server ".\Express" -filePath "C:\Dat\Nsg\L\Web\Ng\NetIncidents3\logs\ng-300-2018-05-03-probe.txt" -serverId 4 -incidentTypeId 1026
+
+Thanks and good luck and help make the internet safe.
+Phil
