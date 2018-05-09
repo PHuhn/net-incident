@@ -201,75 +201,40 @@ describe( 'IncidentGridComponent', ( ) => {
 	//
 	//	editItemClicked( )
 	//
-	it('should launch detail window when editItemClicked is called ...', fakeAsync( () => {
+	it('should launch detail window when editItemClicked is called ...', async( () => {
 		console.log( 'editItemClicked ...' );
-		let incident: Incident = sut.incidents[ 3 ];
+		let incident: Incident = sut.incidents[ 2 ];
 		let response: NetworkIncident = newNetworkIncident( incident );
 		let id = response.incident.IncidentId; // for title
 		let ip = response.incident.IPAddress;
 		networkIncidentServiceMock.mockGet = response;
 		sut.editItemClicked( incident );
-		console.log( `*= ${new Date().toISOString()}` )
 		//
-		let actuallyDone = false;
-		let source = Observable.of( true ).delay( 10 );
-		source.subscribe(
-			val => {
-				console.log( `*=* ${new Date().toISOString()}` )
-				fixture.detectChanges()
-				fixture.whenStable().then(() => {
-					expect( sut.windowDisplay ).toEqual( true );
-					let title: HTMLDivElement = fixture.debugElement.query(By.css(
-						'#IncidentDetailWindowHeader' )).nativeElement;
-					expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
-					sut.windowDisplay = false;
-					discardPeriodicTasks();
-					// done();
-				});
-				//
-				actuallyDone = true;
-				console.log( `** Actually-done ${new Date().toISOString()}` )
-			},
-			err => {
-				console.log( '******* Actually-done fail *******' );
-				fail(err);
+		console.log( `~= ${new Date().toISOString()}` )
+		//
+		let cnt: number = 0;
+		Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
+			// timing issues, all have to complete:
+			//  getNetIncident (to get complete data)
+			//  incident-note-grid
+			//  incident-note-detail-window
+			//  network-log-grid
+			cnt++;
+			fixture.detectChanges()
+			fixture.whenStable();
+			if( sut.windowDisplay  === true ) {
+				expect( sut.windowDisplay ).toEqual( true );
+				let title: HTMLDivElement = fixture.debugElement.query(By.css(
+					'#IncidentDetailWindowHeader' )).nativeElement;
+				expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
+				sut.windowDisplay = false;
+				console.log( `~=* detail completed ${new Date().toISOString()}` )
+				cnt = 4;
+			} else {
+				if ( cnt === 4 ) fail('Detail window took too long.');
 			}
-		);
-		console.log( `** ${new Date().toISOString()}` )
-		tick( 5000 ); // here need to tick 10
-		console.log( `** ${new Date().toISOString()}` )
-		expect( actuallyDone ).toEqual( true );
+		});
 	}));
-	//
-	// FakeAsync
-	// it('should run async test with successful delayed Observable', fakeAsync(() => {
-	// 	let actuallyDone = false;
-	// 	let source = Observable.of( true ).delay( 10 );
-	// 	source.subscribe(
-	// 		val => {
-	// 			actuallyDone = true;
-	// 			console.log( `** Actually-done ${new Date().toISOString()}` )
-	// 		},
-	// 		err => {
-	// 			console.log( '******* Actually-done fail *******' );
-	// 			fail(err);
-	// 		}
-	// 	);
-	// 	console.log( `** ${new Date().toISOString()}` )
-	// 	tick( 5000 ); // here need to tick 10
-	// 	// jasmine.clock ().tick( 1000 );
-	// 	console.log( `** ${new Date().toISOString()}` )
-	// 	expect( actuallyDone ).toEqual( true );
-	// }));
-  	//
-	// it('timeout (fakeAsync/tick) with done', (done) => {
-	// 	// Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL.
-	// 	// fixture.detectChanges()
-	// 	fixture.whenStable().then(() => {
-	// 		//tick( );
-	// 		done();
-	// 	});
-	// });
 	//
 	//	deleteItemClicked( item: Incident ) :boolean
 	//
