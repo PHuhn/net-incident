@@ -254,7 +254,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
         if( this.debug > 0 ) {
             console.log( this.incidTypes );
         }
-        let tmpId: number = ( this.incidTypes.length > 1 ? 0 : this.incidTypes[0] );
+        let tmpId: number = ( this.incidTypes.length > 1 ? this.GetMultipleTemplateId( ) : this.incidTypes[0] );
         let templates: IncidentType[] =
             this.networkIncident.typeEmailTemplates.filter(
                 el => el.IncidentTypeId === tmpId );
@@ -262,6 +262,21 @@ export class AbuseEmailReport implements IAbuseEmailReport {
             return templates[0];
         } else {
             return undefined;
+        }
+    }
+    //
+    // Return the id for the multiple incident types template
+    // Default id is 2.
+    //
+    private GetMultipleTemplateId( ): number {
+        let templates: IncidentType[] =
+            this.networkIncident.typeEmailTemplates.filter(
+                el => el.IncidentTypeShortDesc.toLowerCase() === 'multiple' );
+        if( templates.length > 0 ) {
+            console.log( 'Found multiple' );
+            return templates[0].IncidentTypeId;
+        } else {
+            return 2;
         }
     }
     //

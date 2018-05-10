@@ -37,28 +37,29 @@ describe('AbuseEmailReport', () => {
         'dandy@psg.com','',false,false,false,'',standardDate );
     //
 	const logSqlData = [
-		new NetworkLog( 6,1,4,ipAddr,standardDate,'Log incident 1',2, 'SQL', true ),
-		new NetworkLog( 7,1,4,ipAddr,daylightDate,'Log incident 2',2, 'SQL', true ),
+		new NetworkLog( 6,1,4,ipAddr,standardDate,'Log incident 1',3, 'SQL', true ),
+		new NetworkLog( 7,1,4,ipAddr,daylightDate,'Log incident 2',3, 'SQL', true ),
 		new NetworkLog( 8,1,null,'192.3',new Date( '2018-02-27T00:00:00' ),'Log incident 3',1, 'SQL', false )
     ];
     //
 	const logMultiData = [
-		new NetworkLog( 6,1,4,ipAddr,standardDate,'Log incident 1',2, 'SQL', true ),
-		new NetworkLog( 7,1,4,ipAddr,daylightDate,'Log incident 2',4, 'XSS', true ),
+		new NetworkLog( 6,1,4,ipAddr,standardDate,'Log incident 1',3, 'SQL', true ),
+		new NetworkLog( 7,1,4,ipAddr,daylightDate,'Log incident 2',5, 'XSS', true ),
 		new NetworkLog( 8,1,null,'192.3',new Date( '2018-02-27T00:00:00' ),'Log incident 3',1, 'SQL', false )
     ];
     //
     const incidentTypes = [
-        new IncidentType( 0, 'Multiple', 'Multiple Types', true, 'Network abuse from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for multiple vulnerabilities.\\nPlease contain the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\nIncident times:', '${IncidentTypeShortDesc}: ${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
         new IncidentType( 1, 'Unk', 'Unknown', true, 'Unknown probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network.\\nPlease contain the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
-        new IncidentType( 2, 'SQL', 'SQL Injection', true, 'SQL Injection probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.  This is testing SQL injection vulnerabilities.\\nPlease contain the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
-        new IncidentType( 3, 'PHP', 'PHP', true, 'PHP probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for ${IncidentTypeDesc} vulnerabilities.\\nPlease use the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
-        new IncidentType( 4, 'XSS', 'Cross Site Scripting', true, 'XSS probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for ${IncidentTypeDesc} vulnerabilities.\\nPlease use the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
-        new IncidentType( 5, 'VS', 'ViewState', true, 'ViewState probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for ${IncidentTypeDesc} vulnerabilities.\\nPlease use the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
-        new IncidentType( 6, 'DIR', 'Directory traversal', true, 'Directory traversal probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for ${IncidentTypeDesc} vulnerabilities.\\nPlease use the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' )
+        new IncidentType( 2, 'Multiple', 'Multiple Types', true, 'Network abuse from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for multiple vulnerabilities.\\nPlease contain the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\nIncident times:', '${IncidentTypeShortDesc}: ${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
+        new IncidentType( 3, 'SQL', 'SQL Injection', true, 'SQL Injection probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.  This is testing SQL injection vulnerabilities.\\nPlease contain the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
+        new IncidentType( 4, 'PHP', 'PHP', true, 'PHP probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for ${IncidentTypeDesc} vulnerabilities.\\nPlease use the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
+        new IncidentType( 5, 'XSS', 'Cross Site Scripting', true, 'XSS probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for ${IncidentTypeDesc} vulnerabilities.\\nPlease use the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
+        new IncidentType( 6, 'VS', 'ViewState', true, 'ViewState probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for ${IncidentTypeDesc} vulnerabilities.\\nPlease use the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' ),
+        new IncidentType( 7, 'DIR', 'Directory traversal', true, 'Directory traversal probe from ${IPAddress}', 'Hi\\n\\nStop the intrusion from your IP address ${IPAddress}.\\nThe following IP address probe my network, probing for ${IncidentTypeDesc} vulnerabilities.\\nPlease use the following reference # in all communications: ${IncidentId}\\n\\n${Device}\\n${ServerLocation}\\n\\nIncident times:', '${NetworkLogDate} ${TimeZone}', '\\nThank you,\\n${FromName}\\n================', '\\n${Log}\\n--------------------------------', '-' )
     ];
     //
-	const logBadData = [ new NetworkLog( 6,1,4,ipAddr,standardDate,'Log 1',1, 'SQL', false ) ];
+    // At least one 'Network Log' needs to be selected
+	const logBadData = [ new NetworkLog( 6,1,4,ipAddr,standardDate,'Log 1',3, 'SQL', false ) ];
     //
     let netInc = new NetworkIncident();
     //
