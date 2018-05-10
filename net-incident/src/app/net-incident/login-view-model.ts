@@ -4,20 +4,20 @@
 import { Message } from '../global/message';
 //
 export class LoginViewModel {
-    // using short-hand declaration...
-    public grant_type: string;
-    //
+	// using short-hand declaration...
+	public grant_type: string;
+	//
 	constructor(
 		public username: string,
-        public password: string
+		public password: string
 	) {
-        this.grant_type = 'password'
-    }
+		this.grant_type = 'password';
+	}
 	//
 	// Class validation rules.
 	//
-    /*
-    validate( ): Message[] {
+	/*
+	validate( ): Message[] {
 		let errMsgs: Message[] = [];
 		//
 		if( this.username.length === 0 || this.username === undefined ) {
@@ -34,8 +34,8 @@ export class LoginViewModel {
 		}
 		//
 		return errMsgs;
-    }
-    */
+	}
+	*/
 }
 //
 // ===========================================================================

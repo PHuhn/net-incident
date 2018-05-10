@@ -1,7 +1,6 @@
 // ===========================================================================
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpErrorResponse } from '@angular/common/http';
-//import { Http, Response, Headers, RequestOptions } from '@angular/http';
 //
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -31,22 +30,23 @@ export class ServicesService {
 	// Get ping for ip address
 	//
 	getPing( ipAddress: string ): Observable<string> {
-    const urlPath: string = `${this.url}services/ping/${ipAddress}`;
-    return this.getService( urlPath );
+		const urlPath: string = `${this.url}services/ping/${ipAddress}`;
+		return this.getService( urlPath );
 	}
 	//
 	// Get ping for ip address
 	//
 	getWhoIs( ipAddress: string ): Observable<string> {
 		const urlPath: string = `${this.url}services/whois/${ipAddress}`;
-    return this.getService( urlPath );
+		return this.getService( urlPath );
 	}
 	//
 	// Get service for ip address
 	//
 	getService( urlPath: string ): Observable<string> {
-		if( this.logLevel >= 4 )
-  		console.log( urlPath );
+		if( this.logLevel >= 4 ) {
+			console.log( urlPath );
+		}
 		return this.http.get<string>( urlPath )
 			.catch( this.handleError );
 	}
@@ -60,6 +60,6 @@ export class ServicesService {
 		}
 		return Observable.throw( error.toString() || 'Service error' );
 	}
-  //
+	//
 }
 // ===========================================================================

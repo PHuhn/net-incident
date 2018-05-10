@@ -31,7 +31,5 @@ export class NetworkIncident {
     //
     public user: User;
     //
-    //public incidentType: IncidentType[];
-    //
 }
 // ===========================================================================

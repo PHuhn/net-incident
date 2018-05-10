@@ -24,58 +24,60 @@ export class AlertsService {
 	}
 	//  Turn the two parameters into an array.
 	private whereWhatMessages( msgs: Message[], where: string, what: string) {
-		if ( msgs === undefined ) { msgs = []; }
-		msgs.push( new Message( '1-WHERE',where ) );
-		msgs.push( new Message( '2-WHAT',what ) );
+		if ( msgs === undefined ) {
+			msgs = [];
+		}
+		msgs.push( new Message( '1-WHERE', where ) );
+		msgs.push( new Message( '2-WHAT', what ) );
 	}
-	//  Allow indirect call
-	//  Turn the two parameters into an array and display the alert.
+	// Allow indirect call
+	// Turn the two parameters into an array and display the alert.
 	public setWhereWhatInfo( where: string, what: string ): void {
 		let msgs: Message[] = [];
 		this.whereWhatMessages( msgs, where, what );
 		this.setAlerts( AlertLevel.Info, msgs );
 	}
-	//  Allow indirect call
-	//  Turn the two parameters into an array and display the alert.
+	// Allow indirect call
+	// Turn the two parameters into an array and display the alert.
 	public setWhereWhatSuccess( where: string, what: string ): void {
 		let msgs: Message[] = [];
 		this.whereWhatMessages( msgs, where, what );
 		this.setAlerts( AlertLevel.Success, msgs );
 	}
-	//  Allow indirect call
-	//  Turn the two parameters into an array and display the alert.
+	// Allow indirect call
+	// Turn the two parameters into an array and display the alert.
 	public setWhereWhatWarning( where: string, what: string ): void {
 		let msgs: Message[] = [];
 		this.whereWhatMessages( msgs, where, what );
 		this.setAlerts( AlertLevel.Warning, msgs );
 	}
-	//  Allow indirect call
-	//  Turn the three parameters into a collection and
-	//  display the alert.  The err is an optional parameter.
+	// Allow indirect call
+	// Turn the three parameters into a collection and
+	// display the alert.  The err is an optional parameter.
 	public setWhereWhatError( where: string, what: string, err: string ): void {
 		let msgs: Message[] = [];
 		this.whereWhatMessages( msgs, where, what );
-		msgs.push(new Message('3-ERR',err));
+		msgs.push(new Message('3-ERR', err));
 		this.setAlerts( AlertLevel.Error, msgs );
 	}
 	//
 	// Warning validation error messages
 	//
-	public warningSet( msgs: Message[] ) {
+	public warningSet( msgs: Message[] ): void {
 		if( msgs !== undefined ) {
 			if( msgs.length > 0 ) {
 				this.setAlerts( AlertLevel.Warning, msgs );
 			} else {
-				console.log('Messages array empty.');
+				console.log( 'Messages array empty.' );
 			}
 		} else {
-			console.log('Messages array not initialized.'); 
+			console.log( 'Messages array not initialized.' );
 		}
 	}
 	//
 	// Initialize a validation warning
 	//
-	public warningInit() {
+	public warningInit(): void {
 		this.level = AlertLevel.Warning;
 		this.alerted = [];
 	}
@@ -85,10 +87,10 @@ export class AlertsService {
 	public warningAdd( warning: string ) {
 		if( this.alerted !== undefined ) {
 			const id: string =
-				<string><any>(this.alerted.length + 1);
-			this.alerted.push(new Message(id,warning));
+				<string><any>( this.alerted.length + 1 );
+			this.alerted.push( new Message( id, warning ));
 		} else {
-			console.log('Alerted message array not initialized.');
+			console.log( 'Alerted message array not initialized.'  );
 		}
 	}
 	//
@@ -100,7 +102,7 @@ export class AlertsService {
 				this.subject.next( new Alerts( this.level, this.alerted ) );
 			}
 		} else {
-			console.log('Alerted message array not initialized.');
+			console.log( 'Alerted message array not initialized.' );
 		}
 	}
 	//

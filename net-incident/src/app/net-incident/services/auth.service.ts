@@ -18,7 +18,7 @@ import { environment } from '../../../environments/environment';
 export class AuthService {
 	//
 	private url: string;
-	logLevel: number = 1;
+	logLevel: number;
 	public codeName: string;
 	public tokenResponse: ITokenResponse;
 	//
@@ -36,9 +36,10 @@ export class AuthService {
 	//
 	public authenticate( userName: string, password: string ) {
 		// configure call to login service
-	    const body = `grant_type=password&username=${userName}&password=${password}`;
-		if( this.logLevel >= 4 )
+		const body = `grant_type=password&username=${userName}&password=${password}`;
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.authenticate: ${body}` );
+		}
 		// https://stackoverflow.com/questions/44439562/errorunsupported-grant-type-for-angular-call
 		// https://stackoverflow.com/questions/47831291/angular-v5-1-0-httpclient-not-set-header-content-type-application-json
 		const options = { headers: new HttpHeaders().set( 'Content-Type', 'application/x-www-form-urlencoded' ) };
@@ -58,7 +59,7 @@ export class AuthService {
 					localStorage.setItem( 'access_token', this.tokenResponse.access_token );
 				} else {
 						console.log( JSON.stringify( this.tokenResponse ) );
-						throw( 'authenticate: Invalid user name returned.' );
+						throw new Error( 'authenticate: Invalid user name returned.' );
 				}
 				return this.tokenResponse;
 			} ).catch( this.handleError );

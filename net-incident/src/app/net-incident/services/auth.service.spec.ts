@@ -144,7 +144,7 @@ describe('AuthService', () => {
 			//
 		}, error => {
 			console.log( JSON.stringify( error ) );
-			expect( error ).toEqual( 'authenticate: Invalid user name returned.' )
+			expect( error ).toEqual( 'Error: authenticate: Invalid user name returned.' )
 		} );
 		const request = backend.expectOne( `${url}` );
 		expect( request.request.method ).toBe( 'POST' );

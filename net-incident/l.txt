@@ -1,336 +1,605 @@
 
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.ts[34, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.ts[41, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.ts[49, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[36, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[39, 43]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[42, 46]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[45, 46]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[48, 48]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[51, 48]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[54, 45]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[57, 45]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[60, 45]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[63, 45]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[66, 51]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[69, 51]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[72, 49]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[75, 49]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.ts[78, 47]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[36, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[39, 47]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[42, 46]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[45, 46]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[48, 40]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[51, 40]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[54, 48]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[57, 54]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[60, 52]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[63, 43]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[66, 43]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[69, 44]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[72, 42]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.ts[75, 42]: " should be '
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.component.ts[26, 12]: Type boolean trivially inferred from a boolean literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.component.ts[37, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.ts[25, 15]: Type boolean trivially inferred from a boolean literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.ts[76, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.ts[28, 17]: Type boolean trivially inferred from a boolean literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.ts[31, 16]: Type number trivially inferred from a number literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.ts[34, 10]: Type boolean trivially inferred from a boolean literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.ts[35, 10]: Type boolean trivially inferred from a boolean literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.ts[36, 11]: Type boolean trivially inferred from a boolean literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/truncate.pipe.ts[11, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/truncate.pipe.ts[12, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/truncate.pipe.ts[13, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/network-log-grid/network-log-grid.component.ts[57, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/network-log-grid/network-log-grid.component.ts[107, 5]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/network-log-grid/network-log-grid.component.ts[125, 5]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/network-log-grid/network-log-grid.component.ts[26, 16]: Type number trivially inferred from a number literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/network-log-grid/network-log-grid.component.ts[89, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/network-log-grid/network-log-grid.component.ts[89, 7]: Identifier 'event' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/network-log-grid/network-log-grid.component.ts[131, 8]: Identifier 'cnt' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/network-log-grid/network-log-grid.component.ts[11, 58]: Missing semicolon
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-grid/incident-note-grid.component.ts[11, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-grid/incident-note-grid.component.ts[141, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-grid/incident-note-grid.component.ts[26, 17]: Type boolean trivially inferred from a boolean literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-grid/incident-note-grid.component.ts[29, 16]: Type number trivially inferred from a number literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/global.module.ts[2, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/global.module.ts[10, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/global.module.ts[11, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[5, 98]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[51, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[75, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[10, 33]: Too many spaces after 'from'
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[10, 33]: Line breaks are not allowed in import declaration
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[12, 41]: Too many spaces after 'from'
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[12, 41]: Line breaks are not allowed in import declaration
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[26, 10]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[28, 18]: Type boolean trivially inferred from a boolean literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[30, 17]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[18, 101]: Missing semicolon
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.ts[53, 2]: Implement lifecycle hook interface OnInit for method ngOnInit in class AppComponent (https://goo.gl/w1Nwk3)
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[10, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[24, 15]: Type boolean trivially inferred from a boolean literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[74, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.module.ts[7, 96]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.module.ts[8, 87]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.module.ts[9, 108]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.module.ts[9, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/testing/ConfirmationService.mock.ts[15, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/testing/ConfirmationService.mock.ts[17, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/testing/ConfirmationService.mock.ts[8, 14]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/testing/ConfirmationService.mock.ts[10, 17]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/testing/ConfirmationService.mock.ts[12, 15]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/testing/ConfirmationService.mock.ts[14, 18]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.spec.ts[7, 22]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/app.component.spec.ts[7, 7]: Identifier 'expectedTitle' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/truncate.pipe.spec.ts[7, 11]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/truncate.pipe.spec.ts[7, 6]: Identifier 'val' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[73, 12]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[29, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[39, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[50, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[61, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[75, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[28, 7]: Identifier 'msg' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[29, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[39, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[50, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[61, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[73, 7]: Identifier 'msg' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[74, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/global/alerts/alerts.service.spec.ts[75, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[2, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[3, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[56, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[57, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[78, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[93, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[141, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[142, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[197, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[6, 96]: Too many spaces before 'from'
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[6, 96]: Line breaks are not allowed in import declaration
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[270, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[282, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[20, 14]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[234, 21]: Type number trivially inferred from a number literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[246, 15]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[258, 15]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[270, 23]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[282, 29]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[294, 27]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[306, 17]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[318, 17]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[59, 31]: Shadowed variable: 'backend'
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[210, 7]: Unnecessary initialization to 'undefined'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[222, 7]: Unnecessary initialization to 'undefined'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[61, 8]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[74, 7]: Identifier 'newData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[82, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[83, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[114, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[130, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[147, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[148, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[164, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[183, 8]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[181, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[201, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[203, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[210, 7]: Identifier 'incidentidBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[211, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[214, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[222, 7]: Identifier 'companyidBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[223, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[226, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[234, 7]: Identifier 'companyidBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[235, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[238, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[246, 7]: Identifier 'nicBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[247, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[250, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[258, 7]: Identifier 'nicBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[259, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[262, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[270, 7]: Identifier 'networknameBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[271, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[274, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[282, 7]: Identifier 'abuseemailaddressBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[283, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[286, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[294, 7]: Identifier 'ispticketnumberBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[295, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[298, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[306, 7]: Identifier 'notesBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[307, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[310, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[318, 7]: Identifier 'notesBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[319, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[322, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[19, 6]: Identifier 'url' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[20, 6]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[21, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[166, 7]: Unnecessary semicolon
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[217, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[229, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[241, 49]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[253, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[265, 50]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[277, 50]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[289, 50]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[301, 50]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[313, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident.service.spec.ts[325, 50]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[2, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[3, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[32, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[60, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[61, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[82, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[97, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[145, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[146, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[200, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[6, 96]: Too many spaces before 'from'
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[6, 96]: Line breaks are not allowed in import declaration
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[26, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[28, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[29, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[257, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[285, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[313, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[369, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[20, 14]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[229, 21]: Type number trivially inferred from a number literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[243, 23]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[257, 23]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[271, 20]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[285, 20]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[299, 20]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[313, 20]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[341, 26]: Type number trivially inferred from a number literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[355, 24]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[369, 24]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[63, 31]: Shadowed variable: 'backend'
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[215, 7]: Unnecessary initialization to 'undefined'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[327, 7]: Unnecessary initialization to 'undefined'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[65, 8]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[78, 7]: Identifier 'newData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[86, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[87, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[118, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[134, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[151, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[152, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[167, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[186, 8]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[184, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[204, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[208, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[215, 7]: Identifier 'companyidBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[216, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[221, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[229, 7]: Identifier 'companyidBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[230, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[235, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[243, 7]: Identifier 'useraccountBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[244, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[249, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[257, 7]: Identifier 'useraccountBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[258, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[263, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[271, 7]: Identifier 'usernameBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[272, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[277, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[285, 7]: Identifier 'usernameBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[286, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[291, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[299, 7]: Identifier 'passwordBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[300, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[305, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[313, 7]: Identifier 'passwordBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[314, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[319, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[327, 7]: Identifier 'passwordformatBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[328, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[333, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[341, 7]: Identifier 'passwordformatBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[342, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[347, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[355, 7]: Identifier 'passwordsaltBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[356, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[361, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[369, 7]: Identifier 'passwordsaltBad' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[370, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[375, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[19, 6]: Identifier 'url' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[20, 6]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[21, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[22, 6]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[23, 6]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[169, 7]: Unnecessary semicolon
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[224, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[238, 49]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[252, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[266, 50]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[280, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[294, 50]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[308, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[322, 50]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[336, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[350, 49]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[364, 48]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/user.service.spec.ts[378, 50]: != should be !==
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/Testing/ConfirmationService.mock.ts[15, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/Testing/ConfirmationService.mock.ts[17, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/Testing/ConfirmationService.mock.ts[8, 14]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/Testing/ConfirmationService.mock.ts[10, 17]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/Testing/ConfirmationService.mock.ts[12, 15]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/public/Testing/ConfirmationService.mock.ts[14, 18]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[74, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[83, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[99, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[115, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[142, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[103, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[104, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[119, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[120, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[146, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[147, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[103, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[104, 7]: Identifier 'spy' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[119, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[120, 7]: Identifier 'spy' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[146, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[147, 7]: Identifier 'spy' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[27, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[10, 102]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[97, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[106, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[119, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[131, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[142, 4]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[10, 1]: Exceeds maximum line length of 140
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[32, 27]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[33, 27]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[91, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[146, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[147, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[91, 7]: Identifier 'spy' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[125, 7]: Identifier 'title' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[136, 7]: Identifier 'title' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[146, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[147, 7]: Identifier 'spy' is never reassigned; use 'const' instead of 'var'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[149, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[32, 6]: Identifier 'expectedWindowTitle' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[33, 6]: Identifier 'windowTitleSelector' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[35, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-grid/incident-grid.component.spec.ts[36, 6]: Identifier 'user' is never reassigned; use 'const' instead of 'let'.
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[19, 3]: comment must start with a space
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[31, 29]: Type string trivially inferred from a string literal, remove type annotation
-ERROR: C:/Dat/Nsg/L/Web/Ng/net-incident/src/app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[32, 29]: Type string trivially inferred from a string literal, remove type annotation
+ERR: ./app/global/alerts/alerts.service.ts[36, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/global/alerts/alerts.service.ts[43, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/global/alerts/alerts.service.ts[50, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/global/alerts/alerts.service.ts[58, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/auth.service.ts[54, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/services/network-incident.service.ts[33, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.ts[84, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/global/alerts/alerts.component.ts[60, 7]: comment must start with a space
+ERR: ./app/global/alerts/alerts.component.ts[37, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.ts[28, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.ts[59, 7]: Identifier 'returnArray' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[4, 3]: comment must start with a space
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[98, 5]: comment must start with a space
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[234, 4]: comment must start with a space
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[257, 4]: comment must start with a space
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[258, 4]: comment must start with a space
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[57, 3]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[77, 4]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[80, 5]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[90, 3]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[102, 4]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[111, 3]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[115, 4]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[120, 4]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[130, 4]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[134, 3]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[166, 3]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[186, 4]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[214, 4]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[222, 4]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[229, 4]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[238, 3]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[245, 5]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[250, 5]: if statements must be braced
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[2, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[42, 14]: trailing whitespace
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[49, 34]: trailing whitespace
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[66, 31]: trailing whitespace
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[68, 71]: trailing whitespace
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[69, 32]: trailing whitespace
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[93, 50]: trailing whitespace
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[220, 68]: trailing whitespace
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[161, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[92, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[161, 7]: Identifier 'event' is never reassigned; use 'const' instead of 'var'.
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[185, 8]: Identifier 'ip' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[219, 8]: Identifier 'cnt' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[13, 58]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[266, 53]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[71, 2]: Implement lifecycle hook interface OnDestroy for method ngOnDestroy in class NetworkLogGridComponent (https://goo.gl/w1Nwk3)
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[54, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[87, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[113, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[120, 5]: if statements must be braced
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[125, 5]: if statements must be braced
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[135, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[39, 14]: trailing whitespace
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[44, 34]: trailing whitespace
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[60, 31]: trailing whitespace
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[62, 71]: trailing whitespace
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[63, 32]: trailing whitespace
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[75, 10]: trailing whitespace
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[158, 55]: Missing semicolon
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.ts[65, 2]: Implement lifecycle hook interface OnDestroy for method ngOnDestroy in class IncidentNoteGridComponent (https://goo.gl/w1Nwk3)
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[165, 6]: comment must start with a space
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[71, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[79, 5]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[110, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[147, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[149, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[151, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[153, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[155, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[245, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[252, 4]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[268, 6]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[283, 4]: if statements must be braced
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[35, 54]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[103, 41]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[141, 31]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[143, 71]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[144, 32]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[259, 74]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[289, 4]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[182, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[271, 11]: Identifier 'newNote' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[257, 10]: Identifier 'whois' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[259, 10]: Identifier 'cnt' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[223, 45]: " should be '
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[226, 48]: " should be '
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[229, 42]: " should be '
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.ts[23, 89]: Missing semicolon
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.ts[30, 7]: if statements must be braced
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.ts[39, 5]: if statements must be braced
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.ts[51, 5]: if statements must be braced
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.ts[19, 58]: trailing whitespace
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[90, 5]: comment must start with a space
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[80, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[104, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[111, 5]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[116, 5]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[126, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[129, 4]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[148, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[170, 4]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[177, 6]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[180, 5]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[199, 5]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[56, 34]: trailing whitespace
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[172, 39]: trailing whitespace
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[82, 7]: Identifier 'empty' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[175, 10]: Identifier 'changed' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[82, 52]: Missing semicolon
+ERR: ./app/net-incident/email.ts[22, 9]: if statements must be braced
+ERR: ./app/net-incident/email.ts[24, 9]: else statements must be braced
+ERR: ./app/net-incident/email.ts[18, 36]: trailing whitespace
+ERR: ./app/net-incident/abuse-email-report.ts[47, 17]: if statements must be braced
+ERR: ./app/net-incident/abuse-email-report.ts[117, 9]: if statements must be braced
+ERR: ./app/net-incident/abuse-email-report.ts[121, 13]: if statements must be braced
+ERR: ./app/net-incident/abuse-email-report.ts[58, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.ts[61, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.ts[64, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.ts[114, 20]: Shadowed variable: 'content'
+ERR: ./app/net-incident/abuse-email-report.ts[76, 4]: trailing whitespace
+ERR: ./app/net-incident/abuse-email-report.ts[237, 72]: trailing whitespace
+ERR: ./app/net-incident/abuse-email-report.ts[193, 17]: Identifier 'emailRequest' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.ts[212, 17]: Identifier 'timeZone' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.ts[213, 17]: Identifier 'log' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.ts[222, 17]: Identifier 'line' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.ts[205, 13]: Identifier 'lines' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.ts[257, 13]: Identifier 'tmpId' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.ts[258, 13]: Identifier 'templates' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.ts[59, 56]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[62, 51]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[65, 54]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[68, 51]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[72, 50]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[75, 53]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[78, 58]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[82, 52]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[85, 48]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[88, 56]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[91, 50]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[94, 53]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[97, 58]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[101, 52]: " should be '
+ERR: ./app/net-incident/abuse-email-report.ts[160, 54]: Missing semicolon
+ERR: ./app/net-incident/abuse-email-report.ts[221, 14]: Missing semicolon
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[34, 4]: comment must start with a space
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[50, 4]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[53, 4]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[92, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[99, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[121, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[155, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[169, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[182, 3]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[188, 4]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[238, 4]: if statements must be braced
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[34, 28]: trailing whitespace
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[86, 31]: trailing whitespace
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[88, 71]: trailing whitespace
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[89, 32]: trailing whitespace
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[96, 26]: trailing whitespace
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[184, 7]: Identifier 'abuseReport' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[197, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[208, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[269, 8]: Identifier 'idx' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[211, 51]: " should be '
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[214, 47]: " should be '
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[217, 47]: " should be '
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[220, 41]: " should be '
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[223, 41]: " should be '
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[140, 21]: == should be ===
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[143, 22]: == should be ===
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[146, 22]: == should be ===
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[273, 34]: == should be ===
+ERR: ./app/net-incident/login.ts[17, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/login.ts[20, 45]: " should be '
+ERR: ./app/net-incident/login.ts[23, 45]: " should be '
+ERR: ./app/net-incident/login.ts[26, 45]: " should be '
+ERR: ./app/net-incident/login.ts[29, 45]: " should be '
+ERR: ./app/public/login/login.component.ts[117, 4]: comment must start with a space
+ERR: ./app/public/login/login.component.ts[57, 5]: if statements must be braced
+ERR: ./app/public/login/login.component.ts[88, 9]: if statements must be braced
+ERR: ./app/public/login/login.component.ts[96, 11]: if statements must be braced
+ERR: ./app/public/login/login.component.ts[110, 5]: if statements must be braced
+ERR: ./app/public/login/login.component.ts[25, 47]: trailing whitespace
+ERR: ./app/public/login/login.component.ts[45, 28]: trailing whitespace
+ERR: ./app/public/login/login.component.ts[66, 9]: trailing whitespace
+ERR: ./app/public/login/login.component.ts[60, 9]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/public/register/register.component.ts[17, 50]: trailing whitespace
+ERR: ./app/public/register/register.component.ts[36, 73]: Missing semicolon
+ERR: ./app/public/header/header.component.ts[73, 5]: if statements must be braced
+ERR: ./app/public/header/header.component.ts[18, 39]: Missing semicolon
+ERR: ./app/public/testing/testing.component.ts[43, 3]: Declaration of instance field not allowed after declaration of instance method. Instead, this should come at the beginning of the class/interface.
+ERR: ./app/public/testing/testing.component.ts[44, 2]: Declaration of instance field not allowed after declaration of instance method. Instead, this should come at the beginning of the class/interface.
+ERR: ./app/public/testing/testing.component.ts[15, 49]: trailing whitespace
+ERR: ./app/public/testing/testing.component.ts[30, 50]: trailing whitespace
+ERR: ./app/public/testing/testing.component.ts[31, 50]: trailing whitespace
+ERR: ./app/app-routing.module.ts[19, 3]: comment must start with a space
+ERR: ./app/global/global.module.ts[2, 3]: comment must start with a space
+ERR: ./app/global/global.module.ts[11, 3]: comment must start with a space
+ERR: ./app/global/global.module.ts[12, 3]: comment must start with a space
+ERR: ./app/app.component.ts[36, 4]: comment must start with a space
+ERR: ./app/app.component.ts[65, 4]: comment must start with a space
+ERR: ./app/app.component.ts[59, 5]: if statements must be braced
+ERR: ./app/app.component.ts[68, 5]: if statements must be braced
+ERR: ./app/app.component.ts[8, 33]: Too many spaces after 'from'
+ERR: ./app/app.component.ts[8, 33]: Line breaks are not allowed in import declaration
+ERR: ./app/app.component.ts[91, 1]: Exceeds maximum line length of 140
+ERR: ./app/app.component.ts[8, 38]: trailing whitespace
+ERR: ./app/app.component.ts[84, 73]: trailing whitespace
+ERR: ./app/app.component.ts[92, 4]: trailing whitespace
+ERR: ./app/app.component.ts[76, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/app.component.ts[77, 52]: " should be '
+ERR: ./app/app.component.ts[78, 7]: " should be '
+ERR: ./app/app.component.ts[78, 41]: " should be '
+ERR: ./app/app.component.ts[79, 7]: " should be '
+ERR: ./app/app.component.ts[79, 35]: " should be '
+ERR: ./app/app.component.ts[79, 48]: " should be '
+ERR: ./app/app.component.ts[79, 56]: " should be '
+ERR: ./app/app.component.ts[80, 7]: " should be '
+ERR: ./app/app.component.ts[80, 29]: " should be '
+ERR: ./app/app.component.ts[85, 20]: " should be '
+ERR: ./app/app.component.ts[85, 28]: " should be '
+ERR: ./app/app.component.ts[85, 56]: " should be '
+ERR: ./app/app.component.ts[88, 7]: " should be '
+ERR: ./app/app.component.ts[22, 36]: Missing semicolon
+ERR: ./app/app.module.ts[7, 96]: comment must start with a space
+ERR: ./app/app.module.ts[8, 87]: comment must start with a space
+ERR: ./app/app.module.ts[9, 108]: comment must start with a space
+ERR: ./app/app.module.ts[9, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/services/incident-test2.service.ts[102, 3]: if statements must be braced
+ERR: ./app/net-incident/services/incident-test2.service.ts[112, 3]: if statements must be braced
+ERR: ./app/net-incident/services/incident-test2.service.ts[121, 3]: if statements must be braced
+ERR: ./app/net-incident/services/incident-test2.service.ts[131, 3]: if statements must be braced
+ERR: ./app/net-incident/services/incident-test2.service.ts[141, 3]: if statements must be braced
+ERR: ./app/net-incident/services/incident-test2.service.ts[157, 3]: if statements must be braced
+ERR: ./app/net-incident/services/incident-test2.service.ts[46, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.ts[49, 47]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[52, 45]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[55, 45]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[58, 46]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[61, 46]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[64, 43]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[67, 43]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[70, 48]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[73, 54]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[76, 52]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[79, 43]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[82, 43]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[85, 44]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[88, 42]: " should be '
+ERR: ./app/net-incident/services/incident-test2.service.ts[91, 48]: " should be '
+ERR: ./app/net-incident/services/mocks/ConfirmationService.mock.ts[16, 4]: comment must start with a space
+ERR: ./app/net-incident/services/mocks/ConfirmationService.mock.ts[18, 4]: comment must start with a space
+ERR: ./app/net-incident/services/mocks/NetworkIncidentService.mock.ts[8, 73]: Missing semicolon
+ERR: ./app/net-incident/services/mocks/NetworkIncidentService.mock.ts[9, 82]: Missing semicolon
+ERR: ./app/global/truncate.pipe.spec.ts[7, 6]: Identifier 'val' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/global/alerts/alerts.service.spec.ts[32, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERR: ./app/global/alerts/alerts.service.spec.ts[42, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERR: ./app/global/alerts/alerts.service.spec.ts[53, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERR: ./app/global/alerts/alerts.service.spec.ts[64, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERR: ./app/global/alerts/alerts.service.spec.ts[75, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERR: ./app/global/alerts/alerts.service.spec.ts[89, 3]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERR: ./app/global/alerts/alerts.service.spec.ts[31, 7]: Identifier 'msg' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/global/alerts/alerts.service.spec.ts[32, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
+ERR: ./app/global/alerts/alerts.service.spec.ts[42, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
+ERR: ./app/global/alerts/alerts.service.spec.ts[53, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
+ERR: ./app/global/alerts/alerts.service.spec.ts[64, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
+ERR: ./app/global/alerts/alerts.service.spec.ts[75, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
+ERR: ./app/global/alerts/alerts.service.spec.ts[87, 7]: Identifier 'msg' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/global/alerts/alerts.service.spec.ts[88, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/global/alerts/alerts.service.spec.ts[89, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'var'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[88, 9]: if statements must be braced
+ERR: ./app/net-incident/abuse-email-report.spec.ts[99, 9]: if statements must be braced
+ERR: ./app/net-incident/abuse-email-report.spec.ts[52, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.spec.ts[53, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.spec.ts[54, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.spec.ts[55, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.spec.ts[56, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.spec.ts[57, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.spec.ts[58, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/abuse-email-report.spec.ts[2, 9]: trailing whitespace
+ERR: ./app/net-incident/abuse-email-report.spec.ts[141, 21]: trailing whitespace
+ERR: ./app/net-incident/abuse-email-report.spec.ts[87, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[98, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[106, 13]: Identifier 'template' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[109, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[114, 13]: Identifier 'template' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[117, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[125, 13]: Identifier 'valid' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[127, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[136, 13]: Identifier 'valid' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[138, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[20, 9]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[21, 9]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[22, 9]: Identifier 'standardDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[23, 9]: Identifier 'daylightDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[24, 9]: Identifier 'ipAddr' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/abuse-email-report.spec.ts[63, 9]: Identifier 'netInc' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[2, 3]: comment must start with a space
+ERR: ./app/net-incident/whois-abuse.spec.ts[3, 3]: comment must start with a space
+ERR: ./app/net-incident/whois-abuse.spec.ts[12, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[13, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[14, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[15, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[16, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[17, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[18, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[19, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[20, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[21, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[22, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[23, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[24, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[25, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[26, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/whois-abuse.spec.ts[242, 17]: trailing whitespace
+ERR: ./app/net-incident/whois-abuse.spec.ts[12, 7]: Identifier 'whois_ripe94_41_54_105' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[13, 7]: Identifier 'whois_ripe46_161_62_245' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[14, 7]: Identifier 'whois_arin246_161_212_245' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[15, 7]: Identifier 'whois_arin104_199_208_27' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[16, 7]: Identifier 'whois_afr197_48_169_77' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[17, 7]: Identifier 'whois_ap1_52_34_175' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[18, 7]: Identifier 'whois_ap103_18_33_107' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[19, 7]: Identifier 'whois_lac138_36_27_5' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[20, 7]: Identifier 'whois_lac177_228_94_39' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[21, 7]: Identifier 'whois_br177_37_164_71' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[22, 7]: Identifier 'whois_tw114_45_70_76' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[23, 7]: Identifier 'whois_kr112_220_69_50' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[24, 7]: Identifier 'whois_ns67_229_101_42' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[25, 7]: Identifier 'whois_ns69_10_58_155' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[26, 7]: Identifier 'whois_ns104_168_144_18' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[27, 6]: Identifier 'whois_SingleHopNet184_154' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/whois-abuse.spec.ts[12, 40]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[13, 41]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[14, 43]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[15, 42]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[16, 40]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[17, 37]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[18, 39]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[19, 38]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[20, 40]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[21, 39]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[22, 38]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[23, 39]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[24, 39]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[25, 38]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[26, 40]: " should be '
+ERR: ./app/net-incident/whois-abuse.spec.ts[25, 800]: Missing semicolon
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[12, 113]: comment must start with a space
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[138, 4]: comment must start with a space
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[147, 4]: comment must start with a space
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[12, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[63, 28]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[83, 19]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[196, 64]: trailing whitespace
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[110, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[123, 7]: Identifier '_ni' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[193, 7]: Identifier 'empty' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[194, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[49, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[52, 6]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[53, 6]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[54, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[60, 6]: Identifier 'user' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[34, 58]: Missing semicolon
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[36, 89]: Missing semicolon
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[116, 62]: Missing semicolon
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[153, 26]: Missing semicolon
+ERR: ./app/net-incident/incident-detail-window/incident-detail-window.component.spec.ts[193, 89]: Missing semicolon
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[11, 102]: comment must start with a space
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[160, 4]: comment must start with a space
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[169, 4]: comment must start with a space
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[184, 4]: comment must start with a space
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[202, 4]: comment must start with a space
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[239, 4]: comment must start with a space
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[234, 5]: if statements must be braced
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[11, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[93, 14]: trailing whitespace
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[145, 7]: Identifier '_ni' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[188, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[191, 7]: Identifier 'id' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[192, 7]: Identifier 'ip' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[196, 7]: Identifier 'title' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[227, 9]: Identifier 'title' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[206, 7]: Identifier 'incident' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[207, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[208, 7]: Identifier 'id' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[209, 7]: Identifier 'ip' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[247, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[56, 6]: Identifier 'detailWindow' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[57, 6]: Identifier 'expectedWindowTitle' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[58, 6]: Identifier 'windowTitleSelector' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[60, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[61, 6]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[62, 6]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[63, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[69, 6]: Identifier 'user' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[88, 6]: Identifier 'selectItemsWindow' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[89, 6]: Identifier 'displayServersWindow' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[32, 58]: Missing semicolon
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[43, 89]: Missing semicolon
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[135, 56]: Missing semicolon
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[213, 50]: Missing semicolon
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[223, 27]: Missing semicolon
+ERR: ./app/net-incident/incident-grid/incident-grid.component.spec.ts[231, 70]: Missing semicolon
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[72, 19]: trailing whitespace
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[37, 6]: Identifier 'ipAddr' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[60, 9]: Identifier 'netInc' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[55, 3]: Missing semicolon
+ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[81, 5]: Missing semicolon
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[34, 36]: trailing whitespace
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[67, 14]: trailing whitespace
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[165, 23]: trailing whitespace
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[150, 7]: Identifier 'incidentNote' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[43, 6]: Identifier 'http' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[44, 6]: Identifier 'backend' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[49, 6]: Identifier 'ipAddr' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[63, 9]: Identifier 'netInc' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[21, 58]: Missing semicolon
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[139, 26]: Missing semicolon
+ERR: ./app/net-incident/incident-note-grid/incident-note-grid.component.spec.ts[154, 26]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[27, 3]: comment must start with a space
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[200, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[223, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[235, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[54, 14]: trailing whitespace
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[76, 23]: trailing whitespace
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[148, 7]: Identifier 'loop' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[199, 7]: Identifier 'netLogCheckbox' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[36, 6]: Identifier 'ipAddr' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[50, 9]: Identifier 'netInc' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[26, 58]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[115, 70]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[127, 67]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[139, 75]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[150, 84]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[157, 87]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[168, 63]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[191, 71]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[214, 71]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[250, 69]: Missing semicolon
+ERR: ./app/net-incident/network-log-grid/network-log-grid.component.spec.ts[261, 26]: Missing semicolon
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[11, 3]: comment must start with a space
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[25, 48]: trailing whitespace
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[26, 51]: trailing whitespace
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[36, 19]: trailing whitespace
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[75, 9]: Identifier 'idx' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[76, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[77, 9]: Identifier 'value' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[78, 9]: Identifier 'radioSelector' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[93, 9]: Identifier 'idx' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[94, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[95, 9]: Identifier 'value' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[96, 9]: Identifier 'radioSelector' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[21, 6]: Identifier 'windowTitleSelector' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/server-selection-window/server-selection-window.component.spec.ts[29, 6]: Identifier 'displayWindow' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/auth.service.spec.ts[112, 6]: trailing whitespace
+ERR: ./app/net-incident/services/auth.service.spec.ts[108, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/auth.service.spec.ts[136, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/auth.service.spec.ts[21, 6]: Identifier 'url' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/auth.service.spec.ts[147, 81]: Missing semicolon
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[306, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[318, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[195, 45]: Shadowed variable: 'resp'
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[222, 7]: Unnecessary initialization to 'undefined'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[234, 7]: Unnecessary initialization to 'undefined'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[62, 7]: Identifier 'newData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[70, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[71, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[106, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[107, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[123, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[124, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[140, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[141, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[158, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[173, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[190, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[191, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[213, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[215, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[222, 7]: Identifier 'incidentidBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[223, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[226, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[234, 7]: Identifier 'serveridBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[235, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[238, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[246, 7]: Identifier 'serveridBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[247, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[250, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[258, 7]: Identifier 'ipaddressBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[259, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[262, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[270, 7]: Identifier 'ipaddressBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[271, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[274, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[282, 7]: Identifier 'nic_idBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[283, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[286, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[294, 7]: Identifier 'nic_idBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[295, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[298, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[306, 7]: Identifier 'networknameBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[307, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[310, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[318, 7]: Identifier 'abuseemailaddressBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[319, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[322, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[330, 7]: Identifier 'ispticketnumberBad' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[331, 7]: Identifier 'model' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[334, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[21, 6]: Identifier 'url' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[22, 6]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[229, 48]: != should be !==
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[241, 48]: != should be !==
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[253, 49]: != should be !==
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[265, 48]: != should be !==
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[277, 50]: != should be !==
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[289, 48]: != should be !==
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[301, 50]: != should be !==
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[313, 50]: != should be !==
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[325, 50]: != should be !==
+ERR: ./app/net-incident/services/incident-test2.service.spec.ts[337, 50]: != should be !==
+ERR: ./app/net-incident/services/incident.service.spec.ts[2, 3]: comment must start with a space
+ERR: ./app/net-incident/services/incident.service.spec.ts[3, 3]: comment must start with a space
+ERR: ./app/net-incident/services/incident.service.spec.ts[12, 3]: comment must start with a space
+ERR: ./app/net-incident/services/incident.service.spec.ts[68, 4]: comment must start with a space
+ERR: ./app/net-incident/services/incident.service.spec.ts[87, 4]: comment must start with a space
+ERR: ./app/net-incident/services/incident.service.spec.ts[133, 4]: comment must start with a space
+ERR: ./app/net-incident/services/incident.service.spec.ts[134, 4]: comment must start with a space
+ERR: ./app/net-incident/services/incident.service.spec.ts[189, 9]: Shadowed variable: 'errMsg'
+ERR: ./app/net-incident/services/incident.service.spec.ts[80, 47]: trailing whitespace
+ERR: ./app/net-incident/services/incident.service.spec.ts[64, 7]: Identifier 'newData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[72, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[73, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[107, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[108, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[122, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[123, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[138, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[139, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[154, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[169, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[187, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/incident.service.spec.ts[188, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[2, 3]: comment must start with a space
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[3, 3]: comment must start with a space
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[44, 32]: trailing whitespace
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[127, 54]: trailing whitespace
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[81, 7]: Identifier '_ni' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[107, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[108, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[109, 7]: Identifier 'srvId' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[127, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[130, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[28, 6]: Identifier 'url' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[29, 6]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[31, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[33, 6]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[34, 6]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[35, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[41, 6]: Identifier 'user' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[18, 54]: Missing semicolon
+ERR: ./app/net-incident/services/network-incident.service.spec.ts[19, 63]: Missing semicolon
+ERR: ./app/net-incident/services/services.service.spec.ts[34, 5]: comment must start with a space
+ERR: ./app/net-incident/services/services.service.spec.ts[89, 47]: trailing whitespace
+ERR: ./app/net-incident/services/services.service.spec.ts[97, 4]: trailing whitespace
+ERR: ./app/net-incident/services/services.service.spec.ts[101, 59]: trailing whitespace
+ERR: ./app/net-incident/services/services.service.spec.ts[114, 4]: trailing whitespace
+ERR: ./app/net-incident/services/services.service.spec.ts[100, 7]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/services.service.spec.ts[101, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/services.service.spec.ts[117, 7]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/services.service.spec.ts[132, 7]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/services.service.spec.ts[19, 6]: Identifier 'baseUrl' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/services.service.spec.ts[103, 7]: Unnecessary semicolon
+ERR: ./app/net-incident/services/user.service.spec.ts[2, 3]: comment must start with a space
+ERR: ./app/net-incident/services/user.service.spec.ts[3, 3]: comment must start with a space
+ERR: ./app/net-incident/services/user.service.spec.ts[86, 4]: comment must start with a space
+ERR: ./app/net-incident/services/user.service.spec.ts[106, 4]: comment must start with a space
+ERR: ./app/net-incident/services/user.service.spec.ts[36, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/services/user.service.spec.ts[37, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/services/user.service.spec.ts[38, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/services/user.service.spec.ts[39, 1]: Exceeds maximum line length of 140
+ERR: ./app/net-incident/services/user.service.spec.ts[127, 4]: trailing whitespace
+ERR: ./app/net-incident/services/user.service.spec.ts[82, 7]: Identifier 'newData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/user.service.spec.ts[110, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/user.service.spec.ts[111, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/user.service.spec.ts[112, 7]: Identifier 'srv' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/user.service.spec.ts[23, 6]: Identifier 'url' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/user.service.spec.ts[24, 6]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/user.service.spec.ts[25, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/user.service.spec.ts[26, 6]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/user.service.spec.ts[27, 6]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/net-incident/services/user.service.spec.ts[28, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
+ERR: ./app/public/header/header.component.spec.ts[4, 3]: comment must start with a space
+ERR: ./app/public/login/login.component.spec.ts[2, 3]: comment must start with a space
+ERR: ./app/public/register/register.component.spec.ts[2, 3]: comment must start with a space
+ERR: ./app/public/register/register.component.spec.ts[39, 43]: trailing whitespace
 
 Lint errors found in the listed files.

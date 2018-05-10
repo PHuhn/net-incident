@@ -42,8 +42,9 @@ export class UserService {
 	//
 	getUser( UserAccount: string ): Observable<IUser> {
 		const urlPath: string = this.url + '/' + String( UserAccount );
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( urlPath );
+		}
 		return this.http.get<IUser>( urlPath )
 			.catch( this.handleError );
 	}
@@ -51,12 +52,13 @@ export class UserService {
 	// Get User with UserAccount
 	//
 	getUserServer( userName: string, serverShortName: string ): Observable<IUser> {
-        // <param name="id"></param>
-        // <param name="serverShortName"></param>
+		// <param name="id"></param>
+		// <param name="serverShortName"></param>
 		const urlPath: string = this.url + '?id=' + userName
 			+ '&serverShortName=' + serverShortName;
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( urlPath );
+		}
 		return this.http.get<IUser>( urlPath )
 			.catch( this.handleError );
 	}

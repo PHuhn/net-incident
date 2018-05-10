@@ -45,8 +45,9 @@ export class IncidentService {
 		const urlPath: string = this.url + '/' + String(serverId)
 			+ '?mailed=' + String(mailed) + '&closed=' + String(closed)
 			+ '&special=' + String(special);
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.getIncidents: ${urlPath}` );
+		}
 		return this.http.get<Array<IIncident>>( urlPath )
 			.catch( this.handleError );
 	}
@@ -55,8 +56,9 @@ export class IncidentService {
 	//
 	getIncident( IncidentId: number ): Observable<IIncident> {
 		const urlPath: string = this.url + '/' + String( IncidentId );
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.getIncident: ${urlPath}` );
+		}
 		return this.http.get<IIncident>( urlPath )
 			.catch( this.handleError );
 	}
@@ -65,8 +67,9 @@ export class IncidentService {
 	//
 	createIncident( incident: IIncident ) {
 		const urlPath: string = this.url + '/';
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.createIncident: ${ JSON.stringify( incident ) }` );
+		}
 		return this.http.post<IIncident>( urlPath, incident )
 			.catch( this.handleError );
 	}
@@ -75,8 +78,9 @@ export class IncidentService {
 	//
 	updateIncident( incident: IIncident ) {
 		const urlPath: string = this.url + '/' + String( incident.IncidentId );
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.updateIncident: ${urlPath}` );
+		}
 		return this.http.put<IIncident>( urlPath, incident )
 			.catch( this.handleError );
 	}
@@ -85,8 +89,9 @@ export class IncidentService {
 	//
 	deleteIncident( IncidentId: number ) {
 		const urlPath: string = this.url + '/' + String( IncidentId );
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.deleteIncident: ${urlPath}` );
+		}
 		return this.http.delete<IIncident>( urlPath )
 			.catch( this.handleError );
 	}
@@ -101,8 +106,9 @@ export class IncidentService {
 			}
 			return Observable.throw( error.statusText || 'Service error' );
 		}
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.error( `${this.codeName}: ${error}` );
+		}
 		return Observable.throw( error.toString() || 'Service error' );
 	}
 	//

@@ -23,8 +23,6 @@ Phil
     URL = https://www.mimilk.com/Download.ashx?Category=MessengerArticle&Id=785'A=0
  Browser = -unknown-
 Computer = MIMILKWEBSERV
-  Message:  Category: MessengerArticle, Id: 785'A=0<br />Error: An error occurred while reading from the
- store provider's data reader. See the inner exception for details.
 
 
 abuse@ufanet.ru
