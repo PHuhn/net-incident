@@ -1,5 +1,5 @@
 // File: incidentnote-grid.component.ts
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 //
 import { DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
@@ -18,7 +18,7 @@ import { NetworkIncident } from '../network-incident';
 	selector: 'app-incident-note-grid',
 	templateUrl: './incident-note-grid.component.html'
 })
-export class IncidentNoteGridComponent implements OnInit, AfterViewInit {
+export class IncidentNoteGridComponent implements OnInit, AfterViewInit, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
@@ -35,13 +35,13 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit {
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
-	// 	inputs: networklogs: NetworkLog[];
-	// 	outputs: 
+	// inputs: networklogs: NetworkLog[];
+	// outputs:
 	//
 	@Input() networkIncident: NetworkIncident;
 	//
 	constructor(
-		private _alerts: AlertsService, 
+		private _alerts: AlertsService,
 		private _confirmationService: ConfirmationService
 	) { }
 	//
@@ -51,16 +51,17 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit {
 		// 1=error, 2=warning, 3=info, 4=verbose
 		this.logLevel = environment.logLevel;
 		// all records are passed in via @Input
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName} - ngOnInit: ...` );
+		}
 	}
 	//
 	// Cleanup
 	// * Stop interval timers (clearTimeout/clearInterval).
-	// * Unsubscribe Observables. 
+	// * Unsubscribe Observables.
 	// * Detach event handlers (addEventListener > removeEventListener).
-	// * Free resources that will not be garbage collected automatically. 
-	// * Unregister all callbacks. 
+	// * Free resources that will not be garbage collected automatically.
+	// * Unregister all callbacks.
 	//
 	ngOnDestroy() {
 		//
@@ -72,7 +73,7 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit {
 				console.log( `${this.codeName} - ngAfterViewInit:: ...` );
 				console.log( this.networkIncident );
 			}
-		}, 10); 
+		}, 10);
 	}
 	//
 	// --------------------------------------------------------------------
@@ -84,8 +85,9 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit {
 		this.windowDisplay = true;
 		this.windowIncidentNote = this.emptyIncidentNote( );
 		this.id = this.windowIncidentNote.IncidentNoteId;
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.addItemClicked: Add item clicked: ${this.windowDisplay}` );
+		}
 	}
 	//
 	emptyIncidentNote( ): IIncidentNote {
@@ -110,20 +112,23 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit {
 	//
 	deleteItemClicked( item: IncidentNote ): boolean {
 		this.id = item.IncidentNoteId;
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.deleteItemClicked: Id: ${this.id}` );
+		}
 		// the p-confirmDialog in in app.component
 		this._confirmationService.confirm({
 			key: 'Delete',
 			message: `Are you sure you want to delete ${this.id}?`,
 			accept: () => {
-				if( this.logLevel >= 4 )
+				if( this.logLevel >= 4 ) {
 					console.log( `${this.codeName}.deleteItemClicked: User's response: true to delete ${this.id}` );
+				}
 				this.deleteItem( );
 			},
 			reject: () => {
-				if( this.logLevel >= 4 )
+				if( this.logLevel >= 4 ) {
 					console.log( `${this.codeName}.deleteItemClicked: User's dismissed.` );
+				}
 			}
 		});
 		return false;
@@ -132,8 +137,9 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit {
 	// on edit window closed
 	//
 	onClose( saved: boolean ) {
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.onClose: Entering: on close with: ${saved}` );
+		}
 		if( saved === true && this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.onClose: Refreshing...` );
 			console.log( this.networkIncident.incidentNotes );
@@ -155,7 +161,7 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit {
 				return el.IncidentNoteId === delId;
 			});
 			if( notes.length > 0 ) {
-				this.networkIncident.deletedNotes.push( notes[0] )
+				this.networkIncident.deletedNotes.push( notes[0] );
 				this.networkIncident.incidentNotes = this.networkIncident.incidentNotes.filter( (el) => {
 					return el.IncidentNoteId !== delId;
 				});

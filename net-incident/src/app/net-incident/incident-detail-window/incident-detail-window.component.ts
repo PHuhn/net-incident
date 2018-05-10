@@ -20,7 +20,7 @@ import { NetworkIncidentSave } from '../network-incident-save';
 import { IWhoIsAbuse, WhoIsAbuse } from '../whois-abuse';
 import { IncidentNote } from '../incident-note';
 //
-import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.component'
+import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.component';
 import { IncidentNoteGridComponent } from '../incident-note-grid/incident-note-grid.component';
 //
 @Component({
@@ -32,7 +32,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	// --------------------------------------------------------------------
 	// Data declaration.
 	//
-	private codeName: string = 'Incident-Detail-Window'; 
+	private codeName: string = 'Incident-Detail-Window';
 	private add: boolean = false;
 	id: number = -1;
 	ip: string = '';
@@ -68,16 +68,18 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		this.ip = detailInput.incident.IPAddress;
 		this.add = ( detailInput.incident.IncidentId < 1 ? true : false );
 		this.getNetIncident( this.id, this.serverId );
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}: Editing: ${this.id}, win: ${this.displayWin}` );
+		}
 	}
 	get detailWindowInput(): DetailWindowInput { return this.detailWindow; }
 	// setter/getter for displayWin
 	@Input() set displayWin( displayWin: boolean ) {
 		if( displayWin === true ) {
 			this.displayWinTimeout = setTimeout(() => {
-				if( this.logLevel >= 4 )
+				if( this.logLevel >= 4 ) {
 					console.log( `${this.codeName}: displayWin: ${displayWin}` );
+				}
 				// The set displayWindow in getNetIncidents should activate the window
 				// this set of displayWindow is the last resort
 				this.displayWindow = displayWin;
@@ -100,15 +102,16 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		this.networkIncidentSave.incidentNotes =
 			this.networkIncident.incidentNotes.filter( nl => nl.IsChanged === true );
 		this.networkIncidentSave.deletedNotes = this.networkIncident.deletedNotes;
-		this.networkIncidentSave.networkLogs = 
+		this.networkIncidentSave.networkLogs =
 			this.networkIncident.networkLogs.filter( nl => nl.IsChanged === true ||
 				nl.Selected === true );
 		this.networkIncidentSave.deletedLogs = this.networkIncident.deletedLogs;
 		this.networkIncidentSave.user = this.networkIncident.user;
 		this.networkIncidentSave.message = this.networkIncident.message;
 		//
-		if( this.logLevel >= 3 )
+		if( this.logLevel >= 3 ) {
 			console.log( this.networkIncidentSave );
+		}
 		if( this.add === false ) {
 			this.networkIncident.incident.IncidentId = this.id;
 		}
@@ -138,37 +141,45 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	// Cleanup
 	// * Stop interval timers (clearTimeout/clearInterval).
-	// * Unsubscribe Observables. 
+	// * Unsubscribe Observables.
 	// * Detach event handlers (addEventListener > removeEventListener).
-	// * Free resources that will not be garbage collected automatically. 
-	// * Unregister all callbacks. 
+	// * Free resources that will not be garbage collected automatically.
+	// * Unregister all callbacks.
 	//
 	ngOnDestroy() {
-		if( this.displayWinTimeout )
+		if( this.displayWinTimeout ) {
 			clearTimeout( this.displayWinTimeout );
-		if( this.userWaitTimeout )
+		}
+		if( this.userWaitTimeout ) {
 			clearTimeout( this.userWaitTimeout );
-		if( this.httpSubscription )
+		}
+		if( this.httpSubscription ) {
 			this.httpSubscription.unsubscribe( );
-		if( this.httpCreateSubscription )
+		}
+		if( this.httpCreateSubscription ) {
 			this.httpCreateSubscription.unsubscribe( );
-		if( this.httpUpdateSubscription )
+		}
+		if( this.httpUpdateSubscription ) {
 			this.httpUpdateSubscription.unsubscribe( );
+		}
 	}
 	//
-	//  get the complete requested incident (unit-of-work).
+	// get the complete requested incident (unit-of-work).
 	//
 	getNetIncident( incidentId: number, serverId: number ): void {
 		this.httpSubscription = this._netIncident.getNetworkIncident( incidentId, serverId ).subscribe((netIncidentData) => {
 			this.networkIncident = netIncidentData;
 			this.networkIncident.user = this.user;
-			//if( this.logLevel >= 4 )
-			console.log( `*getNetIncident ${this.codeName} ${new Date().toISOString()}` );
-			console.log ( this.networkIncident );
+			if( this.logLevel >= 4 ) {
+				console.log( `${this.codeName}.getNetIncident, ${new Date().toISOString()}` );
+				console.log ( this.networkIncident );
+			}
 			// once the data is loaded now display it.
 			this.displayWindow = true;
 			clearTimeout( this.displayWinTimeout );
-			console.log ( 'cleared time-out' );
+			if( this.logLevel >= 4 ) {
+				console.log( `${this.codeName}.getNetIncident, cleared time-out` );
+			}
 		}, ( error ) =>
 			this.serviceErrorHandler(
 				`${this.codeName}: Get Network Incident`, error ));
@@ -220,13 +231,13 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		//
         // from user
 		if( this.networkIncident.user.UserName === '' || this.networkIncident.user.UserName === undefined ) {
-			errMsgs.push( new Message( 'UserName-1', "From User, 'User Name' is required." ) );
+			errMsgs.push( new Message( 'UserName-1', `From User, 'User Name' is required.` ) );
 		}
 		if( this.networkIncident.user.UserNicName === '' || this.networkIncident.user.UserNicName === undefined ) {
-			errMsgs.push( new Message( 'UserNicName-1', "From User, 'User Nic Name' is required." ) );
+			errMsgs.push( new Message( 'UserNicName-1', `From User, 'User Nic Name' is required.` ) );
 		}
 		if( this.networkIncident.user.Email === '' || this.networkIncident.user.Email === undefined ) {
-			errMsgs.push( new Message( 'Email-1', "From User, 'User Email Address' is required." ) );
+			errMsgs.push( new Message( 'Email-1', `From User, 'User Email Address' is required.` ) );
 		}
 		//
 	}
@@ -242,21 +253,23 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	// the notes.
 	//
 	ipChanged( ipAddress: string ): void {
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log(
 				`${this.codeName}.ipChanged, IP address: ${ipAddress}` );
+		}
 		if( this.networkIncident.incident.IPAddress !== ipAddress ) {
 			this.networkIncident.incident.IPAddress = ipAddress;
 			this.ip = ipAddress;
 			if( ipAddress === '' ) { return; }
-			if( this.logLevel >= 4 )
+			if( this.logLevel >= 4 ) {
 				console.log( `${this.codeName}.ipChanged: calling whois with ${ipAddress}` );
+			}
 			this._services.getWhoIs( ipAddress ).subscribe(( whoisData: string ) => {
 				if( whoisData !== '' ) {
 					// instanciate WhoIsAbuse class
-					let whois: WhoIsAbuse = new WhoIsAbuse();
+					const whois: WhoIsAbuse = new WhoIsAbuse();
 					whois.GetWhoIsAbuse( whoisData );
-					let cnt: number = this.networkIncident.NICs.reduce( (count, el) => { 
+					const cnt: number = this.networkIncident.NICs.reduce( (count, el) => {
 						return count + (el.value === whois.nic ? 1 : 0); }, 0 );
 					if( cnt > 0 ) {
 						this.networkIncident.incident.NIC = whois.nic;
@@ -265,10 +278,11 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 					}
 					this.networkIncident.incident.AbuseEmailAddress = whois.abuse;
 					this.networkIncident.incident.NetworkName = whois.net;
-					if( this.logLevel >= 4 )
+					if( this.logLevel >= 4 ) {
 						console.log( `${this.codeName}.ipChanged: WhoIs: ${ipAddress}, ${whois.nic}, ${whois.net}, ${whois.abuse}` );
+					}
 					if( whois.BadAbuseEmail( ) ) {
-						let newNote: IncidentNote = new IncidentNote(
+						const newNote: IncidentNote = new IncidentNote(
 							this.newNoteId(),2,'WhoIs',whoisData,new Date( Date.now() ), true );
 						this.networkIncident.incidentNotes = [ ...this.networkIncident.incidentNotes, newNote ];
 					}
@@ -280,13 +294,14 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 				this._alerts.setWhereWhatError( `${this.codeName}: getWhoIs`,
 					'Services-Service failed.', error || 'Server error'));
 		} else {
-			if( this.logLevel >= 4 )
+			if( this.logLevel >= 4 ) {
 				console.log( `${this.codeName}.ipChanged: Addresses are the same ${this.networkIncident.incident.IPAddress}` );
+			}
 		}
 	}
 	//
 	// a new note id needs to be -2 or less
-	// 
+	//
 	newNoteId(): number {
 		let inId = Math.min.apply(Math,this.networkIncident.incidentNotes.map( (n) => n.IncidentNoteId )) - 1;
 		if( inId > -2 ) {
