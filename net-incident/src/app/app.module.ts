@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //
-import { DataTableModule } from '../../node_modules/primeng/components/datatable/datatable'; //primeng/components/datatable/datatable';
-import { DialogModule } from '../../node_modules/primeng/components/dialog/dialog'; //primeng/components/datatable/datatable';
-import { ConfirmDialogModule } from '../../node_modules/primeng/components/confirmdialog/confirmdialog'; //primeng/components/datatable/datatable';
+import { DataTableModule } from '../../node_modules/primeng/components/datatable/datatable';
+import { DialogModule } from '../../node_modules/primeng/components/dialog/dialog';
+import { ConfirmDialogModule } from '../../node_modules/primeng/components/confirmdialog/confirmdialog';
 import { DropdownModule } from '../../node_modules/primeng/components/dropdown/dropdown';
 import { MenubarModule } from '../../node_modules/primeng/components/menubar/menubar';
 //

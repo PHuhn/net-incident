@@ -182,7 +182,9 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 						=== serverShortName.toLowerCase() ) {
 					const changed: boolean = ( userData.ServerShortName.toLowerCase() !== this.user.ServerShortName.toLocaleLowerCase() );
 					this.user = userData;
-					if ( changed ) this.getAllIncidents( );
+					if ( changed ) {
+						this.getAllIncidents( );
+					}
 					this.displayServersWindow = false;
 			} else {
 				if( this.logLevel >= 4 ) {

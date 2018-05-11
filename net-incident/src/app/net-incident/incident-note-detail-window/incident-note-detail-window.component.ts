@@ -31,7 +31,6 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	id: number = 0;
 	private httpSubscription: Subscription;
 	model: IncidentNote;
-	//private company: number; 
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -47,11 +46,14 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 			if( this.add ) {
 				this.model.IsChanged = true;
 			}
-			if( this.logLevel >= 4 )
+			if( this.logLevel >= 4 ) {
 				console.log( `${this.codeName}: ${incidentnote.IncidentNoteId}, win: ${this.displayWin}, add: ${this.add}` );
-		} else
-			if( this.logLevel >= 4 )
+			}
+		} else {
+			if( this.logLevel >= 4 ) {
 				console.log( `${this.codeName}: incident note is undefined` );
+			}
+		}
 	}
 	get incidentnote(): IncidentNote { return this.model; }
 	@Input() networkIncident: NetworkIncident;
@@ -83,21 +85,23 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	// Cleanup
 	// * Stop interval timers (clearTimeout/clearInterval).
-	// * Unsubscribe Observables. 
+	// * Unsubscribe Observables.
 	// * Detach event handlers (addEventListener > removeEventListener).
-	// * Free resources that will not be garbage collected automatically. 
-	// * Unregister all callbacks. 
+	// * Free resources that will not be garbage collected automatically.
+	// * Unregister all callbacks.
 	//
 	ngOnDestroy() {
-		if( this.httpSubscription )
+		if( this.httpSubscription ) {
 			this.httpSubscription.unsubscribe( );
+		}
 	}
 	//
-	// close the window, via 
+	// close the window, via
 	//
 	windowClose(saved: boolean) {
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}: windowClose: ${saved}` );
+		}
 		if( saved === false ) {
 			this.onClose.emit( saved );
 			return;
@@ -118,8 +122,9 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// (change)='onTypeIdDropdownChanged( $event )'
 	//
 	onTypeIdDropdownChanged( selected: number ) {
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}: onTypeIdDropdownChanged: ${selected}` );
+		}
 		if( selected > 0 ) {
 			this.model.NoteTypeId = selected;
 			this.model.NoteTypeShortDesc =
@@ -137,13 +142,13 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	performIncidentType( incidentType: number ): void {
 		if( incidentType > 0 && incidentType < 4 ) {
-			if( incidentType == 1 ) {
+			if( incidentType === 1 ) {
 				this.getPing( );
 			}
-			if ( incidentType == 2 ) {
+			if ( incidentType === 2 ) {
 				this.getWhoIs( );
 			}
-			if ( incidentType == 3 ) {
+			if ( incidentType === 3 ) {
 				this.getReport( );
 			}
 		}
@@ -152,8 +157,9 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// Ping this IP-address
 	//
 	getPing( ): void {
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.getPing: Entering, ip: ${this.networkIncident.incident.IPAddress}` );
+		}
 		this.model.Note = 'This may take 10 seconds...';
 		this.httpSubscription = this._services.getPing( this.networkIncident.incident.IPAddress ).subscribe(( pingData: string ) => {
 			this.model.Note = ( pingData !== '' ? pingData :
@@ -166,8 +172,9 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// WhoIs this IP-address
 	//
 	getWhoIs( ): void {
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.getWhoIs: Entering, ip: ${this.networkIncident.incident.IPAddress}` );
+		}
 		this.httpSubscription = this._services.getWhoIs( this.networkIncident.incident.IPAddress ).subscribe(( whoisData: string ) => {
 			this.model.Note = ( whoisData !== '' ? whoisData :
 				`-no data for ${this.networkIncident.incident.IPAddress}-` );
@@ -179,14 +186,16 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// Compose e-mail message for this IP-address
 	//
 	getReport( ): void {
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.getReport: Entering, ip: ${this.networkIncident.incident.IPAddress}` );
-		let abuseReport: AbuseEmailReport = new AbuseEmailReport( this.networkIncident );
+		}
+		const abuseReport: AbuseEmailReport = new AbuseEmailReport( this.networkIncident );
 		if( abuseReport.IsValid() ) {
 			this.model.Note = abuseReport.ComposeEmail( ).replace(/\\n/g, '\n');
 		} else {
-			if( this.logLevel >= 4 )
+			if( this.logLevel >= 4 ) {
 				console.error( abuseReport.errMsgs );
+			}
 			this._alerts.warningSet( abuseReport.errMsgs );
 		}
 	}
@@ -194,7 +203,7 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// Check against a common set of validation rules.
 	//
 	validate( ) {
-		let errMsgs: Message[] = this.validateNote( this.model, this.add );
+		const errMsgs: Message[] = this.validateNote( this.model, this.add );
 		//
 		if( errMsgs.length > 0 ) {
 			console.log( 'Error: ' + errMsgs[0].message );
@@ -208,19 +217,19 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 		let errMsgs: Message[] = [];
 		//
 		if( model.IncidentNoteId === undefined || model.IncidentNoteId === null ) {
-			errMsgs.push( new Message( 'IncidentNoteId-1', "'Incident Note Id' is required." ) );
+			errMsgs.push( new Message( 'IncidentNoteId-1', `'Incident Note Id' is required.` ) );
 		}
 		if( model.NoteTypeId === undefined || model.NoteTypeId === null || model.NoteTypeId < 1 ) {
-			errMsgs.push( new Message( 'NoteTypeId-1', "'Note Type Id' is required." ) );
+			errMsgs.push( new Message( 'NoteTypeId-1', `'Note Type Id' is required.` ) );
 		}
 		if( model.NoteTypeId > 2147483647 ) {
-			errMsgs.push( new Message( 'NoteTypeId-2', "'Note Type Id' is too large, over: 2147483647" ) );
+			errMsgs.push( new Message( 'NoteTypeId-2', `'Note Type Id' is too large, over: 2147483647` ) );
 		}
 		if( model.Note.length === 0 || model.Note === undefined ) {
-			errMsgs.push( new Message( 'Note-1', "'Note' is required." ) );
+			errMsgs.push( new Message( 'Note-1', `'Note' is required.` ) );
 		}
 		if( model.Note.length > 1073741823 ) {
-			errMsgs.push( new Message( 'Note-2', "'Note' max length of 1073741823." ) );
+			errMsgs.push( new Message( 'Note-2', `'Note' max length of 1073741823.` ) );
 		}
 		//
 		return errMsgs;
@@ -228,15 +237,16 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// File access
-	//  create & update
+	// create & update
 	//
 	// Call create data service,
 	// if successful then emit to parent form success.
 	//
 	createItem( ): void {
 		if( this.model.IncidentNoteId === 0 ) {
-			if( this.logLevel >= 4 )
+			if( this.logLevel >= 4 ) {
 				console.log( this.model );
+			}
 			// give a fake id, -1 is a bad fake id because findIndex can return -1
 			this.model.IncidentNoteId = this.newNoteId();
 			// this reassignment (spread), tells angular to update view
@@ -266,11 +276,11 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	updateItem( ): void {
 		if( this.model.IncidentNoteId !== 0 ) {
-			let idx = this.networkIncident.incidentNotes.findIndex( n => n.IncidentNoteId  === this.model.IncidentNoteId );
+			const idx = this.networkIncident.incidentNotes.findIndex( n => n.IncidentNoteId  === this.model.IncidentNoteId );
 			if( idx !== -1 ) {
 				this.model.IsChanged = true;
 				this.networkIncident.incidentNotes = this.networkIncident.incidentNotes.map(
-					( el ) => el.IncidentNoteId == this.model.IncidentNoteId ? this.model : el );
+					( el ) => el.IncidentNoteId === this.model.IncidentNoteId ? this.model : el );
 			} else {
 				const msg = `Id not found: ${this.model.IncidentNoteId}`;
 				console.error( msg );

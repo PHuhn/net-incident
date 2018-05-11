@@ -28,8 +28,8 @@ describe('AlertsService', () => {
 	});
 	//
 	it('should take alerts message ...', () => {
-		let msg = 'Hello World';
-		var subscription = service.getAlerts().subscribe(
+		const msg = 'Hello World';
+		const subscription = service.getAlerts().subscribe(
 					(alertMsg: Alerts) => {
 			expect(alertMsg.level).toBe(AlertLevel.Info);
 			expect(alertMsg.messages.length).toBe(1);
@@ -39,7 +39,7 @@ describe('AlertsService', () => {
 	});
 	//
 	it('should take WhereWhat info Message ...', () => {
-		var subscription = service.getAlerts().subscribe(
+		const subscription = service.getAlerts().subscribe(
 					(alertMsg: Alerts) => {
 			expect(alertMsg.level).toBe(AlertLevel.Info);
 			expect(alertMsg.messages.length).toBe(2);
@@ -50,7 +50,7 @@ describe('AlertsService', () => {
 	});
 	//
 	it('should take WhereWhat Success Message ...', () => {
-		var subscription = service.getAlerts().subscribe(
+		const subscription = service.getAlerts().subscribe(
 					(alertMsg: Alerts) => {
 			expect(alertMsg.level).toBe(AlertLevel.Success);
 			expect(alertMsg.messages.length).toBe(2);
@@ -61,7 +61,7 @@ describe('AlertsService', () => {
 	});
 	//
 	it('should take WhereWhatWarning message ...', () => {
-		var subscription = service.getAlerts().subscribe(
+		const subscription = service.getAlerts().subscribe(
 					(alertMsg: Alerts) => {
 			expect(alertMsg.level).toBe(AlertLevel.Warning);
 			expect(alertMsg.messages.length).toBe(2);
@@ -72,7 +72,7 @@ describe('AlertsService', () => {
 	});
 	//
 	it('should take WhereWhatError message ...', () => {
-		var subscription = service.getAlerts().subscribe(
+		const subscription = service.getAlerts().subscribe(
 					(alertMsg: Alerts) => {
 			expect(alertMsg.level).toBe(AlertLevel.Error);
 			expect(alertMsg.messages.length).toBeTruthy(3);
@@ -84,9 +84,9 @@ describe('AlertsService', () => {
 	});
 	//
 	it('should take warningSet message ...', () => {
-		let msg: string = 'Is required.';
-		let msgs: Message[] = [new Message( '1', msg )];
-		var subscription = service.getAlerts().subscribe(
+		const msg: string = 'Is required.';
+		const msgs: Message[] = [new Message( '1', msg )];
+		const subscription = service.getAlerts().subscribe(
 					(alertMsg: Alerts) => {
 			expect(alertMsg.level).toBe(AlertLevel.Warning);
 			expect(alertMsg.messages.length).toBeTruthy(1);

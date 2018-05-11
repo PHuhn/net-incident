@@ -6,19 +6,19 @@ import { Menubar, MenubarModule } from '../../../../node_modules/primeng/compone
 import { environment } from '../../../environments/environment';
 //
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+	selector: 'app-header',
+	templateUrl: './header.component.html',
+	styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
 	//
 	// ------------------------------------------------------------------------
 	// Data declaration.
 	//
-	codeName: string = 'Header-Component'
-  title: string = 'Network Incidents';
-  logLevel: number = 1;
-  //
+	codeName: string = 'Header-Component';
+	title: string = 'Network Incidents';
+	logLevel: number = 1;
+	//
 	// the constructor of this the header.component
 	//
 	constructor() { }
@@ -49,9 +49,9 @@ export class HeaderComponent implements OnInit {
 			title?: string;
 		}
 	*/
-  ngOnInit() {
-    // 1=error, 2=warning, 3=info, 4=verbose
-    this.logLevel = environment.logLevel;
+	ngOnInit() {
+		// 1=error, 2=warning, 3=info, 4=verbose
+		this.logLevel = environment.logLevel;
 		//
 		this.items = [{
 			label: `${this.title}`,
@@ -66,12 +66,13 @@ export class HeaderComponent implements OnInit {
 			]
 		}];
 		//
-  }
+	}
 	//
 	logoutClicked( ) {
 		//
-    if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.logout: Logout clicked.`);
+		}
 		this.logout.emit(null);
 		//
 	}

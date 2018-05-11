@@ -34,7 +34,7 @@ export class AlertsComponent implements OnInit {
 		// console.log( 'AlertsComponent, OnInit ... ' );
 		// Subscribe to the service
 		// Will fire everytime other component use the set methods
-		let subscription = this._alertService.getAlerts().subscribe(
+		const subscription = this._alertService.getAlerts().subscribe(
 					(alertMsg: Alerts) => {
 			this.showMsgs = true;
 			this.level = alertMsg.level;
@@ -57,7 +57,6 @@ export class AlertsComponent implements OnInit {
 		switch( +this.level ) {
 			case AlertLevel.Error:
 				return 'alertMessages nsg-msg-danger';
-				//break; // unreachable
 			case AlertLevel.Warning:
 				return 'alertMessages nsg-msg-warning';
 			case AlertLevel.Success:

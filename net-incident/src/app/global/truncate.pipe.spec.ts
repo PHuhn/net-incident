@@ -4,7 +4,7 @@ import { TruncatePipe } from './truncate.pipe';
 describe('TruncatePipe', () => {
 	//
 	let pipe: TruncatePipe;
-	let val: string = '12345678901234567890';
+	const val: string = '12345678901234567890';
 	//
 	beforeEach(() => {
 		pipe = new TruncatePipe();
