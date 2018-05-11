@@ -1,0 +1,1 @@
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [63.251.98.12], Wednesday, May 09,2018 02:27:11

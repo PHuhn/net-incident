@@ -13,13 +13,13 @@ export class ConfirmationServiceMock { // extends ConfirmationService {
 	// public icon: string = '';
 	// message	string	null	Message of the confirmation.
 	public message: string = '';
-	//	Call Accept to emulate a user accepting
+	// Call Accept to emulate a user accepting
 	public accept: Function;
-	//	Call Reject to emulate a user rejecting
+	// Call Reject to emulate a user rejecting
 	public reject: Function;
 	//
-    private requireConfirmationSource = new Subject<any>();
-    requireConfirmation$ = this.requireConfirmationSource.asObservable();
+	private requireConfirmationSource = new Subject<any>();
+	requireConfirmation$ = this.requireConfirmationSource.asObservable();
 	//
 	public confirm(config: any) {
 		console.log( 'In confirm service mock...' );

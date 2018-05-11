@@ -53,7 +53,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	@Input() user: User;
 	//
 	constructor(
-		private _alerts: AlertsService, 
+		private _alerts: AlertsService,
 		private _data: IncidentService,
 		private _user: UserService,
 		private _confirmationService: ConfirmationService ) { }
@@ -77,9 +77,10 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// Add button clicked, launch edit detail window.
 	//
 	addItemClicked( ) {
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.addItemClicked:` );
-		let empty: Incident = this._data.emptyIncident( )
+		}
+		const empty: Incident = this._data.emptyIncident( );
 		empty.ServerId = this.user.Server.ServerId;
 		this.editItemClicked( empty );
 	}
@@ -87,7 +88,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// Edit button clicked, launch edit detail window.
 	//
 	editItemClicked( item: Incident ) {
-		//this.windowIncident = item;
+		//
 		this.id = item.IncidentId;
 		this.detailWindow = new DetailWindowInput( this.user, item );
 		this.windowDisplay = true;
@@ -101,20 +102,23 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	//
 	deleteItemClicked( item: Incident ): boolean {
 		this.id = item.IncidentId;
-		if( this.logLevel >= 3 )
+		if( this.logLevel >= 3 ) {
 			console.log( `${this.codeName}.deleteItemClicked: ${this.id}` );
+		}
 		// the p-confirmDialog in in app.component
 		this._confirmationService.confirm({
 			key: 'Delete',
 			message: 'Are you sure you want to delete ' + this.id + '?',
 			accept: () => {
-				if( this.logLevel >= 4 )
+				if( this.logLevel >= 4 ) {
 					console.log( `User's response: true` );
+				}
 				this.deleteItem( );
 			},
 			reject: () => {
-				if( this.logLevel >= 4 )
+				if( this.logLevel >= 4 ) {
 					console.log( `User's dismissed.` );
+				}
 			}
 		});
 		return false;
@@ -123,11 +127,13 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// on edit window closed
 	//
 	onClose( saved: boolean ) {
-		if( this.logLevel >= 4 )
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.onClose: entering: ${saved}` );
+		}
 		if( saved === true ) {
-			if( this.logLevel >= 3 )
+			if( this.logLevel >= 3 ) {
 				console.log( `${this.codeName}.onClose: Refreshing...` );
+			}
 			this.getAllIncidents( );
 		}
 		this.windowDisplay = false;
@@ -145,8 +151,9 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// Launch server selection window
 	//
 	onChangeServer( event: any ) {
-		if( this.logLevel >= 3 )
+		if( this.logLevel >= 3 ) {
 			console.log( `${this.codeName}.onClose: entering: ${event}` );
+		}
 		this.selectItemsWindow = this.user.ServerShortNames;
 		this.displayServersWindow = true;
 	}
@@ -167,18 +174,20 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 		console.log( `${this.codeName}.getUserServer: user: ${userName}, short: ${serverShortName}` );
 		this._user.getUserServer( userName, serverShortName )
 								.subscribe( ( userData: User ) => {
-			if( this.logLevel >= 4 )
-			console.log( `${this.codeName}.authUser: user: ${userData.UserName}` );
-			if( userData.ServerShortName !== '' 
+			if( this.logLevel >= 4 ) {
+				console.log( `${this.codeName}.authUser: user: ${userData.UserName}` );
+			}
+			if( userData.ServerShortName !== ''
 				&& userData.ServerShortName.toLowerCase()
-				=== serverShortName.toLowerCase() ) {
-					let changed: boolean = ( userData.ServerShortName.toLowerCase() !== this.user.ServerShortName.toLocaleLowerCase() );
+						=== serverShortName.toLowerCase() ) {
+					const changed: boolean = ( userData.ServerShortName.toLowerCase() !== this.user.ServerShortName.toLocaleLowerCase() );
 					this.user = userData;
 					if ( changed ) this.getAllIncidents( );
 					this.displayServersWindow = false;
 			} else {
-				if( this.logLevel >= 4 )
-					console.log( 'Returned: ' + userData.ServerShortName );
+				if( this.logLevel >= 4 ) {
+					console.log( `${this.codeName}.getUserServer, Returned: ${userData.ServerShortName}` );
+				}
 				this.selectItemsWindow = this.user.ServerShortNames;
 				this.displayServersWindow = true;
 			}
@@ -196,8 +205,9 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 				const item: Incident[] = this.incidents.filter(function(el) {
 					return el.IncidentId === editId;
 				} );
-				if( this.logLevel >= 3 )
+				if( this.logLevel >= 3 ) {
 					console.log( item );
+				}
 			}
 		}, ( error ) =>
 			this.serviceErrorHandler(

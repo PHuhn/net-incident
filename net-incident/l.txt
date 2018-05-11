@@ -1,154 +1,78 @@
 
-ERR: ./app/global/alerts/alerts.service.ts[36, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/global/alerts/alerts.service.ts[43, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/global/alerts/alerts.service.ts[50, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/global/alerts/alerts.service.ts[58, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/services/auth.service.ts[54, 1]: Exceeds maximum line length of 140
-ERR: ./app/net-incident/services/network-incident.service.ts[33, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/services/network-incident.service.ts[84, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/global/alerts/alerts.component.ts[60, 7]: comment must start with a space
-ERR: ./app/global/alerts/alerts.component.ts[37, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/whois-abuse.ts[28, 1]: Exceeds maximum line length of 140
-ERR: ./app/net-incident/whois-abuse.ts[59, 7]: Identifier 'returnArray' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/network-log-grid/network-log-grid.component.ts[2, 1]: Exceeds maximum line length of 140
-
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[90, 5]: comment must start with a space
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[80, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[104, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[111, 5]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[116, 5]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[126, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[129, 4]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[148, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[170, 4]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[177, 6]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[180, 5]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[199, 5]: if statements must be braced
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[56, 34]: trailing whitespace
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[172, 39]: trailing whitespace
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[82, 7]: Identifier 'empty' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[175, 10]: Identifier 'changed' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/incident-grid/incident-grid.component.ts[82, 52]: Missing semicolon
-ERR: ./app/net-incident/email.ts[22, 9]: if statements must be braced
-ERR: ./app/net-incident/email.ts[24, 9]: else statements must be braced
-ERR: ./app/net-incident/email.ts[18, 36]: trailing whitespace
-ERR: ./app/net-incident/abuse-email-report.ts[47, 17]: if statements must be braced
-ERR: ./app/net-incident/abuse-email-report.ts[117, 9]: if statements must be braced
-ERR: ./app/net-incident/abuse-email-report.ts[121, 13]: if statements must be braced
-ERR: ./app/net-incident/abuse-email-report.ts[58, 1]: Exceeds maximum line length of 140
-ERR: ./app/net-incident/abuse-email-report.ts[61, 1]: Exceeds maximum line length of 140
-ERR: ./app/net-incident/abuse-email-report.ts[64, 1]: Exceeds maximum line length of 140
-ERR: ./app/net-incident/abuse-email-report.ts[114, 20]: Shadowed variable: 'content'
-ERR: ./app/net-incident/abuse-email-report.ts[76, 4]: trailing whitespace
-ERR: ./app/net-incident/abuse-email-report.ts[237, 72]: trailing whitespace
-ERR: ./app/net-incident/abuse-email-report.ts[193, 17]: Identifier 'emailRequest' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/abuse-email-report.ts[212, 17]: Identifier 'timeZone' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/abuse-email-report.ts[213, 17]: Identifier 'log' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/abuse-email-report.ts[222, 17]: Identifier 'line' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/abuse-email-report.ts[205, 13]: Identifier 'lines' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/abuse-email-report.ts[257, 13]: Identifier 'tmpId' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/abuse-email-report.ts[258, 13]: Identifier 'templates' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/abuse-email-report.ts[59, 56]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[62, 51]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[65, 54]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[68, 51]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[72, 50]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[75, 53]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[78, 58]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[82, 52]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[85, 48]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[88, 56]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[91, 50]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[94, 53]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[97, 58]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[101, 52]: " should be '
-ERR: ./app/net-incident/abuse-email-report.ts[160, 54]: Missing semicolon
-ERR: ./app/net-incident/abuse-email-report.ts[221, 14]: Missing semicolon
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[34, 4]: comment must start with a space
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[50, 4]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[53, 4]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[92, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[99, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[121, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[155, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[169, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[182, 3]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[188, 4]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[238, 4]: if statements must be braced
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[34, 28]: trailing whitespace
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[86, 31]: trailing whitespace
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[88, 71]: trailing whitespace
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[89, 32]: trailing whitespace
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[96, 26]: trailing whitespace
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[184, 7]: Identifier 'abuseReport' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[197, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[208, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[269, 8]: Identifier 'idx' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[211, 51]: " should be '
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[214, 47]: " should be '
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[217, 47]: " should be '
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[220, 41]: " should be '
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[223, 41]: " should be '
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[140, 21]: == should be ===
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[143, 22]: == should be ===
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[146, 22]: == should be ===
-ERR: ./app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[273, 34]: == should be ===
-ERR: ./app/net-incident/login.ts[17, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/net-incident/login.ts[20, 45]: " should be '
-ERR: ./app/net-incident/login.ts[23, 45]: " should be '
-ERR: ./app/net-incident/login.ts[26, 45]: " should be '
-ERR: ./app/net-incident/login.ts[29, 45]: " should be '
-ERR: ./app/public/login/login.component.ts[117, 4]: comment must start with a space
-ERR: ./app/public/login/login.component.ts[57, 5]: if statements must be braced
-ERR: ./app/public/login/login.component.ts[88, 9]: if statements must be braced
-ERR: ./app/public/login/login.component.ts[96, 11]: if statements must be braced
-ERR: ./app/public/login/login.component.ts[110, 5]: if statements must be braced
-ERR: ./app/public/login/login.component.ts[25, 47]: trailing whitespace
-ERR: ./app/public/login/login.component.ts[45, 28]: trailing whitespace
-ERR: ./app/public/login/login.component.ts[66, 9]: trailing whitespace
-ERR: ./app/public/login/login.component.ts[60, 9]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/public/register/register.component.ts[17, 50]: trailing whitespace
-ERR: ./app/public/register/register.component.ts[36, 73]: Missing semicolon
-ERR: ./app/public/header/header.component.ts[73, 5]: if statements must be braced
-ERR: ./app/public/header/header.component.ts[18, 39]: Missing semicolon
-ERR: ./app/public/testing/testing.component.ts[43, 3]: Declaration of instance field not allowed after declaration of instance method. Instead, this should come at the beginning of the class/interface.
-ERR: ./app/public/testing/testing.component.ts[44, 2]: Declaration of instance field not allowed after declaration of instance method. Instead, this should come at the beginning of the class/interface.
-ERR: ./app/public/testing/testing.component.ts[15, 49]: trailing whitespace
-ERR: ./app/public/testing/testing.component.ts[30, 50]: trailing whitespace
-ERR: ./app/public/testing/testing.component.ts[31, 50]: trailing whitespace
-ERR: ./app/app-routing.module.ts[19, 3]: comment must start with a space
-ERR: ./app/global/global.module.ts[2, 3]: comment must start with a space
-ERR: ./app/global/global.module.ts[11, 3]: comment must start with a space
-ERR: ./app/global/global.module.ts[12, 3]: comment must start with a space
-ERR: ./app/app.component.ts[36, 4]: comment must start with a space
-ERR: ./app/app.component.ts[65, 4]: comment must start with a space
-ERR: ./app/app.component.ts[59, 5]: if statements must be braced
-ERR: ./app/app.component.ts[68, 5]: if statements must be braced
-ERR: ./app/app.component.ts[8, 33]: Too many spaces after 'from'
-ERR: ./app/app.component.ts[8, 33]: Line breaks are not allowed in import declaration
-ERR: ./app/app.component.ts[91, 1]: Exceeds maximum line length of 140
-ERR: ./app/app.component.ts[8, 38]: trailing whitespace
-ERR: ./app/app.component.ts[84, 73]: trailing whitespace
-ERR: ./app/app.component.ts[92, 4]: trailing whitespace
-ERR: ./app/app.component.ts[76, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
-ERR: ./app/app.component.ts[77, 52]: " should be '
-ERR: ./app/app.component.ts[78, 7]: " should be '
-ERR: ./app/app.component.ts[78, 41]: " should be '
-ERR: ./app/app.component.ts[79, 7]: " should be '
-ERR: ./app/app.component.ts[79, 35]: " should be '
-ERR: ./app/app.component.ts[79, 48]: " should be '
-ERR: ./app/app.component.ts[79, 56]: " should be '
-ERR: ./app/app.component.ts[80, 7]: " should be '
-ERR: ./app/app.component.ts[80, 29]: " should be '
-ERR: ./app/app.component.ts[85, 20]: " should be '
-ERR: ./app/app.component.ts[85, 28]: " should be '
-ERR: ./app/app.component.ts[85, 56]: " should be '
-ERR: ./app/app.component.ts[88, 7]: " should be '
-ERR: ./app/app.component.ts[22, 36]: Missing semicolon
-ERR: ./app/app.module.ts[7, 96]: comment must start with a space
-ERR: ./app/app.module.ts[8, 87]: comment must start with a space
-ERR: ./app/app.module.ts[9, 108]: comment must start with a space
-ERR: ./app/app.module.ts[9, 1]: Exceeds maximum line length of 140
-ERR: ./app/net-incident/services/mocks/ConfirmationService.mock.ts[16, 4]: comment must start with a space
+ERR: ./global/alerts/alerts.service.ts[36, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./global/alerts/alerts.service.ts[43, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./global/alerts/alerts.service.ts[50, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./global/alerts/alerts.service.ts[58, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/services/auth.service.ts[54, 1]: Exceeds maximum line length of 140
+ERR: ./net-incident/services/network-incident.service.ts[33, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/services/network-incident.service.ts[84, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./global/alerts/alerts.component.ts[60, 7]: comment must start with a space
+ERR: ./global/alerts/alerts.component.ts[37, 7]: Identifier 'subscription' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/whois-abuse.ts[28, 1]: Exceeds maximum line length of 140
+ERR: ./net-incident/whois-abuse.ts[59, 7]: Identifier 'returnArray' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/network-log-grid/network-log-grid.component.ts[2, 1]: Exceeds maximum line length of 140
+ERR: ./net-incident/incident-detail-window/incident-detail-window.component.ts[194, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/incident-grid/incident-grid.component.ts[185, 6]: if statements must be braced
+ERR: ./net-incident/abuse-email-report.ts[211, 7]: Identifier 'lines' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[34, 4]: comment must start with a space
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[50, 4]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[53, 4]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[92, 3]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[99, 3]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[121, 3]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[155, 3]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[169, 3]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[182, 3]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[188, 4]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[238, 4]: if statements must be braced
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[34, 28]: trailing whitespace
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[86, 31]: trailing whitespace
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[88, 71]: trailing whitespace
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[89, 32]: trailing whitespace
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[96, 26]: trailing whitespace
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[184, 7]: Identifier 'abuseReport' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[197, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[208, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[269, 8]: Identifier 'idx' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[211, 51]: " should be '
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[214, 47]: " should be '
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[217, 47]: " should be '
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[220, 41]: " should be '
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[223, 41]: " should be '
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[140, 21]: == should be ===
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[143, 22]: == should be ===
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[146, 22]: == should be ===
+ERR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[273, 34]: == should be ===
+ERR: ./net-incident/login.ts[17, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./net-incident/login.ts[20, 45]: " should be '
+ERR: ./net-incident/login.ts[23, 45]: " should be '
+ERR: ./net-incident/login.ts[26, 45]: " should be '
+ERR: ./net-incident/login.ts[29, 45]: " should be '
+ERR: ./public/login/login.component.ts[117, 4]: comment must start with a space
+ERR: ./public/login/login.component.ts[57, 5]: if statements must be braced
+ERR: ./public/login/login.component.ts[88, 9]: if statements must be braced
+ERR: ./public/login/login.component.ts[96, 11]: if statements must be braced
+ERR: ./public/login/login.component.ts[110, 5]: if statements must be braced
+ERR: ./public/login/login.component.ts[25, 47]: trailing whitespace
+ERR: ./public/login/login.component.ts[45, 28]: trailing whitespace
+ERR: ./public/login/login.component.ts[66, 9]: trailing whitespace
+ERR: ./public/login/login.component.ts[60, 9]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERR: ./public/register/register.component.ts[17, 50]: trailing whitespace
+ERR: ./public/register/register.component.ts[36, 73]: Missing semicolon
+ERR: ./public/header/header.component.ts[73, 5]: if statements must be braced
+ERR: ./public/header/header.component.ts[18, 39]: Missing semicolon
+ERR: ./public/testing/testing.component.ts[43, 3]: Declaration of instance field not allowed after declaration of instance method. Instead, this should come at the beginning of the class/interface.
+ERR: ./public/testing/testing.component.ts[44, 2]: Declaration of instance field not allowed after declaration of instance method. Instead, this should come at the beginning of the class/interface.
+ERR: ./public/testing/testing.component.ts[15, 49]: trailing whitespace
+ERR: ./public/testing/testing.component.ts[30, 50]: trailing whitespace
+ERR: ./public/testing/testing.component.ts[31, 50]: trailing whitespace
+ERR: ./app-routing.module.ts[19, 3]: comment must start with a space
+ERR: ./global/global.module.ts[2, 3]: comment must start with a space
+ERR: ./global/global.module.ts[11, 3]: comment must start with a space
+ERR: ./global/global.module.ts[12, 3]: comment must start with a space
+ERR: ./app.module.ts[7, 96]: comment must start with a space
+ERR: ./app.module.ts[8, 87]: comment must start with a space
+ERR: ./app.module.ts[9, 108]: comment must start with a space
+ERR: ./app.module.ts[9, 1]: Exceeds maximum line length of 140
 
 Lint errors found in the listed files.

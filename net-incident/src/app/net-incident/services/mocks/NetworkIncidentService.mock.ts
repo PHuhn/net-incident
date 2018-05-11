@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Rx';
 import { NetworkIncidentService } from '../../../net-incident/services/network-incident.service';
 import { Message } from '../../../global/message';
 import { SelectItemClass } from '../../../net-incident/select-item-class';
-import { NetworkIncident } from '../../../net-incident/network-incident'
-import { NetworkIncidentSave } from '../../../net-incident/network-incident-save'
+import { NetworkIncident } from '../../../net-incident/network-incident';
+import { NetworkIncidentSave } from '../../../net-incident/network-incident-save';
 import { IIncident, Incident } from '../../../net-incident/incident';
 import { INetworkLog, NetworkLog } from '../../../net-incident/network-log';
 //
@@ -44,13 +44,13 @@ export class NetworkIncidentServiceMock  extends NetworkIncidentService {
 		this.mockCrud = networkIncidentSave;
 		return this.handleResponse( this.mockCrudResponse );
 	}
-    //
-    handleResponse( response: any ): any {
-        if ( response instanceof HttpResponse ) {
+	//
+	handleResponse( response: any ): any {
+		if ( response instanceof HttpResponse ) {
 			return Observable.of( response );
 		}
-        return this.handleError( response );
-    }
+		return this.handleError( response );
+	}
 	//
 }
 // ===========================================================================

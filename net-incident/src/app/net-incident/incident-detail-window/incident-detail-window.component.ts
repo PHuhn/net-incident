@@ -67,6 +67,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		this.id = detailInput.incident.IncidentId;
 		this.ip = detailInput.incident.IPAddress;
 		this.add = ( detailInput.incident.IncidentId < 1 ? true : false );
+		this.networkIncident = undefined;
 		this.getNetIncident( this.id, this.serverId );
 		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}: Editing: ${this.id}, win: ${this.displayWin}` );
@@ -229,7 +230,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	validateUser( errMsgs: Message[], model: IUser ): void {
 		//
-        // from user
+		// from user
 		if( this.networkIncident.user.UserName === '' || this.networkIncident.user.UserName === undefined ) {
 			errMsgs.push( new Message( 'UserName-1', `From User, 'User Name' is required.` ) );
 		}
