@@ -39,6 +39,9 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 		this.selectedLogs = this.networkIncident.networkLogs.filter( (el) => {
 			return el.Selected === true;
 		});
+		if( environment.logLevel >= 4 ) {
+			this.debug = 1;
+		}
 		if( this.debug > 0 ) {
 			console.log( this.selectedLogs );
 		}
@@ -199,6 +202,9 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 			//
 			const emailRequest = new EmailRequest( fromEmail, abuse, subject, `${intro}\n${times}\n${thanks}\n${logs}\n`);
 			emailRequest.from.name = fromName;
+			if( this.debug > 0 ) {
+				console.log( emailRequest );
+			}
 			return JSON.stringify( emailRequest );
 		} catch (e) {
 			return e;

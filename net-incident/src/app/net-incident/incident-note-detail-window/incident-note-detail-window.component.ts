@@ -130,7 +130,8 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 			this.model.NoteTypeShortDesc =
 				this.networkIncident.noteTypes.find( t => t.value === selected ).label;
 			if( this.add ) {
-				this.performIncidentType( selected );
+				this.performIncidentType( this.model.NoteTypeId, this.model.NoteTypeShortDesc );
+	
 			}
 		}
 	}
@@ -140,16 +141,28 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// * WhoIs this IP-address,
 	// * Compose e-mail message for this IP-address.
 	//
-	performIncidentType( incidentType: number ): void {
-		if( incidentType > 0 && incidentType < 4 ) {
-			if( incidentType === 1 ) {
+	performIncidentType( noteType: number, noteDesc: string ): void {
+		if( this.logLevel >= 4 ) {
+			console.log( `${this.codeName}.performIncidentType: Entering, id: ${noteType}, ${noteDesc}` );
+		}
+		switch( noteDesc.toLowerCase( ) ) {
+			case 'ping': {
 				this.getPing( );
+				break;
 			}
-			if ( incidentType === 2 ) {
+			case 'whois': {
 				this.getWhoIs( );
+				break;
 			}
-			if ( incidentType === 3 ) {
+			case 'isp rpt': {
 				this.getReport( );
+				break;
+			}
+			default: {
+				if( this.logLevel >= 4 ) {
+					console.log( `${this.codeName}.performIncidentType: default: ${noteType}, ${noteDesc}` );
+				}
+				break;
 			}
 		}
 	}
@@ -186,7 +199,7 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// Compose e-mail message for this IP-address
 	//
 	getReport( ): void {
-		if( this.logLevel >= 4 ) {
+		if( this.logLevel >= 3 ) {
 			console.log( `${this.codeName}.getReport: Entering, ip: ${this.networkIncident.incident.IPAddress}` );
 		}
 		const abuseReport: AbuseEmailReport = new AbuseEmailReport( this.networkIncident );
