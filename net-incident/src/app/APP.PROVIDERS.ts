@@ -18,20 +18,20 @@ import { IncidentService } from './net-incident/services/incident.service';
 import { NetworkIncidentService } from './net-incident/services/network-incident.service';
 //
 export const APP_PROVIDERS = [
-    ConfirmationService,
-    AlertsService,
-    //
-    UserService,
-    AuthService,
-    {
-        // HttpClientModule in global.module.ts
-        provide: HTTP_INTERCEPTORS,
-        useClass: AuthInterceptorService,
-        multi: true
-    },
-    //
-    ServicesService,
-    IncidentService,
-    NetworkIncidentService
+	ConfirmationService,
+	AlertsService,
+	//
+	UserService,
+	AuthService,
+	{
+		// HttpClientModule in global.module.ts
+		provide: HTTP_INTERCEPTORS,
+		useClass: AuthInterceptorService,
+		multi: true
+	},
+	//
+	ServicesService,
+	IncidentService,
+	NetworkIncidentService
 ];
 // ===========================================================================

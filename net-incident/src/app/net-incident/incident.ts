@@ -16,7 +16,7 @@
 export interface IIncident {
 	IncidentId: number;
 	ServerId: number;
-    IPAddress: string;
+	IPAddress: string;
 	NIC: string;
 	NetworkName: string;
 	AbuseEmailAddress: string;

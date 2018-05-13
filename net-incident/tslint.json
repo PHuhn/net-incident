@@ -19,7 +19,7 @@
     ],
     "import-spacing": true,
     "indent": [
-      false,
+      true,
       "tabs",
       4
     ],

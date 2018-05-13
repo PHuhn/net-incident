@@ -131,7 +131,7 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 		this.nic = nic; this.net = net; this.abuse = abuse; this.inet = inet;
 		if( this.BadAbuseEmail() ) {
 			this.abuse = '';
-        }
+		}
 		return { 'nic': nic, 'net': net, 'abuse': abuse, 'inet': inet };
 	}
 	//
@@ -163,7 +163,7 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 		this.nic = nic; this.net = net; this.abuse = abuse; this.inet = inet;
 		if( this.BadAbuseEmail() ) {
 			this.abuse = '';
-        }
+		}
 		return { 'nic': nic, 'net': net, 'abuse': abuse, 'inet': inet };
 	}
 	//
@@ -201,7 +201,7 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 						if( flds[0] === '%' && flds[1].toLowerCase( ) === 'abuse' ) {
 							if( this.logLevel >= 4 ) {
 								console.log( line );
-                            }
+							}
 							const abuseLine = line.split( `'` );
 							abuse = abuseLine[ abuseLine.length - 2 ];
 						}
@@ -231,7 +231,7 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 		this.nic = nic; this.net = net; this.abuse = abuse; this.inet = inet;
 		if( this.BadAbuseEmail() ) {
 			this.abuse = '';
-        }
+		}
 		return { 'nic': nic, 'net': net, 'abuse': abuse, 'inet': inet };
 	}
 	//

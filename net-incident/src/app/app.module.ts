@@ -21,23 +21,23 @@ import { HeaderComponent } from './public/header/header.component';
 //
 @NgModule({
   declarations: [
-    AppComponent,
-    APP_COMPONENTS,
-    TruncatePipe,
-    HeaderComponent
+  	AppComponent,
+	  APP_COMPONENTS,
+  	TruncatePipe,
+	  HeaderComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    GlobalModule,
-    DataTableModule,
-    DialogModule,
-    ConfirmDialogModule,
-    DropdownModule,
-    MenubarModule
+  	BrowserModule,
+	  AppRoutingModule,
+  	GlobalModule,
+	  DataTableModule,
+  	DialogModule,
+	  ConfirmDialogModule,
+  	DropdownModule,
+	  MenubarModule
   ],
   providers: [
-    APP_PROVIDERS
+  	APP_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

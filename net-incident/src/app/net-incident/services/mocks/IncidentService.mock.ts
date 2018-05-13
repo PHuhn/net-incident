@@ -13,7 +13,7 @@ export class IncidentServiceMock extends IncidentService {
 	public mockGet: Incident;
 	public mockCrud: Incident;
 	public mockDeleteId: number;
-    public mockCrudResponse: any;
+	public mockCrudResponse: any;
 	//
 	// Service constructor
 	//
@@ -26,7 +26,7 @@ export class IncidentServiceMock extends IncidentService {
 	// Read (get) all Incident
 	//
 	getIncidents( serverId: number, mailed: boolean, closed: boolean, special: boolean ): Observable<IIncident[]> {
-        // /api/Incident/1?mailed=true&closed=true&special=false
+		// /api/Incident/1?mailed=true&closed=true&special=false
 		const urlPath: string = this.url + '/' + String(serverId)
 			+ '?mailed=' + String(mailed) + '&closed=' + String(closed)
 			+ '&special=' + String(special);
@@ -61,14 +61,14 @@ export class IncidentServiceMock extends IncidentService {
 		const urlPath: string = this.url + '/' + String( IncidentId );
 		this.mockDeleteId = IncidentId;
 		return this.handleResponse( this.mockCrudResponse );
-    }
-    //
-    handleResponse( response: any ): any {
-        if ( response instanceof HttpResponse ) {
+	}
+	//
+	handleResponse( response: any ): any {
+		if ( response instanceof HttpResponse ) {
 			return Observable.of( response );
 		}
-        return this.handleError( response );
-    }
+		return this.handleError( response );
+	}
 	//
 }
 // ===========================================================================

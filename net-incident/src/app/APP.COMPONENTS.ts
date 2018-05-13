@@ -18,21 +18,21 @@ import { HelpComponent } from './public/help/help.component';
 import { TestingComponent } from './public/testing/testing.component';
 //
 export const APP_COMPONENTS = [
-    AlertsComponent,
-    //
-    IncidentGridComponent,
-    IncidentDetailWindowComponent,
-    NetworkLogGridComponent,
-    IncidentNoteGridComponent,
-    IncidentNoteDetailWindowComponent,
-    ServerSelectionWindowComponent,
-    //
-    LoginComponent,
-    RegisterComponent,
-    HeaderComponent,
-    HomeComponent,
-    AboutComponent,
-    ContactComponent,
-    HelpComponent,
-    TestingComponent
+	AlertsComponent,
+	//
+	IncidentGridComponent,
+	IncidentDetailWindowComponent,
+	NetworkLogGridComponent,
+	IncidentNoteGridComponent,
+	IncidentNoteDetailWindowComponent,
+	ServerSelectionWindowComponent,
+	//
+	LoginComponent,
+	RegisterComponent,
+	HeaderComponent,
+	HomeComponent,
+	AboutComponent,
+	ContactComponent,
+	HelpComponent,
+	TestingComponent
 ];

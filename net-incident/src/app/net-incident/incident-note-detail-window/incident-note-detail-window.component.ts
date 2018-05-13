@@ -131,7 +131,6 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 				this.networkIncident.noteTypes.find( t => t.value === selected ).label;
 			if( this.add ) {
 				this.performIncidentType( this.model.NoteTypeId, this.model.NoteTypeShortDesc );
-	
 			}
 		}
 	}
@@ -199,7 +198,7 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// Compose e-mail message for this IP-address
 	//
 	getReport( ): void {
-		if( this.logLevel >= 3 ) {
+		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.getReport: Entering, ip: ${this.networkIncident.incident.IPAddress}` );
 		}
 		const abuseReport: AbuseEmailReport = new AbuseEmailReport( this.networkIncident );
