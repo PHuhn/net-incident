@@ -20,25 +20,25 @@ import { RegisterComponent } from './public/register/register.component';
 import { HeaderComponent } from './public/header/header.component';
 //
 @NgModule({
-  declarations: [
-  	AppComponent,
-	  APP_COMPONENTS,
-  	TruncatePipe,
-	  HeaderComponent
-  ],
-  imports: [
-  	BrowserModule,
-	  AppRoutingModule,
-  	GlobalModule,
-	  DataTableModule,
-  	DialogModule,
-	  ConfirmDialogModule,
-  	DropdownModule,
-	  MenubarModule
-  ],
-  providers: [
-  	APP_PROVIDERS
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		APP_COMPONENTS,
+		TruncatePipe,
+		HeaderComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		GlobalModule,
+		DataTableModule,
+		DialogModule,
+		ConfirmDialogModule,
+		DropdownModule,
+		MenubarModule
+	],
+	providers: [
+		APP_PROVIDERS
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
