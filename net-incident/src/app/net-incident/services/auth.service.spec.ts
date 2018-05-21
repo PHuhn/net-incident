@@ -5,8 +5,8 @@ import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
 import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 //
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/catch';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 //
 import { Message } from '../../global/message';
 import { LoginViewModel } from '../login-view-model';
@@ -134,7 +134,7 @@ describe('AuthService', () => {
 		const token: string = '1234567890';
 		const tokenType: string = 'bearer';
 		let response: TokenResponse = new TokenResponse(
-			token, tokenType, 10000, 'TestUser'
+			token, tokenType, 10000, userName
 		);
 		sut.authenticate( 'badUserName', 'asdfdsaf' ).subscribe( ( tokenData: TokenResponse ) => {
 			//
@@ -144,7 +144,7 @@ describe('AuthService', () => {
 			//
 		}, error => {
 			console.log( JSON.stringify( error ) );
-			expect( error ).toEqual( 'Error: authenticate: Invalid user name returned.' )
+			expect( String( error ) ).toEqual( 'Error: authenticate: Invalid user name returned.' )
 		} );
 		const request = backend.expectOne( `${url}` );
 		expect( request.request.method ).toBe( 'POST' );

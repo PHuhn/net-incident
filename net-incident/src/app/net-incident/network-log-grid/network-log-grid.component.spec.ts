@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { forEach } from '@angular/router/src/utils/collection';
 //

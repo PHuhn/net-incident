@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient, HttpErrorResponse, HttpRequest } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 //
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError } from 'rxjs';
 //
 import { DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
 import { DataTable } from '../../../../node_modules/primeng/components/datatable/datatable';

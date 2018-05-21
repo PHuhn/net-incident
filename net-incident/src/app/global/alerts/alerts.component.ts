@@ -1,7 +1,6 @@
 // ===========================================================================
-import { Component, OnInit,
-		trigger, state, animate, transition, style
-	} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { trigger, state, animate, transition, style } from '@angular/animations';
 import { Observable } from 'rxjs/Observable';
 //
 import { AlertLevel } from '../alert-level.enum';

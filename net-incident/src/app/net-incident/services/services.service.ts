@@ -2,9 +2,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 //
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 //
 import { Message } from '../../global/message';
 import { environment } from '../../../environments/environment';
@@ -48,7 +47,7 @@ export class ServicesService {
 			console.log( urlPath );
 		}
 		return this.http.get<string>( urlPath )
-			.catch( this.handleError );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// General error handler
@@ -56,9 +55,9 @@ export class ServicesService {
 	handleError( error: any ) {
 		console.error( 'UserService: ' + error );
 		if ( error instanceof HttpErrorResponse ) {
-			return Observable.throw( error.statusText || 'Service error' );
+			return throwError( error.statusText || 'Service error' );
 		}
-		return Observable.throw( error.toString() || 'Service error' );
+		return throwError( error.toString() || 'Service error' );
 	}
 	//
 }

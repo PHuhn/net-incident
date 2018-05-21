@@ -5,9 +5,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 //
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 //
 import { Message } from '../../global/message';
 import { LoginViewModel } from '../login-view-model';
@@ -45,7 +44,8 @@ export class AuthService {
 		const options = { headers: new HttpHeaders().set( 'Content-Type', 'application/x-www-form-urlencoded' ) };
 		// call to login service
 		return this.http.post<ITokenResponse>( this.url, body, options )
-			.do( ( tokenResponse: ITokenResponse ) => {
+			.pipe(
+				tap( ( tokenResponse: ITokenResponse ) => {
 				this.tokenResponse = tokenResponse;
 				if( userName === this.tokenResponse.userName
 							&& 'bearer' === this.tokenResponse.token_type
@@ -62,7 +62,7 @@ export class AuthService {
 						throw new Error( 'authenticate: Invalid user name returned.' );
 				}
 				return this.tokenResponse;
-			} ).catch( this.handleError );
+			},( err: any ) => this.handleError( err ) ) );
 		//
 	}
 	//
@@ -97,9 +97,9 @@ export class AuthService {
 	private handleError( error: any ) {
 		console.error( this.codeName + '.handleError: ' + error );
 		if ( error instanceof HttpErrorResponse ) {
-			return Observable.throw( error.statusText || 'Service error' );
+			return throwError( error.statusText || 'Service error' );
 		}
-		return Observable.throw( error.toString() || 'Service error' );
+		return throwError( error.toString() || 'Service error' );
 	}
 	//
 }

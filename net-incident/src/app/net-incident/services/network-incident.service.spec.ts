@@ -7,8 +7,8 @@ import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
 import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 //
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/catch';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 //
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';

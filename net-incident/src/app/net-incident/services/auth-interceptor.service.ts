@@ -2,7 +2,7 @@
 // blog.angular-university.io/angular-jwt-authentication/
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError } from 'rxjs';
 //
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {

@@ -7,7 +7,7 @@ import { HttpClientModule, HttpClient, HttpErrorResponse, HttpRequest } from '@a
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { HttpResponse } from '@angular/common/http';
 //
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError } from 'rxjs';
 //
 import { DataTable, DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable'; //primeng/components/datatable/datatable';
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';

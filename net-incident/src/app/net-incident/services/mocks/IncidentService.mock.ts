@@ -2,7 +2,7 @@
 // File: IncidentService.mock.ts
 //
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError, of } from 'rxjs';
 //
 import { IncidentService } from '../../../net-incident/services/incident.service';
 import { IIncident, Incident } from '../../../net-incident/incident';
@@ -30,14 +30,14 @@ export class IncidentServiceMock extends IncidentService {
 		const urlPath: string = this.url + '/' + String(serverId)
 			+ '?mailed=' + String(mailed) + '&closed=' + String(closed)
 			+ '&special=' + String(special);
-		return Observable.of( this.mockGetAll );
+		return of( this.mockGetAll );
 	}
 	//
 	// Read (get) Incident with id
 	//
 	getIncident( IncidentId: number ): Observable<IIncident> {
 		const urlPath: string = this.url + '/' + String( IncidentId );
-		return Observable.of( this.mockGet );
+		return of( this.mockGet );
 	}
 	//
 	// Create (post) Incident
@@ -65,7 +65,7 @@ export class IncidentServiceMock extends IncidentService {
 	//
 	handleResponse( response: any ): any {
 		if ( response instanceof HttpResponse ) {
-			return Observable.of( response );
+			return of( response );
 		}
 		return this.handleError( response );
 	}

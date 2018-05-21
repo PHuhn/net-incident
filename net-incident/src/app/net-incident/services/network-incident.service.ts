@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 //
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 //
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
@@ -140,7 +139,7 @@ export class NetworkIncidentService {
 			+ '&serverId=' + String(serverId);
 		console.log( urlPath );
 		return this.http.get<NetworkIncident>( urlPath )
-			.catch( this.handleError );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// Create (post) NetworkIncident
@@ -148,7 +147,7 @@ export class NetworkIncidentService {
 	createIncident( networkIncidentSave: NetworkIncidentSave ) {
 		console.log( networkIncidentSave );
 		return this.http.post<NetworkIncidentSave>( this.url, networkIncidentSave )
-			.catch( (err: any) => this.handleError( err ) );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// Update (put) NetworkIncident
@@ -157,7 +156,7 @@ export class NetworkIncidentService {
 		const urlPath: string = this.url + '/' + String( networkIncidentSave.incident.IncidentId );
 		// console.log( urlPath );
 		return this.http.put<NetworkIncidentSave>( urlPath, networkIncidentSave )
-			.catch( (err: any) => this.handleError( err ) );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// General error handler
@@ -166,12 +165,12 @@ export class NetworkIncidentService {
 		if ( error instanceof HttpErrorResponse ) {
 			console.error( `${this.codeName}:` );
 			console.error( error );
-			return Observable.throw( error.statusText || 'Service error' );
+			return throwError( error.statusText || 'Service error' );
 		}
 		if( this.logLevel >= 4 ) {
 			console.error( `${this.codeName}: ${error}` );
 		}
-		return Observable.throw( error.toString() || 'Service error' );
+		return throwError( error.toString() || 'Service error' );
 	}
 	//
 }

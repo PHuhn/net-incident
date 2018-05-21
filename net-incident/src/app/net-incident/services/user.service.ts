@@ -6,9 +6,8 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpClient, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 //
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 //
 import { Message } from '../../global/message';
 import { IUser, User } from '../user';
@@ -46,7 +45,7 @@ export class UserService {
 			console.log( urlPath );
 		}
 		return this.http.get<IUser>( urlPath )
-			.catch( this.handleError );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// Get User with UserAccount
@@ -60,7 +59,7 @@ export class UserService {
 			console.log( urlPath );
 		}
 		return this.http.get<IUser>( urlPath )
-			.catch( this.handleError );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// General error handler
@@ -68,9 +67,9 @@ export class UserService {
 	handleError( error: any ) {
 		console.error( 'UserService: ' + error );
 		if ( error instanceof HttpErrorResponse ) {
-			return Observable.throw( error.statusText || 'Service error' );
+			return throwError( error.statusText || 'Service error' );
 		}
-		return Observable.throw( error.toString() || 'Service error' );
+		return throwError( error.toString() || 'Service error' );
 	}
 	//
 }

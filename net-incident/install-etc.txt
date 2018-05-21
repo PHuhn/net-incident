@@ -789,6 +789,66 @@ added 1 package from 1 contributor, removed 1 package and updated 5 packages in 
     Severity: 5 Low | 24 Moderate | 4 High
     Run `npm audit` for more detail
 
+PROBLEM:
+	Angular 6
+SOLUTION
+npm install --save-dev @angular/common@latest @angular/compiler@latest @angular/cli@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest zone.js@latest webpack@latest –save
+npm install --save-dev karma@latest protractor@latest webpack@latest
+npm install --save-dev rxjs@latest
+npm install --save-dev typescript@2.7.2
+ng update @angular/cli
+npm install --save-dev rxjs-compat
+
+PROBLEM:
+	Angular 5 => 6
+SOLUTION:
+	Change (from -> to):
+	import { Observable } from 'rxjs/Rx';
+	to:
+	import { Observable, throwError } from 'rxjs';
+
+	.catch( this.handleError );
+	to:
+	.pipe( catchError( this.handleError ) );
+
+	import 'rxjs/add/operator/catch';
+	to:
+	import { catchError } from 'rxjs/operators';
+
+		Observable.of
+	to:
+		of
+	and to:
+		import { Observable, throwError, of } from 'rxjs';
+
+		let cnt: number = 0;
+		Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
+	to:
+		let cnt: number = 0;
+		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
+	and to:
+		import { Observable, throwError, interval } from 'rxjs';
+		import { takeWhile } from 'rxjs/operators';
+
+		.do(
+	to:
+		.tap( (f)=> {},(err)=>{} )
+	and to:
+		import { catchError, tap } from 'rxjs/operators';
+
+		import { Component, OnInit,
+			trigger, state, animate, transition, style } from '@angular/core';
+	to:
+		import { Component, OnInit } from '@angular/core';
+		import { trigger, state, animate, transition, style } from '@angular/animations';
+
+		Observable.throw(
+	to:
+		throwError(
+	and to:
+		import { Observable, throwError } from 'rxjs';
+
+
 ===================================================
 Done:
 	service logging 12/22
@@ -800,9 +860,9 @@ Done:
 		https://sendgrid.com/docs/API_Reference/Web_API_v3/Mail/index.html
 	service tests
 	jasmine app tests
+	authenication
 
 To Do's:
-	authenication
 	registration
 
 ===================================================

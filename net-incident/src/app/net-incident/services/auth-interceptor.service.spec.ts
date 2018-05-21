@@ -7,7 +7,7 @@ import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 //
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError } from 'rxjs';
 //
 import { environment } from '../../../environments/environment';
 import { AuthInterceptorService } from './auth-interceptor.service';

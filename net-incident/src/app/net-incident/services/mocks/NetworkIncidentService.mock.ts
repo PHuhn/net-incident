@@ -1,6 +1,6 @@
 // ===========================================================================
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError, of } from 'rxjs';
 //
 import { NetworkIncidentService } from '../../../net-incident/services/network-incident.service';
 import { Message } from '../../../global/message';
@@ -27,7 +27,7 @@ export class NetworkIncidentServiceMock  extends NetworkIncidentService {
 		const urlPath: string = this.url + '?id=' + String( incidentId )
 			+ '&serverId=' + String(serverId);
 		console.log( `**ni mock: ${urlPath}  ${new Date().toISOString()}` );
-		return Observable.of( this.mockGet );
+		return of( this.mockGet );
 	}
 	//
 	// Create (post) NetworkIncident
@@ -47,7 +47,7 @@ export class NetworkIncidentServiceMock  extends NetworkIncidentService {
 	//
 	handleResponse( response: any ): any {
 		if ( response instanceof HttpResponse ) {
-			return Observable.of( response );
+			return of( response );
 		}
 		return this.handleError( response );
 	}

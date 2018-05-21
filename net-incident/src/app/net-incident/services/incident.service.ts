@@ -5,8 +5,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 //
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/catch';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 //
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
@@ -49,7 +49,7 @@ export class IncidentService {
 			console.log( `${this.codeName}.getIncidents: ${urlPath}` );
 		}
 		return this.http.get<Array<IIncident>>( urlPath )
-			.catch( this.handleError );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// Read (get) Incident with id
@@ -60,7 +60,7 @@ export class IncidentService {
 			console.log( `${this.codeName}.getIncident: ${urlPath}` );
 		}
 		return this.http.get<IIncident>( urlPath )
-			.catch( this.handleError );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// Create (post) Incident
@@ -71,7 +71,7 @@ export class IncidentService {
 			console.log( `${this.codeName}.createIncident: ${ JSON.stringify( incident ) }` );
 		}
 		return this.http.post<IIncident>( urlPath, incident )
-			.catch( this.handleError );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// Update (put) Incident
@@ -82,7 +82,7 @@ export class IncidentService {
 			console.log( `${this.codeName}.updateIncident: ${urlPath}` );
 		}
 		return this.http.put<IIncident>( urlPath, incident )
-			.catch( this.handleError );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// Delete (delete) Incident with id
@@ -93,7 +93,7 @@ export class IncidentService {
 			console.log( `${this.codeName}.deleteIncident: ${urlPath}` );
 		}
 		return this.http.delete<IIncident>( urlPath )
-			.catch( this.handleError );
+			.pipe( catchError( this.handleError ) );
 	}
 	//
 	// General error handler
@@ -104,12 +104,12 @@ export class IncidentService {
 				console.error( `${this.codeName}:` );
 				console.error( error );
 			}
-			return Observable.throw( error.statusText || 'Service error' );
+			return throwError( error.statusText || 'Service error' );
 		}
 		if( this.logLevel >= 4 ) {
 			console.error( `${this.codeName}: ${error}` );
 		}
-		return Observable.throw( error.toString() || 'Service error' );
+		return throwError( error.toString() || 'Service error' );
 	}
 	//
 }

@@ -2,7 +2,7 @@
 import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError } from 'rxjs';
 import { By } from '@angular/platform-browser';
 //
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';

@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError, interval } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
 import { By } from '@angular/platform-browser';
 import { HttpResponse } from '@angular/common/http';
 //
@@ -213,7 +214,8 @@ describe( 'IncidentGridComponent', ( ) => {
 		console.log( `~= ${new Date().toISOString()}` )
 		//
 		let cnt: number = 0;
-		Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
+		// https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
+		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
 			// timing issues, all have to complete:
 			//  getNetIncident (to get complete data)
 			//  incident-note-grid
@@ -233,6 +235,17 @@ describe( 'IncidentGridComponent', ( ) => {
 			} else {
 				if ( cnt === 4 ) fail('Detail window took too long.');
 			}
+		});
+	}));
+	it('should launch take While ...', async( () => {
+		console.log( 'editItemClicked 2 ...' );
+		console.log( `~= ${new Date().toISOString()}` )
+		//
+		let cnt: number = 0;
+		// https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
+		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
+			cnt++;
+			console.log( `~=* ${val} ${cnt} ${new Date().toISOString()}` )
 		});
 	}));
 	//

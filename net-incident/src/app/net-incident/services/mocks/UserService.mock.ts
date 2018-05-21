@@ -1,7 +1,7 @@
 // ===========================================================================
 // File: UserService.mock.ts
 //
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError, of } from 'rxjs';
 //
 import { UserService } from '../../../net-incident/services/user.service';
 import { IUser, User } from '../../../net-incident/user';
@@ -23,7 +23,7 @@ export class UserServiceMock extends UserService {
 	//
 	getUser( UserAccount: string ): Observable<IUser> {
 		const urlPath: string = this.url + '/' + String( UserAccount );
-		return Observable.of( this.mockUser );
+		return of( this.mockUser );
 	}
 	//
 	// Get User with UserAccount
@@ -31,7 +31,7 @@ export class UserServiceMock extends UserService {
 	getUserServer( userName: string, serverShortName: string ): Observable<IUser> {
 		const urlPath: string = this.url + '?id=' + userName
 			+ '&serverShortName=' + serverShortName;
-		return Observable.of( this.mockUserServer );
+		return of( this.mockUserServer );
 	}
 	//
 }

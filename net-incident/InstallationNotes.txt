@@ -1,0 +1,297 @@
+ng new demo-mg
+cd demo-mg
+
+mkdir incidents
+mkdir incidents\services
+mkdir incidents\services\mocks
+
+ng g class incidents/Incident
+ng g service incidents/services/Incident
+ng g component incidents/Incident-Grid
+ng g component incidents/Incident-Detail-Window
+
+npm install --save-dev @angular/common@latest @angular/compiler@latest @angular/cli@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest zone.js@latest webpack@latest –save
+npm install --save-dev rxjs@latest
+npm install --save-dev primeng
+npm install --save-dev font-awesome
+npm install --save-dev karma@latest protractor@latest webpack@latest
+npm install --save-dev typescript@2.7.2
+npm install --save-dev rxjs-compat
+
+npm install --save-dev @angular/common@latest @angular/compiler@latest @angular/cli@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest zone.js@latest webpack@latest –save
+npm install --save-dev karma@latest protractor@latest webpack@latest
+npm install --save-dev rxjs@latest rxjs-compat
+npm install --save-dev typescript@2.7.2
+
+style.css:
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../node_modules/primeng/resources/themes/flick/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+/*
+==============================================================================
+custom html styling
+*/
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1.0rem;
+	line-height: 1.5; /* 1.5 */
+	color: #000;
+	background-color: #fff;
+}
+
+form {
+	font-size: 1.2rem;
+}
+
+optgroup, select, textarea {
+	font-family: sans-serif;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+}
+
+button, input, select, textarea {
+	line-height: inherit;
+	font-family: sans-serif;
+	font-size: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 500;  line-height: 1.1;
+	margin-top: 0; margin-bottom: .5rem;
+}
+h1 { font-size: 2.25rem; }
+h2 { font-size: 2.00rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.60rem; }
+h5 { font-size: 1.45rem; }
+h6 { font-size: 1.30rem; }
+/*
+==============================================================================
+PrimeNg
+*/
+.ui-inputtext {
+	padding: 0px 0 2px 0;
+}
+/*
+.ui-dialog-title { color: #0073ea; }
+==============================================================================
+NSG
+*/
+/* Info */
+.nsg-msg-info {
+	background-color: #7bd5ee;
+	border-color: #5bc0de;
+	color: #000000;
+	font-weight: bold;
+}
+/* Success */
+.nsg-msg-success {
+	background-color: #dff0d8;
+	border-color: #5cb85c;
+	color: #000000;
+	font-weight: bold;
+}
+/* Warning */
+.nsg-msg-warning {
+	background-color: #fcf8e3;
+	border-color: #f0ad4e;
+	color: #000000;
+	font-weight: bold;
+}
+/* Danger */
+.nsg-msg-danger {
+	background-color: #f2dede;
+	border-color: #d9534f;
+	color: #000000;
+	font-weight: bold;
+}
+/* custom appearance and positioning styles */
+.nsg-header {
+	height: 60px; padding-top: 12px;
+}
+.nsg-jumbotron {
+	padding: 48px 32px 48px 32px;
+}
+/* https://www.sessions.edu/color-calculator/ */
+.nsg-primary-color { color: #0073ea; } /* #0073ea .ui-state-default */
+.nsg-color-back { color: #000000; } /* black */
+.nsg-bold { font-weight: bold; }
+.nsg-complementary-color { color: #ea5a00; }
+.nsg-triadic-lite-color { color: #eacf00; }
+.nsg-triadic-dark-color { color: #ea003b; }
+.nsg-alert-color { color: red; }
+.nsg-primary-bgcolor { background-color: #f6f6f6; }
+.nsg-text-left { text-align: left !important; }
+.nsg-text-right { text-align: right !important; }
+.nsg-text-center { text-align: center !important; }
+.nsg-spacer25 { height: 25px; }
+.nsg-button-div { width: 40px; height: 32px; padding: 0; margin: 0; }
+.nsg-icon-button { width: 110px; }
+.nsg-link-div { color: #0073ea; text-decoration: underline; }
+/* custom content sizing style */
+/* media queries must appear in low to high order */
+.nsg-content {
+	margin: auto;
+	position: relative;
+}
+.nsg-block-center { text-align: center; }
+/*
+@media (min-width: 481px) { .nsg-content { width: 480px; max-width: 100%; } }
+@media (min-width: 641px) { .nsg-content { width: 640px; max-width: 100%; } }
+*/
+@media (max-width: 641px) {
+	.nsg-text-right { text-align: left !important; }
+}
+@media (min-width: 769px) {
+	.nsg-content { width: 768px; max-width: 100%; }
+}
+@media (min-width: 961px) {
+	.nsg-content { width: 960px; max-width: 100%; }
+}
+@media (min-width: 1141px) {
+	.nsg-content { width: 1140px; max-width: 100%; }
+}
+@media (min-width: 1345px) {
+	.nsg-content { width: 1344px; max-width: 100%; }
+}
+/* End of style.css */
+
+
+
+environment.ts:
+export const environment = {
+	production: false,
+	logLevel: 4,
+	base_Url: 'http://localhost:9112/api/'
+};
+
+
+========
+
+npm install --save-dev primeng
+npm WARN @angular/compiler-cli@6.0.1 requires a peer of typescript@>=2.7.2 <2.8 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.3 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ primeng@5.2.6
+added 1 package in 38.517s
+[!] 20 vulnerabilities found [24924 packages audited]
+	Severity: 11 Low | 4 Moderate | 5 High
+	Run `npm audit` for more detail
+npm audit | grep "Dependency"
+  Dependency of   karma [dev]
+  Dependency of   karma [dev]
+  Dependency of   karma [dev]
+  Dependency of   karma [dev]
+  Dependency of   karma [dev]
+  Dependency of   karma [dev]
+  Dependency of   karma [dev]
+  Dependency of   karma [dev]
+  Dependency of   karma
+  Dependency of   karma [dev]
+  Dependency of   karma [dev]
+  Dependency of   karma [dev]
+  Dependency of   protractor [dev]
+  Dependency of   protractor [dev]
+  Dependency of   protractor [dev]
+  Dependency of   protractor [dev]
+  Dependency of   protractor [dev]
+  Dependency of   protractor [dev]
+  Dependency of   karma [dev]
+  Dependency of   webpack
+
+
+Lint:
+	"indent": [
+	  true,
+	  "tabs",
+	  4
+	...
+	"whitespace": [
+	  false,
+	...
+	"no-inferrable-types": [
+	  false,
+	  "ignore-params"
+
+
+PROBLEM:
+========
+		.catch( this.handleError );
+	Property 'catch' does not exist on type 'Observable<IIncident>'
+
+SOLUTION:
+	Changed from:
+		return this.http.get<IIncident>( urlPath )
+			.catch( this.handleError );
+	to:
+		import { catchError } from 'rxjs/operators';
+		..
+		return this.http.get<Array<IIncident>>( urlPath )
+			.pipe( catchError( this.handleError ) );
+
+PROBLEM:
+========
+	lint returned:
+	WARNING: ./incident.service.ts[159, 22]: throw is deprecated: In favor of throwError creation function: import { throwError } from 'rxjs';
+
+SOLUTION:
+	Changed from:
+		return Observable.throw( error.toString() || 'Service error' );
+	to:
+		import { Observable, throwError } from 'rxjs';
+		..
+		return throwError( error.toString() || 'Service error' );
+
+PROBLEM:
+========
+	alert not compile
+	trigger, state, animate, transition, style not found
+
+SOLUTION:
+	to:
+	import { Component, OnInit } from '@angular/core';
+	import { trigger, state, animate, transition, style } from '@angular/animations';
+
+PROBLEM:
+========
+	mock not compile
+	Property 'of' does not exist on type 'typeof Observable'.
+SOLUTION:
+	to:
+	import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+	import { Observable, throwError, of } from 'rxjs';
+
+PROBLEM:
+========
+	ERROR in node_modules/primeng/components/common/confirmationservice.d.ts(1,10):
+	error TS2305: Module '"C:/Dat/Nsg/L/Web/Ng/demo-mg/node_modules/rxjs/Observable"'
+	has no exported member 'Observable'.
+SOLUTION:
+	Alex <notifications@github.com>
+	You can add rxjs-compat to your package.json for the time being.
+
+PROBLEM:
+========
+	Can't bind to 'incident' since it isn't a known property of 'app-incident-detail-window'.
+	1. If 'app-incident-detail-window' is an Angular component and it has 'incident' input, then verify that it is part of this module.
+SOLUTION:
+	Added @Input for incident and display window
+
+PROBLEM:
+========
+	The specified value "Sat Jan 01 2000 00:00:00 GMT-0500 (Eastern Standard Time)" does not conform to the required format, "yyyy-MM-dd".
+SOLUTION:
+	Changed type to text.
+
+
+PROBLEM:
+========
+	Failed to load http://localhost:9112/Incident/: No 
+	'Access-Control-Allow-Origin' header is present on the requested resource.
+	Origin 'http://localhost:4201' is therefore not allowed access. The response
+	had HTTP status code 404.
+SOLUTION:
+	In web api add:
+	        config.EnableCors();

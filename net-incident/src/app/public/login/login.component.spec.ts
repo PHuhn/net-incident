@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angu
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError } from 'rxjs';
 //
 import { SelectItem } from '../../../../node_modules/primeng/components/common/selectitem';
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';

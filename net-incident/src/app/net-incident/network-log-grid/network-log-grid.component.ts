@@ -1,7 +1,8 @@
 // File: networklog-grid.component.ts
 import { Component, OnInit, AfterViewInit, OnChanges, Input, Output, ViewChild, EventEmitter, ElementRef, SimpleChanges, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError, interval } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
 //
 import { DataTable, DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
 import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
@@ -98,8 +99,9 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 		// retry every 10th of a second, last time pass true
 		// Observable.interval( 100 ).take( 4 ).subscribe( val => {
 		let cnt: number = 0;
-		Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
-			cnt++;
+		//Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
+		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
+				cnt++;
 			if( this.logLevel >= 4 ) {
 				console.log ( `${this.codeName}.ngAfterViewInit: ${val}.` );
 			}

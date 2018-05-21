@@ -1,5 +1,5 @@
 // ===========================================================================
-import { Observable } from 'rxjs/Rx';
+import { Observable, throwError, of } from 'rxjs';
 //
 import { ServicesService } from '../../../net-incident/services/services.service';
 //
@@ -15,7 +15,7 @@ export class ServicesServiceMock extends ServicesService {
 	// Get service for ip address
 	//
 	getService( urlPath: string ): Observable<string> {
-		return Observable.of( this.mockResponse );
+		return of( this.mockResponse );
 	}
 	//
 }
