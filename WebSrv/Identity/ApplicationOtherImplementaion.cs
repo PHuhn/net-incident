@@ -9,6 +9,10 @@ namespace NSG.Identity
     public class ApplicationUserLogin : IdentityUserLogin<string> { }
     public class ApplicationUserClaim : IdentityUserClaim<string> { }
     // This is the UserId and RoleId table...
-    public class ApplicationUserRole : IdentityUserRole<string> { }
+    public class ApplicationUserRole : IdentityUserRole<string>
+    {
+        public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationRole Role { get; set; }
+    }
 }
 //

@@ -37,6 +37,7 @@ export interface IUser {
 	ServerShortNames: SelectItem[];
 	ServerShortName: string;
 	Server: ServerData;
+	Roles: string[];
 }
 //
 export class User implements IUser {
@@ -56,7 +57,8 @@ export class User implements IUser {
 		public CompanyId: number,
 		public ServerShortNames: SelectItem[],
 		public ServerShortName: string,
-		public Server: ServerData
+		public Server: ServerData,
+		public Roles: string[]
 	) { }
 	//
 }

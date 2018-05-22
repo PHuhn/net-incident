@@ -234,6 +234,11 @@ namespace WebSrv.Models
         public ServerData Server { get; set; }
         //
         /// <summary>
+        /// For collection of roles
+        /// </summary>
+        public string[] Roles { get; set; }
+        //
+        /// <summary>
         /// Create a 'to string'.
         /// </summary>
         public override string ToString()

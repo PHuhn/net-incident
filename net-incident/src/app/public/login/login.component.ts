@@ -88,6 +88,7 @@ export class LoginComponent implements OnInit {
 			.subscribe( ( userData: User ) => {
 				if( this.logLevel >= 4 ) {
 					console.log( `${this.codeName}.getUserServer: user: ${userData.UserName}` );
+					console.log( userData );
 				}
 				this.user = userData;
 				if( serverShortName !== ''

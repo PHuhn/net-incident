@@ -235,14 +235,6 @@
     <Compile Include="Identity\Results\ChallengeResult.cs" />
     <Compile Include="Identity\Models\AccountBindingModels.cs" />
     <Compile Include="Identity\Models\AccountViewModels.cs" />
-    <Compile Include="Migrations\201802251418244_InitialCreate.cs" />
-    <Compile Include="Migrations\201802251418244_InitialCreate.Designer.cs">
-      <DependentUpon>201802251418244_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803011746267_Update-2018-03-01-v1.cs" />
-    <Compile Include="Migrations\201803011746267_Update-2018-03-01-v1.Designer.cs">
-      <DependentUpon>201803011746267_Update-2018-03-01-v1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -377,14 +369,6 @@
     <Content Include="Views\RolesAdmin\RolesDetailPartial.cshtml" />
     <Content Include="Views\Server\ServerTemplateHelpPartial.cshtml" />
     <Content Include="Views\Shared\EmailTemplateHelpPartial.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802251418244_InitialCreate.resx">
-      <DependentUpon>201802251418244_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803011746267_Update-2018-03-01-v1.resx">
-      <DependentUpon>201803011746267_Update-2018-03-01-v1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

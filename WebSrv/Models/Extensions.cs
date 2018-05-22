@@ -245,7 +245,8 @@ namespace WebSrv.Models
                 CompanyId = user.CompanyId,
                 ServerShortName = "",
                 Server = null,
-                ServerShortNames = user.Servers.Select(_s => new SelectItem(_s.ServerShortName, _s.ServerName)).ToArray()
+                ServerShortNames = user.Servers.Select(_s => new SelectItem(_s.ServerShortName, _s.ServerName)).ToArray(),
+                Roles = user.Roles.Select(_r => _r.Role.Name).ToArray()
             };
         }
         //
