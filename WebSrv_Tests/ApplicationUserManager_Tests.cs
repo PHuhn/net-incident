@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Entity;
 using System.Linq;
@@ -16,9 +17,10 @@ namespace WebSrv_Tests
     public class ApplicationUserManager_Tests
     {
         //
-        private ApplicationDbContext _context = null;
-        private ApplicationUserStore _userStore = null;
-        private ApplicationUserManager _sut = null;
+        private static ApplicationDbContext _context = null;
+        private static ApplicationUserStore _userStore = null;
+        private static ApplicationUserManager _sut = null;
+        private static ApplicationServerManager _serverManager = null;
         //
         static string _userName = "PNH";
         //
@@ -29,6 +31,15 @@ namespace WebSrv_Tests
             _context = ApplicationDbContext.Create();
             _userStore = new ApplicationUserStore(_context);
             _sut = new ApplicationUserManager(_userStore);
+            _serverManager = new ApplicationServerManager(new ServerStore(_context));
+        }
+        //
+        [ClassCleanup]
+        public static void ApplicationUserManager_Cleanup()
+        {
+            ApplicationUser _user = _sut.FindByName(_userName);
+            var _access = new WebSrv.Models.UserAccess(_context);
+            _access.Delete(_user.Id);
         }
         //
         [TestMethod]
@@ -55,13 +66,16 @@ namespace WebSrv_Tests
                 AccessFailedCount = 0,
                 CreateDate = DateTime.Now,
             };
+            _user.Servers = new List<ApplicationServer>();
             _user.FullName = string.Format("{0} {1}", _user.FirstName, _user.LastName);
             _sut.Create(_user,"p@ssW0rd");
             ApplicationUser _createdUser = _sut.FindByName(_userName);
             Assert.IsNotNull(_createdUser);
+            ApplicationUserManager_AddUserRoles_Test1();
+            ApplicationServerManager_AddUserServer_Test1();
         }
         //
-        [TestMethod]
+        // [TestMethod]
         public void ApplicationUserManager_AddUserRoles_Test1()
         {
             //
@@ -70,13 +84,11 @@ namespace WebSrv_Tests
             Assert.AreEqual(_user.Roles.Count(), 2);
         }
         //
-        [TestMethod]
+        // [TestMethod]
         public void ApplicationServerManager_AddUserServer_Test1()
         {
             //
             string _serverShortName = "NSG Memb";
-            ApplicationDbContext context = ApplicationDbContext.Create();
-            var _serverManager = new ApplicationServerManager(new ServerStore(context));
             ApplicationServer _srv = _serverManager.FindByName(_serverShortName);
             if (_srv == null)
             {

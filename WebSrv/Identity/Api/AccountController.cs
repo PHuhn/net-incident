@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
+using System.Data.Entity.Validation;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
@@ -19,6 +21,8 @@ using NSG.Identity.Incidents;
 using NSG.Identity.Providers;
 using NSG.Identity.Results;
 using System.Web.Http.ModelBinding;
+using NSG.Library.Logger;
+using WebSrv.Models;
 //
 namespace NSG.Identity.Api
 {
@@ -114,10 +118,29 @@ namespace NSG.Identity.Api
             };
             _user.Roles.Add(_urole);
             //
-            IdentityResult result = await UserManager.CreateAsync( _user, model.Password );
-            if ( !result.Succeeded )
+            try
             {
-                return GetErrorResult( result );
+                IdentityResult result = await UserManager.CreateAsync(_user, model.Password);
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
+            }
+            catch (DbEntityValidationException _entityEx)
+            {
+                // extension method GetDbValidationErrors
+                string _errors = _entityEx.EntityValidationErrors.GetDbValidationErrors();
+                // UserCreateException = "{0} - User: {1}, creation error: {2}.";
+                string _msg = string.Format(NSG.Identity.Constants.UserCreateException, _codeName, model.UserName, _errors);
+                Log.Logger.Log(LoggingLevel.Error, "unathenticated", MethodBase.GetCurrentMethod(), _msg, _entityEx);
+                return BadRequest(_msg);
+            }
+            catch (Exception _ex)
+            {
+                // UserCreateException = "{0} - User: {1}, creation error: {2}.";
+                string _msg = string.Format(NSG.Identity.Constants.UserCreateException, _codeName, model.UserName, _ex.Message);
+                Log.Logger.Log(LoggingLevel.Error, "unathenticated", MethodBase.GetCurrentMethod(), _msg, _ex);
+                return BadRequest(_msg);
             }
             //
             // Send confirmation e-mail...

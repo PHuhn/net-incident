@@ -266,7 +266,8 @@ namespace NSG.Identity.Incidents
                 throw new ArgumentException(_invalidShortNameArgument);
             }
             //
-            if (user.Servers.Where(_s => _s.ServerShortName.Contains(shortName)).Select(_s => _s.ServerId).Count() == 0)
+            //if (user.Servers.Where(_s => _s.ServerShortName.Contains(shortName)) == null)
+            if (user.Servers.FirstOrDefault(r => r.ServerShortName == shortName) == null)
             {
                 //
                 ApplicationServer _server = FindByName(shortName);

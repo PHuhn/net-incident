@@ -110,10 +110,11 @@ namespace WebSrv_Tests
             {
                 UserName = _userName,
                 Email = _userName + "@any.net",
+                FirstName = "Phil",
+                LastName = "H",
+                UserNicName = "Phil",
                 Password = _password,
                 ConfirmPassword = _password,
-                FirstName = "Phil",
-                LastName = "Huhn",
                 ServerShortName = "nsg memb"
             };
             //
@@ -168,9 +169,9 @@ namespace WebSrv_Tests
                 Console.WriteLine(cookieIdentity.ToString());
             }).GetAwaiter().GetResult();
             // SetPassword is for user w/o a password
-            _sut.Logout();
             // cleanup
-            _userManager.Delete(_user);
+            var _access = new WebSrv.Models.UserAccess(_context);
+            _access.Delete(_userPass.Id);
         }
         //
         [TestMethod]
@@ -207,25 +208,16 @@ namespace WebSrv_Tests
             }).GetAwaiter().GetResult();
         }
         //
-        [TestMethod]
+        // [TestMethod]
         public void Identity_AccountController_UrlHelper_Test()
         {
             var obj = new { userId = "111-11111", code = "A12B==", httproute = true };
             var _config = _sut.Request.GetConfiguration();
-            var h = _sut.Request.RequestUri.GetLeftPart(UriPartial.Authority);
-            //string _rUrlPart = "api/Account/ConfirmEmail" + _hpr.RouteUrl(new { userId = user.Id, code = _code });
-
             var _url = new System.Web.Mvc.UrlHelper();
-            string _rUrlPart = "api/Account/ConfirmEmail" + _url.RouteUrl(obj);
+            var _out = _url.RouteUrl("ConfirmEmailRoute", obj);
+            string _rUrlPart = "api/Account/ConfirmEmail" + _out;
             Assert.AreNotEqual("", _rUrlPart);
         }
-        // A route named 'ConfirmEmail' could not be found in the route collection.
-        //System.Web.HttpContext _current = System.Web.HttpContext.Current;
-        //var _url = new System.Web.Mvc.UrlHelper();
-        //string _lUrlPart = _current.Request.Url.GetLeftPart(UriPartial.Authority);
-        // Value cannot be null.  Parameter name: routeCollection
-        //string _rUrlPart = _url.RouteUrl("ConfirmEmailRoute", new { userId = user.Id, code = _code, httproute = true });
-        //var _callbackUrl = new Uri(_lUrlPart + _rUrlPart);
         //
         //[TestMethod]
         public void Identity_AccountController_Confirm_Email_Test()

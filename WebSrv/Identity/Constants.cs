@@ -33,6 +33,7 @@ namespace NSG.Identity
         public static string ExternalBadRequestAlreadyInUse = "{0} - The external login is already associated with an account.";
         public static string StrengthInBitsException = "{0} - strengthInBits must be evenly divisible by 8.";
         public static string ServerNotValidException = "{0} - Must have a valid 'servers/devices'.";
+        public static string UserCreateException = "{0} - User: {1}, creation error: {2}.";
         // in ServerStore
         public static string UserNotFoundException = "{0} - 'user' not found: {1}";
         public static string ServerNotFoundException = "{0} - 'server/device' not found: {1}";

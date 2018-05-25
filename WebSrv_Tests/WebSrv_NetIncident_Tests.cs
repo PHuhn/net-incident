@@ -133,7 +133,7 @@ namespace WebSrv_Tests
         [TestMethod(), TestCategory("EF_Native")]
         public void WebSrv_NI_NetworkLog_GetByPrimaryKey_Test()
         {
-            long _id = 1;
+            long _id = 39;
             NetworkLogAccess _sut = new NetworkLogAccess(_niEntities);
             NetworkLogData _row = _sut.GetByPrimaryKey(_id);
             Assert.IsNotNull(_row);

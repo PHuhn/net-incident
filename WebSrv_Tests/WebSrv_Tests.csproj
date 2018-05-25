@@ -159,6 +159,7 @@
     <Compile Include="Effort_Tests\Effort_NICs_Tests.cs" />
     <Compile Include="Effort_Tests\Effort_IncidentTypes_Tests.cs" />
     <Compile Include="Effort_Tests\Effort_NoteTypes_Tests.cs" />
+    <Compile Include="Effort_Tests\Effort_Users_Tests.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="Effort_Tests\Effort_IncidentNote_Tests.cs" />
     <Compile Include="Effort_Tests\Effort_NetworkIncident_Tests.cs" />
@@ -218,6 +219,7 @@
       <Name>NSG.WebSrv</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
