@@ -68,7 +68,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		'EST (UTC-5)', true,  'EDT (UTC-4)', startDate, endDate
 	);
 	let user: User = new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1,
-		[new SelectItemClass('srv 1','Server 1'), new SelectItemClass('srv 2','Server 2')],'srv 1', server);
+		[new SelectItemClass('srv 1','Server 1'), new SelectItemClass('srv 2','Server 2')],'srv 1', server,['admin']);
 	//
 	const mockDatum = [
 		new Incident( 1,1,'193.1','arin.net','i 1','i1@1.com','',true,true,true,'',testDate ),

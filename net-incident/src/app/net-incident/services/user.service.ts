@@ -33,7 +33,7 @@ export class UserService {
 	//
 	emptyUser( ): IUser {
 		return new User(
-			'','','','','','','',false,'',false,0,[],'',undefined);
+			'','','','','','','',false,'',false,0,[],'',undefined, []);
 	}
 	//
 	// CRUD (Create/Read/Update/Delete)

@@ -86,7 +86,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 			'Phil Huhn', 'Phil', 'PhilHuhn@yahoo.com', true, '734-545-5845', true,
 			1, [ new SelectItemClass( 'NSG Memb', 'Members Web-site' ),
 				new SelectItemClass( 'NSG Router', 'NSG Router' ) ],
-			'nsg router', server
+			'nsg router', server, ['admin']
 		);
 		this.authenticated = true;
 	}

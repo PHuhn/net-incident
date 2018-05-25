@@ -25,7 +25,7 @@ describe('UserService', () => {
 	let testDate: Date = new Date('2017-01-01T00:00:00');
 	let startDate: Date = new Date('2018-03-11T02:00:00');
 	let endDate: Date = new Date('2018-11-04T02:00:00');
-    let server = new ServerData(
+	let server = new ServerData(
 		1, 1, 'NSG', 'Srv 1', 'Members Web-site',
 		'Web-site', 'Web-site address: www.nsg.com',
 		'We are in Michigan, USA.', 'Phil Huhn', 'Phil', 'PhilHuhn@yahoo.com',
@@ -33,10 +33,10 @@ describe('UserService', () => {
 	);
 	//
 	const mockDatum = [
-		new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server),
-		new User('e0-02','U2','U','N','U N','U','UN2@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server),
-		new User('e0-03','U3','U','N','U N','U','UN3@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server),
-		new User('e0-04','U4','U','N','U N','U','UN4@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server)
+		new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[]),
+		new User('e0-02','U2','U','N','U N','U','UN2@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[]),
+		new User('e0-03','U3','U','N','U N','U','UN3@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[]),
+		new User('e0-04','U4','U','N','U N','U','UN4@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[])
 	];
 	//
 	beforeEach( async( ( ) => {

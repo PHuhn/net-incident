@@ -31,7 +31,7 @@ describe('AbuseEmailReport', () => {
     );
     //
     const userMock = new User('e0-04','Head','Head','Admin','Head Admin','U','UN4@yahoo.com',
-        true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',serverMock);
+        true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',serverMock, ['admin']);
     //
     const inc: Incident = new Incident( 4,1,ipAddr,'arin.net','PSG169',
         'dandy@psg.com','',false,false,false,'',standardDate );

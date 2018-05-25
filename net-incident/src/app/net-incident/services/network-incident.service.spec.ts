@@ -39,7 +39,7 @@ describe('NetworkIncidentService', () => {
 		'EST (UTC-5)', true,  'EDT (UTC-4)', startDate, endDate
 	);
 	let user: User = new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1,
-		[new SelectItemClass('srv 1','Server 1'), new SelectItemClass('srv 2','Server 2')],'srv 1', server);
+		[new SelectItemClass('srv 1','Server 1'), new SelectItemClass('srv 2','Server 2')],'srv 1', server,['admin']);
 	//
 	const mockIncident: Incident = 
 		new Incident( 4,1,ip,'arin.net','i-4-net','a@1.com','',false,false,false,'i 4',testDate );
