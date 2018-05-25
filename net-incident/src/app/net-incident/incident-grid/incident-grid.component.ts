@@ -16,7 +16,8 @@ import { UserService } from '../services/user.service';
 import { IncidentService } from '../services/incident.service';
 import { IIncident, Incident } from '../incident';
 import { IncidentDetailWindowComponent } from '../incident-detail-window/incident-detail-window.component';
-import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';
+import { ServerSelectionWindowComponent } from '../server-selection-window/server-selection-window.component';
+import { AppComponent } from '../../app.component';
 //
 @Component({
 	selector: 'app-incident-grid',
@@ -89,38 +90,46 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	//
 	editItemClicked( item: Incident ) {
 		//
-		this.id = item.IncidentId;
-		this.detailWindow = new DetailWindowInput( this.user, item );
-		this.windowDisplay = true;
-		if( this.logLevel >= 4 ) {
-			console.log( item );
-			console.log( `${this.codeName}.editItemClicked: ${this.windowDisplay}` );
+		if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
+			this.id = item.IncidentId;
+			this.detailWindow = new DetailWindowInput( this.user, item );
+			this.windowDisplay = true;
+			if( this.logLevel >= 4 ) {
+				console.log( item );
+				console.log( `${this.codeName}.editItemClicked: ${this.windowDisplay}` );
+			}
+		} else {
+			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized')
 		}
 	}
 	//
 	// Confirm component (delete)
 	//
 	deleteItemClicked( item: Incident ): boolean {
-		this.id = item.IncidentId;
-		if( this.logLevel >= 3 ) {
-			console.log( `${this.codeName}.deleteItemClicked: ${this.id}` );
-		}
-		// the p-confirmDialog in in app.component
-		this._confirmationService.confirm({
-			key: 'Delete',
-			message: 'Are you sure you want to delete ' + this.id + '?',
-			accept: () => {
-				if( this.logLevel >= 4 ) {
-					console.log( `User's response: true` );
-				}
-				this.deleteItem( );
-			},
-			reject: () => {
-				if( this.logLevel >= 4 ) {
-					console.log( `User's dismissed.` );
-				}
+		if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
+			this.id = item.IncidentId;
+			if( this.logLevel >= 3 ) {
+				console.log( `${this.codeName}.deleteItemClicked: ${this.id}` );
 			}
-		});
+			// the p-confirmDialog in in app.component
+			this._confirmationService.confirm({
+				key: 'Delete',
+				message: 'Are you sure you want to delete ' + this.id + '?',
+				accept: () => {
+					if( this.logLevel >= 4 ) {
+						console.log( `User's response: true` );
+					}
+					this.deleteItem( );
+				},
+				reject: () => {
+					if( this.logLevel >= 4 ) {
+						console.log( `User's dismissed.` );
+					}
+				}
+			});
+		} else {
+			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized')
+		}
 		return false;
 	}
 	//

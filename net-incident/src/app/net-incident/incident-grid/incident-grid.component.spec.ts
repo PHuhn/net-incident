@@ -44,6 +44,8 @@ import { ServerSelectionWindowComponent } from '../../net-incident/server-select
 import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.component'
 import { IncidentNoteGridComponent } from '../incident-note-grid/incident-note-grid.component';
 import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-window/incident-note-detail-window.component';
+import { AppComponent } from '../../app.component';
+import { Security } from '../security';
 //
 describe( 'IncidentGridComponent', ( ) => {
 	let sut: IncidentGridComponent;
@@ -132,6 +134,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		sut = fixture.componentInstance;
 		// push in the @Input
 		sut.user = user;
+		AppComponent.securityManager = new Security( user );
 		// clone the array with slice( 0 )
 		incidentServiceMock.mockGetAll = mockDatum.slice( 0 )
 		fixture.detectChanges( ); // trigger initial data binding

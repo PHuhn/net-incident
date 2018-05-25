@@ -5,6 +5,7 @@ import { environment } from '../environments/environment';
 import { AlertsService } from './global/alerts/alerts.service';
 import { AuthService } from './net-incident/services/auth.service';
 import { IUser, User } from './net-incident/user';
+import { Security } from './net-incident/security';
 import { IncidentGridComponent } from './net-incident/incident-grid/incident-grid.component';
 import { ServerData } from './net-incident/server-data';
 import { SelectItemClass } from './net-incident/select-item-class';
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 	//
 	codeName: string = 'App-Component';
 	//
+	static securityManager: Security;
 	authenticated: boolean = false;
 	userAccount: string = environment.defaultUserAccount;
 	userPassword: string = '';
@@ -48,7 +50,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 	//
 	onAuthenticated( user: User ): void {
 		this.user = user;
-		this.authenticated = true;
+		const security: Security = new Security( this.user );
+		if( security.isValidIncidentGrid( ) ) {
+			AppComponent.securityManager = security;
+			this.authenticated = true;
+		} else {
+			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized')
+		}
 	}
 	//
 	// (logout)='onAuthLogout($event)
@@ -59,6 +67,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 			console.log( `${this.codeName}.onAuthLogout: Logout clicked.`);
 		}
 		this._auth.logout( );
+		AppComponent.securityManager = undefined;
 		this.authenticated = false;
 	}
 	//
