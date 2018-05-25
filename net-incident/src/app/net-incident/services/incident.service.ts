@@ -41,7 +41,7 @@ export class IncidentService {
 	// Read (get) all Incident
 	//
 	getIncidents( serverId: number, mailed: boolean, closed: boolean, special: boolean ): Observable<IIncident[]> {
-        // /api/Incident/1?mailed=true&closed=true&special=false
+		// /api/Incident/1?mailed=true&closed=true&special=false
 		const urlPath: string = this.url + '/' + String(serverId)
 			+ '?mailed=' + String(mailed) + '&closed=' + String(closed)
 			+ '&special=' + String(special);

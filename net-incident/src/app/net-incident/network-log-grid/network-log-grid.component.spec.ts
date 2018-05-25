@@ -35,8 +35,8 @@ describe('NetworkLogGridComponent', () => {
 	//
 	let ipAddr: string = '192.169.1.1';
 	//
-    const inc: Incident = new Incident( 4,1,'','arin.net','PSG169',
-        'dandy@psg.com','',false,false,false,'',new Date( '2018-04-01T01:00:00' ) );
+	const inc: Incident = new Incident( 4,1,'','arin.net','PSG169',
+		'dandy@psg.com','',false,false,false,'',new Date( '2018-04-01T01:00:00' ) );
 	//
 	const mockDatum = [
 		new NetworkLog( 1,1,null,'192.1',new Date( '2018-02-27T00:00:00' ),'Log 1',1, 'SQL', false ),
@@ -46,8 +46,8 @@ describe('NetworkLogGridComponent', () => {
 		new NetworkLog( 5,1,null,'192.5',new Date( '2018-02-27T00:00:00' ),'Log 5',1, 'SQL', false ),
 		new NetworkLog( 6,1,null,'192.5',new Date( '2018-02-27T00:00:00' ),'Log 6',1, 'SQL', false )
 	];
-    //
-    let netInc = new NetworkIncident();
+	//
+	let netInc = new NetworkIncident();
 	//
 	beforeEach( async( ( ) => {
 		TestBed.configureTestingModule(  {
@@ -55,13 +55,13 @@ describe('NetworkLogGridComponent', () => {
 				FormsModule,
 				DataTableModule,
 				ButtonModule,
-        		BrowserAnimationsModule
+				BrowserAnimationsModule
 			],
 			declarations: [
 				NetworkLogGridComponent,
 				Dialog,
 				ConfirmDialog,
-        		TruncatePipe
+				TruncatePipe
 			],
 			providers: [
 				AlertsService,
@@ -86,12 +86,12 @@ describe('NetworkLogGridComponent', () => {
 		fixture = TestBed.createComponent( NetworkLogGridComponent );
 		sut = fixture.componentInstance;
 		//
-        netInc.incident = inc;
-        netInc.deletedLogs = [];
+		netInc.incident = inc;
+		netInc.deletedLogs = [];
 		netInc.deletedNotes = [];
 		netInc.incidentNotes = [];
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
-        netInc.typeEmailTemplates = [];
+		netInc.typeEmailTemplates = [];
 		netInc.user = undefined;
 		netInc.noteTypes = undefined;
 		//
@@ -140,7 +140,7 @@ describe('NetworkLogGridComponent', () => {
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
 		netInc.incident.Mailed = true;
 		netInc.networkLogs[3].Selected = true;
-        netInc.incident.IPAddress = netInc.networkLogs[3].IPAddress;
+		netInc.incident.IPAddress = netInc.networkLogs[3].IPAddress;
 		sut.networkIncident = netInc;
 		sut.ngAfterViewInit( );
 		fixture.detectChanges( ); // trigger initial data binding
@@ -171,7 +171,7 @@ describe('NetworkLogGridComponent', () => {
 		netInc.networkLogs[5].Selected = true;
 		netInc.networkLogs[4].IncidentId = netInc.incident.IncidentId;
 		netInc.networkLogs[5].IncidentId = netInc.incident.IncidentId;
-        netInc.incident.IPAddress = netInc.networkLogs[4].IPAddress;
+		netInc.incident.IPAddress = netInc.networkLogs[4].IPAddress;
 		sut.networkIncident = netInc;
 		sut.ngAfterViewInit( );
 		fixture.detectChanges( ); // trigger initial data binding
@@ -183,7 +183,7 @@ describe('NetworkLogGridComponent', () => {
 		const netLogBodyRows = fixture.debugElement.queryAll(By.css(
 			'#networklogsGrid > div.ui-datatable > div.ui-datatable-tablewrapper > table > tbody > tr' ));
 		console.log( netLogBodyRows );
-        netInc.incident.IPAddress = '';
+		netInc.incident.IPAddress = '';
 		expect( netLogBodyRows.length ).toBe( numRows );
 	}));
 	//
@@ -206,7 +206,7 @@ describe('NetworkLogGridComponent', () => {
 		const netLogBodyRows = fixture.debugElement.queryAll(By.css(
 			'#networklogsGrid > div.ui-datatable > div.ui-datatable-tablewrapper > table > tbody > tr' ));
 		console.log( netLogBodyRows );
-        netInc.incident.IPAddress = '';
+		netInc.incident.IPAddress = '';
 		expect( netLogBodyRows.length ).toBe( numRows );
 	}));
 	//

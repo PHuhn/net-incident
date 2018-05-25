@@ -53,11 +53,11 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		new SelectItemClass( 4, 'ISP Addl' ),
 		new SelectItemClass( 5, 'ISP Resp' )
 	]
-    //
-    const inc: Incident = new Incident( 4,1,ipAddr,'arin.net','PSG169',
-        'dandy@psg.com','',false,false,false,'',new Date( '2018-04-01T01:00:00' ) );
-    //
-    let netInc = new NetworkIncident();
+	//
+	const inc: Incident = new Incident( 4,1,ipAddr,'arin.net','PSG169',
+		'dandy@psg.com','',false,false,false,'',new Date( '2018-04-01T01:00:00' ) );
+	//
+	let netInc = new NetworkIncident();
 	//
 	beforeEach( async( ( ) => {
 		TestBed.configureTestingModule(  {
@@ -97,11 +97,11 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		fixture = TestBed.createComponent( IncidentNoteDetailWindowComponent );
 		sut = fixture.componentInstance;
 		// pretend that it was wired to something that supplied a row
-        netInc.incident = inc;
-        netInc.deletedLogs = [];
-        netInc.deletedNotes = [];
-        netInc.incidentNotes = mockDatum;
-        netInc.typeEmailTemplates = [];
+		netInc.incident = inc;
+		netInc.deletedLogs = [];
+		netInc.deletedNotes = [];
+		netInc.incidentNotes = mockDatum;
+		netInc.typeEmailTemplates = [];
 		netInc.user = undefined;
 		netInc.noteTypes = noteTypes;
 		sut.networkIncident = netInc;

@@ -19,56 +19,56 @@ import { LoginComponent } from './login.component';
 import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';
 //
 describe('LoginComponent', () => {
-  let sut: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-  let alertService: AlertsService;
-  let userServiceMock: UserServiceMock;
-  // Create a fake TwainService object with a `getQuote()` spy
-  const authService = jasmine.createSpyObj('AuthService',
-        ['authenticate', 'logout', 'isLoggedIn', 'isLoggedOut']);
-  //
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        FormsModule,
+	let sut: LoginComponent;
+	let fixture: ComponentFixture<LoginComponent>;
+	let alertService: AlertsService;
+	let userServiceMock: UserServiceMock;
+	// Create a fake TwainService object with a `getQuote()` spy
+	const authService = jasmine.createSpyObj('AuthService',
+				['authenticate', 'logout', 'isLoggedIn', 'isLoggedOut']);
+	//
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			imports: [
+				FormsModule,
 				ButtonModule,
 				BrowserAnimationsModule
-      ],
-      declarations: [
-        LoginComponent,
-        Dialog,
-        Header,
-        ServerSelectionWindowComponent
-      ],
+			],
+			declarations: [
+				LoginComponent,
+				Dialog,
+				Header,
+				ServerSelectionWindowComponent
+			],
 			providers: [
 				{ provide: AlertsService, useClass: AlertsService },
 				{ provide: AuthService, useValue: authService },
 				{ provide: UserService, useClass: UserServiceMock }
 			]
-    } );
-    alertService = TestBed.get( AlertsService );
-    userServiceMock = TestBed.get( UserService );
-    TestBed.compileComponents();
-  }));
-  //
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    sut = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-  //
+		} );
+		alertService = TestBed.get( AlertsService );
+		userServiceMock = TestBed.get( UserService );
+		TestBed.compileComponents();
+	}));
+	//
+	beforeEach(() => {
+		fixture = TestBed.createComponent(LoginComponent);
+		sut = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+	//
 	// Run HttpTestingController's verify to make sure that there are no
 	// outstanding requests.
 	//
 	afterEach(() => {
 	});
-  //
-  it('should be created ...', () => {
+	//
+	it('should be created ...', () => {
 		console.log(
 			'=================================\n' +
 			'LoginComponent: should create ...' );
-    expect( sut ).toBeTruthy();
-  });
-  //
+		expect( sut ).toBeTruthy();
+	});
+	//
 });
 // ===========================================================================

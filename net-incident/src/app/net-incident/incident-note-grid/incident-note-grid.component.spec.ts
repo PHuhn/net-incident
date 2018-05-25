@@ -56,11 +56,11 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 		new IncidentNote( 5,2,'Whois','i 5',new Date( '2018-01-05T00:00:00' ), false ),
 		new IncidentNote( 6,3,'ISP Rpt','i 6',new Date( '2018-01-06T00:00:00' ), false )
 	];
-    //
-    const inc: Incident = new Incident( 4,1,ipAddr,'arin.net','PSG169',
-        'dandy@psg.com','',false,false,false,'',new Date( '2018-04-01T01:00:00' ) );
-    //
-    let netInc = new NetworkIncident();
+	//
+	const inc: Incident = new Incident( 4,1,ipAddr,'arin.net','PSG169',
+		'dandy@psg.com','',false,false,false,'',new Date( '2018-04-01T01:00:00' ) );
+	//
+	let netInc = new NetworkIncident();
 	//
 	beforeEach( async( ( ) => {
 		TestBed.configureTestingModule(  {
@@ -97,11 +97,11 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 		fixture = TestBed.createComponent( IncidentNoteGridComponent );
 		sut = fixture.componentInstance;
 		// clone the array with slice( 0 )
-        netInc.incident = inc;
-        netInc.deletedLogs = [];
-        netInc.deletedNotes = [];
-        netInc.incidentNotes = mockDatum;
-        netInc.typeEmailTemplates = [];
+		netInc.incident = inc;
+		netInc.deletedLogs = [];
+		netInc.deletedNotes = [];
+		netInc.incidentNotes = mockDatum;
+		netInc.typeEmailTemplates = [];
 		netInc.user = undefined;
 		sut.networkIncident = netInc;
 		fixture.detectChanges( ); // trigger initial data binding

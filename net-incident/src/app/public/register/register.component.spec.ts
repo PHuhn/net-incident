@@ -13,45 +13,45 @@ import { IUser, User } from '../../net-incident/user';
 import { RegisterComponent } from './register.component';
 //
 describe('RegisterComponent', () => {
-  let sut: RegisterComponent;
-  let alertService: AlertsService;
-  let userServiceMock: UserServiceMock;
-  let fixture: ComponentFixture<RegisterComponent>;
-  //
-  beforeEach( async( ( ) => {
-    //
-    TestBed.configureTestingModule({
-      imports: [
-        FormsModule,
+	let sut: RegisterComponent;
+	let alertService: AlertsService;
+	let userServiceMock: UserServiceMock;
+	let fixture: ComponentFixture<RegisterComponent>;
+	//
+	beforeEach( async( ( ) => {
+		//
+		TestBed.configureTestingModule({
+			imports: [
+				FormsModule,
 				BrowserAnimationsModule
-      ],
-      declarations: [ RegisterComponent ],
+			],
+			declarations: [ RegisterComponent ],
 			providers: [
 				AlertsService,
 				{ provide: UserService, useClass: UserServiceMock }
 			]
-    } );
-    alertService = TestBed.get( AlertsService );
-    userServiceMock = TestBed.get( UserService );
-    TestBed.compileComponents();
-  } ) );
-  //
-  // Instantiate fixture and the component 
-  //
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterComponent);
-    sut = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+		} );
+		alertService = TestBed.get( AlertsService );
+		userServiceMock = TestBed.get( UserService );
+		TestBed.compileComponents();
+	} ) );
+	//
+	// Instantiate fixture and the component 
+	//
+	beforeEach(() => {
+		fixture = TestBed.createComponent(RegisterComponent);
+		sut = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 	//
 	afterEach(() => {
 	});
-  //
-  it('should be created ...', () => {
+	//
+	it('should be created ...', () => {
 		console.log(
 			'=================================\n' +
 			'RegisterComponent: should create ...' );
-    expect( sut ).toBeTruthy();
-  });
+		expect( sut ).toBeTruthy();
+	});
 });
 // ===========================================================================

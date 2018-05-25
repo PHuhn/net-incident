@@ -61,7 +61,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	let testDate: Date = new Date('2000-01-01T00:00:00');
 	let startDate: Date = new Date('2018-03-11T02:00:00');
 	let endDate: Date = new Date('2018-11-04T02:00:00');
-    let server = new ServerData(
+	let server = new ServerData(
 		1, 1, 'NSG', 'Srv 1', 'Members Web-site',
 		'Web-site', 'Web-site address: www.nsg.com',
 		'We are in Michigan, USA.', 'Phil Huhn', 'Phil', 'PhilHuhn@yahoo.com',
@@ -138,7 +138,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		fixture.whenStable( );
 	} ) );
 	//
-    afterEach(() => {
+	afterEach(() => {
 		//
 	});
 	//

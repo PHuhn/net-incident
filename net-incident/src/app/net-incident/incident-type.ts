@@ -28,7 +28,7 @@ export class IncidentType implements IIncidentType {
 		public IncidentTypeFromServer: boolean,
 		public IncidentTypeSubjectLine: string,
 		public IncidentTypeEmailTemplate: string,
-        public IncidentTypeTimeTemplate: string,
+		public IncidentTypeTimeTemplate: string,
 		public IncidentTypeThanksTemplate: string,
 		public IncidentTypeLogTemplate: string,
 		public IncidentTypeTemplate: string

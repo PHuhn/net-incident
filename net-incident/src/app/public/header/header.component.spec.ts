@@ -7,27 +7,27 @@ import { environment } from '../../../environments/environment';
 import { HeaderComponent } from './header.component';
 //
 describe('HeaderComponent', () => {
-  let sut: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+	let sut: HeaderComponent;
+	let fixture: ComponentFixture<HeaderComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        MenubarModule
-      ],
-      declarations: [ HeaderComponent ]
-    })
-    .compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			imports: [
+				RouterTestingModule,
+				MenubarModule
+			],
+			declarations: [ HeaderComponent ]
+		})
+		.compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
-    sut = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(HeaderComponent);
+		sut = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect( sut ).toBeTruthy();
-  });
+	it('should create', () => {
+		expect( sut ).toBeTruthy();
+	});
 });
