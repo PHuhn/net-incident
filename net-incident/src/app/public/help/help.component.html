@@ -1,72 +1,72 @@
 <div class='ui-grid ui-grid-responsive ui-fluid nsg-primary-color nsg-content'>
-  <div class='ui-grid-col-12'>
-    <div class='nsg-block-center'>
-      <h3>Welcome to Network Incidents Help</h3>
-    </div>
-  </div>
-  <div class='ui-grid-col-12 nsg-color-back'>
-    <p>
-      Network Incidents is meant to help in the process of reporting to an ISP 
-      that an IP address from their network has in-properly probed your 
-      device or server.  
-      
-      Their are many pain points in the process of reporting network incidents.
+	<div class='ui-grid-col-12'>
+		<div class='nsg-block-center'>
+			<h3>Welcome to Network Incidents Help</h3>
+		</div>
+	</div>
+	<div class='ui-grid-col-12 nsg-color-back'>
+		<p>
+			Network Incidents is meant to help in the process of reporting to an ISP 
+			that an IP address from their network has in-properly probed your 
+			device or server.
+			
+			Their are many pain points in the process of reporting network incidents.
 
-      This streamlines getting the abuse e-mail address and the construction of
-      the e-mail to the ISP.
+			This streamlines getting the abuse e-mail address and the construction of
+			the e-mail to the ISP.
 
-      It also yields an id for this incident that can be used in the correspondence.
-    </p>
-    <p>
-      This does not cover the pain points of extraction, categorization and 
-      loading of various logs.
+			It also yields an id for this incident that can be used in the correspondence.
+		</p>
+		<p>
+			This does not cover the pain points of extraction, categorization and 
+			loading of various logs.
 
-      Additionally, one needs some sort of emailing solution to be configured 
-      in the web service site.  
+			Additionally, one needs some sort of emailing solution to be configured 
+			in the web service site.
 
-      This is normally SMTP relay to a local e-mail server/service,
-      but SendGrid and MailGun may be an option.
+			This is normally SMTP relay to a local e-mail server/service,
+			but SendGrid and MailGun may be an option.
 
-      No facility exist for loading ISP response into the 'notes', 
-      except for cut and paste.
-    </p>
-    <p>
-      The application starts with network logs of various intrusions (only the intrusions).
+			No facility exist for loading ISP response into the 'notes', 
+			except for cut and paste.
+		</p>
+		<p>
+			The application starts with network logs of various intrusions (only the intrusions).
 
-      The logs are loaded with the appropriate server id and intrusion type id.
+			The logs are loaded with the appropriate server id and intrusion type id.
 
-      From the application one selects the server and adds an incident.
+			From the application one selects the server and adds an incident.
 
-      One selects (checks) the incident and the application will collect all 
-      like IP addresses, and attempt to lookup the abuse e-mail address, NIC and ISP name.
-    </p>
-    <p>
-      This application gets the abuse e-mail address, NIC and ISP name by the whois command on the server.
+			One selects (checks) the incident and the application will collect all 
+			like IP addresses, and attempt to lookup the abuse e-mail address, NIC and ISP name.
+		</p>
+		<p>
+			This application gets the abuse e-mail address, NIC and ISP name by the whois command on the server.
 
-      Whois communicates to various Regional Internet Registries or RIR's around the worlds.
+			Whois communicates to various Regional Internet Registries or RIR's around the worlds.
 
-      The primary RIR's are as follows:
-    </p>
-    <table>
-      <tr>
-        <td style='width:100px;'>afrinic.net</td><td>Africian Network Information Centre</td>
-      </tr>
-      <tr>
-        <td>apnic.net</td><td>Asian-Pacfic Network Information Centre</td>
-      </tr>
-      <tr>
-        <td>arin.net</td><td>Americian (North) Registry of Internet Numbers</td>
-      </tr>
-      <tr>
-        <td>lacnic.net</td><td>Latin America and Caribbean Network Information Centre</td>
-      </tr>
-      <tr>
-        <td>ripe.net</td><td>Réseaux IP Européens Network Coordination Centre (Europe)</td>
-      </tr>
-    </table>
-    <p>
-      The individual repositories are also called Network Information Center or NIC.
-      NIC's is the term that this applicaion uses.   
-    </p>
-  </div>
+			The primary RIR's are as follows:
+		</p>
+		<table>
+			<tr>
+				<td style='width:100px;'>afrinic.net</td><td>Africian Network Information Centre</td>
+			</tr>
+			<tr>
+				<td>apnic.net</td><td>Asian-Pacfic Network Information Centre</td>
+			</tr>
+			<tr>
+				<td>arin.net</td><td>Americian (North) Registry of Internet Numbers</td>
+			</tr>
+			<tr>
+				<td>lacnic.net</td><td>Latin America and Caribbean Network Information Centre</td>
+			</tr>
+			<tr>
+				<td>ripe.net</td><td>Réseaux IP Européens Network Coordination Centre (Europe)</td>
+			</tr>
+		</table>
+		<p>
+			The individual repositories are also called Network Information Center or NIC.
+			NIC's is the term that this applicaion uses.
+		</p>
+	</div>
 </div>
