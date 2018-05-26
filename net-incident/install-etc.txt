@@ -861,6 +861,8 @@ Done:
 	service tests
 	jasmine app tests
 	authenication
+	client side security	2018-05-25
+	favicon		2018-05-25
 
 To Do's:
 	registration
