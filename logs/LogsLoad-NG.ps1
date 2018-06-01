@@ -41,6 +41,7 @@ param( [string]$server = ".\SQLExpress", [string]$dbName = "NetIncident2", [stri
 #  Date: 2018-05-03
 # Versions:
 #  1.0.0	basic pasting script
+#  1.0.1	Fixed connection on loop
 # ============================================================================
 ### functions section ###
 ##
@@ -59,6 +60,7 @@ function log-LoadLogs ( [string]$server, [string]$dbName, [string]$filePath, [in
 	}
 	finally {
 		$reader.Close()
+		$Connection.Close()
 	}
 }
 ##
@@ -128,7 +130,6 @@ function sql-ExecNonQuery ( $connection, [string]$sqlCommand )
 		$Command.Connection = $connection
 		$Command.CommandText = $sqlCommand
 		$return = $Command.ExecuteNonQuery()
-		$Connection.Close()
 	}
 	finally
 	{ }
@@ -144,7 +145,6 @@ function sql-ExecScalar ( $connection, [string]$sqlCommand )
 		$Command.Connection = $connection
 		$Command.CommandText = $sqlCommand
 		$return = $Command.ExecuteScalar()
-		$Connection.Close()
 	}
 	finally
 	{ }
@@ -162,7 +162,6 @@ function sql-ExecDataSet ( $connection, [string]$sqlCommand )
 		$sqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
 		$sqlAdapter.SelectCommand = $Command
 		$sqlAdapter.Fill($dataSet)
-		$Connection.Close()
 	}
 	finally
 	{ }

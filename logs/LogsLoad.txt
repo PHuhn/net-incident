@@ -27,5 +27,9 @@ You can run the logs load Netgear powershell script as follows:
 
 PS C:> .\LogsLoad-NG.ps1 -server ".\Express" -filePath "C:\Dat\Nsg\L\Web\Ng\NetIncidents3\logs\ng-300-2018-05-03-probe.txt" -serverId 4 -incidentTypeId 1026
 
+To load IIS logs with something like the following:
+
+PS C:> .\LogsLoad-IIS.ps1 -server ".\Express" -filePath "C:\inetpub\logs\LogFiles\W3SVC1\u_ex180528.log" -serverId 1
+
 Thanks and good luck and help make the internet safe.
 Phil

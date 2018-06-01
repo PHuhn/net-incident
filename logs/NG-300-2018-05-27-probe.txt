@@ -1,0 +1,12 @@
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [63.251.98.12], Sunday, May 27,2018 16:15:36
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [63.251.98.12], Sunday, May 27,2018 09:06:09
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [63.251.98.12], Saturday, May 26,2018 09:34:52
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [63.251.98.12], Friday, May 25,2018 20:19:44
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [8.248.83.254], Friday, May 25,2018 16:46:45
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [8.248.83.254], Friday, May 25,2018 16:46:19
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [8.248.83.254], Friday, May 25,2018 16:45:54
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [8.248.81.254], Friday, May 25,2018 16:44:09
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [8.254.255.223], Friday, May 25,2018 16:44:06
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [8.248.81.254], Friday, May 25,2018 16:43:37
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [8.254.255.223], Friday, May 25,2018 16:43:34
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [63.251.98.12], Wednesday, May 23,2018 11:47:47
