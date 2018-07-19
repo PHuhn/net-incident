@@ -5,14 +5,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebSrv.Models;
-using System.Web.Http.Cors;
 //
 using NSG.Identity;
 using NSG.Identity.Incidents;
 //
 namespace WebSrv.api
 {
-    [EnableCors(origins: "http://localhost:4200,http://localhost:4201", headers: "*", methods: "*")]
     public class BaseController : ApiController
     {
 		//

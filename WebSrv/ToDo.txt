@@ -4,6 +4,9 @@ In AccountController:
 
 reapply constants
 
+
+CompanyAdmin role
+
 Company defined email template 
 	Split off IncidentType and the EmailTemplate (think about it...)
 
@@ -58,3 +61,4 @@ Deploy to github
 
 Manage email templates (2018-05-02)
 
+Dynamic CORS (2018-07-17)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Http;
 using WebSrv.Models;
-using System.Web.Http.Cors;
 //
 using NSG.Identity;
 using NSG.Identity.Incidents;

@@ -51,6 +51,8 @@ In FilterConfig.cs, added...
 	Add-Migration "Update-2018-01-27-v1"
 	Add-Migration "Update-2018-03-30-v1"
 	Update-Database -verbose
+	Add-Migration "Update-2018-07-15-v1"
+	Update-Database -verbose
 
 Emailing:
 KB78618381: How to Configure IIS SMTP Server to forward emails using a Gmail account
@@ -187,3 +189,18 @@ import { environment } from '../environments/environment';
 		// 1=error, 2=warning, 3=info, 4=verbose
 		this.logLevel = environment.logLevel;
     if( this.logLevel >= 4 )
+
+PROBLEM:
+========
+	Dynamic CORS...
+	https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api
+	Failed to load http://localhost:9111/api/User?id=Phil&serverShortName=: The 'Access-Control-Allow-Origin' header contains multiple values 'http://localhost:4200, http://localhost:4200', but only one is allowed. Origin 'http://localhost:4200' is therefore not allowed access.
+SOLUTION:
+	Changed:
+		string _value = NSG.Library.Helpers.Config.GetStringAppSettingConfigValue(_keyCorsAllowOrigin, "http://localhost:4200");
+		EnableCorsAttribute _corsOrigin = new EnableCorsAttribute(_value, "*", "*");
+		config.EnableCors( _corsOrigin );
+	to:
+		string _value = NSG.Library.Helpers.Config.GetStringAppSettingConfigValue(_keyCorsAllowOrigin, "http://localhost:4200");
+		EnableCorsAttribute _corsOrigin = new EnableCorsAttribute(_value, "*", "*");
+		config.EnableCors( );

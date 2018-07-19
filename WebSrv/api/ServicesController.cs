@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Web.Http;
-using System.Web.Http.Cors;
 //
 // Note: periods in requests:
 // https://stackoverflow.com/questions/11728846/dots-in-url-causes-404-with-asp-net-mvc-and-iis
 namespace WebSrv.api
 {
     [Authorize(Roles = "User, Admin, CompanyAdmin")]
-    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class ServicesController : BaseServiceController
     {
         //
