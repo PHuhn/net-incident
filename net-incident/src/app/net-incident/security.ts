@@ -1,5 +1,5 @@
 // ===========================================================================
-//	File: security.ts
+// File: security.ts
 import { IUser, User } from './user';
 //
 export class Security {
@@ -48,5 +48,5 @@ export class Security {
 		return false;
 	}
 	//
-};
+}
 // ===========================================================================

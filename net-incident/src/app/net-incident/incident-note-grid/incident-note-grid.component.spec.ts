@@ -18,7 +18,7 @@ import { ConfirmationService } from '../../../../node_modules/primeng/components
 import { Dropdown, DropdownModule } from '../../../../node_modules/primeng/components/dropdown/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
-import { TruncatePipe } from '../../global/truncate.pipe'
+import { TruncatePipe } from '../../global/truncate.pipe';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
@@ -31,7 +31,7 @@ import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-windo
 //
 describe( 'IncidentNoteGridComponent', ( ) => {
 	// IncidentNoteGridComponent services:
-	// private _alerts: AlertsService, 
+	// private _alerts: AlertsService,
 	// private _confirmationService: ConfirmationService
 	// IncidentNoteGridComponent loads: IncidentNoteDetailWindowComponent
 	// which uses dropdown, ServicesService, http
@@ -46,7 +46,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	const expectedWindowTitle: string = 'Incident Note Detail: ';
 	const windowTitleSelector: string =
 		'app-incidentnote-detail-window > p-dialog > div > div.ui-dialog-titlebar > span > p-header > div';
-	let ipAddr: string = '192.169.1.1';
+	const ipAddr: string = '192.169.1.1';
 	//
 	const mockDatum = [
 		new IncidentNote( 1,1,'Ping','i 1',new Date( '2018-01-01T00:00:00' ), false ),
@@ -60,11 +60,11 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	const inc: Incident = new Incident( 4,1,ipAddr,'arin.net','PSG169',
 		'dandy@psg.com','',false,false,false,'',new Date( '2018-04-01T01:00:00' ) );
 	//
-	let netInc = new NetworkIncident();
+	const netInc = new NetworkIncident();
 	//
 	beforeEach( async( ( ) => {
 		TestBed.configureTestingModule(  {
-			imports: [ 
+			imports: [
 				FormsModule,
 				DataTableModule,
 				ButtonModule,
@@ -136,7 +136,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 		sut.addItemClicked( );
 		expect( sut.windowDisplay ).toEqual( true );
 		tick( );
-		fixture.detectChanges()
+		fixture.detectChanges();
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			'#NoteDetailWindowHeader' )).nativeElement;
 		expect( title.innerText ).toEqual( expectedWindowTitle + '0' );
@@ -147,11 +147,11 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	//
 	it('should launch window when editItemClicked is called ...', fakeAsync( () => {
 		console.log( 'edit clicked' );
-		let incidentNote: IncidentNote = sut.networkIncident.incidentNotes[ 3 ];
+		const incidentNote: IncidentNote = sut.networkIncident.incidentNotes[ 3 ];
 		sut.editItemClicked( incidentNote );
 		expect( sut.windowDisplay ).toEqual( true );
 		tick( );
-		fixture.detectChanges()
+		fixture.detectChanges();
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			'#NoteDetailWindowHeader' )).nativeElement;
 		expect( title.innerText ).toEqual( expectedWindowTitle + incidentNote.IncidentNoteId );
@@ -162,7 +162,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	//
 	it('should delete row when event called and OK is clicked...', fakeAsync(() => {
 		//
-		const ret: Boolean = 
+		const ret: Boolean =
 				sut.deleteItemClicked( sut.networkIncident.incidentNotes[ 2 ] );
 		confirmationService.accept();
 		expect( ret ).toEqual( false );

@@ -8,7 +8,6 @@ import { By } from '@angular/platform-browser';
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
 import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
 import { ButtonModule } from '../../../../node_modules/primeng/components/button/button';
-//import { ConfirmationService } from '../../../../node_modules/primeng/components/common/confirmationservice';
 import { SelectItem } from '../../../../node_modules/primeng/components/common/selectitem';
 //
 import { ServerSelectionWindowComponent } from './server-selection-window.component';
@@ -18,22 +17,22 @@ describe('ServerSelectionWindowComponent', () => {
 	let sut: ServerSelectionWindowComponent;
 	let fixture: ComponentFixture<ServerSelectionWindowComponent>;
 	//
-	let windowTitleSelector: string =
+	const windowTitleSelector: string =
 		'#serverSelectionWindow > div.ui-dialog > div.ui-dialog-titlebar';
 	const expectedWindowTitle: string = 'Select a server';
 	const mockData: SelectItem[] = [
-		new SelectItemClass( 'nsg-1', 'Router 1' ), 
-		new SelectItemClass( 'nsgServ2', 'Router 2' ), 
+		new SelectItemClass( 'nsg-1', 'Router 1' ),
+		new SelectItemClass( 'nsgServ2', 'Router 2' ),
 		new SelectItemClass( 'nsg-3', 'Web Server' )
 	];
-	let displayWindow: boolean = true;
+	const displayWindow: boolean = true;
 	//
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [ FormsModule,
 				BrowserAnimationsModule
 			],
-			declarations: [ 
+			declarations: [
 				ServerSelectionWindowComponent,
 				Dialog, Header, Footer
 			]
@@ -72,10 +71,10 @@ describe('ServerSelectionWindowComponent', () => {
 	});
 	//
 	it('should return selected server 0 ...', fakeAsync( () => {
-		let idx: number = 0;
-		let server: SelectItem = mockData[ idx ];
-		let value: string = server.value;
-		let radioSelector: string =
+		const idx: number = 0;
+		const server: SelectItem = mockData[ idx ];
+		const value: string = server.value;
+		const radioSelector: string =
 			`#serverSelectionWindow > div.ui-dialog > div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type="radio"]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
@@ -84,16 +83,15 @@ describe('ServerSelectionWindowComponent', () => {
 		expect( radio.checked ).toBeFalsy(); // default state
 		//
 		radio.click();
-		// expect( title.innerText ).toEqual( expectedWindowTitle );
 		expect( sut.onClose.emit ).toHaveBeenCalledWith( value );
 		sut.displayWin = false;
 	}));
 	//
 	it('should return selected server 1 ...', fakeAsync( () => {
-		let idx: number = 1;
-		let server: SelectItem = mockData[ idx ];
-		let value: string = server.value;
-		let radioSelector: string =
+		const idx: number = 1;
+		const server: SelectItem = mockData[ idx ];
+		const value: string = server.value;
+		const radioSelector: string =
 			`#serverSelectionWindow > div.ui-dialog > div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type="radio"]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
@@ -102,7 +100,6 @@ describe('ServerSelectionWindowComponent', () => {
 		expect( radio.checked ).toBeFalsy(); // default state
 		//
 		radio.click();
-		// expect( title.innerText ).toEqual( expectedWindowTitle );
 		expect( sut.onClose.emit ).toHaveBeenCalledWith( value );
 		sut.displayWin = false;
 	}));

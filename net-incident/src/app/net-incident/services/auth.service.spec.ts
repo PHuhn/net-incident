@@ -18,7 +18,7 @@ describe('AuthService', () => {
 	let sut: AuthService;
 	let http: HttpClient;
 	let backend: HttpTestingController;
-	let url: string = environment.base_Url + 'Token';
+	const url: string = environment.base_Url + 'Token';
 	beforeEach( async( ( ) => {
 		TestBed.configureTestingModule( {
 			imports: [
@@ -105,11 +105,11 @@ describe('AuthService', () => {
 		const userName: string = 'TestUser';
 		const token: string = '1234567890';
 		const tokenType: string = 'bearer';
-		let response: TokenResponse = new TokenResponse(
+		const response: TokenResponse = new TokenResponse(
 			token, tokenType, 10000, 'TestUser'
 		);
 		sut.authenticate( userName, 'asdfdsaf' ).subscribe( ( tokenData: TokenResponse ) => {
-			// 
+			//
 			expect( tokenData.access_token ).toEqual( token );
 			expect( tokenData.userName ).toEqual( userName );
 			expect( tokenData.token_type ).toEqual( tokenType );
@@ -133,7 +133,7 @@ describe('AuthService', () => {
 		const userName: string = 'TestUser';
 		const token: string = '1234567890';
 		const tokenType: string = 'bearer';
-		let response: TokenResponse = new TokenResponse(
+		const response: TokenResponse = new TokenResponse(
 			token, tokenType, 10000, userName
 		);
 		sut.authenticate( 'badUserName', 'asdfdsaf' ).subscribe( ( tokenData: TokenResponse ) => {
@@ -144,7 +144,7 @@ describe('AuthService', () => {
 			//
 		}, error => {
 			console.log( JSON.stringify( error ) );
-			expect( String( error ) ).toEqual( 'Error: authenticate: Invalid user name returned.' )
+			expect( String( error ) ).toEqual( 'Error: authenticate: Invalid user name returned.' );
 		} );
 		const request = backend.expectOne( `${url}` );
 		expect( request.request.method ).toBe( 'POST' );

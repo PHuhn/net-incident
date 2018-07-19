@@ -15,7 +15,7 @@ import { ServicesService } from './services.service';
 //
 describe('ServicesService', () => {
 	let sut: ServicesService;
-	let baseUrl: string = environment.base_Url;
+	const baseUrl: string = environment.base_Url;
 	let http: HttpClient;
 	let backend: HttpTestingController;
 	//
@@ -30,7 +30,6 @@ describe('ServicesService', () => {
 				{ provide: ServicesService, useClass: ServicesService }
 			]
 		} );
-		//backend = getTestBed( ).get( MockBackend );
 		sut = getTestBed().get( ServicesService );
 		TestBed.compileComponents();
 	} ) );
@@ -85,7 +84,7 @@ describe('ServicesService', () => {
 			expect( datum ).toBe( ipAddress );
 		});
 		// use the HttpTestingController to mock requests and the flush method to provide dummy values as responses
-		// use expectOne(), expectNone() and match() 
+		// use expectOne(), expectNone() and match()
 		const request = backend.expectOne( `${baseUrl}services/whois/${ipAddress}` );
 		expect( request.request.method ).toBe( 'GET' );
 		request.flush(ipAddress);
@@ -93,13 +92,13 @@ describe('ServicesService', () => {
 	}));
 	//
 	// handleError( error: any )
-	// 
+	//
 	it( 'should throw a response error...', async(() => {
 		//
-		let errMsg: string = 'Fake error';
-		let resp: Response = new Response( new ResponseOptions({ 
+		const errMsg: string = 'Fake error';
+		const resp: Response = new Response( new ResponseOptions({
 			body: { error: `${errMsg}` }, status: 599, statusText: `${errMsg}`, url: 'http://localhost'
-		}));;
+		}));
 		//
 		sut.handleError( resp ).subscribe( () => {
 				fail( 'handleError: expected error...' );
@@ -110,10 +109,10 @@ describe('ServicesService', () => {
 	}));
 	//
 	// handleError( error: any )
-	// 
+	//
 	it( 'should throw a string error...', async(() => {
 		//
-		let errMsg: string = 'Fake error';
+		const errMsg: string = 'Fake error';
 		//
 		sut.handleError( errMsg ).subscribe( () => {
 				fail( 'handleError: expected error...' );
@@ -128,7 +127,7 @@ describe('ServicesService', () => {
 	it( 'should handle a whois error results...', async( ( ) => {
 		//
 		const ipAddress = '192.168.0.1';
-		let errMsg: string = 'Fake error';
+		const errMsg: string = 'Fake error';
 		//
 		sut.getWhoIs( ipAddress ).subscribe( ( datum ) => {
 			console.log( datum );

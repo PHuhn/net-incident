@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 //
-//import { MenuItem } from '../../../../node_modules/primeng/components/common/menuitem';
 import { Menubar, MenubarModule } from '../../../../node_modules/primeng/components/menubar/menubar';
 import { environment } from '../../../environments/environment';
 import { HeaderComponent } from './header.component';

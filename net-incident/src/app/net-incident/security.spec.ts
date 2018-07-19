@@ -1,5 +1,5 @@
 // ===========================================================================
-//	File: security.spec.ts
+// File: security.spec.ts
 //
 import { TestBed, getTestBed } from '@angular/core/testing';
 //
@@ -16,7 +16,7 @@ describe('Security', () => {
 			'Security: should create ...' );
 		user.Roles = [];
 		const sut: Security = new Security( user );
-        expect( sut ).toBeTruthy();
+		expect( sut ).toBeTruthy();
 	});
 	//
 	it('with role User should allow all ...', ( ) => {

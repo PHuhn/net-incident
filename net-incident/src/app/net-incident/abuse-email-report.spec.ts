@@ -1,5 +1,5 @@
 // ===========================================================================
-// File: 
+// File: AbuseEmailReport.spec.ts
 import { environment } from '../../environments/environment';
 import { Message } from '../global/message';
 import { IIncident, Incident } from './incident';
@@ -17,11 +17,11 @@ import { IAbuseEmailReport, AbuseEmailReport } from './abuse-email-report';
 describe('AbuseEmailReport', () => {
 	//
 	let sut: AbuseEmailReport;
-	let startDate: Date = new Date('2018-03-11T02:00:00');
-	let endDate: Date = new Date('2018-11-04T02:00:00');
-	let standardDate: Date = new Date('2018-03-10T23:00:00');
-	let daylightDate: Date = new Date('2018-03-11T02:01:00');
-	let ipAddr: string = '192.169.1.1';
+	const startDate: Date = new Date('2018-03-11T02:00:00');
+	const endDate: Date = new Date('2018-11-04T02:00:00');
+	const standardDate: Date = new Date('2018-03-10T23:00:00');
+	const daylightDate: Date = new Date('2018-03-11T02:01:00');
+	const ipAddr: string = '192.169.1.1';
 	//
 	const serverMock = new ServerData(
 		1, 1, 'NSG', 'Srv 1', 'Members Web-site',
@@ -61,7 +61,7 @@ describe('AbuseEmailReport', () => {
 	// At least one 'Network Log' needs to be selected
 	const logBadData = [ new NetworkLog( 6,1,4,ipAddr,standardDate,'Log 1',3, 'SQL', false ) ];
 	//
-	let netInc = new NetworkIncident();
+	const netInc = new NetworkIncident();
 	//
 	beforeEach(() => {
 		netInc.incident = inc;
@@ -85,9 +85,10 @@ describe('AbuseEmailReport', () => {
 		netInc.networkLogs = logSqlData;
 		sut = new AbuseEmailReport( netInc );
 		expect( sut ).toBeTruthy();
-		let actual: boolean = sut.IsValid();
-		if ( sut.errMsgs.length > 0 )
+		const actual: boolean = sut.IsValid();
+		if ( sut.errMsgs.length > 0 ) {
 			console.log( sut.errMsgs[0] );
+		}
 		expect( actual ).toBeTruthy();
 		expect( sut.errMsgs.length ).toEqual( 0 );
 	});
@@ -96,26 +97,27 @@ describe('AbuseEmailReport', () => {
 		netInc.networkLogs = logBadData;
 		sut = new AbuseEmailReport( netInc );
 		expect( sut ).toBeTruthy();
-		let actual: boolean = sut.IsValid();
-		if ( sut.errMsgs.length > 0 )
+		const actual: boolean = sut.IsValid();
+		if ( sut.errMsgs.length > 0 ) {
 			console.log( sut.errMsgs[0] );
+		}
 		expect( actual ).toBeFalsy();
 		expect( sut.errMsgs.length ).toEqual( 1 );
 	});
 	//
 	it('render simple data ...', ( ) => {
-		let template: string = 'This is it.';
+		const template: string = 'This is it.';
 		netInc.networkLogs = logBadData;
 		sut = new AbuseEmailReport( netInc );
-		let actual: string = sut.Renderer( template, {} );
+		const actual: string = sut.Renderer( template, {} );
 		expect( actual ).toEqual( template );
 	});
 	//
 	it('render multi-valued data ...', ( ) => {
-		let template: string = '${multi}-${valued}';
+		const template: string = '${multi}-${valued}';
 		netInc.networkLogs = logBadData;
 		sut = new AbuseEmailReport( netInc );
-		let actual: string = sut.Renderer( template, {multi:'multi', valued: 'valued'} );
+		const actual: string = sut.Renderer( template, {multi:'multi', valued: 'valued'} );
 		expect( actual ).toEqual( 'multi-valued' );
 	});
 	//
@@ -123,9 +125,9 @@ describe('AbuseEmailReport', () => {
 		netInc.networkLogs = logSqlData;
 		sut = new AbuseEmailReport( netInc );
 		expect( sut ).toBeTruthy();
-		let valid: boolean = sut.IsValid();
+		const valid: boolean = sut.IsValid();
 		expect( valid ).toBeTruthy();
-		let actual: string = sut.ComposeEmail( );
+		const actual: string = sut.ComposeEmail( );
 		// console.log( actual );
 		expect( actual ).toContain( ipAddr );
 	});
@@ -134,12 +136,12 @@ describe('AbuseEmailReport', () => {
 		netInc.networkLogs = logMultiData;
 		sut = new AbuseEmailReport( netInc );
 		expect( sut ).toBeTruthy();
-		let valid: boolean = sut.IsValid();
+		const valid: boolean = sut.IsValid();
 		expect( valid ).toBeTruthy();
-		let actual: string = sut.ComposeEmail( );
+		const actual: string = sut.ComposeEmail( );
 		 console.log( actual );
 		expect( actual ).toContain( ipAddr );
-		console.log( 
+		console.log(
 			'End of abuse-email-report.spec\n' +
 			'=================================' );
 	});

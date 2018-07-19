@@ -1,6 +1,6 @@
 // ===========================================================================
-//	File: network-incident.service.spec.ts
-//	Tests of service for: network-incident.service
+// File: network-incident.service.spec.ts
+// Tests of service for: network-incident.service
 //
 import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
 //
@@ -15,8 +15,8 @@ import { Message } from '../../global/message';
 import { SelectItemClass } from '../select-item-class';
 import { IUser, User } from '../user';
 import { ServerData } from '../server-data';
-import { NetworkIncident } from '../network-incident'
-import { NetworkIncidentSave } from '../network-incident-save'
+import { NetworkIncident } from '../network-incident';
+import { NetworkIncidentSave } from '../network-incident-save';
 import { IIncident, Incident } from '../incident';
 import { INetworkLog, NetworkLog } from '../network-log';
 import { NetworkIncidentService } from './network-incident.service';
@@ -25,23 +25,23 @@ describe('NetworkIncidentService', () => {
 	let sut: NetworkIncidentService;
 	let http: HttpClient;
 	let backend: HttpTestingController;
-	let url: string = environment.base_Url + 'NetworkIncident';
-	let errMsg: string = 'Fake error';
+	const url: string = environment.base_Url + 'NetworkIncident';
+	const errMsg: string = 'Fake error';
 	//
-	let testDate: Date = new Date('2000-01-01T00:00:00-05:00');
+	const testDate: Date = new Date('2000-01-01T00:00:00-05:00');
 	const ip: string = '192.199.1.1';
-	let startDate: Date = new Date('2018-03-11T02:00:00-05:00');
-	let endDate: Date = new Date('2018-11-04T02:00:00-05:00');
-	let server = new ServerData(
+	const startDate: Date = new Date('2018-03-11T02:00:00-05:00');
+	const endDate: Date = new Date('2018-11-04T02:00:00-05:00');
+	const server = new ServerData(
 		1, 1, 'NSG', 'Srv 1', 'Members Web-site',
 		'Web-site', 'Web-site address: www.nsg.com',
 		'We are in Michigan, USA.', 'Phil Huhn', 'Phil', 'PhilHuhn@yahoo.com',
 		'EST (UTC-5)', true,  'EDT (UTC-4)', startDate, endDate
 	);
-	let user: User = new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1,
+	const user: User = new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1,
 		[new SelectItemClass('srv 1','Server 1'), new SelectItemClass('srv 2','Server 2')],'srv 1', server,['admin']);
 	//
-	const mockIncident: Incident = 
+	const mockIncident: Incident =
 		new Incident( 4,1,ip,'arin.net','i-4-net','a@1.com','',false,false,false,'i 4',testDate );
 	//
 	const mockNetLogs = [
@@ -78,7 +78,7 @@ describe('NetworkIncidentService', () => {
 	} );
 	//
 	function newNetworkIncident( incident: Incident ): NetworkIncident {
-		let _ni = new NetworkIncident( );
+		const _ni = new NetworkIncident( );
 		_ni.incident = JSON.parse( JSON.stringify( incident ) );
 		_ni.incidentNotes = [];
 		_ni.deletedNotes = [];
@@ -104,9 +104,9 @@ describe('NetworkIncidentService', () => {
 	//
 	it( 'should get by id (primary key) ...', async( ( ) => {
 		//
-		let mockData: NetworkIncident = newNetworkIncident( mockIncident );
-		let id1: number = mockIncident.IncidentId;
-		let srvId: number = server.ServerId;
+		const mockData: NetworkIncident = newNetworkIncident( mockIncident );
+		const id1: number = mockIncident.IncidentId;
+		const srvId: number = server.ServerId;
 		sut.getNetworkIncident( id1, srvId ).subscribe( ( data: NetworkIncident ) => {
 			// console.log( data );
 			expect( data.incident.IncidentId ).toEqual( id1 );
@@ -124,10 +124,10 @@ describe('NetworkIncidentService', () => {
 	//
 	it( 'should create a new NetworkIncident ...', async( ( ) => {
 		//
-		let mockData: NetworkIncident = newNetworkIncident( 
+		const mockData: NetworkIncident = newNetworkIncident(
 			new Incident( 0,1,ip,'arin.net','i-4-net','a@1.com','',false,false,false,'i 4',testDate )
 		);
-		let id1: number = mockData.incident.IncidentId;
+		const id1: number = mockData.incident.IncidentId;
 		sut.createIncident( mockData ).subscribe(( resp: NetworkIncident ) => {
 			expect( resp.incident.IncidentId ).toEqual( id1 );
 		});

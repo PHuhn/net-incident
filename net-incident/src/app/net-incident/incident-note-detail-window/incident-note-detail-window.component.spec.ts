@@ -34,7 +34,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	let http: HttpClient;
 	let backend: HttpTestingController;
 	//
-	let ipAddr: string = '192.169.1.1';
+	const ipAddr: string = '192.169.1.1';
 	//
 	let mockData: IncidentNote;
 	//
@@ -52,12 +52,12 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		new SelectItemClass( 3, 'ISP Rpt' ),
 		new SelectItemClass( 4, 'ISP Addl' ),
 		new SelectItemClass( 5, 'ISP Resp' )
-	]
+	];
 	//
 	const inc: Incident = new Incident( 4,1,ipAddr,'arin.net','PSG169',
 		'dandy@psg.com','',false,false,false,'',new Date( '2018-04-01T01:00:00' ) );
 	//
-	let netInc = new NetworkIncident();
+	const netInc = new NetworkIncident();
 	//
 	beforeEach( async( ( ) => {
 		TestBed.configureTestingModule(  {
@@ -69,7 +69,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 				HttpClientModule,
 				HttpClientTestingModule
 			],
-			declarations: [ 
+			declarations: [
 				IncidentNoteDetailWindowComponent,
 				Dialog
 			],
@@ -78,7 +78,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 				{ provide: ServicesService, useClass: ServicesServiceMock },
 				{ provide: ConfirmationService, useClass: ConfirmationServiceMock }
 			]
-		})
+		});
 		// Setup injected pre service for each test
 		alertService = getTestBed().get( AlertsService );
 		servicesService = getTestBed().get( ServicesService );

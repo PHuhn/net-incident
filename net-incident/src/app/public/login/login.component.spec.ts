@@ -1,5 +1,5 @@
 // ===========================================================================
-//	File: register.component.spec.ts
+// File: register.component.spec.ts
 import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { By } from '@angular/platform-browser';

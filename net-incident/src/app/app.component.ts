@@ -19,9 +19,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 	// --------------------------------------------------------------------
 	// Data declaration.
 	//
+	static securityManager: Security;
 	codeName: string = 'App-Component';
 	//
-	static securityManager: Security;
 	authenticated: boolean = false;
 	userAccount: string = environment.defaultUserAccount;
 	userPassword: string = '';
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 			AppComponent.securityManager = security;
 			this.authenticated = true;
 		} else {
-			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized')
+			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
 		}
 	}
 	//

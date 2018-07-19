@@ -99,7 +99,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 				console.log( `${this.codeName}.editItemClicked: ${this.windowDisplay}` );
 			}
 		} else {
-			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized')
+			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
 		}
 	}
 	//
@@ -128,7 +128,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 				}
 			});
 		} else {
-			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized')
+			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
 		}
 		return false;
 	}

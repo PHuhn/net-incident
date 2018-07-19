@@ -1,6 +1,6 @@
 // ===========================================================================
-//	File: User.service.spec.ts
-//	Tests of service for: User
+// File: User.service.spec.ts
+// Tests of service for: User
 //
 import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
 import { Response, ResponseOptions } from '@angular/http';
@@ -20,12 +20,12 @@ describe('UserService', () => {
 	let sut: UserService;
 	let http: HttpClient;
 	let backend: HttpTestingController;
-	let url: string = environment.base_Url + 'User';
-	let errMsg: string = 'Fake error';
-	let testDate: Date = new Date('2017-01-01T00:00:00');
-	let startDate: Date = new Date('2018-03-11T02:00:00');
-	let endDate: Date = new Date('2018-11-04T02:00:00');
-	let server = new ServerData(
+	const url: string = environment.base_Url + 'User';
+	const errMsg: string = 'Fake error';
+	const testDate: Date = new Date('2017-01-01T00:00:00');
+	const startDate: Date = new Date('2018-03-11T02:00:00');
+	const endDate: Date = new Date('2018-11-04T02:00:00');
+	const server = new ServerData(
 		1, 1, 'NSG', 'Srv 1', 'Members Web-site',
 		'Web-site', 'Web-site address: www.nsg.com',
 		'We are in Michigan, USA.', 'Phil Huhn', 'Phil', 'PhilHuhn@yahoo.com',
@@ -33,10 +33,14 @@ describe('UserService', () => {
 	);
 	//
 	const mockDatum = [
-		new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[]),
-		new User('e0-02','U2','U','N','U N','U','UN2@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[]),
-		new User('e0-03','U3','U','N','U N','U','UN3@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[]),
-		new User('e0-04','U4','U','N','U N','U','UN4@yahoo.com',true,'734-555-1212', true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[])
+		new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212',
+			true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[]),
+		new User('e0-02','U2','U','N','U N','U','UN2@yahoo.com',true,'734-555-1212',
+			true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[]),
+		new User('e0-03','U3','U','N','U N','U','UN3@yahoo.com',true,'734-555-1212',
+			true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[]),
+		new User('e0-04','U4','U','N','U N','U','UN4@yahoo.com',true,'734-555-1212',
+			true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[])
 	];
 	//
 	beforeEach( async( ( ) => {
@@ -79,11 +83,11 @@ describe('UserService', () => {
 	//
 	it( 'should create an empty class ...', ( ) => {
 		console.log( 'Should create an empty class ...' );
-		let newData: User = sut.emptyUser( );
+		const newData: User = sut.emptyUser( );
 		expect( newData.Id ).toEqual( '' );
 	});
 	//
-	//	getUser( id: string ) : Observable<IUser>
+	// getUser( id: string ) : Observable<IUser>
 	//
 	it( 'should get by id (primary key)...', async( ( ) => {
 		// Error: Expected one matching request for criteria "Match URL: http://localhost:9111/api/User/", found none.
@@ -103,13 +107,13 @@ describe('UserService', () => {
 		//
 	}));
 	//
-	//	getUserServer( id: string ) : Observable<IUser>
+	// getUserServer( id: string ) : Observable<IUser>
 	//
 	it( 'should get by id and server short name...', async( ( ) => {
 		//
-		let mockData: User = mockDatum[ 1 ];
-		let id1: string = mockData.UserName;
-		let srv: string = mockData.ServerShortName;
+		const mockData: User = mockDatum[ 1 ];
+		const id1: string = mockData.UserName;
+		const srv: string = mockData.ServerShortName;
 		const path: string = url + '?id=' + id1 + '&serverShortName=' + srv;
 		sut.getUserServer( id1, srv ).subscribe( ( data: User ) => {
 			expect( data.UserName ).toEqual( id1 );
@@ -124,7 +128,7 @@ describe('UserService', () => {
 	}));
 	//
 	// handleError( error: any )
-	// 
+	//
 	it( 'should throw an error...', async(() => {
 		//
 		sut.handleError( errMsg ).subscribe( () => {

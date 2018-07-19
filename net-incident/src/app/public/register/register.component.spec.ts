@@ -1,5 +1,5 @@
 // ===========================================================================
-//	File: register.component.spec.ts
+// File: register.component.spec.ts
 import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +36,7 @@ describe('RegisterComponent', () => {
 		TestBed.compileComponents();
 	} ) );
 	//
-	// Instantiate fixture and the component 
+	// Instantiate fixture and the component
 	//
 	beforeEach(() => {
 		fixture = TestBed.createComponent(RegisterComponent);

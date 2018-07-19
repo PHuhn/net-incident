@@ -9,7 +9,7 @@ import { HttpResponse } from '@angular/common/http';
 //
 import { Observable, throwError } from 'rxjs';
 //
-import { DataTable, DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable'; //primeng/components/datatable/datatable';
+import { DataTable, DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
 import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
 import { ButtonModule } from '../../../../node_modules/primeng/components/button/button';
@@ -31,9 +31,9 @@ import { IUser, User } from '../user';
 import { ServerData } from '../server-data';
 import { SelectItemClass } from '../select-item-class';
 //
-import { TruncatePipe } from '../../global/truncate.pipe'
+import { TruncatePipe } from '../../global/truncate.pipe';
 import { IncidentDetailWindowComponent } from './incident-detail-window.component';
-import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.component'
+import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.component';
 import { IncidentNoteGridComponent } from '../incident-note-grid/incident-note-grid.component';
 import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-window/incident-note-detail-window.component';
 //
@@ -46,21 +46,21 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	let netIncidentService: NetworkIncidentServiceMock;
 	let detailWindow: DetailWindowInput;
 	//
-	let testDate: Date = new Date('2000-01-01T00:00:00-05:00');
+	const testDate: Date = new Date('2000-01-01T00:00:00-05:00');
 	//
 	const ip: string = '192.199.1.1';
-	let startDate: Date = new Date('2018-03-11T02:00:00-05:00');
-	let endDate: Date = new Date('2018-11-04T02:00:00-05:00');
-    let server = new ServerData(
+	const startDate: Date = new Date('2018-03-11T02:00:00-05:00');
+	const endDate: Date = new Date('2018-11-04T02:00:00-05:00');
+	const server = new ServerData(
 		1, 1, 'NSG', 'Srv 1', 'Members Web-site',
 		'Web-site', 'Web-site address: www.nsg.com',
 		'We are in Michigan, USA.', 'Phil Huhn', 'Phil', 'PhilHuhn@yahoo.com',
 		'EST (UTC-5)', true,  'EDT (UTC-4)', startDate, endDate
 	);
-	let user: User = new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1,
+	const user: User = new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1,
 		[new SelectItemClass('srv 1','Server 1'), new SelectItemClass('srv 2','Server 2')],'srv 1', server, ['admin']);
 	//
-	const mockData: Incident = 
+	const mockData: Incident =
 		new Incident( 4,1,ip,'arin.net','i-4-net','a@1.com','',false,false,false,'i 4',testDate );
 	//
 	const mockNetLogs = [
@@ -80,7 +80,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 				DropdownModule,
 				BrowserAnimationsModule
 			],
-			declarations: [ 
+			declarations: [
 				IncidentDetailWindowComponent,
 				IncidentDetailWindowComponent,
 				NetworkLogGridComponent,
@@ -107,20 +107,20 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		fixture = TestBed.createComponent( IncidentDetailWindowComponent );
 		sut = fixture.componentInstance;
 		//
-		let response: NetworkIncident = newNetworkIncident( mockData );
+		const response: NetworkIncident = newNetworkIncident( mockData );
 		netIncidentService.mockGet = response;
 		// supply the input data
 		detailWindow = new DetailWindowInput( user, mockData );
 		sut.detailWindowInput = detailWindow;
 		sut.displayWin = true;
-		console.log( `*=* beforeEach ${new Date().toISOString()}` )
+		console.log( `*=* beforeEach ${new Date().toISOString()}` );
 		//
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 	} ) );
 	//
 	function newNetworkIncident( incident: Incident ): NetworkIncident {
-		let _ni = new NetworkIncident( );
+		const _ni = new NetworkIncident( );
 		_ni.incident = JSON.parse( JSON.stringify( incident ) );
 		_ni.incidentNotes = [];
 		_ni.deletedNotes = [];
@@ -135,7 +135,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		return _ni;
 	}
 	//
-	//	Component is instantiated
+	// Component is instantiated
 	//
 	it( 'should be created ...', fakeAsync( ( ) => {
 		console.log(
@@ -144,13 +144,13 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		expect( sut ).toBeTruthy( );
 	} ) );
 	//
-	//	Verify data is transmitted to model via @input statement
+	// Verify data is transmitted to model via @input statement
 	//
 	it( 'should get the mock data...', async( ( ) => {
 		//
 		console.log(
 			'***********************************' );
-		fixture.detectChanges()
+		fixture.detectChanges();
 		fixture.whenStable().then(() => {
 			console.log( `mock data, display win: ${sut.displayWindow}  ${new Date().toISOString()}` );
 			expect( sut.networkIncident.incident.IncidentId ).toEqual( mockData.IncidentId );
@@ -190,10 +190,10 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		//
 		netIncidentService.mockCrudResponse = new HttpResponse(
 			{ status: 201, statusText: 'OK' } );
-		let empty: Incident = new Incident( 0,1,'','','','','',false,false,false,'',testDate )
-		let response: NetworkIncident = newNetworkIncident( empty );
+		const empty: Incident = new Incident( 0,1,'','','','','',false,false,false,'',testDate );
+		const response: NetworkIncident = newNetworkIncident( empty );
 		netIncidentService.mockGet = response;
-		sut.detailWindowInput = new DetailWindowInput( user, empty );	
+		sut.detailWindowInput = new DetailWindowInput( user, empty );
 		sut.onClose.subscribe( saved => {
 			console.log( 'In onClose callback createItem ...' );
 			sut.displayWin = false;

@@ -99,7 +99,7 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 		// retry every 10th of a second, last time pass true
 		// Observable.interval( 100 ).take( 4 ).subscribe( val => {
 		let cnt: number = 0;
-		//Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
+		// Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
 		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
 				cnt++;
 			if( this.logLevel >= 4 ) {

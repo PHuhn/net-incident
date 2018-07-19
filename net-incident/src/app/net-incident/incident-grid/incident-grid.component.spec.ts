@@ -9,7 +9,7 @@ import { takeWhile } from 'rxjs/operators';
 import { By } from '@angular/platform-browser';
 import { HttpResponse } from '@angular/common/http';
 //
-import { DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable'; //primeng/components/datatable/datatable';
+import { DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
 import { DataTable } from '../../../../node_modules/primeng/components/datatable/datatable';
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
 import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
@@ -30,7 +30,7 @@ import { NetworkIncidentService } from '../services/network-incident.service';
 import { NetworkIncidentServiceMock } from '../services/mocks/NetworkIncidentService.mock';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 //
-import { TruncatePipe } from '../../global/truncate.pipe'
+import { TruncatePipe } from '../../global/truncate.pipe';
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IUser, User } from '../user';
 import { ServerData } from '../server-data';
@@ -41,7 +41,7 @@ import { NetworkIncident } from '../network-incident';
 import { IncidentGridComponent } from './incident-grid.component';
 import { IncidentDetailWindowComponent } from '../incident-detail-window/incident-detail-window.component';
 import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';
-import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.component'
+import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.component';
 import { IncidentNoteGridComponent } from '../incident-note-grid/incident-note-grid.component';
 import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-window/incident-note-detail-window.component';
 import { AppComponent } from '../../app.component';
@@ -57,19 +57,19 @@ describe( 'IncidentGridComponent', ( ) => {
 	let confirmService: ConfirmationServiceMock;
 	let networkIncidentServiceMock: NetworkIncidentServiceMock;
 	let detailWindow: DetailWindowInput;
-	let expectedWindowTitle: string = 'Incident Detail';
-	let windowTitleSelector: string =
+	const expectedWindowTitle: string = 'Incident Detail';
+	const windowTitleSelector: string =
 		'app-incident-detail-window > p-dialog > div > div.ui-dialog-titlebar > span > p-header > div';
-	let testDate: Date = new Date('2000-01-01T00:00:00');
-	let startDate: Date = new Date('2018-03-11T02:00:00');
-	let endDate: Date = new Date('2018-11-04T02:00:00');
-	let server = new ServerData(
+	const testDate: Date = new Date('2000-01-01T00:00:00');
+	const startDate: Date = new Date('2018-03-11T02:00:00');
+	const endDate: Date = new Date('2018-11-04T02:00:00');
+	const server = new ServerData(
 		1, 1, 'NSG', 'Srv 1', 'Members Web-site',
 		'Web-site', 'Web-site address: www.nsg.com',
 		'We are in Michigan, USA.', 'Phil Huhn', 'Phil', 'PhilHuhn@yahoo.com',
 		'EST (UTC-5)', true,  'EDT (UTC-4)', startDate, endDate
 	);
-	let user: User = new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1,
+	const user: User = new User('e0-01','U1','U','N','U N','U','UN1@yahoo.com',true,'734-555-1212', true,1,
 		[new SelectItemClass('srv 1','Server 1'), new SelectItemClass('srv 2','Server 2')],'srv 1', server,['admin']);
 	//
 	const mockDatum = [
@@ -88,12 +88,12 @@ describe( 'IncidentGridComponent', ( ) => {
 		new NetworkLog( 5,1,null,'192.5',new Date( '2018-02-27T00:00:00' ),'Log 5',1, 'SQL', false ),
 		new NetworkLog( 6,1,null,'192.5',new Date( '2018-02-27T00:00:00' ),'Log 6',1, 'SQL', false )
 	];
-	let selectItemsWindow: SelectItem[] = user.ServerShortNames;
-	let displayServersWindow: boolean = false;
+	const selectItemsWindow: SelectItem[] = user.ServerShortNames;
+	const displayServersWindow: boolean = false;
 	//
 	beforeEach( async( ( ) => {
 		TestBed.configureTestingModule(  {
-			imports: [ 
+			imports: [
 				FormsModule,
 				DataTableModule,
 				ButtonModule,
@@ -136,7 +136,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		sut.user = user;
 		AppComponent.securityManager = new Security( user );
 		// clone the array with slice( 0 )
-		incidentServiceMock.mockGetAll = mockDatum.slice( 0 )
+		incidentServiceMock.mockGetAll = mockDatum.slice( 0 );
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 	} ) );
@@ -146,7 +146,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	});
 	//
 	function newNetworkIncident( incident: Incident ): NetworkIncident {
-		let _ni = new NetworkIncident( );
+		const _ni = new NetworkIncident( );
 		_ni.incident = incident;
 		_ni.incidentNotes = [];
 		_ni.deletedNotes = [];
@@ -161,7 +161,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		return _ni;
 	}
 	//
-	//	Component instantiates
+	// Component instantiates
 	//
 	it( 'should be created ...', async( () => {
 		console.log(
@@ -170,7 +170,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		expect( sut ).toBeTruthy( );
 	} ) );
 	//
-	//	getIncidents( ) : Observable<IIncident[]>
+	// getIncidents( ) : Observable<IIncident[]>
 	//
 	it('should initialize with all data...', fakeAsync( () => {
 		console.log( 'begin of all data' );
@@ -185,36 +185,36 @@ describe( 'IncidentGridComponent', ( ) => {
 		console.log( 'end of all data' );
 	}));
 	//
-	//	addItemClicked( )
+	// addItemClicked( )
 	//
 	it('should launch window when addItemClicked is called ...', fakeAsync( () => {
 		console.log( 'addItemClicked is called ...' );
-		let response: NetworkIncident = newNetworkIncident(
+		const response: NetworkIncident = newNetworkIncident(
 			new Incident( 0,1,'','','','','',false,false,false,'',testDate )
 		);
-		let id = response.incident.IncidentId; // for title
-		let ip = '';
+		const id = response.incident.IncidentId; // for title
+		const ip = '';
 		networkIncidentServiceMock.mockGet = response;
 		sut.addItemClicked( );
 		expect( sut.windowDisplay ).toEqual( true );
-		let title: HTMLDivElement = fixture.debugElement.query(By.css(
+		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			'#IncidentDetailWindowHeader' )).nativeElement;
 		expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address:` );
 		sut.windowDisplay = false;
 	}));
 	//
-	//	editItemClicked( )
+	// editItemClicked( )
 	//
 	it('should launch detail window when editItemClicked is called ...', async( () => {
 		console.log( 'editItemClicked ...' );
-		let incident: Incident = sut.incidents[ 2 ];
-		let response: NetworkIncident = newNetworkIncident( incident );
-		let id = response.incident.IncidentId; // for title
-		let ip = response.incident.IPAddress;
+		const incident: Incident = sut.incidents[ 2 ];
+		const response: NetworkIncident = newNetworkIncident( incident );
+		const id = response.incident.IncidentId; // for title
+		const ip = response.incident.IPAddress;
 		networkIncidentServiceMock.mockGet = response;
 		sut.editItemClicked( incident );
 		//
-		console.log( `~= ${new Date().toISOString()}` )
+		console.log( `~= ${new Date().toISOString()}` );
 		//
 		let cnt: number = 0;
 		// https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
@@ -233,26 +233,28 @@ describe( 'IncidentGridComponent', ( ) => {
 					'#IncidentDetailWindowHeader' )).nativeElement;
 				expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
 				sut.windowDisplay = false;
-				console.log( `~=* detail completed ${new Date().toISOString()}` )
+				console.log( `~=* detail completed ${new Date().toISOString()}` );
 				cnt = 4;
 			} else {
-				if ( cnt === 4 ) fail('Detail window took too long.');
+				if ( cnt === 4 ) {
+					fail('Detail window took too long.')
+				};
 			}
 		});
 	}));
 	it('should launch take While ...', async( () => {
 		console.log( 'editItemClicked 2 ...' );
-		console.log( `~= ${new Date().toISOString()}` )
+		console.log( `~= ${new Date().toISOString()}` );
 		//
 		let cnt: number = 0;
 		// https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
 		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
 			cnt++;
-			console.log( `~=* ${val} ${cnt} ${new Date().toISOString()}` )
+			console.log( `~=* ${val} ${cnt} ${new Date().toISOString()}` );
 		});
 	}));
 	//
-	//	deleteItemClicked( item: Incident ) :boolean
+	// deleteItemClicked( item: Incident ) :boolean
 	//
 	it('should delete row when event called and OK is clicked...', fakeAsync(() => {
 		//
@@ -260,7 +262,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		incidentServiceMock.mockCrudResponse =
 			new HttpResponse( { status: 204, statusText: 'OK' } );
 		const id: number = sut.incidents[ 3 ].IncidentId;
-		let ret: Boolean = sut.deleteItemClicked( sut.incidents[ 3 ] );
+		const ret: Boolean = sut.deleteItemClicked( sut.incidents[ 3 ] );
 		confirmService.accept();
 		expect( ret ).toEqual( false );
 		tick( 10 );

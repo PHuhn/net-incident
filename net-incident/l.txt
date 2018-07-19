@@ -4,20 +4,21 @@ ERROR: ./global/alerts/alerts.service.ts[43, 7]: Identifier 'msgs' is never reas
 ERROR: ./global/alerts/alerts.service.ts[50, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
 ERROR: ./global/alerts/alerts.service.ts[58, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
 ERROR: ./net-incident/services/auth.service.ts[54, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/services/network-incident.service.ts[33, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.ts[84, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/services/network-incident.service.ts[32, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/services/network-incident.service.ts[83, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
 ERROR: ./net-incident/whois-abuse.ts[28, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/whois-abuse.ts[59, 7]: Identifier 'returnArray' is never reassigned; use 'const' instead of 'let'.
 ERROR: ./net-incident/network-log-grid/network-log-grid.component.ts[2, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.ts[194, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.ts[211, 7]: Identifier 'lines' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[217, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/abuse-email-report.ts[217, 7]: Identifier 'lines' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[229, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
 ERROR: ./net-incident/login.ts[17, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
 ERROR: ./public/login/login.component.ts[61, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
-
-Jasmine tests ...
-ERROR: ./net-incident/abuse-email-report.spec.ts[89, 9]: if statements must be braced
-ERROR: ./net-incident/abuse-email-report.spec.ts[100, 9]: if statements must be braced
+ERROR: ./global/alerts/alerts.service.ts[36, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./global/alerts/alerts.service.ts[43, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./global/alerts/alerts.service.ts[50, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./global/alerts/alerts.service.ts[58, 7]: Identifier 'msgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/abuse-email-report.ts[217, 7]: Identifier 'lines' is never reassigned; use 'const' instead of 'let'.
 ERROR: ./net-incident/abuse-email-report.spec.ts[52, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/abuse-email-report.spec.ts[53, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/abuse-email-report.spec.ts[54, 1]: Exceeds maximum line length of 140
@@ -25,26 +26,8 @@ ERROR: ./net-incident/abuse-email-report.spec.ts[55, 1]: Exceeds maximum line le
 ERROR: ./net-incident/abuse-email-report.spec.ts[56, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/abuse-email-report.spec.ts[57, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/abuse-email-report.spec.ts[58, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/abuse-email-report.spec.ts[2, 9]: trailing whitespace
-ERROR: ./net-incident/abuse-email-report.spec.ts[142, 21]: trailing whitespace
-ERROR: ./net-incident/abuse-email-report.spec.ts[88, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[99, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[107, 13]: Identifier 'template' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[110, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[115, 13]: Identifier 'template' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[118, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[126, 13]: Identifier 'valid' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[128, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[137, 13]: Identifier 'valid' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[139, 13]: Identifier 'actual' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[20, 9]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[21, 9]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[22, 9]: Identifier 'standardDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[23, 9]: Identifier 'daylightDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[24, 9]: Identifier 'ipAddr' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/abuse-email-report.spec.ts[64, 9]: Identifier 'netInc' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[2, 3]: comment must start with a space
-ERROR: ./net-incident/whois-abuse.spec.ts[3, 3]: comment must start with a space
+ERROR: ./net-incident/whois-abuse.ts[28, 1]: Exceeds maximum line length of 140
+ERROR: ./net-incident/whois-abuse.ts[59, 7]: Identifier 'returnArray' is never reassigned; use 'const' instead of 'let'.
 ERROR: ./net-incident/whois-abuse.spec.ts[12, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/whois-abuse.spec.ts[13, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/whois-abuse.spec.ts[14, 1]: Exceeds maximum line length of 140
@@ -60,226 +43,25 @@ ERROR: ./net-incident/whois-abuse.spec.ts[23, 1]: Exceeds maximum line length of
 ERROR: ./net-incident/whois-abuse.spec.ts[24, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/whois-abuse.spec.ts[25, 1]: Exceeds maximum line length of 140
 ERROR: ./net-incident/whois-abuse.spec.ts[26, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/whois-abuse.spec.ts[242, 17]: trailing whitespace
-ERROR: ./net-incident/whois-abuse.spec.ts[12, 7]: Identifier 'whois_ripe94_41_54_105' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[13, 7]: Identifier 'whois_ripe46_161_62_245' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[14, 7]: Identifier 'whois_arin246_161_212_245' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[15, 7]: Identifier 'whois_arin104_199_208_27' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[16, 7]: Identifier 'whois_afr197_48_169_77' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[17, 7]: Identifier 'whois_ap1_52_34_175' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[18, 7]: Identifier 'whois_ap103_18_33_107' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[19, 7]: Identifier 'whois_lac138_36_27_5' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[20, 7]: Identifier 'whois_lac177_228_94_39' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[21, 7]: Identifier 'whois_br177_37_164_71' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[22, 7]: Identifier 'whois_tw114_45_70_76' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[23, 7]: Identifier 'whois_kr112_220_69_50' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[24, 7]: Identifier 'whois_ns67_229_101_42' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[25, 7]: Identifier 'whois_ns69_10_58_155' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[26, 7]: Identifier 'whois_ns104_168_144_18' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[27, 6]: Identifier 'whois_SingleHopNet184_154' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/whois-abuse.spec.ts[12, 40]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[13, 41]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[14, 43]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[15, 42]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[16, 40]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[17, 37]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[18, 39]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[19, 38]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[20, 40]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[21, 39]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[22, 38]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[23, 39]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[24, 39]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[25, 38]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[26, 40]: " should be '
-ERROR: ./net-incident/whois-abuse.spec.ts[25, 800]: Missing semicolon
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[12, 113]: comment must start with a space
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[138, 4]: comment must start with a space
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[147, 4]: comment must start with a space
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[12, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[63, 28]: trailing whitespace
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[83, 19]: trailing whitespace
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[196, 64]: trailing whitespace
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[110, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[123, 7]: Identifier '_ni' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[193, 7]: Identifier 'empty' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[194, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[49, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[52, 6]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[53, 6]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[54, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[60, 6]: Identifier 'user' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[34, 58]: Missing semicolon
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[36, 89]: Missing semicolon
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[116, 62]: Missing semicolon
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[153, 26]: Missing semicolon
-ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.spec.ts[193, 89]: Missing semicolon
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[11, 102]: comment must start with a space
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[160, 4]: comment must start with a space
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[169, 4]: comment must start with a space
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[184, 4]: comment must start with a space
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[202, 4]: comment must start with a space
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[239, 4]: comment must start with a space
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[234, 5]: if statements must be braced
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[11, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[93, 14]: trailing whitespace
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[145, 7]: Identifier '_ni' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[188, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[191, 7]: Identifier 'id' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[192, 7]: Identifier 'ip' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[196, 7]: Identifier 'title' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[227, 9]: Identifier 'title' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[206, 7]: Identifier 'incident' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[207, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[208, 7]: Identifier 'id' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[209, 7]: Identifier 'ip' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[247, 7]: Identifier 'ret' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[56, 6]: Identifier 'detailWindow' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[57, 6]: Identifier 'expectedWindowTitle' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[58, 6]: Identifier 'windowTitleSelector' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[60, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[61, 6]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[62, 6]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[63, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[69, 6]: Identifier 'user' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[88, 6]: Identifier 'selectItemsWindow' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[89, 6]: Identifier 'displayServersWindow' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[32, 58]: Missing semicolon
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[43, 89]: Missing semicolon
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[135, 56]: Missing semicolon
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[213, 50]: Missing semicolon
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[223, 27]: Missing semicolon
-ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[231, 70]: Missing semicolon
-ERROR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[72, 19]: trailing whitespace
-ERROR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[37, 6]: Identifier 'ipAddr' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[60, 9]: Identifier 'netInc' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[55, 3]: Missing semicolon
-ERROR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.spec.ts[81, 5]: Missing semicolon
-ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[34, 36]: trailing whitespace
-ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[67, 14]: trailing whitespace
-ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[165, 23]: trailing whitespace
-ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[150, 7]: Identifier 'incidentNote' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/services/network-incident.service.ts[32, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/services/network-incident.service.ts[83, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/network-log-grid/network-log-grid.component.ts[2, 1]: Exceeds maximum line length of 140
+ERROR: ./net-incident/incident-detail-window/incident-detail-window.component.ts[194, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/incident-note-detail-window/incident-note-detail-window.component.ts[229, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/services/auth.service.ts[54, 1]: Exceeds maximum line length of 140
+ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[232, 9]: Identifier 'title' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[59, 6]: Identifier 'detailWindow' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[228, 27]: Missing semicolon
+ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[240, 42]: Missing semicolon
+ERROR: ./net-incident/incident-grid/incident-grid.component.spec.ts[241, 6]: Unnecessary semicolon
 ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[43, 6]: Identifier 'http' is never reassigned; use 'const' instead of 'let'.
 ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[44, 6]: Identifier 'backend' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[49, 6]: Identifier 'ipAddr' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[63, 9]: Identifier 'netInc' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[21, 58]: Missing semicolon
-ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[139, 26]: Missing semicolon
-ERROR: ./net-incident/incident-note-grid/incident-note-grid.component.spec.ts[154, 26]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[27, 3]: comment must start with a space
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[200, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[223, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[235, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[54, 14]: trailing whitespace
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[76, 23]: trailing whitespace
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[148, 7]: Identifier 'loop' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[199, 7]: Identifier 'netLogCheckbox' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[36, 6]: Identifier 'ipAddr' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[50, 9]: Identifier 'netInc' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[26, 58]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[115, 70]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[127, 67]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[139, 75]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[150, 84]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[157, 87]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[168, 63]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[191, 71]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[214, 71]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[250, 69]: Missing semicolon
-ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[261, 26]: Missing semicolon
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[11, 3]: comment must start with a space
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[25, 48]: trailing whitespace
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[26, 51]: trailing whitespace
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[36, 19]: trailing whitespace
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[75, 9]: Identifier 'idx' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[76, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[77, 9]: Identifier 'value' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[78, 9]: Identifier 'radioSelector' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[93, 9]: Identifier 'idx' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[94, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[95, 9]: Identifier 'value' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[96, 9]: Identifier 'radioSelector' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[21, 6]: Identifier 'windowTitleSelector' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/server-selection-window/server-selection-window.component.spec.ts[29, 6]: Identifier 'displayWindow' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/auth.service.spec.ts[112, 6]: trailing whitespace
-ERROR: ./net-incident/services/auth.service.spec.ts[108, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/auth.service.spec.ts[136, 7]: Identifier 'response' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/auth.service.spec.ts[21, 6]: Identifier 'url' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/auth.service.spec.ts[147, 81]: Missing semicolon
-ERROR: ./net-incident/services/incident.service.spec.ts[2, 3]: comment must start with a space
-ERROR: ./net-incident/services/incident.service.spec.ts[3, 3]: comment must start with a space
-ERROR: ./net-incident/services/incident.service.spec.ts[12, 3]: comment must start with a space
-ERROR: ./net-incident/services/incident.service.spec.ts[68, 4]: comment must start with a space
-ERROR: ./net-incident/services/incident.service.spec.ts[87, 4]: comment must start with a space
-ERROR: ./net-incident/services/incident.service.spec.ts[133, 4]: comment must start with a space
-ERROR: ./net-incident/services/incident.service.spec.ts[134, 4]: comment must start with a space
-ERROR: ./net-incident/services/incident.service.spec.ts[189, 9]: Shadowed variable: 'errMsg'
-ERROR: ./net-incident/services/incident.service.spec.ts[80, 47]: trailing whitespace
-ERROR: ./net-incident/services/incident.service.spec.ts[64, 7]: Identifier 'newData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[72, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[73, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[107, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[108, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[122, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[123, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[138, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[139, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[154, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[169, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[187, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/incident.service.spec.ts[188, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[2, 3]: comment must start with a space
-ERROR: ./net-incident/services/network-incident.service.spec.ts[3, 3]: comment must start with a space
-ERROR: ./net-incident/services/network-incident.service.spec.ts[44, 32]: trailing whitespace
-ERROR: ./net-incident/services/network-incident.service.spec.ts[127, 54]: trailing whitespace
-ERROR: ./net-incident/services/network-incident.service.spec.ts[81, 7]: Identifier '_ni' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[107, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[108, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[109, 7]: Identifier 'srvId' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[127, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[130, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[28, 6]: Identifier 'url' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[29, 6]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[31, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[33, 6]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[34, 6]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[35, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[41, 6]: Identifier 'user' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/network-incident.service.spec.ts[18, 54]: Missing semicolon
-ERROR: ./net-incident/services/network-incident.service.spec.ts[19, 63]: Missing semicolon
-ERROR: ./net-incident/services/services.service.spec.ts[34, 5]: comment must start with a space
-ERROR: ./net-incident/services/services.service.spec.ts[89, 47]: trailing whitespace
-ERROR: ./net-incident/services/services.service.spec.ts[97, 4]: trailing whitespace
-ERROR: ./net-incident/services/services.service.spec.ts[101, 59]: trailing whitespace
-ERROR: ./net-incident/services/services.service.spec.ts[114, 4]: trailing whitespace
-ERROR: ./net-incident/services/services.service.spec.ts[100, 7]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/services.service.spec.ts[101, 7]: Identifier 'resp' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/services.service.spec.ts[117, 7]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/services.service.spec.ts[132, 7]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/services.service.spec.ts[19, 6]: Identifier 'baseUrl' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/services.service.spec.ts[103, 7]: Unnecessary semicolon
-ERROR: ./net-incident/services/user.service.spec.ts[2, 3]: comment must start with a space
-ERROR: ./net-incident/services/user.service.spec.ts[3, 3]: comment must start with a space
-ERROR: ./net-incident/services/user.service.spec.ts[86, 4]: comment must start with a space
-ERROR: ./net-incident/services/user.service.spec.ts[106, 4]: comment must start with a space
-ERROR: ./net-incident/services/user.service.spec.ts[36, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/services/user.service.spec.ts[37, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/services/user.service.spec.ts[38, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/services/user.service.spec.ts[39, 1]: Exceeds maximum line length of 140
-ERROR: ./net-incident/services/user.service.spec.ts[127, 4]: trailing whitespace
-ERROR: ./net-incident/services/user.service.spec.ts[82, 7]: Identifier 'newData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/user.service.spec.ts[110, 7]: Identifier 'mockData' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/user.service.spec.ts[111, 7]: Identifier 'id1' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/user.service.spec.ts[112, 7]: Identifier 'srv' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/user.service.spec.ts[23, 6]: Identifier 'url' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/user.service.spec.ts[24, 6]: Identifier 'errMsg' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/user.service.spec.ts[25, 6]: Identifier 'testDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/user.service.spec.ts[26, 6]: Identifier 'startDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/user.service.spec.ts[27, 6]: Identifier 'endDate' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./net-incident/services/user.service.spec.ts[28, 9]: Identifier 'server' is never reassigned; use 'const' instead of 'let'.
-ERROR: ./public/header/header.component.spec.ts[4, 3]: comment must start with a space
-ERROR: ./public/login/login.component.spec.ts[2, 3]: comment must start with a space
-ERROR: ./public/register/register.component.spec.ts[2, 3]: comment must start with a space
-ERROR: ./public/register/register.component.spec.ts[39, 43]: trailing whitespace
+ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[199, 1]: Exceeds maximum line length of 140
+ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[222, 1]: Exceeds maximum line length of 140
+ERROR: ./net-incident/network-log-grid/network-log-grid.component.spec.ts[234, 1]: Exceeds maximum line length of 140
+ERROR: ./net-incident/login.ts[17, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
+ERROR: ./public/login/login.component.ts[61, 7]: Identifier 'errMsgs' is never reassigned; use 'const' instead of 'let'.
 
-Lint errors found in the listed files.
+
+
+All files pass linting.

@@ -1,0 +1,9 @@
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [172.64.105.7], Thursday, Jul 12,2018 22:49:09
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [216.58.192.198], Wednesday, Jul 11,2018 23:31:56
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [13.33.160.129], Tuesday, Jul 10,2018 12:59:57
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [96.16.205.119], Tuesday, Jul 10,2018 08:24:12
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [96.16.205.119], Tuesday, Jul 10,2018 08:23:08
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [52.84.6.174], Tuesday, Jul 10,2018 08:17:52
+[DoS attack: FIN Scan] attack packets in last 20 sec from ip [172.217.4.70], Tuesday, Jul 10,2018 01:38:34
+[DoS attack: ACK Scan] attack packets in last 20 sec from ip [98.138.49.44], Monday, Jul 09,2018 18:23:17
+[DoS attack: Smurf] attack packets in last 20 sec from ip [82.13.72.255], Tuesday, Jul 03,2018 01:13:17

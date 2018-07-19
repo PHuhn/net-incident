@@ -1,6 +1,6 @@
 // ===========================================================================
-//	File: Incident.service.spec.ts
-//	Tests of service for: Incident
+// File: Incident.service.spec.ts
+// Tests of service for: Incident
 //
 import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
 //
@@ -9,7 +9,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 //
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
-//import { AlertsService } from '../../global/alerts/alerts.service';
+// import { AlertsService } from '../../global/alerts/alerts.service';
 import { IncidentService } from './incident.service';
 import { IIncident, Incident } from '../incident';
 //
@@ -61,30 +61,30 @@ describe('IncidentService', () => {
 	});
 	//
 	it( 'should create an empty class ...', ( ) => {
-		let newData: Incident = sut.emptyIncident( );
+		const newData: Incident = sut.emptyIncident( );
 		expect( newData.IncidentId ).toEqual( 0 );
 	});
 	//
-	//	getIncident( id: string ) : Observable<IIncident>
+	// getIncident( id: string ) : Observable<IIncident>
 	//
 	it( 'should get by id (primary key)...', async( ( ) => {
 		//
-		let mockData: Incident = mockDatum[ 1 ];
-		let id1: number = mockData.IncidentId;
+		const mockData: Incident = mockDatum[ 1 ];
+		const id1: number = mockData.IncidentId;
 		sut.getIncident( id1 ).subscribe( ( data: Incident ) => {
 			// console.log( data );
 			expect( data.IncidentId ).toEqual( id1 );
 		});
 		// use the HttpTestingController to mock requests and the flush method to provide dummy values as responses
 		// https://angular.io/guide/http#expecting-and-answering-requests
-		// use expectOne(), expectNone() and match() 
+		// use expectOne(), expectNone() and match()
 		const request = backend.expectOne( `${url}/${id1}` );
 		expect( request.request.method ).toBe( 'GET' );
 		request.flush( mockData );
 		//
 	}));
 	//
-	//	getIncidents( ) : Observable<IIncident[]>
+	// getIncidents( ) : Observable<IIncident[]>
 	//
 	it( 'should get all IIncident results...', async( ( ) => {
 		//
@@ -104,8 +104,8 @@ describe('IncidentService', () => {
 	//
 	it( 'should create a new row...', async( ( ) => {
 		//
-		let mockData: Incident = mockDatum[ 2 ];
-		let id1: number = mockData.IncidentId;
+		const mockData: Incident = mockDatum[ 2 ];
+		const id1: number = mockData.IncidentId;
 		sut.createIncident( mockData ).subscribe(( resp: Incident ) => {
 			expect( resp.IncidentId ).toEqual( id1 );
 		});
@@ -119,8 +119,8 @@ describe('IncidentService', () => {
 	//
 	it( 'should update Incident row...', async( ( ) => {
 		//
-		let mockData: Incident = mockDatum[ 2 ];
-		let id1: number = mockData.IncidentId;
+		const mockData: Incident = mockDatum[ 2 ];
+		const id1: number = mockData.IncidentId;
 		sut.updateIncident( mockData ).subscribe(( resp: Incident ) => {
 			expect( resp.IncidentId ).toEqual( id1 );
 		});
@@ -130,13 +130,13 @@ describe('IncidentService', () => {
 		//
 	} ) );
 	//
-	//	deleteIncident( IncidentId: string )
-	//	204 says explicitly that you do not include a response body
+	// deleteIncident( IncidentId: string )
+	// 204 says explicitly that you do not include a response body
 	//
 	it( 'should delete Incident row...', async( ( ) => {
 		//
-		let mockData: Incident = mockDatum[ 2 ];
-		let id1: number = mockData.IncidentId;
+		const mockData: Incident = mockDatum[ 2 ];
+		const id1: number = mockData.IncidentId;
 		sut.deleteIncident( id1 ).subscribe(( resp: Incident ) => {
 			expect( resp.IncidentId ).toEqual( id1 );
 		});
@@ -151,7 +151,7 @@ describe('IncidentService', () => {
 	it( 'should throw an any error ...', async( ( ) => {
 		console.log( 'should throw an any error ...' );
 		//
-		let resp: string = errMsg;
+		const resp: string = errMsg;
 		//
 		sut.handleError( resp ).subscribe( () => {
 				console.log( JSON.stringify( resp ) );
@@ -166,7 +166,7 @@ describe('IncidentService', () => {
 	//
 	it( 'should throw a HttpErrorResponse error...', async( ( ) => {
 		//
-		let resp: HttpErrorResponse = new HttpErrorResponse({
+		const resp: HttpErrorResponse = new HttpErrorResponse({
 			error: {}, status: 404, statusText: errMsg
 		});
 		//
@@ -184,9 +184,9 @@ describe('IncidentService', () => {
 	it( 'should handle an error on create...', async(() => {
 		//
 		console.log( 'handle an error on create...' );
-		let mockData: Incident = mockDatum[ 2 ];
-		let id1: number = mockData.IncidentId;
-		const errMsg = 'Invalid request parameters';
+		const mockData: Incident = mockDatum[ 2 ];
+		const id1: number = mockData.IncidentId;
+		const errorMsg = 'Invalid request parameters';
 		const mockErrorResponse = {
 			status: 404, statusText: 'Bad Request'
 		};
@@ -200,7 +200,7 @@ describe('IncidentService', () => {
 		} );
 		const request: TestRequest = backend.expectOne( `${url}/` );
 		expect( request.request.method ).toBe( 'POST' );
-		request.flush( errMsg, mockErrorResponse );
+		request.flush( errorMsg, mockErrorResponse );
 		//
 	}));
 	//
