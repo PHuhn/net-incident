@@ -40,8 +40,6 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	let alertService: AlertsService;
 	let servicesService: ServicesService;
 	let confirmationService: ConfirmationServiceMock;
-	let http: HttpClient;
-	let backend: HttpTestingController;
 	//
 	const expectedWindowTitle: string = 'Incident Note Detail: ';
 	const windowTitleSelector: string =

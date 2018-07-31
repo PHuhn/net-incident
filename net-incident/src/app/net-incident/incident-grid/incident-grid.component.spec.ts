@@ -56,7 +56,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	let incidentServiceMock: IncidentServiceMock;
 	let confirmService: ConfirmationServiceMock;
 	let networkIncidentServiceMock: NetworkIncidentServiceMock;
-	let detailWindow: DetailWindowInput;
+	// let detailWindow: DetailWindowInput;
 	const expectedWindowTitle: string = 'Incident Detail';
 	const windowTitleSelector: string =
 		'app-incident-detail-window > p-dialog > div > div.ui-dialog-titlebar > span > p-header > div';
@@ -225,11 +225,11 @@ describe( 'IncidentGridComponent', ( ) => {
 			//  incident-note-detail-window
 			//  network-log-grid
 			cnt++;
-			fixture.detectChanges()
+			fixture.detectChanges();
 			fixture.whenStable();
 			if( sut.windowDisplay  === true ) {
 				expect( sut.windowDisplay ).toEqual( true );
-				let title: HTMLDivElement = fixture.debugElement.query(By.css(
+				const title: HTMLDivElement = fixture.debugElement.query(By.css(
 					'#IncidentDetailWindowHeader' )).nativeElement;
 				expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
 				sut.windowDisplay = false;
@@ -237,8 +237,8 @@ describe( 'IncidentGridComponent', ( ) => {
 				cnt = 4;
 			} else {
 				if ( cnt === 4 ) {
-					fail('Detail window took too long.')
-				};
+					fail('Detail window took too long.');
+				}
 			}
 		});
 	}));

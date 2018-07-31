@@ -220,7 +220,6 @@ describe('NetworkLogGridComponent', () => {
 		//
 		let netLogCheckbox: HTMLInputElement = fixture.debugElement.query(By.css(
 			'#networklogsGrid > div > div.ui-datatable-tablewrapper > table > tbody > tr:nth-child(4) > td.ui-selection-column > p-dtcheckbox > div > div.ui-chkbox-box > span' )).nativeElement;
-		// console.log( netLogCheckbox );
 		netLogCheckbox.click();
 		tick(50);
 		fixture.detectChanges( ); // trigger initial data binding
@@ -232,7 +231,6 @@ describe('NetworkLogGridComponent', () => {
 		expect( netLogBodyRows.length ).toBe( numRows );
 		netLogCheckbox = fixture.debugElement.query(By.css(
 			'#networklogsGrid > div > div.ui-datatable-tablewrapper > table > tbody > tr:nth-child(1) > td.ui-selection-column > p-dtcheckbox > div > div.ui-chkbox-box > span' )).nativeElement;
-		// console.log( netLogCheckbox );
 		netLogCheckbox.click( );
 		tick(50);
 		fixture.detectChanges( ); // trigger initial data binding
