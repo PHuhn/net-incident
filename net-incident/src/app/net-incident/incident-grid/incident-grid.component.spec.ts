@@ -9,8 +9,7 @@ import { takeWhile } from 'rxjs/operators';
 import { By } from '@angular/platform-browser';
 import { HttpResponse } from '@angular/common/http';
 //
-import { DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
-import { DataTable } from '../../../../node_modules/primeng/components/datatable/datatable';
+import { TableModule } from '../../../../node_modules/primeng/components/table/table';
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
 import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
 import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
@@ -92,10 +91,10 @@ describe( 'IncidentGridComponent', ( ) => {
 	const displayServersWindow: boolean = false;
 	//
 	beforeEach( async( ( ) => {
-		TestBed.configureTestingModule(  {
+		TestBed.configureTestingModule( {
 			imports: [
 				FormsModule,
-				DataTableModule,
+				TableModule,
 				ButtonModule,
 				DropdownModule,
 				BrowserAnimationsModule
@@ -227,7 +226,7 @@ describe( 'IncidentGridComponent', ( ) => {
 			cnt++;
 			fixture.detectChanges();
 			fixture.whenStable();
-			if( sut.windowDisplay  === true ) {
+			if( sut.windowDisplay === true ) {
 				expect( sut.windowDisplay ).toEqual( true );
 				const title: HTMLDivElement = fixture.debugElement.query(By.css(
 					'#IncidentDetailWindowHeader' )).nativeElement;

@@ -4,6 +4,7 @@
 	pepper-grinder, !redmond, rocket, south-street, !start, trontastic, voclain
 */
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../node_modules/primeicons/primeicons.css";
 @import "../node_modules/primeng/resources/themes/flick/theme.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
 /*

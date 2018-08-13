@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //
-import { DataTableModule } from '../../node_modules/primeng/components/datatable/datatable';
+import { TableModule } from '../../node_modules/primeng/components/table/table';
 import { DialogModule } from '../../node_modules/primeng/components/dialog/dialog';
 import { ConfirmDialogModule } from '../../node_modules/primeng/components/confirmdialog/confirmdialog';
 import { DropdownModule } from '../../node_modules/primeng/components/dropdown/dropdown';
@@ -30,7 +30,7 @@ import { HeaderComponent } from './public/header/header.component';
 		BrowserModule,
 		AppRoutingModule,
 		GlobalModule,
-		DataTableModule,
+		TableModule,
 		DialogModule,
 		ConfirmDialogModule,
 		DropdownModule,

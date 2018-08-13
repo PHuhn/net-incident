@@ -2,8 +2,7 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 //
-import { DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
-import { DataTable } from '../../../../node_modules/primeng/components/datatable/datatable';
+import { TableModule } from '../../../../node_modules/primeng/components/table/table';
 import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
 import { ConfirmationService } from '../../../../node_modules/primeng/components/common/confirmationservice';
 import { SelectItem } from '../../../../node_modules/primeng/components/common/selectitem';

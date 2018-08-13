@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Observable, throwError, interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 //
-import { DataTable, DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
+import { Table, TableModule } from '../../../../node_modules/primeng/components/table/table';
 import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
 import { ConfirmationService } from '../../../../node_modules/primeng/components/common/confirmationservice';
 //
@@ -28,11 +28,8 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 	private codeName: string = 'network-log-grid';
 	private logLevel: number = 1;
 	totalRecords: number = 0;
-	// id: number;
-	// ip: string;
-	@ViewChild(('IpFilter')) fltrEl: ElementRef;
-	ipFltr: HTMLInputElement;
-	grid: DataTable;
+	@ViewChild(('IpAdrFilter')) adrFltrEl: ElementRef;
+	ipAdrFltr: HTMLInputElement;
 	selectedLogs: NetworkLog[] = [];
 	disabled: boolean;
 	//
@@ -57,7 +54,7 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 		if( this.logLevel >= 4 ) {
 			console.log ( `${this.codeName}.ngOnInit: entering ...` );
 		}
-		this.ipFltr = undefined;
+		this.ipAdrFltr = undefined;
 		this.selectedLogs = [];
 		this.disabled = undefined;
 	}
@@ -101,12 +98,12 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 		let cnt: number = 0;
 		// Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
 		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
-				cnt++;
-			if( this.logLevel >= 4 ) {
+			cnt++;
+			if( this.logLevel >= 0 ) {
 				console.log ( `${this.codeName}.ngAfterViewInit: ${val}.` );
 			}
 			if( this.afterViewInit( cnt === 4 ) === true ) {
-				cnt = 4;
+				cnt = 4; // terminate the loop
 			}
 		});
 	}
@@ -115,8 +112,8 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 		if( this.logLevel >= 4 ) {
 			console.log ( `${this.codeName}.afterViewInit: Entering: ${complete} ...` );
 		}
-		this.ipFltr = this._elementRef.nativeElement.querySelector( '#fltr' );
-		if( this.ipFltr === undefined || this.ipFltr === null ) {
+		this.ipAdrFltr = this._elementRef.nativeElement.querySelector( '#ipAdrFltr' );
+		if( this.ipAdrFltr === undefined || this.ipAdrFltr === null ) {
 			if( this.logLevel >= 4 ) {
 				console.log ( `${this.codeName}.afterViewInit: filter element not found.` );
 			}
@@ -132,7 +129,7 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 		this.disabled = !( this.networkIncident.incident.Mailed === false
 			&& this.networkIncident.incident.Closed === false );
 		this.viewInitIPAddress( );
-		this.applyFilter( this.networkIncident.incident.IPAddress );
+		this.setTableFilter( this.networkIncident.incident.IPAddress );
 		if( this.disabled === true ) {
 			if( this.logLevel >= 3 ) {
 				console.log ( `${this.codeName}.afterViewInit: Disabled: ${this.disabled}` );
@@ -153,7 +150,7 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 			return el.Selected === true;
 		});
 		if( this.selectedLogs.length > 0 ) {
-			ipAddress  = this.selectedLogs[ 0 ].IPAddress;
+			ipAddress = this.selectedLogs[ 0 ].IPAddress;
 		}
 		// if ip address changes then set incident and emit the change.
 		if( ipAddress !== this.networkIncident.incident.IPAddress ) {
@@ -162,20 +159,23 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 		}
 	}
 	//
-	// apply the ip address filter.
+	// Set the ip address filter for the p-table.
 	//
-	applyFilter( ipAddress: string ): void {
+	setTableFilter( ipAddress: string ): void {
 		// https://stackoverflow.com/questions/44428535/
 		// how-to-preset-programmatically-the-filter-value-in-primeng-datatable
 		const event = new Event('input', {
 			'bubbles': true,
 			'cancelable': true
 		});
-		(<HTMLInputElement>this.ipFltr).value = ipAddress;
-		if( this.logLevel >= 4 ) {
-			console.log ( `${this.codeName}.applyFilter: Filter set: ${this.ipFltr.value}` );
+		this.ipAdrFltr = this._elementRef.nativeElement.querySelector('#ipAdrFltr');
+		if( this.ipAdrFltr !== undefined && this.ipAdrFltr !== null ) {
+			(<HTMLInputElement>this.ipAdrFltr).value = ipAddress;
+			this.adrFltrEl.nativeElement.dispatchEvent( event );
+		} else {
+			console.error ( `${this.codeName}.setTableFilter: ipAdrFltr not found.` );
+			console.log ( this.ipAdrFltr );
 		}
-		this.fltrEl.nativeElement.dispatchEvent( event );
 	}
 	//
 	// --------------------------------------------------------------------
@@ -201,7 +201,7 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 			event.data.IncidentId = this.networkIncident.incident.IncidentId;
 			if( this.networkIncident.incident.IPAddress === '' ) {
 				this.ipChanged.emit( ip ); // needs to call whois
-				this.applyFilter( ip );
+				this.setTableFilter( ip );
 				this.networkIncident.networkLogs.forEach( (row) => {
 					if( row.IPAddress === ip && row.Selected === false ) {
 						row.Selected = true;
@@ -237,7 +237,7 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 			if( cnt === 0 ) {
 				this.networkIncident.incident.IPAddress = '';
 				this.ipChanged.emit( this.networkIncident.incident.IPAddress );
-				this.applyFilter( this.networkIncident.incident.IPAddress );
+				this.setTableFilter( this.networkIncident.incident.IPAddress );
 			}
 			if( this.logLevel >= 4 ) {
 				console.log ( `${this.codeName}.handleRowUnSelect: ip: ${this.networkIncident.incident.IPAddress}` );

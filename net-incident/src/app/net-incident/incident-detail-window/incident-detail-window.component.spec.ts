@@ -9,7 +9,7 @@ import { HttpResponse } from '@angular/common/http';
 //
 import { Observable, throwError } from 'rxjs';
 //
-import { DataTable, DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
+import { TableModule } from '../../../../node_modules/primeng/components/table/table';
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
 import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
 import { ButtonModule } from '../../../../node_modules/primeng/components/button/button';
@@ -76,7 +76,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		TestBed.configureTestingModule(  {
 			imports: [ FormsModule,
 				ButtonModule,
-				DataTableModule,
+				TableModule,
 				DropdownModule,
 				BrowserAnimationsModule
 			],

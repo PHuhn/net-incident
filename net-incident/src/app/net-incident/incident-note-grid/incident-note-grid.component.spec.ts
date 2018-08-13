@@ -8,8 +8,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 //
 import { Observable, throwError } from 'rxjs';
 //
-import { DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
-import { DataTable } from '../../../../node_modules/primeng/components/datatable/datatable';
+import { TableModule } from '../../../../node_modules/primeng/components/table/table';
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
 import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
 import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
@@ -64,7 +63,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 		TestBed.configureTestingModule(  {
 			imports: [
 				FormsModule,
-				DataTableModule,
+				TableModule,
 				ButtonModule,
 				DropdownModule,
 				BrowserAnimationsModule,

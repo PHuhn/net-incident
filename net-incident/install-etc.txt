@@ -848,6 +848,43 @@ SOLUTION:
 	and to:
 		import { Observable, throwError } from 'rxjs';
 
+PROBLEM:
+	C:\Dat\Nsg\L\Web\Ng\NetIncidents3>ng
+	fs.js:1649
+	      binding.lstat(baseLong);
+              ^
+
+	Error: EPERM: operation not permitted, lstat 'C:\Users\Phillip'
+		at Object.realpathSync (fs.js:1649:15)
+		at toRealPath (module.js:156:13)
+		at Function.Module._findPath (module.js:205:22)
+		at Function.Module._resolveFilename (module.js:534:25)
+		at Function.Module._load (module.js:466:25)
+		at Function.Module.runMain (module.js:676:10)
+		at startup (bootstrap_node.js:187:16)
+		at bootstrap_node.js:608:3
+
+BEHAVIOR:
+	The following works:
+		%USERPROFILE%\appdata\roaming\npm\ng
+
+SOLUTION:
+	changed the %PATH%
+	from:
+	C:\Users\Phillip\appdata\roaming\npm
+	to:
+	%USERPROFILE%\appdata\roaming\npm
+
+PROBLEM:
+	p-table expandable not displaying expander icon and expansion doesn't work.
+BEHAVIOR:
+	side-by-side p-table and p-dataTable.  
+	p-dataTable works and displays correctly. 
+	p-table expandable not displaying expander icon and expansion doesn't work.
+SOLUTION:
+	npm install primeicons --save
+	added to style.css
+		@import "../node_modules/primeicons/primeicons.css";
 
 ===================================================
 Done:
@@ -863,8 +900,11 @@ Done:
 	authenication
 	client side security	2018-05-25
 	favicon		2018-05-25
+	Convert from PrimeNG p-dataTable to p-table (07-31) 2018-08-13
 
 To Do's:
-	registration
+	server-side pagination (lazy primeng feature)
+	publish to iis
+	convert to 2.0 Core
 
 ===================================================

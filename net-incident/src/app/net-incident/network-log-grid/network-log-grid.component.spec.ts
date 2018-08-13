@@ -8,8 +8,7 @@ import { Observable, throwError } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { forEach } from '@angular/router/src/utils/collection';
 //
-import { DataTableModule } from '../../../../node_modules/primeng/components/datatable/datatable';
-import { DataTable } from '../../../../node_modules/primeng/components/datatable/datatable';
+import { TableModule } from '../../../../node_modules/primeng/components/table/table';
 import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
 import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
 import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
@@ -32,6 +31,7 @@ describe('NetworkLogGridComponent', () => {
 	let alertService: AlertsService;
 	let confirmService: ConfirmationServiceMock;
 	//
+	const numRowsSelector = '#netLogTable > div > div > table > tbody > tr';
 	const ipAddr: string = '192.169.1.1';
 	//
 	const inc: Incident = new Incident( 4,1,'','arin.net','PSG169',
@@ -52,7 +52,7 @@ describe('NetworkLogGridComponent', () => {
 		TestBed.configureTestingModule(  {
 			imports: [
 				FormsModule,
-				DataTableModule,
+				TableModule,
 				ButtonModule,
 				BrowserAnimationsModule
 			],
@@ -118,7 +118,7 @@ describe('NetworkLogGridComponent', () => {
 		//
 		const numCols: number = 7;
 		const netLogBodyCols = fixture.debugElement.queryAll(By.css(
-			'#networklogsGrid > div.ui-datatable > div.ui-datatable-tablewrapper > table > tbody > tr:nth-child(1) > td' ));
+			'#netLogTable > div > div > table > tbody > tr:nth-child(1) > td' ));
 		expect( netLogBodyCols.length ).toBe( numCols );
 	});
 	//
@@ -130,7 +130,7 @@ describe('NetworkLogGridComponent', () => {
 		//
 		const numRows: number = mockDatum.length;
 		const netLogBodyRows = fixture.debugElement.queryAll(By.css(
-			'#networklogsGrid > div.ui-datatable > div.ui-datatable-tablewrapper > table > tbody > tr' ));
+			'#netLogTable > div > div > table > tbody > tr' ));
 		expect( netLogBodyRows.length ).toBe( numRows );
 	});
 	//
@@ -156,7 +156,7 @@ describe('NetworkLogGridComponent', () => {
 		console.log( `Test - Id: Disabled: ${sut.disabled} ** ${new Date().toISOString()}` );
 		const numCols: number = 5;
 		const netLogBodyCols = fixture.debugElement.queryAll(By.css(
-			'#networklogsGrid > div.ui-datatable > div.ui-datatable-tablewrapper > table > tbody > tr:nth-child(1) > td' ));
+			'#netLogTable > div > div > table > tbody > tr:nth-child(1) > td' ));
 		console.log( netLogBodyCols );
 		netInc.incident.Mailed = false;
 		netInc.networkLogs[3].Selected = false;
@@ -180,7 +180,7 @@ describe('NetworkLogGridComponent', () => {
 		fixture.whenStable( );
 		const numRows: number = 2;
 		const netLogBodyRows = fixture.debugElement.queryAll(By.css(
-			'#networklogsGrid > div.ui-datatable > div.ui-datatable-tablewrapper > table > tbody > tr' ));
+			numRowsSelector ));
 		console.log( netLogBodyRows );
 		netInc.incident.IPAddress = '';
 		expect( netLogBodyRows.length ).toBe( numRows );
@@ -196,14 +196,14 @@ describe('NetworkLogGridComponent', () => {
 		tick( 10000 );
 		//
 		const netLogCheckbox: HTMLInputElement = fixture.debugElement.query(By.css(
-			'#networklogsGrid > div > div.ui-datatable-tablewrapper > table > tbody > tr:nth-child(6) > td.ui-selection-column > p-dtcheckbox > div > div.ui-chkbox-box > span' )).nativeElement;
+			'#netLogTable > div > div > table > tbody > tr:nth-child(6) > td:nth-child(2) > p-tablecheckbox > div > div.ui-helper-hidden-accessible > input[type="checkbox"]' )).nativeElement;
 		netLogCheckbox.click();
-		tick(50);
+		tick(5000);
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 		const numRows: number = 2;
 		const netLogBodyRows = fixture.debugElement.queryAll(By.css(
-			'#networklogsGrid > div.ui-datatable > div.ui-datatable-tablewrapper > table > tbody > tr' ));
+			numRowsSelector ));
 		console.log( netLogBodyRows );
 		netInc.incident.IPAddress = '';
 		expect( netLogBodyRows.length ).toBe( numRows );
@@ -219,25 +219,25 @@ describe('NetworkLogGridComponent', () => {
 		tick( 10000 );
 		//
 		let netLogCheckbox: HTMLInputElement = fixture.debugElement.query(By.css(
-			'#networklogsGrid > div > div.ui-datatable-tablewrapper > table > tbody > tr:nth-child(4) > td.ui-selection-column > p-dtcheckbox > div > div.ui-chkbox-box > span' )).nativeElement;
+			'#netLogTable > div > div > table > tbody > tr:nth-child(4) > td:nth-child(2) > p-tablecheckbox > div > div.ui-chkbox-box.ui-widget.ui-state-default > span' )).nativeElement;
 		netLogCheckbox.click();
-		tick(50);
+		tick(5000);
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 		let numRows: number = 1;
 		let netLogBodyRows = fixture.debugElement.queryAll(By.css(
-			'#networklogsGrid > div.ui-datatable > div.ui-datatable-tablewrapper > table > tbody > tr' ));
+			numRowsSelector ));
 		console.log( netLogBodyRows );
 		expect( netLogBodyRows.length ).toBe( numRows );
 		netLogCheckbox = fixture.debugElement.query(By.css(
-			'#networklogsGrid > div > div.ui-datatable-tablewrapper > table > tbody > tr:nth-child(1) > td.ui-selection-column > p-dtcheckbox > div > div.ui-chkbox-box > span' )).nativeElement;
+			'#netLogTable > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > p-tablecheckbox > div > div.ui-chkbox-box.ui-widget.ui-state-default > span' )).nativeElement;
 		netLogCheckbox.click( );
-		tick(50);
+		tick(5000);
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 		numRows = 6;
 		netLogBodyRows = fixture.debugElement.queryAll(By.css(
-			'#networklogsGrid > div.ui-datatable > div.ui-datatable-tablewrapper > table > tbody > tr' ));
+			numRowsSelector ));
 		console.log( netLogBodyRows );
 		netInc.incident.IPAddress = '';
 		expect( netLogBodyRows.length ).toBe( numRows );
