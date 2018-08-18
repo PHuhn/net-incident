@@ -8,9 +8,7 @@
 			<tr>
 				<th style='width: 30px;'></th>
 				<th style='width: 36px;' *ngIf='!disabled'></th>
-				<th style='width: 125px;'>IP Address
-					<input id='ipAdrFltr' name='ipAdrFltr' type='hidden' #ipAdrFltr pInputText #IpAdrFilter (input)="dt.filterGlobal($event.target.value, 'contains')" />
-				</th>
+				<th style='width: 125px;'>IP Address</th>
 				<th style='width: 48px;'>Date</th>
 				<th style='width: 50px;'>Type</th>
 				<th style='width: 185px;'>Log</th>

@@ -1,4 +1,14 @@
 // File: networklog-grid.component.ts
+// New incident:
+// This component displays all unassigned logs for new incidents, the user can delete
+// the log for whatever reason, but it will not actually be deleted until the incident
+// is saved.  When a log is selected the grid is filtered, by that IP address (an
+// incident can only be from one source IP address).  The selected IP address is
+// emitted (output) for any subscribers of the observable.
+// Mailed:
+// Incidents that are more or less locked, so the selection and delete columns are 
+// hidden.
+//
 import { Component, OnInit, AfterViewInit, OnChanges, Input, Output, ViewChild, EventEmitter, ElementRef, SimpleChanges, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable, throwError, interval } from 'rxjs';
@@ -28,15 +38,14 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 	private codeName: string = 'network-log-grid';
 	private logLevel: number = 1;
 	totalRecords: number = 0;
-	@ViewChild(('IpAdrFilter')) adrFltrEl: ElementRef;
-	ipAdrFltr: HTMLInputElement;
+	@ViewChild( 'dt' ) dt: Table;
 	selectedLogs: NetworkLog[] = [];
 	disabled: boolean;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
 	// 	inputs: networklogs: NetworkLog[];
-	// 	outputs:
+	// 	outputs: emitted IP address string
 	//
 	@Input() networkIncident: NetworkIncident;
 	//
@@ -54,7 +63,6 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 		if( this.logLevel >= 4 ) {
 			console.log ( `${this.codeName}.ngOnInit: entering ...` );
 		}
-		this.ipAdrFltr = undefined;
 		this.selectedLogs = [];
 		this.disabled = undefined;
 	}
@@ -90,6 +98,12 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 		if( this.logLevel >= 4 ) {
 			console.log ( `${this.codeName}.ngAfterViewInit: entering...` );
 		}
+		if( this.networkIncident.incident.IPAddress !== '' ) {
+			this.setTableFilter( this.networkIncident.incident.IPAddress );
+			if( this.logLevel >= 4 ) {
+				console.log ( `${this.codeName}.ngAfterViewInit: global filtered...` );
+			}
+		}
 		// ExpressionChangedAfterItHasBeenCheckedError:
 		// https://stackoverflow.com/questions/44070732/angular-4-expressionchangedafterithasbeencheckederror-expression-has-changed
 		// in Observable val = 0, 1, 2, 3
@@ -111,13 +125,6 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 	afterViewInit( complete: boolean ): boolean {
 		if( this.logLevel >= 4 ) {
 			console.log ( `${this.codeName}.afterViewInit: Entering: ${complete} ...` );
-		}
-		this.ipAdrFltr = this._elementRef.nativeElement.querySelector( '#ipAdrFltr' );
-		if( this.ipAdrFltr === undefined || this.ipAdrFltr === null ) {
-			if( this.logLevel >= 4 ) {
-				console.log ( `${this.codeName}.afterViewInit: filter element not found.` );
-			}
-			return false;
 		}
 		if( this.networkIncident === undefined || this.networkIncident === null ) {
 			if( this.logLevel >= 4 ) {
@@ -162,19 +169,9 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 	// Set the ip address filter for the p-table.
 	//
 	setTableFilter( ipAddress: string ): void {
-		// https://stackoverflow.com/questions/44428535/
-		// how-to-preset-programmatically-the-filter-value-in-primeng-datatable
-		const event = new Event('input', {
-			'bubbles': true,
-			'cancelable': true
-		});
-		this.ipAdrFltr = this._elementRef.nativeElement.querySelector('#ipAdrFltr');
-		if( this.ipAdrFltr !== undefined && this.ipAdrFltr !== null ) {
-			(<HTMLInputElement>this.ipAdrFltr).value = ipAddress;
-			this.adrFltrEl.nativeElement.dispatchEvent( event );
-		} else {
-			console.error ( `${this.codeName}.setTableFilter: ipAdrFltr not found.` );
-			console.log ( this.ipAdrFltr );
+		this.dt.filterGlobal( ipAddress, 'contains' );
+		if( this.logLevel >= 4 ) {
+			console.log ( `${this.codeName}.setTableFilter: global filtered with ${ipAddress}` );
 		}
 	}
 	//
