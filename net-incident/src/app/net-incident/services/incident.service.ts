@@ -7,10 +7,12 @@ import { HttpClient, HttpRequest, HttpErrorResponse } from '@angular/common/http
 //
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { LazyLoadEvent } from 'primeng/api'; 
 //
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
 import { IIncident, Incident } from '../incident';
+import { IncidentPaginationData } from '../incidentpaginationdata';
 //
 @Injectable()
 export class IncidentService {
@@ -52,14 +54,13 @@ export class IncidentService {
 			.pipe( catchError( this.handleError ) );
 	}
 	//
-	// Read (get) Incident with id
-	//
-	getIncident( IncidentId: number ): Observable<IIncident> {
-		const urlPath: string = this.url + '/' + String( IncidentId );
+	getIncidentsLazy( event: LazyLoadEvent ): Observable<IncidentPaginationData> {
+		// /api/Incident?{"first":0,"rows":3,"filters":{"ServerId":{"value":1,"matchMode":"equals"}}}
+		const urlPath: string = this.url + '?' + JSON.stringify( event );
 		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.getIncident: ${urlPath}` );
+			console.log( `${this.codeName}.getIncidents: ${urlPath}` );
 		}
-		return this.http.get<IIncident>( urlPath )
+		return this.http.get<IncidentPaginationData>( urlPath )
 			.pipe( catchError( this.handleError ) );
 	}
 	//

@@ -2,10 +2,12 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 //
-import { TableModule } from '../../../../node_modules/primeng/components/table/table';
-import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
-import { ConfirmationService } from '../../../../node_modules/primeng/components/common/confirmationservice';
-import { SelectItem } from '../../../../node_modules/primeng/components/common/selectitem';
+import { Table } from 'primeng/components/table/table';
+import { ConfirmDialog } from 'primeng/components/confirmdialog/confirmdialog';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { SelectItem } from 'primeng/components/common/selectitem';
+import { FilterMetadata } from 'primeng/components/common/filtermetadata';
+import { LazyLoadEvent } from 'primeng/api';
 //
 import { environment } from '../../../environments/environment';
 import { AlertsService } from '../../global/alerts/alerts.service';
@@ -16,6 +18,7 @@ import { IncidentService } from '../services/incident.service';
 import { IIncident, Incident } from '../incident';
 import { IncidentDetailWindowComponent } from '../incident-detail-window/incident-detail-window.component';
 import { ServerSelectionWindowComponent } from '../server-selection-window/server-selection-window.component';
+import { IncidentPaginationData } from '../incidentpaginationdata';
 import { AppComponent } from '../../app.component';
 //
 @Component({
@@ -40,6 +43,8 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	incidents: Incident[];
 	totalRecords: number = 0;
 	id: number;
+	loading: boolean;
+	dt: Table;
 	//
 	mailed: boolean = false;
 	closed: boolean = false;
@@ -63,6 +68,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		// 1=error, 2=warning, 3=info, 4=verbose
 		this.logLevel = environment.logLevel;
+		this.loading = true;
 		// load all records
 		this.getAllIncidents();
 	}
@@ -158,18 +164,21 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// onChangeServer( "server" )
 	// Launch server selection window
 	//
-	onChangeServer( event: any ) {
+	onChangeServer( event, dt ) {
 		if( this.logLevel >= 3 ) {
-			console.log( `${this.codeName}.onClose: entering: ${event}` );
+			console.log( `${this.codeName}.onChangeServer: entering: ${event}` );
 		}
+		this.dt = dt;
 		this.selectItemsWindow = this.user.ServerShortNames;
 		this.displayServersWindow = true;
+		console.log( `${this.codeName}.onChangeServer: ${event.value}` );
 	}
 	//
 	// onServerSelected($event)
 	//
 	onServerSelected( event: any ) {
 		this.getUserServer( this.user.UserName, event );
+		console.log( `${this.codeName}.onServerSelected: ${event}` );
 	}
 	//
 	// --------------------------------------------------------------------
@@ -190,6 +199,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 						=== serverShortName.toLowerCase() ) {
 					const changed: boolean = ( userData.ServerShortName.toLowerCase() !== this.user.ServerShortName.toLocaleLowerCase() );
 					this.user = userData;
+					this.dt.filter( this.user.Server.ServerId, 'ServerId', 'equals' );
 					if ( changed ) {
 						this.getAllIncidents( );
 					}
@@ -206,6 +216,9 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 			`User not found: ${userName}`, error ));
 		//
 	}
+	//
+	//
+	//
 	getAllIncidents( ): void {
 		this._data.getIncidents( this.user.Server.ServerId, this.mailed, this.closed, this.special ).subscribe((incidentData) => {
 			this.incidents = incidentData;
@@ -222,6 +235,57 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 		}, ( error ) =>
 			this.serviceErrorHandler(
 				'Incident-Grid Get All', error ));
+	}
+	//
+	// event:
+	// {first: 3, rows: 3, sortField: "AbuseEmailAddress", sortOrder: 1,
+	// filters: }, globalFilter: null, multiSortMeta: undefined}
+	// make a remote request to load data using state metadata from event
+	// event.first = First row offset
+	// event.rows = Number of rows per page
+	// event.sortField = Field name to sort with
+	// event.sortOrder = Sort order as number, 1 for asc and -1 for dec
+	// filters: FilterMetadata object having field as key and filter value, filter matchMode as value
+	//
+	loadIncidentsLazy( event: LazyLoadEvent ) {
+		console.log( event );
+		this.loading = true;
+		// manually apply filters
+		event.filters.ServerId = {
+			value: this.user.Server.ServerId,
+			matchMode: 'equals'
+		};
+		event.filters.Mailed = {
+			value: this.mailed,
+			matchMode: 'equals'
+		};
+		event.filters.Closed = {
+			value: this.closed,
+			matchMode: 'equals'
+		};
+		event.filters.Special = {
+			value: this.special,
+			matchMode: 'equals'
+		};
+		this._data.getIncidentsLazy( event ).subscribe((incidentPaginationData) => {
+			this.loading = false;
+			this.incidents = incidentPaginationData.incidents;
+			this.totalRecords = incidentPaginationData.totalRecords;
+			//this.totalRecords = this.incidents.length;
+			if( this.id !== undefined && this.id === 0 ) {
+				const editId: number = this.id;
+				const item: Incident[] = this.incidents.filter(function(el) {
+					return el.IncidentId === editId;
+				} );
+				if( this.logLevel >= 3 ) {
+					console.log( item );
+				}
+			}
+		}, ( error ) => {
+			this.loading = false;
+			this.serviceErrorHandler(
+				'Incident-Grid Get All', error );
+		});
 	}
 	//
 	// Call delete data service,

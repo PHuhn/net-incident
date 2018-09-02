@@ -901,10 +901,12 @@ Done:
 	client side security	2018-05-25
 	favicon		2018-05-25
 	Convert from PrimeNG p-dataTable to p-table (07-31) 2018-08-13
+	Refactor filter networklog grid 2018-08-15
+	server-side pagination (lazy primeng feature) 2018-09-02
 
 To Do's:
-	server-side pagination (lazy primeng feature)
 	publish to iis
 	convert to 2.0 Core
+	save and stay open...
 
 ===================================================

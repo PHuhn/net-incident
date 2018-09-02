@@ -1,24 +1,29 @@
 <!-- Incident-Grid.component.html -->
 <div class='ui-grid ui-grid-responsive ui-fluid'>
 	<div class='nsg-content'>
-		<div class='ui-grid-row ui-inputgroup nsg-primary-color'>
-			<label for='Mailed'>Mailed:&nbsp;</label>
-			<input type='checkbox' id='mailed' name='mailed' [(ngModel)]='mailed' (change)='onCheckboxChanged( $event )' />
-			&nbsp; &nbsp;
-			<label for='Closed'>Closed:&nbsp;</label>
-			<input type='checkbox' id='closed' name='closed' [(ngModel)]='closed' (change)='onCheckboxChanged( $event )' />
-			&nbsp; &nbsp;
-			<label for='Special'>Special:&nbsp;</label>
-			<input type='checkbox' id='special' name='special' [(ngModel)]='special' (change)='onCheckboxChanged( $event )' />
-			&nbsp; &nbsp;
-			<div class='ui-inputgroup nsg-primary-color'>
-				<div><label for='ServerName'>Server:&nbsp;</label></div>
-				<a class='nsg-link-div' id='ServerName' (click)='onChangeServer( "server" )'>{{user.Server.ServerName}} ({{user.Server.ServerShortName}})</a>
-			</div>
-		</div>
-		<p-table id='incidents-grid' [value]='incidents' [totalRecords]='totalRecords'
+		<!-- lazy -->
+		<p-table #dt id='incidents-grid' [value]='incidents' [totalRecords]='totalRecords'
 				expandableRows='true' [responsive]='true' dataKey='IncidentId'
-				[rows]='5' [paginator]='true' [rowsPerPageOptions]='[5,10,50]'>
+				[rows]='5' [paginator]='true' [rowsPerPageOptions]='[5,10,50]'
+				[lazy]='true' (onLazyLoad)='loadIncidentsLazy($event)' [loading]='loading'>
+			<ng-template pTemplate='caption'>
+				<div class='ui-grid-row ui-inputgroup nsg-primary-color'>
+					&nbsp;
+					<label for='Mailed'>Mailed:&nbsp;</label>
+					<input type='checkbox' id='mailed' name='mailed' [(ngModel)]='mailed' (change)="dt.filter($event.target.value, 'Mailed', 'equals')" />
+					&nbsp; &nbsp;
+					<label for='Closed'>Closed:&nbsp;</label>
+					<input type='checkbox' id='closed' name='closed' [(ngModel)]='closed' (change)="dt.filter($event.target.value, 'Closed', 'equals')" />
+					&nbsp; &nbsp;
+					<label for='Special'>Special:&nbsp;</label>
+					<input type='checkbox' id='special' name='special' [(ngModel)]='special' (change)="dt.filter($event.target.value, 'Special', 'equals')" />
+					&nbsp; &nbsp;
+					<div class='ui-inputgroup nsg-primary-color'>
+						<div><label for='ServerName'>Server:&nbsp;</label></div>
+						<a class='nsg-link-div' id='ServerName' (click)='onChangeServer( $event, dt )'>{{user.Server.ServerName}} ({{user.Server.ServerShortName}})</a>
+					</div>
+				</div>
+			</ng-template>
 			<ng-template pTemplate='header'>
 				<tr>
 					<th style='width: 40px;'></th>
@@ -137,8 +142,8 @@
 				</td><tr>
 			</ng-template>
 		</p-table>
-	</div>
-</div>
+	</div><!-- class='nsg-content' -->
+</div><!-- class='ui-grid ui-grid-responsive ui-fluid' -->
 <!-- modal edit window -->
 <app-incident-detail-window id='detailWindow' name='detailWindow' [displayWin]='windowDisplay' 
 	[detailWindowInput]='detailWindow' (onClose)='onClose($event)'></app-incident-detail-window>
