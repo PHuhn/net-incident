@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSG.Library.Logger", "..\NS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSG.Library.EMail", "..\NSG.Library\NSG.Library.EMail\NSG.Library.EMail.csproj", "{FDC60D0F-9EAF-4B98-A98E-7937CBA15667}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSG.PrimeNG.LazyLoading", "..\NSG.PrimeNG\NSG.PrimeNG.LazyLoading\NSG.PrimeNG.LazyLoading.csproj", "{4960DFBB-3B05-4789-A5B9-BD75B2C06979}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FDC60D0F-9EAF-4B98-A98E-7937CBA15667}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDC60D0F-9EAF-4B98-A98E-7937CBA15667}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDC60D0F-9EAF-4B98-A98E-7937CBA15667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4960DFBB-3B05-4789-A5B9-BD75B2C06979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4960DFBB-3B05-4789-A5B9-BD75B2C06979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4960DFBB-3B05-4789-A5B9-BD75B2C06979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4960DFBB-3B05-4789-A5B9-BD75B2C06979}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

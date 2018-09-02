@@ -104,6 +104,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -184,6 +187,7 @@
     <Compile Include="api\BaseServiceController.cs" />
     <Compile Include="api\CNPagedList.cs" />
     <Compile Include="api\IncidentController.cs" />
+    <None Include="api\IncidentPageController.cs.txt" />
     <Compile Include="api\LogController.cs" />
     <Compile Include="api\NetworkIncidentController.cs" />
     <Compile Include="api\ServicesController.cs" />
@@ -277,7 +281,7 @@
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Helpers\Helpers_FluentEmail.cs.txt" />
     <Content Include="Identity\Incidents\Log.cs.txt" />
-    <Content Include="InstallNotes.txt" />
+    <None Include="InstallNotes.txt" />
     <Content Include="Models\NetIncidentEntities.cs.txt" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\BaseController.js" />
@@ -298,7 +302,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="ToDo.txt" />
+    <None Include="ToDo.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -387,6 +391,13 @@
       <Project>{a11d69f1-a009-4c41-a19b-bdb621fad972}</Project>
       <Name>NSG.Library.Logger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\NSG.PrimeNG\NSG.PrimeNG.LazyLoading\NSG.PrimeNG.LazyLoading.csproj">
+      <Project>{4960dfbb-3b05-4789-a5b9-bd75b2c06979}</Project>
+      <Name>NSG.PrimeNG.LazyLoading</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\IncidentPage\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

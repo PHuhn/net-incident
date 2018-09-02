@@ -60,7 +60,7 @@ namespace WebSrv_Tests
         public void WebSrv_NI_Incident_ListbyFlags_MailedClosed_Test()
         {
             IncidentAccess _sut = new IncidentAccess(_niEntities);
-            List<IncidentData> _data = _sut.ListbyFlags(true, true, false);
+            List<IncidentData> _data = _sut.ListbyFlags(1, true, true, false);
             Assert.IsTrue(_data.Count > 0);
             Assert.AreEqual(_data[0].ServerId, 1);
             foreach (var _row in _data)
@@ -76,6 +76,63 @@ namespace WebSrv_Tests
             Assert.IsNotNull(_row);
             Assert.AreEqual(_row.IncidentId, _id);
             System.Diagnostics.Debug.WriteLine(_row.ToString());
+        }
+        //
+        // {"first":0,"rows":3,"sortOrder":1,"filters":{"ServerId":{"value":1,"matchMode":"equals"},"Mailed":{"value":"false","matchMode":"equals"},"Closed":{"value":"false","matchMode":"equals"},"Special":{"value":"false","matchMode":"equals"}},"globalFilter":null}
+        // public List<IncidentData> ListByPagination(string jsonString)
+        //
+        [TestMethod(), TestCategory("EF_Native"), TestCategory("EF_LazyLoading")]
+        public void WebSrv_NI_Incident_ListByPagination01_Test()
+        {
+            IncidentAccess _sut = new IncidentAccess(_niEntities);
+            string _pagination = "{\"first\":0,\"rows\":3,\"sortOrder\":1,\"filters\":{\"ServerId\":{\"value\":1,\"matchMode\":\"equals\"},\"Mailed\":{\"value\":false,\"matchMode\":\"equals\"},\"Closed\":{\"value\":false,\"matchMode\":\"equals\"},\"Special\":{\"value\":false,\"matchMode\":\"equals\"}},\"globalFilter\":null}";
+            IncidentPaginationData _data = _sut.ListByPagination(_pagination);
+            System.Diagnostics.Debug.WriteLine( string.Format("Tot Rec:{0}, Msg:{1}",
+                _data.totalRecords, _data.message));
+            List<IncidentData> _rows = _data.incidents;
+            foreach (var _row in _rows)
+                System.Diagnostics.Debug.WriteLine(_row.ToString());
+            Assert.IsTrue(_rows.Count == 3);
+            IncidentData _row0 = _rows[0];
+            Assert.AreEqual(_row0.ServerId, 1);
+            Assert.AreEqual(_row0.Mailed, false);
+        }
+        //
+        [TestMethod(), TestCategory("EF_Native"), TestCategory("EF_LazyLoading")]
+        public void WebSrv_NI_Incident_ListByPagination02_Test()
+        {
+            IncidentAccess _sut = new IncidentAccess(_niEntities);
+            string _pagination = "{\"first\":0,\"rows\":3,\"sortOrder\":1,\"filters\":{\"ServerId\":{\"value\":1,\"matchMode\":\"equals\"},\"Mailed\":{\"value\":true,\"matchMode\":\"equals\"},\"Closed\":{\"value\":false,\"matchMode\":\"equals\"},\"Special\":{\"value\":false,\"matchMode\":\"equals\"}},\"globalFilter\":null}";
+            IncidentPaginationData _data = _sut.ListByPagination(_pagination);
+            System.Diagnostics.Debug.WriteLine(string.Format("Tot Rec:{0}, Msg:{1}",
+                _data.totalRecords, _data.message));
+            List<IncidentData> _rows = _data.incidents;
+            foreach (var _row in _rows)
+                System.Diagnostics.Debug.WriteLine(_row.ToString());
+            Assert.IsTrue( _rows.Count > 0 );
+            IncidentData _row0 = _rows[0];
+            Assert.AreEqual(_row0.ServerId, 1);
+            Assert.AreEqual(_row0.Mailed, true);
+        }
+        //
+        [TestMethod(), TestCategory("EF_Native"), TestCategory("EF_LazyLoading")]
+        public void WebSrv_NI_Incident_ListByPagination03_Sort_Test()
+        {
+            // sortField: "AbuseEmailAddress"
+            IncidentAccess _sut = new IncidentAccess(_niEntities);
+            string _pagination = "{\"first\":0,\"rows\":3,\"sortOrder\":1,\"sortField\":\"AbuseEmailAddress\",\"filters\":{\"ServerId\":{\"value\":1,\"matchMode\":\"equals\"},\"Mailed\":{\"value\":false,\"matchMode\":\"equals\"},\"Closed\":{\"value\":false,\"matchMode\":\"equals\"},\"Special\":{\"value\":false,\"matchMode\":\"equals\"}},\"globalFilter\":null}";
+            // IncidentPaginationData _data = _sut.ListByPagination(_pagination);
+            IncidentPaginationData _data = _sut.ListByPagination(_pagination);
+            System.Diagnostics.Debug.WriteLine(string.Format("Tot Rec:{0}, Msg:{1}",
+                _data.totalRecords, _data.message));
+            List<IncidentData> _rows = _data.incidents;
+            Assert.IsTrue(_rows.Count > 0);
+            foreach (var _row in _rows)
+                System.Diagnostics.Debug.WriteLine(_row.ToString());
+            // filters
+            IncidentData _row0 = _rows[0];
+            Assert.AreEqual(_row0.ServerId, 1);
+            Assert.AreEqual(_row0.Mailed, false);
         }
         //
         #endregion

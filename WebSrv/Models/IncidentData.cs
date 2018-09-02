@@ -15,10 +15,17 @@ using System;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Web.Script.Serialization;
+using System.Reflection;
+using System.Linq.Expressions;
+using System.ComponentModel;
+//
+using NSG.Library.Logger;
 //
 using NSG.Identity;
 using NSG.Identity.Incidents;
-//
+using NSG.PrimeNG.LazyLoading;
 //
 // IncidentId	long	bigint
 // CompanyId	int	int
@@ -132,11 +139,30 @@ namespace WebSrv.Models
 		//
 #endregion
 	}
-	//
-	/// <summary>
-	/// CRUD for Incident table access.
-	/// </summary>
-	public class IncidentAccess : IDisposable
+    //
+    public class IncidentPaginationData
+    {
+        public List<IncidentData> incidents;
+        //
+        public LazyLoadEvent loadEvent;
+        //
+        public long totalRecords;
+        //
+        public string message;
+        //
+        public IncidentPaginationData()
+        {
+            incidents = new List<IncidentData>();
+            loadEvent = null;
+            totalRecords = 0;
+            message = "";
+        }
+    }
+    //
+    /// <summary>
+    /// CRUD for Incident table access.
+    /// </summary>
+    public class IncidentAccess : IDisposable
 	{
         //
         // -------------------------------------------------------------------
@@ -235,29 +261,93 @@ namespace WebSrv.Models
                     IsChanged = false
 				};
 		}
-		//
-		/// <summary>
-        /// Return a list with all rows of Incident
-		/// </summary>
-		/// <param name="mailed"></param>
-		/// <param name="closed"></param>
-		/// <param name="special"></param>
+        //
+        /// <summary>
+        /// Return a list with filtered rows of Incident
+        /// </summary>
+        /// <param name="id">Server id</param>
+        /// <param name="mailed"></param>
+        /// <param name="closed"></param>
+        /// <param name="special"></param>
         /// <returns>List of IncidentData</returns>
-		public List<IncidentData> ListbyFlags( bool mailed, bool closed, bool special )
+        public List<IncidentData> ListbyFlags( int id, bool mailed, bool closed, bool special )
 		{
 			List<IncidentData> _incidents = null;
-			_incidents = ListIncidentQueryable()
-                .Where( _r => _r.Mailed == mailed && _r.Closed == closed && _r.Special == special )
-                .OrderByDescending( _r => _r.IncidentId ).ToList();
-			return _incidents;
-		}
-		//
-		/// <summary>
+            _incidents = ListIncidentQueryable()
+                .Where(_r => _r.ServerId == id &&
+                    _r.Mailed == mailed && _r.Closed == closed && _r.Special == special)
+                .OrderByDescending(_r => _r.IncidentId).ToList();
+            return _incidents;
+        }
+        //
+        /// <summary>
+        /// Return a list with filtered rows of Incident
+        /// </summary>
+        /// <param name="jsonString">
+        /// {"first":0,"rows":3,"sortOrder":1,"filters":{"ServerId":{"value":1,"matchMode":"eq"},"Mailed":{"value":false,"matchMode":"eq"},"Closed":{"value":false,"matchMode":"eq"},"Special":{"value":false,"matchMode":"eq"}},"globalFilter":null}
+        /// param>
+        /// <returns>List of IncidentData and count</returns>
+        public IncidentPaginationData ListByPagination( string jsonString )
+        {
+            string _user = "unk";
+            IncidentPaginationData _return = new IncidentPaginationData();
+            try
+            {
+                JavaScriptSerializer _js_slzr = new JavaScriptSerializer();
+                _return.loadEvent = (LazyLoadEvent)_js_slzr.Deserialize(jsonString, typeof(LazyLoadEvent));
+                IQueryable<Incident> _incidentQuery = _niEntities.Incidents;
+                _incidentQuery = _incidentQuery.LazyFilters(_return.loadEvent);
+                if (!string.IsNullOrEmpty(_return.loadEvent.sortField))
+                {
+                    _incidentQuery = _incidentQuery.LazyOrderBy(_return.loadEvent);
+                }
+                else // Default sort order
+                {
+                    _incidentQuery = _incidentQuery.OrderByDescending(_r => _r.IncidentId);
+                }
+                // 'OrderBy' must be called before the method 'Skip'.
+                _incidentQuery = _incidentQuery.LazySkipTake(_return.loadEvent);
+                // Execute query and convert from Incident to IncidentData (POCO) ...
+                _return.incidents = _incidentQuery
+                    .AsEnumerable().Select(incid => incid.ToIncidentData()).ToList();
+                _return.totalRecords = GetCountPagination( _return.loadEvent );
+            }
+            catch ( Exception _ex )
+            {
+                _return.message = _ex.Message + ": " + _ex.StackTrace;
+                Log.Logger.Log(LoggingLevel.Error, _user, MethodBase.GetCurrentMethod(), _ex.Message, _ex );
+            }
+            return _return;
+        }
+        //
+        /// <summary>
+        /// Return a count of filtered rows of Incident
+        /// </summary>
+        /// <param name="jsonString">
+        /// {"first":0,"rows":3,"sortOrder":1,"filters":{"ServerId":{"value":1,"matchMode":"eq"},"Mailed":{"value":false,"matchMode":"eq"},"Closed":{"value":false,"matchMode":"eq"},"Special":{"value":false,"matchMode":"eq"}},"globalFilter":null}
+        /// param>
+        /// <returns>List of IncidentData</returns>
+        public long GetCountPagination( string jsonString )
+        {
+            JavaScriptSerializer _js_slzr = new JavaScriptSerializer();
+            LazyLoadEvent _pagination = (LazyLoadEvent)_js_slzr.Deserialize(jsonString, typeof(LazyLoadEvent));
+            return GetCountPagination(_pagination);
+        }
+        // Return a count of filtered rows of Incident
+        private long GetCountPagination(LazyLoadEvent jsonData)
+        {
+            IQueryable<Incident> _incidentQuery = _niEntities.Incidents;
+            _incidentQuery = _incidentQuery.LazyFilters(jsonData);
+            long _incidentCount = _incidentQuery.Count();
+            return _incidentCount;
+        }
+        //
+        /// <summary>
         /// Return one row of Incident
-		/// </summary>
-		/// <param name="incidentId"></param>
-		/// <returns></returns>
-		public IncidentData GetByPrimaryKey(long incidentId)
+        /// </summary>
+        /// <param name="incidentId"></param>
+        /// <returns></returns>
+        public IncidentData GetByPrimaryKey(long incidentId)
 		{
 			IncidentData _incident = null;
 			var _incidents = ListIncidentQueryable()
@@ -268,9 +358,12 @@ namespace WebSrv.Models
 			}
 			return _incident;
 		}
-		//
-		// Insert one row into Incident
-		//
+        //
+        /// <summary>
+        /// Insert one row into Incident without SaveChanges
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public Incident Insert(IncidentData data)
 		{
 			Incident _incident	= new Incident( );
@@ -297,8 +390,11 @@ namespace WebSrv.Models
             return _return;
         }
         //
-		// Update one row of Incident
-		//
+        /// <summary>
+        /// Update one row of Incident without SaveChanges
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public Incident Update(IncidentData data)
 		{
             Incident _incident = null;

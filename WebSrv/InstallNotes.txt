@@ -22,7 +22,7 @@ Install-Package SendGrid -version 9.8.0
 
 Install-Package knockoutjs -version 3.2.0
 Install-Package Newtonsoft.Json
-
+install-package System.Linq.Dynamic
 
 
 In WebApiConfig.cs, added...

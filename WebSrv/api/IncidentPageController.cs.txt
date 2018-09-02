@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web;
+using System.Web.Http;
+using WebSrv.Models;
+//
+using NSG.Identity;
+using NSG.Identity.Incidents;
+//
+namespace WebSrv.api
+{
+    public class IncidentPageController : BaseController
+    {
+        // call base class constructror
+        public IncidentPageController() : base() { }
+        public IncidentPageController(ApplicationDbContext incidentEntities, ApplicationDbContext systemEntities)
+            : base(incidentEntities) { }
+        //
+        // GET api/<controller>
+        // HttpGet] public IEnumerable<IncidentData> Get([FromUri]LazyLoadEvent jsonString)
+        // A potentially dangerous Request.Path value was detected from the client (:).
+        // HttpPost] public IEnumerable<IncidentData> Get([FromBody]LazyLoadEvent jsonString)
+        [HttpGet]
+        public IncidentPaginationData Get( )
+        {
+            string _uri = System.Web.HttpUtility.UrlDecode( Request.RequestUri.Query );
+            if ( string.IsNullOrEmpty( _uri) || _uri.Length == 1 )
+            {
+                IncidentPaginationData _return = new IncidentPaginationData();
+                _return.message = "Invalid pagination options.";
+                return _return;
+            }
+            if ( _uri.Substring( 0, 1 ) == "?" )
+            {
+                _uri = _uri.Substring( 1 );
+            }
+            IncidentAccess _access = new IncidentAccess(_incidentEntities);
+            IncidentPaginationData _incidents = _access.ListByPagination( _uri );
+            return _incidents;
+        }
+        //
+    }
+}
