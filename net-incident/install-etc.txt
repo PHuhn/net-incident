@@ -886,6 +886,26 @@ SOLUTION:
 	added to style.css
 		@import "../node_modules/primeicons/primeicons.css";
 
+PROBLEM:
+========
+hapijs / hoek	Known vulnerability found CVE-2018-3728
+	hapijs / code	~> 1.0.x
+	hapijs / lab	~> 5.0.x
+unshiftio / url-parse	Known vulnerability found CVE-2018-3774 High severity
+	bigpipe / assume	^ 2.0.1
+	browserify / browserify	^ 16.2.0
+	mochajs / mocha	^ 5.1.1
+	istanbuljs / nyc	^ 11.7.1
+	observing / pre-commit	^ 1.2.0
+	unshiftio / querystringify	^ 2.0.0
+	unshiftio / requires-port	^ 1.0.0
+	lpinca / sauce-browsers	^ 1.2.0
+	ForbesLindesay-Unmaintained / sauce-test	^ 1.3.3
+	mishoo / UglifyJS2 uglify-js
+
+SOLUTION:
+npm install @angular/common@latest @angular/compiler@latest @angular/cli@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest zone.js@latest webpack@latest
+
 ===================================================
 Done:
 	service logging 12/22
