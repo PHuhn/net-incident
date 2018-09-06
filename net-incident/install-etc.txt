@@ -906,6 +906,25 @@ unshiftio / url-parse	Known vulnerability found CVE-2018-3774 High severity
 SOLUTION:
 npm install @angular/common@latest @angular/compiler@latest @angular/cli@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest zone.js@latest webpack@latest
 
+PROBLEM:
+========
+	NetworkLog grid row expansion colspan format issue, grid columns are dynamic
+	so colspan needs to change
+SOLUTION:
+	Changed from:
+		<tr><td [attr.colspan]='7'>
+	to banana in a box [()]:
+		<tr><td [(attr.colspan)]='expansionColSpan'>
+	to in ts:
+		expansionColSpan: number = 5;
+		...
+		if( this.disabled === true ) {
+			...
+			this.expansionColSpan = 5;
+		} else {
+			this.expansionColSpan = 7;
+		}
+
 ===================================================
 Done:
 	service logging 12/22

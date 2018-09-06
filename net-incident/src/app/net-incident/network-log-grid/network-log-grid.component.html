@@ -37,7 +37,7 @@
 			</tr>
 		</ng-template>
 		<ng-template let-networklog pTemplate='rowexpansion'>
-			<tr><td [attr.colspan]='7'>
+			<tr><td [(attr.colspan)]='expansionColSpan'>
 				<div class='ui-grid ui-grid-responsive ui-fluid'>
 					<div class='ui-grid-row ui-inputgroup'>
 						<div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NetworkLogId'>Network Log Id:&nbsp;</label></div>

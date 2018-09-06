@@ -41,6 +41,7 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 	@ViewChild( 'dt' ) dt: Table;
 	selectedLogs: NetworkLog[] = [];
 	disabled: boolean;
+	expansionColSpan: number = 5;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -142,6 +143,9 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 				console.log ( `${this.codeName}.afterViewInit: Disabled: ${this.disabled}` );
 			}
 			this.selectedLogs = [];
+			this.expansionColSpan = 5;
+		} else {
+			this.expansionColSpan = 7;
 		}
 		if( this.logLevel >= 4 ) {
 			console.log ( `${this.codeName}.afterViewInit: returning at: ${new Date().toISOString()}` );
