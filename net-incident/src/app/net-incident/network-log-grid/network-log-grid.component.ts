@@ -6,8 +6,8 @@
 // incident can only be from one source IP address).  The selected IP address is
 // emitted (output) for any subscribers of the observable.
 // Mailed:
-// Incidents that are more or less locked, so the selection and delete columns are 
-// hidden.
+// Incidents that are more or less locked, so the selection and delete columns
+// are hidden.  That result in more or less colspan for expansion display.
 //
 import { Component, OnInit, AfterViewInit, OnChanges, Input, Output, ViewChild, EventEmitter, ElementRef, SimpleChanges, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';

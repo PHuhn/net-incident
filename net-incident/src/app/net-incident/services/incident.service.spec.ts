@@ -7,11 +7,14 @@ import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
 import { HttpClientModule, HttpClient, HttpErrorResponse, HttpRequest, HttpResponseBase } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 //
+import { LazyLoadEvent } from 'primeng/api';
+//
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
 // import { AlertsService } from '../../global/alerts/alerts.service';
 import { IncidentService } from './incident.service';
 import { IIncident, Incident } from '../incident';
+import { IncidentPaginationData } from '../incidentpaginationdata';
 //
 describe('IncidentService', () => {
 	let sut: IncidentService;
@@ -26,7 +29,11 @@ describe('IncidentService', () => {
 		new Incident( 2,1,'192.2','ripe.net','nn2','a@2.com','',false,false,false,'i 2',testDate ),
 		new Incident( 3,1,'192.3','arin.net','nn3','a@3.com','',true,true,true,'i 3',testDate ),
 		new Incident( 4,1,'192.4','ripe.net','nn4','a@4.com','',false,false,false,'i 4',testDate ),
-		new Incident( 5,2,'192.5','ripe.net','nn4','a@4.com','',false,false,false,'i 4',testDate )
+		new Incident( 5,2,'192.5','ripe.net','nn4','a@4.com','',false,false,false,'i 4',testDate ),
+		new Incident( 6,1,'192.6','arin.net','nn3','a@3.com','',true,true,true,'i 3',testDate ),
+		new Incident( 7,1,'192.7','arin.net','nn3','a@3.com','',true,true,true,'i 3',testDate ),
+		new Incident( 8,1,'192.8','arin.net','nn3','a@3.com','',true,true,true,'i 3',testDate ),
+		new Incident( 9,1,'192.9','arin.net','nn3','a@3.com','',true,true,true,'i 3',testDate )
 	];
 	//
 	beforeEach( async( ( ) => {
@@ -65,25 +72,6 @@ describe('IncidentService', () => {
 		expect( newData.IncidentId ).toEqual( 0 );
 	});
 	//
-	// getIncident( id: string ) : Observable<IIncident>
-	//
-	it( 'should get by id (primary key)...', async( ( ) => {
-		//
-		const mockData: Incident = mockDatum[ 1 ];
-		const id1: number = mockData.IncidentId;
-		sut.getIncident( id1 ).subscribe( ( data: Incident ) => {
-			// console.log( data );
-			expect( data.IncidentId ).toEqual( id1 );
-		});
-		// use the HttpTestingController to mock requests and the flush method to provide dummy values as responses
-		// https://angular.io/guide/http#expecting-and-answering-requests
-		// use expectOne(), expectNone() and match()
-		const request = backend.expectOne( `${url}/${id1}` );
-		expect( request.request.method ).toBe( 'GET' );
-		request.flush( mockData );
-		//
-	}));
-	//
 	// getIncidents( ) : Observable<IIncident[]>
 	//
 	it( 'should get all IIncident results...', async( ( ) => {
@@ -97,6 +85,41 @@ describe('IncidentService', () => {
 		const request = backend.expectOne( `${url}/${srvId}?mailed=false&closed=false&special=false` );
 		expect( request.request.method ).toBe( 'GET' );
 		request.flush( mockDatum.slice(0, 4) );
+		//
+	}));
+	//
+	// getIncidentsLazy( ) : Observable<IIncident[]>
+	//
+	it( 'should get page of IIncident results...', async( ( ) => {
+		//
+		const event: LazyLoadEvent = {};
+		const srvId: number = 1;
+		event.first = 0;
+		event.rows = 4;
+		event.filters = {};
+		event.filters.ServerId = {
+			value: srvId,
+			matchMode: 'equals'
+		};
+		event.filters.Mailed = {
+			value: true,
+			matchMode: 'equals'
+		};
+		console.log( event );
+		sut.getIncidentsLazy( event ).subscribe( ( datum: IncidentPaginationData ) => {
+			expect( datum.incidents.length ).toBe( 4 );
+			expect( datum.totalRecords ).toBe( mockDatum.length );
+			expect( datum.incidents[ 1 ].IncidentId ).toEqual( 2 );
+			expect( datum.incidents[ 3 ].IncidentId ).toEqual( 4 );
+		});
+		const request = backend.expectOne( url + '?' + JSON.stringify( event ) );
+		expect( request.request.method ).toBe( 'GET' );
+		const page = new IncidentPaginationData( );
+		page.incidents = mockDatum.slice(0, 4);
+		page.totalRecords = mockDatum.length;
+		page.loadEvent = event;
+		console.log( page );
+		request.flush( page );
 		//
 	}));
 	//

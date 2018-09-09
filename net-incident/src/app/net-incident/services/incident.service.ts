@@ -7,7 +7,7 @@ import { HttpClient, HttpRequest, HttpErrorResponse } from '@angular/common/http
 //
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { LazyLoadEvent } from 'primeng/api'; 
+import { LazyLoadEvent } from 'primeng/api';
 //
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
@@ -54,11 +54,13 @@ export class IncidentService {
 			.pipe( catchError( this.handleError ) );
 	}
 	//
+	// Read (get) page of Incidents, that are filtered and sorted.
+	//
 	getIncidentsLazy( event: LazyLoadEvent ): Observable<IncidentPaginationData> {
 		// /api/Incident?{"first":0,"rows":3,"filters":{"ServerId":{"value":1,"matchMode":"equals"}}}
 		const urlPath: string = this.url + '?' + JSON.stringify( event );
 		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.getIncidents: ${urlPath}` );
+			console.log( `${this.codeName}.getIncidentsLazy: ${urlPath}` );
 		}
 		return this.http.get<IncidentPaginationData>( urlPath )
 			.pipe( catchError( this.handleError ) );

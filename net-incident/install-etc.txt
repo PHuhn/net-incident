@@ -925,6 +925,30 @@ SOLUTION:
 			this.expansionColSpan = 7;
 		}
 
+PROBLEM:
+========
+	(Jasmine) IncidentGridComponent should be created ...
+	Failed: Failed to execute 'send' on 'XMLHttpRequest': Failed to load
+		'ng:///DynamicTestModule/IncidentGridComponent.ngfactory.js'.
+SOLUTION:
+	ng test --source-map=false
+
+PROBLEM:
+========
+	ng test --source-map=false
+	(Jasmine) IncidentGridComponent should be created ...
+	Failed: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed
+		after it was checked. Previous value: 'loading: true'. Current value:
+		'loading: false'.
+SOLUTION:
+	loadIncidentsLazy( event: LazyLoadEvent ) {
+		this.loading = true;
+		setTimeout( ( ) => {	// <-- solved it
+			...
+		}, 0 );
+	}
+	
+
 ===================================================
 Done:
 	service logging 12/22

@@ -4,8 +4,13 @@
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 //
+import { LazyLoadEvent } from 'primeng/api';
+import { FilterMetadata } from 'primeng/components/common/filtermetadata';
+//
 import { IncidentService } from '../../../net-incident/services/incident.service';
 import { IIncident, Incident } from '../../../net-incident/incident';
+import { IncidentPaginationData } from '../../incidentpaginationdata';
+import { LazyLoadingMock } from './LazyLoading.mock';
 //
 export class IncidentServiceMock extends IncidentService {
 	//
@@ -14,12 +19,14 @@ export class IncidentServiceMock extends IncidentService {
 	public mockCrud: Incident;
 	public mockDeleteId: number;
 	public mockCrudResponse: any;
-	//
+	lazyLoading: LazyLoadingMock;
+		//
 	// Service constructor
 	//
 	constructor( ) {
 		super(null);
 		this.codeName = 'Incident-Service-Mock';
+		this.lazyLoading = new LazyLoadingMock();
 	}
 	//
 	// CRUD (Create/Read/Update/Delete)
@@ -31,6 +38,23 @@ export class IncidentServiceMock extends IncidentService {
 			+ '?mailed=' + String(mailed) + '&closed=' + String(closed)
 			+ '&special=' + String(special);
 		return of( this.mockGetAll );
+	}
+	//
+	// Read (get) page of Incidents, that are filtered and sorted.
+	//
+	getIncidentsLazy( event: LazyLoadEvent ): Observable<IncidentPaginationData> {
+		// /api/Incident?{"first":0,"rows":3,"filters":{"ServerId":{"value":1,"matchMode":"equals"}}}
+		const urlPath: string = this.url + '?' + JSON.stringify( event );
+		if( event.sortField === undefined ) {
+			event.sortField = 'IncidentId';
+			event.sortOrder = -1;
+		}
+		const page = new IncidentPaginationData( );
+		page.totalRecords = this.mockGetAll.length;
+		page.incidents = this.lazyLoading.LazyLoading( this.mockGetAll, event );
+		page.loadEvent = event;
+		console.log( `~=* ${this.codeName}.getIncidentsLazy: ${new Date().toISOString()}` );
+		return of( page );
 	}
 	//
 	// Read (get) Incident with id
