@@ -948,6 +948,14 @@ SOLUTION:
 		}, 0 );
 	}
 	
+PROBLEM:
+========
+	ng test --source-map=false
+	(Jasmine) IncidentGridComponent should launch detail window when editItemClicked is called ...
+	Failed: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed
+		after it was checked. Previous value: 'null: 193.2'. Current value: 'null: '
+SOLUTION:
+	?
 
 ===================================================
 Done:

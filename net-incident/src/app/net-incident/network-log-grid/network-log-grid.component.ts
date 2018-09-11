@@ -9,7 +9,7 @@
 // Incidents that are more or less locked, so the selection and delete columns
 // are hidden.  That result in more or less colspan for expansion display.
 //
-import { Component, OnInit, AfterViewInit, OnChanges, Input, Output, ViewChild, EventEmitter, ElementRef, SimpleChanges, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnChanges, Input, Output, ViewChild, EventEmitter, ElementRef, SimpleChanges, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable, throwError, interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
@@ -29,7 +29,7 @@ import { NetworkIncident } from '../network-incident';
 	selector: 'app-networklog-grid',
 	templateUrl: './network-log-grid.component.html'
 })
-export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges, OnDestroy {
+export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChanges, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
@@ -95,32 +95,40 @@ export class NetworkLogGridComponent implements OnInit, AfterViewInit, OnChanges
 	//
 	// After the view is initialized, this will be available.
 	//
-	ngAfterViewInit() {
+	ngAfterContentInit() {
 		if( this.logLevel >= 4 ) {
-			console.log ( `${this.codeName}.ngAfterViewInit: entering...` );
+			console.log ( `${this.codeName}.ngAfterContentInit: entering...` );
 		}
 		if( this.networkIncident.incident.IPAddress !== '' ) {
 			this.setTableFilter( this.networkIncident.incident.IPAddress );
 			if( this.logLevel >= 4 ) {
-				console.log ( `${this.codeName}.ngAfterViewInit: global filtered...` );
+				console.log ( `${this.codeName}.ngAfterContentInit: global filtered...` );
 			}
 		}
 		// ExpressionChangedAfterItHasBeenCheckedError:
 		// https://stackoverflow.com/questions/44070732/angular-4-expressionchangedafterithasbeencheckederror-expression-has-changed
 		// in Observable val = 0, 1, 2, 3
 		// retry every 10th of a second, last time pass true
-		// Observable.interval( 100 ).take( 4 ).subscribe( val => {
-		let cnt: number = 0;
 		// Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
-		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
-			cnt++;
+		setTimeout( ( ) => {
 			if( this.logLevel >= 0 ) {
-				console.log ( `${this.codeName}.ngAfterViewInit: ${val}.` );
+				console.log ( `${this.codeName}.ngAfterContentInit:` );
 			}
-			if( this.afterViewInit( cnt === 4 ) === true ) {
-				cnt = 4; // terminate the loop
+			if( this.afterViewInit( true ) === false ) {
+				let cnt: number = 0;
+				interval( 100 ).pipe(takeWhile(val => cnt < 3)).subscribe(val => {
+					cnt++;
+					if( this.logLevel >= 0 ) {
+						console.log ( `${this.codeName}.ngAfterContentInit: ${val}.` );
+					}
+					if( this.afterViewInit( cnt === 3 ) === true ) {
+						cnt = 3; // terminate the loop
+					}
+				});
+			} else {
+				console.log ( `${this.codeName}.ngAfterContentInit: afterInit configured.` );
 			}
-		});
+		}, 0 );
 	}
 	//
 	afterViewInit( complete: boolean ): boolean {

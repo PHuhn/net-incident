@@ -100,7 +100,7 @@ describe('NetworkLogGridComponent', () => {
 	//
 	it('should be created ...', () => {
 		sut.networkIncident = netInc;
-		sut.ngAfterViewInit( );
+		sut.ngAfterContentInit( );
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 		//
@@ -141,7 +141,7 @@ describe('NetworkLogGridComponent', () => {
 		netInc.networkLogs[3].Selected = true;
 		netInc.incident.IPAddress = netInc.networkLogs[3].IPAddress;
 		sut.networkIncident = netInc;
-		sut.ngAfterViewInit( );
+		sut.ngAfterContentInit( );
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 		const loop = [1,2,3,4];
@@ -172,7 +172,7 @@ describe('NetworkLogGridComponent', () => {
 		netInc.networkLogs[5].IncidentId = netInc.incident.IncidentId;
 		netInc.incident.IPAddress = netInc.networkLogs[4].IPAddress;
 		sut.networkIncident = netInc;
-		sut.ngAfterViewInit( );
+		sut.ngAfterContentInit( );
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 		tick( 10000 );
@@ -190,7 +190,7 @@ describe('NetworkLogGridComponent', () => {
 		console.log( `Test - filter on ip: ** ${new Date().toISOString()}` );
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
 		sut.networkIncident = netInc;
-		sut.ngAfterViewInit( );
+		sut.ngAfterContentInit( );
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 		tick( 10000 );
@@ -213,7 +213,7 @@ describe('NetworkLogGridComponent', () => {
 		console.log( `Test - unselect row: ** ${new Date().toISOString()}` );
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
 		sut.networkIncident = netInc;
-		sut.ngAfterViewInit( );
+		sut.ngAfterContentInit( );
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 		tick( 10000 );
@@ -247,7 +247,7 @@ describe('NetworkLogGridComponent', () => {
 		console.log( `Test - delete row: ** ${new Date().toISOString()}` );
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
 		sut.networkIncident = netInc;
-		sut.ngAfterViewInit( );
+		sut.ngAfterContentInit( );
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 		tick( 10000 );

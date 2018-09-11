@@ -69,8 +69,6 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 		// 1=error, 2=warning, 3=info, 4=verbose
 		this.logLevel = environment.logLevel;
 		this.loading = true;
-		// load all records
-		this.getAllIncidents();
 	}
 	//
 	ngOnDestroy() {
@@ -148,17 +146,10 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 			if( this.logLevel >= 3 ) {
 				console.log( `${this.codeName}.onClose: Refreshing...` );
 			}
-			this.getAllIncidents( );
 		}
 		this.windowDisplay = false;
 		this.detailWindow = undefined;
 		this.windowIncident = undefined;
-	}
-	//
-	// (change)='onCheckboxChanged( $event )'
-	//
-	onCheckboxChanged( event: any ) {
-		this.getAllIncidents( );
 	}
 	//
 	// onChangeServer( "server" )
@@ -200,9 +191,6 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 					const changed: boolean = ( userData.ServerShortName.toLowerCase() !== this.user.ServerShortName.toLocaleLowerCase() );
 					this.user = userData;
 					this.dt.filter( this.user.Server.ServerId, 'ServerId', 'equals' );
-					if ( changed ) {
-						this.getAllIncidents( );
-					}
 					this.displayServersWindow = false;
 			} else {
 				if( this.logLevel >= 4 ) {
@@ -217,26 +205,6 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 		//
 	}
 	//
-	//
-	//
-	getAllIncidents( ): void {
-		this._data.getIncidents( this.user.Server.ServerId, this.mailed, this.closed, this.special ).subscribe((incidentData) => {
-			this.incidents = incidentData;
-			this.totalRecords = this.incidents.length;
-			if( this.id !== undefined && this.id === 0 ) {
-				const editId: number = this.id;
-				const item: Incident[] = this.incidents.filter(function(el) {
-					return el.IncidentId === editId;
-				} );
-				if( this.logLevel >= 3 ) {
-					console.log( item );
-				}
-			}
-		}, ( error ) =>
-			this.serviceErrorHandler(
-				'Incident-Grid Get All', error ));
-	}
-	//
 	// event:
 	// {first: 3, rows: 3, sortField: "AbuseEmailAddress", sortOrder: 1,
 	// filters: }, globalFilter: null, multiSortMeta: undefined}
@@ -248,44 +216,44 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// filters: FilterMetadata object having field as key and filter value, filter matchMode as value
 	//
 	loadIncidentsLazy( event: LazyLoadEvent ) {
-		console.log( event );
 		this.loading = true;
-		// manually apply filters
-		event.filters.ServerId = {
-			value: this.user.Server.ServerId,
-			matchMode: 'equals'
-		};
-		event.filters.Mailed = {
-			value: this.mailed,
-			matchMode: 'equals'
-		};
-		event.filters.Closed = {
-			value: this.closed,
-			matchMode: 'equals'
-		};
-		event.filters.Special = {
-			value: this.special,
-			matchMode: 'equals'
-		};
-		this._data.getIncidentsLazy( event ).subscribe((incidentPaginationData) => {
-			this.loading = false;
-			this.incidents = incidentPaginationData.incidents;
-			this.totalRecords = incidentPaginationData.totalRecords;
-			//this.totalRecords = this.incidents.length;
-			if( this.id !== undefined && this.id === 0 ) {
-				const editId: number = this.id;
-				const item: Incident[] = this.incidents.filter(function(el) {
-					return el.IncidentId === editId;
-				} );
-				if( this.logLevel >= 3 ) {
-					console.log( item );
+		setTimeout( ( ) => {
+			// manually apply filters, to force the filter.
+			event.filters.ServerId = {
+				value: this.user.Server.ServerId,
+				matchMode: 'equals'
+			};
+			event.filters.Mailed = {
+				value: this.mailed,
+				matchMode: 'equals'
+			};
+			event.filters.Closed = {
+				value: this.closed,
+				matchMode: 'equals'
+			};
+			event.filters.Special = {
+				value: this.special,
+				matchMode: 'equals'
+			};
+			this._data.getIncidentsLazy( event ).subscribe((incidentPaginationData) => {
+				this.loading = false;
+				this.incidents = incidentPaginationData.incidents;
+				this.totalRecords = incidentPaginationData.totalRecords;
+				if( this.id !== undefined && this.id === 0 ) {
+					const editId: number = this.id;
+					const item: Incident[] = this.incidents.filter(function(el) {
+						return el.IncidentId === editId;
+					} );
+					if( this.logLevel >= 3 ) {
+						console.log( item );
+					}
 				}
-			}
-		}, ( error ) => {
-			this.loading = false;
-			this.serviceErrorHandler(
-				'Incident-Grid Get All', error );
-		});
+			}, ( error ) => {
+				this.loading = false;
+				this.serviceErrorHandler(
+					'Incident-Grid Get All', error );
+			});
+		}, 0 );
 	}
 	//
 	// Call delete data service,

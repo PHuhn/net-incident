@@ -9,9 +9,8 @@ export class LazyLoadingMock {
 	//
 	LazyLoading( datasource: any[], event: LazyLoadEvent ): any[] {
 		//
-		console.log( `LazyLoading begining ${new Date().toISOString()}` );
 		if ( datasource ) {
-            console.log( event );
+			// console.log( event );
 			let filtered: any[] = datasource.slice( 0 );
 			if( event.filters ) {
 				filtered = this.LazyFilters( filtered, event );
@@ -24,7 +23,6 @@ export class LazyLoadingMock {
 			if( event.first !== undefined && event.rows !== undefined ) {
 				filtered = this.LazySkipTake( filtered, event );
 			}
-            console.log( `LazyLoading ending ${new Date().toISOString()}` );
 			return filtered;
 		} else {
 			console.error( `${this.codeName}.lazyLoading: no data.` );

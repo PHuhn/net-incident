@@ -77,15 +77,16 @@ describe( 'IncidentGridComponent', ( ) => {
 		new Incident( 3,1,'193.3','ripe.net','i 3','i3@3.com','',true,true,true,'',testDate ),
 		new Incident( 4,1,'193.4','ripe.net','i 4','i4@4.com','',false,false,false,'Note 4',testDate ),
 		new Incident( 5,1,'193.5','ripe.net','i 5','i5@5.com','',true,true,true,'',testDate ),
-		new Incident( 6,2,'193.6','arin.net','i 6','i6@6.com','',false,false,false,'',testDate )
+		new Incident( 6,2,'193.6','arin.net','i 6','i6@6.com','',false,false,false,'',testDate ),
+		new Incident( 7,1,'193.7','arin.net','i 7','i7@7.com','',false,false,false,'',testDate )
 	];
 	const mockLogs = [
-		new NetworkLog( 1,1,null,'192.1',new Date( '2018-02-27T00:00:00' ),'Log 1',1, 'SQL', false ),
-		new NetworkLog( 2,1,null,'192.2',new Date( '2018-02-27T00:00:00' ),'Log 2',1, 'SQL', false ),
-		new NetworkLog( 3,1,null,'192.3',new Date( '2018-02-27T00:00:00' ),'Log 3',1, 'SQL', false ),
-		new NetworkLog( 4,1,null,'192.4',new Date( '2018-02-27T00:00:00' ),'Log 4',1, 'SQL', false ),
-		new NetworkLog( 5,1,null,'192.5',new Date( '2018-02-27T00:00:00' ),'Log 5',1, 'SQL', false ),
-		new NetworkLog( 6,1,null,'192.5',new Date( '2018-02-27T00:00:00' ),'Log 6',1, 'SQL', false )
+		new NetworkLog( 1,1,null,'193.1',new Date( '2018-02-27T00:00:00' ),'Log 1',1, 'SQL', false ),
+		new NetworkLog( 2,1,2,'193.2',new Date( '2018-02-27T00:00:00' ),'Log 2',1, 'SQL', false ),
+		new NetworkLog( 3,1,null,'193.3',new Date( '2018-02-27T00:00:00' ),'Log 3',1, 'SQL', false ),
+		new NetworkLog( 4,1,4,'193.4',new Date( '2018-02-27T00:00:00' ),'Log 4',1, 'SQL', false ),
+		new NetworkLog( 5,1,null,'193.5',new Date( '2018-02-27T00:00:00' ),'Log 5',1, 'SQL', false ),
+		new NetworkLog( 6,1,null,'193.5',new Date( '2018-02-27T00:00:00' ),'Log 6',1, 'SQL', false )
 	];
 	const selectItemsWindow: SelectItem[] = user.ServerShortNames;
 	const displayServersWindow: boolean = false;
@@ -150,13 +151,21 @@ describe( 'IncidentGridComponent', ( ) => {
 		_ni.incidentNotes = [];
 		_ni.deletedNotes = [];
 		_ni.networkLogs = mockLogs;
+		console.log( _ni.networkLogs );
+		_ni.networkLogs.forEach( (row) => {
+			if( _ni.incident.IncidentId === row.IncidentId ) {
+				row.Selected = true;
+			} else {
+				row.Selected = false;
+			}
+		});
 		_ni.deletedLogs = [];
 		_ni.typeEmailTemplates = [];
 		_ni.NICs = [];
 		_ni.incidentTypes = [];
 		_ni.noteTypes = [];
 		_ni.message = '';
-		_ni.user = undefined;
+		_ni.user = user;
 		return _ni;
 	}
 	//
@@ -172,16 +181,13 @@ describe( 'IncidentGridComponent', ( ) => {
 	// getIncidents( ) : Observable<IIncident[]>
 	//
 	it('should initialize with all data...', fakeAsync( () => {
-		console.log( 'begin of all data' );
-		expect( sut.incidents.length ).toBe( 6 );
+		console.log( sut.incidents );
+		expect( sut.incidents.length ).toBe( 3 );
 		//
-		expect( sut.incidents[ 0 ].IncidentId ).toEqual( 1 );
-		expect( sut.incidents[ 1 ].IncidentId ).toEqual( 2 );
-		expect( sut.incidents[ 2 ].IncidentId ).toEqual( 3 );
-		expect( sut.incidents[ 3 ].IncidentId ).toEqual( 4 );
-		expect( sut.incidents[ 4 ].IncidentId ).toEqual( 5 );
-		expect( sut.incidents[ 5 ].IncidentId ).toEqual( 6 );
-		console.log( 'end of all data' );
+		expect( sut.incidents[ 0 ].IncidentId ).toEqual( 7 );
+		expect( sut.incidents[ 1 ].IncidentId ).toEqual( 4 );
+		expect( sut.incidents[ 2 ].IncidentId ).toEqual( 2 );
+		//
 	}));
 	//
 	// addItemClicked( )
@@ -213,44 +219,29 @@ describe( 'IncidentGridComponent', ( ) => {
 		networkIncidentServiceMock.mockGet = response;
 		sut.editItemClicked( incident );
 		//
-		console.log( `~= ${new Date().toISOString()}` );
+		console.log( `~= ${id} ${ip} ${new Date().toISOString()}` );
 		//
 		let cnt: number = 0;
-		// https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
-		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
+		fixture.detectChanges();
+		fixture.whenStable();
+		console.log( `~=* ${id} ${ip} ${new Date().toISOString()}` );
+		if( sut.windowDisplay === true ) {
+			expect( sut.windowDisplay ).toEqual( true );
+			const title: HTMLDivElement = fixture.debugElement.query(By.css(
+				'#IncidentDetailWindowHeader' )).nativeElement;
+			expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
+			console.log( `editItemClicked ... completed ${new Date().toISOString()}` );
+			// https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
+			// interval( 200 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
 			// timing issues, all have to complete:
 			//  getNetIncident (to get complete data)
 			//  incident-note-grid
 			//  incident-note-detail-window
 			//  network-log-grid
-			cnt++;
-			fixture.detectChanges();
-			fixture.whenStable();
-			if( sut.windowDisplay === true ) {
-				expect( sut.windowDisplay ).toEqual( true );
-				const title: HTMLDivElement = fixture.debugElement.query(By.css(
-					'#IncidentDetailWindowHeader' )).nativeElement;
-				expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
-				sut.windowDisplay = false;
-				console.log( `~=* detail completed ${new Date().toISOString()}` );
-				cnt = 4;
-			} else {
-				if ( cnt === 4 ) {
-					fail('Detail window took too long.');
-				}
-			}
-		});
-	}));
-	it('should launch take While ...', async( () => {
-		console.log( 'editItemClicked 2 ...' );
-		console.log( `~= ${new Date().toISOString()}` );
-		//
-		let cnt: number = 0;
-		// https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
-		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
-			cnt++;
-			console.log( `~=* ${val} ${cnt} ${new Date().toISOString()}` );
-		});
+		} else {
+			console.log( `****** failed ******** ${new Date().toISOString()}` );
+			fail('Detail window took too long.');
+		}
 	}));
 	//
 	// deleteItemClicked( item: Incident ) :boolean
@@ -260,8 +251,9 @@ describe( 'IncidentGridComponent', ( ) => {
 		console.log( 'deleteItemClicked ...' );
 		incidentServiceMock.mockCrudResponse =
 			new HttpResponse( { status: 204, statusText: 'OK' } );
-		const id: number = sut.incidents[ 3 ].IncidentId;
-		const ret: Boolean = sut.deleteItemClicked( sut.incidents[ 3 ] );
+		const incident: Incident = sut.incidents[ 2 ];
+		const id: number = incident.IncidentId;
+		const ret: Boolean = sut.deleteItemClicked( incident );
 		confirmService.accept();
 		expect( ret ).toEqual( false );
 		tick( 10 );
