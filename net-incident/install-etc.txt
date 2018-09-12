@@ -947,7 +947,7 @@ SOLUTION:
 			...
 		}, 0 );
 	}
-	
+
 PROBLEM:
 ========
 	ng test --source-map=false
@@ -955,7 +955,16 @@ PROBLEM:
 	Failed: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed
 		after it was checked. Previous value: 'null: 193.2'. Current value: 'null: '
 SOLUTION:
-	?
+	NetworkLog.Selected needed to be set appropriately.
+
+PROBLEM:
+========
+	Because refreshWithVisibility upon adding a new incident:
+		ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after
+		it was checked. Previous value: 'loading: false'. Current value:
+		'loading: true'.
+SOLUTION:
+	Promise.resolve( null ).then( ( ) => this.visible = true );
 
 ===================================================
 Done:

@@ -110,7 +110,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		this.networkIncidentSave.user = this.networkIncident.user;
 		this.networkIncidentSave.message = this.networkIncident.message;
 		//
-		if( this.logLevel >= 3 ) {
+		if( this.logLevel >= 4 ) {
 			console.log( this.networkIncidentSave );
 		}
 		if( this.add === false ) {

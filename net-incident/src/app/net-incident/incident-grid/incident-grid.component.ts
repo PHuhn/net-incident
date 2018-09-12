@@ -38,13 +38,13 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	selectItemsWindow: SelectItem[];
 	displayServersWindow: boolean = false;
 	detailWindow: DetailWindowInput;
-
 	// Local variables
 	incidents: Incident[];
 	totalRecords: number = 0;
 	id: number;
 	loading: boolean;
 	dt: Table;
+	visible: boolean = true;
 	//
 	mailed: boolean = false;
 	closed: boolean = false;
@@ -111,13 +111,13 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	deleteItemClicked( item: Incident ): boolean {
 		if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
 			this.id = item.IncidentId;
-			if( this.logLevel >= 3 ) {
+			if( this.logLevel >= 4 ) {
 				console.log( `${this.codeName}.deleteItemClicked: ${this.id}` );
 			}
 			// the p-confirmDialog in in app.component
 			this._confirmationService.confirm({
 				key: 'Delete',
-				message: 'Are you sure you want to delete ' + this.id + '?',
+				message: 'Are you sure you want to delete incident id: ' + this.id + '?',
 				accept: () => {
 					if( this.logLevel >= 4 ) {
 						console.log( `User's response: true` );
@@ -146,6 +146,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 			if( this.logLevel >= 3 ) {
 				console.log( `${this.codeName}.onClose: Refreshing...` );
 			}
+			this.refreshWithVisibility();
 		}
 		this.windowDisplay = false;
 		this.detailWindow = undefined;
@@ -170,6 +171,16 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	onServerSelected( event: any ) {
 		this.getUserServer( this.user.UserName, event );
 		console.log( `${this.codeName}.onServerSelected: ${event}` );
+	}
+	//
+	// updateVisibility, refresh by instantly toggling visiblity
+	//
+	refreshWithVisibility(): void {
+		if( this.logLevel >= 4 ) {
+			console.log( `${this.codeName}.refreshWithVisibility: entered` );
+		}
+		this.visible = false;
+		Promise.resolve( null ).then( ( ) => this.visible = true );
 	}
 	//
 	// --------------------------------------------------------------------
@@ -200,7 +211,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 				this.displayServersWindow = true;
 			}
 		},
-		error =>  this.serviceErrorHandler(
+		error => this.serviceErrorHandler(
 			`User not found: ${userName}`, error ));
 		//
 	}
@@ -271,7 +282,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 						this._alerts.setWhereWhatSuccess(
 							'Incident-Grid', 'Deleted:' + delId);
 					},
-					error =>  this.serviceErrorHandler(
+					error => this.serviceErrorHandler(
 						'Incident-Grid Delete', error ));
 		}
 		return false;

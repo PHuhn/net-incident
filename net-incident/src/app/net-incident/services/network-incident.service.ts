@@ -137,7 +137,9 @@ export class NetworkIncidentService {
 	getNetworkIncident( incidentId: number, serverId: number ): Observable<NetworkIncident> {
 		const urlPath: string = this.url + '?id=' + String( incidentId )
 			+ '&serverId=' + String(serverId);
-		console.log( urlPath );
+		if( this.logLevel >= 4 ) {
+			console.log( urlPath );
+		}
 		return this.http.get<NetworkIncident>( urlPath )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -145,7 +147,9 @@ export class NetworkIncidentService {
 	// Create (post) NetworkIncident
 	//
 	createIncident( networkIncidentSave: NetworkIncidentSave ) {
-		console.log( networkIncidentSave );
+		if( this.logLevel >= 4 ) {
+			console.log( networkIncidentSave );
+		}
 		return this.http.post<NetworkIncidentSave>( this.url, networkIncidentSave )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -154,7 +158,9 @@ export class NetworkIncidentService {
 	//
 	updateIncident( networkIncidentSave: NetworkIncidentSave ) {
 		const urlPath: string = this.url + '/' + String( networkIncidentSave.incident.IncidentId );
-		// console.log( urlPath );
+		if( this.logLevel >= 4 ) {
+			console.log( urlPath );
+		}
 		return this.http.put<NetworkIncidentSave>( urlPath, networkIncidentSave )
 			.pipe( catchError( this.handleError ) );
 	}

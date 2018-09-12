@@ -3,7 +3,7 @@
 	<div class='nsg-content'>
 		<!-- lazy -->
 		<p-table #dt id='incidents-grid' [value]='incidents' [totalRecords]='totalRecords'
-				expandableRows='true' [responsive]='true' dataKey='IncidentId'
+				expandableRows='true' [responsive]='true' dataKey='IncidentId' *ngIf='visible'
 				[rows]='5' [paginator]='true' [rowsPerPageOptions]='[5,10,50]'
 				[lazy]='true' (onLazyLoad)='loadIncidentsLazy($event)' [loading]='loading'>
 			<ng-template pTemplate='caption'>
@@ -87,7 +87,7 @@
 						<input type='checkbox' #special='ngModel' [(ngModel)]='rowData["Special"]' disabled />
 					</td>
 					<td>
-						<button (click)="deleteItemClicked( incident )" pButton type="button" icon="fa fa-trash" class="ui-button-danger"></button>
+						<button (click)="deleteItemClicked( rowData )" pButton type="button" icon="fa fa-trash" class="ui-button-danger"></button>
 					</td>
 				</tr>
 			</ng-template>
