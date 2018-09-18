@@ -1,5 +1,5 @@
 // File: incident-grid.component.ts
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ViewChild, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 //
 import { Table } from 'primeng/components/table/table';
@@ -43,7 +43,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	totalRecords: number = 0;
 	id: number;
 	loading: boolean;
-	dt: Table;
+	@ViewChild( 'dt' ) dt: Table;
 	visible: boolean = true;
 	//
 	mailed: boolean = false;
@@ -156,11 +156,10 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// onChangeServer( "server" )
 	// Launch server selection window
 	//
-	onChangeServer( event, dt ) {
+	onChangeServer( event ) {
 		if( this.logLevel >= 3 ) {
 			console.log( `${this.codeName}.onChangeServer: entering: ${event}` );
 		}
-		this.dt = dt;
 		this.selectItemsWindow = this.user.ServerShortNames;
 		this.displayServersWindow = true;
 		console.log( `${this.codeName}.onChangeServer: ${event.value}` );
@@ -180,7 +179,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 			console.log( `${this.codeName}.refreshWithVisibility: entered` );
 		}
 		this.visible = false;
-		Promise.resolve( null ).then( ( ) => this.visible = true );
+		setTimeout( ( ) => this.visible = true );
 	}
 	//
 	// --------------------------------------------------------------------
@@ -227,8 +226,8 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// filters: FilterMetadata object having field as key and filter value, filter matchMode as value
 	//
 	loadIncidentsLazy( event: LazyLoadEvent ) {
-		this.loading = true;
 		setTimeout( ( ) => {
+			this.loading = true;
 			// manually apply filters, to force the filter.
 			event.filters.ServerId = {
 				value: this.user.Server.ServerId,
@@ -250,19 +249,10 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 				this.loading = false;
 				this.incidents = incidentPaginationData.incidents;
 				this.totalRecords = incidentPaginationData.totalRecords;
-				if( this.id !== undefined && this.id === 0 ) {
-					const editId: number = this.id;
-					const item: Incident[] = this.incidents.filter(function(el) {
-						return el.IncidentId === editId;
-					} );
-					if( this.logLevel >= 3 ) {
-						console.log( item );
-					}
-				}
 			}, ( error ) => {
 				this.loading = false;
 				this.serviceErrorHandler(
-					'Incident-Grid Get All', error );
+					`${this.codeName}.loadIncidentsLazy getIncidentsLazy`, error );
 			});
 		}, 0 );
 	}

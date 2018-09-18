@@ -803,32 +803,32 @@ PROBLEM:
 	Angular 5 => 6
 SOLUTION:
 	Change (from -> to):
-	import { Observable } from 'rxjs/Rx';
+		import { Observable } from 'rxjs/Rx';
 	to:
-	import { Observable, throwError } from 'rxjs';
+		import { Observable, throwError } from 'rxjs';
 
-	.catch( this.handleError );
+		import 'rxjs/add/operator/catch';
+		...
+		.catch( this.handleError );
 	to:
-	.pipe( catchError( this.handleError ) );
-
-	import 'rxjs/add/operator/catch';
-	to:
-	import { catchError } from 'rxjs/operators';
+		import { catchError } from 'rxjs/operators';
+		...
+		.pipe( catchError( this.handleError ) );
 
 		Observable.of
 	to:
-		of
-	and to:
 		import { Observable, throwError, of } from 'rxjs';
+		...
+		of( 
 
 		let cnt: number = 0;
 		Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
 	to:
-		let cnt: number = 0;
-		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
-	and to:
 		import { Observable, throwError, interval } from 'rxjs';
 		import { takeWhile } from 'rxjs/operators';
+		..
+		let cnt: number = 0;
+		interval( 100 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
 
 		.do(
 	to:
@@ -844,9 +844,9 @@ SOLUTION:
 
 		Observable.throw(
 	to:
-		throwError(
-	and to:
 		import { Observable, throwError } from 'rxjs';
+		...
+		throwError(
 
 PROBLEM:
 	C:\Dat\Nsg\L\Web\Ng\NetIncidents3>ng
@@ -964,7 +964,22 @@ PROBLEM:
 		it was checked. Previous value: 'loading: false'. Current value:
 		'loading: true'.
 SOLUTION:
-	Promise.resolve( null ).then( ( ) => this.visible = true );
+	Changed from:
+		loadIncidentsLazy( event: LazyLoadEvent ) {
+			this.loading = true;
+			setTimeout( ( ) => {
+				// manually apply filters, to force the filter.
+				...
+			}, 0 );
+		}
+	Changed to:
+		loadIncidentsLazy( event: LazyLoadEvent ) {
+			setTimeout( ( ) => {
+				this.loading = true;
+				// manually apply filters, to force the filter.
+				...
+			}, 0 );
+		}
 
 ===================================================
 Done:
