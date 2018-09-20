@@ -17,12 +17,6 @@ namespace WebSrv
         //
         public static void Register(HttpConfiguration config)
         {
-            // Cross-Origin Resource Sharing (CORS)
-            const string _keyCorsAllowOrigin = "cors:allowOrigins";
-            string _value = NSG.Library.Helpers.Config.GetStringAppSettingConfigValue(_keyCorsAllowOrigin, "http://localhost:4200");
-            EnableCorsAttribute _corsOrigin = new EnableCorsAttribute(_value, "*", "*");
-            config.EnableCors( );
-            //
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();

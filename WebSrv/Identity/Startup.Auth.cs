@@ -8,6 +8,10 @@ using Owin;
 //
 using NSG.Identity.Providers;
 using NSG.Identity.Incidents;
+using System.Web.Http.Cors;
+using System.Web.Cors;
+using Microsoft.Owin.Cors;
+using System.Threading.Tasks;
 //
 namespace NSG.Identity
 {
@@ -44,7 +48,7 @@ namespace NSG.Identity
             };
             //
             // Token Generation
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            UseOwinCorsOrigins( app );
             app.UseOAuthAuthorizationServer(OAuthOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
             //
@@ -69,6 +73,45 @@ namespace NSG.Identity
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+        }
+        //
+        /// <summary>
+        /// taken from http://benfoster.io/blog/aspnet-webapi-cors
+        /// do a more discrete cors instead of allow-all. 
+        /// </summary>
+        /// <param name="app">injected IAppBuilder</param>
+        public void UseOwinCorsOrigins(IAppBuilder app)
+        {
+            var corsPolicy = new CorsPolicy
+            {
+                AllowAnyMethod = true,
+                AllowAnyHeader = true
+            };
+            // Try and load allowed origins from web.config.  If none are
+            // configured then allow all origins.
+            const string _keyCorsAllowOrigin = "cors:allowOrigins";
+            string _origins = NSG.Library.Helpers.Config.GetStringAppSettingConfigValue(_keyCorsAllowOrigin, "");
+            if (_origins == "")
+            {
+                corsPolicy.AllowAnyOrigin = true;
+            }
+            else
+            {
+                foreach (var _origin in _origins.Split(','))
+                {
+                    corsPolicy.Origins.Add(_origin);
+                }
+            }
+            //
+            var corsOptions = new Microsoft.Owin.Cors.CorsOptions
+            {
+                PolicyProvider = new CorsPolicyProvider
+                {
+                    PolicyResolver = context => Task.FromResult(corsPolicy)
+                }
+            };
+            //
+            app.UseCors(corsOptions);
         }
     }
 }

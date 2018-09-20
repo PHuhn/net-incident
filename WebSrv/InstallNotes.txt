@@ -204,3 +204,11 @@ SOLUTION:
 		string _value = NSG.Library.Helpers.Config.GetStringAppSettingConfigValue(_keyCorsAllowOrigin, "http://localhost:4200");
 		EnableCorsAttribute _corsOrigin = new EnableCorsAttribute(_value, "*", "*");
 		config.EnableCors( );
+
+PROBLEM:
+========
+	CORS is not working properly.  It is not limiting to specific address.
+SOLUTION:
+	Failed to load http://localhost:9111/api/Token: Response for preflight does not have HTTP ok status.
+	Used the following post: http://benfoster.io/blog/aspnet-webapi-cors
+	Created UseOwinCorsOrigins(IAppBuilder app)
