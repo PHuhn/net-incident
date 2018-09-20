@@ -7,7 +7,7 @@
 			<tr>
 				<th style='width: 37px;'></th>
 				<th style='width: 37px;'>
-					<button (click)='addItemClicked( )' pButton type='button' icon='fa fa-plus' class='ui-button-primary'></button>
+					<button (click)='addItemClicked( )' pButton type='button' icon='pi pi-plus' class='ui-button-primary'></button>
 				</th>
 				<th style='width: 80px;'>
 					Type
@@ -29,7 +29,7 @@
 					</a>
 				</td>
 				<td>
-					<button (click)='editItemClicked( rowData )' pButton type='button' icon='fa fa-edit' class='ui-button-primary'></button>
+					<button (click)='editItemClicked( rowData )' pButton type='button' icon='pi pi-pencil' class='ui-button-primary'></button>
 				</td>
 				<td>{{rowData['NoteTypeShortDesc']}}</td>
 				<td>{{rowData['Note'] | truncate:[24, '...']}}</td>
@@ -37,7 +37,7 @@
 					{{rowData["CreatedDate"] | date: 'MM/dd'}}
 				</td>
 				<td>
-					<button (click)="deleteItemClicked( incidentnote )" pButton type="button" icon="fa fa-trash" class="ui-button-danger"></button>
+					<button (click)="deleteItemClicked( incidentnote )" pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
 				</td>
 			</tr>
 		</ng-template>

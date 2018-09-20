@@ -981,6 +981,28 @@ SOLUTION:
 			}, 0 );
 		}
 
+PROBLEM:
+========
+	publish to iis
+SOLUTION: (09-19-18)
+	PS >  .\website.ps1 -baseDir "C:\inetpub" -siteName NI -portNum "10111" -owner Phil -wordPress false
+	changed app-pool via IIS Manager to run as 'Network Services'
+	ng build --prod
+	copied contents of dist folder to C:\inetpub\NI
+	go to http://localhost:101111
+	it worked!
+	?cors?
+
+PROBLEM:
+========
+	Migrated from class fa fa-edit to PrimeIcons pi pi-pencil, but paginator 
+	and dropdown do not display any proper icons
+	./node_modules/primeng/components/button/button.js
+	Module build failed: Error: ENOENT: no such file or directory, open 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\primeng\components\button\button.js'
+	relaunched ng serve and problem disappeared
+SOLUTION:
+
+
 ===================================================
 Done:
 	service logging 12/22

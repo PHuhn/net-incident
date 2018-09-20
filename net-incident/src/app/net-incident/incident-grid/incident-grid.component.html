@@ -28,7 +28,7 @@
 				<tr>
 					<th style='width: 40px;'></th>
 					<th style='width: 40px;'>
-						<button (click)="addItemClicked( )" pButton type="button" icon="fa fa-plus" class="ui-button-primary"></button>
+						<button (click)="addItemClicked( )" pButton type="button" icon="pi pi-plus" class="ui-button-primary"></button>
 					</th>
 					<th style='width: 60px;' [pSortableColumn]='"IncidentId"'>
 						Id
@@ -70,7 +70,7 @@
 						</a>
 					</td>
 					<td>
-						<button (click)="editItemClicked( rowData )" pButton type="button" icon="fa fa-edit" class="ui-button-primary"></button>
+						<button (click)="editItemClicked( rowData )" pButton type="button" icon="pi pi-pencil" class="ui-button-primary"></button>
 					</td>
 					<td>{{rowData['IncidentId']}}</td>
 					<td>{{rowData['IPAddress']}}</td>
@@ -87,7 +87,7 @@
 						<input type='checkbox' #special='ngModel' [(ngModel)]='rowData["Special"]' disabled />
 					</td>
 					<td>
-						<button (click)="deleteItemClicked( rowData )" pButton type="button" icon="fa fa-trash" class="ui-button-danger"></button>
+						<button (click)="deleteItemClicked( rowData )" pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
 					</td>
 				</tr>
 			</ng-template>

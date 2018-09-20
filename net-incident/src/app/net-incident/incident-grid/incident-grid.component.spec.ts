@@ -221,7 +221,6 @@ describe( 'IncidentGridComponent', ( ) => {
 		//
 		console.log( `~= ${id} ${ip} ${new Date().toISOString()}` );
 		//
-		let cnt: number = 0;
 		fixture.detectChanges();
 		fixture.whenStable();
 		console.log( `~=* ${id} ${ip} ${new Date().toISOString()}` );
@@ -231,8 +230,6 @@ describe( 'IncidentGridComponent', ( ) => {
 				'#IncidentDetailWindowHeader' )).nativeElement;
 			expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
 			console.log( `editItemClicked ... completed ${new Date().toISOString()}` );
-			// https://stackoverflow.com/questions/50200859/i-dont-get-rxjs-6-with-angular-6-with-interval-switchmap-and-map
-			// interval( 200 ).pipe(takeWhile(val => cnt < 4)).subscribe(val => {
 			// timing issues, all have to complete:
 			//  getNetIncident (to get complete data)
 			//  incident-note-grid

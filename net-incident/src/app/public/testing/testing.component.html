@@ -2,7 +2,7 @@
 			placeholder="Select a type"></p-dropdown>
 <p>Note type: {{notetype ? notetype.toString() : 'none'}}</p>
 <br />
-<button type="text" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show Servers"></button>
+<button type="text" (click)="showDialog()" pButton icon="pi pi-external-link" label="Show Servers"></button>
 <p>Server: {{selected}}</p>
 <p></p>
 <app-server-selection-window [selectItems]='model'
