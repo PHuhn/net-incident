@@ -1025,6 +1025,7 @@ Done:
 
 To Do's:
 	convert theme, maybe nova-light, flick theme is depricated
+	after e-mailed don't allow deleting notes and change of NIC, Network and Abuse Email.
 	incident e-mail template per company
 	convert to 2.1 Core
 	save and stay open on detail to get IncidentId ...
