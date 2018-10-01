@@ -12,8 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "core-js": "^2.5.5",
-    "font-awesome": "^4.7.0"
+    "core-js": "^2.5.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.3",

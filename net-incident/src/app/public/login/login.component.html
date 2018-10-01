@@ -1,6 +1,6 @@
 <!-- -->
 <div class='ui-grid ui-grid-responsive ui-fluid nsg-content'>
-	<div class='ui-grid-col-6'>
+	<div class='ui-grid-col-12'>
 		<div class='nsg-primary-color nsg-block-center'>
 			<h3>Login</h3>
 		</div>
@@ -27,19 +27,19 @@
 		</div>
 		<div class='ui-grid-row'>
 			<div class='ui-grid-col-4'>&nbsp;</div>
-			<div class='ui-grid-col-8'>
+			<div class='ui-grid-col-8 ui-inputtext'>
 				<div class='nsg-icon-button'>
 					<button pButton label='Login' icon='pi pi-user-plus' (click)='loginUser()' class='ui-button-primary'></button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- register component
 	<div class='ui-grid-col-6'>
-		<!-- register component
 		<div class='ui-grid-row'>&nbsp;</div>
 		<app-register></app-register>
-		-->
 	</div>
+	-->
 	<app-server-selection-window [selectItems]='selectItemsWindow'
 	[displayWin]='displayServersWindow' (onClose)='onServerSelected($event)'></app-server-selection-window>
 </div>
