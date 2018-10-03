@@ -1022,12 +1022,14 @@ Done:
 	server-side pagination (lazy primeng feature) 2018-09-02
 	publish to iis (2018-09-20)
 	Get a red trash-can for deletes (2018-09-26)
+	V1.0.8.6 - Cleanup declarations in app.module.ts (2018-10-03)
 
 To Do's:
-	convert theme, maybe nova-light, flick theme is depricated
-	after e-mailed don't allow deleting notes and change of NIC, Network and Abuse Email.
-	incident e-mail template per company
-	convert to 2.1 Core
-	save and stay open on detail to get IncidentId ...
+	V - convert theme, maybe nova-light, flick theme is depricated
+	V - Cleanup modules imports in app.module.ts
+	V - after e-mailed don't allow deleting notes and change of NIC, Network and Abuse Email.
+	V - incident e-mail template per company
+	V - convert to 2.1 Core
+	V - save and stay open on detail to get IncidentId ...
 
 ===================================================

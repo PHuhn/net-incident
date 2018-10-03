@@ -22,6 +22,9 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+# logs
+logs/NG-300*.txt
+
 # Angular
 node_modules/
 

@@ -1,5 +1,4 @@
 // File: app.module.ts
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,19 +14,13 @@ import { APP_COMPONENTS } from './APP.COMPONENTS';
 import { AppRoutingModule } from './app-routing.module';
 import { GlobalModule } from './global/global.module';
 import { AppComponent } from './app.component';
-import { TruncatePipe } from './global/truncate.pipe';
-import { RegisterComponent } from './public/register/register.component';
-import { HeaderComponent } from './public/header/header.component';
 //
 @NgModule({
 	declarations: [
 		AppComponent,
-		APP_COMPONENTS,
-		TruncatePipe,
-		HeaderComponent
+		APP_COMPONENTS
 	],
 	imports: [
-		BrowserModule,
 		AppRoutingModule,
 		GlobalModule,
 		TableModule,
