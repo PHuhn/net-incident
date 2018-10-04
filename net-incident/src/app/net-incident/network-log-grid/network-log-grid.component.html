@@ -6,13 +6,13 @@
 			[(selection)]='selectedLogs' [globalFilterFields]="['IPAddress']">
 		<ng-template pTemplate='header'>
 			<tr>
-				<th style='width: 30px;'></th>
-				<th style='width: 36px;' *ngIf='!disabled'></th>
+				<th style='width: 40px;'></th>
+				<th style='width: 45px;' *ngIf='!disabled'></th>
 				<th style='width: 125px;'>IP Address</th>
-				<th style='width: 48px;'>Date</th>
+				<th style='width: 55px;'>Date</th>
 				<th style='width: 50px;'>Type</th>
-				<th style='width: 185px;'>Log</th>
-				<th style='width: 37px;' *ngIf='!disabled'></th>
+				<th>Log</th>
+				<th style='width: 45px;' *ngIf='!disabled'></th>
 			</tr>
 		</ng-template>
 		<ng-template pTemplate='body' let-rowData let-columns='columns' let-expanded='expanded'>

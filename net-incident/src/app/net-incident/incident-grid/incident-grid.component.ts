@@ -23,7 +23,8 @@ import { AppComponent } from '../../app.component';
 //
 @Component({
 	selector: 'app-incident-grid',
-	templateUrl: './incident-grid.component.html'
+	templateUrl: './incident-grid.component.html',
+	styleUrls: ['./incident-grid.component.css']
 })
 export class IncidentGridComponent implements OnInit, OnDestroy {
 	//

@@ -5,20 +5,20 @@
 			[rows]='5' [paginator]='true' [rowsPerPageOptions]='[5,10,50]'>
 		<ng-template pTemplate='header'>
 			<tr>
-				<th style='width: 37px;'></th>
-				<th style='width: 37px;'>
+				<th style='width: 40px;'></th>
+				<th style='width: 45px;'>
 					<button (click)='addItemClicked( )' pButton type='button' icon='pi pi-plus' class='ui-button-primary'></button>
 				</th>
 				<th style='width: 80px;'>
 					Type
 				</th>
-				<th style='width: 200px;'>
+				<th>
 					Note
 				</th>
-				<th style='width: 48px;'>
+				<th style='width: 55px;'>
 					Date
 				</th>
-				<th style='width: 37px;'></th>
+				<th style='width: 45px;'></th>
 			</tr>
 		</ng-template>
 		<ng-template pTemplate='body' let-rowData let-columns='columns' let-expanded='expanded'>

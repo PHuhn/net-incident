@@ -27,7 +27,7 @@
 			<ng-template pTemplate='header'>
 				<tr>
 					<th style='width: 40px;'></th>
-					<th style='width: 40px;'>
+					<th style='width: 45px;'>
 						<button (click)="addItemClicked( )" pButton type="button" icon="pi pi-plus" class="ui-button-primary"></button>
 					</th>
 					<th style='width: 60px;' [pSortableColumn]='"IncidentId"'>
@@ -59,7 +59,7 @@
 					<th style='width: 60px;'>
 						Special
 					</th>
-					<th style='width: 40px;'></th>
+					<th style='width: 45px;'></th>
 				</tr>
 			</ng-template>
 			<ng-template pTemplate='body' let-rowData let-columns='columns' let-expanded='expanded'>

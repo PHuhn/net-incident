@@ -5,7 +5,7 @@
 	luna-amber, luna-blue, luna-green, luna-pink, nova-colored, nova-dark, nova-light
 */
 @import "primeicons/primeicons.css";
-@import "primeng/resources/themes/flick/theme.css";
+@import "primeng/resources/themes/nova-light/theme.css";
 @import "primeng/resources/primeng.min.css";
 /*
 ==============================================================================
@@ -43,44 +43,17 @@ h6 { font-size: 1.30rem; }
 ==============================================================================
 PrimeNg
 */
-body .ui-inputtext {
-	padding: 0px 0 2px 0;
-    border: 0 none;
-}
-.ui-table-caption {
-    padding: 0 0;
-	background-color: white;
-	border-top: 0;
-}
-body .ui-button.ui-state-default.ui-button-info, body .ui-buttonset.ui-button-info > .ui-button.ui-state-default {
-	color: #ffffff;
-	background-color: #007ad9;
-	border: 1px solid #007ad9; }
-	body .ui-button.ui-state-default.ui-button-info:enabled:hover, body .ui-buttonset.ui-button-info > .ui-button.ui-state-default:enabled:hover {
-	  background-color: #116fbf;
-	  color: #ffffff;
-	  border-color: #116fbf; }
-	body .ui-button.ui-state-default.ui-button-info:enabled:focus, body .ui-buttonset.ui-button-info > .ui-button.ui-state-default:enabled:focus {
-	  background-color: #0088f3; }
-	body .ui-button.ui-state-default.ui-button-info:enabled:active, body .ui-buttonset.ui-button-info > .ui-button.ui-state-default:enabled:active {
-	  background-color: #005b9f;
-	  color: #ffffff;
-	  border-color: #005b9f;
-}
-body .ui-button.ui-state-default.ui-button-danger, body .ui-buttonset.ui-button-danger > .ui-button.ui-state-default {
-	color: #ffffff;
-	background-color: #e91224;
-	border: 1px solid #e91224; }
-	body .ui-button.ui-state-default.ui-button-danger:enabled:hover, body .ui-buttonset.ui-button-danger > .ui-button.ui-state-default:enabled:hover {
-	  background-color: #c01120;
-	  color: #ffffff;
-	  border-color: #c01120; }
-	body .ui-button.ui-state-default.ui-button-danger:enabled:focus, body .ui-buttonset.ui-button-danger > .ui-button.ui-state-default:enabled:focus {
-	  background-color: #f25663; }
-	body .ui-button.ui-state-default.ui-button-danger:enabled:active, body .ui-buttonset.ui-button-danger > .ui-button.ui-state-default:enabled:active {
-	  background-color: #a90000;
-	  color: #ffffff;
-	  border-color: #a90000;
+/* remove boxes around inputs */
+body .ui-inputtext { padding: 0px 0 2px 0; border: 0 none; }
+/* style popup dialogs boxes */
+body .ui-dialog .ui-dialog-titlebar { font-weight: bold; }
+body .ui-dialog .ui-dialog-footer { background-color: #f4f4f4; }
+/* icon button sizing */
+body .ui-fluid .ui-button-icon-only { width: 1.8em; }
+body .ui-button { font-size: 12px; }
+/* selected table item */
+body .ui-table .ui-table-tbody > tr.ui-state-highlight {
+    background-color: #add8e6; color: #000000;
 }
 /*
 ==============================================================================
