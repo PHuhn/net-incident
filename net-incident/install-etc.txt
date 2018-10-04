@@ -1024,10 +1024,10 @@ Done:
 	Get a red trash-can for deletes (2018-09-26)
 	V1.0.8.6 - Cleanup declarations in app.module.ts (2018-10-03)
 	V1.0.9.6 - Cleanup modules imports in app.module.ts (2018-10-03)
-	V1.0.10.6 - Convert from depricated flick to nova-light theme (2018-10-03)
+	V1.0.10.6 - Convert from depricated flick to nova-light theme (2018-10-04)
+	V1.0.11.6 - After e-mailed don't allow deleting notes and change of NIC, Network and Abuse Email. (2018-10-04)
 
 To Do's:
-	V - after e-mailed don't allow deleting notes and change of NIC, Network and Abuse Email.
 	V - incident e-mail template per company
 	V - convert to 2.1 Core
 	V - save and stay open on detail to get IncidentId ...

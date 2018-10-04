@@ -34,6 +34,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	private codeName: string = 'Incident-Detail-Window';
 	private add: boolean = false;
+	private disableEdit: boolean = false;
 	id: number = -1;
 	ip: string = '';
 	private serverId: number = -1;
@@ -62,6 +63,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 			this.id = 0;
 			return;
 		}
+		this.disableEdit = false;
 		this.user = detailInput.user;
 		this.serverId = this.user.Server.ServerId;
 		this.id = detailInput.incident.IncidentId;
@@ -180,6 +182,9 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 			clearTimeout( this.displayWinTimeout );
 			if( this.logLevel >= 4 ) {
 				console.log( `${this.codeName}.getNetIncident, cleared time-out` );
+			}
+			if( this.networkIncident.incident.Mailed === true || this.networkIncident.incident.Closed === true ) {
+				this.disableEdit = true;
 			}
 		}, ( error ) =>
 			this.serviceErrorHandler(

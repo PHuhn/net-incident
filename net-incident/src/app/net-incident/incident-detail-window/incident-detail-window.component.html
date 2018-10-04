@@ -10,7 +10,7 @@
 					<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='NIC'>NIC:&nbsp;</label></div>
 					<div class='ui-grid-col-7 ui-inputtext nsg-text-left'>
 						<input type='text' id='NIC' name='NIC' required maxlength='50' size='36 '
-							#NIC='ngModel' [(ngModel)]='networkIncident.incident.NIC' />
+							#NIC='ngModel' [(ngModel)]='networkIncident.incident.NIC' [attr.disabled]='disableEdit ? "true": null' />
 					</div>
 					<div class='ui-grid-col-1 nsg-alert-color' *ngIf='NIC.invalid && NIC.touched'>*</div>
 				</div>
@@ -18,14 +18,14 @@
 					<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='NetworkName'>Network:&nbsp;</label></div>
 					<div class='ui-grid-col-7 ui-inputtext nsg-text-left'>
 						<input type='text' id='NetworkName' name='NetworkName' maxlength='255' size='36 '
-							#NetworkName='ngModel' [(ngModel)]='networkIncident.incident.NetworkName' />
+							#NetworkName='ngModel' [(ngModel)]='networkIncident.incident.NetworkName' [attr.disabled]='disableEdit ? "true": null' />
 					</div>
 				</div>
 				<div class='ui-grid-row ui-inputgroup' [class.has-error]='AbuseEmailAddress.invalid && AbuseEmailAddress.touched'>
 					<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='AbuseEmailAddress'>Abuse Email:&nbsp;</label></div>
 					<div class='ui-grid-col-7 ui-inputtext nsg-text-left'>
 						<input type='text' id='AbuseEmailAddress' name='AbuseEmailAddress' maxlength='255' size='36 '
-							#AbuseEmailAddress='ngModel' [(ngModel)]='networkIncident.incident.AbuseEmailAddress' />
+							#AbuseEmailAddress='ngModel' [(ngModel)]='networkIncident.incident.AbuseEmailAddress' [attr.disabled]='disableEdit ? "true": null' />
 					</div>
 				</div>
 				<div class='ui-grid-row ui-inputgroup' [class.has-error]='ISPTicketNumber.invalid && ISPTicketNumber.touched'>

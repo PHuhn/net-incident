@@ -17,7 +17,7 @@ import { NetworkIncident } from '../network-incident';
 	selector: 'app-incident-note-grid',
 	templateUrl: './incident-note-grid.component.html'
 })
-export class IncidentNoteGridComponent implements OnInit, AfterViewInit, OnDestroy {
+export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
@@ -28,6 +28,7 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit, OnDestr
 	private logLevel: number = 1;
 	private totalRecords: number = 0;
 	private id: number;
+	private disableDelete: boolean = false;
 	// xfer to detail window
 	windowIncidentNote: IncidentNote = undefined;
 	windowDisplay: boolean = false;
@@ -53,6 +54,9 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit, OnDestr
 		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName} - ngOnInit: ...` );
 		}
+		if( this.networkIncident.incident.Mailed === true || this.networkIncident.incident.Closed === true ) {
+			this.disableDelete = true;
+		}
 	}
 	//
 	// Cleanup
@@ -64,15 +68,6 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit, OnDestr
 	//
 	ngOnDestroy() {
 		//
-	}
-	//
-	ngAfterViewInit() {
-		setTimeout(() => {
-			if( this.logLevel >= 4 ) {
-				console.log( `${this.codeName} - ngAfterViewInit:: ...` );
-				console.log( this.networkIncident );
-			}
-		}, 10);
 	}
 	//
 	// --------------------------------------------------------------------
@@ -111,6 +106,11 @@ export class IncidentNoteGridComponent implements OnInit, AfterViewInit, OnDestr
 	//
 	deleteItemClicked( item: IncidentNote ): boolean {
 		this.id = item.IncidentNoteId;
+		if( this.disableDelete === true && this.id > -1 ) {
+			this._alerts.setWhereWhatWarning(
+				this.codeName, `Locked, cannot delete id: ${this.id}`);
+			return;
+		}
 		if( this.logLevel >= 4 ) {
 			console.log( `${this.codeName}.deleteItemClicked: Id: ${this.id}` );
 		}

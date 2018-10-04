@@ -37,7 +37,7 @@
 					{{rowData["CreatedDate"] | date: 'MM/dd'}}
 				</td>
 				<td>
-					<button (click)="deleteItemClicked( incidentnote )" pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+					<button (click)="deleteItemClicked( rowData )" pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
 				</td>
 			</tr>
 		</ng-template>
