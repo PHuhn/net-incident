@@ -99,6 +99,12 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 			this.onClose.emit( saved ); // cancel
 			return;
 		}
+		this.NetIncidentSave( false );
+	}
+	//
+	// Allow save and close of save and stay.
+	//
+	NetIncidentSave( stay: boolean ): void {
 		//
 		this.networkIncidentSave = new NetworkIncidentSave();
 		this.networkIncidentSave.incident = this.networkIncident.incident;
@@ -120,9 +126,9 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		}
 		if( this.validate( ) ) {
 			if( this.add === true ) {
-				this.createItem( );
+				this.createItem( stay );
 			} else {
-				this.updateItem( );
+				this.updateItem( stay );
 			}
 		}
 		//
@@ -194,7 +200,6 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	// Check against a common set of validation rules.
 	//
 	validate( ): boolean {
-		console.log ( this.networkIncidentSave );
 		this.initialize( this.networkIncidentSave.incident );
 		let errMsgs: Message[] = this._netIncident.validateIncident(
 			this.networkIncidentSave.incident, this.add );
@@ -323,15 +328,20 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	// Call create data service,
 	// if successful then emit to parent form success.
 	//
-	createItem( ): void {
+	createItem( stay: boolean ): void {
 		this._netIncident.createIncident( this.networkIncidentSave )
 			.subscribe(
-				() => {
+				( netIncidentData: NetworkIncident ) => {
+					this.networkIncident = netIncidentData;
+					this.networkIncident.user = this.user;
 					this._alerts.setWhereWhatSuccess(
 						this.codeName,
-						'Created:' + this.networkIncidentSave.incident.IncidentId);
+						'Created:' + this.networkIncident.incident.IncidentId);
 					this.networkIncidentSave = undefined;
-					this.onClose.emit( true );
+					if( !stay ) {
+						this.networkIncident = undefined;
+						this.onClose.emit( true );
+					}
 				},
 				error => this.serviceErrorHandler(
 					`${this.codeName} Create`, error ));
@@ -340,15 +350,20 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	// Call update data service,
 	// if successful then emit to parent form success.
 	//
-	updateItem( ): void {
+	updateItem( stay: boolean ): void {
 		this._netIncident.updateIncident( this.networkIncidentSave )
 			.subscribe(
-				() => {
+				( netIncidentData: NetworkIncident ) => {
+					this.networkIncident = netIncidentData;
+					this.networkIncident.user = this.user;
 					this._alerts.setWhereWhatSuccess(
 						this.codeName,
 						'Updated:' + this.networkIncidentSave.incident.IncidentId);
 					this.networkIncidentSave = undefined;
-					this.onClose.emit( true );
+					if( !stay ) {
+						this.networkIncident = undefined;
+						this.onClose.emit( true );
+					}
 				},
 				error => this.serviceErrorHandler(
 					`${this.codeName} Update`, error ));

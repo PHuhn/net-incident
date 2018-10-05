@@ -68,8 +68,9 @@
 		</div>
 	</form>
 	<p-footer>
-		<button pButton type='button' (click)='windowClose(true)' class='ui-button-primary' [disabled]='form.invalid' label='Save'></button> &nbsp;
-		<button pButton type='button' (click)='windowClose(false)' class='ui-button-primary' label='Cancel'></button>
+		<button pButton type='button' (click)='NetIncidentSave(true)' class='ui-button-secondary' [disabled]='form.invalid' label='Save & Stay'></button> &nbsp;
+		<button pButton type='button' (click)='windowClose(true)' class='ui-button-primary' [disabled]='form.invalid' label='Save & Close'></button> &nbsp;
+		<button pButton type='button' (click)='windowClose(false)' class='ui-button-secondary' label='Cancel'></button>
 	</p-footer>
 </p-dialog>
 <!-- End of Incident-detail-window.component.html -->

@@ -51,6 +51,8 @@ body .ui-dialog .ui-dialog-footer { background-color: #f4f4f4; }
 /* icon button sizing */
 body .ui-fluid .ui-button-icon-only { width: 1.8em; }
 body .ui-button { font-size: 12px; }
+body .ui-button.ui-state-default.ui-button-secondary, body .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default {
+	border: 1px solid gray; }
 /* selected table item */
 body .ui-table .ui-table-tbody > tr.ui-state-highlight {
     background-color: #add8e6; color: #000000;
