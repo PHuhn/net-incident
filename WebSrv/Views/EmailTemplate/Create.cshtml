@@ -1,11 +1,8 @@
 ﻿@model WebSrv.Models.IncidentTypeData
-
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Incident Type/EMail Templete (Create)</h2>
-
+<h2>Incident Type/Default E-Mail Templete (Create)</h2>
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -122,3 +119,4 @@
         </div>
     </div>
 }
+@Scripts.Render("~/bundles/jquery")
