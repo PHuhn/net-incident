@@ -197,6 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CompanyEmailTemplateController.cs" />
     <Compile Include="Controllers\EmailTemplateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Identity\ApplicationDbContextValidation.cs" />
     <Compile Include="Identity\Incidents\ApplicationServer.cs" />
     <Compile Include="Identity\Incidents\ApplicationServerManager.cs" />
+    <Compile Include="Identity\Incidents\EmailTemplate.cs" />
     <Compile Include="Identity\Incidents\ServerStore.cs" />
     <Compile Include="Identity\Incidents\Company.cs" />
     <Compile Include="Identity\Incidents\Incident.cs" />
@@ -244,9 +246,11 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Identity\Models\AdminViewModel.cs" />
     <Compile Include="Models\BaseAccess.cs" />
+    <Compile Include="Models\CompanyEmailTemplate.cs" />
     <Compile Include="Models\CompanyServerData.cs" />
     <Compile Include="Models\CompanyData.cs" />
     <Compile Include="Models\Constants.cs" />
+    <Compile Include="Models\EmailTemplateData.cs" />
     <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\IncidentData.cs" />
     <Compile Include="Models\IncidentNoteData.cs" />
@@ -263,6 +267,12 @@
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Identity\Startup.cs" />
+    <Content Include="Views\CompanyEmailTemplate\Create.cshtml" />
+    <Content Include="Views\CompanyEmailTemplate\Delete.cshtml" />
+    <Content Include="Views\CompanyEmailTemplate\Details.cshtml" />
+    <Content Include="Views\CompanyEmailTemplate\Edit.cshtml" />
+    <Content Include="Views\CompanyEmailTemplate\Index.cshtml" />
+    <Content Include="Views\CompanyEmailTemplate\CompanyEmailTemplateDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -282,7 +292,6 @@
     <Content Include="Helpers\Helpers_FluentEmail.cs.txt" />
     <Content Include="Identity\Incidents\Log.cs.txt" />
     <None Include="InstallNotes.txt" />
-    <Content Include="Models\NetIncidentEntities.cs.txt" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\BaseController.js" />
     <Content Include="Scripts\bootstrap.js" />

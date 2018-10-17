@@ -1,0 +1,27 @@
+﻿@using WebSrv.Models;
+@model EmailTemplateData
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Company E-Mail Template (Delete)</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <div class="nsg-float-left text-left">
+                <span>
+                    @Html.ActionLink("Back to List", "Index", new { companyId = Model.CompanyId })
+                </span>
+            </div>
+            <div class="nsg-float-right text-right">
+                <span>
+                    <strong>Are you sure you want to delete this?</strong>
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </span>
+            </div>
+            <div class="nsg-clear-both"></div>
+        </div>
+    }
+</div>
+@Html.Partial("./CompanyEmailTemplateDetailsPartial", Model)

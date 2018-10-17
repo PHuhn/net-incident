@@ -74,6 +74,33 @@ namespace WebSrv_Tests
         }
         //
         [TestMethod(), TestCategory("Effort")]
+        public void Effort_IncidentTypes_ListByCompanySpecific_Test()
+        {
+            int _companyId = 5; // 5 = Michigan Manufacturing Producers
+            int _incidentTypeId = 1; // Unk
+            string _dash = "-";
+            _niEntities.EmailTemplates.Add(new EmailTemplate()
+            {
+                CompanyId = _companyId,
+                IncidentTypeId = _incidentTypeId, // Unk
+                FromServer = false,
+                SubjectLine = _dash,
+                EmailBody = _dash,
+                TimeTemplate = _dash,
+                ThanksTemplate = _dash,
+                LogTemplate = _dash,
+                Template = _dash
+            });
+            _niEntities.SaveChanges();
+            List<IncidentTypeData> _data = _sut.ListByCompanySpecific(_companyId);
+            Assert.IsTrue(_data.Count > 0);
+            Assert.AreEqual(_data[0].IncidentTypeId, _incidentTypeId);
+            Assert.AreEqual(_data[0].IncidentTypeSubjectLine, _dash);
+            foreach (var _row in _data)
+                System.Diagnostics.Debug.WriteLine(_row.ToString());
+        }
+        //
+        [TestMethod(), TestCategory("Effort")]
         public void Effort_IncidentTypes_GetByPrimaryKey_Test()
         {
             int _id = _incidentTypeId;

@@ -289,6 +289,17 @@ namespace WebSrv.Models
             return "";
         }
         //
+        /// <summary>
+        /// Returns only the first n characters of a String.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="maxLength"></param>
+        /// <returns></returns>
+        public static string TruncateString(this string str, int maxLength)
+        {
+            return (str.Length > maxLength ? str.Substring(0, maxLength) + "..." : str);
+        }
+        //
     }
 }
 //

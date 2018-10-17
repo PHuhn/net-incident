@@ -39,9 +39,15 @@
                         <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
                         <li>@Html.ActionLink("Companies", "Index", "Server")</li>
                     }
-                    @if (Request.IsAuthenticated && ( User.IsInRole("Admin") || User.IsInRole("CompanyAdmin") ))
+                    @if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("CompanyAdmin")))
                     {
-                        <li>@Html.ActionLink("Template", "Index", "EmailTemplate")</li>
+                        <li class="menu-item dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Email Template<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Template", "Index", "EmailTemplate")</li>
+                                <li>@Html.ActionLink("Company Template", "Index", "CompanyEmailTemplate")</li>
+                            </ul>
+                        </li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

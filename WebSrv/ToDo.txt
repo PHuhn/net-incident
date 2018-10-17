@@ -1,23 +1,8 @@
 ﻿-- To Dos ---------------------------
-In AccountController:
-	External login
-
-reapply constants
-
-
-CompanyAdmin role
-
-Company defined email template 
-	Split off IncidentType and the EmailTemplate (think about it...)
-
-	DECLARE @cmp INT = 1
-	SELECT COALESCE( typ.IncidentTypeId, def.IncidentTypeId ) AS IncidentTypeId,
-		COALESCE( typ.IncidentTypeDesc, def.IncidentTypeDesc ) AS IncidentTypeDesc,
-		COALESCE( typ.IncidentTypeSubjectLine, def.IncidentTypeSubjectLine ) AS IncidentTypeSubjectLine
-	  FROM dbo.IncidentType2 AS typ
-	  LEFT OUTER JOIN dbo.IncidentType2 AS def ON ( typ.CompanyId = def.CompanyId AND typ.IncidentTypeId = def.IncidentTypeId )
-	  WHERE ( typ.CompanyId = @cmp OR def.CompanyId = -1 )
-
+V - Convert to 2.2 or 3.0 Core
+V - In AccountController: External login
+V - Reapply constants
+V - CompanyAdmin role
 
 -- completed ------------------------
 In AccountController:
@@ -62,3 +47,12 @@ Deploy to github
 Manage email templates (2018-05-02)
 
 Dynamic CORS (2018-07-17)
+
+V1.0.3.17 - Company defined email template (2018-10-17)
+	Split off IncidentType and the EmailTemplate
+	DECLARE @cmp INT = 1
+	SELECT typ.IncidentTypeId, typ.IncidentTypeDesc,
+		COALESCE( def.SubjectLine, typ.IncidentTypeSubjectLine ) AS IncidentTypeSubjectLine
+	  FROM dbo.IncidentType AS typ
+	  LEFT OUTER JOIN [dbo].[EmailTemplate] AS def ON ( def.CompanyId = @cmp AND typ.IncidentTypeId = def.IncidentTypeId )
+

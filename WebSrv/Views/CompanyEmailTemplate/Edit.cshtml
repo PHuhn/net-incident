@@ -1,0 +1,123 @@
+﻿@using WebSrv.Models;
+@model EmailTemplateData
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Company E-Mail Template (Edit)</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <div class="nsg-float-left text-left">
+            <span>
+                @Html.ActionLink("Back to List", "Index", new { companyId = Model.CompanyId })
+            </span>
+        </div>
+        <div class="nsg-float-right text-right">
+            <span>
+                <input type="submit" value="Save" class="btn btn-info" />
+            </span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="panel-help">
+                <div class="panel-title">
+                    <a class="collapsed accordion-toggle" role="button" data-toggle="collapse"
+                       data-parent="#accordion"
+                       href="#collapse-help"
+                       aria-expanded="false" aria-controls="collapse-help">
+                        <div class="nsg-bold col-md-12">
+                            E-Mail Template Variable List
+                        </div>
+                        <div class="nsg-clear-left"></div>
+                    </a>
+                </div>
+            </div>
+            <div id="collapse-help" class="panel-collapse collapse" role="tabpanel" aria-labelledby="panel-help">
+                <div class="panel-body">
+                    @Html.Partial("../Shared/EmailTemplateHelpPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.CompanyId)
+        @Html.HiddenFor(model => model.IncidentTypeId)
+
+        <div class="form-group">
+            <label for='CompanyShortName' class='control-label col-md-2'>Company</label>
+            <div class="col-md-2" style='padding-top: .6em;'>
+                @Html.DisplayFor(model => model.CompanyShortName)
+            </div>
+            <div class="col-md-8">
+                <label for='IncidentTypeShortDesc' class='control-label'>Incident Type &nbsp; </label>
+                @Html.DisplayFor(model => model.IncidentTypeShortDesc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='FromServer' class='control-label col-md-2'>Use Server Values</label>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.FromServer)
+                    @Html.ValidationMessageFor(model => model.FromServer, "", new { @class = "text-danger" })
+                    <strong>&lt;= From e-mail name and address</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='SubjectLine' class='control-label col-md-2'>Subject Line</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SubjectLine, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.SubjectLine, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='EmailBody' class='control-label col-md-2'>Email Template</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.EmailBody, new { @class = "form-control", @rows = "3", @style = "max-width:680px" })
+                @Html.ValidationMessageFor(model => model.EmailBody, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='TimeTemplate' class='control-label col-md-2'>Time Template</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TimeTemplate, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.TimeTemplate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='ThanksTemplate' class='control-label col-md-2'>ThanksTemplate</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ThanksTemplate, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.ThanksTemplate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='LogTemplate' class='control-label col-md-2'>Log Template</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LogTemplate, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.LogTemplate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='Template' class='control-label col-md-2'>Template</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Template, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.Template, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}

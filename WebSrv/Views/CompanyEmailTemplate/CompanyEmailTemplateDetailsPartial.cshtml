@@ -1,0 +1,70 @@
+﻿@using WebSrv.Models;
+@model EmailTemplateData
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Company Short Name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompanyShortName)
+        </dd>
+
+        <dt>
+            Incident Type
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IncidentTypeShortDesc)
+        </dd>
+
+        <dt>
+            Use Server Values
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FromServer)
+        </dd>
+
+        <dt>
+            Subject Line
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SubjectLine)
+        </dd>
+
+        <dt>
+            Body Template
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmailBody)
+        </dd>
+
+        <dt>
+            Time Template
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TimeTemplate)
+        </dd>
+
+        <dt>
+            Thanks Template
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ThanksTemplate)
+        </dd>
+
+        <dt>
+            Log Template
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LogTemplate)
+        </dd>
+
+        <dt>
+            Template
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Template)
+        </dd>
+
+    </dl>
+</div>

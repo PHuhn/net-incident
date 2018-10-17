@@ -212,3 +212,31 @@ SOLUTION:
 	Failed to load http://localhost:9111/api/Token: Response for preflight does not have HTTP ok status.
 	Used the following post: http://benfoster.io/blog/aspnet-webapi-cors
 	Created UseOwinCorsOrigins(IAppBuilder app)
+
+PROBLEM:
+========
+	The model backing the 'ApplicationDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database. 
+SOLUTION:
+	Add-Migration "Update-2018-10-05-v1"
+	Update-Database -verbose
+
+PROBLEM:
+========
+	The view model not passing into post of create in Company speciific e-mail template.
+    public class CompanyEmailTemplate
+    {
+        public List<SelectListItem> CompanySelect { get; set; }
+        public List<SelectListItem> IncidentTypeSelect { get; set; }
+        public List<EmailTemplateData> CompanyTemplates { get; set; }
+        public string IncidentTypeJson { get; set; } // JSON string of array of IncidentType
+        public EmailTemplate Template { get; set; }
+    }
+SOLUTION:
+	https://lostechies.com/jimmybogard/2011/09/07/building-forms-for-deep-view-model-graphs-in-asp-net-mvc/
+	id and name need to be like the following:
+		<textarea name="Template.EmailBody" class="form-control" id="Template_EmailBody" style="max-width:680px" rows="3" cols="20"></textarea>
+
+PROBLEM:
+========
+	In 'create', Binding to the view model, but Template property is the to create.
+SOLUTION:

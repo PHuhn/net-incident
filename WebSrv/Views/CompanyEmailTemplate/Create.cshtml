@@ -1,0 +1,168 @@
+﻿@using WebSrv.Models;
+@using NSG.Identity.Incidents;
+@model CompanyEmailTemplate
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Company E-Mail Template (Create)</h2>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-actions no-color">
+        <div class="nsg-float-left text-left">
+            <span>
+                @Html.ActionLink("Back to List", "Index", "CompanyEmailTemplate", new { id = "backLink" })
+            </span>
+        </div>
+        <div class="nsg-float-right text-right">
+            <span>
+                <input type="submit" value="Create" class="btn btn-info" />
+            </span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="panel-help">
+                <div class="panel-title">
+                    <a class="collapsed accordion-toggle" role="button" data-toggle="collapse"
+                       data-parent="#accordion"
+                       href="#collapse-help"
+                       aria-expanded="false" aria-controls="collapse-help">
+                        <div class="nsg-bold col-md-12">
+                            E-Mail Template Variable List
+                        </div>
+                        <div class="nsg-clear-left"></div>
+                    </a>
+                </div>
+            </div>
+            <div id="collapse-help" class="panel-collapse collapse" role="tabpanel" aria-labelledby="panel-help">
+                <div class="panel-body">
+                    @Html.Partial("../Shared/EmailTemplateHelpPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-horizontal">
+
+        @Html.HiddenFor(model => model.CompanySelect)
+        @Html.HiddenFor(model => model.CompanyTemplates)
+        @Html.HiddenFor(model => model.IncidentTypeSelect)
+        <!--
+        Html.HiddenFor(model => model.IncidentTypeJson)
+        -->
+
+        <div class="form-group">
+            <label for='Template_CompanyId' class='control-label col-md-2'>Company</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Template.CompanyId, Model.CompanySelect, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Template.CompanyId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='Template_IncidentTypeId' class='control-label col-md-2'>Incident Type</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Template.IncidentTypeId, Model.IncidentTypeSelect, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Template.IncidentTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='Template_FromServer' class='control-label col-md-2'>Use Server Values</label>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Template.FromServer)
+                    @Html.ValidationMessageFor(model => model.Template.FromServer, "", new { @class = "text-danger" })
+                    <strong>&lt;= From e-mail name and address</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='Template_SubjectLine' class='control-label col-md-2'>Subject Line</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Template.SubjectLine, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.Template.SubjectLine, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='Template_EmailBody' class='control-label col-md-2'>Email Template</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Template.EmailBody, new { @class = "form-control", @rows = "3", @style = "max-width:680px" })
+                @Html.ValidationMessageFor(model => model.Template.EmailBody, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='Template_TimeTemplate' class='control-label col-md-2'>Time Template</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Template.TimeTemplate, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.Template.TimeTemplate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='Template_ThanksTemplate' class='control-label col-md-2'>ThanksTemplate</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Template.ThanksTemplate, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.Template.ThanksTemplate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='Template_LogTemplate' class='control-label col-md-2'>Log Template</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Template.LogTemplate, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.Template.LogTemplate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for='Template_Template' class='control-label col-md-2'>Template</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Template.Template, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
+                @Html.ValidationMessageFor(model => model.Template.Template, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    //
+    var codeName = 'CompanyEmailTemplate.Create';
+    //
+    $(document).ready(function () {
+        $("#Template_IncidentTypeId").change(function () {
+            console.log(codeName + ': in IncidentTypeId change.');
+            var this_ = $(this);
+            var id = parseInt( this_.val( ) );
+            var incidentType = $.parseJSON( @Html.Raw(Json.Encode(@Model.IncidentTypeJson)) );
+            console.log( incidentType );
+            var it = incidentType.find(function (el) { return el.IncidentTypeId === id; });
+            if (it !== null && it !== undefined) {
+                console.log(it);
+                // assign the values from the default to the company specific e-mail template
+                $('#Template_FromServer').attr('checked', it.IncidentTypeFromServer);
+                $('#Template_SubjectLine').val(it.IncidentTypeSubjectLine);
+                $('#Template_EmailBody').val(it.IncidentTypeEmailTemplate);
+                $('#Template_TimeTemplate').val(it.IncidentTypeTimeTemplate);
+                $('#Template_ThanksTemplate').val(it.IncidentTypeThanksTemplate);
+                $('#Template_LogTemplate').val(it.IncidentTypeLogTemplate);
+                $('#Template_Template').val(it.IncidentTypeTemplate);
+            } else {
+                console.error(codeName + ': ERROR, IncidentType not found.');
+            }
+        });
+        //
+        $('#backLink').click(function () {
+            var this_ = $(this);
+            var id = $('#CompanyId').val();
+            this_[0].search = `?companyId=${id}`;
+            console.log(codeName + ' backLink clicked, ' + this_[0].search);
+        });
+    });
+    //
+</script>

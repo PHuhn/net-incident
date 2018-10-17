@@ -98,7 +98,15 @@ namespace WebSrv.Controllers
         {
             if( !modelState.IsValid )
                 foreach ( ModelError me in (modelState.Values.SelectMany(e => (e.Errors))) )
-                    this.Error( me.ErrorMessage );
+                {
+                    if( string.IsNullOrEmpty(me.ErrorMessage) )
+                    {
+                        if( me.Exception != null )
+                            this.Error(me.Exception.Message);
+                    }
+                    else
+                        this.Error(me.ErrorMessage);
+                }
         }
         //
         /// <summary>

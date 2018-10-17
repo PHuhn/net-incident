@@ -1,0 +1,82 @@
+﻿@using WebSrv.Models;
+@model CompanyEmailTemplate
+@{
+    ViewBag.Title = "Index";
+    int companyId = 0;
+    if (Model.CompanyTemplates.Count > 0)
+    {
+        companyId = Model.CompanyTemplates[0].CompanyId;
+    }
+}
+<h2>Company E-Mail Template (List)</h2>
+<p>
+    @Html.ActionLink("Create New", "Create", "CompanyEmailTemplate", new { id = "createLink" })
+</p>
+<div data-submit-url="@Url.Action("Index", "CompanyEmailTemplate")">
+    <label for='Company'>Company</label>
+    @Html.DropDownList("CompanyDropDown", Model.CompanySelect)
+</div>
+<table class="table">
+    <tr>
+        <th style="width: 100px;"></th>
+        <th style="width: 90px;">
+            Short Desc
+        </th>
+        <th style="width: 100px;">
+            Use Server Values
+        </th>
+        <th>
+            Subject Line
+        </th>
+        <th>
+            Body
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.CompanyTemplates) {
+    <tr>
+        <td>
+            @Html.ActionLink("Details", "Details", new { companyId = item.CompanyId, incidentTypeId = item.IncidentTypeId } ) |
+            @Html.ActionLink("Edit", "Edit", new { companyId = item.CompanyId, incidentTypeId = item.IncidentTypeId })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncidentTypeShortDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromServer)
+        </td>
+        <td>
+            @( item.SubjectLine.TruncateString(35) )
+        </td>
+        <td>
+            @( item.EmailBody.TruncateString(35) )
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { companyId = item.CompanyId, incidentTypeId = item.IncidentTypeId })
+        </td>
+    </tr>
+}
+</table>
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    //
+    $(document).ready(function () {
+        //
+        $("#CompanyDropDown").change(function () {
+            var this_ = $(this);
+            var id = this_.val();
+            console.log( `#CompanyDropDown changed... ${id}` );
+            var url = this_.parent().data("submit-url") + `?companyId=${id}`;
+            window.location.href = url;
+        });
+        //
+        $('#createLink').click(function () {
+            var this_ = $(this);
+            var id = $('#CompanyDropDown').val();
+            this_[0].search = `?companyId=${id}`;
+            console.log(this_[0].search);
+        });
+    });
+    //
+</script>

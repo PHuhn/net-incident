@@ -247,6 +247,37 @@ namespace WebSrv.Models
         }
         //
         /// <summary>
+        /// Return a list with all rows of default IncidentType and
+        /// overridden specific EmailTemplate for a company.
+        /// </summary>
+        /// <param name="serverId"></param>
+        /// <returns></returns>
+        public List<IncidentTypeData> ListByCompanySpecific(int companyId)
+        {
+            string _companyNumber = " (" + companyId.ToString() + ")";
+            List<IncidentTypeData> _emailTemplates = null;
+            _emailTemplates =
+                (from _i in _niEntities.IncidentTypes
+                 join _r in _niEntities.EmailTemplates
+                 on new { _i.IncidentTypeId, CompanyId = companyId } equals new { _r.IncidentTypeId, _r.CompanyId } into g
+                 from _et in g.DefaultIfEmpty()
+                 select new IncidentTypeData()
+                 {
+                     IncidentTypeId = _i.IncidentTypeId,
+                     IncidentTypeShortDesc = _et == null ? _i.IncidentTypeShortDesc : _i.IncidentTypeShortDesc + _companyNumber,
+                     IncidentTypeDesc = _et == null ? _i.IncidentTypeDesc : _i.IncidentTypeDesc + _companyNumber,
+                     IncidentTypeFromServer = _et == null ? _i.IncidentTypeFromServer : _et.FromServer,
+                     IncidentTypeSubjectLine = _et == null ? _i.IncidentTypeSubjectLine : _et.SubjectLine,
+                     IncidentTypeEmailTemplate = _et == null ? _i.IncidentTypeEmailTemplate : _et.EmailBody,
+                     IncidentTypeTimeTemplate = _et == null ? _i.IncidentTypeTimeTemplate : _et.TimeTemplate,
+                     IncidentTypeThanksTemplate = _et == null ? _i.IncidentTypeThanksTemplate : _et.ThanksTemplate,
+                     IncidentTypeLogTemplate = _et == null ? _i.IncidentTypeLogTemplate : _et.LogTemplate,
+                     IncidentTypeTemplate = _et == null ? _i.IncidentTypeTemplate : _et.Template
+                 }).ToList();
+            return _emailTemplates;
+        }
+        //
+        /// <summary>
         /// Insert one row into IncidentType
         /// </summary>
         /// <param name="incidentTypeId"></param>

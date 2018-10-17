@@ -108,6 +108,8 @@ namespace WebSrv.Models
             NetworkLogAccess _nl = new NetworkLogAccess(_niEntities);
             IncidentTypeAccess _it = new IncidentTypeAccess(_niEntities);
             Incident _incid = null;
+            int _companyId = _niEntities.Servers.Where( s => s.ServerId == serverId )
+                .First().CompanyId;
             // need the notes data, etc
             if (incidentId > 0)
                 _incid = _niEntities.Incidents
@@ -126,7 +128,7 @@ namespace WebSrv.Models
                 //
                 _data.networkLogs = _nl.ListByIncident(_incid.ServerId, incidentId, _incid.Mailed);
                 //
-                _data.typeEmailTemplates = _it.List();
+                _data.typeEmailTemplates = _it.ListByCompanySpecific(_companyId);
                 //
                 _data.NICs = _sis.NICs();
                 //

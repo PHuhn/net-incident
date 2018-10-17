@@ -1,0 +1,22 @@
+﻿@using WebSrv.Models;
+@model EmailTemplateData
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Company E-Mail Template (Details)</h2>
+
+<div class="form-actions no-color">
+    <div class="nsg-float-left text-left">
+        <span>
+            @Html.ActionLink("Back to List", "Index", new { companyId = Model.CompanyId })
+        </span>
+    </div>
+    <div class="nsg-float-right text-right">
+        <span>
+            @Html.ActionLink("Edit", "Edit", new { companyId = Model.CompanyId, incidentTypeId = Model.IncidentTypeId })
+        </span>
+    </div>
+    <div class="nsg-clear-both"></div>
+</div>
+@Html.Partial("./CompanyEmailTemplateDetailsPartial", Model)
