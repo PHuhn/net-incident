@@ -1,0 +1,42 @@
+
+>pip install pymssql-2.1.4-cp37-cp37m-win32.whl
+
+Processing c:\dat\nsg\l\scripts\python\add-ons\pymssql-2.1.4-cp37-cp37m-win32.whl
+Installing collected packages: pymssql
+Successfully installed pymssql-2.1.4
+You are using pip version 10.0.1, however version 18.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Dat\Nsg\L\Scripts\python\Add-ons>
+C:\Dat\Nsg\L\Scripts\python\Add-ons>python -m pip install --upgrade pip
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/c2/d7/90f34cb0d83a6c5631cf71dfe64cc1054598c843a92b400e55675cc2ac37/pip-18.1-py2.py3-none-any.whl (1.3MB)
+    100% |||||||||||||||||||||||||||||||||| 1.3MB 1.3MB/s
+Installing collected packages: pip
+  Found existing installation: pip 10.0.1
+    Uninstalling pip-10.0.1:
+      Successfully uninstalled pip-10.0.1
+Successfully installed pip-18.1
+
+C:\Dat\Nsg\L\Scripts\python\Add-ons>
+C:\bin\devel\Python\Python37\Scripts>pip install pyodbc
+Collecting pyodbc
+  Downloading https://files.pythonhosted.org/packages/ca/14/3f378af18c316739c8919b14169620656ecd116b4e0ede01cb007406cda5/pyodbc-4.0.24-cp37-cp37m-win32.whl (61kB)
+    100% |||||||||||||||||||||||||||||||||| 71kB 798kB/s
+Installing collected packages: pyodbc
+Successfully installed pyodbc-4.0.24
+
+C:\bin\devel\Python\Python37\Scripts>
+
+Actual run of the IIS logs load:
+
+C:\LogsLoad_IIS>python logs_load_iis.py --server .\Express --filePath ..\data\iis.log --serverId 8
+The arguments are:  .\Express NetIncident2 ..\data\iis.log 8
+VALUES( 8, '10.10.1.10', '2018-10-28 00:11:44', '2018-10-28 00:11:44 10.10.1.10 GET / -dallow_url_include=on+-dauto_prepend_file=php://input 80 - 10.10.1.10 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/64.0.3282.140+Safari/537.36+Edge/17.17134 - 200 0 0 1', 1021 )
+1 rows affected
+VALUES( 8, '10.10.1.10', '2018-10-28 00:13:44', '2018-10-28 00:13:44 10.10.1.10 GET / ReturnUrl=%3Cscript%3Ealert(%22xssvuln%22)%3C/script%3E 80 - 10.10.1.10 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/64.0.3282.140+Safari/537.36+Edge/17.17134 - 200 0 0 1', 1022 )
+1 rows affected
+VALUES( 8, '10.10.1.10', '2018-10-28 23:59:25', '2018-10-28 23:59:25 10.10.1.10 GET /Download.ashx Category=Files&Id=62''A=0 80 - 10.10.1.10 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/64.0.3282.140+Safari/537.36+Edge/17.17134 - 404 0 0 81', 1020 )
+1 rows affected
+
+C:\LogsLoad_IIS>

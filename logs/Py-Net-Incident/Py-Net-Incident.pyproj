@@ -1,0 +1,62 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>2cd0b424-7de5-4dd4-826b-27bf24e47e87</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>..\Py-Net-Incident</SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>Py-Net-Incident</Name>
+    <RootNamespace>Py-Net-Incident</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="etc\" />
+    <Folder Include="Tests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".pylintrc" />
+    <Content Include="Data\iis.log" />
+    <Content Include="Data\NG-300-2018-05-03.txt" />
+    <Content Include="etc\logs_load_iis_lint.txt" />
+    <Content Include="etc\Notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="logs_load_iis.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="network_log_incident.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="sql_server.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logs_load_ng.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\logs_load_iis_tests.py" />
+    <Compile Include="Tests\logs_load_ng_tests.py" />
+    <Compile Include="Tests\network_log_incident_tests.py" />
+    <Compile Include="Tests\sql_server_tests.py" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
