@@ -1,9 +1,39 @@
-""" module: IIS logs load """
+""" module main: choose and launch appropriate loader """
+#
 from pathlib import Path
 import re
 from datetime import datetime
-import network_log_incident
+import argparse
 import sql_server
+#
+class NetworkLogIncident():
+    """ structure of data to be written to database """
+    def __init__(self, server_id, incident_type, ip_address, network_log_date, log):
+        self.server_id = server_id
+        self.incident_type = incident_type
+        self.ip_address = ip_address
+        self.network_log_date = network_log_date
+        self.log = log
+    #
+    def sql_insert_network_log_string(self):
+        """ construct an insert command, INSERT INTO dbo.NetworkLog """
+        sql_command = ''
+        if self.ip_address != '' and self.network_log_date != '':
+            sql_values = "VALUES( {0}, '{1}', '{2}', '{3}', {4} )".format(self.server_id, \
+                self.ip_address, self.network_log_date, self.log, self.incident_type)
+            sql_command = 'INSERT INTO dbo.NetworkLog (' +\
+                'ServerId, IPAddress, NetworkLogDate, [Log], IncidentTypeId) ' + sql_values
+            print(sql_values)
+        else:
+            print('ERROR: bad ip or date: ', self.log)
+        return sql_command
+    #
+    def to_string(self):
+        """ method: formated to string """
+        return 'server_id: ' + str(self.server_id) + \
+               ', incident_type: ' + self.incident_type + \
+               ', ip_address: ' + self.ip_address + \
+               ', network_log_date: ' + self.network_log_date + ', log: ' + self.log
 #
 class LogsLoadIIS(object):
     """ class: for loading iis network incident logs """
@@ -42,7 +72,7 @@ class LogsLoadIIS(object):
             if short_desc == 'xss':
                 self.xss_inc_type = row.IncidentTypeId
     #
-    def log_process_parse_iis_log(self, incident_type, log) -> network_log_incident.NetworkLogIncident:
+    def log_process_parse_iis_log(self, incident_type, log) -> NetworkLogIncident:
         """ log is to be written, parse and write to NetworkLogs. """
         # Alternately could do something like the following:
         # network_log = { 'server': 8, 'type': 1, 'ipAddr': '10.0.0.10', 'date': '2018-11-03', 'log': ''}
@@ -53,7 +83,7 @@ class LogsLoadIIS(object):
         datetime.strptime(network_log_date, '%Y-%m-%d %H:%M:%S')
         ip_address = columns[2]
         log = re.sub("'", "''", log)
-        return network_log_incident.NetworkLogIncident(
+        return NetworkLogIncident(
             self.server_id, incident_type, ip_address, network_log_date, log)
     #
     def log_process_php_log(self, uri_query) -> bool:
@@ -113,7 +143,7 @@ class LogsLoadIIS(object):
                         count = self.sql_server.sql_execute(network_log.sql_insert_network_log_string())
         return count
     #
-    def log_process_iis_main(self, server, db_name, file_path, server_id):
+    def log_process_main(self, server, db_name, file_path, server_id):
         """ function: application main """
         print("NetGear arguments are: ", server, db_name, file_path, server_id)
         #
@@ -132,15 +162,109 @@ class LogsLoadIIS(object):
         else:
             print(file_path, ' not found')
 #
-# > python logs_load_iis.py --server .\Express --filePath .\data\iis.log --serverId 8
+class LogsLoadNG(object):
+    """ class: NetGear logs load of network incidents """
+    def __init__(self):
+        self.sql_server = object
+        self.server_id = -1
+        self.dos_inc_type = -1
+        self.warning_logs = []
+    #
+    def log_process_load_ng_incident_types(self):
+        """ load the needed incident types """
+        rows = self.sql_server.sql_fetchall(
+            "SELECT IncidentTypeId, IncidentTypeShortDesc FROM dbo.IncidentType WHERE IncidentTypeShortDesc IN ( 'dos' );")
+        for _, row in enumerate(rows):
+            short_desc = str(row.IncidentTypeShortDesc).lower()
+            if short_desc == 'dos':
+                self.dos_inc_type = row.IncidentTypeId
+    #
+    def log_process_parse_ng_log(self, incident_type, log) -> NetworkLogIncident:
+        """
+        log is to be parse and write to NetworkLogs.
+        [DoS attack: FIN Scan] attack packets in last 20 sec from ip [63.251.98.12], Thursday, May 03,2018 05:46:58
+        """
+        ip_address = ''
+        network_log_date = ''
+        match = re.findall('\[([^\]]*)\]', log)
+        if match:
+            ip_address = match[1]
+        text = log.split(',')
+        if len(text) > 2:
+            dat = text[2].lstrip()
+            tim = text[3]
+            network_log_date = dat + ' ' + tim
+        datetime.strptime(network_log_date, '%b %d %Y %H:%M:%S')
+        return NetworkLogIncident(
+            self.server_id, incident_type, ip_address, network_log_date, log)
+    #
+    def log_process_ng_line(self, log):
+        """ process a single log record. """
+        count = 0
+        if log != '':
+            if log[0] == '[':
+                if log[0:12] == '[DoS attack:':
+                    network_log = self.log_process_parse_ng_log(self.dos_inc_type, log)
+                    count = self.sql_server.sql_execute(network_log.sql_insert_network_log_string())
+                else:
+                    self.warning_logs.append(log)
+        return count
+    #
+    def log_process_main(self, server, db_name, file_path, server_id):
+        """ function: application main """
+        print("The arguments are: ", server, db_name, file_path, server_id)
+        #
+        input_file = Path(file_path)
+        if input_file.exists():
+            # path/file exists
+            self.sql_server = sql_server.SqlServer()
+            self.sql_server.sql_connection(
+                self.sql_server.sql_connection_trusted_string(server, db_name))
+            self.log_process_load_ng_incident_types()
+            self.server_id = int(server_id)
+            log_file = open(file_path, "r")
+            compiled_pattern = re.compile("^\[DHCP IP: |^\[Service blocked: ICMP_echo_req|^\[Time synchronized|^\[Internet connected|^\[Internet disconnected|^\[Log Cleared|^\[UPnP set event|^\[WLAN access rejected|^\[email sent to")
+            log_file = open(file_path, "r")
+            for line in log_file:
+                # Ignore the following logs:
+                # * [DHCP IP: (192.168
+                # * [Service blocked: ICMP_echo_req
+                # * [Time synchronized
+                # * [Internet connected
+                # * [Internet disconnected
+                # * [Log Cleared
+                # * [UPnP set event
+                # * [WLAN access rejected
+                # * [email sent to
+                # Passed through:
+                # * [Admin login]
+                # * [Initialized, firmware
+                # * [DoS attack:
+                match = compiled_pattern.match(line)
+                if not match:
+                    self.log_process_ng_line(line.rstrip())
+            log_file.close()
+            if self.warning_logs:
+                print('==== Warnings ====')
+                for _, log in enumerate(self.warning_logs):
+                    print(log)
+        else:
+            print(file_path, ' not found')
+#
+# > python logs_load.py --logType IIS --server .\Express --filePath .\data\iis.log --serverId 8
+# > python logs_load.py --logType NG --server .\Express --filePath .\data\NG-300-2018-05-03.txt --serverId 8
+#
 if __name__ == '__main__':
-    import argparse
     #
     PARSER = argparse.ArgumentParser(description='Load IIS logs to database')
+    # PARAMETER logType:
+    #  A value defining what log type and factory class to use.
+    PARSER.add_argument('--logType', metavar='log_type ((of NG or IIS)', required=True,
+                        help='A magic value defining what type of logs, values: NG/IIS')
     # PARAMETER server: SQL Server instance name,
     #   . can be used for local instance or .\SQLExpress for default
     #   instance name for Express version.
-    PARSER.add_argument('--server', metavar=r'server ((.\SQLExpress)',
+    PARSER.add_argument('--server', metavar=r'server (.\SQLExpress)',
                         default=r'.\SQLExpress', help='SQL Server instance name')
     # PARAMETER dbName: Database name
     PARSER.add_argument('--dbName', metavar='db_name (NetIncident2))',
@@ -154,8 +278,15 @@ if __name__ == '__main__':
                         help='An integer value of the server logs that are being loaded')
     ARGS = PARSER.parse_args()
     # call main load IIS logs
-    LOGS_LOAD = LogsLoadIIS()
-    LOGS_LOAD.log_process_iis_main(server=ARGS.server, db_name=ARGS.dbName,
+    LOG_TYPE = ARGS.logType.lower()
+    if LOG_TYPE == 'ng':
+        LOGS_LOAD = LogsLoadNG()
+    elif LOG_TYPE == 'iis':
+        LOGS_LOAD = LogsLoadIIS()
+    else:
+        print('--logType:', ARGS.logType, ' not found')
+        LOGS_LOAD = ''
+    #
+    if LOGS_LOAD:
+        LOGS_LOAD.log_process_main(server=ARGS.server, db_name=ARGS.dbName,
                                    file_path=ARGS.filePath, server_id=ARGS.serverId)
-#        1         2         3         4         5         6         7         8         9        10
-#234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890

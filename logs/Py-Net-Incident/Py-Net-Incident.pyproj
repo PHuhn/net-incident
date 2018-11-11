@@ -29,20 +29,13 @@
     <Content Include=".pylintrc" />
     <Content Include="Data\iis.log" />
     <Content Include="Data\NG-300-2018-05-03.txt" />
-    <Content Include="etc\logs_load_iis_lint.txt" />
     <Content Include="etc\Notes.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="logs_load_iis.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="network_log_incident.py">
+    <Compile Include="logs_load.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="sql_server.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="logs_load_ng.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tests\logs_load_iis_tests.py" />

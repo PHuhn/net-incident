@@ -1,15 +1,13 @@
 """ module: tests for IIS logs load """
 import unittest
-import pyodbc
-import logs_load_iis
-import network_log_incident
+import logs_load
 import sql_server
 #
 class LogsLoadIISTests(unittest.TestCase):
     """ class: tests for IIS logs load """
     #
     def setUp(self):
-        self.ld_iis = logs_load_iis.LogsLoadIIS()
+        self.ld_iis = logs_load.LogsLoadIIS()
         self.ld_iis.sql_server = sql_server.SqlServer()
         self.server = '.\\Express'
         self.database = 'NetIncident2'

@@ -1,14 +1,13 @@
 """ module: for testing netgear logs loading """
 import unittest
-import pyodbc
-import logs_load_ng
-import network_log_incident
+import logs_load
 import sql_server
 #
 class LogsLoadNGTests(unittest.TestCase):
+    """ class: for testing netgear logs loading """
     #
     def setUp(self):
-        self.ld_ng = logs_load_ng.LogsLoadNG()
+        self.ld_ng = logs_load.LogsLoadNG()
         self.ld_ng.sql_server = sql_server.SqlServer()
         self.server = '.\\Express'
         self.database = 'NetIncident2'
