@@ -45,7 +45,6 @@
     "primeng": "^6.1.4",
     "protractor": "^5.4.0",
     "rxjs": "^6.1.0",
-    "rxjs-compat": "^6.1.0",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "^2.7.2",

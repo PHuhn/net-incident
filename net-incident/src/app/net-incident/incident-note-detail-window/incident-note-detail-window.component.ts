@@ -2,11 +2,11 @@
 // File: incident-note-detail-window.component.ts
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs';
 //
-import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
-import { SelectItem } from '../../../../node_modules/primeng/components/common/selectitem';
-import { Dropdown, DropdownModule } from '../../../../node_modules/primeng/components/dropdown/dropdown';
+import { Dialog } from 'primeng/components/dialog/dialog';
+import { SelectItem } from 'primeng/components/common/selectitem';
+import { Dropdown, DropdownModule } from 'primeng/components/dropdown/dropdown';
 //
 import { environment } from '../../../environments/environment';
 import { AlertsService } from '../../global/alerts/alerts.service';

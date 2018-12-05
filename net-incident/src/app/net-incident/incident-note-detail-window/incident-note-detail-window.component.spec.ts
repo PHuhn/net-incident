@@ -8,12 +8,12 @@ import { By } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient, HttpErrorResponse, HttpRequest } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 //
-import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
-import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
-import { ButtonModule } from '../../../../node_modules/primeng/components/button/button';
-import { ConfirmationService } from '../../../../node_modules/primeng/components/common/confirmationservice';
-import { Dropdown, DropdownModule } from '../../../../node_modules/primeng/components/dropdown/dropdown';
-import { SelectItem } from '../../../../node_modules/primeng/components/common/selectitem';
+import { Dialog } from 'primeng/components/dialog/dialog';
+import { Header, Footer } from 'primeng/components/common/shared';
+import { ButtonModule } from 'primeng/components/button/button';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { Dropdown, DropdownModule } from 'primeng/components/dropdown/dropdown';
+import { SelectItem } from 'primeng/components/common/selectitem';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { ServicesService } from '../services/services.service';

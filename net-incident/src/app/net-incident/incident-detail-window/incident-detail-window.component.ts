@@ -2,9 +2,9 @@
 // File: Incident-detail-window.component.ts
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs/Rx';
+import { Observable, Subscription } from 'rxjs';
 //
-import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
+import { Dialog } from 'primeng/components/dialog/dialog';
 import { environment } from '../../../environments/environment';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';

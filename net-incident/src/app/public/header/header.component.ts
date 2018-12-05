@@ -1,8 +1,8 @@
 // ===========================================================================
 import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 //
-import { MenuItem } from '../../../../node_modules/primeng/components/common/menuitem';
-import { Menubar, MenubarModule } from '../../../../node_modules/primeng/components/menubar/menubar';
+import { MenuItem } from 'primeng/components/common/menuitem';
+import { Menubar, MenubarModule } from 'primeng/components/menubar/menubar';
 import { environment } from '../../../environments/environment';
 //
 @Component({

@@ -20,7 +20,7 @@
 //  define the interface(IAspNetUser/class(AspNetUser)
 //
 import { ServerData } from './server-data';
-import { SelectItem } from '../../../node_modules/primeng/components/common/selectitem';
+import { SelectItem } from 'primeng/components/common/selectitem';
 //
 export interface IUser {
 	Id: string;

@@ -8,13 +8,13 @@ import { Observable, throwError } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { forEach } from '@angular/router/src/utils/collection';
 //
-import { TableModule } from '../../../../node_modules/primeng/components/table/table';
-import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
-import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
-import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
-import { ButtonModule } from '../../../../node_modules/primeng/components/button/button';
-import { ConfirmationService } from '../../../../node_modules/primeng/components/common/confirmationservice';
-import { SelectItem } from '../../../../node_modules/primeng/components/common/selectitem';
+import { TableModule } from 'primeng/components/table/table';
+import { Dialog } from 'primeng/components/dialog/dialog';
+import { ConfirmDialog } from 'primeng/components/confirmdialog/confirmdialog';
+import { Header, Footer } from 'primeng/components/common/shared';
+import { ButtonModule } from 'primeng/components/button/button';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { SelectItem } from 'primeng/components/common/selectitem';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';

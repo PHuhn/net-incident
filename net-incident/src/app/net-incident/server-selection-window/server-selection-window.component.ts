@@ -4,8 +4,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 //
-import { SelectItem } from '../../../../node_modules/primeng/components/common/selectitem';
-import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
+import { SelectItem } from 'primeng/components/common/selectitem';
+import { Dialog } from 'primeng/components/dialog/dialog';
 //
 @Component({
 	selector: 'app-server-selection-window',

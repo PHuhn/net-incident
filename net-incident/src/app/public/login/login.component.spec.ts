@@ -6,10 +6,10 @@ import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, throwError } from 'rxjs';
 //
-import { SelectItem } from '../../../../node_modules/primeng/components/common/selectitem';
-import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
-import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
-import { ButtonModule } from '../../../../node_modules/primeng/components/button/button';
+import { SelectItem } from 'primeng/components/common/selectitem';
+import { Dialog } from 'primeng/components/dialog/dialog';
+import { Header, Footer } from 'primeng/components/common/shared';
+import { ButtonModule } from 'primeng/components/button/button';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { UserService } from '../../net-incident/services/user.service';

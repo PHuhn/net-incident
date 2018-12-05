@@ -8,13 +8,13 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 //
 import { Observable, throwError } from 'rxjs';
 //
-import { TableModule } from '../../../../node_modules/primeng/components/table/table';
-import { Dialog } from '../../../../node_modules/primeng/components/dialog/dialog';
-import { ConfirmDialog } from '../../../../node_modules/primeng/components/confirmdialog/confirmdialog';
-import { Header, Footer } from '../../../../node_modules/primeng/components/common/shared';
-import { ButtonModule } from '../../../../node_modules/primeng/components/button/button';
-import { ConfirmationService } from '../../../../node_modules/primeng/components/common/confirmationservice';
-import { Dropdown, DropdownModule } from '../../../../node_modules/primeng/components/dropdown/dropdown';
+import { TableModule } from 'primeng/components/table/table';
+import { Dialog } from 'primeng/components/dialog/dialog';
+import { ConfirmDialog } from 'primeng/components/confirmdialog/confirmdialog';
+import { Header, Footer } from 'primeng/components/common/shared';
+import { ButtonModule } from 'primeng/components/button/button';
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { Dropdown, DropdownModule } from 'primeng/components/dropdown/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { TruncatePipe } from '../../global/truncate.pipe';

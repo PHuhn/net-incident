@@ -1002,6 +1002,33 @@ PROBLEM:
 	relaunched ng serve and problem disappeared
 SOLUTION:
 
+PROBLEM:
+========
+	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>ng serve
+	** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+	Date: 2018-12-05T18:29:33.495Z
+	Hash: 291a09789c4876d7c0b8
+	Time: 7234ms
+	chunk {main} main.js, main.js.map (main) 2.03 kB [initial] [rendered]
+	chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 692 bytes [initial] [rendered]
+	chunk {runtime} runtime.js, runtime.js.map (runtime) 5.22 kB [entry] [rendered]
+	chunk {styles} styles.js, styles.js.map (styles) 231 kB [initial] [rendered]
+	chunk {vendor} vendor.js, vendor.js.map (vendor) 326 kB [initial] [rendered]
+
+	ERROR in node_modules/rxjs/Observable.d.ts(1,15): error TS2307: Cannot find module 'rxjs-compat/Observable'.
+	node_modules/rxjs/Rx.d.ts(1,15): error TS2307: Cannot find module 'rxjs-compat'.
+	node_modules/rxjs/Subject.d.ts(1,15): error TS2307: Cannot find module 'rxjs-compat/Subject'.
+	src/app/global/alerts/alerts.component.ts(4,10): error TS2305: Module '"C:/Dat/Nsg/L/Web/Ng/NetIncidents3/net-incident/node_modules/rxjs/Observable"' has no exported member 'Observable'.
+	src/app/global/alerts/alerts.service.ts(3,10): error TS2305: Module '"C:/Dat/Nsg/L/Web/Ng/NetIncidents3/net-incident/node_modules/rxjs/Subject"' has no exported member 'Subject'.
+	src/app/global/alerts/alerts.service.ts(4,10): error TS2305: Module '"C:/Dat/Nsg/L/Web/Ng/NetIncidents3/net-incident/node_modules/rxjs/Observable"' has no exported member 'Observable'.
+	src/app/net-incident/incident-detail-window/incident-detail-window.component.ts(5,10): error TS2305: Module '"C:/Dat/Nsg/L/Web/Ng/NetIncidents3/net-incident/node_modules/rxjs/Rx"' has no exported member 'Observable'.
+	src/app/net-incident/incident-detail-window/incident-detail-window.component.ts(5,22): error TS2305: Module '"C:/Dat/Nsg/L/Web/Ng/NetIncidents3/net-incident/node_modules/rxjs/Rx"' has no exported member 'Subscription'.
+	src/app/net-incident/incident-note-detail-window/incident-note-detail-window.component.ts(5,10): error TS2305: Module '"C:/Dat/Nsg/L/Web/Ng/NetIncidents3/net-incident/node_modules/rxjs/Rx"' has no exported member 'Subscription'.
+
+	i ｢wdm｣: Failed to compile.
+SOLUTION:
+
 
 ===================================================
 Done:
