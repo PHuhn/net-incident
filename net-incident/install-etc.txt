@@ -1134,6 +1134,7 @@ SOLUTION:
 	run `npm audit fix` to fix them, or `npm audit` for details
 
 	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+
 PROBLEM:
 ========
 	Security audit
@@ -1249,6 +1250,62 @@ SOLUTION:
 
 	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
 
+PROBLEM:
+========
+	changes in 'ng g service' template
+SOLUTION:
+	changed from
+		@Injectable()
+	to:
+		@Injectable( { providedIn: 'root' } )
+
+PROBLEM:
+========
+	'ng lint' stopped working ...
+	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>ng lint > l3.txt
+	TSLint must be version 5.5 or higher.
+	Error: TSLint must be version 5.5 or higher.
+		at TslintBuilder.loadTslint (C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\@angular-devkit\build-angular\src\tslint\index.js:32:19)
+		at <anonymous>
+SOLUTION:
+		C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install -g rxjs-tslint
+		C:\Users\Phil\AppData\Roaming\npm\rxjs-5-to-6-migrate -> C:\Users\Phil\AppData\Roaming\npm\node_modules\rxjs-tslint\bin\rxjs-5-to-6-migrate
+		npm WARN rxjs-tslint@0.1.6 requires a peer of tslint@^5.0.0 but none is installed. You must install peer dependencies yourself.
+		npm WARN rxjs-tslint@0.1.6 requires a peer of typescript@>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev but none is installed. You must install peer dependencies yourself.
+
+		+ rxjs-tslint@0.1.6
+		updated 1 package in 7.05s
+
+	change to:
+		"tslint": "^5.5.0",
+		C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install
+		npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\fsevents):
+		npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+		added 3 packages from 1 contributor, removed 1 package, updated 3 packages and audited 29276 packages in 20.956s
+		found 0 vulnerabilities
+
+PROBLEM:
+========
+	Lint config error:
+		C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>ng lint > l3.txt
+		typeof-compare is deprecated. Starting from TypeScript 2.2 the compiler includes this check which makes this rule redundant.
+
+		Could not find implementations for the following rules specified in the configuration:
+			no-access-missing-member
+			templates-use-public
+			invoke-injectable
+		Try upgrading TSLint and/or ensuring that you have all necessary custom rules installed.
+		If TSLint was recently upgraded, you may have old rules configured which need to be cleaned up.
+
+		Lint errors found in the listed files.
+SOLUTION:
+	Removed from tslint.json file:
+		no-access-missing-member
+		templates-use-public
+		invoke-injectable
+		typeof-compare
+
 ===================================================
 Done:
 	service logging 12/22
@@ -1273,6 +1330,7 @@ Done:
 	V1.0.10.6 - Convert from depricated flick to nova-light theme (2018-10-04)
 	V1.0.11.6 - After e-mailed don't allow deleting notes and change of NIC, Network and Abuse Email. (2018-10-04)
 	V1.0.12.6 - Save and stay open on detail to get IncidentId ...
+	V1.0.13.7 - Convert from Angular 6 to 7
 
 To Do's:
 	V - incident e-mail template per company
