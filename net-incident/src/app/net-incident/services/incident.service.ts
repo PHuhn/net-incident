@@ -14,7 +14,7 @@ import { Message } from '../../global/message';
 import { IIncident, Incident } from '../incident';
 import { IncidentPaginationData } from '../incidentpaginationdata';
 //
-@Injectable()
+@Injectable( { providedIn: 'root' } )
 export class IncidentService {
 	//
 	// --------------------------------------------------------------------

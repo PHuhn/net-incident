@@ -13,7 +13,7 @@ import { LoginViewModel } from '../login-view-model';
 import { ITokenResponse, TokenResponse } from '../token-response';
 import { environment } from '../../../environments/environment';
 //
-@Injectable()
+@Injectable( { providedIn: 'root' } )
 export class AuthService {
 	//
 	private url: string;

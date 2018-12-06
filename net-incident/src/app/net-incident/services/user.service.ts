@@ -13,7 +13,7 @@ import { Message } from '../../global/message';
 import { IUser, User } from '../user';
 import { environment } from '../../../environments/environment';
 //
-@Injectable()
+@Injectable( { providedIn: 'root' } )
 export class UserService {
 	//
 	url: string;

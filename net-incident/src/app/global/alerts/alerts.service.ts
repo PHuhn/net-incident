@@ -6,7 +6,7 @@ import { AlertLevel } from '../alert-level.enum';
 import { Message } from '../message';
 import { Alerts } from '../alerts';
 //
-@Injectable()
+@Injectable( { providedIn: 'root' } )
 export class AlertsService {
 	//
 	private alerted: Message[];

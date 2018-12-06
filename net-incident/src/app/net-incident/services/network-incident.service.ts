@@ -12,7 +12,7 @@ import { NetworkIncidentSave } from '../network-incident-save';
 import { IIncident, Incident } from '../incident';
 import { INetworkLog, NetworkLog } from '../network-log';
 //
-@Injectable()
+@Injectable( { providedIn: 'root' } )
 export class NetworkIncidentService {
 	//
 	codeName = 'network-incident-service';

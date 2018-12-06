@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 //
-@Injectable()
+@Injectable( { providedIn: 'root' } )
 export class AuthInterceptorService implements HttpInterceptor {
 	//
 	intercept( req: HttpRequest<any>,

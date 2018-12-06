@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 import { Message } from '../../global/message';
 import { environment } from '../../../environments/environment';
 //
-@Injectable()
+@Injectable( { providedIn: 'root' } )
 export class ServicesService {
 	//
 	// --------------------------------------------------------------------
