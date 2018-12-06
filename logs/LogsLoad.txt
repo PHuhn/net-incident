@@ -31,5 +31,47 @@ To load IIS logs with something like the following:
 
 PS C:> .\LogsLoad-IIS.ps1 -server ".\Express" -filePath "C:\inetpub\logs\LogFiles\W3SVC1\u_ex180528.log" -serverId 1
 
+= Python =
+
+C:\Dat\NetIncidents3\logs\Py-Net-Incident>python logs_load.py -h
+usage: logs_load.py [-h] --logType log_type (of NG or IIS)
+                    [--server server (.\SQLExpress)]
+                    [--dbName db_name (NetIncident2)] --filePath file_path
+                    --serverId server_id
+
+Load IIS logs to database
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --logType log_type ((of NG or IIS)
+                        A magic value defining what type of logs, values:
+                        NG/IIS
+  --server server (.\SQLExpress)
+                        SQL Server instance name
+  --dbName db_name (NetIncident2))
+                        Database name
+  --filePath file_path  Full path and file name of IIS logs
+  --serverId server_id  An integer value of the server logs that are being
+                        loaded
+
+C:\Dat\NetIncidents3\logs\Py-Net-Incident>python logs_load.py --logType NG --server .\Express --filePath ..\NG-300-2018-11-21.txt --serverId 4
+The arguments are:  .\Express NetIncident2 ..\NG-300-2018-11-21.txt 4
+VALUES( 4, '162.254.192.108', 'Nov 15 2018 22:03:37', '[DoS attack: ACK Scan] attack packets in last 20 sec from ip [162.254.192.108], Thursday, Nov 15,2018 22:03:37', 1026 )
+1 rows affected
+VALUES( 4, '23.48.167.129', 'Nov 14 2018 16:39:59', '[DoS attack: ACK Scan] attack packets in last 20 sec from ip [23.48.167.129], Wednesday, Nov 14,2018 16:39:59', 1026 )
+1 rows affected
+==== Warnings ====
+[Admin login] from source 192.168.0.22, Wednesday, Nov 21,2018 10:56:04
+[Admin login failure] from source 192.168.0.22, Wednesday, Nov 14,2018 17:54:30
+[Admin login failure] from source 192.168.0.22, Wednesday, Nov 14,2018 17:16:09
+[Admin login] from source 192.168.0.22, Wednesday, Nov 14,2018 17:04:20
+[Admin login failure] from source 192.168.0.22, Wednesday, Nov 14,2018 17:04:02
+[Admin login] from source 192.168.0.22, Wednesday, Nov 14,2018 16:54:15
+[Admin login failure] from source 192.168.0.22, Wednesday, Nov 14,2018 16:53:58
+[Admin login] from source 192.168.0.22, Wednesday, Nov 14,2018 16:40:09
+[Initialized, firmware version: V1.2.0.54_50.0.94] Wednesday, Jan 01,2003 00:00:09
+
+C:\Dat\NetIncidents3\logs\Py-Net-Incident>
+
 Thanks and good luck and help make the internet safe.
 Phil
