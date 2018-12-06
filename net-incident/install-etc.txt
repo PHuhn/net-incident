@@ -1134,6 +1134,9 @@ SOLUTION:
 	run `npm audit fix` to fix them, or `npm audit` for details
 
 	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+PROBLEM:
+========
+	Security audit
 	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm audit
 						=== npm audit security report ===
 	# Run  npm install --save-dev @angular-devkit/build-angular@0.11.1  to resolve 7 vulnerabilities
@@ -1212,6 +1215,39 @@ SOLUTION:
 
 	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
 
+SOLUTION:
+	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install --save-dev @angular-devkit/build-angular@0.11.1
+
+	> node-sass@4.10.0 install C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\node-sass
+	> node scripts/install.js
+
+	Downloading binary from https://github.com/sass/node-sass/releases/download/v4.10.0/win32-x64-57_binding.node
+	Download complete  ] - :
+	Binary saved to C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\node-sass\vendor\win32-x64-57\binding.node
+	Caching binary to C:\Users\Phil\AppData\Roaming\npm-cache\node-sass\4.10.0\win32-x64-57_binding.node
+
+	> node-sass@4.10.0 postinstall C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\node-sass
+	> node scripts/build.js
+
+	Binary found at C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\node-sass\vendor\win32-x64-57\binding.node
+	Testing binary
+	Binary is fine
+	npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\fsevents):
+	npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+	+ @angular-devkit/build-angular@0.11.1
+	added 161 packages from 155 contributors, updated 26 packages, moved 7 packages and audited 29263 packages in 47.537s
+	found 0 vulnerabilities
+
+
+	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm audit
+
+						=== npm audit security report ===
+
+	found 0 vulnerabilities
+	in 29263 scanned packages
+
+	C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
 
 ===================================================
 Done:
