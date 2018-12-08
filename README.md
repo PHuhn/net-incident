@@ -5,7 +5,8 @@ This solution contains two projects as follows:
 - WebSrv - .Net Web Api and MVC application to support net-incident.
 
 ## The libraries
-- WebSrv requires [NSG.Library](https://github.com/PHuhn/NSG.Library/wiki/NSG.Library).
+- WebSrv requires [NSG.Library](https://github.com/PHuhn/NSG.Library/wiki/NSG.Library),
+- WebSrv requires PrimeFaces NG library of [NSG.PrimeNG](https://github.com/PHuhn/NSG.PrimeNG).
 
 ## Installation Instructions ##
 * [Installation of development NSG.WebSrv](https://github.com/PHuhn/net-incident/wiki/Installation-of-NSG.WebSrv-(Web-API))
