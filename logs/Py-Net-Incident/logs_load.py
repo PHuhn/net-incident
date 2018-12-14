@@ -222,7 +222,6 @@ class LogsLoadNG(object):
                 self.sql_server.sql_connection_trusted_string(server, db_name))
             self.log_process_load_ng_incident_types()
             self.server_id = int(server_id)
-            log_file = open(file_path, "r")
             compiled_pattern = re.compile("^\[DHCP IP: |^\[Service blocked: ICMP_echo_req|^\[Time synchronized|^\[Internet connected|^\[Internet disconnected|^\[Log Cleared|^\[UPnP set event|^\[WLAN access rejected|^\[email sent to")
             log_file = open(file_path, "r")
             for line in log_file:
