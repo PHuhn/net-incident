@@ -342,6 +342,8 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 						this.networkIncident = undefined;
 						this.onClose.emit( true );
 					}
+					this.add = false;
+					this.id = this.networkIncident.incident.IncidentId;
 				},
 				error => this.serviceErrorHandler(
 					`${this.codeName} Create`, error ));

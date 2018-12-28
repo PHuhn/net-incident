@@ -1,4 +1,4 @@
-Microsoft Windows [Version 10.0.15063]
+﻿Microsoft Windows [Version 10.0.15063]
 (c) 2017 Microsoft Corporation. All rights reserved.
 
 C:\dat>cd dat\nsg\l\web\12\
@@ -1331,8 +1331,11 @@ Done:
 	V1.0.11.6 - After e-mailed don't allow deleting notes and change of NIC, Network and Abuse Email. (2018-10-04)
 	V1.0.12.6 - Save and stay open on detail to get IncidentId ...
 	V1.0.13.7 - Convert from Angular 6 to 7
+	V1.0.14.7 - Corrected 'Save & Stay' creating duplicate incidents
 
 To Do's:
+	V - delete of network-log not working
+	V - correct broken tests
 	V - incident e-mail template per company
 	V - convert to 2.1 Core
 
