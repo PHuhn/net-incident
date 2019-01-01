@@ -284,6 +284,9 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	// This still needs to be saved.
 	//
 	deleteItem( delId: number ): void {
+		if( this.logLevel >= 4 ) {
+			console.log( `${this.codeName}.deleteItem: Entering, del id: ${delId}` );
+		}
 		if( delId !== 0 ) {
 			const logs = this.networkIncident.networkLogs.filter( (el) => {
 				return el.NetworkLogId === delId;
@@ -294,11 +297,17 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 					return el.NetworkLogId !== delId;
 				});
 				this._alerts.setWhereWhatSuccess(
-					'NetworkLogs-Grid', 'Deleted:' + delId);
+					'NetworkLogs-Grid', `Deleted: ${delId}`);
+				if( this.logLevel >= 3 ) {
+					console.log( this.networkIncident.deletedLogs );
+				}
 			} else {
 				this._alerts.setWhereWhatWarning(
-					'NetworkLogs-Grid', 'Delete failed for:' + delId);
+					'NetworkLogs-Grid', `Delete failed for: ${delId}`);
 			}
+		}
+		if( this.logLevel >= 4 ) {
+			console.log( `${this.codeName}.deleteItem: Exiting, del id: ${delId}` );
 		}
 	}
 	//

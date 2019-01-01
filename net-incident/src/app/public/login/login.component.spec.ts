@@ -38,6 +38,7 @@ describe('LoginComponent', () => {
 				LoginComponent,
 				Dialog,
 				Header,
+				Footer,
 				ServerSelectionWindowComponent
 			],
 			providers: [

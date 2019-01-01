@@ -129,30 +129,48 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	//
 	// addItemClicked( )
 	//
-	it('should launch window when addItemClicked is called ...', fakeAsync( () => {
+	it('should launch detail window when addItemClicked is called ...', async( () => {
+		console.log( 'addItemClicked is called ...' );
 		sut.addItemClicked( );
-		expect( sut.windowDisplay ).toEqual( true );
-		tick( );
+		//
+		console.log( `~= addItemClicked: ${new Date().toISOString()}` );
 		fixture.detectChanges();
-		const title: HTMLDivElement = fixture.debugElement.query(By.css(
-			'#NoteDetailWindowHeader' )).nativeElement;
-		expect( title.innerText ).toEqual( expectedWindowTitle + '0' );
-		sut.windowDisplay = false;
+		fixture.whenStable();
+		console.log( `~=* addItemClicked: ${new Date().toISOString()}` );
+		//
+		if( sut.windowDisplay === true ) {
+			const title: HTMLDivElement = fixture.debugElement.query(By.css(
+				'#NoteDetailWindowHeader' )).nativeElement;
+			expect( title.innerText ).toEqual( expectedWindowTitle + '0' );
+			sut.windowDisplay = false;
+		} else {
+			console.log( `****** failed ******** ${new Date().toISOString()}` );
+			fail('Detail window took too long.');
+		}
 	}));
 	//
 	// editItemClicked( )
 	//
-	it('should launch window when editItemClicked is called ...', fakeAsync( () => {
-		console.log( 'edit clicked' );
+	it('should launch detail window when editItemClicked is called ...', async( () => {
+		console.log( 'editItemClicked is called ...' );
 		const incidentNote: IncidentNote = sut.networkIncident.incidentNotes[ 3 ];
 		sut.editItemClicked( incidentNote );
-		expect( sut.windowDisplay ).toEqual( true );
-		tick( );
+		//
+		console.log( `~= editItemClicked: ${new Date().toISOString()}` );
 		fixture.detectChanges();
-		const title: HTMLDivElement = fixture.debugElement.query(By.css(
-			'#NoteDetailWindowHeader' )).nativeElement;
-		expect( title.innerText ).toEqual( expectedWindowTitle + incidentNote.IncidentNoteId );
-		sut.windowDisplay = false;
+		fixture.whenStable();
+		console.log( `~=* editItemClicked: ${new Date().toISOString()}` );
+		//
+		if( sut.windowDisplay === true ) {
+			const title: HTMLDivElement = fixture.debugElement.query(By.css(
+				'#NoteDetailWindowHeader' )).nativeElement;
+			expect( title.innerText ).toEqual( expectedWindowTitle + incidentNote.IncidentNoteId );
+			sut.windowDisplay = false;
+			console.log( `editItemClicked ... completed ${new Date().toISOString()}` );
+		} else {
+			console.log( `****** failed ******** ${new Date().toISOString()}` );
+			fail('Detail window took too long.');
+		}
 	}));
 	//
 	// deleteItemClicked( item: IncidentNote ) :boolean

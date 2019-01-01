@@ -192,20 +192,31 @@ describe( 'IncidentGridComponent', ( ) => {
 	//
 	// addItemClicked( )
 	//
-	it('should launch window when addItemClicked is called ...', fakeAsync( () => {
+	it('should launch detail window when addItemClicked is called ...', async( () => {
 		console.log( 'addItemClicked is called ...' );
 		const response: NetworkIncident = newNetworkIncident(
 			new Incident( 0,1,'','','','','',false,false,false,'',testDate )
 		);
 		const id = response.incident.IncidentId; // for title
-		const ip = '';
+		const ip = response.incident.IPAddress;
 		networkIncidentServiceMock.mockGet = response;
 		sut.addItemClicked( );
-		expect( sut.windowDisplay ).toEqual( true );
-		const title: HTMLDivElement = fixture.debugElement.query(By.css(
-			'#IncidentDetailWindowHeader' )).nativeElement;
-		expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address:` );
-		sut.windowDisplay = false;
+		//
+		console.log( `~= addItemClicked: ${new Date().toISOString()}` );
+		fixture.detectChanges();
+		fixture.whenStable();
+		console.log( `~=* addItemClicked: ${new Date().toISOString()}` );
+		//
+		if( sut.windowDisplay === true ) {
+			expect( sut.windowDisplay ).toEqual( true );
+			const title: HTMLDivElement = fixture.debugElement.query(By.css(
+				'#IncidentDetailWindowHeader' )).nativeElement;
+			expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address:` );
+			console.log( `addItemClicked ... completed ${new Date().toISOString()}` );
+		} else {
+			console.log( `****** failed ******** ${new Date().toISOString()}` );
+			fail('Detail window took too long.');
+		}
 	}));
 	//
 	// editItemClicked( )
