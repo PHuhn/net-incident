@@ -163,8 +163,6 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 			expect( sut.networkIncident.incident.Closed ).toEqual( mockData.Closed );
 			expect( sut.networkIncident.incident.Special ).toEqual( mockData.Special );
 			expect( sut.networkIncident.incident.Notes ).toEqual( mockData.Notes );
-			// Expected '2000-01-01T05:00:00.000Z' to equal Date(Sat Jan 01 2000 00:00:00 GMT-0500 (Eastern Standard Time)).
-			// expect( sut.networkIncident.incident.CreatedDate ).toEqual( testDate );
 		});
 		//
 	} ) );
@@ -186,34 +184,60 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	//
 	// Simulate a button clicked, call directly windowClose for createItem
 	//
-	it('should create class when createItem called ...', fakeAsync(() => {
+	it('should create NetworkIncident class when createItem called ...', async( () => {
 		//
-		netIncidentService.mockCrudResponse = new HttpResponse(
-			{ status: 201, statusText: 'OK' } );
+		console.log( `Create NetworkIncident class when createItem called: ${new Date().toISOString()}` );
+		const id = 100;
+		sut.logLevel = 3;
 		const empty: Incident = new Incident( 0,1,'','','','','',false,false,false,'',testDate );
-		const response: NetworkIncident = newNetworkIncident( empty );
-		netIncidentService.mockGet = response;
 		sut.detailWindowInput = new DetailWindowInput( user, empty );
-		sut.onClose.subscribe( saved => {
-			console.log( 'In onClose callback createItem ...' );
-			sut.displayWin = false;
-			expect( saved ).toBe( true );
-		} );
-		sut.networkIncident.incident = new Incident(
-			0, // IncidentId: number,
+		//
+		const createIncident = new Incident(
+			id, // IncidentId: number,
 			1, // ServerId: number,
 			'10.1.1.1',  // IPAddress: string,
-			'ripte.net', // NIC: string,
+			'ripe.net', // NIC: string,
 			'ru.net', // NetworkName: string,
 			'abuse@ru.net', // AbuseEmailAddress: string,
 			'', // ISPTicketNumber: string,
 			false, // Mailed: boolean,
 			false, // Closed: boolean,
 			false, // Special: boolean,
-			'', // Notes: string,
+			'Create', // Notes: string,
 			new Date(Date.now()) // CreatedDate: Date,
 		);
+		let response: NetworkIncident = newNetworkIncident( createIncident );
+		console.log( response );
+		netIncidentService.mockGet = response;
+		netIncidentService.mockCrudResponse = response;
+		createIncident.IncidentId = 0;
+		console.log( createIncident );
+		sut.networkIncident.incident = createIncident;
 		sut.windowClose( true );
+		//
+		console.log( `~= windowClose: ${new Date().toISOString()}` );
+		fixture.detectChanges();
+		fixture.whenStable();
+		console.log( `~=* windowClose: ${new Date().toISOString()}` );
+		//
+		expect( sut.networkIncident.incident.IncidentId ).toBe( id );
+		sut.displayWin = false;
+		//
+	} ) );
+	//
+	// Simulate a cancel button clicked, call directly windowClose
+	//
+	it('should emit when canceled ...', async( () => {
+		//
+		sut.onClose.subscribe( saved => {
+			console.log( 'In onClose callback cancel ...' );
+			sut.displayWin = false;
+			expect( saved ).toBe( false );
+		} );
+		sut.windowClose( false );
+		//
+		fixture.detectChanges();
+		fixture.whenStable();
 		//
 	} ) );
 	//

@@ -10,9 +10,9 @@ export class AboutComponent implements OnInit {
 	//
 	applicationName = 'Network Incident';
 	companyName = 'Northern Software Group';
-	copyright ='Copyright © 2018';
+	copyright ='Copyright © 2019';
 	// major.minor.build.(angular version)
-	version ='1.0.15.7';
+	version ='1.0.16.7';
 	//
 	constructor() { }
 	//

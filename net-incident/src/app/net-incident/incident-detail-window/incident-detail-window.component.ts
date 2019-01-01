@@ -329,9 +329,16 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	// if successful then emit to parent form success.
 	//
 	createItem( stay: boolean ): void {
+		if( this.logLevel >= 4 ) {
+			console.log( `${this.codeName}.createItem, Entering: ${stay}` );
+		}
 		this._netIncident.createIncident( this.networkIncidentSave )
 			.subscribe(
 				( netIncidentData: NetworkIncident ) => {
+					if( this.logLevel >= 4 ) {
+						console.log( `${this.codeName}.createItem, netIncidentData` );
+						console.log( netIncidentData );
+					}
 					this.networkIncident = netIncidentData;
 					this.networkIncident.user = this.user;
 					this._alerts.setWhereWhatSuccess(
@@ -339,7 +346,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 						'Created:' + this.networkIncident.incident.IncidentId);
 					this.networkIncidentSave = undefined;
 					if( !stay ) {
-						this.networkIncident = undefined;
+						this.detailWindow = undefined;
 						this.onClose.emit( true );
 					}
 					this.add = false;
