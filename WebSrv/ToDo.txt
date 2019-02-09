@@ -1,5 +1,6 @@
 ﻿-- To Dos ---------------------------
 V - Convert to 2.2 or 3.0 Core
+	https://www.codeproject.com/Articles/1274433/Getting-Started-with-Angular-7-And-ASP-NET-Core-2
 V - In AccountController: External login
 V - Reapply constants
 V - CompanyAdmin role

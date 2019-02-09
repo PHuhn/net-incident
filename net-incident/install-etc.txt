@@ -1335,6 +1335,43 @@ PROBLEM:
 		IncidentDetailWindowComponent should create class when createItem called ...
 			Error: 1 timer(s) still in the queue.
 
+PROBLEM:
+========
+	Known low severity security vulnerability detected in webpack-dev-server < 3.1.11 defined in package-lock.json.
+	package-lock.json update suggested: webpack-dev-server ~> 3.1.11.
+SOLUTION:
+	npm audit
+	npm install --save-dev @angular-devkit/build-angular@0.11.4
+	npm update
+	npm install --save-dev webpack-dev-server@3.1.14
+
+PROBLEM:
+========
+	ERROR in The Angular Compiler requires TypeScript >=3.1.1 and <3.2.0 but 3.2.2 was found instead.
+SOLUTION:
+	npm --save-dev install typescript@3.1.6
+
+PROBLEM:
+========
+	new version of npm
+SOLUTION:
+	npm install -g npm
+
+PROBLEM:
+========
+	npm audit (2 high)
+SOLUTION:
+	npm install --save-dev @angular-devkit/build-angular@0.13.1
+	npm install --save-dev webpack-dev-server@3.1.14
+
+PROBLEM:
+========
+	Invalid configuration object. Webpack has been initialised using a configuration object that does not match the API schema.
+	- configuration.output has an unknown property 'futureEmitAssets'. These properties are valid:
+	object { auxiliaryComment?, chunkCallbackName?, chunkFilename?, chunkLoadTimeout?, crossOriginLoading?, devtoolFallbackModuleFilenameTemplate?, devtoolLineToLine?, devtoolModuleFilenameTemplate?, devtoolNamespace?, filename?, globalObject?, hashDigest?, hashDigestLength?, hashFunction?, hashSalt?, hotUpdateChunkFilename?, hotUpdateFunction?, hotUpdateMainFilename?, jsonpFunction?, jsonpScriptType?, library?, libraryExport?, libraryTarget?, path?, pathinfo?, publicPath?, sourceMapFilename?, sourcePrefix?, strictModuleExceptionHandling?, umdNamedDefine?, webassemblyModuleFilename? }
+SOLUTION:
+	npm install --save-dev webpack@4.29.0
+
 ===================================================
 Done:
 	service logging 12/22
@@ -1358,15 +1395,17 @@ Done:
 	V1.0.9.6 - Cleanup modules imports in app.module.ts (2018-10-03)
 	V1.0.10.6 - Convert from depricated flick to nova-light theme (2018-10-04)
 	V1.0.11.6 - After e-mailed don't allow deleting notes and change of NIC, Network and Abuse Email. (2018-10-04)
-	V1.0.12.6 - Save and stay open on detail to get IncidentId ...
-	V1.0.13.7 - Convert from Angular 6 to 7
-	V1.0.14.7 - Corrected 'Save & Stay' creating duplicate incidents
-	V1.0.15.7 - correct broken tests
-	V1.0.16.7 - correct broken tests
+	V1.0.12.6 - Save and stay open on detail to get IncidentId (2018-10-15)
+	V1.0.13.7 - Convert from Angular 6 to 7 (2018-12-06)
+	V1.0.14.7 - Corrected 'Save & Stay' creating duplicate incidents (2018-12-28)
+	V1.0.15.7 - correct broken tests (2018-12-31)
+	V1.0.16.7 - correct broken tests (2019-01-01)
+	V1.0.17.7 - Ng 7.1 to 7.4 (2019-02-09)
 
 To Do's:
 	V - delete of network-log not working
-	V - correct broken tests
-	V - convert to 2.1 Core
+	V1.1 - convert to 2.1 Core
+			https://www.codeproject.com/Articles/1274433/Getting-Started-with-Angular-7-And-ASP-NET-Core-2
+
 
 ===================================================
