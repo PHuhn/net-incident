@@ -223,6 +223,11 @@
     <Compile Include="Identity\Incidents\ServerStore_Old.cs" />
     <Compile Include="Identity\Models\ManageViewModels.cs" />
     <Compile Include="Identity\Providers\ProtectionTokenProvider.cs" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Identity\Providers\SimpleAuthorizationServerProvider.cs.txt" />
     <Compile Include="Identity\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -267,6 +272,8 @@
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Identity\Startup.cs" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Views\CompanyEmailTemplate\Create.cshtml" />
     <Content Include="Views\CompanyEmailTemplate\Delete.cshtml" />
     <Content Include="Views\CompanyEmailTemplate\Details.cshtml" />
@@ -275,18 +282,16 @@
     <Content Include="Views\CompanyEmailTemplate\CompanyEmailTemplateDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Helpers\Helpers_FluentEmail.cs.txt" />
@@ -294,8 +299,6 @@
     <None Include="InstallNotes.txt" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\BaseController.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />

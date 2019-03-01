@@ -240,3 +240,9 @@ PROBLEM:
 ========
 	In 'create', Binding to the view model, but Template property is the to create.
 SOLUTION:
+
+PROBLEM:
+========
+	github alert: 1 bootstrap vulnerability found in WebSrv/packages.config
+SOLUTION:
+	Install-Package bootstrap -version 3.4.1
