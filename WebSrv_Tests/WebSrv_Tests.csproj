@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebSrv_Tests</RootNamespace>
     <AssemblyName>WebSrv_Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -19,6 +19,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -213,6 +214,10 @@
     <ProjectReference Include="..\..\NSG.Library\NSG.Library.Logger\NSG.Library.Logger.csproj">
       <Project>{a11d69f1-a009-4c41-a19b-bdb621fad972}</Project>
       <Name>NSG.Library.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NSG.PrimeNG\NSG.PrimeNG.LazyLoading\NSG.PrimeNG.LazyLoading.csproj">
+      <Project>{4960dfbb-3b05-4789-a5b9-bd75b2c06979}</Project>
+      <Name>NSG.PrimeNG.LazyLoading</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebSrv\NSG.WebSrv.csproj">
       <Project>{5708903a-ec75-4766-9e6c-3dd39a800f37}</Project>

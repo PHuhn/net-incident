@@ -246,3 +246,10 @@ PROBLEM:
 	github alert: 1 bootstrap vulnerability found in WebSrv/packages.config
 SOLUTION:
 	Install-Package bootstrap -version 3.4.1
+
+PROBLEM:
+========
+	.Net 4.6.1 old
+SOLUTION:
+	2019-03-01, version 1.0.4.17: updated to .Net 4.7.2, ran test
+
