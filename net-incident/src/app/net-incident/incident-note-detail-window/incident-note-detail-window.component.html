@@ -19,7 +19,7 @@
       <div class='ui-grid-row ui-inputgroup' [class.has-error]='Note.invalid && Note.touched'>
         <div class='ui-grid-col-1 nsg-primary-color nsg-text-right'><label for='Note'>Note:</label></div>
         <div class='ui-grid-col-8 ui-inputtext'>
-          <textarea id='Note' name='Note' rows='10' cols='52' #Note='ngModel' [(ngModel)]='model.Note'></textarea>
+          <textarea id='Note' name='Note' rows='10' cols='52' #Note='ngModel' [(ngModel)]='model.Note' placeholder='Note...'></textarea>
         </div>
         <div class='ui-grid-col-2 nsg-alert-color' *ngIf='Note.invalid && Note.touched'>Required</div>
       </div>
