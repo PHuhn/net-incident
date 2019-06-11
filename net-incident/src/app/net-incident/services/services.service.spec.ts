@@ -1,9 +1,8 @@
 // ===========================================================================
 // File: services.service.spec.ts
 import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
-import { Response, ResponseOptions } from '@angular/http';
 //
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 //
 import { Observable, throwError } from 'rxjs';
@@ -96,14 +95,13 @@ describe('ServicesService', () => {
 	it( 'should throw a response error...', async(() => {
 		//
 		const errMsg: string = 'Fake error';
-		const resp: Response = new Response( new ResponseOptions({
-			body: { error: `${errMsg}` }, status: 599, statusText: `${errMsg}`, url: 'http://localhost'
-		}));
+		const resp: any = new HttpErrorResponse(
+			{ status: 599, statusText: `${errMsg}` } );
 		//
 		sut.handleError( resp ).subscribe( () => {
 				fail( 'handleError: expected error...' );
 			}, ( error ) => {
-				expect( error ).toEqual( 'Response with status: 599 Fake error for URL: http://localhost' );
+				expect( error ).toEqual( errMsg );
 		} );
 		//
 	}));

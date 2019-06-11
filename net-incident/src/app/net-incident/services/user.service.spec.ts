@@ -3,7 +3,6 @@
 // Tests of service for: User
 //
 import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
-import { Response, ResponseOptions } from '@angular/http';
 //
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';

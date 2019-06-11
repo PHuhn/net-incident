@@ -1403,6 +1403,7 @@ Done:
 	V1.0.17.7 - Ng 7.1 to 7.4 (2019-02-09)
 	V1.0.18.7 - npm audit, ran tests and launched site
 	V1.0.19.7 - added input placeholder
+	V1.0.20.7 - Pre NG 8, remove all angular/http, all tests past! current angular version is 7.2.15
 
 To Do's:
 	V - delete of network-log not working

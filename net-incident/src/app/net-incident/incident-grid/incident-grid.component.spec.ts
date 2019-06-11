@@ -2,8 +2,6 @@
 import { async, ComponentFixture, TestBed, inject, fakeAsync, tick, discardPeriodicTasks, getTestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
 import { Observable, throwError, interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 import { By } from '@angular/platform-browser';

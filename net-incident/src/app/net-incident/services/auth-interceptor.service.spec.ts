@@ -2,7 +2,6 @@
 // https://blog.angular-university.io/angular-jwt-authentication/
 // https://stackoverflow.com/questions/46225164/unit-testing-httpinterceptor-from-angular-4
 import { TestBed, inject } from '@angular/core/testing';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';

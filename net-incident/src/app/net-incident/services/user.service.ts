@@ -3,7 +3,6 @@
 // Service for User class
 //
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpClient, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 //
 import { Observable, throwError } from 'rxjs';
