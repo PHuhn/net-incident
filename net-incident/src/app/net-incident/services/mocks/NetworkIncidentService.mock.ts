@@ -46,9 +46,6 @@ export class NetworkIncidentServiceMock  extends NetworkIncidentService {
 	}
 	//
 	handleResponse( response: any ): any {
-		//if ( response instanceof HttpResponse ) {
-		//}
-		//return this.handleError( response );
 		return of( response );
 	}
 	//
