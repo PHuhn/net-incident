@@ -44,7 +44,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	totalRecords: number = 0;
 	id: number;
 	loading: boolean;
-	@ViewChild( 'dt' ) dt: Table;
+	@ViewChild('dt', { static: false }) dt: Table;
 	visible: boolean = true;
 	//
 	mailed: boolean = false;

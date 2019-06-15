@@ -1372,6 +1372,17 @@ PROBLEM:
 SOLUTION:
 	npm install --save-dev webpack@4.29.0
 
+PROBLEM:
+========
+	upgrade to 8
+SOLUTION:
+	V update to 8:
+		npm install --save-dev rxjs@6.5.2
+		npm install --save-dev typescript@3.4
+		ng update @angular/cli @angular/core
+		npm install --save-dev @angular/cdk
+		ng update @angular/core --from 7 --to 8 --migrate-only --allow-dirty
+
 ===================================================
 Done:
 	service logging 12/22
@@ -1404,6 +1415,7 @@ Done:
 	V1.0.18.7 - npm audit, ran tests and launched site
 	V1.0.19.7 - added input placeholder
 	V1.0.20.7 - Pre NG 8, remove all angular/http, all tests past! current angular version is 7.2.15
+	V8.1.0.20 - NG 8, ran tests and launched site and 0 vulnerabilities
 
 To Do's:
 	V - delete of network-log not working

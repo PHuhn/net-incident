@@ -38,7 +38,7 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	private codeName: string = 'network-log-grid';
 	private logLevel: number = 1;
 	totalRecords: number = 0;
-	@ViewChild( 'dt' ) dt: Table;
+	@ViewChild('dt', { static: true }) dt: Table;
 	selectedLogs: NetworkLog[] = [];
 	disabled: boolean;
 	expansionColSpan: number = 5;
