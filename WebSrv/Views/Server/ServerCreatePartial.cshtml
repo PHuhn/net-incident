@@ -110,7 +110,7 @@ public static MvcForm BeginForm(
             <div class="form-group">
                 <label class="col-md-3 nsg-label" for="TimeZone">* Time-zone</label>
                 <div class="col-md-9">
-                    @Html.EditorFor(model => model.TimeZone, new { htmlAttributes = new { @class = "form-control", @maxlength = "16", @style = "max-width:220px" } })
+                    @Html.EditorFor(model => model.TimeZone, new { htmlAttributes = new { @class = "form-control", @maxlength = "16", @style = "max-width:220px", placeholder = "Example: EST (UTC-5)" } })
                     @Html.ValidationMessageFor(model => model.TimeZone, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -132,7 +132,7 @@ public static MvcForm BeginForm(
             <div class="form-group">
                 <label class="col-md-3 nsg-label" for="TimeZone_DST">* Time-zone DST</label>
                 <div class="col-md-9">
-                    @Html.EditorFor(model => model.TimeZone_DST, new { htmlAttributes = new { @class = "form-control", @maxlength = "16", @style = "max-width:220px" } })
+                    @Html.EditorFor(model => model.TimeZone_DST, new { htmlAttributes = new { @class = "form-control", @maxlength = "16", @style = "max-width:220px", placeholder = "Example: EDT (UTC-4)" } })
                     @Html.ValidationMessageFor(model => model.TimeZone_DST, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -142,7 +142,7 @@ public static MvcForm BeginForm(
             <div class="form-group">
                 <label class="col-md-3 nsg-label" for="DST_Start">DST Start</label>
                 <div class="col-md-9">
-                    @Html.EditorFor(model => model.DST_Start, new { htmlAttributes = new { @class = "form-control", @style = "max-width:220px" } })
+                    @Html.EditorFor(model => model.DST_Start, new { htmlAttributes = new { @class = "form-control", @style = "max-width:220px", placeholder = "DST start date and time" } })
                     @Html.ValidationMessageFor(model => model.DST_Start, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -152,7 +152,7 @@ public static MvcForm BeginForm(
             <div class="form-group">
                 <label class="col-md-3 nsg-label" for="DST_End">DST End</label>
                 <div class="col-md-9">
-                    @Html.EditorFor(model => model.DST_End, new { htmlAttributes = new { @class = "form-control", @style = "max-width:220px" } })
+                    @Html.EditorFor(model => model.DST_End, new { htmlAttributes = new { @class = "form-control", @style = "max-width:220px", placeholder = "DST end date and time" } })
                     @Html.ValidationMessageFor(model => model.DST_End, "", new { @class = "text-danger" })
                 </div>
             </div>
