@@ -13,7 +13,8 @@
   "private": true,
   "dependencies": {
     "core-js": "^2.6.1",
-    "diff": "^3.5.0"
+    "diff": "^3.5.0",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.0",
