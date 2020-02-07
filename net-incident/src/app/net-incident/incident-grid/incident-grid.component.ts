@@ -2,11 +2,11 @@
 import { Component, OnInit, OnDestroy, Input, ViewChild, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 //
-import { Table } from 'primeng/components/table/table';
-import { ConfirmDialog } from 'primeng/components/confirmdialog/confirmdialog';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
-import { SelectItem } from 'primeng/components/common/selectitem';
-import { FilterMetadata } from 'primeng/components/common/filtermetadata';
+import { Table } from 'primeng/table';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { SelectItem } from 'primeng/api';
+import { FilterMetadata } from 'primeng/api';
 import { LazyLoadEvent } from 'primeng/api';
 //
 import { environment } from '../../../environments/environment';

@@ -2,8 +2,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { environment } from '../../../environments/environment';
 //
-import { SelectItem } from 'primeng/components/common/selectitem';
-import { Dialog } from 'primeng/components/dialog/dialog';
+import { SelectItem } from 'primeng/api';
+import { Dialog } from 'primeng/dialog';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { Message } from '../../global/message';

@@ -1,5 +1,5 @@
 // ===========================================================================
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { SelectItem } from 'primeng/api';
 //
 import { IUser, User } from './user';
 import { IIncident, Incident } from './incident';

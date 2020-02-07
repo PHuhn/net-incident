@@ -4,9 +4,9 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 //
-import { Dialog } from 'primeng/components/dialog/dialog';
-import { SelectItem } from 'primeng/components/common/selectitem';
-import { Dropdown, DropdownModule } from 'primeng/components/dropdown/dropdown';
+import { Dialog } from 'primeng/dialog';
+import { SelectItem } from 'primeng/api';
+import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { environment } from '../../../environments/environment';
 import { AlertsService } from '../../global/alerts/alerts.service';

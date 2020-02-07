@@ -2,9 +2,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { environment } from '../environments/environment';
 //
-import { DataTableModule } from './../../node_modules/primeng/components/datatable/datatable';
-import { DataTable } from './../../node_modules/primeng/components/datatable/datatable';
-import { Dropdown, DropdownModule } from './../../node_modules/primeng/components/dropdown/dropdown';
+import { DataTableModule } from 'primengdatatable';
+import { DataTable } from 'primeng/datatable';
+import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { AlertsService } from './global/alerts/alerts.service';
 import { UserService } from './net-incident/services/user.service';
@@ -21,7 +21,7 @@ import { NetworkLogGridComponent } from './net-incident/network-log-grid/network
 //
 import { IIncidentNote, IncidentNote } from './net-incident/incident-note';
 import { IncidentNoteGridComponent } from './net-incident/incident-note-grid/incident-note-grid.component';
-import { SelectItem } from '../../node_modules/primeng/components/common/selectitem';
+import { SelectItem } from 'primeng/api';
 import { SelectItemClass } from './net-incident/select-item-class';
 import { NetworkIncident } from './net-incident/network-incident';
 import { NetworkIncidentService } from './net-incident/services/network-incident.service';

@@ -14,9 +14,9 @@ import { NgForm } from '@angular/forms';
 import { Observable, throwError, interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 //
-import { Table, TableModule } from 'primeng/components/table/table';
-import { ConfirmDialog } from 'primeng/components/confirmdialog/confirmdialog';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { Table, TableModule } from 'primeng/table';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 //
 import { environment } from '../../../environments/environment';
 import { AlertsService } from '../../global/alerts/alerts.service';

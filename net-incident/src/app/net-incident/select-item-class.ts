@@ -2,7 +2,7 @@
 // File: select-item-class.ts
 //  define the interface(IDropDown/class(DropDown)
 //
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { SelectItem } from 'primeng/api';
 //
 export class SelectItemClass implements SelectItem {
 	public value: any;

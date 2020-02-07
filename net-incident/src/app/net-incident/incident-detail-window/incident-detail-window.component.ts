@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { NgForm } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 //
-import { Dialog } from 'primeng/components/dialog/dialog';
+import { Dialog } from 'primeng/dialog';
 import { environment } from '../../../environments/environment';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';

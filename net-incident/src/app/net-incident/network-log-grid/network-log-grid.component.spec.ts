@@ -5,13 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, throwError } from 'rxjs';
 import { By } from '@angular/platform-browser';
 //
-import { TableModule } from 'primeng/components/table/table';
-import { Dialog } from 'primeng/components/dialog/dialog';
-import { ConfirmDialog } from 'primeng/components/confirmdialog/confirmdialog';
-import { Header, Footer } from 'primeng/components/common/shared';
-import { ButtonModule } from 'primeng/components/button/button';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { TableModule } from 'primeng/table';
+import { Dialog } from 'primeng/dialog';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { ButtonModule } from 'primeng/button';
+import { Header, Footer, ConfirmationService, SelectItem } from 'primeng/api';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';

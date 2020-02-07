@@ -2,10 +2,9 @@
 import { Component, Input, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 //
-import { TableModule } from 'primeng/components/table/table';
-import { ConfirmDialog } from 'primeng/components/confirmdialog/confirmdialog';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { SelectItem } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { ConfirmationService } from 'primeng/api';
 //
 import { environment } from '../../../environments/environment';
 import { AlertsService } from '../../global/alerts/alerts.service';

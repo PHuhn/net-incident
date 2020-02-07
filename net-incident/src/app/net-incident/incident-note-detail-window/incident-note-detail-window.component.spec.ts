@@ -8,12 +8,12 @@ import { By } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient, HttpErrorResponse, HttpRequest } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 //
-import { Dialog } from 'primeng/components/dialog/dialog';
-import { Header, Footer } from 'primeng/components/common/shared';
-import { ButtonModule } from 'primeng/components/button/button';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
-import { Dropdown, DropdownModule } from 'primeng/components/dropdown/dropdown';
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { Dialog } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { Dropdown, DropdownModule } from 'primeng/dropdown';
+import { Header, Footer } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
+import { SelectItem } from 'primeng/api';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { ServicesService } from '../services/services.service';

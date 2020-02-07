@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 //
 // infrastructure services
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { ConfirmationService } from 'primeng/api';
 import { AlertsService } from './global/alerts/alerts.service';
 // user/auth services
 import { UserService } from './net-incident/services/user.service';

@@ -9,12 +9,11 @@ import { HttpResponse } from '@angular/common/http';
 //
 import { Observable, throwError } from 'rxjs';
 //
-import { TableModule } from 'primeng/components/table/table';
-import { Dialog } from 'primeng/components/dialog/dialog';
-import { Header, Footer } from 'primeng/components/common/shared';
-import { ButtonModule } from 'primeng/components/button/button';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
-import { Dropdown, DropdownModule } from 'primeng/components/dropdown/dropdown';
+import { TableModule } from 'primeng/table';
+import { Dialog } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { Dropdown, DropdownModule } from 'primeng/dropdown';
+import { Header, Footer, ConfirmationService } from 'primeng/api';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { ServicesService } from '../services/services.service';

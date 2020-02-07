@@ -5,7 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 //
 import { LazyLoadEvent } from 'primeng/api';
-import { FilterMetadata } from 'primeng/components/common/filtermetadata';
+import { FilterMetadata } from 'primeng/api';
 //
 import { IncidentService } from '../../../net-incident/services/incident.service';
 import { IIncident, Incident } from '../../../net-incident/incident';

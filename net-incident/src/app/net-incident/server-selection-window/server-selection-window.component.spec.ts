@@ -5,10 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, throwError } from 'rxjs';
 import { By } from '@angular/platform-browser';
 //
-import { Dialog } from 'primeng/components/dialog/dialog';
-import { Header, Footer } from 'primeng/components/common/shared';
-import { ButtonModule } from 'primeng/components/button/button';
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { Dialog } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { Header, Footer } from 'primeng/api';
+import { SelectItem } from 'primeng/api';
 //
 import { ServerSelectionWindowComponent } from './server-selection-window.component';
 import { SelectItemClass } from '../select-item-class';

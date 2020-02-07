@@ -8,13 +8,13 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 //
 import { Observable, throwError } from 'rxjs';
 //
-import { TableModule } from 'primeng/components/table/table';
-import { Dialog } from 'primeng/components/dialog/dialog';
-import { ConfirmDialog } from 'primeng/components/confirmdialog/confirmdialog';
-import { Header, Footer } from 'primeng/components/common/shared';
-import { ButtonModule } from 'primeng/components/button/button';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
-import { Dropdown, DropdownModule } from 'primeng/components/dropdown/dropdown';
+import { TableModule } from 'primeng/table';
+import { Dialog } from 'primeng/dialog';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { Header, Footer } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmationService } from 'primeng/api';
+import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { TruncatePipe } from '../../global/truncate.pipe';

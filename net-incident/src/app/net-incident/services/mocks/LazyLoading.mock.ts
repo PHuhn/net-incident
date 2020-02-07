@@ -1,7 +1,7 @@
 // ===========================================================================
 // file: LazyLoading.mock
 import { LazyLoadEvent } from 'primeng/api';
-import { FilterMetadata } from 'primeng/components/common/filtermetadata';
+import { FilterMetadata } from 'primeng/api';
 //
 export class LazyLoadingMock {
 	//

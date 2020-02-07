@@ -1,0 +1,127 @@
+C:\Ng\NetIncidents3\net-incident>node --version
+v8.9.1
+
+(installed node-v12.15.0-x64.msi)
+
+C:\Ng\NetIncidents3\net-incident>node --version
+v12.15.0
+
+C:\Ng\NetIncidents3\net-incident>ng update @angular/core@8 @angular/cli@8
+C:\Ng\NetIncidents3\net-incident>npm install typescript@3.7.5
+
+(committed repo changes)
+
+C:\Ng\NetIncidents3\net-incident>ng update @angular/core @angular/cli
+
+(failed because of package is missing peer dependency of "tslib" @ "^1.10.0".)
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install tslib@1.10.0
+
+(committed repo changes)
+
+C:\Ng\NetIncidents3\net-incident>ng update @angular/core @angular/cli
+Using package manager: 'npm'
+Collecting installed dependencies...
+Found 40 dependencies.
+Fetching dependency metadata from registry...
+    Updating package.json with dependency @angular/cli @ "9.0.1" (was "8.0.3")...
+    Updating package.json with dependency @angular/core @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency @angular/compiler-cli @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency @angular/compiler @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency @angular/common @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency @angular/router @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency @angular/platform-browser @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency @angular/animations @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency @angular-devkit/build-angular @ "0.900.1" (was "0.800.3")...
+    Updating package.json with dependency @angular/platform-browser-dynamic @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency @angular/language-service @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency @angular/platform-server @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency rxjs @ "6.5.4" (was "6.5.2")...
+    Updating package.json with dependency @angular/forms @ "9.0.0" (was "8.2.14")...
+    Updating package.json with dependency zone.js @ "0.10.2" (was "0.9.1")...
+UPDATE package.json (1594 bytes)
+
+> core-js@3.6.0 postinstall C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\@angular-devkit\build-angular\node_modules\core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> @angular/cli@9.0.1 postinstall C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\@angular\cli
+> node ./bin/postinstall/script.js
+
+npm WARN codelyzer@5.1.0 requires a peer of @angular/compiler@>=2.3.1 <9.0.0 || >8.0.0-beta <9.0.0 || >8.1.0-beta <9.0.0 || >8.2.0-beta <9.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@5.1.0 requires a peer of @angular/core@>=2.3.1 <9.0.0 || >8.0.0-beta <9.0.0 || >8.1.0-beta <9.0.0 || >8.2.0-beta <9.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN sass-loader@8.0.0 requires a peer of webpack@^4.36.0 but none is installed. You must install peer dependencies yourself.
+npm WARN sass-loader@8.0.0 requires a peer of node-sass@^4.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN sass-loader@8.0.0 requires a peer of fibers@>= 3.1.0 but none is installed. You must install peer dependencies yourself.
+npm WARN webpack-subresource-integrity@1.3.4 requires a peer of html-webpack-plugin@^2.21.0 || ~3 || >=4.0.0-alpha.2 <5 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.8 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.8: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: tar@4.4.8 (node_modules\fsevents\node_modules\tar):
+npm WARN enoent SKIPPING OPTIONAL DEPENDENCY: ENOENT: no such file or directory, rename 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fsevents\node_modules\tar' -> 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fsevents\node_modules\.tar.DELETE'
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.1.2 (node_modules\@angular\compiler-cli\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.1.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+added 512 packages from 220 contributors, removed 18 packages, updated 175 packages, moved 3 packages and audited 22854 packages in 308.191s
+found 1 moderate severity vulnerability
+  run `npm audit fix` to fix them, or `npm audit` for details
+    ** Executing migrations for package '@angular/core' **
+UPDATE src/app/net-incident/incident-grid/incident-grid.component.ts (9589 bytes)
+    ** Executing migrations for package '@angular/cli' **
+UPDATE angular.json (3946 bytes)
+UPDATE tsconfig.json (441 bytes)
+UPDATE src/tsconfig.app.json (192 bytes)
+UPDATE src/tsconfig.spec.json (296 bytes)
+UPDATE package.json (1596 bytes)
+npm WARN sass-loader@8.0.0 requires a peer of webpack@^4.36.0 but none is installed. You must install peer dependencies yourself.
+npm WARN sass-loader@8.0.0 requires a peer of node-sass@^4.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN sass-loader@8.0.0 requires a peer of fibers@>= 3.1.0 but none is installed. You must install peer dependencies yourself.
+npm WARN webpack-subresource-integrity@1.3.4 requires a peer of html-webpack-plugin@^2.21.0 || ~3 || >=4.0.0-alpha.2 <5 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.8 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.8: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: tar@4.4.8 (node_modules\fsevents\node_modules\tar):
+npm WARN enoent SKIPPING OPTIONAL DEPENDENCY: ENOENT: no such file or directory, rename 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fsevents\node_modules\tar' -> 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fsevents\node_modules\.tar.DELETE'
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.1.2 (node_modules\@angular\compiler-cli\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.1.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+updated 3 packages and audited 22854 packages in 9.492s
+found 1 moderate severity vulnerability
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+
+(commited changes)
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm audit fix
+npm WARN sass-loader@8.0.0 requires a peer of webpack@^4.36.0 but none is installed. You must install peer dependencies yourself.
+npm WARN sass-loader@8.0.0 requires a peer of node-sass@^4.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN sass-loader@8.0.0 requires a peer of fibers@>= 3.1.0 but none is installed. You must install peer dependencies yourself.
+npm WARN webpack-subresource-integrity@1.3.4 requires a peer of html-webpack-plugin@^2.21.0 || ~3 || >=4.0.0-alpha.2 <5 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.8 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.8: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: tar@4.4.8 (node_modules\fsevents\node_modules\tar):
+npm WARN enoent SKIPPING OPTIONAL DEPENDENCY: ENOENT: no such file or directory, rename 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fsevents\node_modules\tar' -> 'C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fsevents\node_modules\.tar.DELETE'
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.1.2 (node_modules\@angular\compiler-cli\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.1.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+added 3 packages from 2 contributors, removed 10 packages and updated 14 packages in 9.865s
+fixed 1 of 1 vulnerability in 22854 scanned packages
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install webpack@latest
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install node-sass@latest
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install fibers@latest
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install  html-webpack-plugin@latest
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>ng serve
+
+ERROR in node_modules/primeng/components/table/table.d.ts:575:22 - error NG6002: Appears in the NgModule.imports of AppModule, but could not be resolved to an NgModule class
+575 export declare class TableModule {
+                         ~~~~~~~~~~~
+etc ...
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install --save-dev primeng@9.0.0-rc.4
+
+ERROR in src/app/APP.MODULE-PRIMENG.ts:2:29 - error TS2307: Cannot find module 'primeng/components/table/table'.
+2 import { TableModule } from 'primeng/components/table/table';
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(changed to "import { TableModule } from 'primeng/table';")

@@ -1,5 +1,5 @@
 //
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { ConfirmationService } from 'primeng/api';
 import { Subject, Observable } from 'rxjs';
 //
 export class ConfirmationServiceMock { // extends ConfirmationService {
