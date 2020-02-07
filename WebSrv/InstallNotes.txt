@@ -54,6 +54,8 @@ In FilterConfig.cs, added...
 	Add-Migration "Update-2018-07-15-v1"
 	Update-Database -verbose
 
+	Remove-Migration
+
 Emailing:
 KB78618381: How to Configure IIS SMTP Server to forward emails using a Gmail account
 https://wiki.esko.com/display/KBA/KB78618381%3A+How+to+Configure+IIS+SMTP+Server+to+forward+emails+using+a+Gmail+account
