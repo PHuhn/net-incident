@@ -5,7 +5,9 @@ import { Observable, throwError, of } from 'rxjs';
 //
 import { UserService } from '../../../net-incident/services/user.service';
 import { IUser, User } from '../../../net-incident/user';
+import { Injectable } from '@angular/core';
 //
+@Injectable( { providedIn: 'root' } )
 export class UserServiceMock extends UserService {
 	//
 	public mockUser: User = undefined;

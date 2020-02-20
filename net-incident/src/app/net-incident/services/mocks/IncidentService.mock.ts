@@ -1,6 +1,7 @@
 // ===========================================================================
 // File: IncidentService.mock.ts
 //
+import { Injectable } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 //
@@ -12,6 +13,7 @@ import { IIncident, Incident } from '../../../net-incident/incident';
 import { IncidentPaginationData } from '../../incidentpaginationdata';
 import { LazyLoadingMock } from './LazyLoading.mock';
 //
+@Injectable( { providedIn: 'root' } )
 export class IncidentServiceMock extends IncidentService {
 	//
 	public mockGetAll: IIncident[];

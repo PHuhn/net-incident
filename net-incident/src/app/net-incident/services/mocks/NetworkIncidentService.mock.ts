@@ -9,7 +9,9 @@ import { NetworkIncident } from '../../../net-incident/network-incident';
 import { NetworkIncidentSave } from '../../../net-incident/network-incident-save';
 import { IIncident, Incident } from '../../../net-incident/incident';
 import { INetworkLog, NetworkLog } from '../../../net-incident/network-log';
+import { Injectable } from '@angular/core';
 //
+@Injectable( { providedIn: 'root' } )
 export class NetworkIncidentServiceMock  extends NetworkIncidentService {
 	//
 	public mockCrudResponse: any;

@@ -1,8 +1,10 @@
 // ===========================================================================
+import { Injectable } from '@angular/core';
 import { Observable, throwError, of } from 'rxjs';
 //
 import { ServicesService } from '../../../net-incident/services/services.service';
 //
+@Injectable( { providedIn: 'root' } )
 export class ServicesServiceMock extends ServicesService {
 	//
 	public mockResponse: string;
