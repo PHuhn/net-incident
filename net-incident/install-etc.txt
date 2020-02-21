@@ -1383,6 +1383,39 @@ SOLUTION:
 		npm install --save-dev @angular/cdk
 		ng update @angular/core --from 7 --to 8 --migrate-only --allow-dirty
 
+PROBLEM:
+========
+	upgrade to 9
+SOLUTION:
+	version: 9.1.0.21
+		(installed node-v12.15.0-x64.msi)
+		 > npm install typescript@3.7.5
+		 > npm install tslib@1.10.0
+		 > npm install webpack@latest
+		 > npm install node-sass@latest
+		 > npm install fibers@latest
+		 > npm install html-webpack-plugin@latest
+		 (committed repo changes)
+		 > ng update @angular/core@8 @angular/cli@8
+		 (committed repo changes)
+		 > npm audit fix
+		 (committed repo changes)
+
+PROBLEM:
+========
+	15 tests fail upon update to version 9
+SOLUTION:
+	Mocks that extend the service require
+		import { Injectable } from '@angular/core';
+		@Injectable( { providedIn: 'root' } )
+
+PROBLEM:
+========
+	trace logging stink
+SOLUTION:
+	create a console logging service
+	ng g service net-incident/services/console-log
+
 ===================================================
 Done:
 	service logging 12/22
@@ -1416,7 +1449,8 @@ Done:
 	V1.0.19.7 - added input placeholder
 	V1.0.20.7 - Pre NG 8, remove all angular/http, all tests past! current angular version is 7.2.15
 	V8.1.0.20 - NG 8, ran tests and launched site and 0 vulnerabilities
-	V8.1.0.21 -	NG 8, upgraded to 8.2.14
+	V8.1.0.21 - NG 8, upgraded to 8.2.14
+	V9.1.0.21 - NG 9 upgrade
 
 To Do's:
 	V - delete of network-log not working

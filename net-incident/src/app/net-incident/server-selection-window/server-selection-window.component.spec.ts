@@ -18,7 +18,8 @@ describe('ServerSelectionWindowComponent', () => {
 	let fixture: ComponentFixture<ServerSelectionWindowComponent>;
 	//
 	const windowTitleSelector: string =
-		'#serverSelectionWindow > div.ui-dialog > div.ui-dialog-titlebar';
+		'div.ui-dialog-titlebar > span > p-header';
+		//'#serverSelectionWindow > div.ui-dialog > div.ui-dialog-titlebar';
 	const expectedWindowTitle: string = 'Select a server';
 	const mockData: SelectItem[] = [
 		new SelectItemClass( 'nsg-1', 'Router 1' ),
@@ -46,6 +47,7 @@ describe('ServerSelectionWindowComponent', () => {
 		sut.selectItems = mockData;
 		sut.displayWin = displayWindow;
 		fixture.detectChanges();
+		fixture.whenStable( );
 	});
 	//
 	it('should be created ...', () => {
@@ -64,21 +66,27 @@ describe('ServerSelectionWindowComponent', () => {
 	});
 	//
 	it('should launch window when display window set ...', () => {
+		console.log( `win: ${sut.displayWin}  ${new Date().toISOString()}` );
+		const titleVar = fixture.debugElement.query(By.css(
+			'#serverSelectionWindow' )).nativeElement;
+		console.log( titleVar );
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			windowTitleSelector )).nativeElement;
+		console.log( title );
 		expect( title.innerText ).toEqual( expectedWindowTitle );
 		sut.displayWin = false;
 	});
 	//
 	it('should return selected server 0 ...', fakeAsync( () => {
+		console.log( `selected win: ${sut.displayWin}  ${new Date().toISOString()}` );
 		const idx: number = 0;
 		const server: SelectItem = mockData[ idx ];
 		const value: string = server.value;
 		const radioSelector: string =
-			`#serverSelectionWindow > div.ui-dialog > div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type="radio"]`;
+			`div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
-		// console.log( radio );
+		console.log( radio );
 		spyOn( sut.onClose, 'emit' );
 		expect( radio.checked ).toBeFalsy(); // default state
 		//
@@ -92,10 +100,10 @@ describe('ServerSelectionWindowComponent', () => {
 		const server: SelectItem = mockData[ idx ];
 		const value: string = server.value;
 		const radioSelector: string =
-			`#serverSelectionWindow > div.ui-dialog > div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type="radio"]`;
+			`div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
-		// console.log( radio );
+		console.log( radio );
 		spyOn( sut.onClose, 'emit' );
 		expect( radio.checked ).toBeFalsy(); // default state
 		//
