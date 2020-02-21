@@ -3,14 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError, of } from 'rxjs';
 //
 import { ServicesService } from '../../../net-incident/services/services.service';
+import { ConsoleLogService } from '../../../global/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class ServicesServiceMock extends ServicesService {
 	//
 	public mockResponse: string;
 	//
-	constructor( ) {
-		super(null);
+	constructor(
+		_console: ConsoleLogService
+	) {
+		super(null, _console);
 		this.codeName = 'services-service-mock';
 	}
 	//

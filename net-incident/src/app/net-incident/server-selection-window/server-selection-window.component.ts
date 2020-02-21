@@ -1,11 +1,11 @@
 // ===========================================================================
 // File: server-selection-window.component.ts
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { environment } from '../../../environments/environment';
 //
 import { SelectItem } from 'primeng/api';
 import { Dialog } from 'primeng/dialog';
+//
+import { ConsoleLogService } from '../../global/console-log.service';
 //
 @Component({
 	selector: 'app-server-selection-window',
@@ -17,7 +17,6 @@ export class ServerSelectionWindowComponent implements OnInit {
 	// Data declaration.
 	//
 	private codeName: string = 'Server-Selection-Component';
-	private logLevel: number = 1;
 	public model: SelectItem[];
 	//
 	// --------------------------------------------------------------------
@@ -27,9 +26,8 @@ export class ServerSelectionWindowComponent implements OnInit {
 	//
 	@Input() set selectItems( selectItems: SelectItem[] ) {
 		if( selectItems !== undefined ) {
-			if( this.logLevel >= 4 ) {
-				console.log( `${this.codeName}: Selecting length: ${selectItems.length}, win: ${this.displayWin}` );
-			}
+			this._console.Information(
+				`${this.codeName}: Selecting length: ${selectItems.length}, win: ${this.displayWin}` );
 			this.model = selectItems;
 		}
 	}
@@ -37,9 +35,8 @@ export class ServerSelectionWindowComponent implements OnInit {
 	//
 	private displayWindow: boolean;
 	@Input() set displayWin( displayWin: boolean ) {
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.displayWin setter: win: ${displayWin}` );
-		}
+		this._console.Information(
+			`${this.codeName}.displayWin setter: win: ${displayWin}` );
 		this.displayWindow = displayWin;
 	}
 	get displayWin(): boolean { return this.displayWindow; }
@@ -50,23 +47,20 @@ export class ServerSelectionWindowComponent implements OnInit {
 	// Emit a string of the selected server short name to the parent control.
 	//
 	serverSelected( event, shortName: string ) {
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}: selected: ${shortName}` );
-		}
+		this._console.Information( `${this.codeName}: selected: ${shortName}` );
 		event.target.checked = false;
 		this.onClose.emit( shortName );
 	}
 	//
 	// Constructor (inject services).
 	//
-	constructor( ) { }
+	constructor(
+			private _console: ConsoleLogService
+		) { }
 	//
 	// On component initialization.
 	//
-	ngOnInit() {
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
-	}
+	ngOnInit() { }
 	//
 }
 // ===========================================================================

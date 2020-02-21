@@ -11,21 +11,23 @@ import { catchError } from 'rxjs/operators';
 import { Message } from '../../global/message';
 import { IUser, User } from '../user';
 import { environment } from '../../../environments/environment';
+import { ConsoleLogService } from '../../global/console-log.service';
+//
 //
 @Injectable( { providedIn: 'root' } )
 export class UserService {
 	//
 	url: string;
-	logLevel: number;
 	public codeName: string;
 	//
 	// Service constructor, inject http service.
 	//
-	constructor( private http: HttpClient ) {
+	constructor(
+		private http: HttpClient,
+		private _console: ConsoleLogService
+		) {
 		this.url = environment.base_Url + 'User';
 		this.codeName = 'User-Service';
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
 	}
 	//
 	// Single place to create a new User.
@@ -40,9 +42,8 @@ export class UserService {
 	//
 	getUser( UserAccount: string ): Observable<IUser> {
 		const urlPath: string = this.url + '/' + String( UserAccount );
-		if( this.logLevel >= 4 ) {
-			console.log( urlPath );
-		}
+		this._console.Information(
+			`${this.codeName}.getUser: ${urlPath}` );
 		return this.http.get<IUser>( urlPath )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -54,9 +55,8 @@ export class UserService {
 		// <param name="serverShortName"></param>
 		const urlPath: string = this.url + '?id=' + userName
 			+ '&serverShortName=' + serverShortName;
-		if( this.logLevel >= 4 ) {
-			console.log( urlPath );
-		}
+		this._console.Information(
+			`${this.codeName}.getUserServer: ${urlPath}` );
 		return this.http.get<IUser>( urlPath )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -64,10 +64,13 @@ export class UserService {
 	// General error handler
 	//
 	handleError( error: any ) {
-		console.error( 'UserService: ' + error );
 		if ( error instanceof HttpErrorResponse ) {
+			this._console.Error(
+				`${this.codeName}.handleError: ${ JSON.stringify( error ) }` );
 			return throwError( error.statusText || 'Service error' );
 		}
+		this._console.Error(
+			`${this.codeName}.handleError: ${error.toString()}` );
 		return throwError( error.toString() || 'Service error' );
 	}
 	//

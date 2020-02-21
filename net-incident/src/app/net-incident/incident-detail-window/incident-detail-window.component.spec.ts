@@ -238,6 +238,9 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		fixture.detectChanges();
 		fixture.whenStable();
 		//
+		console.log(
+			'End of IncidentDetailWindowComponent.spec\n' +
+			'===================================' );
 	} ) );
 	//
 } );

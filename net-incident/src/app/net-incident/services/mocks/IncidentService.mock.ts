@@ -12,6 +12,8 @@ import { IncidentService } from '../../../net-incident/services/incident.service
 import { IIncident, Incident } from '../../../net-incident/incident';
 import { IncidentPaginationData } from '../../incidentpaginationdata';
 import { LazyLoadingMock } from './LazyLoading.mock';
+import { ConsoleLogService } from '../../../global/console-log.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 //
 @Injectable( { providedIn: 'root' } )
 export class IncidentServiceMock extends IncidentService {
@@ -22,11 +24,13 @@ export class IncidentServiceMock extends IncidentService {
 	public mockDeleteId: number;
 	public mockCrudResponse: any;
 	lazyLoading: LazyLoadingMock;
-		//
+	//
 	// Service constructor
 	//
-	constructor( ) {
-		super(null);
+	constructor(
+		_console: ConsoleLogService
+		) {
+		super(null, _console);
 		this.codeName = 'Incident-Service-Mock';
 		this.lazyLoading = new LazyLoadingMock();
 	}

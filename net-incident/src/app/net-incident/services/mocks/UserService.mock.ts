@@ -1,11 +1,12 @@
 // ===========================================================================
 // File: UserService.mock.ts
 //
+import { Injectable } from '@angular/core';
 import { Observable, throwError, of } from 'rxjs';
 //
 import { UserService } from '../../../net-incident/services/user.service';
 import { IUser, User } from '../../../net-incident/user';
-import { Injectable } from '@angular/core';
+import { ConsoleLogService } from '../../../global/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class UserServiceMock extends UserService {
@@ -15,8 +16,10 @@ export class UserServiceMock extends UserService {
 	//
 	// Service constructor
 	//
-	constructor( ) {
-		super(null);
+	constructor(
+		_console: ConsoleLogService
+	) {
+		super(null, _console);
 		this.codeName = 'User-Service-Mock';
 	}
 	//

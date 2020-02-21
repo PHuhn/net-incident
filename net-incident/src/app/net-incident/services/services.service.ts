@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 //
 import { Message } from '../../global/message';
 import { environment } from '../../../environments/environment';
+import { ConsoleLogService } from '../../global/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class ServicesService {
@@ -16,14 +17,15 @@ export class ServicesService {
 	// Local variables
 	//
 	codeName: string = 'services-service';
-	logLevel: number = 1;
-	// 'http://localhost:9111/api/'
-	url: string = environment.base_Url;
+	url: string;
 	//
 	// Service constructor, inject http service.
 	//
-	constructor( private http: HttpClient ) {
-		this.logLevel = environment.logLevel;
+	constructor(
+		private http: HttpClient,
+		private _console: ConsoleLogService ) {
+		// 'http://localhost:9111/api/'
+		this.url = environment.base_Url;
 	}
 	//
 	// Get ping for ip address
@@ -43,9 +45,8 @@ export class ServicesService {
 	// Get service for ip address
 	//
 	getService( urlPath: string ): Observable<string> {
-		if( this.logLevel >= 4 ) {
-			console.log( urlPath );
-		}
+		this._console.Information(
+			`${this.codeName}.getService: ${urlPath}` );
 		return this.http.get<string>( urlPath )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -53,10 +54,13 @@ export class ServicesService {
 	// General error handler
 	//
 	handleError( error: any ) {
-		console.error( 'UserService: ' + error );
 		if ( error instanceof HttpErrorResponse ) {
+			this._console.Error(
+				`${this.codeName}.handleError: ${ JSON.stringify( error ) }` );
 			return throwError( error.statusText || 'Service error' );
 		}
+		this._console.Error(
+			`${this.codeName}.handleError: ${error.toString()}` );
 		return throwError( error.toString() || 'Service error' );
 	}
 	//

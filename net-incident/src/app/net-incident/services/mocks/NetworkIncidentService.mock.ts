@@ -1,4 +1,5 @@
 // ===========================================================================
+import { Injectable } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 //
@@ -9,7 +10,7 @@ import { NetworkIncident } from '../../../net-incident/network-incident';
 import { NetworkIncidentSave } from '../../../net-incident/network-incident-save';
 import { IIncident, Incident } from '../../../net-incident/incident';
 import { INetworkLog, NetworkLog } from '../../../net-incident/network-log';
-import { Injectable } from '@angular/core';
+import { ConsoleLogService } from '../../../global/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class NetworkIncidentServiceMock  extends NetworkIncidentService {
@@ -18,8 +19,10 @@ export class NetworkIncidentServiceMock  extends NetworkIncidentService {
 	public mockGet: NetworkIncident;
 	public mockCrud: NetworkIncidentSave;
 	//
-	constructor( ) {
-		super(null);
+	constructor(
+		_console: ConsoleLogService
+	) {
+		super(null, _console);
 		this.codeName = 'network-incident-service-mock';
 	}
 	//

@@ -11,19 +11,21 @@ import { NetworkIncident } from '../network-incident';
 import { NetworkIncidentSave } from '../network-incident-save';
 import { IIncident, Incident } from '../incident';
 import { INetworkLog, NetworkLog } from '../network-log';
+import { ConsoleLogService } from '../../global/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class NetworkIncidentService {
 	//
 	codeName = 'network-incident-service';
-	logLevel: number = 1;
-	url: string = environment.base_Url + 'NetworkIncident';
+	url: string;
 	//
 	// Service constructor, inject http service.
 	//
-	constructor( private http: HttpClient ) {
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
+	constructor(
+		private http: HttpClient,
+		private _console: ConsoleLogService
+		) {
+		this.url = environment.base_Url + 'NetworkIncident';
 	}
 	//
 	// Class validation rules.
@@ -137,9 +139,8 @@ export class NetworkIncidentService {
 	getNetworkIncident( incidentId: number, serverId: number ): Observable<NetworkIncident> {
 		const urlPath: string = this.url + '?id=' + String( incidentId )
 			+ '&serverId=' + String(serverId);
-		if( this.logLevel >= 4 ) {
-			console.log( urlPath );
-		}
+		this._console.Information(
+			`${this.codeName}.getNetworkIncident: ${urlPath}` );
 		return this.http.get<NetworkIncident>( urlPath )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -147,9 +148,8 @@ export class NetworkIncidentService {
 	// Create (post) NetworkIncident
 	//
 	createIncident( networkIncidentSave: NetworkIncidentSave ) {
-		if( this.logLevel >= 4 ) {
-			console.log( networkIncidentSave );
-		}
+		this._console.Information(
+			`${this.codeName}: ${networkIncidentSave}` );
 		return this.http.post<NetworkIncidentSave>( this.url, networkIncidentSave )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -158,9 +158,7 @@ export class NetworkIncidentService {
 	//
 	updateIncident( networkIncidentSave: NetworkIncidentSave ) {
 		const urlPath: string = this.url + '/' + String( networkIncidentSave.incident.IncidentId );
-		if( this.logLevel >= 4 ) {
-			console.log( urlPath );
-		}
+		this._console.Information( `${this.codeName}.updateIncident: ${urlPath}` );
 		return this.http.put<NetworkIncidentSave>( urlPath, networkIncidentSave )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -169,13 +167,12 @@ export class NetworkIncidentService {
 	//
 	handleError( error: any ) {
 		if ( error instanceof HttpErrorResponse ) {
-			console.error( `${this.codeName}:` );
-			console.error( error );
+			this._console.Error(
+				`${this.codeName}.handleError: ${ JSON.stringify( error ) }` );
 			return throwError( error.statusText || 'Service error' );
 		}
-		if( this.logLevel >= 4 ) {
-			console.error( `${this.codeName}: ${error}` );
-		}
+		this._console.Error(
+			`${this.codeName}.handleError: ${error.toString()}` );
 		return throwError( error.toString() || 'Service error' );
 	}
 	//

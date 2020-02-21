@@ -13,6 +13,7 @@ import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
 import { IIncident, Incident } from '../incident';
 import { IncidentPaginationData } from '../incidentpaginationdata';
+import { ConsoleLogService } from '../../global/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class IncidentService {
@@ -21,14 +22,14 @@ export class IncidentService {
 	// Data declaration.
 	//
 	codeName = 'incident-service';
-	url: string = environment.base_Url + 'Incident';
-	logLevel: number = 1;
+	url: string;
 	//
 	// Service constructor, inject http service.
 	//
-	constructor( private http: HttpClient ) {
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
+	constructor(
+		private http: HttpClient,
+		private _console: ConsoleLogService ) {
+		this.url = environment.base_Url + 'Incident';
 	}
 	//
 	// Single place to create a new Incident.
@@ -47,9 +48,8 @@ export class IncidentService {
 		const urlPath: string = this.url + '/' + String(serverId)
 			+ '?mailed=' + String(mailed) + '&closed=' + String(closed)
 			+ '&special=' + String(special);
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.getIncidents: ${urlPath}` );
-		}
+		this._console.Information(
+			`${this.codeName}.getIncidents: ${urlPath}` );
 		return this.http.get<Array<IIncident>>( urlPath )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -59,9 +59,8 @@ export class IncidentService {
 	getIncidentsLazy( event: LazyLoadEvent ): Observable<IncidentPaginationData> {
 		// /api/Incident?{"first":0,"rows":3,"filters":{"ServerId":{"value":1,"matchMode":"equals"}}}
 		const urlPath: string = this.url + '?' + JSON.stringify( event );
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.getIncidentsLazy: ${urlPath}` );
-		}
+		this._console.Information(
+			`${this.codeName}.getIncidentsLazy: ${urlPath}` );
 		return this.http.get<IncidentPaginationData>( urlPath )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -70,9 +69,8 @@ export class IncidentService {
 	//
 	createIncident( incident: IIncident ) {
 		const urlPath: string = this.url + '/';
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.createIncident: ${ JSON.stringify( incident ) }` );
-		}
+		this._console.Information(
+			`${this.codeName}.createIncident: ${ JSON.stringify( incident ) }` );
 		return this.http.post<IIncident>( urlPath, incident )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -81,9 +79,7 @@ export class IncidentService {
 	//
 	updateIncident( incident: IIncident ) {
 		const urlPath: string = this.url + '/' + String( incident.IncidentId );
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.updateIncident: ${urlPath}` );
-		}
+		this._console.Information( `${this.codeName}.updateIncident: ${urlPath}` );
 		return this.http.put<IIncident>( urlPath, incident )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -92,9 +88,8 @@ export class IncidentService {
 	//
 	deleteIncident( IncidentId: number ) {
 		const urlPath: string = this.url + '/' + String( IncidentId );
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.deleteIncident: ${urlPath}` );
-		}
+		this._console.Information(
+			`${this.codeName}.deleteIncident: ${urlPath}` );
 		return this.http.delete<IIncident>( urlPath )
 			.pipe( catchError( this.handleError ) );
 	}
@@ -103,15 +98,11 @@ export class IncidentService {
 	//
 	handleError( error: any ) {
 		if ( error instanceof HttpErrorResponse ) {
-			if( this.logLevel >= 4 ) {
-				console.error( `${this.codeName}:` );
-				console.error( error );
-			}
+			this._console.Error( 
+				`${this.codeName}.handleError: ${ JSON.stringify( error ) }` );
 			return throwError( error.statusText || 'Service error' );
 		}
-		if( this.logLevel >= 4 ) {
-			console.error( `${this.codeName}: ${error}` );
-		}
+		this._console.Error( `${this.codeName}.handleError: ${error.toString()}` );
 		return throwError( error.toString() || 'Service error' );
 	}
 	//

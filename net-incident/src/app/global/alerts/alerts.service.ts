@@ -89,7 +89,7 @@ export class AlertsService {
 				<string><any>( this.alerted.length + 1 );
 			this.alerted.push( new Message( id, warning ));
 		} else {
-			console.log( 'Alerted message array not initialized.'  );
+			console.log( 'Alerted message array not initialized.' );
 		}
 	}
 	//
