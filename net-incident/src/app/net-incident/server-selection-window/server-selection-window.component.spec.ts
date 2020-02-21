@@ -19,7 +19,7 @@ describe('ServerSelectionWindowComponent', () => {
 	//
 	const windowTitleSelector: string =
 		'div.ui-dialog-titlebar > span > p-header';
-		//'#serverSelectionWindow > div.ui-dialog > div.ui-dialog-titlebar';
+		// '#serverSelectionWindow > div.ui-dialog > div.ui-dialog-titlebar';
 	const expectedWindowTitle: string = 'Select a server';
 	const mockData: SelectItem[] = [
 		new SelectItemClass( 'nsg-1', 'Router 1' ),

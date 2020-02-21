@@ -205,7 +205,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 			'Create', // Notes: string,
 			new Date(Date.now()) // CreatedDate: Date,
 		);
-		let response: NetworkIncident = newNetworkIncident( createIncident );
+		const response: NetworkIncident = newNetworkIncident( createIncident );
 		console.log( response );
 		netIncidentService.mockGet = response;
 		netIncidentService.mockCrudResponse = response;

@@ -171,7 +171,7 @@ describe('IncidentService', () => {
 	//
 	// handleError( error: any )
 	//
-	it( 'should throw an any error ...', async( ( ) => {
+	it( 'handleError should throw an any error ...', async( ( ) => {
 		console.log( 'should throw an any error ...' );
 		//
 		const resp: string = errMsg;
@@ -187,11 +187,26 @@ describe('IncidentService', () => {
 	//
 	// handleError( error: any )
 	//
-	it( 'should throw a HttpErrorResponse error...', async( ( ) => {
+	it( 'handleError should throw a HttpErrorResponse error...', async( ( ) => {
 		//
 		const resp: HttpErrorResponse = new HttpErrorResponse({
 			error: {}, status: 404, statusText: errMsg
 		});
+		//
+		sut.handleError( resp ).subscribe( () => {
+				console.log( JSON.stringify( resp ) );
+				fail( 'handleError: expected error...' );
+			}, ( error ) => {
+				expect( error ).toEqual( errMsg );
+		} );
+		//
+	} ) );
+	//
+	// handleError( error: any )
+	//
+	it( 'handleError should handle a string error...', async( ( ) => {
+		//
+		const resp: string = errMsg;
 		//
 		sut.handleError( resp ).subscribe( () => {
 				console.log( JSON.stringify( resp ) );
@@ -209,21 +224,21 @@ describe('IncidentService', () => {
 		console.log( 'handle an error on create...' );
 		const mockData: Incident = mockDatum[ 2 ];
 		const id1: number = mockData.IncidentId;
-		const errorMsg = 'Invalid request parameters';
-		const mockErrorResponse = {
-			status: 404, statusText: 'Bad Request'
-		};
+		const errorMsg = { errorMessage: 'Invalid request parameters' };
+		const mockErrorResponse: HttpErrorResponse = new HttpErrorResponse({
+			error: {}, status: 500, url: 'http://localhost', statusText: 'Bad Request' });
 		sut.createIncident( mockData ).subscribe((resp) => {
 			console.log( 'handleError on create: expected error response:' );
-			console.log(  JSON.stringify( resp ) );
+			console.log( JSON.stringify( resp ) );
 			fail( 'handleError: expected error...' );
-		}, ( error: string ) => {
-			console.log( error );
+		}, ( error ) => {
+			console.log( JSON.stringify( error ) );
 			expect( error ).toEqual( mockErrorResponse.statusText );
 		} );
 		const request: TestRequest = backend.expectOne( `${url}/` );
 		expect( request.request.method ).toBe( 'POST' );
-		request.flush( errorMsg, mockErrorResponse );
+		// https://github.com/alisaduncan/tutorial-angular-httpclient/blob/master/src/app/user.service.spec.ts#L89
+		request.flush(errMsg, mockErrorResponse );
 		//
 	}));
 	//

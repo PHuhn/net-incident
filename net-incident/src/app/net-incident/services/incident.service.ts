@@ -21,7 +21,7 @@ export class IncidentService {
 	// --------------------------------------------------------------------
 	// Data declaration.
 	//
-	codeName = 'incident-service';
+	codeName: string;
 	url: string;
 	//
 	// Service constructor, inject http service.
@@ -29,7 +29,8 @@ export class IncidentService {
 	constructor(
 		private http: HttpClient,
 		private _console: ConsoleLogService ) {
-		this.url = environment.base_Url + 'Incident';
+			this.codeName = 'incident-service';
+			this.url = environment.base_Url + 'Incident';
 	}
 	//
 	// Single place to create a new Incident.
@@ -97,12 +98,13 @@ export class IncidentService {
 	// General error handler
 	//
 	handleError( error: any ) {
+		// not this._console because of testing errors
 		if ( error instanceof HttpErrorResponse ) {
-			this._console.Error( 
-				`${this.codeName}.handleError: ${ JSON.stringify( error ) }` );
+			console.error(
+				`${this.codeName}.handleError: ${JSON.stringify(error)}` );
 			return throwError( error.statusText || 'Service error' );
 		}
-		this._console.Error( `${this.codeName}.handleError: ${error.toString()}` );
+		console.error( `${this.codeName}.handleError: ${error.toString()}` );
 		return throwError( error.toString() || 'Service error' );
 	}
 	//

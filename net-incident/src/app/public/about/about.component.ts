@@ -13,7 +13,7 @@ export class AboutComponent implements OnInit {
 	copyright ='Copyright © 2020';
 	// (angular version).major.minor.build
 	ng_version ='9';
-	version ='9.1.0.23';
+	version ='9.1.0.24';
 	//
 	constructor() { }
 	//
