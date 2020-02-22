@@ -1449,8 +1449,12 @@ Done:
 	V1.0.19.7 - added input placeholder
 	V1.0.20.7 - Pre NG 8, remove all angular/http, all tests past! current angular version is 7.2.15
 	V8.1.0.20 - NG 8, ran tests and launched site and 0 vulnerabilities
-	V8.1.0.21 - NG 8, upgraded to 8.2.14
-	V9.1.0.21 - NG 9 upgrade
+	V8.1.0.21 - NG 8, upgraded to 8.2.14 (2019-12-10)
+	V9.1.0.21 - NG 9 upgrade (2020-02-07)
+	V9.1.0.22 - All tests passed, version 9.1.0.22 (2020-02-21)
+	V9.1.0.23 - Implemented ConsoleLogService on services (2020-02-21)
+	V9.1.0.24 - Lint and a incident service create handleError test (2020-02-21)
+	V9.1.0.24 - NG 9.0.3 (2020-02-22)
 
 To Do's:
 	V - delete of network-log not working
