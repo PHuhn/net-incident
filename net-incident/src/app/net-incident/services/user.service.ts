@@ -45,7 +45,7 @@ export class UserService {
 		this._console.Information(
 			`${this.codeName}.getUser: ${urlPath}` );
 		return this.http.get<IUser>( urlPath )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// Get User with UserAccount
@@ -58,7 +58,7 @@ export class UserService {
 		this._console.Information(
 			`${this.codeName}.getUserServer: ${urlPath}` );
 		return this.http.get<IUser>( urlPath )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// General error handler

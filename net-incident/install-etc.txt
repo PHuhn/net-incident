@@ -1416,6 +1416,18 @@ SOLUTION:
 	create a console logging service
 	ng g service net-incident/services/console-log
 
+PROBLEM:
+========
+	handleError method lose of context.
+	https://github.com/angular/angular/issues/35633
+SOLUTION:
+	Change
+		return this.http.post<IIncident>( urlPath, incident )
+			.pipe( catchError( this.handleError ) );
+	to:
+		return this.http.post<IIncident>( urlPath, incident )
+			.pipe( catchError( this.handleError.bind(this) ) );
+
 ===================================================
 Done:
 	service logging 12/22
@@ -1455,6 +1467,7 @@ Done:
 	V9.1.0.23 - Implemented ConsoleLogService on services (2020-02-21)
 	V9.1.0.24 - Lint and a incident service create handleError test (2020-02-21)
 	V9.1.0.24 - NG 9.0.3 (2020-02-22)
+	V9.1.0.25 - handleError method loss of context (2020-02-23)
 
 To Do's:
 	V - delete of network-log not working

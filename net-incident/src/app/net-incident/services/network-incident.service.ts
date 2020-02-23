@@ -142,7 +142,7 @@ export class NetworkIncidentService {
 		this._console.Information(
 			`${this.codeName}.getNetworkIncident: ${urlPath}` );
 		return this.http.get<NetworkIncident>( urlPath )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// Create (post) NetworkIncident
@@ -151,7 +151,7 @@ export class NetworkIncidentService {
 		this._console.Information(
 			`${this.codeName}: ${networkIncidentSave}` );
 		return this.http.post<NetworkIncidentSave>( this.url, networkIncidentSave )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// Update (put) NetworkIncident
@@ -160,7 +160,7 @@ export class NetworkIncidentService {
 		const urlPath: string = this.url + '/' + String( networkIncidentSave.incident.IncidentId );
 		this._console.Information( `${this.codeName}.updateIncident: ${urlPath}` );
 		return this.http.put<NetworkIncidentSave>( urlPath, networkIncidentSave )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// General error handler

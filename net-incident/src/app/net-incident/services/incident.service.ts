@@ -52,7 +52,7 @@ export class IncidentService {
 		this._console.Information(
 			`${this.codeName}.getIncidents: ${urlPath}` );
 		return this.http.get<Array<IIncident>>( urlPath )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// Read (get) page of Incidents, that are filtered and sorted.
@@ -63,7 +63,7 @@ export class IncidentService {
 		this._console.Information(
 			`${this.codeName}.getIncidentsLazy: ${urlPath}` );
 		return this.http.get<IncidentPaginationData>( urlPath )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// Create (post) Incident
@@ -73,7 +73,7 @@ export class IncidentService {
 		this._console.Information(
 			`${this.codeName}.createIncident: ${ JSON.stringify( incident ) }` );
 		return this.http.post<IIncident>( urlPath, incident )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// Update (put) Incident
@@ -82,7 +82,7 @@ export class IncidentService {
 		const urlPath: string = this.url + '/' + String( incident.IncidentId );
 		this._console.Information( `${this.codeName}.updateIncident: ${urlPath}` );
 		return this.http.put<IIncident>( urlPath, incident )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// Delete (delete) Incident with id
@@ -92,7 +92,7 @@ export class IncidentService {
 		this._console.Information(
 			`${this.codeName}.deleteIncident: ${urlPath}` );
 		return this.http.delete<IIncident>( urlPath )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// General error handler
@@ -100,11 +100,12 @@ export class IncidentService {
 	handleError( error: any ) {
 		// not this._console because of testing errors
 		if ( error instanceof HttpErrorResponse ) {
-			console.error(
+			this._console.Error(
 				`${this.codeName}.handleError: ${JSON.stringify(error)}` );
 			return throwError( error.statusText || 'Service error' );
 		}
-		console.error( `${this.codeName}.handleError: ${error.toString()}` );
+		this._console.Error(
+			`${this.codeName}.handleError: ${error.toString()}` );
 		return throwError( error.toString() || 'Service error' );
 	}
 	//

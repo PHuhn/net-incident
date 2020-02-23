@@ -48,7 +48,7 @@ export class ServicesService {
 		this._console.Information(
 			`${this.codeName}.getService: ${urlPath}` );
 		return this.http.get<string>( urlPath )
-			.pipe( catchError( this.handleError ) );
+			.pipe( catchError( this.handleError.bind(this) ) );
 	}
 	//
 	// General error handler
