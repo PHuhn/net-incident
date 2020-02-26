@@ -1,7 +1,7 @@
 <!-- NetworkLog-Grid.component.html -->
 <div class='nsg-text-left'>
 	<p-table #dt id='netLogTable' name='netLogTable' [value]='networkIncident.networkLogs' [totalRecords]='totalRecords'
-			expandableRows='true' [responsive]='true' dataKey='NetworkLogId'
+			expandableRows='true' dataKey='NetworkLogId'
 			(onRowSelect)='handleRowSelect($event)' (onRowUnselect)='handleRowUnSelect($event)'
 			[(selection)]='selectedLogs' [globalFilterFields]="['IPAddress']">
 		<ng-template pTemplate='header'>

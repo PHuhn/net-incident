@@ -1427,6 +1427,13 @@ SOLUTION:
 	to:
 		return this.http.post<IIncident>( urlPath, incident )
 			.pipe( catchError( this.handleError.bind(this) ) );
+	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this#Function_context
+
+PROBLEM:
+========
+	[responsive]='true' is depricated in primeng dialog
+SOLUTION:
+	removed it, now that docs are available.
 
 ===================================================
 Done:
@@ -1468,6 +1475,7 @@ Done:
 	V9.1.0.24 - Lint and a incident service create handleError test (2020-02-21)
 	V9.1.0.24 - NG 9.0.3 (2020-02-22)
 	V9.1.0.25 - handleError method loss of context (2020-02-23)
+	V9.1.0.26 - Removed [responsive]='true' from dialog and primeng 9.0.0
 
 To Do's:
 	V - delete of network-log not working
