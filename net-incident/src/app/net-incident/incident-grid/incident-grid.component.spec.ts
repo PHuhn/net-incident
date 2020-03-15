@@ -17,6 +17,7 @@ import { SelectItem } from 'primeng/api';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
+import { ConsoleLogService } from '../../global/console-log.service';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { UserService } from '../../net-incident/services/user.service';
@@ -111,6 +112,7 @@ describe( 'IncidentGridComponent', ( ) => {
 			],
 			providers: [
 				AlertsService,
+				ConsoleLogService,
 				{ provide: UserService, useClass: UserServiceMock },
 				{ provide: ServicesService, useClass: ServicesServiceMock },
 				{ provide: IncidentService, useClass: IncidentServiceMock },
