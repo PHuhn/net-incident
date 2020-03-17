@@ -1435,6 +1435,25 @@ PROBLEM:
 SOLUTION:
 	removed it, now that docs are available.
 
+PROBLEM:
+========
+	ERROR in src/app/net-incident/incident-grid/incident-grid.component.html:4:3 - error NG8001: 'p-table' is not a known element:
+	1. If 'p-table' is an Angular component, then verify that it is part of this module.
+	2. If 'p-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+	4       <p-table id='incidents-grid' [value]='incidents' [totalRecords]='totalRecords'
+	        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SOLUTION:
+	Attempted to move to local modules that export up to app.module
+	Problem occurs with components containing primeng in app.component.
+	Moved app specific components to app.module.
+
+PROBLEM:
+========
+	ERROR in The target entry-point "primeng" has missing dependencies: chart.js
+SOLUTION:
+	Use imports like:
+		import { TableModule } from "primeng/table";
+
 ===================================================
 Done:
 	service logging 12/22
@@ -1475,7 +1494,7 @@ Done:
 	V9.1.0.24 - Lint and a incident service create handleError test (2020-02-21)
 	V9.1.0.24 - NG 9.0.3 (2020-02-22)
 	V9.1.0.25 - handleError method loss of context (2020-02-23)
-	V9.1.0.26 - Removed [responsive]='true' from dialog and primeng 9.0.0
+	V9.1.0.26 - Removed [responsive]='true' from dialog and primeng 9.0.0 (2020-02-26)
 
 To Do's:
 	V - delete of network-log not working

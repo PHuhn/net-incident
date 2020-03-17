@@ -36,7 +36,7 @@ this application groups the incidents by IP address, lookup the ISP abuse e-mail
 
 ### Construction
 
-Is an Angular 6 CLI application that uses PrimeFaces PrimeNG library for the following:
+Is an Angular 9 CLI application that uses PrimeFaces PrimeNG library for the following:
 * p-table,
 * p-ComfirmDialog,
 * p-dialog (window/popup),
