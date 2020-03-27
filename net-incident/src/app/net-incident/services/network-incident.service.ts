@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 //
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
-import { SelectItemClass } from '../select-item-class';
+import { SelectItemClass } from '../../global/select-item-class';
 import { NetworkIncident } from '../network-incident';
 import { NetworkIncidentSave } from '../network-incident-save';
 import { IIncident, Incident } from '../incident';

@@ -9,7 +9,7 @@ import { IIncidentType, IncidentType } from './incident-type';
 import { EmailAddress, EmailRequest } from './email';
 import { IUser, User } from './user';
 import { ServerData } from './server-data';
-import { SelectItemClass } from './select-item-class';
+import { SelectItemClass } from '../global/select-item-class';
 //
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { IAbuseEmailReport, AbuseEmailReport } from './abuse-email-report';

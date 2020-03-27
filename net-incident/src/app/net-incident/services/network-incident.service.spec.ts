@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 //
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
-import { SelectItemClass } from '../select-item-class';
+import { SelectItemClass } from '../../global/select-item-class';
 import { IUser, User } from '../user';
 import { ServerData } from '../server-data';
 import { NetworkIncident } from '../network-incident';

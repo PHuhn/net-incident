@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 import { SelectItem } from 'primeng/api';
 //
-import { SelectItemClass } from '../../net-incident/select-item-class';
+import { SelectItemClass } from '../../global/select-item-class';
 import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';
 //
 @Component({

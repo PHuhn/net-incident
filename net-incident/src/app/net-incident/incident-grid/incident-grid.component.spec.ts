@@ -32,7 +32,7 @@ import { TruncatePipe } from '../../global/truncate.pipe';
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IUser, User } from '../user';
 import { ServerData } from '../server-data';
-import { SelectItemClass } from '../select-item-class';
+import { SelectItemClass } from '../../global/select-item-class';
 import { IIncident, Incident } from '../incident';
 import { INetworkLog, NetworkLog } from '../network-log';
 import { NetworkIncident } from '../network-incident';

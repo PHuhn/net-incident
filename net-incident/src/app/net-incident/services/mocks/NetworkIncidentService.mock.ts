@@ -5,7 +5,7 @@ import { Observable, throwError, of } from 'rxjs';
 //
 import { NetworkIncidentService } from '../../../net-incident/services/network-incident.service';
 import { Message } from '../../../global/message';
-import { SelectItemClass } from '../../../net-incident/select-item-class';
+import { SelectItemClass } from '../../../global/select-item-class';
 import { NetworkIncident } from '../../../net-incident/network-incident';
 import { NetworkIncidentSave } from '../../../net-incident/network-incident-save';
 import { IIncident, Incident } from '../../../net-incident/incident';

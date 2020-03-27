@@ -11,7 +11,7 @@ import { Header, Footer } from 'primeng/api';
 import { SelectItem } from 'primeng/api';
 //
 import { ServerSelectionWindowComponent } from './server-selection-window.component';
-import { SelectItemClass } from '../select-item-class';
+import { SelectItemClass } from '../../global/select-item-class';
 //
 describe('ServerSelectionWindowComponent', () => {
 	let sut: ServerSelectionWindowComponent;

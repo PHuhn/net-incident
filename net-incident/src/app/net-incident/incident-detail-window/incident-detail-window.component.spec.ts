@@ -28,7 +28,7 @@ import { NetworkIncident } from '../network-incident';
 import { INetworkLog, NetworkLog } from '../network-log';
 import { IUser, User } from '../user';
 import { ServerData } from '../server-data';
-import { SelectItemClass } from '../select-item-class';
+import { SelectItemClass } from '../../global/select-item-class';
 //
 import { TruncatePipe } from '../../global/truncate.pipe';
 import { IncidentDetailWindowComponent } from './incident-detail-window.component';

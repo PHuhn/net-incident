@@ -19,7 +19,7 @@ import { AlertsService } from '../../global/alerts/alerts.service';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
-import { SelectItemClass } from '../select-item-class';
+import { SelectItemClass } from '../../global/select-item-class';
 import { IIncident, Incident } from '../incident';
 import { NetworkIncident } from '../network-incident';
 import { IIncidentNote, IncidentNote } from '../incident-note';

@@ -8,7 +8,7 @@ import { IUser, User } from './net-incident/user';
 import { Security } from './net-incident/security';
 import { IncidentGridComponent } from './net-incident/incident-grid/incident-grid.component';
 import { ServerData } from './net-incident/server-data';
-import { SelectItemClass } from './net-incident/select-item-class';
+import { SelectItemClass } from './global/select-item-class';
 //
 @Component({
 	selector: 'app-root',

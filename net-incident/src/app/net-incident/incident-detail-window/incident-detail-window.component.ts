@@ -14,7 +14,7 @@ import { Message } from '../../global/message';
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IUser, User } from '../user';
 import { IIncident, Incident } from '../incident';
-import { SelectItemClass } from '../select-item-class';
+import { SelectItemClass } from '../../global/select-item-class';
 import { NetworkIncident } from '../network-incident';
 import { NetworkIncidentSave } from '../network-incident-save';
 import { IWhoIsAbuse, WhoIsAbuse } from '../whois-abuse';
