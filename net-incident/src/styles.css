@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 /* prime-face prime-ng
-!omega, cruze, !cupertino, darkness, !flick, home, kasper, lightness, ludvig, 
-	pepper-grinder, !redmond, rocket, south-street, !start, trontastic, voclain
-	luna-amber, luna-blue, luna-green, luna-pink, nova-colored, nova-dark, nova-light
+Afterdark, afternoon, Afterwork, Aristo, Black-Tie, Blitzer, Bluesky, Bootstrap,
+ Casablanca, cruze, !cupertino, Dark-Hive, Delta, Dot-Luv, Eggplant, Excite-Bike,
+ !flick, Glass-x, Home, Hot-Sneaks, Humanity, Le-Frog, Midnight, Mint-Choc,
+ Overcast, Pepper-grinder, !Redmond, Rocket, Sam, Smoothness, South-street, !Start,
+ Sunny, Swanky-Purse, Trontastic, UI-Darkness, UI-Lightness, Vader
+ luna-amber, luna-blue, luna-green, luna-pink, nova-colored, nova-dark, nova-light, rhea
 */
 @import "primeicons/primeicons.css";
 @import "primeng/resources/themes/nova-light/theme.css";
