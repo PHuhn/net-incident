@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "preinstall": "npx npm-force-resolutions"
   },
   "private": true,
   "dependencies": {
@@ -57,5 +58,8 @@
     "webpack": "^4.42.1",
     "webpack-dev-server": "^3.10.3",
     "zone.js": "~0.10.2"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5"
   }
 }
