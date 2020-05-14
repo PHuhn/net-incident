@@ -127,7 +127,6 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 				}
 			}
 		});
-		// console.log ( 'In ProcessRaw: ' + nic + ', net: ' + net + ', abuse: ' + abuse );
 		this.nic = nic; this.net = net; this.abuse = abuse; this.inet = inet;
 		if( this.BadAbuseEmail() ) {
 			this.abuse = '';
@@ -159,7 +158,6 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 			}
 			prvs = flds;
 		});
-		// console.log ( 'In ProcessRaw: ' + nic + ', net: ' + net + ', abuse: ' + abuse );
 		this.nic = nic; this.net = net; this.abuse = abuse; this.inet = inet;
 		if( this.BadAbuseEmail() ) {
 			this.abuse = '';
@@ -170,7 +168,6 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 	// process the parsed data from whois
 	// returns: this class { nic, net, abuse, inet }
 	ProcessParsed( nic: string, parsed: any[] ) {
-		// console.log( 'ProcessParsed: ' + nic + ', ' + parsed[0].value );
 		let net = '', abuse = '', inet = '';
 		// default values to search for...
 		let netAtt = [ 'customer', 'custname', 'netname' ];
@@ -227,7 +224,6 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 				}
 			}
 		}
-		// let netHex = net.split ('').map (function (c) { return c.charCodeAt (0); });
 		this.nic = nic; this.net = net; this.abuse = abuse; this.inet = inet;
 		if( this.BadAbuseEmail() ) {
 			this.abuse = '';
@@ -242,7 +238,6 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 			return true;
 		}
 		const badAbuse = environment.BadAbuseEmailAddresses;
-		// [ 'hostmaster@nic.ad.jp', 'abuse@ripe.net' ]
 		if( badAbuse.includes( this.abuse ) ) {
 			return true;
 		}

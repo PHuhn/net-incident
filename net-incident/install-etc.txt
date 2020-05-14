@@ -1500,6 +1500,7 @@ To Do's:
 	V - delete of network-log not working
 	V1.1 - convert to 2.1 Core
 			https://www.codeproject.com/Articles/1274433/Getting-Started-with-Angular-7-And-ASP-NET-Core-2
-
+	V
+		https://kimsereyblog.blogspot.com/2018/11/create-navigation-loading-bar-for.html
 
 ===================================================
