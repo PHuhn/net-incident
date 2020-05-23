@@ -21,7 +21,7 @@
     "tslib": "^1.11.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.901.6",
+    "@angular-devkit/build-angular": "^0.901.7",
     "@angular/animations": "^9.1.7",
     "@angular/cdk": "^9.0.1",
     "@angular/cli": "^9.1.0",
@@ -59,7 +59,5 @@
     "webpack-dev-server": "^3.11.0",
     "zone.js": "~0.10.2"
   },
-  "resolutions": {
-    "minimist": "^1.2.5"
-  }
+  "resolutions": {}
 }
