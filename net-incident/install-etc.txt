@@ -1454,6 +1454,20 @@ SOLUTION:
 	Use imports like:
 		import { TableModule } from "primeng/table";
 
+PROBLEM:
+========
+	npm audit error
+SOLUTION:
+  "scripts": {
+    ...
+    "preinstall": "npx npm-force-resolutions"
+  },
+  ...
+  "resolutions": {
+    "yargs-parser": "^13.1.2",
+    "minimist": "^1.2.5"
+  }
+
 ===================================================
 Done:
 	service logging 12/22

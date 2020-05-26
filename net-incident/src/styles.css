@@ -67,29 +67,33 @@ NSG
 */
 /* Info */
 .nsg-msg-info {
-	background-color: #7bd5ee;
-	border-color: #5bc0de;
+	background-color: #288cda; /* #007ad9;*/
+	border-color: #bae1ff;
+	border-style: solid;
 	color: #000000;
 	font-weight: bold;
 }
 /* Success */
 .nsg-msg-success {
-	background-color: #dff0d8;
-	border-color: #5cb85c;
+	background-color: #34a835;
+	border-color: #c4edc4;
+	border-style: solid;
 	color: #000000;
 	font-weight: bold;
 }
 /* Warning */
 .nsg-msg-warning {
-	background-color: #fcf8e3;
-	border-color: #f0ad4e;
+	background-color: #ffba01;
+	border-color: #fff1ce;
+	border-style: solid;
 	color: #000000;
 	font-weight: bold;
 }
 /* Danger */
 .nsg-msg-danger {
-	background-color: #f2dede;
-	border-color: #d9534f;
+	background-color: #fa5b68; /* #e91224;*/
+	border-color: #fac7cb;
+	border-style: solid;
 	color: #000000;
 	font-weight: bold;
 }
