@@ -15,6 +15,7 @@ import { LoginViewModel } from '../../net-incident/login-view-model';
 import { TokenResponse } from '../../net-incident/token-response';
 import { Login } from '../../net-incident/login';
 import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';
+import { ConsoleLogService } from '../../global/console-log.service';
 //
 @Component({
 	selector: 'app-login',
@@ -28,14 +29,14 @@ export class LoginComponent implements OnInit {
 	model: Login;
 	selectItemsWindow: SelectItem[];
 	displayServersWindow: boolean = false;
-	logLevel: number = 1;
 	//
 	// constructor...
 	//
 	constructor(
 		private _alerts: AlertsService,
 		private _auth: AuthService,
-		private _user: UserService ) { }
+		private _user: UserService,
+		private _console: ConsoleLogService ) { }
 	//
 	@Output() onClose = new EventEmitter<User>();
 	//
@@ -46,38 +47,42 @@ export class LoginComponent implements OnInit {
 		this.model = new Login(
 			environment.defaultUserAccount, '', ''
 		);
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
 		//
 	}
 	//
 	// authenticate user with auth service
 	//
-	loginUser() {
+	loginUser(): number {
 		// get the user record
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.authUser: ${this.model.UserName}` );
-		}
+		this._console.Information(
+			`${this.codeName}.authUser: ${this.model.UserName}` );
 		//
 		let errMsgs: Message[] = this.model.validate( );
 		if( errMsgs.length > 0 ) {
 			this._alerts.setAlerts( AlertLevel.Error, errMsgs );
-			return;
+			return -1;
 		}
-		this._auth.authenticate( this.model.UserName, this.model.Password ).subscribe( ( tokenData: TokenResponse ) => {
+		this._auth.authenticate( this.model.UserName, this.model.Password )
+			.subscribe( ( tokenData: TokenResponse ) => {
 			//
-			if( this.logLevel >= 4 ) {
-				// access_token: string;
-				// token_type: string;
-				// expires_in: number;
-				// userName: string;
-				console.log( `${this.codeName}.authUser: authenticated: ${tokenData.access_token} ${tokenData.token_type} ${tokenData.userName}` );
-			}
+			// access_token: string;
+			// token_type: string;
+			// expires_in: number;
+			// userName: string;
+			this._console.Information(
+				`${this.codeName}.authUser: authenticated: ${tokenData.access_token} ${tokenData.token_type} ${tokenData.userName}` );
 			this.getUserServer( this.model.UserName, this.model.ServerShortName );
+			return 1;
 			//
 		},
-		error => this.serviceErrorHandler(
-			`User not found: ${this.model.UserName}`, error ));
+		error => {
+			this._console.Error(
+				`${this.codeName}.authUser: authenticate: ${this.model.UserName} ${error}` );
+			this.serviceErrorHandler(
+				`User not found: ${this.model.UserName}`, error );
+			return -2;
+		});
+		return 0;
 		//
 	}
 	//
@@ -87,19 +92,17 @@ export class LoginComponent implements OnInit {
 		//
 		this._user.getUserServer( userName, serverShortName )
 			.subscribe( ( userData: User ) => {
-				if( this.logLevel >= 4 ) {
-					console.log( `${this.codeName}.getUserServer: user: ${userData.UserName}` );
-					console.log( userData );
-				}
+				this._console.Information(
+					`${this.codeName}.getUserServer: user: ${userData.UserName}` );
+				this._console.Information( JSON.stringify( userData ) );
 				this.user = userData;
 				if( serverShortName !== ''
 						&& userData.ServerShortName.toLowerCase()
 							=== serverShortName.toLowerCase() ) {
 					this.onClose.emit( this.user );
 				} else {
-					if( this.logLevel >= 4 ) {
-						console.log( 'Returned: ' + userData.ServerShortName );
-					}
+					this._console.Information(
+						`${this.codeName}.getUserServer: Returned: ${userData.ServerShortName}` );
 					this.selectItemsWindow = this.user.ServerShortNames;
 					this.displayServersWindow = true;
 				}
@@ -112,9 +115,8 @@ export class LoginComponent implements OnInit {
 	// on server-selection-window closed
 	//
 	onServerSelected( shortName: string ) {
-		if( this.logLevel >= 4 ) {
-			console.log( 'selected: ' + shortName );
-		}
+		this._console.Information(
+			`${this.codeName}.onServerSelected: selected: ${shortName}` );
 		this.displayServersWindow = false;
 		this.model.ServerShortName = shortName;
 		this.getUserServer( this.model.UserName, this.model.ServerShortName );
@@ -123,10 +125,10 @@ export class LoginComponent implements OnInit {
 	// Handle an error from the data service.
 	//
 	serviceErrorHandler( where: string, error: string ) {
-		console.error( error );
+		this._console.Error(
+			`${this.codeName}.serviceErrorHandler: ${where}, ${error}` );
 		this._alerts.setWhereWhatError( where,
-			'User-Service failed.',
-			error || 'Server error');
+			'User-Service failed.', error || 'Server error');
 	}
 	//
 }

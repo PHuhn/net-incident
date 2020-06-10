@@ -262,6 +262,9 @@ paket-files/
 # CodeRush
 .cr/
 
+# Angular testing code coverage
+net-incident/coverage/*
+
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc

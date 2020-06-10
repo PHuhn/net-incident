@@ -4,6 +4,7 @@ import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Menubar, MenubarModule } from 'primeng/menubar';
 import { environment } from '../../../environments/environment';
+import { ConsoleLogService } from '../../global/console-log.service';
 //
 @Component({
 	selector: 'app-header',
@@ -17,11 +18,10 @@ export class HeaderComponent implements OnInit {
 	//
 	codeName: string = 'Header-Component';
 	title: string = 'Network Incidents';
-	logLevel: number = 1;
 	//
 	// the constructor of this the header.component
 	//
-	constructor() { }
+	constructor( private _console: ConsoleLogService ) { }
 	//
 	@Output() logout: EventEmitter<any> = new EventEmitter();
 	//
@@ -50,8 +50,6 @@ export class HeaderComponent implements OnInit {
 		}
 	*/
 	ngOnInit() {
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
 		//
 		this.items = [{
 			label: `${this.title}`,
@@ -70,9 +68,8 @@ export class HeaderComponent implements OnInit {
 	//
 	logoutClicked( ) {
 		//
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.logout: Logout clicked.`);
-		}
+		this._console.Information(
+			`${this.codeName}.logout: Logout clicked.`);
 		this.logout.emit(null);
 		//
 	}

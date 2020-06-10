@@ -8,10 +8,10 @@
 <p-confirmDialog key='Delete' header='Delete Confirmation' icon='pi pi-trash'></p-confirmDialog>
 <!-- content -->
 <app-header (logout)='onAuthLogout($event)'></app-header>
-<div *ngIf='authenticated == false'>
+<div *ngIf='authenticated === false'>
   <app-login (onClose)='onAuthenticated($event)'></app-login>
 </div>
-<div *ngIf='authenticated == true'>
+<div *ngIf='authenticated === true'>
   <app-incident-grid [user]='user'></app-incident-grid>
 </div>
 <!-- end -->

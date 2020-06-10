@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angu
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Observable, throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 //
 import { SelectItem } from 'primeng/api';
 import { Dialog } from 'primeng/dialog';
@@ -12,8 +12,11 @@ import { Header, Footer } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
+import { Alerts } from '../../global/alerts';
+import { AlertLevel } from '../../global/alert-level.enum';
+import { TokenResponse } from '../../net-incident/token-response';
+import { User } from '../../net-incident/user';
 import { UserService } from '../../net-incident/services/user.service';
-import { UserServiceMock } from '../../net-incident/services/mocks/UserService.mock';
 import { AuthService } from '../../net-incident/services/auth.service';
 import { LoginComponent } from './login.component';
 import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';
@@ -22,10 +25,11 @@ describe('LoginComponent', () => {
 	let sut: LoginComponent;
 	let fixture: ComponentFixture<LoginComponent>;
 	let alertService: AlertsService;
-	let userServiceMock: UserServiceMock;
 	// Create a fake TwainService object with a `getQuote()` spy
-	const authService = jasmine.createSpyObj('AuthService',
+	const authServiceSpy = jasmine.createSpyObj('AuthService',
 				['authenticate', 'logout', 'isLoggedIn', 'isLoggedOut']);
+	const userServiceSpy = jasmine.createSpyObj('UserService',
+			['emptyUser', 'getUser', 'getUserServer']);
 	//
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -43,12 +47,11 @@ describe('LoginComponent', () => {
 			],
 			providers: [
 				{ provide: AlertsService, useClass: AlertsService },
-				{ provide: AuthService, useValue: authService },
-				{ provide: UserService, useClass: UserServiceMock }
+				{ provide: AuthService, useValue: authServiceSpy },
+				{ provide: UserService, useValue: userServiceSpy }
 			]
 		} );
 		alertService = TestBed.get( AlertsService );
-		userServiceMock = TestBed.get( UserService );
 		TestBed.compileComponents();
 	}));
 	//
@@ -57,9 +60,6 @@ describe('LoginComponent', () => {
 		sut = fixture.componentInstance;
 		fixture.detectChanges();
 	});
-	//
-	// Run HttpTestingController's verify to make sure that there are no
-	// outstanding requests.
 	//
 	afterEach(() => {
 	});
@@ -70,6 +70,107 @@ describe('LoginComponent', () => {
 			'LoginComponent: should create ...' );
 		expect( sut ).toBeTruthy();
 	});
+	//
+	// test of loginUser, validation failure
+	//
+	it('loginUser should fail login when invalid password ...', fakeAsync( ( ) => {
+		//
+		sut.model.UserName = 'Xyz';
+		sut.model.Password = '';
+		sut.model.ServerShortName = 'XyzServer';
+		alertService.getAlerts().subscribe( (msg: Alerts) => {
+			console.log( msg );
+			expect( msg ).toBeTruthy( );
+			expect( msg.level ).toBe( AlertLevel.Error );
+		}, error =>	console.error( error ) );
+		const ret: number = sut.loginUser();
+		expect( ret ).toBe( -1 );
+		//
+	} ) );
+	//
+	// test of loginUser, fail with bad username or password
+	//
+	it('loginUser should fail login when bad username or password ...', fakeAsync( ( ) => {
+		//
+		sut.model.UserName = 'Xyz';
+		sut.model.Password = 'Xyz';
+		sut.model.ServerShortName = 'XyzServer';
+		const errMsg: string = 'Fake Service error';
+		authServiceSpy.authenticate.and.returnValue(throwError( errMsg ));
+		alertService.getAlerts().subscribe( (msg: Alerts) => {
+			console.log( msg );
+			expect( msg ).toBeTruthy( );
+			expect( msg.level ).toBe( AlertLevel.Error );
+		}, error =>	console.error( error ) );
+		const ret: number = sut.loginUser();
+		console.log( `Username or password test: Return: ${ret}` );
+		expect( ret ).toBe( 0 );
+		//
+	} ) );
+	//
+	// test of loginUser, succeed
+	//
+	it('loginUser should succeed to login user ...', fakeAsync( ( ) => {
+		//
+		sut.model.UserName = 'Xyz';
+		sut.model.Password = 'Xyz';
+		sut.model.ServerShortName = 'XyzServer';
+		const tokenResp: TokenResponse = new TokenResponse(
+			'1111', 'bearer', 1000, sut.model.UserName);
+		authServiceSpy.authenticate.and.returnValue(of( tokenResp ));
+		const emptyUser: User = new User(
+			'','','','','','','',false,'',false,0,[],'',undefined, []);
+		emptyUser.ServerShortName = sut.model.ServerShortName;
+		userServiceSpy.getUserServer.and.returnValue(of( emptyUser ));
+		sut.onClose.subscribe( user => {
+			console.log( 'In onClose callback ...' );
+			console.log( user );
+			expect( user ).toBe( emptyUser );
+		} );
+		const ret: number = sut.loginUser();
+		console.log( `Username or password test: Return: ${ret}` );
+		expect( ret ).toBe( 0 );
+		//
+	} ) );
+	//
+	// test of getUserServer, succeed
+	//
+	it('getUserServer should get login user ...', fakeAsync( ( ) => {
+		//
+		sut.model.UserName = 'Xyz';
+		sut.model.ServerShortName = 'XyzServer';
+		const emptyUser: User = new User(
+			'','','','','','','',false,'',false,0,[],'',undefined, []);
+		emptyUser.ServerShortName = sut.model.ServerShortName;
+		userServiceSpy.getUserServer.and.returnValue(of( emptyUser ));
+		sut.onClose.subscribe( user => {
+			console.log( 'getUserServer: In onClose callback ...' );
+			expect( user ).toBe( emptyUser );
+		} );
+		sut.getUserServer( sut.model.UserName, sut.model.ServerShortName );
+		//
+	} ) );
+	//
+	// test of onServerSelected, succeed
+	//
+	it('onServerSelected should get login user ...', fakeAsync( ( ) => {
+		//
+		const serverShortName = 'XyzServer';
+		sut.model.UserName = 'Xyz';
+		sut.model.Password = 'Xyz';
+		sut.model.ServerShortName = '';
+		const emptyUser: User = new User(
+			'','','','','','','',false,'',false,0,[],'',undefined, []);
+		emptyUser.ServerShortName = serverShortName;
+		userServiceSpy.getUserServer.and.returnValue(of( emptyUser ));
+		sut.onClose.subscribe( user => {
+			console.log( 'onServerSelected: In onClose callback ...' );
+			expect( sut.model.ServerShortName ).toEqual( serverShortName );
+		} );
+		console.log( `onServerSelected: ${serverShortName}` );
+		sut.onServerSelected( serverShortName );
+		//
+	} ) );
 	//
 });
 // ===========================================================================

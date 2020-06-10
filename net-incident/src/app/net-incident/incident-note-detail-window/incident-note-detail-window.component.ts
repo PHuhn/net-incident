@@ -27,7 +27,7 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	private codeName: string = 'Incident-Note-Detail-Window';
 	private logLevel: number = 1;
-	private add: boolean = false;
+	add: boolean = false;
 	id: number = 0;
 	private httpSubscription: Subscription;
 	model: IncidentNote;
@@ -169,16 +169,16 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// Ping this IP-address
 	//
 	getPing( ): void {
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.getPing: Entering, ip: ${this.networkIncident.incident.IPAddress}` );
-		}
+		console.log( `${this.codeName}.getPing: Entering, ip: ${this.networkIncident.incident.IPAddress}` );
 		this.model.Note = 'This may take 10 seconds...';
 		this.httpSubscription = this._services.getPing( this.networkIncident.incident.IPAddress ).subscribe(( pingData: string ) => {
 			this.model.Note = ( pingData !== '' ? pingData :
 				`-no data for ${this.networkIncident.incident.IPAddress}-` );
-		}, ( error ) =>
+		}, ( error ) => {
+			console.log( `${this.codeName}.getPing: Exiting, error: ${error}` );
 			this._alerts.setWhereWhatError( 'Note detail: getPing',
-				'Services-Service failed.', error || 'Server error'));
+				'Services-Service failed.', error || 'Server error');
+		});
 	}
 	//
 	// WhoIs this IP-address

@@ -4,7 +4,7 @@
   <p-header class='nsg-primary-color'>
     Select a server
   </p-header>
-  <h5 *ngIf='model == undefined'>Loading ...</h5>
+  <h5 *ngIf='model === undefined'>Loading ...</h5>
   <div *ngIf='model != undefined'>
     <div class='nsg-primary-color nsg-bold'>
       <div *ngFor='let item of model'>

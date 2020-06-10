@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 //
 import { Menubar, MenubarModule } from 'primeng/menubar';
@@ -27,6 +27,22 @@ describe('HeaderComponent', () => {
 	});
 
 	it('should create', () => {
+		console.log(
+			'===================================\n' +
+			'HeaderComponent should create ...' );
 		expect( sut ).toBeTruthy();
 	});
+	//
+	// Simulate a button clicked, by calling event method
+	//
+	it('manually call logout clicked event ...', fakeAsync(() => {
+		//
+		sut.logout.subscribe( nl => {
+			console.log( 'In logout callback ...' );
+			expect( nl ).toBeNull( );
+		} );
+		sut.logoutClicked( );
+		//
+	} ) );
+	//
 });

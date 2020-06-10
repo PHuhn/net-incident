@@ -1468,6 +1468,19 @@ SOLUTION:
     "minimist": "^1.2.5"
   }
 
+
+PROBLEM:
+========
+	Jasmine test fail with the following message:
+		Error: unreachable
+		at injectableDefOrInjectorDefFactory (http://localhost:9876/_karma_webpack_/node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:17302:1)
+ 
+SOLUTION:
+	Changed:
+		{ provide: UserService, useClass: userServiceSpy }
+	Changed to:
+		{ provide: UserService, useValue: userServiceSpy }
+
 ===================================================
 Done:
 	service logging 12/22
