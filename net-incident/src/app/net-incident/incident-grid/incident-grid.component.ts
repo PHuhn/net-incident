@@ -9,8 +9,8 @@ import { SelectItem } from 'primeng/api';
 import { FilterMetadata } from 'primeng/api';
 import { LazyLoadEvent } from 'primeng/api';
 //
-import { environment } from '../../../environments/environment';
 import { AlertsService } from '../../global/alerts/alerts.service';
+import { ConsoleLogService } from '../../global/console-log.service';
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IUser, User } from '../user';
 import { UserService } from '../services/user.service';
@@ -18,7 +18,7 @@ import { IncidentService } from '../services/incident.service';
 import { IIncident, Incident } from '../incident';
 import { IncidentDetailWindowComponent } from '../incident-detail-window/incident-detail-window.component';
 import { ServerSelectionWindowComponent } from '../server-selection-window/server-selection-window.component';
-import { IncidentPaginationData } from '../incidentpaginationdata';
+import { IncidentPaginationData } from '../incident-pagination-data';
 import { AppComponent } from '../../app.component';
 //
 @Component({
@@ -32,7 +32,6 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// Data declaration.
 	//
 	codeName = 'incident-grid-component';
-	logLevel: number = 1;
 	// Window/dialog communication (also see onClose event)
 	windowIncident: Incident = undefined;
 	windowDisplay: boolean = false;
@@ -62,13 +61,14 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 		private _alerts: AlertsService,
 		private _data: IncidentService,
 		private _user: UserService,
-		private _confirmationService: ConfirmationService ) { }
+		private _confirmationService: ConfirmationService,
+		private _console: ConsoleLogService ) { }
 	//
 	// On component initialization, get all data from the data service.
 	//
 	ngOnInit() {
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
+		this._console.Information(
+			`${this.codeName}.ngOnInit: Entering ...` );
 		this.loading = true;
 	}
 	//
@@ -82,9 +82,9 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// Add button clicked, launch edit detail window.
 	//
 	addItemClicked( ) {
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.addItemClicked:` );
-		}
+		this._console.Information(
+			`${this.codeName}.addItemClicked: Entering ...` );
+		console.log( this.user );
 		const empty: Incident = this._data.emptyIncident( );
 		empty.ServerId = this.user.Server.ServerId;
 		this.editItemClicked( empty );
@@ -96,12 +96,12 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 		//
 		if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
 			this.id = item.IncidentId;
+			this._console.Information(
+				`${this.codeName}.editItemClicked: Entering, id: ${this.id}` );
 			this.detailWindow = new DetailWindowInput( this.user, item );
 			this.windowDisplay = true;
-			if( this.logLevel >= 4 ) {
-				console.log( item );
-				console.log( `${this.codeName}.editItemClicked: ${this.windowDisplay}` );
-			}
+			this._console.Information(
+				`${this.codeName}.editItemClicked: ${this.windowDisplay}` );
 		} else {
 			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
 		}
@@ -112,27 +112,25 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	deleteItemClicked( item: Incident ): boolean {
 		if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
 			this.id = item.IncidentId;
-			if( this.logLevel >= 4 ) {
-				console.log( `${this.codeName}.deleteItemClicked: ${this.id}` );
-			}
+			this._console.Information(
+				`${this.codeName}.deleteItemClicked: Entering, id: ${this.id}` );
 			// the p-confirmDialog in in app.component
 			this._confirmationService.confirm({
 				key: 'Delete',
 				message: 'Are you sure you want to delete incident id: ' + this.id + '?',
 				accept: () => {
-					if( this.logLevel >= 4 ) {
-						console.log( `User's response: true` );
-					}
+					this._console.Information(
+						`${this.codeName}.deleteItemClicked: User's response: true` );
 					this.deleteItem( );
 				},
 				reject: () => {
-					if( this.logLevel >= 4 ) {
-						console.log( `User's dismissed.` );
-					}
+					this._console.Information(
+						`${this.codeName}.deleteItemClicked: User's dismissed.` );
 				}
 			});
 		} else {
-			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
+			this._alerts.setWhereWhatWarning(
+				this.codeName, 'Not authorized' );
 		}
 		return false;
 	}
@@ -140,13 +138,11 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// on edit window closed
 	//
 	onClose( saved: boolean ) {
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.onClose: entering: ${saved}` );
-		}
+		this._console.Information(
+			`${this.codeName}.onClose: entering: ${saved}` );
 		if( saved === true ) {
-			if( this.logLevel >= 3 ) {
-				console.log( `${this.codeName}.onClose: Refreshing...` );
-			}
+			this._console.Information(
+				`${this.codeName}.onClose: Refreshing...` );
 			this.refreshWithVisibility();
 		}
 		this.windowDisplay = false;
@@ -158,27 +154,27 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// Launch server selection window
 	//
 	onChangeServer( event ) {
-		if( this.logLevel >= 3 ) {
-			console.log( `${this.codeName}.onChangeServer: entering: ${event}` );
-		}
+		this._console.Information(
+			`${this.codeName}.onChangeServer: entering: ${event}` );
 		this.selectItemsWindow = this.user.ServerShortNames;
 		this.displayServersWindow = true;
-		console.log( `${this.codeName}.onChangeServer: ${event.value}` );
+		this._console.Information(
+			`${this.codeName}.onChangeServer: ${event.value}` );
 	}
 	//
 	// onServerSelected($event)
 	//
 	onServerSelected( event: any ) {
 		this.getUserServer( this.user.UserName, event );
-		console.log( `${this.codeName}.onServerSelected: ${event}` );
+		this._console.Information(
+			`${this.codeName}.onServerSelected: ${event}` );
 	}
 	//
 	// updateVisibility, refresh by instantly toggling visiblity
 	//
 	refreshWithVisibility(): void {
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.refreshWithVisibility: entered` );
-		}
+		this._console.Information(
+			`${this.codeName}.refreshWithVisibility: entered` );
 		this.visible = false;
 		setTimeout( ( ) => this.visible = true );
 	}
@@ -193,9 +189,8 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 		console.log( `${this.codeName}.getUserServer: user: ${userName}, short: ${serverShortName}` );
 		this._user.getUserServer( userName, serverShortName )
 								.subscribe( ( userData: User ) => {
-			if( this.logLevel >= 4 ) {
-				console.log( `${this.codeName}.authUser: user: ${userData.UserName}` );
-			}
+			this._console.Information(
+				`${this.codeName}.authUser: user: ${userData.UserName}` );
 			if( userData.ServerShortName !== ''
 				&& userData.ServerShortName.toLowerCase()
 						=== serverShortName.toLowerCase() ) {
@@ -204,9 +199,8 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 					this.dt.filter( this.user.Server.ServerId, 'ServerId', 'equals' );
 					this.displayServersWindow = false;
 			} else {
-				if( this.logLevel >= 4 ) {
-					console.log( `${this.codeName}.getUserServer, Returned: ${userData.ServerShortName}` );
-				}
+				this._console.Information(
+					`${this.codeName}.getUserServer, Returned: ${userData.ServerShortName}` );
 				this.selectItemsWindow = this.user.ServerShortNames;
 				this.displayServersWindow = true;
 			}
@@ -282,10 +276,10 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// Handle an error from the data service.
 	//
 	serviceErrorHandler( where: string, error: string ) {
-		console.error( error );
+		this._console.Error(
+			`${this.codeName}.serviceErrorHandler: ${where}, ${error}` );
 		this._alerts.setWhereWhatError( where,
-			'Incident-Service failed.',
-			error || 'Server error');
+			'Incident-Service failed.', error || 'Server error');
 	}
 	//
 }

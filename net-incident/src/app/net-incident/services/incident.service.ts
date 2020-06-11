@@ -12,7 +12,7 @@ import { LazyLoadEvent } from 'primeng/api';
 import { environment } from '../../../environments/environment';
 import { Message } from '../../global/message';
 import { IIncident, Incident } from '../incident';
-import { IncidentPaginationData } from '../incidentpaginationdata';
+import { IncidentPaginationData } from '../incident-pagination-data';
 import { ConsoleLogService } from '../../global/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )

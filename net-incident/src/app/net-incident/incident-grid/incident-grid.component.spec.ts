@@ -2,7 +2,7 @@
 import { async, ComponentFixture, TestBed, inject, fakeAsync, tick, discardPeriodicTasks, getTestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Observable, throwError, interval } from 'rxjs';
+import { of, throwError, interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 import { By } from '@angular/platform-browser';
 import { HttpResponse } from '@angular/common/http';
@@ -12,20 +12,18 @@ import { Dialog } from 'primeng/dialog';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { Header, Footer } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, Confirmation, LazyLoadEvent } from 'primeng/api';
 import { SelectItem } from 'primeng/api';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
+import { Alerts } from '../../global/alerts';
 import { ConsoleLogService } from '../../global/console-log.service';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { UserService } from '../../net-incident/services/user.service';
-import { UserServiceMock } from '../services/mocks/UserService.mock';
 import { IncidentService } from '../services/incident.service';
-import { IncidentServiceMock } from '../services/mocks/IncidentService.mock';
 import { NetworkIncidentService } from '../services/network-incident.service';
-import { NetworkIncidentServiceMock } from '../services/mocks/NetworkIncidentService.mock';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 //
 import { TruncatePipe } from '../../global/truncate.pipe';
@@ -36,24 +34,32 @@ import { SelectItemClass } from '../../global/select-item-class';
 import { IIncident, Incident } from '../incident';
 import { INetworkLog, NetworkLog } from '../network-log';
 import { NetworkIncident } from '../network-incident';
+import { IncidentPaginationData } from '../incident-pagination-data';
 import { IncidentGridComponent } from './incident-grid.component';
 import { IncidentDetailWindowComponent } from '../incident-detail-window/incident-detail-window.component';
 import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';
 import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.component';
 import { IncidentNoteGridComponent } from '../incident-note-grid/incident-note-grid.component';
 import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-window/incident-note-detail-window.component';
+import { LazyLoadingMock } from '../services/mocks/LazyLoading.mock';
+//
 import { AppComponent } from '../../app.component';
 import { Security } from '../security';
 //
 describe( 'IncidentGridComponent', ( ) => {
 	let sut: IncidentGridComponent;
 	let fixture: ComponentFixture<IncidentGridComponent>;
+	let lazyLoading: LazyLoadingMock = new LazyLoadingMock();
 	let alertService: AlertsService;
-	let userServiceMock: UserServiceMock;
+	const userServiceSpy = jasmine.createSpyObj('UserService',
+			['emptyUser', 'getUser', 'getUserServer']);
 	let servicesServiceMock: ServicesServiceMock;
-	let incidentServiceMock: IncidentServiceMock;
+	const incidentServiceSpy = jasmine.createSpyObj(
+		'IncidentService', ['emptyIncident', 'getIncidentsLazy', 'deleteIncident']);
 	let confirmService: ConfirmationServiceMock;
-	let networkIncidentServiceMock: NetworkIncidentServiceMock;
+	const networkIncidentServiceSpy = jasmine.createSpyObj(
+		'NetworkIncidentService', ['validateIncident', 'validateNetworkLog',
+		'validateNetworkLogs', 'getNetworkIncident', 'createIncident', 'updateIncident']);
 	// let detailWindow: DetailWindowInput;
 	const expectedWindowTitle: string = 'Incident Detail';
 	const windowTitleSelector: string =
@@ -113,30 +119,34 @@ describe( 'IncidentGridComponent', ( ) => {
 			providers: [
 				AlertsService,
 				ConsoleLogService,
-				{ provide: UserService, useClass: UserServiceMock },
+				{ provide: UserService, useValue: userServiceSpy },
 				{ provide: ServicesService, useClass: ServicesServiceMock },
-				{ provide: IncidentService, useClass: IncidentServiceMock },
-				{ provide: NetworkIncidentService, useClass: NetworkIncidentServiceMock },
+				{ provide: IncidentService, useValue: incidentServiceSpy },
+				{ provide: NetworkIncidentService, useValue: networkIncidentServiceSpy },
 				{ provide: ConfirmationService, useClass: ConfirmationServiceMock }
 			]
 		});
 		alertService = TestBed.get( AlertsService );
-		userServiceMock = TestBed.get( UserService );
 		servicesServiceMock = TestBed.get( ServicesService );
 		confirmService =  TestBed.get( ConfirmationService );
-		incidentServiceMock = TestBed.get( IncidentService );
-		networkIncidentServiceMock = TestBed.get( NetworkIncidentService );
 		TestBed.compileComponents( );
 	}));
 	//
 	beforeEach( async( ( ) => {
+		// clone the array with slice( 0 )
+		const page = new IncidentPaginationData( );
+		const event = {"first":0,"rows":5,"sortField":"IncidentId","sortOrder":-1,"filters":{"ServerId":{"value":1,"matchMode":"equals"},"Mailed":{"value":false,"matchMode":"equals"},"Closed":{"value":false,"matchMode":"equals"},"Special":{"value":false,"matchMode":"equals"}},"globalFilter":null} as LazyLoadEvent;
+		page.incidents = lazyLoading.LazyLoading( mockDatum, event );
+		page.loadEvent = event;
+		page.totalRecords = page.incidents.length;
+		incidentServiceSpy.getIncidentsLazy.and.returnValue( of( page ) );
+		userServiceSpy.getUserServer.and.returnValue(of( user ));
+		AppComponent.securityManager = new Security( user );
+		//
 		fixture = TestBed.createComponent( IncidentGridComponent );
 		sut = fixture.componentInstance;
 		// push in the @Input
 		sut.user = user;
-		AppComponent.securityManager = new Security( user );
-		// clone the array with slice( 0 )
-		incidentServiceMock.mockGetAll = mockDatum.slice( 0 );
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 	} ) );
@@ -181,6 +191,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	// getIncidents( ) : Observable<IIncident[]>
 	//
 	it('should initialize with all data...', fakeAsync( () => {
+		console.log( 'getIncidents ...' );
 		console.log( sut.incidents );
 		expect( sut.incidents.length ).toBe( 3 );
 		//
@@ -189,85 +200,153 @@ describe( 'IncidentGridComponent', ( ) => {
 		expect( sut.incidents[ 2 ].IncidentId ).toEqual( 2 );
 		//
 	}));
-	//
-	// addItemClicked( )
-	//
-	it('should launch detail window when addItemClicked is called ...', async( () => {
+	/*
+	** test of getUserServer, succeed
+	*/
+	it('getUserServer select a different server ...', fakeAsync( ( ) => {
+		//
+		console.log( 'getUserServer, select a different server ...' );
+		const serverShortName = 'srv 2';
+		// setup response to _user.getUserServer service call
+		let user2 = {...user};
+		user2.Server.ServerName = 'Server 2';
+		user2.Server.ServerShortName = serverShortName;
+		user2.ServerShortName = serverShortName;
+		userServiceSpy.getUserServer.and.returnValue(of( user2 ));
+		sut.getUserServer( sut.user.UserName, serverShortName );
+		//
+		tick(1000); // wait 1 second task to get done
+		fixture.detectChanges( ); // trigger initial data binding
+		tick(1000); // wait 1 second task to get done
+		fixture.detectChanges( ); // trigger initial data binding
+		//
+		expect( sut.user.ServerShortName ).toEqual( serverShortName );
+		//
+	} ) );
+	/*
+	** onServerSelected( event: any )
+	** test of getUserServer, succeed
+	*/
+	it('getUserServer select a different server ...', fakeAsync( ( ) => {
+		//
+		console.log( 'getUserServer, select a different server ...' );
+		const serverShortName = 'srv 2';
+		// setup response to _user.getUserServer service call
+		let user2 = {...user};
+		user2.Server.ServerName = 'Server 2';
+		user2.Server.ServerShortName = serverShortName;
+		user2.ServerShortName = serverShortName;
+		userServiceSpy.getUserServer.and.returnValue(of( user2 ));
+		sut.onServerSelected( serverShortName );
+		//
+		tick(1000); // wait 1 second task to get done
+		fixture.detectChanges( ); // trigger initial data binding
+		tick(1000); // wait 1 second task to get done
+		fixture.detectChanges( ); // trigger initial data binding
+		//
+		expect( sut.user.ServerShortName ).toEqual( serverShortName );
+		//
+	} ) );
+	/*
+	** onChangeServer( ), launch server selection window
+	*/
+	it('should launch server selection window when onChangeServer is called ...', fakeAsync( () => {
+		console.log( 'onChangeServer is called ...' );
+		sut.onChangeServer( 'testing' );
+		//
+		tick(1000); // wait 1 second task to get done
+		fixture.detectChanges( ); // trigger initial data binding
+		//
+		expect( sut.displayServersWindow ).toEqual( true );
+		const title: HTMLDivElement = fixture.debugElement.query(By.css(
+			'#serverSelectionWindow > div > div > div.ui-dialog-titlebar > span.ui-dialog-title > p-header' )).nativeElement;
+		expect( title.innerText.trim( ) ).toEqual( `Select a server` );
+		console.log( `onChangeServer ... completed ${new Date().toISOString()}` );
+	}));
+	/*
+	** addItemClicked( )
+	*/
+	it('should launch detail window when addItemClicked is called ...', fakeAsync( () => {
 		console.log( 'addItemClicked is called ...' );
+		let inc = new Incident( 0,0,'','','','','',false,false,false,'',testDate );
+		incidentServiceSpy.emptyIncident.and.returnValue(of( inc ));
 		const response: NetworkIncident = newNetworkIncident(
-			new Incident( 0,1,'','','','','',false,false,false,'',testDate )
+			inc
 		);
 		const id = response.incident.IncidentId; // for title
 		const ip = response.incident.IPAddress;
-		networkIncidentServiceMock.mockGet = response;
+		networkIncidentServiceSpy.getNetworkIncident.and.returnValue( of( response ) );
 		sut.addItemClicked( );
 		//
-		console.log( `~= addItemClicked: ${new Date().toISOString()}` );
-		fixture.detectChanges();
-		fixture.whenStable();
-		console.log( `~=* addItemClicked: ${new Date().toISOString()}` );
+		tick(1000); // wait 1 second task to get done
+		fixture.detectChanges( ); // trigger initial data binding
+		tick(1000); // wait 1 second task to get done
+		fixture.detectChanges( ); // trigger initial data binding
 		//
-		if( sut.windowDisplay === true ) {
-			expect( sut.windowDisplay ).toEqual( true );
-			const title: HTMLDivElement = fixture.debugElement.query(By.css(
-				'#IncidentDetailWindowHeader' )).nativeElement;
-			expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address:` );
-			console.log( `addItemClicked ... completed ${new Date().toISOString()}` );
-		} else {
-			console.log( `****** failed ******** ${new Date().toISOString()}` );
-			fail('Detail window took too long.');
-		}
+		expect( sut.windowDisplay ).toEqual( true );
+		const title: HTMLDivElement = fixture.debugElement.query(By.css(
+			'#IncidentDetailWindowHeader' )).nativeElement;
+		expect( title.innerText.trim( ) ).toEqual( `Incident Detail: , IP Address:` );
+		console.log( `addItemClicked ... completed ${new Date().toISOString()}` );
 	}));
-	//
-	// editItemClicked( )
-	//
-	it('should launch detail window when editItemClicked is called ...', async( () => {
-		console.log( 'editItemClicked ...' );
-		const incident: Incident = sut.incidents[ 2 ];
+	/*
+	** editItemClicked( item: Incident )
+	*/
+	it('should launch detail window when editItemClicked is called ...', fakeAsync( ( ) => {
+		const incident: Incident = sut.incidents[ 1 ];
 		const response: NetworkIncident = newNetworkIncident( incident );
 		const id = response.incident.IncidentId; // for title
 		const ip = response.incident.IPAddress;
-		networkIncidentServiceMock.mockGet = response;
+		networkIncidentServiceSpy.getNetworkIncident.and.returnValue(of( response ));
 		sut.editItemClicked( incident );
+		expect( sut.windowDisplay ).toEqual( true );
+		tick(1000); // wait 1 second task to get done
+		fixture.detectChanges( ); // trigger initial data binding
+		tick(1000); // wait 1 second task to get done
+		fixture.detectChanges( ); // trigger initial data binding
 		//
-		console.log( `~= ${id} ${ip} ${new Date().toISOString()}` );
-		//
-		fixture.detectChanges();
-		fixture.whenStable();
-		console.log( `~=* ${id} ${ip} ${new Date().toISOString()}` );
-		if( sut.windowDisplay === true ) {
-			expect( sut.windowDisplay ).toEqual( true );
-			const title: HTMLDivElement = fixture.debugElement.query(By.css(
-				'#IncidentDetailWindowHeader' )).nativeElement;
-			expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
-			console.log( `editItemClicked ... completed ${new Date().toISOString()}` );
-			// timing issues, all have to complete:
-			//  getNetIncident (to get complete data)
-			//  incident-note-grid
-			//  incident-note-detail-window
-			//  network-log-grid
-		} else {
-			console.log( `****** failed ******** ${new Date().toISOString()}` );
-			fail('Detail window took too long.');
-		}
+		const title: HTMLDivElement = fixture.debugElement.query(By.css(
+			'#IncidentDetailWindowHeader' )).nativeElement;
+		expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
+		sut.windowDisplay = false;
 	}));
-	//
-	// deleteItemClicked( item: Incident ) :boolean
-	//
+	/*
+	** deleteItem( ) :boolean
+	*/
+	it( 'should handle an error on delete...', fakeAsync( () => {
+		//
+		const response = new HttpResponse( { status: 500, statusText: 'Fake Error' } );
+		incidentServiceSpy.deleteIncident.and.returnValue(of( response ));
+		const id = sut.incidents[1].IncidentId;
+		sut.id = id;
+		const subscription = alertService.getAlerts().subscribe(
+			(alertMsg: Alerts) => {
+				expect( alertMsg ).toBeTruthy( );
+		}, ( error ) => {
+			fail( 'delete error, failed: ' + error );
+		});
+		sut.deleteItem( );
+		//
+	}));
+	/*
+	** deleteItemClicked( item: Incident ) :boolean
+	*/
 	it('should delete row when event called and OK is clicked...', fakeAsync(() => {
 		//
-		console.log( 'deleteItemClicked ...' );
-		incidentServiceMock.mockCrudResponse =
-			new HttpResponse( { status: 204, statusText: 'OK' } );
-		const incident: Incident = sut.incidents[ 2 ];
-		const id: number = incident.IncidentId;
-		const ret: Boolean = sut.deleteItemClicked( incident );
-		confirmService.accept();
+		const delRow: Incident = sut.incidents[ 2 ];
+		const delId: number = delRow.IncidentId;
+		const expected: number = sut.incidents.length - 1;
+		incidentServiceSpy.deleteIncident.and.returnValue(of( 1 ));
+		spyOn(confirmService, 'confirm').and.callFake(
+			(confirmation: Confirmation) => {
+				console.log(confirmation.message);
+				return confirmation.accept();
+			});
+		const ret: boolean = sut.deleteItemClicked( delRow );
 		expect( ret ).toEqual( false );
-		tick( 10 );
-		// give it very small amount of time
-		expect( incidentServiceMock.mockDeleteId ).toBe( id );
-		//
+		tick(1000); // give it small amount of time
+		sut.windowDisplay = false;
+		expect( sut.incidents.length ).toBe( expected );
 		console.log(
 			'End of IncidentGridComponent ...\n' +
 			'===================================' );

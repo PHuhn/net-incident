@@ -10,7 +10,7 @@ import { FilterMetadata } from 'primeng/api';
 //
 import { IncidentService } from '../../../net-incident/services/incident.service';
 import { IIncident, Incident } from '../../../net-incident/incident';
-import { IncidentPaginationData } from '../../incidentpaginationdata';
+import { IncidentPaginationData } from '../../incident-pagination-data';
 import { LazyLoadingMock } from './LazyLoading.mock';
 import { ConsoleLogService } from '../../../global/console-log.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';

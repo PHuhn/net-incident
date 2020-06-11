@@ -14,7 +14,7 @@ import { Message } from '../../global/message';
 // import { AlertsService } from '../../global/alerts/alerts.service';
 import { IncidentService } from './incident.service';
 import { IIncident, Incident } from '../incident';
-import { IncidentPaginationData } from '../incidentpaginationdata';
+import { IncidentPaginationData } from '../incident-pagination-data';
 //
 describe('IncidentService', () => {
 	let sut: IncidentService;
