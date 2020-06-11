@@ -1481,6 +1481,20 @@ SOLUTION:
 	Changed to:
 		{ provide: UserService, useValue: userServiceSpy }
 
+PROBLEM:
+========
+	PrimeNG 9.0.3 resulted in the following in Jasmine tests:
+		context.js:265 Can't bind to 'pFocusTrapDisabled' since it isn't a known property of 'div'.
+SOLUTION:
+	Added to spec the following:
+		import { FocusTrapModule } from 'primeng/focustrap';
+		...
+			imports: [ ...,
+				FocusTrapModule,
+				...
+			],
+
+
 ===================================================
 Done:
 	service logging 12/22
@@ -1522,6 +1536,7 @@ Done:
 	V9.1.0.24 - NG 9.0.3 (2020-02-22)
 	V9.1.0.25 - handleError method loss of context (2020-02-23)
 	V9.1.0.26 - Removed [responsive]='true' from dialog and primeng 9.0.0 (2020-02-26)
+	V9.1.0.28 - Corrected tests, bind to 'pFocusTrapDisabled'
 
 To Do's:
 	V - delete of network-log not working

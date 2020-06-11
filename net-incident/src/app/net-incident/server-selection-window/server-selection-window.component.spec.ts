@@ -7,8 +7,8 @@ import { By } from '@angular/platform-browser';
 //
 import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-import { Header, Footer } from 'primeng/api';
-import { SelectItem } from 'primeng/api';
+import { FocusTrapModule } from 'primeng/focustrap';
+import { Header, Footer, SelectItem } from 'primeng/api';
 //
 import { ServerSelectionWindowComponent } from './server-selection-window.component';
 import { SelectItemClass } from '../../global/select-item-class';
@@ -31,6 +31,7 @@ describe('ServerSelectionWindowComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [ FormsModule,
+				FocusTrapModule,
 				BrowserAnimationsModule
 			],
 			declarations: [
@@ -69,7 +70,6 @@ describe('ServerSelectionWindowComponent', () => {
 		console.log( `win: ${sut.displayWin}  ${new Date().toISOString()}` );
 		const titleVar = fixture.debugElement.query(By.css(
 			'#serverSelectionWindow' )).nativeElement;
-		console.log( titleVar );
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			windowTitleSelector )).nativeElement;
 		console.log( title );
@@ -86,7 +86,6 @@ describe('ServerSelectionWindowComponent', () => {
 			`div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
-		console.log( radio );
 		spyOn( sut.onClose, 'emit' );
 		expect( radio.checked ).toBeFalsy(); // default state
 		//
@@ -103,7 +102,6 @@ describe('ServerSelectionWindowComponent', () => {
 			`div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
-		console.log( radio );
 		spyOn( sut.onClose, 'emit' );
 		expect( radio.checked ).toBeFalsy(); // default state
 		//

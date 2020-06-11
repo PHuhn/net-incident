@@ -11,9 +11,9 @@ import { Observable, throwError } from 'rxjs';
 import { TableModule } from 'primeng/table';
 import { Dialog } from 'primeng/dialog';
 import { ConfirmDialog } from 'primeng/confirmdialog';
-import { Header, Footer } from 'primeng/api';
+import { FocusTrapModule } from 'primeng/focustrap';
+import { Header, Footer, ConfirmationService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
-import { ConfirmationService } from 'primeng/api';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
@@ -66,6 +66,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 				TableModule,
 				ButtonModule,
 				DropdownModule,
+				FocusTrapModule,
 				BrowserAnimationsModule,
 				// HttpClient 4.3 testing
 				HttpClientModule,

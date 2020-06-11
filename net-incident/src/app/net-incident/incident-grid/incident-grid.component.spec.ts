@@ -10,10 +10,10 @@ import { HttpResponse } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { Dialog } from 'primeng/dialog';
 import { ConfirmDialog } from 'primeng/confirmdialog';
+import { FocusTrapModule } from 'primeng/focustrap';
 import { Header, Footer } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
-import { ConfirmationService, Confirmation, LazyLoadEvent } from 'primeng/api';
-import { SelectItem } from 'primeng/api';
+import { ConfirmationService, Confirmation, LazyLoadEvent, SelectItem } from 'primeng/api';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
@@ -103,6 +103,7 @@ describe( 'IncidentGridComponent', ( ) => {
 				TableModule,
 				ButtonModule,
 				DropdownModule,
+				FocusTrapModule,
 				BrowserAnimationsModule
 			],
 			declarations: [

@@ -11,9 +11,8 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
-import { Header, Footer } from 'primeng/api';
-import { ConfirmationService } from 'primeng/api';
-import { SelectItem } from 'primeng/api';
+import { FocusTrapModule } from 'primeng/focustrap';
+import { Header, Footer, ConfirmationService, SelectItem } from 'primeng/api';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { Alerts } from '../../global/alerts';
@@ -87,6 +86,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		TestBed.configureTestingModule(  {
 			imports: [ FormsModule,
 				ButtonModule,
+				FocusTrapModule,
 				DropdownModule,
 				BrowserAnimationsModule,
 				// HttpClient 4.3 testing
@@ -212,7 +212,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		console.log( 'onTypeIdDropdownChanged' );
 		const id: number = 4;
 		sut.onTypeIdDropdownChanged(id);
-		console.log( sut.model );
 		expect( sut.model.NoteTypeId ).toEqual( id );
 		//
 	} ) );
@@ -228,7 +227,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		servicesServiceSpy.getPing.and.returnValue(of( resp ));
 		sut.performIncidentType(id, 'ping');
 		tick(1000);
-		console.log( sut.model.Note );
 		expect( sut.model.Note ).toEqual( resp );
 		//
 	} ) );
@@ -243,7 +241,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		servicesServiceSpy.getPing.and.returnValue(of( resp ));
 		sut.getPing();
 		tick(1000);
-		console.log( sut.model.Note );
 		expect( sut.model.Note ).toEqual( resp );
 		sut.windowClose( false );
 		//
@@ -258,12 +255,14 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 			error: {}, status: 500, url: 'http://localhost', statusText: 'Bad Request' });
 		servicesServiceSpy.getPing.and.returnValue(of( resp ));
 		alertService.getAlerts().subscribe( (msg: Alerts) => {
-			console.log( msg );
 			expect( msg ).toBeTruthy( );
 			expect( msg.level ).toBe( AlertLevel.Error );
-		}, error =>	console.error( error ) );
+		}, error =>	{
+			console.error( error );
+			expect( 1 ).toEqual( 0 );
+		});
 		sut.getPing();
-		// sut.windowClose( false );
+		sut.windowClose( false );
 		//
 	} ) );
 	//
@@ -277,7 +276,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		servicesServiceSpy.getWhoIs.and.returnValue(of( resp ));
 		sut.getWhoIs();
 		tick(1000);
-		console.log( sut.model.Note );
 		expect( sut.model.Note ).toEqual( resp );
 		sut.windowClose( false );
 		//
@@ -291,7 +289,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		const resp = 'Email Template error: not found.';
 		sut.getReport();
 		tick(1000);
-		console.log( sut.model.Note );
 		expect( sut.model.Note ).toEqual( resp );
 		sut.windowClose( false );
 		//
@@ -307,9 +304,12 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 			console.log( msg );
 			expect( msg ).toBeTruthy( );
 			expect( msg.level ).toBe( AlertLevel.Warning );
-		}, error =>	console.error( error ) );
+		}, error =>	{
+			console.error( error );
+			expect( 1 ).toEqual( 0 );
+		});
 		sut.validate();
-		console.log( `validate and display an alert warning.` );
+		sut.windowClose( false );
 		//
 	} ) );
 	//
@@ -319,7 +319,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		//
 		const data = mockDatum[0];
 		const errMsgs: Message[] = sut.validateNote(data, false);
-		console.log( errMsgs );
 		expect( errMsgs.length ).toEqual( 0 );
 		console.log(
 			'End of IncidentNoteDetailWindowComponent.\n' +

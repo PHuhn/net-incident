@@ -13,6 +13,7 @@ import { TableModule } from 'primeng/table';
 import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
+import { FocusTrapModule } from 'primeng/focustrap';
 import { Header, Footer, ConfirmationService } from 'primeng/api';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
@@ -77,6 +78,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 				ButtonModule,
 				TableModule,
 				DropdownModule,
+				FocusTrapModule,
 				BrowserAnimationsModule
 			],
 			declarations: [
