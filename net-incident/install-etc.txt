@@ -1494,6 +1494,30 @@ SOLUTION:
 				...
 			],
 
+PROBLEM:
+========
+	In app:
+		ERROR in src/app/expenses/week/week.component.html:17:64 - error NG8002: Can't bind to 'ngModel' since it isn't a known property of 'p-radioButton'.
+SOLUTION:
+	Added to app-module GlobalModule, ie FormsModule
+
+PROBLEM:
+========
+	In spec test:
+		Can't bind to 'ngModel' since it isn't a known property of 'p-radioButton'
+SOLUTION:
+	Added both to spec:
+			imports: [
+				FormsModule,
+				RadioButtonModule
+			],
+
+PROBLEM:
+========
+	In spec, ExpenseComponent > should create
+	Error: No value accessor for form control with name: 'WeekToolbar'
+SOLUTION:
+	Added to spec: imports of RadioButtonModule
 
 ===================================================
 Done:
