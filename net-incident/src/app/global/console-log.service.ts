@@ -7,7 +7,18 @@ import { LogLevel } from './log-level.enum';
 @Injectable({ providedIn: 'root' })
 export class ConsoleLogService {
 	//
-	constructor() { }
+	private _logLevel: LogLevel;
+	get logLevel(): LogLevel {
+		return this._logLevel;
+	}
+	set logLevel(newName: LogLevel) {
+		this._logLevel = newName;
+	}
+	//
+	constructor() {
+		//	this._logLevel = logLevel;
+		this._logLevel = environment.logLevel;
+	}
 	//
 	// Write a error (LogLevel) LogMessage to console.
 	public Error(message: string ): number {
@@ -36,7 +47,7 @@ export class ConsoleLogService {
 	// do it in one place
 	private LogMessage( logLevel: LogLevel, message: string): number {
 		// 0=error, 1=warning, 2=info, 3=debug, 4=verbose
-		if( logLevel <= environment.logLevel ) {
+		if( logLevel <= this._logLevel ) {
 			const _logString = this.getEnumKeyByEnumValue(LogLevel, logLevel);
 			switch(logLevel) {
 				case LogLevel.Error:
