@@ -85,4 +85,36 @@ describe('AlertsComponent', () => {
 		expect(sut.msgs[2].message).toBe('error');
 	});
 	//
+	it('should close on-click of alert message ...', () => {
+		service.setAlerts(AlertLevel.Info, [new Message('1','Hello World')]);
+		expect(sut.level).toBe(AlertLevel.Info);
+		expect(sut.msgs.length).toBe(1);
+		expect(sut.msgs[0].message).toBe('Hello World');
+		const ret = sut.onClick();
+		expect( ret ).toBe( false );
+		expect( sut.showMsgs ).toBe( false );
+		expect( sut.msgs.length ).toBe( 0 );
+	});
+	//
+	it('warning message should return class ...', () => {
+		service.setAlerts(AlertLevel.Warning, [new Message('1','Hello World')]);
+		expect(sut.level).toBe(AlertLevel.Warning);
+		let css = sut.getClass( );
+		expect( css ).toEqual( 'alertMessages nsg-msg-warning' );
+	});
+	//
+	it('error message should return class ...', () => {
+		service.setAlerts(AlertLevel.Error, [new Message('1','Hello World')]);
+		expect(sut.level).toBe(AlertLevel.Error);
+		let css = sut.getClass( );
+		expect( css ).toEqual( 'alertMessages nsg-msg-danger' );
+	});
+	//
+	it('info message should return class ...', () => {
+		service.setAlerts(AlertLevel.Info, [new Message('1','Hello World')]);
+		expect(sut.level).toBe(AlertLevel.Info);
+		let css = sut.getClass( );
+		expect( css ).toEqual( 'alertMessages nsg-msg-info' );
+	});
+	//
 });

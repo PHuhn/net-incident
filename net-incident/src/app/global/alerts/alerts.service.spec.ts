@@ -95,4 +95,17 @@ describe('AlertsService', () => {
 		service.warningSet( msgs );
 	});
 	//
+	it('should take warningInit/Add/Post ...', () => {
+		const msg: string = 'Is required.';
+		service.warningInit( );
+		service.warningAdd( msg );
+		const subscription = service.getAlerts().subscribe(
+			(alertMsg: Alerts) => {
+			expect(alertMsg.level).toBe(AlertLevel.Warning);
+			expect(alertMsg.messages.length).toBeTruthy(1);
+			expect(alertMsg.messages[0].message).toBe( msg );
+		}, error =>	console.log( error ) );
+		service.warningPost( );
+	});
+	//
 });
