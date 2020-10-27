@@ -1519,6 +1519,42 @@ PROBLEM:
 SOLUTION:
 	Added to spec: imports of RadioButtonModule
 
+PROBLEM:
+========
+	PimeNG change CSS style in ver 10
+SOLUTION:
+	Converted to bootstrap...
+		ui-grid-row -> row
+		nsg-content	-> container
+		ui-grid-col-	-> col-md-
+		ui-button-	-> p-button-
+		 ui-inputgroup	-> ''
+		 ui-inputtext	-> ''
+
+PROBLEM:
+========
+	In Jasmine test:
+	Failed: this._data.getNoteTypesCount(...).subscribe is not a function
+SOLUTION:
+	Changed:
+		noteTypeServiceSpy.getNoteTypesCount.and.returnValue( 6 );
+	to:
+		noteTypeServiceSpy.getNoteTypesCount.and.returnValue( of( 6 ) );
+
+PROBLEM:
+========
+	In Chrome developer tool:
+	core.js:4197 ERROR Error: No value accessor for form control with name: 'RealTime'
+	    at _throwError (forms.js:2440), at setUpControl (forms.js:2348), at NgModel._setUpStandalone (forms.js:5042)
+SOLUTION:
+	import { CheckboxModule } from 'primeng/checkbox';
+	//
+	export const APP_PRIMENG_MODULE = [
+		...
+		CheckboxModule
+	];
+	also had to restart 'ng serve'
+
 ===================================================
 Done:
 	service logging 12/22
