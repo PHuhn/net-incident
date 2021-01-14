@@ -32,40 +32,40 @@
 				<td>{{rowData['IncidentTypeShortDesc']}}</td>
 				<td>{{rowData['Log'] | truncate:[20, '...']}}</td>
 				<td *ngIf='!disabled'>
-					<button (click)="deleteItemClicked( networklog )" pButton type="button" icon="pi pi-trash" class="ui-button-danger"></button>
+					<button (click)="deleteItemClicked( networklog )" pButton type="button" icon="pi pi-trash" class="p-button-danger"></button>
 				</td>
 			</tr>
 		</ng-template>
 		<ng-template let-networklog pTemplate='rowexpansion'>
 			<tr><td [(attr.colspan)]='expansionColSpan'>
-				<div class='ui-grid ui-grid-responsive ui-fluid'>
-					<div class='ui-grid-row ui-inputgroup'>
-						<div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NetworkLogId'>Network Log Id:&nbsp;</label></div>
-						<div class='ui-grid-col-9' id='NetworkLogId'>{{networklog.NetworkLogId}}</div>
+				<div>
+					<div class='row'>
+						<div class='col-lg-2 col-md-3 col-sm-12 nsg-primary-color nsg-text-right'><label for='NetworkLogId'>Network Log Id:&nbsp;</label></div>
+						<div class='col-lg-9 col-md-9 col-sm-12' id='NetworkLogId'>{{networklog.NetworkLogId}}</div>
 					</div>
-					<div class='ui-grid-row ui-inputgroup'>
-						<div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='ServerId'>Server Id:&nbsp;</label></div>
-						<div class='ui-grid-col-9' id='ServerId'>{{networklog.ServerId}}</div>
+					<div class='row'>
+						<div class='col-lg-2 col-md-3 col-sm-12 nsg-primary-color nsg-text-right'><label for='ServerId'>Server Id:&nbsp;</label></div>
+						<div class='col-lg-9 col-md-9 col-sm-12' id='ServerId'>{{networklog.ServerId}}</div>
 					</div>
-					<div class='ui-grid-row ui-inputgroup'>
-						<div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='IncidentId'>Incident Id:&nbsp;</label></div>
-						<div class='ui-grid-col-9' id='IncidentId'>{{networklog.IncidentId}}</div>
+					<div class='row'>
+						<div class='col-lg-2 col-md-3 col-sm-12 nsg-primary-color nsg-text-right'><label for='IncidentId'>Incident Id:&nbsp;</label></div>
+						<div class='col-lg-9 col-md-9 col-sm-12' id='IncidentId'>{{networklog.IncidentId}}</div>
 					</div>
-					<div class='ui-grid-row ui-inputgroup'>
-						<div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='IPAddress'>IP Address:&nbsp;</label></div>
-						<div class='ui-grid-col-9' id='IPAddress'>{{networklog.IPAddress}}</div>
+					<div class='row'>
+						<div class='col-lg-2 col-md-3 col-sm-12 nsg-primary-color nsg-text-right'><label for='IPAddress'>IP Address:&nbsp;</label></div>
+						<div class='col-lg-9 col-md-9 col-sm-12' id='IPAddress'>{{networklog.IPAddress}}</div>
 					</div>
-					<div class='ui-grid-row ui-inputgroup'>
-						<div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='NetworkLogDate'>Log Date:&nbsp;</label></div>
-						<div class='ui-grid-col-9' id='NetworkLogDate'>{{networklog.NetworkLogDate | date: 'yyyy-MM-dd HH:mm:ss'}}</div>
+					<div class='row'>
+						<div class='col-lg-2 col-md-3 col-sm-12 nsg-primary-color nsg-text-right'><label for='NetworkLogDate'>Log Date:&nbsp;</label></div>
+						<div class='col-lg-9 col-md-9 col-sm-12' id='NetworkLogDate'>{{networklog.NetworkLogDate | date: 'yyyy-MM-dd HH:mm:ss'}}</div>
 					</div>
-					<div class='ui-grid-row ui-inputgroup'>
-						<div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='IncidentTypeId'>Type:&nbsp;</label></div>
-						<div class='ui-grid-col-9' id='IncidentTypeId'> {{networklog.IncidentTypeShortDesc}} ({{networklog.IncidentTypeId}})</div>
+					<div class='row'>
+						<div class='col-lg-2 col-md-3 col-sm-12 nsg-primary-color nsg-text-right'><label for='IncidentTypeId'>Type:&nbsp;</label></div>
+						<div class='col-lg-9 col-md-9 col-sm-12' id='IncidentTypeId'> {{networklog.IncidentTypeShortDesc}} ({{networklog.IncidentTypeId}})</div>
 					</div>
-					<div class='ui-grid-row ui-inputgroup'>
-						<div class='ui-grid-col-3 nsg-primary-color nsg-text-right'><label for='Log'>Log:&nbsp;</label></div>
-						<div class='ui-grid-col-9' id='Log'>{{networklog.Log}}</div>
+					<div class='row'>
+						<div class='col-lg-2 col-md-3 col-sm-12 nsg-primary-color nsg-text-right'><label for='Log'>Log:&nbsp;</label></div>
+						<div class='col-lg-9 col-md-9 col-sm-12' id='Log'>{{networklog.Log}}</div>
 					</div>
 				</div>
 			</td><tr>

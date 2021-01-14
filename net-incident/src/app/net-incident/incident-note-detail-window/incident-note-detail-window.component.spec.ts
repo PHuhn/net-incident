@@ -1,5 +1,5 @@
 // ===========================================================================
-import { async, ComponentFixture, TestBed, getTestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, getTestBed, inject, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of, throwError } from 'rxjs';
@@ -82,7 +82,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	//
 	const netInc = new NetworkIncident();
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule(  {
 			imports: [ FormsModule,
 				ButtonModule,

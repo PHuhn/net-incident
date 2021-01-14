@@ -1,6 +1,6 @@
 // ===========================================================================
 // File: services.service.spec.ts
-import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
+import { TestBed, getTestBed, inject, waitForAsync } from '@angular/core/testing';
 //
 import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -18,7 +18,7 @@ describe('ServicesService', () => {
 	let http: HttpClient;
 	let backend: HttpTestingController;
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule( {
 			imports: [
 				// no more boilerplate code w/ custom providers needed :-)
@@ -58,7 +58,7 @@ describe('ServicesService', () => {
 	//
 	// getPing( ipAddress: string ): Observable<string>
 	//
-	it( 'should get ping results...', async( ( ) => {
+	it( 'should get ping results...', waitForAsync( ( ) => {
 		//
 		const ipAddress = '192.168.0.0';
 		const pingUrl: string = `${baseUrl}services/ping/${ipAddress}`;
@@ -76,7 +76,7 @@ describe('ServicesService', () => {
 	//
 	// getWhoIs( ipAddress: string ): Observable<string>
 	//
-	it( 'should get whois results...', async( ( ) => {
+	it( 'should get whois results...', waitForAsync( ( ) => {
 		//
 		const ipAddress = '192.168.0.1';
 		sut.getWhoIs( ipAddress ).subscribe( ( datum ) => {
@@ -92,7 +92,7 @@ describe('ServicesService', () => {
 	//
 	// handleError( error: any )
 	//
-	it( 'should throw a response error...', async(() => {
+	it( 'should throw a response error...', waitForAsync(() => {
 		//
 		const errMsg: string = 'Fake error';
 		const resp: any = new HttpErrorResponse(
@@ -108,7 +108,7 @@ describe('ServicesService', () => {
 	//
 	// handleError( error: any )
 	//
-	it( 'should throw a string error...', async(() => {
+	it( 'should throw a string error...', waitForAsync(() => {
 		//
 		const errMsg: string = 'Fake error';
 		//
@@ -122,7 +122,7 @@ describe('ServicesService', () => {
 	//
 	// getWhoIs( ipAddress: string ): Observable<string>
 	//
-	it( 'should handle a whois error results...', async( ( ) => {
+	it( 'should handle a whois error results...', waitForAsync( ( ) => {
 		//
 		const ipAddress = '192.168.0.1';
 		const errMsg: string = 'Fake error';

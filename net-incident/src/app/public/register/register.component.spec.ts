@@ -1,6 +1,6 @@
 // ===========================================================================
 // File: register.component.spec.ts
-import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, throwError } from 'rxjs';
@@ -18,7 +18,7 @@ describe('RegisterComponent', () => {
 	let userServiceMock: UserServiceMock;
 	let fixture: ComponentFixture<RegisterComponent>;
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		//
 		TestBed.configureTestingModule({
 			imports: [

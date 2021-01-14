@@ -24,28 +24,28 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-error" })
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.Email, new { @class = "col-lg-1 col-md-2 col-sm-12 control-label" })
+        <div class="col-lg-1 col-md-1 col-sm-120">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.Password, new { @class = "col-lg-1 col-md-2 col-sm-12 control-label" })
+        <div class="col-lg-1 col-md-1 col-sm-120">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-lg-1 col-md-2 col-sm-12 control-label" })
+        <div class="col-lg-1 col-md-1 col-sm-120">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        <label class="col-md-2 control-label">
+        <label class="col-lg-1 col-md-2 col-sm-12 control-label">
             Select User Role
         </label>
-        <div class="col-md-10">
+        <div class="col-lg-1 col-md-1 col-sm-120">
             @foreach (var item in (SelectList)ViewBag.RoleId)
             {
                 <input type="checkbox" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />

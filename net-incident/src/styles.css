@@ -4,13 +4,13 @@ Afterdark, afternoon, Afterwork, Aristo, Black-Tie, Blitzer, Bluesky, Bootstrap,
  Casablanca, cruze, !cupertino, Dark-Hive, Delta, Dot-Luv, Eggplant, Excite-Bike,
  !flick, Glass-x, Home, Hot-Sneaks, Humanity, Le-Frog, Midnight, Mint-Choc,
  Overcast, Pepper-grinder, !Redmond, Rocket, Sam, Smoothness, South-street, !Start,
- Sunny, Swanky-Purse, Trontastic, UI-Darkness, UI-Lightness, Vader
+ Sunny, Swanky-Purse, Trontastic, Darkness, Lightness, Vader
  luna-amber, luna-blue, luna-green, luna-pink, nova-colored, nova-dark, nova-light, rhea
-*/
+* moved to angular.json config file
 @import "primeicons/primeicons.css";
 @import "primeng/resources/themes/nova-light/theme.css";
 @import "primeng/resources/primeng.min.css";
-/*
+*
 ==============================================================================
 custom html styling
 */
@@ -48,17 +48,17 @@ h6 { font-size: 1.30rem; }
 PrimeNg
 */
 /* remove boxes around inputs */
-body .ui-inputtext { padding: 0px 0 2px 0; border: 0 none; }
+body .p-inputtext { padding: 0px 0 2px 0; border: 0 none; }
 /* style popup dialogs boxes */
-body .ui-dialog .ui-dialog-titlebar { font-weight: bold; }
-body .ui-dialog .ui-dialog-footer { background-color: #f4f4f4; }
+body .p-dialog .p-dialog-titlebar { font-weight: bold; }
+body .p-dialog .p-dialog-footer { background-color: #f4f4f4; }
 /* icon button sizing */
-body .ui-fluid .ui-button-icon-only { width: 1.8em; }
-body .ui-button { font-size: 12px; }
-body .ui-button.ui-state-default.ui-button-secondary, body .ui-buttonset.ui-button-secondary > .ui-button.ui-state-default {
+body .p-fluid .p-button-icon-only { width: 1.8em; }
+body .p-button { font-size: 12px; }
+body .p-button.p-state-default.p-button-secondary, body .p-buttonset.p-button-secondary > .p-button.p-state-default {
 	border: 1px solid gray; }
 /* selected table item */
-body .ui-table .ui-table-tbody > tr.ui-state-highlight {
+body .p-table .p-table-tbody > tr.p-state-highlight {
     background-color: #add8e6; color: #000000;
 }
 /*
@@ -106,7 +106,7 @@ NSG
 }
 /* https://www.sessions.edu/color-calculator/ */
 .nsg-inputtext { padding: 1px 1px 1px 4px; font-size: 1.2rem; border: 0 none; }
-.nsg-primary-color { color: #0073ea; } /* #0073ea .ui-state-default */
+.nsg-primary-color { color: #0073ea; } /* #0073ea .p-state-default */
 .nsg-color-back { color: #000000; } /* black */
 .nsg-bold { font-weight: bold; }
 .nsg-complementary-color { color: #ea5a00; }
@@ -119,22 +119,25 @@ NSG
 .nsg-text-center { text-align: center !important; }
 .nsg-spacer25 { height: 25px; }
 .nsg-button-div { width: 40px; height: 32px; padding: 0; margin: 0; }
+.nsg-grid-button-td { padding: 9.136px 8px; }
 .nsg-icon-button { width: 110px; }
 .nsg-link-div { color: #0073ea; text-decoration: underline; }
+.nsg-column-container {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
 /* custom content sizing style */
 /* media queries must appear in low to high order */
-.nsg-content {
-	margin: auto;
-	position: relative;
-}
 .nsg-block-center { text-align: center; }
+@media (max-width: 768px) {
+	.nsg-text-right { text-align: left !important; }
+}
 /*
 @media (min-width: 481px) { .nsg-content { width: 480px; max-width: 100%; } }
 @media (min-width: 641px) { .nsg-content { width: 640px; max-width: 100%; } }
 */
-@media (max-width: 769px) {
-	.nsg-text-right { text-align: left !important; }
-}
+/* .nsg-content { margin: auto; position: relative; }
 @media (min-width: 961px) {
 	.nsg-content { width: 960px; max-width: 100%; }
 }
@@ -147,4 +150,5 @@ NSG
 @media (min-width: 1551px) {
 	.nsg-content { width: 94%; }
 }
+*/
 /* End of style.css */

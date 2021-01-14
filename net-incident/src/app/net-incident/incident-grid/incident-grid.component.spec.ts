@@ -1,5 +1,5 @@
 // ===========================================================================
-import { async, ComponentFixture, TestBed, inject, fakeAsync, tick, discardPeriodicTasks, getTestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, fakeAsync, tick, discardPeriodicTasks, getTestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of, throwError, interval } from 'rxjs';
@@ -63,7 +63,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	// let detailWindow: DetailWindowInput;
 	const expectedWindowTitle: string = 'Incident Detail';
 	const windowTitleSelector: string =
-		'app-incident-detail-window > p-dialog > div > div.ui-dialog-titlebar > span > p-header > div';
+		'app-incident-detail-window > p-dialog > div > div.p-dialog-titlebar > span > p-header > div';
 	const testDate: Date = new Date('2000-01-01T00:00:00');
 	const startDate: Date = new Date('2018-03-11T02:00:00');
 	const endDate: Date = new Date('2018-11-04T02:00:00');
@@ -96,7 +96,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	const selectItemsWindow: SelectItem[] = user.ServerShortNames;
 	const displayServersWindow: boolean = false;
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule( {
 			imports: [
 				FormsModule,
@@ -133,7 +133,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		TestBed.compileComponents( );
 	}));
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		// clone the array with slice( 0 )
 		const page = new IncidentPaginationData( );
 		const event = {"first":0,"rows":5,"sortField":"IncidentId","sortOrder":-1,"filters":{"ServerId":{"value":1,"matchMode":"equals"},"Mailed":{"value":false,"matchMode":"equals"},"Closed":{"value":false,"matchMode":"equals"},"Special":{"value":false,"matchMode":"equals"}},"globalFilter":null} as LazyLoadEvent;
@@ -182,7 +182,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	//
 	// Component instantiates
 	//
-	it( 'should be created ...', async( () => {
+	it( 'should be created ...', waitForAsync( () => {
 		console.log(
 			'===================================\n' +
 			'IncidentGridComponent should create ...' );
@@ -260,7 +260,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		//
 		expect( sut.displayServersWindow ).toEqual( true );
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
-			'#serverSelectionWindow > div > div > div.ui-dialog-titlebar > span.ui-dialog-title > p-header' )).nativeElement;
+			'#serverSelectionWindow > div > div > div.p-dialog-titlebar > span.p-dialog-title > p-header' )).nativeElement;
 		expect( title.innerText.trim( ) ).toEqual( `Select a server` );
 		console.log( `onChangeServer ... completed ${new Date().toISOString()}` );
 	}));

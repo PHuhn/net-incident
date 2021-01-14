@@ -1,5 +1,5 @@
 // ===========================================================================
-import { async, ComponentFixture, TestBed, getTestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, getTestBed, inject, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
@@ -42,7 +42,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	//
 	const expectedWindowTitle: string = 'Incident Note Detail: ';
 	const windowTitleSelector: string =
-		'app-incidentnote-detail-window > p-dialog > div > div.ui-dialog-titlebar > span > p-header > div';
+		'app-incidentnote-detail-window > p-dialog > div > div.p-dialog-titlebar > span > p-header > div';
 	const ipAddr: string = '192.169.1.1';
 	//
 	const mockDatum = [
@@ -59,7 +59,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	//
 	const netInc = new NetworkIncident();
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule(  {
 			imports: [
 				FormsModule,
@@ -130,7 +130,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	//
 	// addItemClicked( )
 	//
-	it('should launch detail window when addItemClicked is called ...', async( () => {
+	it('should launch detail window when addItemClicked is called ...', waitForAsync( () => {
 		console.log( 'addItemClicked is called ...' );
 		sut.addItemClicked( );
 		//
@@ -152,7 +152,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	//
 	// editItemClicked( )
 	//
-	it('should launch detail window when editItemClicked is called ...', async( () => {
+	it('should launch detail window when editItemClicked is called ...', waitForAsync( () => {
 		console.log( 'editItemClicked is called ...' );
 		const incidentNote: IncidentNote = sut.networkIncident.incidentNotes[ 3 ];
 		sut.editItemClicked( incidentNote );

@@ -1530,6 +1530,8 @@ SOLUTION:
 		ui-button-	-> p-button-
 		 ui-inputgroup	-> ''
 		 ui-inputtext	-> ''
+		ui-grid ui-grid-responsive ui-fluid 	-> ''
+		ui-dialog	-> p-dialog
 
 PROBLEM:
 ========

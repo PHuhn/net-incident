@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 //
 import { Menubar, MenubarModule } from 'primeng/menubar';
@@ -9,7 +9,7 @@ describe('HeaderComponent', () => {
 	let sut: HeaderComponent;
 	let fixture: ComponentFixture<HeaderComponent>;
 
-	beforeEach(async(() => {
+	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			imports: [
 				RouterTestingModule,

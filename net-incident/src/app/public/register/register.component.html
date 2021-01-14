@@ -2,60 +2,60 @@
 	<div class='nsg-primary-color nsg-block-center'>
 		<h3>Register</h3>
 	</div>
-	<div class='ui-grid-row ui-inputgroup'>
-		<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='registerAccount'>User Name:</label></div>
-		<div class='ui-grid-col-8	ui-inputtext'>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='registerAccount'>User Name:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
 			<input type='text' id='registerAccount' name='registerAccount' maxlength='256' size='40'
 				#RegisterAccount='ngModel' [(ngModel)]='registerAccount' />
 		</div>
 	</div>
-	<div class='ui-grid-row ui-inputgroup'>
-		<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='registerEmail'>Email:</label></div>
-		<div class='ui-grid-col-8 ui-inputtext'>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='registerEmail'>Email:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
 			<input type='text' id='registerEmail' name='registerEmail' maxlength='256' size='40'
 				#RegisterEmail='ngModel' [(ngModel)]='registerEmail' />
 		</div>
 	</div>
-	<div class='ui-grid-row ui-inputgroup'>
-		<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='registerPassword'>Password:</label></div>
-		<div class='ui-grid-col-8 ui-inputtext'>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='registerPassword'>Password:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
 			<input type='text' id='registerPassword' name='registerPassword' maxlength='256' size='40'
 				#RegisterPassword='ngModel' [(ngModel)]='registerPassword' />
 		</div>
 	</div>
-	<div class='ui-grid-row ui-inputgroup'>
-		<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='registerConfirmPassword'>Confirm Password:</label></div>
-		<div class='ui-grid-col-8 ui-inputtext'>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='registerConfirmPassword'>Confirm Password:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
 			<input type='text' id='registerConfirmPassword' name='registerConfirmPassword' maxlength='256' size='40'
 				#RegisterConfirmPassword='ngModel' [(ngModel)]='registerConfirmPassword' />
 		</div>
 	</div>
-	<div class='ui-grid-row ui-inputgroup'>
-		<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='registerFirstName'>First Name:</label></div>
-		<div class='ui-grid-col-8 ui-inputtext'>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='registerFirstName'>First Name:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
 			<input type='text' id='registerFirstName' name='registerFirstName' maxlength='100' size='40'
 				#RegisterFirstName='ngModel' [(ngModel)]='registerFirstName' />
 		</div>
 	</div>
-	<div class='ui-grid-row ui-inputgroup'>
-		<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='registerLastName'>Last Name:</label></div>
-		<div class='ui-grid-col-8 ui-inputtext'>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='registerLastName'>Last Name:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
 			<input type='text' id='registerLastName' name='registerLastName' maxlength='100' size='40'
 				#RegisterLastName='ngModel' [(ngModel)]='registerLastName' />
 		</div>
 	</div>
-	<div class='ui-grid-row ui-inputgroup'>
-		<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='registerServerShortName'>Server/Device:</label></div>
-		<div class='ui-grid-col-8 ui-inputtext'>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='registerServerShortName'>Server/Device:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
 			<input type='text' id='registerServerShortName' name='registerServerShortName' maxlength='12' size='12'
 				#RegisterServerShortName='ngModel' [(ngModel)]='registerServerShortName' />
 		</div>
 	</div>
-	<div class='ui-grid-row ui-inputgroup'>
-		<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'>&nbsp;</div>
-		<div class='ui-grid-col-8 ui-inputtext'>
-			<button pButton type='button' (click)='registerUser()' class='ui-button-primary' label='Register'></button>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'>&nbsp;</div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
+			<button pButton type='button' (click)='registerUser()' class='p-button-primary' label='Register'></button>
 		</div>
 	</div>
-	<div class='ui-grid-row'>&nbsp;</div>
+	<div class='row'>&nbsp;</div>
 </div>

@@ -1,5 +1,5 @@
 // ===========================================================================
-import { async, ComponentFixture, TestBed, inject, fakeAsync, tick, getTestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, fakeAsync, tick, getTestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
@@ -72,7 +72,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		new NetworkLog( 6,1,null,'192.5',new Date( '2018-02-27T00:00:00-05:00' ),'Log 6',1, 'SQL', false )
 	];
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule(  {
 			imports: [ FormsModule,
 				ButtonModule,
@@ -104,7 +104,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		TestBed.compileComponents( );
 	}));
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		fixture = TestBed.createComponent( IncidentDetailWindowComponent );
 		sut = fixture.componentInstance;
 		//
@@ -147,7 +147,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	//
 	// Verify data is transmitted to model via @input statement
 	//
-	it( 'should get the mock data...', async( ( ) => {
+	it( 'should get the mock data...', waitForAsync( ( ) => {
 		//
 		console.log(
 			'***********************************' );
@@ -185,7 +185,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	//
 	// Simulate a button clicked, call directly windowClose for createItem
 	//
-	it('should create NetworkIncident class when createItem called ...', async( () => {
+	it('should create NetworkIncident class when createItem called ...', waitForAsync( () => {
 		//
 		console.log( `Create NetworkIncident class when createItem called: ${new Date().toISOString()}` );
 		const id = 100;
@@ -228,7 +228,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	//
 	// Simulate a cancel button clicked, call directly windowClose
 	//
-	it('should emit when canceled ...', async( () => {
+	it('should emit when canceled ...', waitForAsync( () => {
 		//
 		sut.onClose.subscribe( saved => {
 			console.log( 'In onClose callback cancel ...' );

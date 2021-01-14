@@ -67,8 +67,8 @@
                                    data-parent="#accordion"
                                    href="@string.Format("#collapse-{0}", srv.ServerId)"
                                    aria-expanded="false" aria-controls="@string.Format("collapse-{0}", srv.ServerId)">
-                                    <label class="col-md-1 nsg-label" for="ServerShortName">Server:</label>
-                                    <div class="col-md-11">
+                                    <label class="col-lg-1 col-md-1 col-sm-12 nsg-label" for="ServerShortName">Server:</label>
+                                    <div class="col-lg-1 col-md-1 col-sm-121">
                                         @Html.DisplayFor(model => srv.ServerShortName)
                                         (@Html.DisplayFor(model => srv.ServerId))
                                         - @Html.DisplayFor(model => srv.ServerName)
@@ -79,9 +79,9 @@
                         </div>
                         <div id="@string.Format("collapse-{0}", srv.ServerId)" class="panel-collapse collapse" role="tabpanel" aria-labelledby="@string.Format("panel-{0}", srv.ServerId)">
                             <div class="panel-body">
-                                <div class="col-md-11">
+                                <div class="col-lg-1 col-md-1 col-sm-121">
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-lg-1 col-md-1 col-sm-12">
                                     <input type="submit" value="Delete" class="btn btn-danger" />
                                 </div>
                                 @Html.Partial("ServerDetailPartial", srv)

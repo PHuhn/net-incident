@@ -2,7 +2,7 @@
 // File: Incident.service.spec.ts
 // Tests of service for: Incident
 //
-import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
+import { TestBed, getTestBed, inject, waitForAsync } from '@angular/core/testing';
 //
 import { HttpClientModule, HttpClient, HttpErrorResponse, HttpRequest, HttpResponseBase } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
@@ -36,7 +36,7 @@ describe('IncidentService', () => {
 		new Incident( 9,1,'192.9','arin.net','nn3','a@3.com','',true,true,true,'i 3',testDate )
 	];
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule( {
 			imports: [
 				// HttpClient 4.3 testing
@@ -74,7 +74,7 @@ describe('IncidentService', () => {
 	//
 	// getIncidents( ) : Observable<IIncident[]>
 	//
-	it( 'should get all IIncident results...', async( ( ) => {
+	it( 'should get all IIncident results...', waitForAsync( ( ) => {
 		//
 		const srvId: number = 1;
 		sut.getIncidents(1, false, false, false).subscribe( ( datum ) => {
@@ -90,7 +90,7 @@ describe('IncidentService', () => {
 	//
 	// getIncidentsLazy( ) : Observable<IIncident[]>
 	//
-	it( 'should get page of IIncident results...', async( ( ) => {
+	it( 'should get page of IIncident results...', waitForAsync( ( ) => {
 		//
 		const event: LazyLoadEvent = {};
 		const srvId: number = 1;
@@ -125,7 +125,7 @@ describe('IncidentService', () => {
 	//
 	// createIncident( Incident: IIncident )
 	//
-	it( 'should create a new row...', async( ( ) => {
+	it( 'should create a new row...', waitForAsync( ( ) => {
 		//
 		const mockData: Incident = mockDatum[ 2 ];
 		const id1: number = mockData.IncidentId;
@@ -140,7 +140,7 @@ describe('IncidentService', () => {
 	//
 	// updateIncident( Incident: IIncident )
 	//
-	it( 'should update Incident row...', async( ( ) => {
+	it( 'should update Incident row...', waitForAsync( ( ) => {
 		//
 		const mockData: Incident = mockDatum[ 2 ];
 		const id1: number = mockData.IncidentId;
@@ -156,7 +156,7 @@ describe('IncidentService', () => {
 	// deleteIncident( IncidentId: string )
 	// 204 says explicitly that you do not include a response body
 	//
-	it( 'should delete Incident row...', async( ( ) => {
+	it( 'should delete Incident row...', waitForAsync( ( ) => {
 		//
 		const mockData: Incident = mockDatum[ 2 ];
 		const id1: number = mockData.IncidentId;
@@ -171,7 +171,7 @@ describe('IncidentService', () => {
 	//
 	// handleError( error: any )
 	//
-	it( 'handleError should throw an any error ...', async( ( ) => {
+	it( 'handleError should throw an any error ...', waitForAsync( ( ) => {
 		console.log( 'should throw an any error ...' );
 		//
 		const resp: string = errMsg;
@@ -187,7 +187,7 @@ describe('IncidentService', () => {
 	//
 	// handleError( error: any )
 	//
-	it( 'handleError should throw a HttpErrorResponse error...', async( ( ) => {
+	it( 'handleError should throw a HttpErrorResponse error...', waitForAsync( ( ) => {
 		//
 		const resp: HttpErrorResponse = new HttpErrorResponse({
 			error: {}, status: 404, statusText: errMsg
@@ -204,7 +204,7 @@ describe('IncidentService', () => {
 	//
 	// handleError( error: any )
 	//
-	it( 'handleError should handle a string error...', async( ( ) => {
+	it( 'handleError should handle a string error...', waitForAsync( ( ) => {
 		//
 		const resp: string = errMsg;
 		//
@@ -219,7 +219,7 @@ describe('IncidentService', () => {
 	//
 	// handle a create error
 	//
-	it( 'should handle an error on create...', async(() => {
+	it( 'should handle an error on create...', waitForAsync(() => {
 		//
 		console.log( 'handle an error on create...' );
 		const mockData: Incident = mockDatum[ 2 ];

@@ -15,112 +15,112 @@ public static MvcForm BeginForm(
         @Html.HiddenFor(model => model.ServerId)
         @Html.HiddenFor(model => model.CompanyId)
         @Html.HiddenFor(model => model.CompanyName)
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="ServerId">Id</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="ServerId">Id</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.DisplayFor(model => model.ServerId)
                 </div>
             </div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-lg-4 col-md-5 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="ServerShortName">Short Name</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="ServerShortName">Short Name</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.ServerShortName, new { htmlAttributes = new { @class = "form-control", @maxlength = "12", @style = "width:160px" } })
                     @Html.ValidationMessageFor(model => model.ServerShortName, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
-        <div class="col-md-1">
+        <div class="col-lg-1 col-md-1 col-sm-12">
             <input type="submit" value="Save" class="btn btn-info" />
         </div>
 
-        <div class="col-md-12">
+        <div class="col-lg-1 col-md-1 col-sm-12">
             <div class="form-group">
                 <label class="nsg-md-1-1 nsg-label" for="ServerName">* Name</label>
-                <div class="col-md-10">
+                <div class="col-lg-1 col-md-1 col-sm-120">
                     @Html.EditorFor(model => model.ServerName, new { htmlAttributes = new { @class = "form-control", @maxlength = "80", @style = "max-width:680px" } })
                     @Html.ValidationMessageFor(model => model.ServerName, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-lg-1 col-md-1 col-sm-12">
             <div class="form-group">
                 <label class="nsg-md-1-1 nsg-label" for="ServerDescription">Description</label>
-                <div class="col-md-10">
+                <div class="col-lg-1 col-md-1 col-sm-120">
                     @Html.EditorFor(model => model.ServerDescription, new { htmlAttributes = new { @class = "form-control", @maxlength = "255", @style = "max-width:680px" } })
                     @Html.ValidationMessageFor(model => model.ServerDescription, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="WebSite">* Device</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="WebSite">* Device</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.WebSite, new { htmlAttributes = new { @class = "form-control", @maxlength = "255", @style = "max-width:300px" } })
                     @Html.ValidationMessageFor(model => model.WebSite, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="ServerLocation">* Location</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="ServerLocation">* Location</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.ServerLocation, new { htmlAttributes = new { @class = "form-control", @maxlength = "255", @style = "max-width:300px" } })
                     @Html.ValidationMessageFor(model => model.ServerLocation, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="FromName">* From Name</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="FromName">* From Name</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.FromName, new { htmlAttributes = new { @class = "form-control", @maxlength = "255", @style = "max-width:300px" } })
                     @Html.ValidationMessageFor(model => model.FromName, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="FromNicName">* From Nic Name</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="FromNicName">* From Nic Name</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.FromNicName, new { htmlAttributes = new { @class = "form-control", @maxlength = "16", @style = "max-width:220px" } })
                     @Html.ValidationMessageFor(model => model.FromNicName, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="FromEmailAddress">* From Email</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="FromEmailAddress">* From Email</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.FromEmailAddress, new { htmlAttributes = new { @class = "form-control", @maxlength = "255", @style = "max-width:300px" } })
                     @Html.ValidationMessageFor(model => model.FromEmailAddress, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="TimeZone">* Time-zone</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="TimeZone">* Time-zone</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.TimeZone, new { htmlAttributes = new { @class = "form-control", @maxlength = "16", @style = "max-width:220px" } })
                     @Html.ValidationMessageFor(model => model.TimeZone, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="DST">DST </label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="DST">DST </label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     <div class="checkbox" style="padding-left: 20px;">
                         @Html.EditorFor(model => model.DST)
                         @Html.ValidationMessageFor(model => model.DST, "", new { @class = "text-danger" })
@@ -129,30 +129,30 @@ public static MvcForm BeginForm(
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="TimeZone_DST">* Time-zone DST</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="TimeZone_DST">* Time-zone DST</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.TimeZone_DST, new { htmlAttributes = new { @class = "form-control", @maxlength = "16", @style = "max-width:220px" } })
                     @Html.ValidationMessageFor(model => model.TimeZone_DST, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="DST_Start">DST Start</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="DST_Start">DST Start</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.DST_Start, new { htmlAttributes = new { @class = "form-control", @style = "max-width:220px" } })
                     @Html.ValidationMessageFor(model => model.DST_Start, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="form-group">
-                <label class="col-md-3 nsg-label" for="DST_End">DST End</label>
-                <div class="col-md-9">
+                <label class="col-lg-2 col-md-3 col-sm-12 nsg-label" for="DST_End">DST End</label>
+                <div class="col-lg-9 col-md-9 col-sm-12">
                     @Html.EditorFor(model => model.DST_End, new { htmlAttributes = new { @class = "form-control", @style = "max-width:220px" } })
                     @Html.ValidationMessageFor(model => model.DST_End, "", new { @class = "text-danger" })
                 </div>

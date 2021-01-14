@@ -1,45 +1,37 @@
 <!-- -->
-<div class='ui-grid ui-grid-responsive ui-fluid nsg-content'>
-	<div class='ui-grid-col-12'>
-		<div class='nsg-primary-color nsg-block-center'>
-			<h3>Login</h3>
+<div class='container'>
+	<div class='nsg-primary-color nsg-block-center'>
+		<h3>Login</h3>
+	</div>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='userName'>User Name:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
+			<input type='text' id='userName' name='userName' maxlength='256' size='40'
+				#UserName='ngModel' [(ngModel)]='model.UserName' placeholder='User name...' />
 		</div>
-		<div class='ui-grid-row ui-inputgroup'>
-			<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='userName'>User Name:</label></div>
-			<div class='ui-grid-col-8 ui-inputtext'>
-				<input type='text' id='userName' name='userName' maxlength='256' size='40'
-					#UserName='ngModel' [(ngModel)]='model.UserName' placeholder='User name...' />
-			</div>
+	</div>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='password'>Password:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
+			<input type='text' id='password' name='password' type='password' maxlength='128' size='40'
+				#Password='ngModel' [(ngModel)]='model.Password' placeholder='Password...' />
 		</div>
-		<div class='ui-grid-row ui-inputgroup'>
-			<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='password'>Password:</label></div>
-			<div class='ui-grid-col-8 ui-inputtext'>
-				<input type='text' id='password' name='password' type='password' maxlength='128' size='40'
-					#Password='ngModel' [(ngModel)]='model.Password' placeholder='Password...' />
-			</div>
+	</div>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='serverShortName'>Server/Device:</label></div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
+			<input type='text' id='serverShortName' name='serverShortName' maxlength='12' size='12'
+				#ServerShortName='ngModel' [(ngModel)]='model.ServerShortName' placeholder='Server...' />
 		</div>
-		<div class='ui-grid-row ui-inputgroup'>
-			<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='serverShortName'>Server/Device:</label></div>
-			<div class='ui-grid-col-8 ui-inputtext'>
-				<input type='text' id='serverShortName' name='serverShortName' maxlength='12' size='12'
-					#ServerShortName='ngModel' [(ngModel)]='model.ServerShortName' placeholder='Server...' />
-			</div>
-		</div>
-		<div class='ui-grid-row'>
-			<div class='ui-grid-col-4'>&nbsp;</div>
-			<div class='ui-grid-col-8 ui-inputtext'>
-				<div class='nsg-icon-button'>
-					<button pButton label='Login' icon='pi pi-user-plus' (click)='loginUser()' class='ui-button-primary'></button>
-				</div>
+	</div>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-12'>&nbsp;</div>
+		<div class='col-lg-8 col-md-8 col-sm-12'>
+			<div class='nsg-icon-button'>
+				<button pButton label='Login' icon='pi pi-user-plus' (click)='loginUser()' class='p-button-primary'></button>
 			</div>
 		</div>
 	</div>
-	<!-- register component
-	<div class='ui-grid-col-6'>
-		<div class='ui-grid-row'>&nbsp;</div>
-		<app-register></app-register>
-	</div>
-	-->
 	<app-server-selection-window [selectItems]='selectItemsWindow'
 	[displayWin]='displayServersWindow' (onClose)='onServerSelected($event)'></app-server-selection-window>
 </div>

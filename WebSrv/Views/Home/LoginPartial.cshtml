@@ -19,7 +19,7 @@
             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-lg-1 col-md-1 col-sm-120">
                 <div class="checkbox">
                     @Html.CheckBoxFor(model => model.RememberMe)
                     @Html.LabelFor(model => model.RememberMe)
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-lg-1 col-md-1 col-sm-120">
                 <button data-bind="click: login" class="btn btn-info">Log In</button>
             </div>
         </div>

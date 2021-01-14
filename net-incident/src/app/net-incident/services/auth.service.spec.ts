@@ -1,6 +1,6 @@
 // ===========================================================================
 // File: auth.service.spec.ts
-import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
+import { TestBed, getTestBed, inject, waitForAsync } from '@angular/core/testing';
 //
 import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
@@ -19,7 +19,7 @@ describe('AuthService', () => {
 	let http: HttpClient;
 	let backend: HttpTestingController;
 	const url: string = environment.base_Url + 'Token';
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule( {
 			imports: [
 				// HttpClient 4.3 testing

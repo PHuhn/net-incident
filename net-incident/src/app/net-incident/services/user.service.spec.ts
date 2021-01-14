@@ -2,7 +2,7 @@
 // File: User.service.spec.ts
 // Tests of service for: User
 //
-import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
+import { TestBed, getTestBed, inject, waitForAsync } from '@angular/core/testing';
 //
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -42,7 +42,7 @@ describe('UserService', () => {
 			true,1, [new SelectItemClass('srv 1','Server 1')],'srv 1',server,[])
 	];
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule( {
 			imports: [
 				// no more boilerplate code w/ custom providers needed :-)
@@ -88,7 +88,7 @@ describe('UserService', () => {
 	//
 	// getUser( id: string ) : Observable<IUser>
 	//
-	it( 'should get by id (primary key)...', async( ( ) => {
+	it( 'should get by id (primary key)...', waitForAsync( ( ) => {
 		// Error: Expected one matching request for criteria "Match URL: http://localhost:9111/api/User/", found none.
 		const mockData: User = mockDatum[ 1 ];
 		const id1: string = mockData.UserName;
@@ -108,7 +108,7 @@ describe('UserService', () => {
 	//
 	// getUserServer( id: string ) : Observable<IUser>
 	//
-	it( 'should get by id and server short name...', async( ( ) => {
+	it( 'should get by id and server short name...', waitForAsync( ( ) => {
 		//
 		const mockData: User = mockDatum[ 1 ];
 		const id1: string = mockData.UserName;
@@ -128,7 +128,7 @@ describe('UserService', () => {
 	//
 	// handleError( error: any )
 	//
-	it( 'should throw an error...', async(() => {
+	it( 'should throw an error...', waitForAsync(() => {
 		//
 		sut.handleError( errMsg ).subscribe( () => {
 				fail( 'handleError: expected error...' );

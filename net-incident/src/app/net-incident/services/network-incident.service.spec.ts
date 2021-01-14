@@ -2,7 +2,7 @@
 // File: network-incident.service.spec.ts
 // Tests of service for: network-incident.service
 //
-import { TestBed, getTestBed, async, inject } from '@angular/core/testing';
+import { TestBed, getTestBed, inject, waitForAsync } from '@angular/core/testing';
 //
 import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
@@ -53,7 +53,7 @@ describe('NetworkIncidentService', () => {
 		new NetworkLog( 6,1,null,'192.5',new Date( '2018-02-27T00:00:00-05:00' ),'Log 6',1, 'SQL', false )
 	];
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule( {
 			imports: [
 				// HttpClient 4.3 testing
@@ -93,7 +93,7 @@ describe('NetworkIncidentService', () => {
 		return _ni;
 	}
 	//
-	it( 'should create ...', async( ( ) => {
+	it( 'should create ...', waitForAsync( ( ) => {
 		console.log(
 			'===================================\n' +
 			'NetworkIncidentService should create ...' );
@@ -102,7 +102,7 @@ describe('NetworkIncidentService', () => {
 	//
 	// getNetworkIncident( incidentId: number, serverId: number ): Observable<NetworkIncident>
 	//
-	it( 'should get by id (primary key) ...', async( ( ) => {
+	it( 'should get by id (primary key) ...', waitForAsync( ( ) => {
 		//
 		const mockData: NetworkIncident = newNetworkIncident( mockIncident );
 		const id1: number = mockIncident.IncidentId;
@@ -122,7 +122,7 @@ describe('NetworkIncidentService', () => {
 	//
 	// createIncident( Incident: NetworkIncident )
 	//
-	it( 'should create a new NetworkIncident ...', async( ( ) => {
+	it( 'should create a new NetworkIncident ...', waitForAsync( ( ) => {
 		//
 		const mockData: NetworkIncident = newNetworkIncident(
 			new Incident( 0,1,ip,'arin.net','i-4-net','a@1.com','',false,false,false,'i 4',testDate )

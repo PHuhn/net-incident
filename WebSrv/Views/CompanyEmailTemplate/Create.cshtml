@@ -30,7 +30,7 @@
                        data-parent="#accordion"
                        href="#collapse-help"
                        aria-expanded="false" aria-controls="collapse-help">
-                        <div class="nsg-bold col-md-12">
+                        <div class="nsg-bold col-lg-1 col-md-1 col-sm-12">
                             E-Mail Template Variable List
                         </div>
                         <div class="nsg-clear-left"></div>
@@ -54,24 +54,24 @@
         -->
 
         <div class="form-group">
-            <label for='Template_CompanyId' class='control-label col-md-2'>Company</label>
-            <div class="col-md-10">
+            <label for='Template_CompanyId' class='control-label col-lg-1 col-md-2 col-sm-12'>Company</label>
+            <div class="col-lg-1 col-md-1 col-sm-120">
                 @Html.DropDownListFor(model => model.Template.CompanyId, Model.CompanySelect, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Template.CompanyId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <label for='Template_IncidentTypeId' class='control-label col-md-2'>Incident Type</label>
-            <div class="col-md-10">
+            <label for='Template_IncidentTypeId' class='control-label col-lg-1 col-md-2 col-sm-12'>Incident Type</label>
+            <div class="col-lg-1 col-md-1 col-sm-120">
                 @Html.DropDownListFor(model => model.Template.IncidentTypeId, Model.IncidentTypeSelect, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Template.IncidentTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <label for='Template_FromServer' class='control-label col-md-2'>Use Server Values</label>
-            <div class="col-md-10">
+            <label for='Template_FromServer' class='control-label col-lg-1 col-md-2 col-sm-12'>Use Server Values</label>
+            <div class="col-lg-1 col-md-1 col-sm-120">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.Template.FromServer)
                     @Html.ValidationMessageFor(model => model.Template.FromServer, "", new { @class = "text-danger" })
@@ -81,48 +81,48 @@
         </div>
 
         <div class="form-group">
-            <label for='Template_SubjectLine' class='control-label col-md-2'>Subject Line</label>
-            <div class="col-md-10">
+            <label for='Template_SubjectLine' class='control-label col-lg-1 col-md-2 col-sm-12'>Subject Line</label>
+            <div class="col-lg-1 col-md-1 col-sm-120">
                 @Html.EditorFor(model => model.Template.SubjectLine, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
                 @Html.ValidationMessageFor(model => model.Template.SubjectLine, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <label for='Template_EmailBody' class='control-label col-md-2'>Email Template</label>
-            <div class="col-md-10">
+            <label for='Template_EmailBody' class='control-label col-lg-1 col-md-2 col-sm-12'>Email Template</label>
+            <div class="col-lg-1 col-md-1 col-sm-120">
                 @Html.TextAreaFor(model => model.Template.EmailBody, new { @class = "form-control", @rows = "3", @style = "max-width:680px" })
                 @Html.ValidationMessageFor(model => model.Template.EmailBody, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <label for='Template_TimeTemplate' class='control-label col-md-2'>Time Template</label>
-            <div class="col-md-10">
+            <label for='Template_TimeTemplate' class='control-label col-lg-1 col-md-2 col-sm-12'>Time Template</label>
+            <div class="col-lg-1 col-md-1 col-sm-120">
                 @Html.EditorFor(model => model.Template.TimeTemplate, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
                 @Html.ValidationMessageFor(model => model.Template.TimeTemplate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <label for='Template_ThanksTemplate' class='control-label col-md-2'>ThanksTemplate</label>
-            <div class="col-md-10">
+            <label for='Template_ThanksTemplate' class='control-label col-lg-1 col-md-2 col-sm-12'>ThanksTemplate</label>
+            <div class="col-lg-1 col-md-1 col-sm-120">
                 @Html.EditorFor(model => model.Template.ThanksTemplate, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
                 @Html.ValidationMessageFor(model => model.Template.ThanksTemplate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <label for='Template_LogTemplate' class='control-label col-md-2'>Log Template</label>
-            <div class="col-md-10">
+            <label for='Template_LogTemplate' class='control-label col-lg-1 col-md-2 col-sm-12'>Log Template</label>
+            <div class="col-lg-1 col-md-1 col-sm-120">
                 @Html.EditorFor(model => model.Template.LogTemplate, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
                 @Html.ValidationMessageFor(model => model.Template.LogTemplate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <label for='Template_Template' class='control-label col-md-2'>Template</label>
-            <div class="col-md-10">
+            <label for='Template_Template' class='control-label col-lg-1 col-md-2 col-sm-12'>Template</label>
+            <div class="col-lg-1 col-md-1 col-sm-120">
                 @Html.EditorFor(model => model.Template.Template, new { htmlAttributes = new { @class = "form-control", @style = "max-width:680px" } })
                 @Html.ValidationMessageFor(model => model.Template.Template, "", new { @class = "text-danger" })
             </div>

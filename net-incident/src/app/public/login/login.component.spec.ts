@@ -1,6 +1,6 @@
 // ===========================================================================
 // File: register.component.spec.ts
-import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +31,7 @@ describe('LoginComponent', () => {
 	const userServiceSpy = jasmine.createSpyObj('UserService',
 			['emptyUser', 'getUser', 'getUserServer']);
 	//
-	beforeEach(async(() => {
+	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			imports: [
 				FormsModule,

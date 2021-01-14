@@ -1,5 +1,5 @@
 // ===========================================================================
-import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, throwError } from 'rxjs';
@@ -18,8 +18,8 @@ describe('ServerSelectionWindowComponent', () => {
 	let fixture: ComponentFixture<ServerSelectionWindowComponent>;
 	//
 	const windowTitleSelector: string =
-		'div.ui-dialog-titlebar > span > p-header';
-		// '#serverSelectionWindow > div.ui-dialog > div.ui-dialog-titlebar';
+		'div.p-dialog-titlebar > span > p-header';
+		// '#serverSelectionWindow > div.p-dialog > div.p-dialog-titlebar';
 	const expectedWindowTitle: string = 'Select a server';
 	const mockData: SelectItem[] = [
 		new SelectItemClass( 'nsg-1', 'Router 1' ),
@@ -28,7 +28,7 @@ describe('ServerSelectionWindowComponent', () => {
 	];
 	const displayWindow: boolean = true;
 	//
-	beforeEach(async(() => {
+	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			imports: [ FormsModule,
 				FocusTrapModule,
@@ -83,7 +83,7 @@ describe('ServerSelectionWindowComponent', () => {
 		const server: SelectItem = mockData[ idx ];
 		const value: string = server.value;
 		const radioSelector: string =
-			`div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
+			`div.p-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
 		spyOn( sut.onClose, 'emit' );
@@ -99,7 +99,7 @@ describe('ServerSelectionWindowComponent', () => {
 		const server: SelectItem = mockData[ idx ];
 		const value: string = server.value;
 		const radioSelector: string =
-			`div.ui-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
+			`div.p-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
 		spyOn( sut.onClose, 'emit' );

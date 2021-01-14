@@ -8,7 +8,7 @@
 @using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
     @Html.AntiForgeryToken()
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-lg-8 col-md-8 col-sm-12">
             Two Factor Authentication Provider:
             @Html.DropDownListFor(model => model.SelectedProvider, Model.Providers)
             <input type="submit" value="Submit" class="btn btn-default" />

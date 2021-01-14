@@ -1,5 +1,5 @@
 // ===========================================================================
-import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable, throwError } from 'rxjs';
@@ -43,7 +43,7 @@ describe('NetworkLogGridComponent', () => {
 	//
 	const netInc = new NetworkIncident();
 	//
-	beforeEach( async( ( ) => {
+	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule(  {
 			imports: [
 				FormsModule,
@@ -189,7 +189,7 @@ describe('NetworkLogGridComponent', () => {
 		tick( 10000 );
 		//
 		const netLogCheckbox: HTMLInputElement = fixture.debugElement.query(By.css(
-			'#netLogTable > div > div > table > tbody > tr:nth-child(6) > td:nth-child(2) > p-tablecheckbox > div > div.ui-helper-hidden-accessible > input[type="checkbox"]' )).nativeElement;
+			'#netLogTable > div > div > table > tbody > tr:nth-child(6) > td:nth-child(2) > p-tablecheckbox > div > div.p-helper-hidden-accessible > input[type="checkbox"]' )).nativeElement;
 		netLogCheckbox.click();
 		tick(5000);
 		fixture.detectChanges( ); // trigger initial data binding
@@ -212,7 +212,7 @@ describe('NetworkLogGridComponent', () => {
 		tick( 10000 );
 		//
 		let netLogCheckbox: HTMLInputElement = fixture.debugElement.query(By.css(
-			'#netLogTable > div > div > table > tbody > tr:nth-child(4) > td:nth-child(2) > p-tablecheckbox > div > div.ui-chkbox-box.ui-widget.ui-state-default > span' )).nativeElement;
+			'#netLogTable > div > div > table > tbody > tr:nth-child(4) > td:nth-child(2) > p-tablecheckbox > div > div.p-chkbox-box.p-widget.p-state-default > span' )).nativeElement;
 		netLogCheckbox.click();
 		tick(5000);
 		fixture.detectChanges( ); // trigger initial data binding
@@ -223,7 +223,7 @@ describe('NetworkLogGridComponent', () => {
 		console.log( netLogBodyRows );
 		expect( netLogBodyRows.length ).toBe( numRows );
 		netLogCheckbox = fixture.debugElement.query(By.css(
-			'#netLogTable > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > p-tablecheckbox > div > div.ui-chkbox-box.ui-widget.ui-state-default > span' )).nativeElement;
+			'#netLogTable > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > p-tablecheckbox > div > div.p-chkbox-box.p-widget.p-state-default > span' )).nativeElement;
 		netLogCheckbox.click( );
 		tick(5000);
 		fixture.detectChanges( ); // trigger initial data binding

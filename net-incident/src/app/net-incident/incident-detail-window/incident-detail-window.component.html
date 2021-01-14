@@ -4,77 +4,77 @@
 		Incident Detail: {{id}}, IP Address: {{ip}}
 	</p-header>
 	<form #form='ngForm' novalidate>
-		<div *ngIf='networkIncident != undefined' class='ui-grid ui-grid-responsive ui-fluid'>
-			<div class='ui-grid-col-6 nsg-primary-color nsg-text-right'>
-				<div class='ui-grid-row ui-inputgroup' [class.has-error]='NIC.invalid && NIC.touched'>
-					<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='NIC'>NIC:&nbsp;</label></div>
-					<div class='ui-grid-col-7 ui-inputtext nsg-text-left'>
-						<input type='text' id='NIC' name='NIC' required maxlength='50' size='36 '
+		<div *ngIf='networkIncident != undefined'>
+			<div class='col-lg-6 col-md-6 col-sm-12 nsg-primary-color nsg-text-right' style='padding: 0 2px;'>
+				<div class='row' [class.has-error]='NIC.invalid && NIC.touched'>
+					<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='NIC'>NIC:&nbsp;</label></div>
+					<div class='col-lg-7 col-md-7 col-sm-12 nsg-text-left'>
+						<input type='text' id='NIC' name='NIC' required maxlength='50' style='width: 97%;'
 							#NIC='ngModel' [(ngModel)]='networkIncident.incident.NIC' [attr.disabled]='disableEdit ? "true": null'
 							placeholder='Network Information Center...' />
 					</div>
-					<div class='ui-grid-col-1 nsg-alert-color' *ngIf='NIC.invalid && NIC.touched'>*</div>
+					<div class='col-lg-1 col-md-1 col-sm-12 nsg-alert-color' *ngIf='NIC.invalid && NIC.touched'>*</div>
 				</div>
-				<div class='ui-grid-row ui-inputgroup' [class.has-error]='NetworkName.invalid && NetworkName.touched'>
-					<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='NetworkName'>Network:&nbsp;</label></div>
-					<div class='ui-grid-col-7 ui-inputtext nsg-text-left'>
-						<input type='text' id='NetworkName' name='NetworkName' maxlength='255' size='36 '
+				<div class='row' [class.has-error]='NetworkName.invalid && NetworkName.touched'>
+					<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='NetworkName'>Network:&nbsp;</label></div>
+					<div class='col-lg-7 col-md-7 col-sm-12 nsg-text-left'>
+						<input type='text' id='NetworkName' name='NetworkName' maxlength='255' style='width: 97%;'
 							#NetworkName='ngModel' [(ngModel)]='networkIncident.incident.NetworkName' [attr.disabled]='disableEdit ? "true": null'
 							placeholder='Network Name...' />
 					</div>
 				</div>
-				<div class='ui-grid-row ui-inputgroup' [class.has-error]='AbuseEmailAddress.invalid && AbuseEmailAddress.touched'>
-					<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='AbuseEmailAddress'>Abuse Email:&nbsp;</label></div>
-					<div class='ui-grid-col-7 ui-inputtext nsg-text-left'>
-						<input type='text' id='AbuseEmailAddress' name='AbuseEmailAddress' maxlength='255' size='36 '
+				<div class='row' [class.has-error]='AbuseEmailAddress.invalid && AbuseEmailAddress.touched'>
+					<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='AbuseEmailAddress'>Abuse Email:&nbsp;</label></div>
+					<div class='col-lg-7 col-md-7 col-sm-12 nsg-text-left'>
+						<input type='text' id='AbuseEmailAddress' name='AbuseEmailAddress' maxlength='255' style='width: 97%;'
 							#AbuseEmailAddress='ngModel' [(ngModel)]='networkIncident.incident.AbuseEmailAddress' [attr.disabled]='disableEdit ? "true": null'
 							placeholder='Abuse Email Address...' />
 					</div>
 				</div>
-				<div class='ui-grid-row ui-inputgroup' [class.has-error]='ISPTicketNumber.invalid && ISPTicketNumber.touched'>
-					<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='ISPTicketNumber'>ISP #:&nbsp;</label></div>
-					<div class='ui-grid-col-7 ui-inputtext nsg-text-left'>
-						<input type='text' id='ISPTicketNumber' name='ISPTicketNumber' maxlength='50' size='36'
+				<div class='row' [class.has-error]='ISPTicketNumber.invalid && ISPTicketNumber.touched'>
+					<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='ISPTicketNumber'>ISP #:&nbsp;</label></div>
+					<div class='col-lg-7 col-md-7 col-sm-12 nsg-text-left'>
+						<input type='text' id='ISPTicketNumber' name='ISPTicketNumber' maxlength='50' style='width: 97%;'
 							#ISPTicketNumber='ngModel' [(ngModel)]='networkIncident.incident.ISPTicketNumber'
 							placeholder='ISP Ticket #...' />
 					</div>
 				</div>
-				<div class='ui-grid-row ui-inputgroup'>
-					<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='Mailed'>Mailed:&nbsp;</label></div>
-					<div class='ui-grid-col-8 ui-inputtext nsg-primary-color nsg-text-left'>
+				<div class='row'>
+					<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='Mailed'>Mailed:&nbsp;</label></div>
+					<div class='col-lg-8 col-md-8 col-sm-12 nsg-primary-color nsg-text-left'>
 						<input type='checkbox' id='Mailed' name='Mailed' 
 							#Mailed='ngModel' [(ngModel)]='networkIncident.incident.Mailed' />&nbsp; &nbsp;
 						<label for='Closed'>Closed:&nbsp;</label>
 						<input type='checkbox' id='Closed' name='Closed' 
 							#Closed='ngModel' [(ngModel)]='networkIncident.incident.Closed' />&nbsp; &nbsp;
 						<label for='Special'>Special:&nbsp;</label>
-						<input type='checkbox' id='Special' name='Special' 
+						<input type='checkbox' id='Special' name='Special'
 							#Special='ngModel' [(ngModel)]='networkIncident.incident.Special' />
 					</div>
 				</div>
-				<div class='ui-grid-row ui-inputgroup' [class.has-error]='Notes.invalid && Notes.touched'>
-					<div class='ui-grid-col-4 nsg-primary-color nsg-text-right'><label for='Notes'>Notes:&nbsp;</label></div>
-					<div class='ui-grid-col-7 ui-inputtext nsg-text-left'>
-						<textarea id='Notes' name='Notes' rows='4' cols='35' #Notes='ngModel' [(ngModel)]='networkIncident.incident.Notes' placeholder='Incident Note...'></textarea>
+				<div class='row' [class.has-error]='Notes.invalid && Notes.touched'>
+					<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='Notes'>Notes:&nbsp;</label></div>
+					<div class='col-lg-7 col-md-7 col-sm-12 nsg-text-left'>
+						<textarea id='Notes' name='Notes' rows='4' #Notes='ngModel' [(ngModel)]='networkIncident.incident.Notes' placeholder='Incident Note...' style='width: 97%;'></textarea>
 					</div>
-					<div class='ui-grid-col-1 nsg-alert-color' *ngIf='Notes.invalid && Notes.touched'>*</div>
+					<div class='col-lg-1 col-md-1 col-sm-12 nsg-alert-color' *ngIf='Notes.invalid && Notes.touched'>*</div>
 				</div>
-				<div class='ui-grid-row'>
+				<div class='row'>
 					<app-incident-note-grid [networkIncident]='networkIncident'></app-incident-note-grid>
 				</div>
-				<div class='ui-grid-row'>
+				<div class='row'>
 					&nbsp;
 				</div>
 			</div>
-			<div class='ui-grid-col-6 nsg-primary-color'>
+			<div class='col-lg-6 col-md-6 col-sm-12 nsg-primary-color' style='padding: 0 2px;'>
 				<app-networklog-grid [networkIncident]='networkIncident' (ipChanged)='ipChanged($event)'></app-networklog-grid>
 			</div>
 		</div>
 	</form>
 	<p-footer>
-		<button pButton type='button' (click)='NetIncidentSave(true)' class='ui-button-secondary' [disabled]='form.invalid' label='Save & Stay'></button> &nbsp;
-		<button pButton type='button' (click)='windowClose(true)' class='ui-button-primary' [disabled]='form.invalid' label='Save & Close'></button> &nbsp;
-		<button pButton type='button' (click)='windowClose(false)' class='ui-button-secondary' label='Cancel'></button>
+		<button pButton type='button' (click)='NetIncidentSave(true)' class='p-button-secondary' [disabled]='form.invalid' label='Save & Stay'></button> &nbsp;
+		<button pButton type='button' (click)='windowClose(true)' class='p-button-primary' [disabled]='form.invalid' label='Save & Close'></button> &nbsp;
+		<button pButton type='button' (click)='windowClose(false)' class='p-button-secondary' label='Cancel'></button>
 	</p-footer>
 </p-dialog>
 <!-- End of Incident-detail-window.component.html -->
