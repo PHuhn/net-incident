@@ -24,6 +24,7 @@ bld/
 
 # logs
 logs/NG-300*.txt
+logs/R-6220*.txt
 
 # Angular
 node_modules/
