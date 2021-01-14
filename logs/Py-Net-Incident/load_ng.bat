@@ -3,7 +3,7 @@
  @REM input the file name without the txt extent
  @IF "X%1" == "X" GOTO END
  @SET inp=%1.txt
- @IF NOT EXIST %inp% GOTO NOTFOUND
+ @IF NOT EXIST ..\%inp% GOTO NOTFOUND
  @REM
  @REM usage: logs_load.py [-h]
  @REM                     --logType log_type (of NG or IIS)
