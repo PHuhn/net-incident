@@ -1555,6 +1555,27 @@ SOLUTION:
 	];
 	also had to restart 'ng serve'
 
+PROBLEM:
+========
+	Jasmine test of :
+		managerServiceSpy.selectSelectedDate$.and.returnValue( of( undefined ) );
+	TypeError:
+		this._manager.selectSelectedDate$.subscribe is not a function
+SOLUTION:
+	const managerServiceSpy = jasmine.createSpyObj( 'DataManagerService',
+		[ ... 'selectWeekEndingDate$', ... );
+	Object.defineProperty( managerServiceSpy, 'selectSelectedDate$', {get: () => {}});
+	...
+	let selectedManagerSpy = spyOnProperty( managerServiceSpy, 'selectSelectedDate$', 'get')
+		.and.returnValue( new BehaviorSubject<Date>( undefined ) );
+
+PROBLEM:
+========
+EmployeePanelComponent > should create ...
+TypeError: Cannot read property 'subscribe' of undefined
+(same as above)
+
+
 ===================================================
 Done:
 	service logging 12/22

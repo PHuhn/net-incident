@@ -1,12 +1,14 @@
 // ===========================================================================
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+//
+import { Observable, Subject, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 //
 import { AlertLevel } from '../alert-level.enum';
 import { Message } from '../message';
 import { Alerts } from '../alerts';
 //
-@Injectable( { providedIn: 'root' } )
+@Injectable()
 export class AlertsService {
 	//
 	private alerted: Message[];
@@ -62,16 +64,18 @@ export class AlertsService {
 	//
 	// Warning validation error messages
 	//
-	public warningSet( msgs: Message[] ): void {
+	public warningSet( msgs: Message[] ): boolean {
 		if( msgs !== undefined ) {
 			if( msgs.length > 0 ) {
 				this.setAlerts( AlertLevel.Warning, msgs );
+				return true;
 			} else {
 				console.log( 'Messages array empty.' );
 			}
 		} else {
 			console.log( 'Messages array not initialized.' );
 		}
+		return false;
 	}
 	//
 	// Initialize a validation warning
@@ -83,26 +87,30 @@ export class AlertsService {
 	//
 	// Add a validation warning
 	//
-	public warningAdd( warning: string ) {
+	public warningAdd( warning: string ): boolean {
 		if( this.alerted !== undefined ) {
 			const id: string =
-				<string><any>( this.alerted.length + 1 );
+				( this.alerted.length + 1 ).toString();
 			this.alerted.push( new Message( id, warning ));
+			return true;
 		} else {
-			console.log( 'Alerted message array not initialized.' );
+			console.log( 'Alerted message array not initialized.'  );
 		}
+		return false;
 	}
 	//
 	// Post a validation warning
 	//
-	public warningPost( ): void {
+	public warningPost( ): boolean {
 		if( this.alerted !== undefined ) {
 			if( this.alerted.length > 0 ) {
 				this.subject.next( new Alerts( this.level, this.alerted ) );
+				return true;
 			}
 		} else {
 			console.log( 'Alerted message array not initialized.' );
 		}
+		return false;
 	}
 	//
 }

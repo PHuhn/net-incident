@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 //
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 //
 import { AlertsService } from './alerts.service';
 import { AlertLevel } from '../alert-level.enum';
@@ -92,20 +92,39 @@ describe('AlertsService', () => {
 			expect(alertMsg.messages.length).toBeTruthy(1);
 			expect(alertMsg.messages[0].message).toBe( msg );
 		}, error =>	console.log( error ) );
-		service.warningSet( msgs );
+		const ret = service.warningSet( msgs );
+		expect( ret ).toEqual( true );
+	});
+	it('warningSet should fail if empty message array ...', () => {
+		const ret = service.warningSet( [] );
+		expect( ret ).toEqual( false );
+	});
+	it('warningSet should fail if undefined message ...', () => {
+		const ret = service.warningSet( undefined );
+		expect( ret ).toEqual( false );
 	});
 	//
 	it('should take warningInit/Add/Post ...', () => {
 		const msg: string = 'Is required.';
 		service.warningInit( );
-		service.warningAdd( msg );
+		const retAdd = service.warningAdd( msg );
 		const subscription = service.getAlerts().subscribe(
 			(alertMsg: Alerts) => {
 			expect(alertMsg.level).toBe(AlertLevel.Warning);
 			expect(alertMsg.messages.length).toBeTruthy(1);
 			expect(alertMsg.messages[0].message).toBe( msg );
 		}, error =>	console.log( error ) );
-		service.warningPost( );
+		const retPost = service.warningPost( );
+		expect( retAdd ).toEqual( true );
+		expect( retPost ).toEqual( true );
+	});
+	it('warningAdd should fail when un-initialize ...', () => {
+		const retAdd = service.warningAdd( '' );
+		expect( retAdd ).toEqual( false );
+	});
+	it('warningPost should fail when un-initialize ...', () => {
+		const retPost = service.warningPost( );
+		expect( retPost ).toEqual( false );
 	});
 	//
 });

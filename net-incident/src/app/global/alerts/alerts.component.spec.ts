@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,7 +14,7 @@ describe('AlertsComponent', () => {
 	let fixture: ComponentFixture<AlertsComponent>;
 	let service: AlertsService;
 	//
-	beforeEach(async(() => {
+	beforeEach(waitForAsync(() => {
 		TestBed.configureTestingModule({
 			imports: [ BrowserAnimationsModule ],
 			declarations: [ AlertsComponent ],
@@ -99,21 +99,21 @@ describe('AlertsComponent', () => {
 	it('warning message should return class ...', () => {
 		service.setAlerts(AlertLevel.Warning, [new Message('1','Hello World')]);
 		expect(sut.level).toBe(AlertLevel.Warning);
-		let css = sut.getClass( );
+		const css = sut.getClass( );
 		expect( css ).toEqual( 'alertMessages nsg-msg-warning' );
 	});
 	//
 	it('error message should return class ...', () => {
 		service.setAlerts(AlertLevel.Error, [new Message('1','Hello World')]);
 		expect(sut.level).toBe(AlertLevel.Error);
-		let css = sut.getClass( );
+		const css = sut.getClass( );
 		expect( css ).toEqual( 'alertMessages nsg-msg-danger' );
 	});
 	//
 	it('info message should return class ...', () => {
 		service.setAlerts(AlertLevel.Info, [new Message('1','Hello World')]);
 		expect(sut.level).toBe(AlertLevel.Info);
-		let css = sut.getClass( );
+		const css = sut.getClass( );
 		expect( css ).toEqual( 'alertMessages nsg-msg-info' );
 	});
 	//

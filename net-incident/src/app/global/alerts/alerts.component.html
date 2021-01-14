@@ -1,7 +1,7 @@
 <!-- Alerts.Component -->
 <div [@visibilityChanged]='showMsgs' (click)='onClick()' [class]='getClass()'>
-  <ul name='alertMessages' role='alert'>
-    <li *ngFor='let item of msgs' [id]="item.id">{{ item.message }}</li>
-  </ul>
+	<ul name='alertMessages' role='alert'>
+		<li *ngFor='let item of msgs' [id]="item.id">{{ item.message }}</li>
+	</ul>
 </div>
 <!-- End of Alerts.Component -->
