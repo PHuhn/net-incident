@@ -1,5 +1,5 @@
 <!-- NetworkLog-Grid.component.html -->
-<div class='nsg-text-left'>
+<div class='nsg-text-left' style='width: 99%;'>
 	<p-table #dt id='netLogTable' name='netLogTable' [value]='networkIncident.networkLogs' [totalRecords]='totalRecords'
 			expandableRows='true' dataKey='NetworkLogId'
 			(onRowSelect)='handleRowSelect($event)' (onRowUnselect)='handleRowUnSelect($event)'
@@ -7,12 +7,12 @@
 		<ng-template pTemplate='header'>
 			<tr>
 				<th style='width: 40px;'></th>
-				<th style='width: 45px;' *ngIf='!disabled'></th>
+				<th style='width: 40px;' *ngIf='!disabled'></th>
 				<th style='width: 125px;'>IP Address</th>
 				<th style='width: 55px;'>Date</th>
 				<th style='width: 50px;'>Type</th>
 				<th>Log</th>
-				<th style='width: 45px;' *ngIf='!disabled'></th>
+				<th style='width: 58px;' *ngIf='!disabled'></th>
 			</tr>
 		</ng-template>
 		<ng-template pTemplate='body' let-rowData let-columns='columns' let-expanded='expanded'>

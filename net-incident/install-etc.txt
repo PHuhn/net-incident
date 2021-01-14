@@ -1621,6 +1621,7 @@ Done:
 	V9.1.0.26 - Removed [responsive]='true' from dialog and primeng 9.0.0 (2020-02-26)
 	V9.1.0.28 - Corrected tests, bind to 'pFocusTrapDisabled'
 	V10.1.0.28 - Updated from Angular 9 to 10
+	V11.1.0.29 - Updated from Angular 10 to 11, visual updated, => bootstrap
 
 To Do's:
 	V - delete of network-log not working

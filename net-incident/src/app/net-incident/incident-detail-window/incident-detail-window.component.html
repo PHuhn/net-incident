@@ -5,7 +5,7 @@
 	</p-header>
 	<form #form='ngForm' novalidate>
 		<div *ngIf='networkIncident != undefined'>
-			<div class='col-lg-6 col-md-6 col-sm-12 nsg-primary-color nsg-text-right' style='padding: 0 2px;'>
+			<div class='col-lg-6 col-md-6 col-sm-12 nsg-primary-color nsg-text-right' style='float: left; padding-right: 2px;'>
 				<div class='row' [class.has-error]='NIC.invalid && NIC.touched'>
 					<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='NIC'>NIC:&nbsp;</label></div>
 					<div class='col-lg-7 col-md-7 col-sm-12 nsg-text-left'>
@@ -59,14 +59,14 @@
 					</div>
 					<div class='col-lg-1 col-md-1 col-sm-12 nsg-alert-color' *ngIf='Notes.invalid && Notes.touched'>*</div>
 				</div>
-				<div class='row'>
+				<div class='row' style='width: 99%; margin-right: 2px;'>
 					<app-incident-note-grid [networkIncident]='networkIncident'></app-incident-note-grid>
 				</div>
 				<div class='row'>
 					&nbsp;
 				</div>
 			</div>
-			<div class='col-lg-6 col-md-6 col-sm-12 nsg-primary-color' style='padding: 0 2px;'>
+			<div class='col-lg-6 col-md-6 col-sm-12 nsg-primary-color' style='float: left; padding: 0 2px;'>
 				<app-networklog-grid [networkIncident]='networkIncident' (ipChanged)='ipChanged($event)'></app-networklog-grid>
 			</div>
 		</div>

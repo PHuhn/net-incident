@@ -27,7 +27,7 @@
 			<ng-template pTemplate='header'>
 				<tr>
 					<th style='width: 40px;'></th>
-					<th style='width: 65px;'>
+					<th style='width: 58px;'>
 						<button (click)="addItemClicked( )" pButton type="button" icon="pi pi-plus" class="p-button-primary"></button>
 					</th>
 					<th style='width: 60px;' [pSortableColumn]='"IncidentId"'>
@@ -59,7 +59,7 @@
 					<th style='width: 60px;'>
 						Special
 					</th>
-					<th style='width: 65px;'></th>
+					<th style='width: 58px;'></th>
 				</tr>
 			</ng-template>
 			<ng-template pTemplate='body' let-rowData let-columns='columns' let-expanded='expanded'>
@@ -69,7 +69,7 @@
 							<i [ngClass]="expanded ? 'pi pi-chevron-circle-down' : 'pi pi-chevron-circle-right'" style="font-size: 1.25em"></i>
 						</a>
 					</td>
-					<td class='nsg-grid-button-td'>
+					<td>
 						<button (click)="editItemClicked( rowData )" pButton type="button" icon="pi pi-pencil" class="p-button-primary"></button>
 					</td>
 					<td>{{rowData['IncidentId']}}</td>
@@ -86,7 +86,7 @@
 					<td>
 						<input type='checkbox' #special='ngModel' [(ngModel)]='rowData["Special"]' disabled />
 					</td>
-					<td class='nsg-grid-button-td'>
+					<td>
 						<button (click)="deleteItemClicked( rowData )" pButton type="button" icon="pi pi-trash" class="p-button-danger"></button>
 					</td>
 				</tr>
