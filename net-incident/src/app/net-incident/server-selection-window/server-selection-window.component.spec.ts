@@ -18,8 +18,8 @@ describe('ServerSelectionWindowComponent', () => {
 	let fixture: ComponentFixture<ServerSelectionWindowComponent>;
 	//
 	const windowTitleSelector: string =
-		'div.p-dialog-titlebar > span > p-header';
-		// '#serverSelectionWindow > div.p-dialog > div.p-dialog-titlebar';
+		'#serverSelectionWindow > div > div > div > span.p-dialog-title > p-header';
+	// document.querySelector('#serverSelectionWindow > div > div > div > span.p-dialog-title > p-header')
 	const expectedWindowTitle: string = 'Select a server';
 	const mockData: SelectItem[] = [
 		new SelectItemClass( 'nsg-1', 'Router 1' ),

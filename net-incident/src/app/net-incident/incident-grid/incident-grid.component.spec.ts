@@ -51,6 +51,9 @@ describe( 'IncidentGridComponent', ( ) => {
 	let fixture: ComponentFixture<IncidentGridComponent>;
 	let lazyLoading: LazyLoadingMock = new LazyLoadingMock();
 	let alertService: AlertsService;
+	const selectionWindowTitleSelector: string =
+		'#serverSelectionWindow > div > div > div > span.p-dialog-title > p-header';
+	// document.querySelector('#serverSelectionWindow > div > div > div > span.p-dialog-title > p-header')
 	const userServiceSpy = jasmine.createSpyObj('UserService',
 			['emptyUser', 'getUser', 'getUserServer']);
 	let servicesServiceMock: ServicesServiceMock;
@@ -260,7 +263,8 @@ describe( 'IncidentGridComponent', ( ) => {
 		//
 		expect( sut.displayServersWindow ).toEqual( true );
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
-			'#serverSelectionWindow > div > div > div.p-dialog-titlebar > span.p-dialog-title > p-header' )).nativeElement;
+			selectionWindowTitleSelector )).nativeElement;
+		console.log( title );
 		expect( title.innerText.trim( ) ).toEqual( `Select a server` );
 		console.log( `onChangeServer ... completed ${new Date().toISOString()}` );
 	}));

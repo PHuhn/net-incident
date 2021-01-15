@@ -10,6 +10,7 @@ describe('ConsoleLogService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({});
 		service = TestBed.inject(ConsoleLogService);
+		service.logLevel = LogLevel.Verbose;
 	});
 	//
 	it('should be created', () => {
