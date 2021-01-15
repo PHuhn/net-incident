@@ -104,7 +104,7 @@ describe('NetworkLogGridComponent', () => {
 	});
 	//
 	it('default data should have all columns ...', () => {
-		console.log( `Test - all columns: ** ${new Date().toISOString()}` );
+		console.log( `**NetLog -all columns: ** ${new Date().toISOString()}` );
 		sut.networkIncident = netInc;
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
@@ -116,7 +116,7 @@ describe('NetworkLogGridComponent', () => {
 	});
 	//
 	it('default data should have all rows ...', () => {
-		console.log( `Test - all rows: ** ${new Date().toISOString()}` );
+		console.log( `**NetLog -all rows: ** ${new Date().toISOString()}` );
 		sut.networkIncident = netInc;
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
@@ -128,7 +128,7 @@ describe('NetworkLogGridComponent', () => {
 	});
 	//
 	it('mailed incident should have no selection column ...', fakeAsync( () => {
-		console.log( `Test - selection column: ** ${new Date().toISOString()}` );
+		console.log( `**NetLog -selection column: ** ${new Date().toISOString()}` );
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
 		netInc.incident.Mailed = true;
 		netInc.networkLogs[3].Selected = true;
@@ -146,7 +146,7 @@ describe('NetworkLogGridComponent', () => {
 		});
 		fixture.detectChanges( ); // trigger final data binding
 		fixture.whenStable( );
-		console.log( `Test - Id: Disabled: ${sut.disabled} ** ${new Date().toISOString()}` );
+		console.log( `**NetLog -Id: Disabled: ${sut.disabled} ** ${new Date().toISOString()}` );
 		const numCols: number = 5;
 		const netLogBodyCols = fixture.debugElement.queryAll(By.css(
 			'#netLogTable > div > div > table > tbody > tr:nth-child(1) > td' ));
@@ -157,7 +157,7 @@ describe('NetworkLogGridComponent', () => {
 	}));
 	//
 	it('incident should have only selected rows ...', fakeAsync( () => {
-		console.log( `Test - rows: ** ${new Date().toISOString()}` );
+		console.log( `**NetLog -rows: ** ${new Date().toISOString()}` );
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
 		netInc.networkLogs[4].Selected = true;
 		netInc.networkLogs[5].Selected = true;
@@ -180,7 +180,7 @@ describe('NetworkLogGridComponent', () => {
 	}));
 	//
 	it('should filter on ip-address when selected ...', fakeAsync( () => {
-		console.log( `Test - filter on ip: ** ${new Date().toISOString()}` );
+		console.log( `**NetLog -filter on ip: ** ${new Date().toISOString()}` );
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
 		sut.networkIncident = netInc;
 		sut.ngAfterContentInit( );
@@ -203,7 +203,7 @@ describe('NetworkLogGridComponent', () => {
 	}));
 	//
 	it('should have all rows when unselected ...', fakeAsync( () => {
-		console.log( `Test - unselect row: ** ${new Date().toISOString()}` );
+		console.log( `**NetLog -unselect row: ** ${new Date().toISOString()}` );
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
 		sut.networkIncident = netInc;
 		sut.ngAfterContentInit( );
@@ -239,7 +239,7 @@ describe('NetworkLogGridComponent', () => {
 	}));
 	//
 	it('should delete row from in memory networkLogs and move to deletedLogs ...', fakeAsync( () => {
-		console.log( `Test - delete row: ** ${new Date().toISOString()}` );
+		console.log( `**NetLog -delete row: ** ${new Date().toISOString()}` );
 		netInc.networkLogs = JSON.parse( JSON.stringify( mockDatum ) );
 		sut.networkIncident = netInc;
 		sut.ngAfterContentInit( );

@@ -130,6 +130,9 @@ NSG
 	padding: 0;
 	margin: 0;
 }
+.nsg-inc-det-left-side { float: left; padding-right: 2px; }
+.nsg-inc-det-right-side { float: left; padding: 0 2px; }
+.nsg-input-width-100 { width: 97%; }
 /* custom content sizing style */
 /* media queries must appear in low to high order */
 .nsg-block-center { text-align: center; }
