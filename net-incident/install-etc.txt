@@ -1622,6 +1622,7 @@ Done:
 	V9.1.0.28 - Corrected tests, bind to 'pFocusTrapDisabled'
 	V10.1.0.28 - Updated from Angular 9 to 10
 	V11.1.0.29 - Updated from Angular 10 to 11, visual updated, => bootstrap
+	V11.1.0.30 - Fixed delete of NetworkLog
 
 To Do's:
 	V - delete of network-log not working
