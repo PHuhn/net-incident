@@ -1,7 +1,7 @@
 // ===========================================================================
 // File: login.ts
 //
-import { Message } from '../global/message';
+import { Message } from '../global/alerts/message';
 //
 export class Login {
 	// using short-hand declaration...

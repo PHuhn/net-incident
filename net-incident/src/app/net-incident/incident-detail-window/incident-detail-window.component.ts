@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { ServicesService } from '../services/services.service';
 import { NetworkIncidentService } from '../services/network-incident.service';
-import { Message } from '../../global/message';
+import { Message } from '../../global/alerts/message';
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IUser, User } from '../user';
 import { IIncident, Incident } from '../incident';

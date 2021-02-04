@@ -17,7 +17,7 @@ import { ConfirmationService, Confirmation, LazyLoadEvent, SelectItem } from 'pr
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
-import { Alerts } from '../../global/alerts';
+import { Alerts } from '../../global/alerts/alerts';
 import { ConsoleLogService } from '../../global/console-log.service';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';

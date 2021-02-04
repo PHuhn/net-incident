@@ -8,7 +8,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 //
-import { Message } from '../../global/message';
+import { Message } from '../../global/alerts/message';
 import { LoginViewModel } from '../login-view-model';
 import { ITokenResponse, TokenResponse } from '../token-response';
 import { environment } from '../../../environments/environment';

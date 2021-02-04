@@ -8,7 +8,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 //
 import { environment } from '../../../environments/environment';
-import { Message } from '../../global/message';
+import { Message } from '../../global/alerts/message';
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { UserService } from './user.service';
 import { IUser, User } from '../user';

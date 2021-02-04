@@ -10,7 +10,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { LazyLoadEvent } from 'primeng/api';
 //
 import { environment } from '../../../environments/environment';
-import { Message } from '../../global/message';
+import { Message } from '../../global/alerts/message';
 // import { AlertsService } from '../../global/alerts/alerts.service';
 import { IncidentService } from './incident.service';
 import { IIncident, Incident } from '../incident';

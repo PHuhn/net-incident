@@ -6,8 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //
 import { AlertsComponent } from './alerts.component';
 import { AlertsService } from './alerts.service';
-import { AlertLevel } from '../alert-level.enum';
-import { Message } from '../message';
+import { AlertLevel } from './alert-level.enum';
+import { Message } from './message';
 import { throwError } from 'rxjs';
 //
 describe('AlertsComponent', () => {

@@ -4,7 +4,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 //
 import { NetworkIncidentService } from '../../../net-incident/services/network-incident.service';
-import { Message } from '../../../global/message';
+import { Message } from '../../../global/alerts/message';
 import { SelectItemClass } from '../../../global/select-item-class';
 import { NetworkIncident } from '../../../net-incident/network-incident';
 import { NetworkIncidentSave } from '../../../net-incident/network-incident-save';

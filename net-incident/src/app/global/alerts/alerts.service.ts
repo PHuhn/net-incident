@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 //
-import { AlertLevel } from '../alert-level.enum';
-import { Message } from '../message';
-import { Alerts } from '../alerts';
+import { AlertLevel } from './alert-level.enum';
+import { Message } from './message';
+import { Alerts } from './alerts';
 //
 @Injectable()
 export class AlertsService {

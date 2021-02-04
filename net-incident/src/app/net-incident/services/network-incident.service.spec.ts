@@ -11,7 +11,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 //
 import { environment } from '../../../environments/environment';
-import { Message } from '../../global/message';
+import { Message } from '../../global/alerts/message';
 import { SelectItemClass } from '../../global/select-item-class';
 import { IUser, User } from '../user';
 import { ServerData } from '../server-data';

@@ -12,8 +12,8 @@ import { Header, Footer } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
-import { Alerts } from '../../global/alerts';
-import { AlertLevel } from '../../global/alert-level.enum';
+import { Alerts } from '../../global/alerts/alerts';
+import { AlertLevel } from '../../global/alerts/alert-level.enum';
 import { TokenResponse } from '../../net-incident/token-response';
 import { User } from '../../net-incident/user';
 import { UserService } from '../../net-incident/services/user.service';

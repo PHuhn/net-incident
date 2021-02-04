@@ -60,7 +60,9 @@ describe('ConsoleLogService', () => {
 	});
 	//
 	it('Verbose should create Verbose message ...', () => {
-		// given / when
+		// given
+		service.logLevel = LogLevel.Verbose;
+		// when
 		const _ret = service.Verbose('Verbose message');
 		// then
 		expect( _ret ).toEqual( 'Verbose: Verbose message' );

@@ -8,7 +8,7 @@ import { HttpClient, HttpRequest, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 //
-import { Message } from '../../global/message';
+import { Message } from '../../global/alerts/message';
 import { IUser, User } from '../user';
 import { environment } from '../../../environments/environment';
 import { ConsoleLogService } from '../../global/console-log.service';

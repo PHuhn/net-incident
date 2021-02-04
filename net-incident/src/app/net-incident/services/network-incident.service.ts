@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 //
 import { environment } from '../../../environments/environment';
-import { Message } from '../../global/message';
+import { Message } from '../../global/alerts/message';
 import { SelectItemClass } from '../../global/select-item-class';
 import { NetworkIncident } from '../network-incident';
 import { NetworkIncidentSave } from '../network-incident-save';

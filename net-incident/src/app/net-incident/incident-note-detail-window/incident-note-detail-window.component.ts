@@ -10,7 +10,7 @@ import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { environment } from '../../../environments/environment';
 import { AlertsService } from '../../global/alerts/alerts.service';
-import { Message } from '../../global/message';
+import { Message } from '../../global/alerts/message';
 import { ServicesService } from '../services/services.service';
 import { IIncidentNote, IncidentNote } from '../incident-note';
 import { NetworkIncident } from '../network-incident';

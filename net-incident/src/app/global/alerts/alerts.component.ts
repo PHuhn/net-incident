@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, animate, transition, style } from '@angular/animations';
 import { Observable } from 'rxjs';
 //
-import { AlertLevel } from '../alert-level.enum';
-import { Message } from '../message';
-import { Alerts } from '../alerts';
+import { AlertLevel } from './alert-level.enum';
+import { Message } from './message';
+import { Alerts } from './alerts';
 import { AlertsService } from './alerts.service';
 //
 @Component({

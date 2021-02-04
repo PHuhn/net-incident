@@ -3,9 +3,9 @@
 import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 //
 import { AlertsService } from './alerts.service';
-import { AlertLevel } from '../alert-level.enum';
-import { Message } from '../message';
-import { Alerts } from '../alerts';
+import { AlertLevel } from './alert-level.enum';
+import { Message } from './message';
+import { Alerts } from './alerts';
 //
 describe('AlertsService', () => {
 	let service: AlertsService;

@@ -1,7 +1,7 @@
 // ===========================================================================
 // File: login-view-model.ts
 //
-import { Message } from '../global/message';
+import { Message } from '../global/alerts/message';
 //
 export class LoginViewModel {
 	// using short-hand declaration...

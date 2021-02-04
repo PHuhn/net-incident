@@ -8,7 +8,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 //
-import { Message } from '../../global/message';
+import { Message } from '../../global/alerts/message';
 import { environment } from '../../../environments/environment';
 import { ServicesService } from './services.service';
 //

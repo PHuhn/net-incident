@@ -6,8 +6,8 @@ import { SelectItem } from 'primeng/api';
 import { Dialog } from 'primeng/dialog';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
-import { Message } from '../../global/message';
-import { AlertLevel } from '../../global/alert-level.enum';
+import { Message } from '../../global/alerts/message';
+import { AlertLevel } from '../../global/alerts/alert-level.enum';
 import { UserService } from '../../net-incident/services/user.service';
 import { AuthService } from '../../net-incident/services/auth.service';
 import { IUser, User } from '../../net-incident/user';

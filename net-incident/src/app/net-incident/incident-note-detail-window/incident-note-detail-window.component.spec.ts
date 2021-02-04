@@ -15,9 +15,9 @@ import { FocusTrapModule } from 'primeng/focustrap';
 import { Header, Footer, ConfirmationService, SelectItem } from 'primeng/api';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
-import { Alerts } from '../../global/alerts';
-import { AlertLevel } from '../../global/alert-level.enum';
-import { Message } from '../../global/message';
+import { Alerts } from '../../global/alerts/alerts';
+import { AlertLevel } from '../../global/alerts/alert-level.enum';
+import { Message } from '../../global/alerts/message';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';

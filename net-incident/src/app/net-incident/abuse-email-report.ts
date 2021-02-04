@@ -2,7 +2,7 @@
 // File: abuse-email-report.ts
 //
 import { environment } from '../../environments/environment';
-import { Message } from '../global/message';
+import { Message } from '../global/alerts/message';
 import { IIncident, Incident } from './incident';
 import { INetworkLog, NetworkLog } from './network-log';
 import { NetworkIncident } from './network-incident';
