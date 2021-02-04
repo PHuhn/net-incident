@@ -1,7 +1,13 @@
+// ===========================================================================
+// File: message.ts
+export interface IMessage {
+	//
+	id: string;
+	message: string;
+	//
+}
 //
-import { IMessage } from './imessage';
-// implements IMessage
-export class Message {
+export class Message implements IMessage {
 	//
 	id: string;
 	message: string;
@@ -11,3 +17,4 @@ export class Message {
 		this.message = message;
 	}
 }
+// ===========================================================================

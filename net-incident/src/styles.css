@@ -61,7 +61,7 @@ body .p-button.p-state-default.p-button-secondary, body .p-buttonset.p-button-se
 body .p-table .p-table-tbody > tr.p-state-highlight {
     background-color: #add8e6; color: #000000;
 }
-p-datatable .p-datatable-thead > tr > th,
+.p-datatable .p-datatable-thead > tr > th,
 .p-datatable .p-datatable-tbody > tr > td {
     padding: 0.571rem 0.600rem;
 }
@@ -132,29 +132,10 @@ NSG
 }
 .nsg-inc-det-left-side { float: left; padding-right: 2px; }
 .nsg-inc-det-right-side { float: left; padding: 0 2px; }
-.nsg-input-width-100 { width: 97%; }
-/* custom content sizing style */
-/* media queries must appear in low to high order */
+.nsg-input-wide { width: 98%; }
 .nsg-block-center { text-align: center; }
+/* media queries must appear in low to high order */
 @media (max-width: 768px) {
 	.nsg-text-right { text-align: left !important; }
 }
-/*
-@media (min-width: 481px) { .nsg-content { width: 480px; max-width: 100%; } }
-@media (min-width: 641px) { .nsg-content { width: 640px; max-width: 100%; } }
-*/
-/* .nsg-content { margin: auto; position: relative; }
-@media (min-width: 961px) {
-	.nsg-content { width: 960px; max-width: 100%; }
-}
-@media (min-width: 1141px) {
-	.nsg-content { width: 1140px; max-width: 100%; }
-}
-@media (min-width: 1345px) {
-	.nsg-content { width: 1344px; max-width: 100%; }
-}
-@media (min-width: 1551px) {
-	.nsg-content { width: 94%; }
-}
-*/
 /* End of style.css */

@@ -1577,6 +1577,27 @@ EmployeePanelComponent > should create ...
 TypeError: Cannot read property 'subscribe' of undefined
 (same as above)
 
+PROBLEM:
+========
+	Uncaught (in promise):
+	Error: Export of name 'ngForm' not found!
+SOLUTION:
+	? (maybe restart ng serve)
+
+PROBLEM:
+========
+	error NG8001: 'p-table' is not a known element:
+SOLUTION:
+	Add NoteTypeGridComponent component class to app.module
+
+PROBLEM:
+========
+	Jasmine: intermittent failure
+		IncidentDetailComponent > setFirstIncident should create with no rows ...
+		Failed: Cannot read property 'IncidentId' of undefined
+SOLUTION:
+	Not setup spy for unit test
+		incidentServiceSpy.emptyIncident.and.returnValue( emptyData );
 
 ===================================================
 Done:

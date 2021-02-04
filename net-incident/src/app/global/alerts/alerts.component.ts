@@ -22,36 +22,53 @@ import { AlertsService } from './alerts.service';
 	styleUrls: ['./alerts.component.css']
 })
 export class AlertsComponent implements OnInit {
+	/*
+	** Handle a message from the data service.
+	** 1) Display a color coded message area in upper right corner,
+	** 2) display an unordered list of messages.
+	*/
+	private codeName = 'alerts.component';
 	showMsgs: boolean = false;
 	level: AlertLevel = AlertLevel.Success;
 	msgs: Message[] = [];
 	//
 	constructor( private _alertService: AlertsService ) {
 	}
-	//
+	/*
+	** On init, subscribe to the alert service.
+	*/
 	ngOnInit() {
 		// console.log( 'AlertsComponent, OnInit ... ' );
 		// Subscribe to the service
 		// Will fire everytime other component use the set methods
 		const subscription = this._alertService.getAlerts().subscribe(
 					(alertMsg: Alerts) => {
-			this.showMsgs = true;
-			this.level = alertMsg.level;
-			this.msgs = alertMsg.messages;
-			// console.log( 'next message: ' + this.level.toString() );
-		}, error =>	console.error( error ) );
+			this.showMessage( alertMsg.level, alertMsg.messages );
+		}, error =>	{
+			this.showMessage( AlertLevel.Error, [new Message('ERR-1', error)] );
+			console.error( `${this.codeName}.subscription: ${error}` );
+		} );
 	}
-	//
-	// close the message
-	//
+	/*
+	** display the messages
+	*/
+	showMessage( level: AlertLevel, msgs: Message[]): string {
+		this.showMsgs = true;
+		this.level = level;
+		this.msgs = msgs;
+		return msgs[0].message;
+	}
+	/*
+	** close the message
+	*/
 	onClick(): boolean {
 		this.msgs = [];
 		this.showMsgs = false;
 		return false;
 	}
-	//
-	// return the class for the message
-	//
+	/*
+	** return the class for the message
+	*/
 	getClass(): string {
 		switch( +this.level ) {
 			case AlertLevel.Error:

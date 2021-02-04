@@ -10,52 +10,77 @@ describe('ConsoleLogService', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({});
 		service = TestBed.inject(ConsoleLogService);
-		service.logLevel = LogLevel.Verbose;
 	});
 	//
 	it('should be created', () => {
 		console.log(
 			'===================================\n' +
 			'ConsoleLogService should create ...' );
+		// given / when
 		console.log(`Log level ${environment.logLevel}` );
+		// then
 		expect(service).toBeTruthy();
 	});
 	//
 	it('should set log-level ...', () => {
+		// given
 		service.logLevel = LogLevel.Verbose;
+		// when
 		const _ret = service.logLevel;
+		// then
 		expect( _ret ).toBe( LogLevel.Verbose );
 	});
 	//
-	it('should take Error message ...', () => {
+	it('Error should create Error message ...', () => {
+		// given / when
 		const _ret = service.Error('Error message');
-		expect( _ret ).toBe( 1 );
+		// then
+		expect( _ret ).toEqual( 'Error: Error message' );
 	});
 	//
-	it('should take Warning message ...', () => {
+	it('Warning should create Warning message ...', () => {
+		// given / when
 		const _ret = service.Warning('Warning message');
-		expect( _ret ).toBe( 1 );
+		// then
+		expect( _ret ).toEqual( 'Warning: Warning message' );
 	});
 	//
-	it('should take Information message ...', () => {
+	it('Information should create Information message ...', () => {
+		// given / when
 		const _ret = service.Information('Information message');
-		expect( _ret ).toBe( 1 );
+		// then
+		expect( _ret ).toEqual( 'Info: Information message' );
 	});
 	//
-	it('should take Debug message ...', () => {
+	it('Debug should create Debug message ...', () => {
+		// given / when
 		const _ret = service.Debug('Debug message');
-		expect( _ret ).toBe( 1 );
+		// then
+		expect( _ret ).toEqual( 'Debug: Debug message' );
 	});
 	//
-	it('should take Verbose message ...', () => {
+	it('Verbose should create Verbose message ...', () => {
+		// given / when
 		const _ret = service.Verbose('Verbose message');
-		expect( _ret ).toBe( 1 );
+		// then
+		expect( _ret ).toEqual( 'Verbose: Verbose message' );
 	});
 	//
-	it('should not print log message ...', () => {
+	it('Verbose should not print log message ...', () => {
+		// given
 		service.logLevel = LogLevel.Error;
+		// when
 		const _ret = service.Verbose('Verbose message');
-		expect( _ret ).toBe( 0 );
+		// then
+		expect( _ret ).toEqual( '' );
+	});
+	//
+	it('LogMessage should log Unknown message ...', () => {
+		// test a private method
+		// given / when
+		const _ret = (service as any).LogMessage( -1, 'Test message' );
+		// then
+		expect( _ret ).toEqual( 'Unknown: Test message' );
 	});
 	/*
 	** getEnumKeyByEnumValue
@@ -67,7 +92,7 @@ describe('ConsoleLogService', () => {
 	//
 	it('should not get LogLevel string value ...', () => {
 		const _ret = service.getEnumKeyByEnumValue( LogLevel, 99 );
-		expect( _ret ).toBe( null );
+		expect( _ret ).toEqual( '--' );
 	});
 	//
 });

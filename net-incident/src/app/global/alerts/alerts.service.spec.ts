@@ -1,5 +1,5 @@
-/* tslint:disable:no-unused-variable */
-//
+// ===========================================================================
+// file: alerts.service.spects
 import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 //
 import { AlertsService } from './alerts.service';
@@ -83,6 +83,19 @@ describe('AlertsService', () => {
 		service.setWhereWhatError('where','what','error');
 	});
 	//
+	it('should take WhereWhatError empty Message ...', () => {
+		console.warn( '----------' );
+		const subscription = service.getAlerts().subscribe(
+					(alertMsg: Alerts) => {
+			expect(alertMsg.level).toBe(AlertLevel.Error);
+			expect(alertMsg.messages.length).toBe(3);
+			expect(alertMsg.messages[0].message).toBe('-');
+			expect(alertMsg.messages[1].message).toBe('-');
+			expect(alertMsg.messages[2].message).toBe('-');
+		}, error =>	console.log( error ) );
+		service.setWhereWhatError('', '', '');
+	});
+	//
 	it('should take warningSet message ...', () => {
 		const msg: string = 'Is required.';
 		const msgs: Message[] = [new Message( '1', msg )];
@@ -97,10 +110,6 @@ describe('AlertsService', () => {
 	});
 	it('warningSet should fail if empty message array ...', () => {
 		const ret = service.warningSet( [] );
-		expect( ret ).toEqual( false );
-	});
-	it('warningSet should fail if undefined message ...', () => {
-		const ret = service.warningSet( undefined );
 		expect( ret ).toEqual( false );
 	});
 	//
@@ -118,7 +127,7 @@ describe('AlertsService', () => {
 		expect( retAdd ).toEqual( true );
 		expect( retPost ).toEqual( true );
 	});
-	it('warningAdd should fail when un-initialize ...', () => {
+	it('warningAdd should fail when empty message ...', () => {
 		const retAdd = service.warningAdd( '' );
 		expect( retAdd ).toEqual( false );
 	});
@@ -126,5 +135,10 @@ describe('AlertsService', () => {
 		const retPost = service.warningPost( );
 		expect( retPost ).toEqual( false );
 	});
+	it('warningCount should return 0 after init ...', () => {
+		service.warningInit( );
+		expect( service.warningCount( ) ).toEqual( 0 );
+	});
 	//
 });
+// ===========================================================================

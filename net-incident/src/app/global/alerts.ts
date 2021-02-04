@@ -1,14 +1,16 @@
-//
+// ===========================================================================
+// File: alerts.ts
 import { AlertLevel } from './alert-level.enum';
-import { Message } from './message';
+import { IMessage } from './message';
 //
 export class Alerts {
 	//
 	level: AlertLevel;
-	messages: Message[];
+	messages: IMessage[];
 	//
-	constructor(alertLevel: AlertLevel, messages: Message[]) {
+	constructor(alertLevel: AlertLevel, messages: IMessage[]) {
 		this.level = alertLevel;
 		this.messages = messages;
 	}
 }
+// ===========================================================================
