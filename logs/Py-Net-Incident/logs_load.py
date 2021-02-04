@@ -250,6 +250,95 @@ class LogsLoadNG(object):
         else:
             print(file_path, ' not found')
 #
+class LogsLoadNGR(object):
+    """ class: NetGear logs load of network incidents """
+    def __init__(self):
+        self.sql_server = object
+        self.server_id = -1
+        self.dos_inc_type = -1
+        self.warning_logs = []
+    #
+    def log_process_load_ngr_incident_types(self):
+        """ load the needed incident types """
+        rows = self.sql_server.sql_fetchall(
+            "SELECT IncidentTypeId, IncidentTypeShortDesc FROM dbo.IncidentType WHERE IncidentTypeShortDesc IN ( 'dos' );")
+        for _, row in enumerate(rows):
+            short_desc = str(row.IncidentTypeShortDesc).lower()
+            if short_desc == 'dos':
+                self.dos_inc_type = row.IncidentTypeId
+    #
+    def log_process_parse_ngr_log(self, incident_type, log) -> NetworkLogIncident:
+        """
+        log is to be parse and write to NetworkLogs.
+        [DoS attack: RST Scan] from source: 43.224.226.181:19725, Saturday, January 30,2021 03:05:33      
+        """
+        log = log.rstrip()
+        ip_address = ''
+        network_log_date = ''
+        colon = log.split(':')
+        if len(colon) > 2:
+            ip_address = colon[2].strip()
+        text = log.split(',')
+        if len(text) > 2:
+            dat = text[2].lstrip()
+            tim = text[3]
+            network_log_date = dat + ' ' + tim
+        datetime.strptime(network_log_date, '%B %d %Y %H:%M:%S')
+        return NetworkLogIncident(
+            self.server_id, incident_type, ip_address, network_log_date, log)
+    #
+    def log_process_ngr_line(self, log):
+        """ process a single log record. """
+        count = 0
+        if log != '':
+            if log[0] == '[':
+                if log[0:12] == '[DoS attack:':
+                    network_log = self.log_process_parse_ngr_log(self.dos_inc_type, log)
+                    count = self.sql_server.sql_execute(network_log.sql_insert_network_log_string())
+                else:
+                    self.warning_logs.append(log)
+        return count
+    #
+    def log_process_main(self, server, db_name, file_path, server_id):
+        """ function: application main """
+        print("The arguments are: ", server, db_name, file_path, server_id)
+        #
+        input_file = Path(file_path)
+        if input_file.exists():
+            # path/file exists
+            self.sql_server = sql_server.SqlServer()
+            self.sql_server.sql_connection(
+                self.sql_server.sql_connection_trusted_string(server, db_name))
+            self.log_process_load_ngr_incident_types()
+            self.server_id = int(server_id)
+            compiled_pattern = re.compile("^\[DHCP IP: |^\[Service blocked: ICMP_echo_req|^\[Time synchronized|^\[Internet connected|^\[Internet disconnected|^\[Log Cleared|^\[UPnP set event|^\[WLAN access rejected|^\[email sent to")
+            log_file = open(file_path, "r")
+            for line in log_file:
+                # Ignore the following logs:
+                # * [DHCP IP: (192.168
+                # * [Service blocked: ICMP_echo_req
+                # * [Time synchronized
+                # * [Internet connected
+                # * [Internet disconnected
+                # * [Log Cleared
+                # * [UPnP set event
+                # * [WLAN access rejected
+                # * [email sent to
+                # Passed through:
+                # * [Admin login]
+                # * [Initialized, firmware
+                # * [DoS attack:
+                match = compiled_pattern.match(line)
+                if not match:
+                    self.log_process_ngr_line(line.rstrip())
+            log_file.close()
+            if self.warning_logs:
+                print('==== Warnings ====')
+                for _, log in enumerate(self.warning_logs):
+                    print(log)
+        else:
+            print(file_path, ' not found')
+#
 # > python logs_load.py --logType IIS --server .\Express --filePath .\data\iis.log --serverId 8
 # > python logs_load.py --logType NG --server .\Express --filePath .\data\NG-300-2018-05-03.txt --serverId 8
 #
@@ -258,8 +347,8 @@ if __name__ == '__main__':
     PARSER = argparse.ArgumentParser(description='Load IIS logs to database')
     # PARAMETER logType:
     #  A value defining what log type and factory class to use.
-    PARSER.add_argument('--logType', metavar='log_type ((of NG or IIS)', required=True,
-                        help='A magic value defining what type of logs, values: NG/IIS')
+    PARSER.add_argument('--logType', metavar='log_type ((of NG, NGR or IIS)', required=True,
+                        help='A magic value defining what type of logs, values: NG/NGR/IIS')
     # PARAMETER server: SQL Server instance name,
     #   . can be used for local instance or .\SQLExpress for default
     #   instance name for Express version.
@@ -280,6 +369,8 @@ if __name__ == '__main__':
     LOG_TYPE = ARGS.logType.lower()
     if LOG_TYPE == 'ng':
         LOGS_LOAD = LogsLoadNG()
+    elif LOG_TYPE == 'ngr':
+        LOGS_LOAD = LogsLoadNGR()
     elif LOG_TYPE == 'iis':
         LOGS_LOAD = LogsLoadIIS()
     else:

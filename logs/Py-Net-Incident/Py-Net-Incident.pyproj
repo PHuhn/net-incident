@@ -39,6 +39,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tests\logs_load_iis_tests.py" />
+    <Compile Include="Tests\logs_load_ngr_tests.py" />
     <Compile Include="Tests\logs_load_ng_tests.py" />
     <Compile Include="Tests\network_log_incident_tests.py" />
     <Compile Include="Tests\sql_server_tests.py" />

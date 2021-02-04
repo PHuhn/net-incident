@@ -6,13 +6,13 @@
  @IF NOT EXIST ..\%inp% GOTO NOTFOUND
  @REM
  @REM usage: logs_load.py [-h]
- @REM                     --logType log_type (of NG or IIS)
+ @REM                     --logType log_type (of NG NGR or IIS)
  @REM                     [--server server (.\SQLExpress)]
  @REM                     [--dbName db_name (NetIncident2)]
  @REM                     --filePath file_path
  @REM                     --serverId server_id
  @REM
- python logs_load.py --logType NG --server .\Express --serverId 4 --filePath ..\%inp%
+ python logs_load.py --logType NGR --server .\Express --serverId 4 --filePath ..\%inp%
  @REM
 @GOTO END
 :NOTFOUND
