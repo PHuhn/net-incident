@@ -6,7 +6,7 @@ import { Observable, throwError, of } from 'rxjs';
 //
 import { UserService } from '../../../net-incident/services/user.service';
 import { IUser, User } from '../../../net-incident/user';
-import { ConsoleLogService } from '../../../global/console-log.service';
+import { ConsoleLogService } from '../../../global/console-log/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class UserServiceMock extends UserService {

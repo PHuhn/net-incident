@@ -10,7 +10,7 @@ import { FilterMetadata } from 'primeng/api';
 import { LazyLoadEvent } from 'primeng/api';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
-import { ConsoleLogService } from '../../global/console-log.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IUser, User } from '../user';
 import { UserService } from '../services/user.service';

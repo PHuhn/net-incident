@@ -2,7 +2,7 @@
 // File: console-log.service.ts
 import { Injectable } from '@angular/core';
 //
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { LogLevel } from './log-level.enum';
 //
 @Injectable({ providedIn: 'root' })

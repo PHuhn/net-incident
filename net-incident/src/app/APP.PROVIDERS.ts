@@ -7,7 +7,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // infrastructure services
 import { ConfirmationService } from 'primeng/api';
 import { AlertsService } from './global/alerts/alerts.service';
-import { ConsoleLogService } from './global/console-log.service';
+import { ConsoleLogService } from './global/console-log/console-log.service';
 // user/auth services
 import { UserService } from './net-incident/services/user.service';
 import { AuthService } from './net-incident/services/auth.service';

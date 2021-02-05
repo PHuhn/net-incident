@@ -15,7 +15,7 @@ import { LoginViewModel } from '../../net-incident/login-view-model';
 import { TokenResponse } from '../../net-incident/token-response';
 import { Login } from '../../net-incident/login';
 import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';
-import { ConsoleLogService } from '../../global/console-log.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 //
 @Component({
 	selector: 'app-login',

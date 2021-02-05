@@ -11,7 +11,7 @@ import { NetworkIncident } from '../network-incident';
 import { NetworkIncidentSave } from '../network-incident-save';
 import { IIncident, Incident } from '../incident';
 import { INetworkLog, NetworkLog } from '../network-log';
-import { ConsoleLogService } from '../../global/console-log.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class NetworkIncidentService {

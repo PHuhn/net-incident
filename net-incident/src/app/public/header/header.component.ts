@@ -4,7 +4,7 @@ import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Menubar, MenubarModule } from 'primeng/menubar';
 import { environment } from '../../../environments/environment';
-import { ConsoleLogService } from '../../global/console-log.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 //
 @Component({
 	selector: 'app-header',

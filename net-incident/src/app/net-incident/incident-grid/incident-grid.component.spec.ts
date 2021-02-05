@@ -18,7 +18,7 @@ import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { Alerts } from '../../global/alerts/alerts';
-import { ConsoleLogService } from '../../global/console-log.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { UserService } from '../../net-incident/services/user.service';

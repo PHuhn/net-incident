@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 //
 import { Message } from '../../global/alerts/message';
 import { environment } from '../../../environments/environment';
-import { ConsoleLogService } from '../../global/console-log.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class ServicesService {

@@ -5,7 +5,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { Dialog } from 'primeng/dialog';
 //
-import { ConsoleLogService } from '../../global/console-log.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 //
 @Component({
 	selector: 'app-server-selection-window',

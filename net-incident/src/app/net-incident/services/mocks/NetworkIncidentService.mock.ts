@@ -10,7 +10,7 @@ import { NetworkIncident } from '../../../net-incident/network-incident';
 import { NetworkIncidentSave } from '../../../net-incident/network-incident-save';
 import { IIncident, Incident } from '../../../net-incident/incident';
 import { INetworkLog, NetworkLog } from '../../../net-incident/network-log';
-import { ConsoleLogService } from '../../../global/console-log.service';
+import { ConsoleLogService } from '../../../global/console-log/console-log.service';
 //
 @Injectable( { providedIn: 'root' } )
 export class NetworkIncidentServiceMock  extends NetworkIncidentService {
