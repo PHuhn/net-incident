@@ -30,7 +30,7 @@
 					{{rowData["NetworkLogDate"] | date: 'MM/dd'}}
 				</td>
 				<td>{{rowData['IncidentTypeShortDesc']}}</td>
-				<td>{{rowData['Log'] | truncate:[20, '...']}}</td>
+				<td>{{rowData['Log'] | truncate: 20: '...' }}</td>
 				<td *ngIf='!disabled'>
 					<button (click)="deleteItemClicked( rowData )" pButton type="button" icon="pi pi-trash" class="p-button-danger"></button>
 				</td>

@@ -32,7 +32,7 @@
 					<button (click)='editItemClicked( rowData )' pButton type='button' icon='pi pi-pencil' class='p-button-primary'></button>
 				</td>
 				<td>{{rowData['NoteTypeShortDesc']}}</td>
-				<td>{{rowData['Note'] | truncate:[24, '...']}}</td>
+				<td>{{rowData['Note'] | truncate: 24: '...' }}</td>
 				<td>
 					{{rowData["CreatedDate"] | date: 'MM/dd'}}
 				</td>
