@@ -1645,6 +1645,7 @@ Done:
 	V11.1.0.29 - Updated from Angular 10 to 11, visual updated, => bootstrap
 	V11.1.0.30 - Fixed delete of NetworkLog
 	V11.1.0.31 - Moved Message class & enum for Alerts to component folder
+	V11.1.0.32 - Moved Message class & enum for Alerts to component folder
 
 To Do's:
 	V - delete of network-log not working
