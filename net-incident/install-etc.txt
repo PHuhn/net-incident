@@ -1683,6 +1683,7 @@ Done:
 	V11.1.0.30 - Fixed delete of NetworkLog
 	V11.1.0.31 - Moved Message class & enum for Alerts to component folder
 	V11.1.0.32 - Moved Message class & enum for Alerts to component folder
+	V11.1.0.33 - Used console-log.service in more components and classes.
 
 To Do's:
 	V - delete of network-log not working

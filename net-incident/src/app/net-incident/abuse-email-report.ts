@@ -1,6 +1,7 @@
 // ===========================================================================
 // File: abuse-email-report.ts
 //
+import { ConsoleLogService } from '../global/console-log/console-log.service';
 import { environment } from '../../environments/environment';
 import { Message } from '../global/alerts/message';
 import { IIncident, Incident } from './incident';
@@ -25,26 +26,23 @@ export interface IAbuseEmailReport {
 //
 export class AbuseEmailReport implements IAbuseEmailReport {
 	//
+	public codeName: string = 'abuse-email-report';
 	public errMsgs: Message[] = [];
 	//
 	private selectedLogs: NetworkLog[];
 	private incidTypes: number[];
-	private debug: number = 0;
+	private _console: ConsoleLogService;
 	//
 	// constructor require the passing a full NetworkIncident,
 	// which contains all of the information necessary to create
 	// an email message.
 	//
 	constructor( private networkIncident: NetworkIncident ) {
+		this._console = new ConsoleLogService( );
 		this.selectedLogs = this.networkIncident.networkLogs.filter( (el) => {
 			return el.Selected === true;
 		});
-		if( environment.logLevel >= 4 ) {
-			this.debug = 1;
-		}
-		if( this.debug > 0 ) {
-			console.log( this.selectedLogs );
-		}
+		this._console.Information( `${this.codeName}.ctor: ${JSON.stringify(this.selectedLogs)}` )
 		if( this.selectedLogs.length > 0 ) {
 			this.incidTypes = this.selectedLogs.reduce( (u, current ) => {
 				if( u.indexOf( current.IncidentTypeId ) < 0 ) {
@@ -122,14 +120,10 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 		const compile = (contentString: string, keys) =>
 				Function(keys, 'return `' + contentString + '`;');
 		const localsKeys: string[] = Object.keys(locals);
-		if( this.debug > 0 ) {
-			console.log( localsKeys );
-		}
+		this._console.Information( `${this.codeName}.Render: ${JSON.stringify(localsKeys)}` )
 		if( localsKeys.length > 0 || content !== '' ) {
 			const localsValues: any[] = localsKeys.map(i => locals[i]);
-			if( this.debug > 0 ) {
-				console.log( localsValues );
-			}
+			this._console.Information( `${this.codeName}.Render: ${JSON.stringify(localsValues)}` )
 			return compile( content, localsKeys )( ...localsValues );
 		} else {
 			return content;
@@ -202,9 +196,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 			//
 			const emailRequest = new EmailRequest( fromEmail, abuse, subject, `${intro}\n${times}\n${thanks}\n${logs}\n`);
 			emailRequest.from.name = fromName;
-			if( this.debug > 0 ) {
-				console.log( emailRequest );
-			}
+			this._console.Information( `${this.codeName}.ComposeEmail: ${JSON.stringify(emailRequest)}` )
 			return JSON.stringify( emailRequest );
 		} catch (e) {
 			return e;
@@ -215,9 +207,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 	//
 	private IncidentLogDetails( template: string ): string[] {
 		let lines: string[] = [];
-		if( this.debug > 0 ) {
-			console.log( this.selectedLogs );
-		}
+		this._console.Information( `${this.codeName}.IncidentLogDetails: ${JSON.stringify(this.selectedLogs)}` )
 		//
 		this.selectedLogs.forEach( el => {
 			const logTime: Date = el.NetworkLogDate;
@@ -232,9 +222,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 				IncidentTypeShortDesc: el.IncidentTypeShortDesc
 			};
 			const line: string = this.Renderer( template, locals );
-			if( this.debug > 0 ) {
-				console.log( line );
-			}
+			this._console.Information( `${this.codeName}.IncidentLogDetails: ${line}` )
 			lines.push( line );
 		});
 		return lines;
@@ -263,9 +251,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 	//
 	private GetTemplate( ): IncidentType {
 		// get a list of incident log types
-		if( this.debug > 0 ) {
-			console.log( this.incidTypes );
-		}
+		this._console.Information( `${this.codeName}.GetTemplate: ${this.incidTypes.join(', ')}` )
 		const tmpId: number = ( this.incidTypes.length > 1 ? this.GetMultipleTemplateId( ) : this.incidTypes[0] );
 		const templates: IncidentType[] =
 			this.networkIncident.typeEmailTemplates.filter(

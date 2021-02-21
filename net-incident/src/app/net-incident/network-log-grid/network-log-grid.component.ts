@@ -18,7 +18,7 @@ import { Table, TableModule } from 'primeng/table';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 //
-import { environment } from '../../../environments/environment';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { TruncatePipe } from '../../global/truncate.pipe';
 import { INetworkLog, NetworkLog } from '../network-log';
@@ -36,7 +36,6 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	// Local variables
 	//
 	private codeName: string = 'network-log-grid';
-	private logLevel: number = 1;
 	totalRecords: number = 0;
 	@ViewChild('dt', { static: true }) dt: Table;
 	selectedLogs: NetworkLog[] = [];
@@ -55,15 +54,14 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	constructor(
 		private _alerts: AlertsService,
 		private _confirmationService: ConfirmationService,
+		// to write console logs condition on environment log-level
+		private _console: ConsoleLogService,
 		private _elementRef: ElementRef ) { }
 	//
 	// On component initialization, set ip address filter.
 	//
 	ngOnInit() {
-		this.logLevel = environment.logLevel;
-		if( this.logLevel >= 4 ) {
-			console.log ( `${this.codeName}.ngOnInit: entering ...` );
-		}
+		this._console.Information( `${this.codeName}.ngOnInit: entering ...` );
 		this.selectedLogs = [];
 		this.disabled = undefined;
 	}
@@ -81,13 +79,9 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	//
 	ngOnChanges(changes: SimpleChanges): void {
 		if(changes['networkIncident']) {
-			if( this.logLevel >= 4 ) {
-				console.log ( `${this.codeName}.ngOnChanges: entering ...` );
-			}
+				this._console.Information( `${this.codeName}.ngOnChanges: entering ...` );
 			if( this.networkIncident !== undefined ) {
-				if( this.logLevel >= 4 ) {
-					console.log ( this.networkIncident );
-				}
+				this._console.Debug( JSON.stringify( this.networkIncident ) );
 				this.afterViewInit( false );
 			}
 		}
@@ -96,14 +90,10 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	// After the view is initialized, this will be available.
 	//
 	ngAfterContentInit() {
-		if( this.logLevel >= 4 ) {
-			console.log ( `${this.codeName}.ngAfterContentInit: entering...` );
-		}
+		this._console.Information( `${this.codeName}.ngAfterContentInit: entering...` );
 		if( this.networkIncident.incident.IPAddress !== '' ) {
 			this.setTableFilter( this.networkIncident.incident.IPAddress );
-			if( this.logLevel >= 4 ) {
-				console.log ( `${this.codeName}.ngAfterContentInit: global filtered...` );
-			}
+			this._console.Information( `${this.codeName}.ngAfterContentInit: global filtered...` );
 		}
 		// ExpressionChangedAfterItHasBeenCheckedError:
 		// https://stackoverflow.com/questions/44070732/angular-4-expressionchangedafterithasbeencheckederror-expression-has-changed
@@ -111,34 +101,26 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 		// retry every 10th of a second, last time pass true
 		// Observable.interval( 100 ).takeWhile( val => cnt < 4 ).subscribe( val => {
 		setTimeout( ( ) => {
-			if( this.logLevel >= 0 ) {
-				console.log ( `${this.codeName}.ngAfterContentInit:` );
-			}
+			this._console.Information( `${this.codeName}.ngAfterContentInit:` );
 			if( this.afterViewInit( true ) === false ) {
 				let cnt: number = 0;
 				interval( 100 ).pipe(takeWhile(val => cnt < 3)).subscribe(val => {
 					cnt++;
-					if( this.logLevel >= 0 ) {
-						console.log ( `${this.codeName}.ngAfterContentInit: ${val}.` );
-					}
+					this._console.Information( `${this.codeName}.ngAfterContentInit: ${val}.` );
 					if( this.afterViewInit( cnt === 3 ) === true ) {
 						cnt = 3; // terminate the loop
 					}
 				});
 			} else {
-				console.log ( `${this.codeName}.ngAfterContentInit: afterInit configured.` );
+				this._console.Information( `${this.codeName}.ngAfterContentInit: afterInit configured.` );
 			}
 		}, 0 );
 	}
 	//
 	afterViewInit( complete: boolean ): boolean {
-		if( this.logLevel >= 4 ) {
-			console.log ( `${this.codeName}.afterViewInit: Entering: ${complete} ...` );
-		}
+		this._console.Information( `${this.codeName}.afterViewInit: Entering: ${complete} ...` );
 		if( this.networkIncident === undefined || this.networkIncident === null ) {
-			if( this.logLevel >= 4 ) {
-				console.log ( `${this.codeName}.afterViewInit: Network Incident not found.` );
-			}
+			this._console.Error( `${this.codeName}.afterViewInit: Network Incident not found.` );
 			return false;
 		}
 		//
@@ -147,17 +129,13 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 		this.viewInitIPAddress( );
 		this.setTableFilter( this.networkIncident.incident.IPAddress );
 		if( this.disabled === true ) {
-			if( this.logLevel >= 3 ) {
-				console.log ( `${this.codeName}.afterViewInit: Disabled: ${this.disabled}` );
-			}
+			this._console.Information( `${this.codeName}.afterViewInit: Disabled: ${this.disabled}` );
 			this.selectedLogs = [];
 			this.expansionColSpan = 5;
 		} else {
 			this.expansionColSpan = 7;
 		}
-		if( this.logLevel >= 4 ) {
-			console.log ( `${this.codeName}.afterViewInit: returning at: ${new Date().toISOString()}` );
-		}
+		this._console.Information( `${this.codeName}.afterViewInit: returning at: ${new Date().toISOString()}` );
 		return true;
 	}
 	//
@@ -182,9 +160,7 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	//
 	setTableFilter( ipAddress: string ): void {
 		this.dt.filterGlobal( ipAddress, 'contains' );
-		if( this.logLevel >= 4 ) {
-			console.log ( `${this.codeName}.setTableFilter: global filtered with ${ipAddress}` );
-		}
+		this._console.Information( `${this.codeName}.setTableFilter: global filtered with ${ipAddress}` );
 	}
 	//
 	// --------------------------------------------------------------------
@@ -196,15 +172,11 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	// selection column checked this row.
 	//
 	handleRowSelect( event ) {
-		if( this.logLevel >= 4 ) {
-			console.log ( `${this.codeName}.handleRowSelect: Entering: ${event} ...` );
-			console.log ( event );
-		}
+		this._console.Information( `${this.codeName}.handleRowSelect: Entering: ${event} ...` );
+		this._console.Information( JSON.stringify( event ) );
 		if( !this.disabled ) {
 			const ip = event.data.IPAddress;
-			if( this.logLevel >= 4 ) {
-				console.log( `${this.codeName}.handleRowSelect: entered ip: ${ip}` );
-			}
+			this._console.Information( `${this.codeName}.handleRowSelect: entered ip: ${ip}` );
 			event.data.Selected = true;
 			event.data.IsChanged = true;
 			event.data.IncidentId = this.networkIncident.incident.IncidentId;
@@ -226,31 +198,23 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	// selection column un-checked this row.
 	//
 	handleRowUnSelect( event ) {
-		if( this.logLevel >= 4 ) {
-			console.log ( `${this.codeName}.handleRowUnSelect: Entering: ${event} ...` );
-			console.log ( event );
-		}
+		this._console.Information( `${this.codeName}.handleRowUnSelect: Entering: ${event} ...` );
+		this._console.Information( JSON.stringify( event ) );
 		if( !this.disabled ) {
-			if( this.logLevel >= 4 ) {
-				console.log ( `${this.codeName}.handleRowUnSelect: not disabled.` );
-			}
+			this._console.Information( `${this.codeName}.handleRowUnSelect: not disabled.` );
 			event.data.Selected = false;
 			event.data.IsChanged = true;
 			event.data.IncidentId = null;
 			const cnt: number = this.networkIncident.networkLogs.reduce( (previousCnt, currentObject) => {
 				return previousCnt + (currentObject.Selected !== false ? 1: 0);
 			}, 0);
-			if( this.logLevel >= 4 ) {
-				console.log ( `${this.codeName}.handleRowUnSelect: count: ${cnt}` );
-			}
+			this._console.Information( `${this.codeName}.handleRowUnSelect: count: ${cnt}` );
 			if( cnt === 0 ) {
 				this.networkIncident.incident.IPAddress = '';
 				this.ipChanged.emit( this.networkIncident.incident.IPAddress );
 				this.setTableFilter( this.networkIncident.incident.IPAddress );
 			}
-			if( this.logLevel >= 4 ) {
-				console.log ( `${this.codeName}.handleRowUnSelect: ip: ${this.networkIncident.incident.IPAddress}` );
-			}
+			this._console.Information( `${this.codeName}.handleRowUnSelect: ip: ${this.networkIncident.incident.IPAddress}` );
 		}
 	}
 	//
@@ -258,23 +222,17 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	//
 	deleteItemClicked( item: NetworkLog ): boolean {
 		const delId = item.NetworkLogId;
-		if( this.logLevel >= 4 ) {
-			console.log( delId );
-		}
+		this._console.Information( `${this.codeName}.deleteItemClicked: del id: ${delId}` );
 		// the p-confirmDialog in in app.component
 		this._confirmationService.confirm({
 			key: 'Delete',
 			message: 'Are you sure you want to delete ' + delId + '?',
 			accept: () => {
-				if( this.logLevel >= 4 ) {
-					console.log( `User's response: true` );
-				}
+				this._console.Information( `User's response: true` );
 				this.deleteItem( delId );
 			},
 			reject: () => {
-				if( this.logLevel >= 4 ) {
-					console.log( `User's dismissed.` );
-				}
+				this._console.Information( `User's dismissed.` );
 			}
 		});
 		return false;
@@ -284,9 +242,7 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	// This still needs to be saved.
 	//
 	deleteItem( delId: number ): void {
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.deleteItem: Entering, del id: ${delId}` );
-		}
+		this._console.Information( `${this.codeName}.deleteItem: Entering, del id: ${delId}` );
 		if( delId !== 0 ) {
 			const logs = this.networkIncident.networkLogs.filter( (el) => {
 				return el.NetworkLogId === delId;
@@ -298,17 +254,13 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 				});
 				this._alerts.setWhereWhatSuccess(
 					'NetworkLogs-Grid', `Deleted: ${delId}`);
-				if( this.logLevel >= 3 ) {
-					console.log( this.networkIncident.deletedLogs );
-				}
+				this._console.Information( JSON.stringify( this.networkIncident.deletedLogs ) );
 			} else {
 				this._alerts.setWhereWhatWarning(
 					'NetworkLogs-Grid', `Delete failed for: ${delId}`);
 			}
 		}
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.deleteItem: Exiting, del id: ${delId}` );
-		}
+		this._console.Information( `${this.codeName}.deleteItem: Exiting, del id: ${delId}` );
 	}
 	//
 }

@@ -6,7 +6,7 @@ import { SelectItem } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { ConfirmationService } from 'primeng/api';
 //
-import { environment } from '../../../environments/environment';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { IIncident, Incident } from '../incident';
 import { IIncidentNote, IncidentNote } from '../incident-note';
@@ -24,7 +24,6 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 	//
 	// Local variables
 	private codeName: string = 'Incident-Note-Grid';
-	private logLevel: number = 1;
 	private totalRecords: number = 0;
 	private id: number;
 	private disableDelete: boolean = false;
@@ -41,18 +40,16 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 	//
 	constructor(
 		private _alerts: AlertsService,
-		private _confirmationService: ConfirmationService
+		private _confirmationService: ConfirmationService,
+		// to write console logs condition on environment log-level
+		private _console: ConsoleLogService
 	) { }
 	//
 	// On component initialization, get all data from the data service.
 	//
 	ngOnInit() {
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
 		// all records are passed in via @Input
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName} - ngOnInit: ...` );
-		}
+		this._console.Information( `${this.codeName}.ngOnInit: ...` );
 		if( this.networkIncident.incident.Mailed === true || this.networkIncident.incident.Closed === true ) {
 			this.disableDelete = true;
 		}
@@ -78,9 +75,7 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 		this.windowDisplay = true;
 		this.windowIncidentNote = this.emptyIncidentNote( );
 		this.id = this.windowIncidentNote.IncidentNoteId;
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.addItemClicked: Add item clicked: ${this.windowDisplay}` );
-		}
+		this._console.Information( `${this.codeName}.addItemClicked: Add item clicked: ${this.windowDisplay}` );
 	}
 	//
 	emptyIncidentNote( ): IIncidentNote {
@@ -95,10 +90,8 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 		this.windowIncidentNote = item;
 		this.id = item.IncidentNoteId;
 		this.windowDisplay = true;
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.editItemClicked: open dialog: ${this.windowDisplay}` );
-			console.log( item );
-		}
+		this._console.Information( `${this.codeName}.editItemClicked: open dialog: ${this.windowDisplay}` );
+		this._console.Information( JSON.stringify( item ) );
 	}
 	//
 	// Confirm component (delete)
@@ -110,23 +103,17 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 				this.codeName, `Locked, cannot delete id: ${this.id}`);
 			return;
 		}
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.deleteItemClicked: Id: ${this.id}` );
-		}
+		this._console.Information( `${this.codeName}.deleteItemClicked: Id: ${this.id}` );
 		// the p-confirmDialog in in app.component
 		this._confirmationService.confirm({
 			key: 'Delete',
 			message: `Are you sure you want to delete ${this.id}?`,
 			accept: () => {
-				if( this.logLevel >= 4 ) {
-					console.log( `${this.codeName}.deleteItemClicked: User's response: true to delete ${this.id}` );
-				}
+				this._console.Information( `${this.codeName}.deleteItemClicked: User's response: true to delete ${this.id}` );
 				this.deleteItem( );
 			},
 			reject: () => {
-				if( this.logLevel >= 4 ) {
-					console.log( `${this.codeName}.deleteItemClicked: User's dismissed.` );
-				}
+				this._console.Information( `${this.codeName}.deleteItemClicked: User's dismissed.` );
 			}
 		});
 		return false;
@@ -135,12 +122,10 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 	// on edit window closed
 	//
 	onClose( saved: boolean ) {
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.onClose: Entering: on close with: ${saved}` );
-		}
-		if( saved === true && this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.onClose: Refreshing...` );
-			console.log( this.networkIncident.incidentNotes );
+		this._console.Information( `${this.codeName}.onClose: Entering: on close with: ${saved}` );
+		if( saved === true ) {
+			this._console.Information( `${this.codeName}.onClose: Refreshing...` );
+			this._console.Information( JSON.stringify( this.networkIncident.incidentNotes ) );
 		}
 		this.windowDisplay = false;
 		this.windowIncidentNote = undefined;

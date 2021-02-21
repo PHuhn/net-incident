@@ -8,7 +8,7 @@ export const environment = {
   envName: 'dev',
   base_Url: 'http://localhost:9111/api/',
   defaultUserAccount: '',
-  logLevel: 3,
+  logLevel: 2,
   BadAbuseEmailAddresses: [ 'hostmaster@nic.ad.jp', 'abuse@ripe.net' ],
   NetSolutionsNIC: [ 'amanah.com', 'cogentco.com', 'corp.tn.contina.com', 'gin.ntt.net',
 		'hostwinds.com', 'krypt.com', 'micfo.com', 'quadranet.com', 'securedservers.com',
