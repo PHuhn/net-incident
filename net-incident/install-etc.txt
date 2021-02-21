@@ -1599,6 +1599,43 @@ SOLUTION:
 	Not setup spy for unit test
 		incidentServiceSpy.emptyIncident.and.returnValue( emptyData );
 
+PROBLEM:
+========
+	MenuComponent > should render start menubar title ...
+	 TypeError: Cannot read property 'nativeElement' of null
+	per in menubar:
+	<ng-template pTemplate='start'>
+		<span id='menubarTitle' class='nsg-primary-color nsg-bold'>{{ title }}:</span>
+	</ng-template>
+SOLUTION:
+	Added the following to the spec:
+		import { SharedModule } from 'primeng/api';
+		...
+			imports: [
+				SharedModule,
+				... ],
+
+PROBLEM:
+========
+	Runtime error viewed in developer tool:
+	NullInjectorError: R3InjectorError(AppModule)[Table -> Table -> Table]: 
+	 NullInjectorError: No provider for Table!
+	  at NullInjector.get (http://localhost:4200/vendor.js:48115:27)
+	Error: ASSERTION ERROR: Reached the max number of directives [Expected=> 1 != 1 <=Actual]
+	 at throwError (core.js:210)
+	 at assertNotEqual (core.js:166)
+SOLUTION:
+	removed:
+		<td pEditableColumn><p-cellEditor>
+
+PROBLEM:
+========
+	p-tree control with name='ParentOrgIdTree' control:
+	 Error: Uncaught (in promise): Error: No value accessor for form
+	 control with name: 'ParentOrgIdTree'
+SOLUTION:
+	ngDefaultControl
+
 ===================================================
 Done:
 	service logging 12/22
