@@ -1636,6 +1636,16 @@ PROBLEM:
 SOLUTION:
 	ngDefaultControl
 
+PROBLEM:
+========
+	p-treeTable error appears in dev-tool:
+	core.js:6150 ERROR NullInjectorError: R3InjectorError(AppModule)[Table -> Table -> Table]: 
+	  NullInjectorError: No provider for Table!
+	    at NullInjector.get (http://localhost:4200/vendor.js:48125:27)
+SOLUTION:
+	Does not support row-expansion, removed the following:
+	<a href='#' [pRowToggler]='rowData'>
+
 ===================================================
 Done:
 	service logging 12/22
