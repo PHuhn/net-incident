@@ -1646,6 +1646,72 @@ SOLUTION:
 	Does not support row-expansion, removed the following:
 	<a href='#' [pRowToggler]='rowData'>
 
+PROBLEM:
+========
+	Jasmine test disconnecting with Chrome...
+	 Chrome 89.0.4389.90 (Windows 10): Executed 90 of 593 SUCCESS (0 secs / 3.009 secs)
+	 WARN: [Object{data: CompanyOrg{CompanyOrgId: ..., ParentOrgId: ..., CompanyId: ..., CompanyOrgShortName: ..., CompanyOrgName: ..., SortOrder: ..., ExternalId: ..., CreateDate: ..., UpdatedDate: ...}, label: 'c 1 (1)', children: [..., ...], key: '1', expanded: false, selectable: true}, Object{data: CompanyOrg{CompanyOrgId: ..., ParentOrgId: ..., CompanyId: ..., CompanyOrgShortName: ..., CompanyOrgName: ..., SortOrder: ..., ExternalId: ..., CreateDate: ..., UpdatedDate: ...}, label: 'c 4 (4)', children: [..., ...], key: '4', expanded: false, selectable: true}]
+	 29 03 2021 10:53:16.066:WARN [Chrome 89.0.4389.90 (Windows 10)]: Disconnected (0 tChrome 89.0.4389.90 (Windows 10) ERROR
+	   Disconnectedreconnect failed before timeout of 2000ms (ping timeout)
+SOLUTION:
+	Programming problem ... changed in app:
+		this.companyOrgsData = companyData.CompanyOrgs;
+		this.companyorgs = this.buildCompanyOrgTree( this.companyorgs, false );
+	to:
+		this.companyOrgsData = companyData.CompanyOrgs;
+		this.companyorgs = this.buildCompanyOrgTree( this.companyOrgsData, false );
+	In test...
+		data.CompanyOrgs = mockDatum.filter( co => co.CompanyOrgId === delId );
+	to:
+		data.CompanyOrgs = mockDatum.filter( co => co.CompanyOrgId !== delId );
+
+PROBLEM:
+========
+	Jasmine test initialization issue...
+	 Object.defineProperty( organizationServiceSpy, 'select$', {get: () => {}});
+	 let selectedManagerSpy = spyOnProperty( organizationServiceSpy, 'select$', 'get')
+		.and.returnValue( new BehaviorSubject<ICompanyDataManager>( { ... companyData } ) );
+	returning initial value not companyData values
+SOLUTION:
+	Missed provider:
+	{ provide: CompanyOrganizationService, useValue: organizationServiceSpy },
+
+PROBLEM:
+========
+	Error: NG0200: Circular dependency in DI detected for CompanyOrganizationService.
+	client:135 Circular dependency detected:
+	src\app\services\company-organization.service.ts
+	 -> src\app\services\mocks\project-project-task-fake.service.ts
+	 -> src\app\services\company-organization.service.ts
+SOLUTION:
+	Broke StoreState off into CompanyManagerService which does not inject other services.
+
+PROBLEM:
+========
+	Jasmine test of CompanyManagerService
+	CompanyManagerService > setProjectData: set of company org ...
+		RangeError: Maximum call stack size exceeded
+SOLUTION:
+	get(): ICompanyDataManager {
+		return this.get();
+	}
+	getCompanyData(): ICompanyDataManager {
+		return this.state;
+	}
+
+PROBLEM:
+========
+	Jasmine test of ImageComponent
+		localhost/:1 GET http://localhost:9876/assets/resources/ 404 (Not Found)
+SOLUTION:
+	Added to karma.config.js
+		files: [
+		  { pattern: './src/assets/**', watched: false, included:false, nocache:false, served:true }
+		],
+		proxies: {
+		  '/assets/': '/assets/'
+		},
+
 ===================================================
 Done:
 	service logging 12/22
