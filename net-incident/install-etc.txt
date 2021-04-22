@@ -1701,6 +1701,15 @@ SOLUTION:
 
 PROBLEM:
 ========
+	Jasmine test of companyvehicles-grid
+		Access to XMLHttpRequest at 'ng:///CompanyVehicleGridComponent.js' from origin 'http://localhost:9876' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, chrome-untrusted, https.
+SOLUTION:
+	I changed some service calls in CompanyVehicleDetailWindowComponent that caused the error
+	 and needs to be added to the mock spy service of the grid tests, so the modal dialog can
+	 get through the constructor and the ngOnInit.
+
+PROBLEM:
+========
 	Jasmine test of ImageComponent
 		localhost/:1 GET http://localhost:9876/assets/resources/ 404 (Not Found)
 SOLUTION:

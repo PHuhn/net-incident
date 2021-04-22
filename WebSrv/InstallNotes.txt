@@ -255,3 +255,8 @@ PROBLEM:
 SOLUTION:
 	2019-03-01, version 1.0.4.17: updated to .Net 4.7.2, ran test
 
+PROBLEM:
+========
+	Bump System.Net.Http from 4.0.0 to 4.3.4 in /WebSrv (#11)
+SOLUTION:
+	Install-Package System.Net.Http -version 4.3.4
