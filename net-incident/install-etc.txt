@@ -1721,6 +1721,16 @@ SOLUTION:
 		  '/assets/': '/assets/'
 		},
 
+PROBLEM:
+========
+	ssri security issue
+		npm update ssri --depth 5
+	nor
+		npm audit fix
+	did not fix the security issue
+SOLUTION:
+		npm audit fix --package-lock-only
+
 ===================================================
 Done:
 	service logging 12/22
