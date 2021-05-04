@@ -11,6 +11,7 @@ import { AlertsService } from '../../global/alerts/alerts.service';
 import { IIncident, Incident } from '../incident';
 import { IIncidentNote, IncidentNote } from '../incident-note';
 import { NetworkIncident } from '../network-incident';
+import { IIncidentNoteWindowInput } from '../incident-note-detail-window/incident-note-detail-window.component';
 //
 @Component({
 	selector: 'app-incident-note-grid',
@@ -28,8 +29,7 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 	private id: number;
 	private disableDelete: boolean = false;
 	// xfer to detail window
-	windowIncidentNote: IncidentNote = undefined;
-	windowDisplay: boolean = false;
+	windowIncidentNoteInput: IIncidentNoteWindowInput | undefined;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -72,10 +72,13 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 	// Add button clicked, launch edit detail window.
 	//
 	addItemClicked( ) {
-		this.windowDisplay = true;
-		this.windowIncidentNote = this.emptyIncidentNote( );
-		this.id = this.windowIncidentNote.IncidentNoteId;
-		this._console.Information( `${this.codeName}.addItemClicked: Add item clicked: ${this.windowDisplay}` );
+		this.windowIncidentNoteInput = {
+			model: this.emptyIncidentNote( ),
+			networkIncident: this.networkIncident,
+			displayWin: true
+		};
+		this.id = this.windowIncidentNoteInput.model.IncidentNoteId;
+		this._console.Information( `${this.codeName}.addItemClicked: Add item clicked` );
 	}
 	//
 	emptyIncidentNote( ): IIncidentNote {
@@ -87,10 +90,13 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 	// Edit button clicked, launch edit detail window.
 	//
 	editItemClicked( item: IncidentNote ) {
-		this.windowIncidentNote = item;
 		this.id = item.IncidentNoteId;
-		this.windowDisplay = true;
-		this._console.Information( `${this.codeName}.editItemClicked: open dialog: ${this.windowDisplay}` );
+		this.windowIncidentNoteInput = {
+			model: item,
+			networkIncident: this.networkIncident,
+			displayWin: true
+		};
+		this._console.Information( `${this.codeName}.editItemClicked: open dialog: ${this.id}` );
 		this._console.Information( JSON.stringify( item ) );
 	}
 	//
@@ -127,8 +133,7 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 			this._console.Information( `${this.codeName}.onClose: Refreshing...` );
 			this._console.Information( JSON.stringify( this.networkIncident.incidentNotes ) );
 		}
-		this.windowDisplay = false;
-		this.windowIncidentNote = undefined;
+		this.windowIncidentNoteInput = undefined;
 	}
 	//
 	// --------------------------------------------------------------------

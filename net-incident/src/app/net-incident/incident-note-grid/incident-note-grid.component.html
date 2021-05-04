@@ -65,9 +65,9 @@
 		</ng-template>
 	</p-table>
 	<!-- modal edit window -->
-	<app-incident-note-detail-window [incidentnote]='windowIncidentNote'
-		[networkIncident]='networkIncident'
-		[displayWin]='windowDisplay' (onClose)='onClose($event)'>
+	<app-incident-note-detail-window
+		[incidentnote]='windowIncidentNoteInput'
+		(closeWin)='closeWin($event)'>
 	</app-incident-note-detail-window>
 	<!-- End of incidentnote.grid.component.html -->
 </div>

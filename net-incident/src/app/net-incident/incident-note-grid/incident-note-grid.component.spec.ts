@@ -28,7 +28,7 @@ import { IIncidentNote, IncidentNote } from '../incident-note';
 import { IncidentNoteGridComponent } from './incident-note-grid.component';
 import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-window/incident-note-detail-window.component';
 //
-describe( 'IncidentNoteGridComponent', ( ) => {
+fdescribe( 'IncidentNoteGridComponent', ( ) => {
 	// IncidentNoteGridComponent services:
 	// private _alerts: AlertsService,
 	// private _confirmationService: ConfirmationService
@@ -105,6 +105,21 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 	} );
+	/*
+	** Cleanup so no dialog window will still be open
+	*/
+	function windowCleanup( ) {
+		sut.windowIncidentNoteInput = undefined;
+		tickFakeWait( 1 );
+	}
+	/*
+	** Pause for events to process.
+	*/
+	function tickFakeWait( ticks: number ) {
+		tick( ticks );
+		fixture.detectChanges( ); // trigger initial data binding
+		fixture.whenStable( );
+	}
 	//
 	// Component instantiates
 	//
@@ -130,48 +145,29 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	//
 	// addItemClicked( )
 	//
-	it('should launch detail window when addItemClicked is called ...', waitForAsync( () => {
-		console.log( 'addItemClicked is called ...' );
+	it('should launch detail window when addItemClicked is called ...', fakeAsync( () => {
 		sut.addItemClicked( );
 		//
-		console.log( `~= addItemClicked: ${new Date().toISOString()}` );
-		fixture.detectChanges();
-		fixture.whenStable();
-		console.log( `~=* addItemClicked: ${new Date().toISOString()}` );
+		tickFakeWait( 10 );
 		//
-		if( sut.windowDisplay === true ) {
-			const title: HTMLDivElement = fixture.debugElement.query(By.css(
-				'#NoteDetailWindowHeader' )).nativeElement;
-			expect( title.innerText ).toEqual( expectedWindowTitle + '0' );
-			sut.windowDisplay = false;
-		} else {
-			console.log( `****** failed ******** ${new Date().toISOString()}` );
-			fail('Detail window took too long.');
-		}
+		const title: HTMLDivElement = fixture.debugElement.query(By.css(
+			'#NoteDetailWindowHeader' )).nativeElement;
+		expect( title.innerText ).toEqual( expectedWindowTitle + '0' );
+		windowCleanup( );
 	}));
 	//
 	// editItemClicked( )
 	//
-	it('should launch detail window when editItemClicked is called ...', waitForAsync( () => {
-		console.log( 'editItemClicked is called ...' );
+	it('should launch detail window when editItemClicked is called ...', fakeAsync( () => {
 		const incidentNote: IncidentNote = sut.networkIncident.incidentNotes[ 3 ];
 		sut.editItemClicked( incidentNote );
 		//
-		console.log( `~= editItemClicked: ${new Date().toISOString()}` );
-		fixture.detectChanges();
-		fixture.whenStable();
-		console.log( `~=* editItemClicked: ${new Date().toISOString()}` );
+		tickFakeWait( 10 );
 		//
-		if( sut.windowDisplay === true ) {
-			const title: HTMLDivElement = fixture.debugElement.query(By.css(
-				'#NoteDetailWindowHeader' )).nativeElement;
-			expect( title.innerText ).toEqual( expectedWindowTitle + incidentNote.IncidentNoteId );
-			sut.windowDisplay = false;
-			console.log( `editItemClicked ... completed ${new Date().toISOString()}` );
-		} else {
-			console.log( `****** failed ******** ${new Date().toISOString()}` );
-			fail('Detail window took too long.');
-		}
+		const title: HTMLDivElement = fixture.debugElement.query(By.css(
+			'#NoteDetailWindowHeader' )).nativeElement;
+		expect( title.innerText ).toEqual( expectedWindowTitle + incidentNote.IncidentNoteId );
+		windowCleanup( );
 	}));
 	//
 	// deleteItemClicked( item: IncidentNote ) :boolean

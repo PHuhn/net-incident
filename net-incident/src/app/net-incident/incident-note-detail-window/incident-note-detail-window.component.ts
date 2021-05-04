@@ -15,6 +15,13 @@ import { ServicesService } from '../services/services.service';
 import { IIncidentNote, IncidentNote } from '../incident-note';
 import { NetworkIncident } from '../network-incident';
 import { AbuseEmailReport } from '../abuse-email-report';
+import { IIncident } from '../incident';
+//
+export interface IIncidentNoteWindowInput {
+	model: IIncidentNote;
+	networkIncident: NetworkIncident;
+	displayWin: boolean;
+}
 //
 @Component({
   selector: 'app-incident-note-detail-window',
@@ -26,33 +33,37 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	// Data declaration.
 	//
 	private codeName: string = 'Incident-Note-Detail-Window';
+	private httpSubscription: Subscription;
+	model: IIncidentNote;
+	networkIncident: NetworkIncident;
 	add: boolean = false;
 	id: number = 0;
-	private httpSubscription: Subscription;
-	model: IncidentNote;
+	incidentnoteWindowInput: IIncidentNoteWindowInput | undefined;
+	displayWin: boolean;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
 	//  inputs: incidentnote and displayWin
 	//  outputs: onClose
 	//
-	@Input() set incidentnote( incidentnote: IncidentNote ) {
-		if( incidentnote !== undefined && incidentnote !== null ) {
-			this.model = incidentnote;
-			this.add = ( this.model.IncidentNoteId < 1 ? true : false );
-			this.id = incidentnote.IncidentNoteId;
-			//
+	@Input() set incidentnote( input: IIncidentNoteWindowInput | undefined ) {
+		if( input !== undefined ) {
+			this.incidentnoteWindowInput = input;
+			this.networkIncident = input.networkIncident;
+			this.model = input.model;
+			this.id = this.model.IncidentNoteId;
+			this.add = ( this.id < 1 ? true : false );
+			this.displayWin = input.displayWin;
 			if( this.add ) {
 				this.model.IsChanged = true;
 			}
-			this._console.Information( `${this.codeName}: ${incidentnote.IncidentNoteId}, win: ${this.displayWin}, add: ${this.add}` );
+			this._console.Verbose(
+				`${this.codeName}.Input.incidentnote: ${this.id}, win: ${this.displayWin}` );
 		} else {
-			this._console.Information( `${this.codeName}: incident note is undefined` );
+			this.displayWin = false;
 		}
 	}
-	get incidentnote(): IncidentNote { return this.model; }
-	@Input() networkIncident: NetworkIncident;
-	@Input() displayWin: boolean;
+	get incidentnote(): IIncidentNoteWindowInput | undefined { return this.incidentnoteWindowInput; }
 	//
 	@Output() onClose = new EventEmitter<boolean>();
 	//
@@ -94,6 +105,7 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 		this._console.Information( `${this.codeName}: windowClose: ${saved}` );
 		if( saved === false ) {
 			this.onClose.emit( saved );
+			this.displayWin = false;
 			return;
 		}
 		if( this.add === false ) {
@@ -105,7 +117,6 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 			} else {
 				this.updateItem( );
 			}
-			this.onClose.emit( saved );
 		}
 	}
 	//
@@ -240,6 +251,8 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 			// this reassignment (spread), tells angular to update view
 			this.networkIncident.incidentNotes =
 				[...this.networkIncident.incidentNotes, this.model];
+			this.onClose.emit( true );
+			this.displayWin = false;
 		} else {
 			const msg = `Id should be 0: ${this.model.IncidentNoteId}`;
 			this._console.Error( `${this.codeName}.createItem: ${msg}` );
@@ -269,6 +282,8 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 				this.model.IsChanged = true;
 				this.networkIncident.incidentNotes = this.networkIncident.incidentNotes.map(
 					( el ) => el.IncidentNoteId === this.model.IncidentNoteId ? this.model : el );
+				this.onClose.emit( true );
+				this.displayWin = false;
 			} else {
 				const msg = `Id not found: ${this.model.IncidentNoteId}`;
 				console.error( msg );

@@ -32,6 +32,12 @@ export class ConsoleLogService {
 		return this.LogMessage(LogLevel.Warning, message);
 	}
 	/*
+	** Write a success (LogLevel) LogMessage to console.
+	*/
+	public Success(message: string): string {
+		return this.LogMessage(LogLevel.Success, message);
+	}
+	/*
 	** Write a info (LogLevel) LogMessage to console.
 	*/
 	public Information(message: string): string {
@@ -64,6 +70,7 @@ export class ConsoleLogService {
 				case LogLevel.Warning:
 					console.warn( msg );
 					break;
+				case LogLevel.Success:
 				case LogLevel.Info:
 				case LogLevel.Debug:
 				case LogLevel.Verbose:
