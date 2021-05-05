@@ -8,6 +8,8 @@ import { ConfirmationService } from 'primeng/api';
 //
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { AlertsService } from '../../global/alerts/alerts.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
+import { BaseComponent } from '../../common/base-comp/base-comp.component';
 import { IIncident, Incident } from '../incident';
 import { IIncidentNote, IncidentNote } from '../incident-note';
 import { NetworkIncident } from '../network-incident';
@@ -17,19 +19,24 @@ import { IIncidentNoteWindowInput } from '../incident-note-detail-window/inciden
 	selector: 'app-incident-note-grid',
 	templateUrl: './incident-note-grid.component.html'
 })
-export class IncidentNoteGridComponent implements OnInit, OnDestroy {
+export class IncidentNoteGridComponent extends BaseComponent implements OnInit, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
 	// Window/dialog communication (also see onClose event)
 	//
 	// Local variables
-	private codeName: string = 'Incident-Note-Grid';
 	private totalRecords: number = 0;
 	private id: number;
 	private disableDelete: boolean = false;
 	// xfer to detail window
 	windowIncidentNoteInput: IIncidentNoteWindowInput | undefined;
+	// communicate to the AlertComponent
+	protected _alerts: AlertsService;
+	// to write console logs condition on environment log-level
+	protected _console: ConsoleLogService;
+	// PrimeNG's Ok/Cancel confirmation dialog service
+	protected _confirmationService: ConfirmationService;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -39,11 +46,17 @@ export class IncidentNoteGridComponent implements OnInit, OnDestroy {
 	@Input() networkIncident: NetworkIncident;
 	//
 	constructor(
-		private _alerts: AlertsService,
-		private _confirmationService: ConfirmationService,
-		// to write console logs condition on environment log-level
-		private _console: ConsoleLogService
-	) { }
+		// inject the base components services
+		private _baseSrvc: BaseCompService,
+	) {
+		super( _baseSrvc );
+		// get the needed services from the base component
+		this._alerts = _baseSrvc._alerts;
+		this._console = _baseSrvc._console;
+		this._confirmationService = _baseSrvc._confirmationService;
+		this.codeName = 'Incident-Note-Grid';
+		//
+	}
 	//
 	// On component initialization, get all data from the data service.
 	//

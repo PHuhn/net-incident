@@ -9,9 +9,11 @@ import { TableModule } from 'primeng/table';
 import { Dialog } from 'primeng/dialog';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { ButtonModule } from 'primeng/button';
-import { Header, Footer, ConfirmationService, SelectItem } from 'primeng/api';
+import { ConfirmationService, Confirmation } from 'primeng/api';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 import { IIncident, Incident } from '../incident';
 import { NetworkIncident } from '../network-incident';
@@ -24,7 +26,9 @@ describe('NetworkLogGridComponent', () => {
 	let sut: NetworkLogGridComponent;
 	let fixture: ComponentFixture<NetworkLogGridComponent>;
 	let alertService: AlertsService;
-	let confirmService: ConfirmationServiceMock;
+	let baseService: BaseCompService;
+	let consoleService: ConsoleLogService;
+	let confirmService: ConfirmationService;
 	//
 	const numRowsSelector = '#netLogTable > div > div > table > tbody > tr';
 	const ipAddr: string = '192.169.1.1';
@@ -58,21 +62,19 @@ describe('NetworkLogGridComponent', () => {
 				TruncatePipe
 			],
 			providers: [
+				BaseCompService,
 				AlertsService,
-				{ provide: ConfirmationService, useClass: ConfirmationServiceMock }
+				ConsoleLogService,
+				ConfirmationService,
 			]
-		})
-		.compileComponents( );
+		});
+		// Setup injected pre service for each test
+		baseService = TestBed.inject( BaseCompService );
+		alertService = baseService._alerts;
+		consoleService = baseService._console;
+		confirmService = baseService._confirmationService;
+		TestBed.compileComponents( );
 	}));
-	//
-	beforeEach( inject( [
-			AlertsService, ConfirmationService ],
-		( alrtSrv: AlertsService,
-				confSrvMock: ConfirmationServiceMock ) => {
-			alertService = alrtSrv;
-			confirmService = confSrvMock;
-		}
-	) );
 	//
 	beforeEach( ( ) => {
 		fixture = TestBed.createComponent( NetworkLogGridComponent );

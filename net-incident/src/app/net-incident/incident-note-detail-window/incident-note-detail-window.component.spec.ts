@@ -14,10 +14,12 @@ import { Dropdown, DropdownModule } from 'primeng/dropdown';
 import { FocusTrapModule } from 'primeng/focustrap';
 import { Header, Footer, ConfirmationService, SelectItem } from 'primeng/api';
 //
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { Alerts } from '../../global/alerts/alerts';
 import { AlertLevel } from '../../global/alerts/alert-level.enum';
 import { Message } from '../../global/alerts/message';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
@@ -34,8 +36,9 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	let sut: IncidentNoteDetailWindowComponent;
 	let fixture: ComponentFixture<IncidentNoteDetailWindowComponent>;
 	let alertService: AlertsService;
+	let baseService: BaseCompService;
 	let servicesService: ServicesService;
-	let confirmationService: ConfirmationService;
+	let consoleService: ConsoleLogService;
 	const incidentnoteServiceSpy = jasmine.createSpyObj(
 		'IncidentNoteService', ['emptyIncidentNote', 'validate', 'getIncidentNote', 'createIncidentNote', 'updateIncidentNote']);
 	const servicesServiceSpy = jasmine.createSpyObj(
@@ -99,15 +102,17 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 				Dialog
 			],
 			providers: [
+				BaseCompService,
 				AlertsService,
-				ConfirmationService,
+				ConsoleLogService,
 				{ provide: ServicesService, useValue: servicesServiceSpy },
 				{ provide: ConfirmationService, useClass: ConfirmationServiceMock }
 			]
 		});
 		// Setup injected pre service for each test
-		alertService = TestBed.inject( AlertsService );
-		confirmationService = TestBed.inject( ConfirmationService );
+		baseService = TestBed.inject( BaseCompService );
+		alertService = baseService._alerts;
+		consoleService = baseService._console;
 		// Setup sut
 		TestBed.compileComponents();
 	}));

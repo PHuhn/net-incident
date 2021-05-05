@@ -12,6 +12,8 @@ import { ConsoleLogService } from '../../global/console-log/console-log.service'
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { Message } from '../../global/alerts/message';
 import { ServicesService } from '../services/services.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
+import { BaseComponent } from '../../common/base-comp/base-comp.component';
 import { IIncidentNote, IncidentNote } from '../incident-note';
 import { NetworkIncident } from '../network-incident';
 import { AbuseEmailReport } from '../abuse-email-report';
@@ -27,12 +29,11 @@ export interface IIncidentNoteWindowInput {
   selector: 'app-incident-note-detail-window',
   templateUrl: './incident-note-detail-window.component.html'
 })
-export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
+export class IncidentNoteDetailWindowComponent extends BaseComponent implements OnInit, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
 	//
-	private codeName: string = 'Incident-Note-Detail-Window';
 	private httpSubscription: Subscription;
 	model: IIncidentNote;
 	networkIncident: NetworkIncident;
@@ -40,6 +41,10 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	id: number = 0;
 	incidentnoteWindowInput: IIncidentNoteWindowInput | undefined;
 	displayWin: boolean;
+	// communicate to the AlertComponent
+	protected _alerts: AlertsService;
+	// to write console logs condition on environment log-level
+	protected _console: ConsoleLogService;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -68,11 +73,18 @@ export class IncidentNoteDetailWindowComponent implements OnInit, OnDestroy {
 	@Output() onClose = new EventEmitter<boolean>();
 	//
 	constructor(
-		private _alerts: AlertsService,
-		// to write console logs condition on environment log-level
-		private _console: ConsoleLogService,
+		// inject the base components services
+		private _baseSrvc: BaseCompService,
+		// communicate to the http web service
 		private _services: ServicesService
-	) { }
+	) {
+		super( _baseSrvc );
+		// get the needed services from the base component
+		this._alerts = _baseSrvc._alerts;
+		this._console = _baseSrvc._console;
+		this.codeName = 'Incident-Note-Detail-Window';
+		//
+	}
 	//
 	// On component initialization.
 	//

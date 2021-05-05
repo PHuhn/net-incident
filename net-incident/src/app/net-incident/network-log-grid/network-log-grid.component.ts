@@ -20,6 +20,8 @@ import { ConfirmationService } from 'primeng/api';
 //
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { AlertsService } from '../../global/alerts/alerts.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
+import { BaseComponent } from '../../common/base-comp/base-comp.component';
 import { TruncatePipe } from '../../global/truncate.pipe';
 import { INetworkLog, NetworkLog } from '../network-log';
 import { IIncident, Incident } from '../incident';
@@ -29,18 +31,23 @@ import { NetworkIncident } from '../network-incident';
 	selector: 'app-networklog-grid',
 	templateUrl: './network-log-grid.component.html'
 })
-export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChanges, OnDestroy {
+export class NetworkLogGridComponent extends BaseComponent implements OnInit, AfterContentInit, OnChanges, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
 	// Local variables
 	//
-	private codeName: string = 'network-log-grid';
 	totalRecords: number = 0;
 	@ViewChild('dt', { static: true }) dt: Table;
 	selectedLogs: NetworkLog[] = [];
 	disabled: boolean;
 	expansionColSpan: number = 5;
+	// communicate to the AlertComponent
+	protected _alerts: AlertsService;
+	// to write console logs condition on environment log-level
+	protected _console: ConsoleLogService;
+	// PrimeNG's Ok/Cancel confirmation dialog service
+	protected _confirmationService: ConfirmationService;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -52,11 +59,18 @@ export class NetworkLogGridComponent implements OnInit, AfterContentInit, OnChan
 	@Output() ipChanged = new EventEmitter<string>();
 	//
 	constructor(
-		private _alerts: AlertsService,
-		private _confirmationService: ConfirmationService,
-		// to write console logs condition on environment log-level
-		private _console: ConsoleLogService,
-		private _elementRef: ElementRef ) { }
+		// inject the base components services
+		private _baseSrvc: BaseCompService,
+		private _elementRef: ElementRef
+	) {
+		super( _baseSrvc );
+		// get the needed services from the base component
+		this._alerts = _baseSrvc._alerts;
+		this._console = _baseSrvc._console;
+		this._confirmationService = _baseSrvc._confirmationService;
+		this.codeName = 'network-log-grid';
+		//
+	}
 	//
 	// On component initialization, set ip address filter.
 	//

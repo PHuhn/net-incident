@@ -12,13 +12,15 @@ import { TableModule } from 'primeng/table';
 import { Dialog } from 'primeng/dialog';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { FocusTrapModule } from 'primeng/focustrap';
-import { Header, Footer, ConfirmationService } from 'primeng/api';
+import { ConfirmationService, Confirmation } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { TruncatePipe } from '../../global/truncate.pipe';
 import { ServicesService } from '../services/services.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 //
@@ -28,7 +30,7 @@ import { IIncidentNote, IncidentNote } from '../incident-note';
 import { IncidentNoteGridComponent } from './incident-note-grid.component';
 import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-window/incident-note-detail-window.component';
 //
-fdescribe( 'IncidentNoteGridComponent', ( ) => {
+describe( 'IncidentNoteGridComponent', ( ) => {
 	// IncidentNoteGridComponent services:
 	// private _alerts: AlertsService,
 	// private _confirmationService: ConfirmationService
@@ -38,7 +40,9 @@ fdescribe( 'IncidentNoteGridComponent', ( ) => {
 	let fixture: ComponentFixture<IncidentNoteGridComponent>;
 	let alertService: AlertsService;
 	let servicesService: ServicesService;
-	let confirmationService: ConfirmationServiceMock;
+	let baseService: BaseCompService;
+	let consoleService: ConsoleLogService;
+	let confirmService: ConfirmationService;
 	//
 	const expectedWindowTitle: string = 'Incident Note Detail: ';
 	const windowTitleSelector: string =
@@ -80,14 +84,18 @@ fdescribe( 'IncidentNoteGridComponent', ( ) => {
 				TruncatePipe
 			],
 			providers: [
+				BaseCompService,
 				AlertsService,
-				{ provide: ServicesService, useClass: ServicesServiceMock },
-				{ provide: ConfirmationService, useClass: ConfirmationServiceMock }
+				ConfirmationService,
+				{ provide: ServicesService, useClass: ServicesServiceMock }
 			]
 		});
-		alertService = getTestBed().get( AlertsService );
-		servicesService = getTestBed().get( ServicesService );
-		confirmationService = getTestBed().get( ConfirmationService );
+		// Setup injected pre service for each test
+		baseService = TestBed.inject( BaseCompService );
+		alertService = baseService._alerts;
+		consoleService = baseService._console;
+		confirmService = baseService._confirmationService;
+		servicesService = TestBed.inject( ServicesService );
 		TestBed.compileComponents( );
 	}));
 	//
@@ -169,14 +177,23 @@ fdescribe( 'IncidentNoteGridComponent', ( ) => {
 		expect( title.innerText ).toEqual( expectedWindowTitle + incidentNote.IncidentNoteId );
 		windowCleanup( );
 	}));
-	//
-	// deleteItemClicked( item: IncidentNote ) :boolean
-	//
+	/*
+	** deleteItemClicked( item: IncidentNote ) :boolean
+	*/
 	it('should delete row when event called and OK is clicked...', fakeAsync(() => {
-		//
+		// given
+		spyOn(confirmService, 'confirm').and.callFake(
+			(confirmation: Confirmation) => {
+				console.log(confirmation.message);
+				if( confirmation.accept !== undefined ) {
+					return confirmation.accept();
+				}
+				return true;
+			});
+		// when
 		const ret: Boolean =
 				sut.deleteItemClicked( sut.networkIncident.incidentNotes[ 2 ] );
-		confirmationService.accept();
+		// then
 		expect( ret ).toEqual( false );
 		tick( );
 		// give it very small amount of time
