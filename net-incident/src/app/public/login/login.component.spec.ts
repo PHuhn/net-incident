@@ -79,7 +79,6 @@ describe('LoginComponent', () => {
 		sut.model.Password = '';
 		sut.model.ServerShortName = 'XyzServer';
 		alertService.getAlerts().subscribe( (msg: Alerts) => {
-			console.log( msg );
 			expect( msg ).toBeTruthy( );
 			expect( msg.level ).toBe( AlertLevel.Error );
 		}, error =>	console.error( error ) );
@@ -98,12 +97,10 @@ describe('LoginComponent', () => {
 		const errMsg: string = 'Fake Service error';
 		authServiceSpy.authenticate.and.returnValue(throwError( errMsg ));
 		alertService.getAlerts().subscribe( (msg: Alerts) => {
-			console.log( msg );
 			expect( msg ).toBeTruthy( );
 			expect( msg.level ).toBe( AlertLevel.Error );
 		}, error =>	console.error( error ) );
 		const ret: number = sut.loginUser();
-		console.log( `Username or password test: Return: ${ret}` );
 		expect( ret ).toBe( 0 );
 		//
 	} ) );
@@ -123,12 +120,9 @@ describe('LoginComponent', () => {
 		emptyUser.ServerShortName = sut.model.ServerShortName;
 		userServiceSpy.getUserServer.and.returnValue(of( emptyUser ));
 		sut.onClose.subscribe( user => {
-			console.log( 'In onClose callback ...' );
-			console.log( user );
 			expect( user ).toBe( emptyUser );
 		} );
 		const ret: number = sut.loginUser();
-		console.log( `Username or password test: Return: ${ret}` );
 		expect( ret ).toBe( 0 );
 		//
 	} ) );
@@ -144,7 +138,6 @@ describe('LoginComponent', () => {
 		emptyUser.ServerShortName = sut.model.ServerShortName;
 		userServiceSpy.getUserServer.and.returnValue(of( emptyUser ));
 		sut.onClose.subscribe( user => {
-			console.log( 'getUserServer: In onClose callback ...' );
 			expect( user ).toBe( emptyUser );
 		} );
 		sut.getUserServer( sut.model.UserName, sut.model.ServerShortName );
@@ -164,10 +157,8 @@ describe('LoginComponent', () => {
 		emptyUser.ServerShortName = serverShortName;
 		userServiceSpy.getUserServer.and.returnValue(of( emptyUser ));
 		sut.onClose.subscribe( user => {
-			console.log( 'onServerSelected: In onClose callback ...' );
 			expect( sut.model.ServerShortName ).toEqual( serverShortName );
 		} );
-		console.log( `onServerSelected: ${serverShortName}` );
 		sut.onServerSelected( serverShortName );
 		//
 	} ) );

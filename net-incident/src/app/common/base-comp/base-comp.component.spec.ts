@@ -90,7 +90,6 @@ describe('BaseCompComponent', () => {
 		spyOn( consoleService, 'Information' );
 		spyOn(confirmService, 'confirm').and.callFake(
 			(confirmation: Confirmation) => {
-				console.log(confirmation.message);
 				expect( confirmation.message ).toEqual( `Are you sure you want to delete Display (id-value)?` );
 				if( confirmation.accept !== undefined ) {
 					return confirmation.accept();

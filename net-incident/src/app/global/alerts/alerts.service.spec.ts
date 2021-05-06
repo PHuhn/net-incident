@@ -84,7 +84,6 @@ describe('AlertsService', () => {
 	});
 	//
 	it('should take WhereWhatError empty Message ...', () => {
-		console.warn( '----------' );
 		const subscription = service.getAlerts().subscribe(
 					(alertMsg: Alerts) => {
 			expect(alertMsg.level).toBe(AlertLevel.Error);

@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { ServicesService } from '../services/services.service';
 import { NetworkIncidentService } from '../services/network-incident.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { Message } from '../../global/alerts/message';
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IUser, User } from '../user';
@@ -71,18 +72,16 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		this.add = ( detailInput.incident.IncidentId < 1 ? true : false );
 		this.networkIncident = undefined;
 		this.getNetIncident( this.id, this.serverId );
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}: Editing: ${this.id}, win: ${this.displayWin}` );
-		}
+		this._console.Information(
+			`${this.codeName}: Editing: ${this.id}, win: ${this.displayWin}` );
 	}
 	get detailWindowInput(): DetailWindowInput { return this.detailWindow; }
 	// setter/getter for displayWin
 	@Input() set displayWin( displayWin: boolean ) {
 		if( displayWin === true ) {
 			this.displayWinTimeout = setTimeout(() => {
-				if( this.logLevel >= 4 ) {
-					console.log( `${this.codeName}: displayWin: ${displayWin}` );
-				}
+				this._console.Information(
+					`${this.codeName}: displayWin: ${displayWin}` );
 				// The set displayWindow in getNetIncidents should activate the window
 				// this set of displayWindow is the last resort
 				this.displayWindow = displayWin;
@@ -118,9 +117,8 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		this.networkIncidentSave.user = this.networkIncident.user;
 		this.networkIncidentSave.message = this.networkIncident.message;
 		//
-		if( this.logLevel >= 4 ) {
-			console.log( this.networkIncidentSave );
-		}
+		this._console.Information(
+			JSON.stringify( this.networkIncidentSave ) );
 		if( this.add === false ) {
 			this.networkIncident.incident.IncidentId = this.id;
 		}
@@ -138,6 +136,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	constructor(
 		private _alerts: AlertsService,
+		private _console: ConsoleLogService,
 		private _netIncident: NetworkIncidentService,
 		private _services: ServicesService ) { }
 	//
@@ -179,16 +178,15 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		this.httpSubscription = this._netIncident.getNetworkIncident( incidentId, serverId ).subscribe((netIncidentData) => {
 			this.networkIncident = netIncidentData;
 			this.networkIncident.user = this.user;
-			if( this.logLevel >= 4 ) {
-				console.log( `${this.codeName}.getNetIncident, ${new Date().toISOString()}` );
-				console.log ( this.networkIncident );
-			}
+			this._console.Information(
+				`${this.codeName}.getNetIncident, ${new Date().toISOString()}` );
+			this._console.Information(
+				JSON.stringify( this.networkIncident ) );
 			// once the data is loaded now display it.
 			this.displayWindow = true;
 			clearTimeout( this.displayWinTimeout );
-			if( this.logLevel >= 4 ) {
-				console.log( `${this.codeName}.getNetIncident, cleared time-out` );
-			}
+			this._console.Information(
+				`${this.codeName}.getNetIncident, cleared time-out` );
 			if( this.networkIncident.incident.Mailed === true || this.networkIncident.incident.Closed === true ) {
 				this.disableEdit = true;
 			}
@@ -264,17 +262,14 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	// the notes.
 	//
 	ipChanged( ipAddress: string ): void {
-		if( this.logLevel >= 4 ) {
-			console.log(
-				`${this.codeName}.ipChanged, IP address: ${ipAddress}` );
-		}
+		this._console.Information(
+			`${this.codeName}.ipChanged, IP address: ${ipAddress}` );
 		if( this.networkIncident.incident.IPAddress !== ipAddress ) {
 			this.networkIncident.incident.IPAddress = ipAddress;
 			this.ip = ipAddress;
 			if( ipAddress === '' ) { return; }
-			if( this.logLevel >= 4 ) {
-				console.log( `${this.codeName}.ipChanged: calling whois with ${ipAddress}` );
-			}
+			this._console.Verbose(
+				`${this.codeName}.ipChanged: calling whois with ${ipAddress}` );
 			this._services.getWhoIs( ipAddress ).subscribe(( whoisData: string ) => {
 				if( whoisData !== '' ) {
 					// instanciate WhoIsAbuse class
@@ -289,9 +284,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 					}
 					this.networkIncident.incident.AbuseEmailAddress = whois.abuse;
 					this.networkIncident.incident.NetworkName = whois.net;
-					if( this.logLevel >= 4 ) {
-						console.log( `${this.codeName}.ipChanged: WhoIs: ${ipAddress}, ${whois.nic}, ${whois.net}, ${whois.abuse}` );
-					}
+					this._console.Verbose( `${this.codeName}.ipChanged: WhoIs: ${ipAddress}, ${whois.nic}, ${whois.net}, ${whois.abuse}` );
 					if( whois.BadAbuseEmail( ) ) {
 						const newNote: IncidentNote = new IncidentNote(
 							this.newNoteId(),2,'WhoIs',whoisData,new Date( Date.now() ), true );
@@ -305,9 +298,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 				this._alerts.setWhereWhatError( `${this.codeName}: getWhoIs`,
 					'Services-Service failed.', error || 'Server error'));
 		} else {
-			if( this.logLevel >= 4 ) {
-				console.log( `${this.codeName}.ipChanged: Addresses are the same ${this.networkIncident.incident.IPAddress}` );
-			}
+			this._console.Verbose( `${this.codeName}.ipChanged: Addresses are the same ${this.networkIncident.incident.IPAddress}` );
 		}
 	}
 	//
@@ -329,15 +320,13 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	// if successful then emit to parent form success.
 	//
 	createItem( stay: boolean ): void {
-		if( this.logLevel >= 4 ) {
-			console.log( `${this.codeName}.createItem, Entering: ${stay}` );
-		}
+		this._console.Information( `${this.codeName}.createItem, Entering: ${stay}` );
 		this._netIncident.createIncident( this.networkIncidentSave )
 			.subscribe(
 				( netIncidentData: NetworkIncident ) => {
 					if( this.logLevel >= 4 ) {
-						console.log( `${this.codeName}.createItem, netIncidentData` );
-						console.log( netIncidentData );
+						this._console.Verbose( `${this.codeName}.createItem, netIncidentData` );
+						this._console.Verbose( JSON.stringify( netIncidentData ) );
 					}
 					this.networkIncident = netIncidentData;
 					this.networkIncident.user = this.user;

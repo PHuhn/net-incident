@@ -31,7 +31,6 @@ export class NetworkIncidentServiceMock  extends NetworkIncidentService {
 	getNetworkIncident( incidentId: number, serverId: number ): Observable<NetworkIncident> {
 		const urlPath: string = this.url + '?id=' + String( incidentId )
 			+ '&serverId=' + String(serverId);
-		console.log( `**ni mock: ${urlPath}  ${new Date().toISOString()}` );
 		return of( this.mockGet );
 	}
 	//

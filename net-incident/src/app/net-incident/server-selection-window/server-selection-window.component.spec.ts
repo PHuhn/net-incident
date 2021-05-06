@@ -67,18 +67,15 @@ describe('ServerSelectionWindowComponent', () => {
 	});
 	//
 	it('should launch window when display window set ...', () => {
-		console.log( `win: ${sut.displayWin}  ${new Date().toISOString()}` );
 		const titleVar = fixture.debugElement.query(By.css(
 			'#serverSelectionWindow' )).nativeElement;
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			windowTitleSelector )).nativeElement;
-		console.log( title );
 		expect( title.innerText ).toEqual( expectedWindowTitle );
 		sut.displayWin = false;
 	});
 	//
 	it('should return selected server 0 ...', fakeAsync( () => {
-		console.log( `selected win: ${sut.displayWin}  ${new Date().toISOString()}` );
 		const idx: number = 0;
 		const server: SelectItem = mockData[ idx ];
 		const value: string = server.value;

@@ -195,7 +195,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		const response = new HttpResponse( { status: 201, statusText: 'OK' } );
 		incidentnoteServiceSpy.updateIncidentNote.and.returnValue(of( response ));
 		sut.onClose.subscribe( saved => {
-			console.log( 'In onClose callback ...' );
 			sut.displayWin = false;
 			expect( saved ).toBe( true );
 		} );
@@ -224,7 +223,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		const count = sut.networkIncident.incidentNotes.length;
 		incidentnoteServiceSpy.createIncidentNote.and.returnValue(of( response ));
 		sut.onClose.subscribe( saved => {
-			console.log( 'In onClose callback ...' );
 			sut.displayWin = false;
 			expect( saved ).toBe( true );
 		} );
@@ -248,7 +246,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		tickFakeWait( 10 );
 		sut.onClose.subscribe( ( saved: boolean ) => {
 			// then
-			console.log( 'In closeWin callback ...' );
 			expect( saved ).toBe( true );
 			windowCleanup( );
 		} );
@@ -297,7 +294,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	//
 	it('getPing: call the getPing server services ...', fakeAsync(() => {
 		// given
-		console.log( 'get ping' );
 		const testInput = { ... testWindowIncidentNoteInput };
 		testInput.model = { ... emptyData }
 		sut.incidentnote = testInput;
@@ -317,7 +313,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	//
 	it('getPing: call the getPing server services error ...', fakeAsync(() => {
 		// given
-		console.log( 'get ping error' );
 		sut.incidentnote = { ... testWindowIncidentNoteInput };
 		tickFakeWait( 10 );
 		const resp: HttpErrorResponse = new HttpErrorResponse({
@@ -344,7 +339,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	//
 	it('getWhoIs: call the getWhoIs server services ...', fakeAsync(() => {
 		// given
-		console.log( 'get whois' );
 		const testInput = { ... testWindowIncidentNoteInput };
 		testInput.model = { ... emptyData }
 		sut.incidentnote = testInput;
@@ -364,7 +358,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	//
 	it('getReport: call getReport for current network incident ...', fakeAsync(() => {
 		// given
-		console.log( 'get Report' );
 		sut.incidentnote = { ... testWindowIncidentNoteInput };
 		tickFakeWait( 10 );
 		const resp = 'Email Template error: not found.';
@@ -384,7 +377,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		sut.model = emptyData;
 		sut.add = true;
 		alertService.getAlerts().subscribe( (msg: Alerts) => {
-			console.log( msg );
 			expect( msg ).toBeTruthy( );
 			expect( msg.level ).toBe( AlertLevel.Warning );
 		}, error =>	{

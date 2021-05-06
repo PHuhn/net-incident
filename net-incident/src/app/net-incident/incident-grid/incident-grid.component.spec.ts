@@ -195,8 +195,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	// getIncidents( ) : Observable<IIncident[]>
 	//
 	it('should initialize with all data...', fakeAsync( () => {
-		console.log( 'getIncidents ...' );
-		console.log( sut.incidents );
+		// console.log( sut.incidents );
 		expect( sut.incidents.length ).toBe( 3 );
 		//
 		expect( sut.incidents[ 0 ].IncidentId ).toEqual( 7 );
@@ -209,7 +208,6 @@ describe( 'IncidentGridComponent', ( ) => {
 	*/
 	it('getUserServer select a different server ...', fakeAsync( ( ) => {
 		//
-		console.log( 'getUserServer, select a different server ...' );
 		const serverShortName = 'srv 2';
 		// setup response to _user.getUserServer service call
 		let user2 = {...user};
@@ -233,7 +231,6 @@ describe( 'IncidentGridComponent', ( ) => {
 	*/
 	it('getUserServer select a different server ...', fakeAsync( ( ) => {
 		//
-		console.log( 'getUserServer, select a different server ...' );
 		const serverShortName = 'srv 2';
 		// setup response to _user.getUserServer service call
 		let user2 = {...user};
@@ -255,7 +252,6 @@ describe( 'IncidentGridComponent', ( ) => {
 	** onChangeServer( ), launch server selection window
 	*/
 	it('should launch server selection window when onChangeServer is called ...', fakeAsync( () => {
-		console.log( 'onChangeServer is called ...' );
 		sut.onChangeServer( 'testing' );
 		//
 		tick(1000); // wait 1 second task to get done
@@ -264,15 +260,12 @@ describe( 'IncidentGridComponent', ( ) => {
 		expect( sut.displayServersWindow ).toEqual( true );
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			selectionWindowTitleSelector )).nativeElement;
-		console.log( title );
 		expect( title.innerText.trim( ) ).toEqual( `Select a server` );
-		console.log( `onChangeServer ... completed ${new Date().toISOString()}` );
 	}));
 	/*
 	** addItemClicked( )
 	*/
 	it('should launch detail window when addItemClicked is called ...', fakeAsync( () => {
-		console.log( 'addItemClicked is called ...' );
 		let inc = new Incident( 0,0,'','','','','',false,false,false,'',testDate );
 		incidentServiceSpy.emptyIncident.and.returnValue(of( inc ));
 		const response: NetworkIncident = newNetworkIncident(
@@ -292,7 +285,6 @@ describe( 'IncidentGridComponent', ( ) => {
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			'#IncidentDetailWindowHeader' )).nativeElement;
 		expect( title.innerText.trim( ) ).toEqual( `Incident Detail: , IP Address:` );
-		console.log( `addItemClicked ... completed ${new Date().toISOString()}` );
 	}));
 	/*
 	** editItemClicked( item: Incident )
@@ -344,7 +336,6 @@ describe( 'IncidentGridComponent', ( ) => {
 		incidentServiceSpy.deleteIncident.and.returnValue(of( 1 ));
 		spyOn(confirmService, 'confirm').and.callFake(
 			(confirmation: Confirmation) => {
-				console.log(confirmation.message);
 				return confirmation.accept();
 			});
 		const ret: boolean = sut.deleteItemClicked( delRow );

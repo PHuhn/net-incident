@@ -75,13 +75,13 @@ describe('UserService', () => {
 	});
 	//
 	it( 'should create ...', ( ) => {
-		console.log( '=================================' );
-		console.log( 'UserService: should create ...' );
+		console.log(
+			'===================================\n' +
+			'UserService: should create ...' );
 		expect( sut ).toBeTruthy( );
 	});
 	//
 	it( 'should create an empty class ...', ( ) => {
-		console.log( 'Should create an empty class ...' );
 		const newData: User = sut.emptyUser( );
 		expect( newData.Id ).toEqual( '' );
 	});
@@ -94,13 +94,10 @@ describe('UserService', () => {
 		const id1: string = mockData.UserName;
 		const path: string = url + '/' + id1;
 		sut.getUser( id1 ).subscribe( ( data: User ) => {
-			// console.log( data );
 			expect( data.UserName ).toEqual( id1 );
 		});
 		// use the HttpTestingController to mock requests and the flush method to provide dummy values as responses
-		console.log( path );
 		const request = backend.expectOne( path );
-		console.log( request.request.method );
 		expect( request.request.method ).toBe( 'GET' );
 		request.flush( mockData );
 		//
@@ -118,9 +115,7 @@ describe('UserService', () => {
 			expect( data.UserName ).toEqual( id1 );
 		});
 		// use the HttpTestingController to mock requests and the flush method to provide dummy values as responses
-		console.log( path );
 		const request = backend.expectOne( path );
-		console.log( request.request.method );
 		expect( request.request.method ).toBe( 'GET' );
 		request.flush( mockData );
 		//

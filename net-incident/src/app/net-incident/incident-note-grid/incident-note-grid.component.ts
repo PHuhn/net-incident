@@ -124,18 +124,9 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 		}
 		this._console.Information( `${this.codeName}.deleteItemClicked: Id: ${this.id}` );
 		// the p-confirmDialog in in app.component
-		this._confirmationService.confirm({
-			key: 'Delete',
-			message: `Are you sure you want to delete ${this.id}?`,
-			accept: () => {
-				this._console.Information( `${this.codeName}.deleteItemClicked: User's response: true to delete ${this.id}` );
-				this.deleteItem( );
-			},
-			reject: () => {
-				this._console.Information( `${this.codeName}.deleteItemClicked: User's dismissed.` );
-			}
-		});
-		return false;
+		return this.baseDeleteConfirm<number>( this.id, (ident: number): boolean => {
+			return this.deleteItem( ident );
+		} );
 	}
 	//
 	// on edit window closed
@@ -155,8 +146,7 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 	//
 	// move row to deleted array
 	//
-	deleteItem( ): boolean {
-		const delId: number = this.id;
+	deleteItem( delId: number ): boolean {
 		if( this.id !== 0 ) {
 			const notes = this.networkIncident.incidentNotes.filter( (el) => {
 				return el.IncidentNoteId === delId;

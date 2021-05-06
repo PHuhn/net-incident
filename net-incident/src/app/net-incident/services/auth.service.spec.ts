@@ -115,7 +115,6 @@ describe('AuthService', () => {
 			expect( tokenData.token_type ).toEqual( tokenType );
 			const expire: number = sut.getExpiration( );
 			const accessToken: string = localStorage.getItem( 'access_token' );
-			console.log( `authenticate returned expire: ${expire}, token: ${accessToken}` );
 			expect( expire ).toBeGreaterThan( 10000 );
 			expect( accessToken ).toEqual( token );
 			unsetLocalStorage( );
@@ -129,7 +128,6 @@ describe('AuthService', () => {
 	// public authenticate( userName: string, password: string )
 	it( 'should fail authentication with bad user name ...', ( ) => {
 		//
-		console.log( 'authenticate user name and password ...' );
 		const userName: string = 'TestUser';
 		const token: string = '1234567890';
 		const tokenType: string = 'bearer';
@@ -143,7 +141,6 @@ describe('AuthService', () => {
 			fail( 'Bad user name should fail.' );
 			//
 		}, error => {
-			console.log( JSON.stringify( error ) );
 			expect( String( error ) ).toEqual( 'Error: authenticate: Invalid user name returned.' );
 		} );
 		const request = backend.expectOne( `${url}` );

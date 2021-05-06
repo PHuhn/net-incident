@@ -55,7 +55,6 @@ describe('AuthInterceptorService', () => {
 			'===================================\n' +
 			'AuthInterceptorService starting ...' );
 		httpClient.get( url ).subscribe(response => {
-			console.log( JSON.stringify( response ) );
 			expect( response ).toBeTruthy();
 		});
 		const httpRequest = http.expectOne( url );
@@ -65,7 +64,7 @@ describe('AuthInterceptorService', () => {
 	it('should add an Authorization header ...', () => {
 		setLocalStorage( '1234567890', Date.now() + 10000 );
 		httpClient.get( url ).subscribe(response => {
-			console.log( JSON.stringify( response ) );
+			// console.log( JSON.stringify( response ) );
 			expect( response ).toBeTruthy();
 		});
 		const httpRequest = http.expectOne( url );
@@ -78,7 +77,7 @@ describe('AuthInterceptorService', () => {
 		const token: string = '1234567890';
 		setLocalStorage( '1234567890', Date.now() + 10000 );
 		httpClient.get( url ).subscribe(response => {
-			console.log( JSON.stringify( response ) );
+			// console.log( JSON.stringify( response ) );
 			expect( response ).toBeTruthy();
 		});
 		const httpRequest = http.expectOne( url );

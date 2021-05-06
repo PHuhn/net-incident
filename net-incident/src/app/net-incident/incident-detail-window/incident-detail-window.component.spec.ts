@@ -114,7 +114,6 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		detailWindow = new DetailWindowInput( user, mockData );
 		sut.detailWindowInput = detailWindow;
 		sut.displayWin = true;
-		console.log( `*=* beforeEach ${new Date().toISOString()}` );
 		//
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
@@ -149,8 +148,6 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	//
 	it( 'should get the mock data...', waitForAsync( ( ) => {
 		//
-		console.log(
-			'***********************************' );
 		fixture.detectChanges();
 		fixture.whenStable().then(() => {
 			console.log( `mock data, display win: ${sut.displayWindow}  ${new Date().toISOString()}` );
@@ -175,7 +172,6 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		netIncidentService.mockCrudResponse = new HttpResponse(
 				{ status: 201, statusText: 'OK' } );
 		sut.onClose.subscribe( saved => {
-			console.log( 'In onClose callback updateItem ...' );
 			sut.displayWin = false;
 			expect( saved ).toBe( true );
 		} );
@@ -187,7 +183,6 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	//
 	it('should create NetworkIncident class when createItem called ...', waitForAsync( () => {
 		//
-		console.log( `Create NetworkIncident class when createItem called: ${new Date().toISOString()}` );
 		const id = 100;
 		sut.logLevel = 3;
 		const empty: Incident = new Incident( 0,1,'','','','','',false,false,false,'',testDate );
@@ -212,14 +207,11 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		netIncidentService.mockGet = response;
 		netIncidentService.mockCrudResponse = response;
 		createIncident.IncidentId = 0;
-		console.log( createIncident );
 		sut.networkIncident.incident = createIncident;
 		sut.windowClose( true );
 		//
-		console.log( `~= windowClose: ${new Date().toISOString()}` );
 		fixture.detectChanges();
 		fixture.whenStable();
-		console.log( `~=* windowClose: ${new Date().toISOString()}` );
 		//
 		expect( sut.networkIncident.incident.IncidentId ).toBe( id );
 		sut.displayWin = false;
@@ -231,7 +223,6 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	it('should emit when canceled ...', waitForAsync( () => {
 		//
 		sut.onClose.subscribe( saved => {
-			console.log( 'In onClose callback cancel ...' );
 			sut.displayWin = false;
 			expect( saved ).toBe( false );
 		} );

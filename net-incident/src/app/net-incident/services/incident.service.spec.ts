@@ -105,7 +105,6 @@ describe('IncidentService', () => {
 			value: true,
 			matchMode: 'equals'
 		};
-		console.log( event );
 		sut.getIncidentsLazy( event ).subscribe( ( datum: IncidentPaginationData ) => {
 			expect( datum.incidents.length ).toBe( 4 );
 			expect( datum.totalRecords ).toBe( mockDatum.length );
@@ -118,7 +117,6 @@ describe('IncidentService', () => {
 		page.incidents = mockDatum.slice(0, 4);
 		page.totalRecords = mockDatum.length;
 		page.loadEvent = event;
-		console.log( page );
 		request.flush( page );
 		//
 	}));
@@ -172,12 +170,10 @@ describe('IncidentService', () => {
 	// handleError( error: any )
 	//
 	it( 'handleError should throw an any error ...', waitForAsync( ( ) => {
-		console.log( 'should throw an any error ...' );
 		//
 		const resp: string = errMsg;
 		//
 		sut.handleError( resp ).subscribe( () => {
-				console.log( JSON.stringify( resp ) );
 				fail( 'handleError: expected error...' );
 			}, ( error ) => {
 				expect( error ).toEqual( errMsg );
@@ -194,7 +190,6 @@ describe('IncidentService', () => {
 		});
 		//
 		sut.handleError( resp ).subscribe( () => {
-				console.log( JSON.stringify( resp ) );
 				fail( 'handleError: expected error...' );
 			}, ( error ) => {
 				expect( error ).toEqual( errMsg );
@@ -209,7 +204,6 @@ describe('IncidentService', () => {
 		const resp: string = errMsg;
 		//
 		sut.handleError( resp ).subscribe( () => {
-				console.log( JSON.stringify( resp ) );
 				fail( 'handleError: expected error...' );
 			}, ( error ) => {
 				expect( error ).toEqual( errMsg );
@@ -221,7 +215,6 @@ describe('IncidentService', () => {
 	//
 	it( 'should handle an error on create...', waitForAsync(() => {
 		//
-		console.log( 'handle an error on create...' );
 		const mockData: Incident = mockDatum[ 2 ];
 		const id1: number = mockData.IncidentId;
 		const errorMsg = { errorMessage: 'Invalid request parameters' };
@@ -232,7 +225,6 @@ describe('IncidentService', () => {
 			console.log( JSON.stringify( resp ) );
 			fail( 'handleError: expected error...' );
 		}, ( error ) => {
-			console.log( JSON.stringify( error ) );
 			expect( error ).toEqual( mockErrorResponse.statusText );
 		} );
 		const request: TestRequest = backend.expectOne( `${url}/` );
