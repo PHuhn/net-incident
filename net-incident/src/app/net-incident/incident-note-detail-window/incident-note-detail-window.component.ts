@@ -167,7 +167,10 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 				break;
 			}
 			default: {
-				this._console.Error( `${this.codeName}.performIncidentType: default: ${noteType}, ${noteDesc}` );
+				const msg = `Invalid 'id' not found: ${noteType}, ${noteDesc}`;
+				this._console.Warning( `${this.codeName}.performIncidentType: ${msg}` );
+				this._alerts.setWhereWhatWarning(
+					`${this.codeName}.performIncidentType`, msg );
 				break;
 			}
 		}
@@ -208,7 +211,7 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 		if( abuseReport.IsValid() ) {
 			this.model.Note = abuseReport.ComposeEmail( ).replace(/\\n/g, '\n');
 		} else {
-			console.warn( abuseReport.errMsgs );
+			this._console.Warning( JSON.stringify( abuseReport.errMsgs ) );
 			this._alerts.warningSet( abuseReport.errMsgs );
 		}
 	}
@@ -240,9 +243,6 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 		}
 		if( model.Note.length === 0 || model.Note === undefined ) {
 			errMsgs.push( new Message( 'Note-1', `'Note' is required.` ) );
-		}
-		if( model.Note.length > 1073741823 ) {
-			errMsgs.push( new Message( 'Note-2', `'Note' max length of 1073741823.` ) );
 		}
 		//
 		return errMsgs;
@@ -298,12 +298,12 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 				this.displayWin = false;
 			} else {
 				const msg = `Id not found: ${this.model.IncidentNoteId}`;
-				console.error( msg );
+				this._console.Warning( `${this.codeName}.updateItem: ${msg}` );
 				this._alerts.setWhereWhatWarning( 'NotesWindow: updateItem', msg );
 			}
 		} else {
 			const msg = `Invalid 'id' found: ${this.model.IncidentNoteId}`;
-			console.error( msg );
+			this._console.Warning( `${this.codeName}.updateItem: ${msg}` );
 			this._alerts.setWhereWhatWarning( 'NotesWindow: updateItem', msg );
 		}
 	}

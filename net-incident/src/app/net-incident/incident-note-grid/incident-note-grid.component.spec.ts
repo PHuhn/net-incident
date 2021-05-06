@@ -25,10 +25,10 @@ import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 //
 import { IIncident, Incident } from '../incident';
-import { NetworkIncident } from '../network-incident';
+import { INetworkIncident, NetworkIncident } from '../network-incident';
 import { IIncidentNote, IncidentNote } from '../incident-note';
 import { IncidentNoteGridComponent } from './incident-note-grid.component';
-import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-window/incident-note-detail-window.component';
+import { IncidentNoteDetailWindowComponent, IIncidentNoteWindowInput } from '../incident-note-detail-window/incident-note-detail-window.component';
 //
 describe( 'IncidentNoteGridComponent', ( ) => {
 	// IncidentNoteGridComponent services:
@@ -43,6 +43,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	let baseService: BaseCompService;
 	let consoleService: ConsoleLogService;
 	let confirmService: ConfirmationService;
+	let windowNoteInput: IIncidentNoteWindowInput;
 	//
 	const expectedWindowTitle: string = 'Incident Note Detail: ';
 	const windowTitleSelector: string =
@@ -60,8 +61,6 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	//
 	const inc: Incident = new Incident( 4,1,ipAddr,'arin.net','PSG169',
 		'dandy@psg.com','',false,false,false,'',new Date( '2018-04-01T01:00:00' ) );
-	//
-	const netInc = new NetworkIncident();
 	//
 	beforeEach( waitForAsync( ( ) => {
 		TestBed.configureTestingModule(  {
@@ -100,19 +99,30 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	}));
 	//
 	beforeEach( ( ) => {
+		windowNoteInput = {
+			model: { ... mockDatum[2] },
+			networkIncident: createNetworkIncident( ),
+			displayWin: true
+		}
 		fixture = TestBed.createComponent( IncidentNoteGridComponent );
 		sut = fixture.componentInstance;
 		// clone the array with slice( 0 )
-		netInc.incident = inc;
-		netInc.deletedLogs = [];
-		netInc.deletedNotes = [];
-		netInc.incidentNotes = mockDatum;
-		netInc.typeEmailTemplates = [];
-		netInc.user = undefined;
-		sut.networkIncident = netInc;
+		sut.networkIncident = createNetworkIncident( );
+		sut.ngAfterViewInit( );
 		fixture.detectChanges( ); // trigger initial data binding
 		fixture.whenStable( );
 	} );
+	//
+	function createNetworkIncident( ): INetworkIncident {
+		const networkIncident: INetworkIncident = new NetworkIncident();
+		networkIncident.incident = { ... inc };
+		networkIncident.deletedLogs = [];
+		networkIncident.deletedNotes = [];
+		networkIncident.incidentNotes = [ ... mockDatum ];
+		networkIncident.typeEmailTemplates = [];
+		networkIncident.user = undefined;
+		return networkIncident;
+	}
 	/*
 	** Cleanup so no dialog window will still be open
 	*/
@@ -195,10 +205,52 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 				sut.deleteItemClicked( sut.networkIncident.incidentNotes[ 2 ] );
 		// then
 		expect( ret ).toEqual( false );
-		tick( );
+		tickFakeWait( 1 );
 		// give it very small amount of time
 		expect( sut.networkIncident.incidentNotes.length ).toBe( 5 );
 		expect( sut.networkIncident.deletedNotes.length ).toBe( 1 );
+		//
+	}));
+	//
+	it('should not delete if mailed ...', fakeAsync(() => {
+		// given
+		sut.networkIncident.incident.Mailed = true;
+		sut.ngAfterViewInit( );
+		spyOn( alertService, 'setWhereWhatWarning' );
+		// when
+		const ret: Boolean =
+				sut.deleteItemClicked( sut.networkIncident.incidentNotes[ 2 ] );
+		// then
+		expect( ret ).toEqual( false );
+		expect( sut.DisableDelete ).toEqual( true );
+		tickFakeWait( 1 );
+		expect( alertService.setWhereWhatWarning ).toHaveBeenCalled( );
+		//
+	}));
+	//
+	it('should not delete if not found ...', fakeAsync(() => {
+		// given
+		spyOn( alertService, 'setWhereWhatWarning' );
+		// when
+		const ret: Boolean = sut.deleteItem( -99 );
+		// then
+		expect( ret ).toEqual( false );
+		expect( alertService.setWhereWhatWarning ).toHaveBeenCalled( );
+		//
+	}));
+	//
+	// onClose( saved: boolean ): void
+	//
+	it('should not delete if mailed ...', fakeAsync(() => {
+		// given
+		sut.windowIncidentNoteInput = windowNoteInput;
+		tickFakeWait( 1 );
+		// when
+		sut.onClose( true );
+		// then
+		tickFakeWait( 1 );
+		expect( sut.windowIncidentNoteInput ).toBeUndefined( );
+		tickFakeWait( 1 );
 		//
 	}));
 	//

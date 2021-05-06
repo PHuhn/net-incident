@@ -7,7 +7,21 @@ import { IIncidentNote, IncidentNote } from './incident-note';
 import { INetworkLog, NetworkLog } from './network-log';
 import { IIncidentType, IncidentType } from './incident-type';
 //
-export class NetworkIncident {
+export interface INetworkIncident {
+	incident: Incident;
+	incidentNotes: IncidentNote[];
+	deletedNotes: IncidentNote[];
+	networkLogs: NetworkLog[];
+	deletedLogs: NetworkLog[];
+	typeEmailTemplates: IncidentType[];
+	NICs: SelectItem[];
+	incidentTypes: SelectItem[];
+	noteTypes: SelectItem[];
+	message: string;
+	user: User;
+}
+//
+export class NetworkIncident implements INetworkIncident {
 	//
 	public incident: Incident;
 	//

@@ -124,15 +124,15 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	beforeEach( ( ) => {
 		// pretend that it was wired to something that supplied a row
 		const nl = new NetworkLog(99, serverMock.ServerId, inc.IncidentId, ipAddr, new Date( '2018-01-19T01:00:00' ), 'Fake log', 3, 'Type 3', true);
-		netInc.incident = inc;
+		netInc.incident = { ... inc };
 		netInc.networkLogs = [ nl ];
 		netInc.deletedLogs = [];
 		netInc.deletedNotes = [];
-		netInc.incidentNotes = mockDatum;
+		netInc.incidentNotes = [ ... mockDatum ];
 		netInc.typeEmailTemplates = [];
 		netInc.user = userMock;
 		netInc.noteTypes = noteTypes;
-		mockData = mockDatum[3];
+		mockData = { ... mockDatum[3] };
 		testWindowIncidentNoteInput = {
 			model: { ... mockData },
 			networkIncident: netInc,
@@ -290,6 +290,58 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		//
 	} ) );
 	//
+	it('performIncidentType: call whois event ...', fakeAsync(() => {
+		// given
+		const testInput = { ... testWindowIncidentNoteInput };
+		testInput.model = { ... emptyData }
+		sut.incidentnote = testInput;
+		tickFakeWait( 10 );
+		const id: number = 1;
+		const resp: HttpErrorResponse = new HttpErrorResponse({
+			error: {}, status: 500, url: 'http://localhost', statusText: 'Bad Request' });
+		servicesServiceSpy.getWhoIs.and.returnValue( throwError( resp ));
+		spyOn( alertService, 'setWhereWhatError' );
+		// when
+		sut.performIncidentType(id, 'whois');
+		// then
+		tickFakeWait( 10 );
+		expect( alertService.setWhereWhatError ).toHaveBeenCalled( );
+		windowCleanup( );
+		//
+	} ) );
+	//
+	it('performIncidentType: call ISP report event ...', fakeAsync(() => {
+		// given
+		const testInput = { ... testWindowIncidentNoteInput };
+		testInput.model = { ... emptyData }
+		testInput.networkIncident.incident.ServerId = 0;
+		sut.incidentnote = testInput;
+		tickFakeWait( 10 );
+		const id: number = 1;
+		const resp: HttpErrorResponse = new HttpErrorResponse({
+			error: {}, status: 500, url: 'http://localhost', statusText: 'Bad Request' });
+		servicesServiceSpy.getWhoIs.and.returnValue( throwError( resp ));
+		spyOn( alertService, 'warningSet' );
+		// when
+		sut.performIncidentType(id, 'isp rpt');
+		// then
+		tickFakeWait( 10 );
+		expect( alertService.warningSet ).toHaveBeenCalled( );
+		windowCleanup( );
+		//
+	} ) );
+	//
+	it('performIncidentType: alert called ...', fakeAsync(() => {
+		// given
+		spyOn( alertService, 'setWhereWhatWarning' );
+		// when
+		sut.performIncidentType( -99, 'bad type');
+		// then
+		tickFakeWait( 10 );
+		expect( alertService.setWhereWhatWarning ).toHaveBeenCalled( );
+		//
+	} ) );
+	//
 	// Invoke the getPing server service
 	//
 	it('getPing: call the getPing server services ...', fakeAsync(() => {
@@ -396,11 +448,64 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		const errMsgs: Message[] = sut.validateNote(data, false);
 		expect( errMsgs.length ).toEqual( 0 );
 		windowCleanup( );
+		//
+	} ) );
+	//
+	it( 'validateNote: should handle a validation Incident Note Id required error...', ( ) => {
+		// given
+		// IncidentNoteId, NoteTypeId, NoteTypeShortDesc, Note, CreatedDate, IsChanged
+			const incidentnoteidBad: any = undefined;
+		const model: IIncidentNote = new IncidentNote(
+			5, 5, 'i 5', '-note-', new Date( '2000-01-01T00:00:00' ), false );
+		model.IncidentNoteId = incidentnoteidBad;
+		// when
+		const ret: Message[] = sut.validateNote( model, true );
+		// then (is required.)
+		expect( ret.length ).toEqual( 1 );
+		expect( ret[0].message.indexOf( 'required' ) !== -1 ).toBe( true );
+	} );
+	//
+	it( 'validateNote: should handle a validation Note Type Id required error...', ( ) => {
+		// given
+		const notetypeidBad: any = undefined;
+		const model: IIncidentNote = new IncidentNote(
+			5, 5, 'i 5', '-note-', new Date( '2000-01-01T00:00:00' ), false );
+		model.NoteTypeId = notetypeidBad;
+		// when
+		const ret: Message[] = sut.validateNote( model, true );
+		// then (is required.)
+		expect( ret.length ).toEqual( 1 );
+		expect( ret[0].message.indexOf( 'required' ) !== -1 ).toBe( true );
+	} );
+	//
+	it( 'validateNote: should handle a validation Note Type Id too large error...', ( ) => {
+		// given
+		const notetypeidBad: number = 2147483648;
+		const model: IIncidentNote = new IncidentNote(
+			5, 5, 'i 5', '-note-', new Date( '2000-01-01T00:00:00' ), false );
+		model.NoteTypeId = notetypeidBad;
+		// when
+		const ret: Message[] = sut.validateNote( model, true );
+		// then (is too large, over: #)
+		expect( ret.length ).toEqual( 1 );
+		expect( ret[0].message.indexOf( 'too large' ) !== -1 ).toBe( true );
+	} );
+	//
+	it( 'validateNote: should handle a validation Note required error...', ( ) => {
+		// given
+		const noteBad: string = '';
+		const model: IIncidentNote = new IncidentNote(
+			5, 5, 'i 5', '-note-', new Date( '2000-01-01T00:00:00' ), false );
+		model.Note = noteBad;
+		// when
+		const ret: Message[] = sut.validateNote( model, true );
+		// then (is required.)
+		expect( ret.length ).toEqual( 1 );
+		expect( ret[0].message.indexOf( 'required' ) !== -1 ).toBe( true );
 		console.log(
 			'End of IncidentNoteDetailWindowComponent.\n' +
 			'==================================================' );
-		//
-	} ) );
+	} );
 	//
 } );
 // ===========================================================================

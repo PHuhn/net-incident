@@ -19,7 +19,7 @@ import { IIncidentNoteWindowInput } from '../incident-note-detail-window/inciden
 	selector: 'app-incident-note-grid',
 	templateUrl: './incident-note-grid.component.html'
 })
-export class IncidentNoteGridComponent extends BaseComponent implements OnInit, OnDestroy {
+export class IncidentNoteGridComponent extends BaseComponent implements OnInit, AfterViewInit, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
@@ -29,6 +29,9 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 	private totalRecords: number = 0;
 	private id: number;
 	private disableDelete: boolean = false;
+	public get DisableDelete( ): boolean {
+        return this.disableDelete;
+    }
 	// xfer to detail window
 	windowIncidentNoteInput: IIncidentNoteWindowInput | undefined;
 	// communicate to the AlertComponent
@@ -61,8 +64,11 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 	// On component initialization, get all data from the data service.
 	//
 	ngOnInit() {
+	}
+	//
+	ngAfterViewInit() {
 		// all records are passed in via @Input
-		this._console.Information( `${this.codeName}.ngOnInit: ...` );
+		this._console.Information( `${this.codeName}.ngAfterViewInit: ...` );
 		if( this.networkIncident.incident.Mailed === true || this.networkIncident.incident.Closed === true ) {
 			this.disableDelete = true;
 		}
@@ -120,7 +126,7 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 		if( this.disableDelete === true && this.id > -1 ) {
 			this._alerts.setWhereWhatWarning(
 				this.codeName, `Locked, cannot delete id: ${this.id}`);
-			return;
+			return false;
 		}
 		this._console.Information( `${this.codeName}.deleteItemClicked: Id: ${this.id}` );
 		// the p-confirmDialog in in app.component
@@ -131,7 +137,7 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 	//
 	// on edit window closed
 	//
-	onClose( saved: boolean ) {
+	onClose( saved: boolean ): void {
 		this._console.Information( `${this.codeName}.onClose: Entering: on close with: ${saved}` );
 		if( saved === true ) {
 			this._console.Information( `${this.codeName}.onClose: Refreshing...` );
@@ -148,11 +154,10 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 	//
 	deleteItem( delId: number ): boolean {
 		if( this.id !== 0 ) {
-			const notes = this.networkIncident.incidentNotes.filter( (el) => {
-				return el.IncidentNoteId === delId;
-			});
-			if( notes.length > 0 ) {
-				this.networkIncident.deletedNotes.push( notes[0] );
+			const note = this.networkIncident.incidentNotes.find(
+				(el) => el.IncidentNoteId === delId );
+			if( note !== undefined ) {
+				this.networkIncident.deletedNotes.push( note );
 				this.networkIncident.incidentNotes = this.networkIncident.incidentNotes.filter( (el) => {
 					return el.IncidentNoteId !== delId;
 				});
