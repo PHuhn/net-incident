@@ -238,24 +238,15 @@ export class NetworkLogGridComponent extends BaseComponent implements OnInit, Af
 		const delId = item.NetworkLogId;
 		this._console.Information( `${this.codeName}.deleteItemClicked: del id: ${delId}` );
 		// the p-confirmDialog in in app.component
-		this._confirmationService.confirm({
-			key: 'Delete',
-			message: 'Are you sure you want to delete ' + delId + '?',
-			accept: () => {
-				this._console.Information( `User's response: true` );
-				this.deleteItem( delId );
-			},
-			reject: () => {
-				this._console.Information( `User's dismissed.` );
-			}
-		});
-		return false;
+		return this.baseDeleteConfirm<number>( delId, (ident: number): boolean => {
+			return this.deleteItem( ident );
+		} );
 	}
 	//
 	// Rows a delete, move the row from in memory networkLogs to deletedLogs.
 	// This still needs to be saved.
 	//
-	deleteItem( delId: number ): void {
+	deleteItem( delId: number ): boolean {
 		this._console.Information( `${this.codeName}.deleteItem: Entering, del id: ${delId}` );
 		if( delId !== 0 ) {
 			const logs = this.networkIncident.networkLogs.filter( (el) => {
@@ -275,6 +266,7 @@ export class NetworkLogGridComponent extends BaseComponent implements OnInit, Af
 			}
 		}
 		this._console.Information( `${this.codeName}.deleteItem: Exiting, del id: ${delId}` );
+		return true;
 	}
 	//
 }
