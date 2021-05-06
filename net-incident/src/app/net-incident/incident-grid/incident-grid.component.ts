@@ -34,7 +34,6 @@ export class IncidentGridComponent extends BaseComponent implements OnInit, OnDe
 	// Data declaration.
 	//
 	// Window/dialog communication (also see onClose event)
-	windowIncident: Incident = undefined;
 	windowDisplay: boolean = false;
 	selectItemsWindow: SelectItem[];
 	displayServersWindow: boolean = false;
@@ -100,9 +99,13 @@ export class IncidentGridComponent extends BaseComponent implements OnInit, OnDe
 		this._console.Information(
 			`${this.codeName}.addItemClicked: Entering ...` );
 		this._console.Information( JSON.stringify( this.user ) );
-		const empty: Incident = this._data.emptyIncident( );
-		empty.ServerId = this.user.Server.ServerId;
-		this.editItemClicked( empty );
+		if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
+			const empty: Incident = this._data.emptyIncident( );
+			empty.ServerId = this.user.Server.ServerId;
+			this.editItemClicked( empty );
+		} else {
+			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
+		}
 	}
 	//
 	// Edit button clicked, launch edit detail window.
@@ -152,7 +155,6 @@ export class IncidentGridComponent extends BaseComponent implements OnInit, OnDe
 		}
 		this.windowDisplay = false;
 		this.detailWindow = undefined;
-		this.windowIncident = undefined;
 	}
 	//
 	// onChangeServer( "server" )

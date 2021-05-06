@@ -66,7 +66,6 @@ describe( 'IncidentGridComponent', ( ) => {
 	const networkIncidentServiceSpy = jasmine.createSpyObj(
 		'NetworkIncidentService', ['validateIncident', 'validateNetworkLog',
 		'validateNetworkLogs', 'getNetworkIncident', 'createIncident', 'updateIncident']);
-	// let detailWindow: DetailWindowInput;
 	const expectedWindowTitle: string = 'Incident Detail';
 	const windowTitleSelector: string =
 		'app-incident-detail-window > p-dialog > div > div.p-dialog-titlebar > span > p-header > div';
@@ -167,11 +166,10 @@ describe( 'IncidentGridComponent', ( ) => {
 	//
 	function newNetworkIncident( incident: Incident ): NetworkIncident {
 		const _ni = new NetworkIncident( );
-		_ni.incident = incident;
+		_ni.incident = { ... incident };
 		_ni.incidentNotes = [];
 		_ni.deletedNotes = [];
-		_ni.networkLogs = mockLogs;
-		console.log( _ni.networkLogs );
+		_ni.networkLogs = [ ... mockLogs ];
 		_ni.networkLogs.forEach( (row) => {
 			if( _ni.incident.IncidentId === row.IncidentId ) {
 				row.Selected = true;
@@ -185,8 +183,23 @@ describe( 'IncidentGridComponent', ( ) => {
 		_ni.incidentTypes = [];
 		_ni.noteTypes = [];
 		_ni.message = '';
-		_ni.user = user;
+		_ni.user = { ... user };
 		return _ni;
+	}
+	/*
+	** Cleanup so no dialog window will still be open
+	*/
+	function windowCleanup( ) {
+		sut.windowDisplay = false;
+		tickFakeWait( 1 );
+	}
+	/*
+	** Pause for events to process.
+	*/
+	function tickFakeWait( ticks: number ) {
+		tick( ticks );
+		fixture.detectChanges( ); // trigger initial data binding
+		fixture.whenStable( );
 	}
 	//
 	// Component instantiates
@@ -223,10 +236,8 @@ describe( 'IncidentGridComponent', ( ) => {
 		userServiceSpy.getUserServer.and.returnValue(of( user2 ));
 		sut.getUserServer( sut.user.UserName, serverShortName );
 		//
-		tick(1000); // wait 1 second task to get done
-		fixture.detectChanges( ); // trigger initial data binding
-		tick(1000); // wait 1 second task to get done
-		fixture.detectChanges( ); // trigger initial data binding
+		tickFakeWait(1000); // wait 1 second task to get done
+		tickFakeWait(1000); // wait 1 second task to get done
 		//
 		expect( sut.user.ServerShortName ).toEqual( serverShortName );
 		//
@@ -246,10 +257,8 @@ describe( 'IncidentGridComponent', ( ) => {
 		userServiceSpy.getUserServer.and.returnValue(of( user2 ));
 		sut.onServerSelected( serverShortName );
 		//
-		tick(1000); // wait 1 second task to get done
-		fixture.detectChanges( ); // trigger initial data binding
-		tick(1000); // wait 1 second task to get done
-		fixture.detectChanges( ); // trigger initial data binding
+		tickFakeWait(1000); // wait 1 second task to get done
+		tickFakeWait(1000); // wait 1 second task to get done
 		//
 		expect( sut.user.ServerShortName ).toEqual( serverShortName );
 		//
@@ -260,8 +269,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	it('should launch server selection window when onChangeServer is called ...', fakeAsync( () => {
 		sut.onChangeServer( 'testing' );
 		//
-		tick(1000); // wait 1 second task to get done
-		fixture.detectChanges( ); // trigger initial data binding
+		tickFakeWait(1000); // wait 1 second task to get done
 		//
 		expect( sut.displayServersWindow ).toEqual( true );
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
@@ -282,15 +290,23 @@ describe( 'IncidentGridComponent', ( ) => {
 		networkIncidentServiceSpy.getNetworkIncident.and.returnValue( of( response ) );
 		sut.addItemClicked( );
 		//
-		tick(1000); // wait 1 second task to get done
-		fixture.detectChanges( ); // trigger initial data binding
-		tick(1000); // wait 1 second task to get done
-		fixture.detectChanges( ); // trigger initial data binding
+		tickFakeWait(1000); // wait 1 second task to get done
+		tickFakeWait(1000); // wait 1 second task to get done
 		//
 		expect( sut.windowDisplay ).toEqual( true );
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			'#IncidentDetailWindowHeader' )).nativeElement;
 		expect( title.innerText.trim( ) ).toEqual( `Incident Detail: , IP Address:` );
+		windowCleanup( );
+	}));
+	//
+	it('should fail to launch create window when security fails ...', fakeAsync( ( ) => {
+		const incident: Incident = sut.incidents[ 2 ];
+		AppComponent.securityManager = new Security( undefined );
+		spyOn( alertService, 'setWhereWhatWarning' );
+		sut.addItemClicked( );
+		tickFakeWait( 1 );
+		expect( alertService.setWhereWhatWarning ).toHaveBeenCalled( );
 	}));
 	/*
 	** editItemClicked( item: Incident )
@@ -303,15 +319,22 @@ describe( 'IncidentGridComponent', ( ) => {
 		networkIncidentServiceSpy.getNetworkIncident.and.returnValue(of( response ));
 		sut.editItemClicked( incident );
 		expect( sut.windowDisplay ).toEqual( true );
-		tick(1000); // wait 1 second task to get done
-		fixture.detectChanges( ); // trigger initial data binding
-		tick(1000); // wait 1 second task to get done
-		fixture.detectChanges( ); // trigger initial data binding
+		tickFakeWait(1000); // wait 1 second task to get done
+		tickFakeWait(1000); // wait 1 second task to get done
 		//
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			'#IncidentDetailWindowHeader' )).nativeElement;
 		expect( title.innerText.trim( ) ).toEqual( `Incident Detail: ${id}, IP Address: ${ip}` );
-		sut.windowDisplay = false;
+		windowCleanup( );
+	}));
+	//
+	it('should fail to launch detail window when security fails ...', fakeAsync( ( ) => {
+		const incident: Incident = sut.incidents[ 2 ];
+		AppComponent.securityManager = new Security( undefined );
+		spyOn( alertService, 'setWhereWhatWarning' );
+		sut.editItemClicked( incident );
+		tickFakeWait( 1 );
+		expect( alertService.setWhereWhatWarning ).toHaveBeenCalled( );
 	}));
 	/*
 	** deleteItem( ) :boolean
@@ -345,12 +368,68 @@ describe( 'IncidentGridComponent', ( ) => {
 			});
 		const ret: boolean = sut.deleteItemClicked( delRow );
 		expect( ret ).toEqual( false );
-		tick(1000); // give it small amount of time
-		sut.windowDisplay = false;
+		tickFakeWait( 1000 ); // give it small amount of time
 		expect( sut.incidents.length ).toBe( expected );
+		windowCleanup( );
+		//
+	}));
+	//
+	it('should fail to delete when security fails ...', fakeAsync( ( ) => {
+		const incident: Incident = sut.incidents[ 2 ];
+		AppComponent.securityManager = new Security( undefined );
+		spyOn( alertService, 'setWhereWhatWarning' );
+		sut.deleteItemClicked( incident );
+		tickFakeWait( 1 );
+		expect( alertService.setWhereWhatWarning ).toHaveBeenCalled( );
 		console.log(
 			'End of IncidentGridComponent ...\n' +
 			'===================================' );
+	}));
+	/*
+	** closeWin( saved: boolean )
+	*/
+	it('onClose should set window display off ...', fakeAsync(() => {
+		// given
+		const incident: Incident = sut.incidents[ 1 ];
+		const response: NetworkIncident = newNetworkIncident( incident );
+		const id = response.incident.IncidentId; // for title
+		const ip = response.incident.IPAddress;
+		networkIncidentServiceSpy.getNetworkIncident.and.returnValue(of( response ));
+		//
+		sut.detailWindow = new DetailWindowInput( {... user }, sut.incidents[ 1 ] );
+		sut.windowDisplay = true;
+		tickFakeWait( 1000 ); // wait 1 second task to get done
+		tickFakeWait( 1000 ); // wait 1 second task to get done
+		// when
+		sut.onClose( false );
+		// then
+		expect( sut.windowDisplay ).toEqual( false );
+		expect( sut.detailWindow ).toBeUndefined( );
+		// cleanup
+		windowCleanup( );
+		//
+	}));
+	//
+	it('onClose should set visible off ...', fakeAsync(() => {
+		// given
+		const incident: Incident = sut.incidents[ 1 ];
+		const response: NetworkIncident = newNetworkIncident( incident );
+		const id = response.incident.IncidentId; // for title
+		const ip = response.incident.IPAddress;
+		networkIncidentServiceSpy.getNetworkIncident.and.returnValue(of( response ));
+		//
+		sut.detailWindow = new DetailWindowInput( {... user }, sut.incidents[ 1 ] );
+		sut.windowDisplay = true;
+		tickFakeWait( 1000 ); // wait 1 second task to get done
+		tickFakeWait( 1000 ); // wait 1 second task to get done
+		// when
+		sut.onClose( true );
+		// then
+		expect( sut.windowDisplay ).toEqual( false );
+		expect( sut.detailWindow ).toBeUndefined( );
+		expect( sut.visible ).toEqual( false );
+		// cleanup
+		windowCleanup( );
 		//
 	}));
 	//
