@@ -95,7 +95,7 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 		// this.networkIncident		<- email report
 		// this.networkIncident.incidentNotes
 		this._console.Information( `${this.codeName}: ngOnInit: ...` );
-		console.log( this.networkIncident );
+		this._console.Information( JSON.stringify( this.networkIncident ) );
 	}
 	//
 	// Cleanup

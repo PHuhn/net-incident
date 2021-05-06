@@ -184,7 +184,6 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	it('should create NetworkIncident class when createItem called ...', waitForAsync( () => {
 		//
 		const id = 100;
-		sut.logLevel = 3;
 		const empty: Incident = new Incident( 0,1,'','','','','',false,false,false,'',testDate );
 		sut.detailWindowInput = new DetailWindowInput( user, empty );
 		//
@@ -203,7 +202,6 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 			new Date(Date.now()) // CreatedDate: Date,
 		);
 		const response: NetworkIncident = newNetworkIncident( createIncident );
-		console.log( response );
 		netIncidentService.mockGet = response;
 		netIncidentService.mockCrudResponse = response;
 		createIncident.IncidentId = 0;

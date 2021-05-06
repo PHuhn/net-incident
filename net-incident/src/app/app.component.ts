@@ -4,6 +4,7 @@ import { environment } from '../environments/environment';
 //
 import { AlertsService } from './global/alerts/alerts.service';
 import { AuthService } from './net-incident/services/auth.service';
+import { ConsoleLogService } from './global/console-log/console-log.service';
 import { IUser, User } from './net-incident/user';
 import { Security } from './net-incident/security';
 import { IncidentGridComponent } from './net-incident/incident-grid/incident-grid.component';
@@ -26,20 +27,18 @@ export class AppComponent implements OnInit, AfterViewInit {
 	userAccount: string = environment.defaultUserAccount;
 	userPassword: string = '';
 	user: User = undefined;
-	logLevel: number = 1;
 	//
 	// Constructor of the this the app.component
 	//
 	constructor(
 		private _alerts: AlertsService,
+		private _console: ConsoleLogService,
 		private _auth: AuthService ) { }
 	//
 	// On component initialization, get all data from the data service.
 	//
 	ngOnInit() {
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
-		console.log( `${this.codeName}.ngOnInit: LogLevel is: ${this.logLevel}.`);
+		this._console.Information( `${this.codeName}.ngOnInit: ...`);
 	}
 	//
 	ngAfterViewInit() {
@@ -63,9 +62,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 	// onClick of Logout button in the header.component
 	//
 	onAuthLogout(event): void {
-		if( this.logLevel <= 4 ) {
-			console.log( `${this.codeName}.onAuthLogout: Logout clicked.`);
-		}
+		this._console.Information( `${this.codeName}.onAuthLogout: Logout clicked.`);
 		this._auth.logout( );
 		AppComponent.securityManager = undefined;
 		this.authenticated = false;
@@ -74,9 +71,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 	// Handle an error from the data service.
 	//
 	serviceErrorHandler( where: string, error: string ) {
-		if( this.logLevel <- 4 ) {
-			console.error( error );
-		}
+		this._console.Error( error );
 		this._alerts.setWhereWhatError( where,
 			'User-Service failed.',
 			error || 'Server error');

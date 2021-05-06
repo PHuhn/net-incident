@@ -84,7 +84,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	addItemClicked( ) {
 		this._console.Information(
 			`${this.codeName}.addItemClicked: Entering ...` );
-		console.log( this.user );
+		this._console.Information( JSON.stringify( this.user ) );
 		const empty: Incident = this._data.emptyIncident( );
 		empty.ServerId = this.user.Server.ServerId;
 		this.editItemClicked( empty );
@@ -186,7 +186,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	//
 	getUserServer( userName: string, serverShortName: string ) {
 		//
-		console.log( `${this.codeName}.getUserServer: user: ${userName}, short: ${serverShortName}` );
+		this._console.Information( `${this.codeName}.getUserServer: user: ${userName}, short: ${serverShortName}` );
 		this._user.getUserServer( userName, serverShortName )
 								.subscribe( ( userData: User ) => {
 			this._console.Information(

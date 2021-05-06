@@ -50,7 +50,6 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	networkIncidentSave: NetworkIncidentSave;
 	user: User;
 	displayWindow: boolean;
-	logLevel: number = 1;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -143,8 +142,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	// On component initialization.
 	//
 	ngOnInit() {
-		// 1=error, 2=warning, 3=info, 4=verbose
-		this.logLevel = environment.logLevel;
+		//
 	}
 	//
 	// Cleanup
@@ -324,10 +322,8 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		this._netIncident.createIncident( this.networkIncidentSave )
 			.subscribe(
 				( netIncidentData: NetworkIncident ) => {
-					if( this.logLevel >= 4 ) {
-						this._console.Verbose( `${this.codeName}.createItem, netIncidentData` );
-						this._console.Verbose( JSON.stringify( netIncidentData ) );
-					}
+					this._console.Verbose( `${this.codeName}.createItem, netIncidentData` );
+					this._console.Verbose( JSON.stringify( netIncidentData ) );
 					this.networkIncident = netIncidentData;
 					this.networkIncident.user = this.user;
 					this._alerts.setWhereWhatSuccess(
