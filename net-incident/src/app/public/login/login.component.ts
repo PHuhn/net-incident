@@ -10,6 +10,8 @@ import { Message } from '../../global/alerts/message';
 import { AlertLevel } from '../../global/alerts/alert-level.enum';
 import { UserService } from '../../net-incident/services/user.service';
 import { AuthService } from '../../net-incident/services/auth.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
+import { BaseComponent } from '../../common/base-comp/base-comp.component';
 import { IUser, User } from '../../net-incident/user';
 import { LoginViewModel } from '../../net-incident/login-view-model';
 import { TokenResponse } from '../../net-incident/token-response';
@@ -22,21 +24,32 @@ import { ConsoleLogService } from '../../global/console-log/console-log.service'
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends BaseComponent implements OnInit {
 	//
-	private codeName: string = 'Login-Component';
 	user: User = undefined;
 	model: Login;
 	selectItemsWindow: SelectItem[];
 	displayServersWindow: boolean = false;
+	// communicate to the AlertComponent
+	protected _alerts: AlertsService;
+	// to write console logs condition on environment log-level
+	protected _console: ConsoleLogService;
 	//
 	// constructor...
 	//
 	constructor(
-		private _alerts: AlertsService,
+		// inject the base components services
+		private _baseSrvc: BaseCompService,
 		private _auth: AuthService,
 		private _user: UserService,
-		private _console: ConsoleLogService ) { }
+	) {
+		super( _baseSrvc );
+		// get the needed services from the base component
+		this._alerts = _baseSrvc._alerts;
+		this._console = _baseSrvc._console;
+		this.codeName = 'Login-Component';
+		//
+	}
 	//
 	@Output() onClose = new EventEmitter<User>();
 	//
@@ -78,8 +91,8 @@ export class LoginComponent implements OnInit {
 		error => {
 			this._console.Error(
 				`${this.codeName}.authUser: authenticate: ${this.model.UserName} ${error}` );
-			this.serviceErrorHandler(
-				`User not found: ${this.model.UserName}`, error );
+			this.baseErrorHandler(
+				this.codeName, `User not found: ${this.model.UserName}`, error );
 			return -2;
 		});
 		return 0;
@@ -107,8 +120,8 @@ export class LoginComponent implements OnInit {
 					this.displayServersWindow = true;
 				}
 		},
-		error => this.serviceErrorHandler(
-			`User not found: ${userName}`, error ));
+		error => this.baseErrorHandler(
+			this.codeName, `User not found: ${userName}`, error ));
 		//
 	}
 	//
@@ -120,15 +133,6 @@ export class LoginComponent implements OnInit {
 		this.displayServersWindow = false;
 		this.model.ServerShortName = shortName;
 		this.getUserServer( this.model.UserName, this.model.ServerShortName );
-	}
-	//
-	// Handle an error from the data service.
-	//
-	serviceErrorHandler( where: string, error: string ) {
-		this._console.Error(
-			`${this.codeName}.serviceErrorHandler: ${where}, ${error}` );
-		this._alerts.setWhereWhatError( where,
-			'User-Service failed.', error || 'Server error');
 	}
 	//
 }

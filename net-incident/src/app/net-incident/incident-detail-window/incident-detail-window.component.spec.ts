@@ -14,14 +14,15 @@ import { Dialog } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 import { FocusTrapModule } from 'primeng/focustrap';
-import { Header, Footer, ConfirmationService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 //
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
 import { AlertsService } from '../../global/alerts/alerts.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { NetworkIncidentService } from '../services/network-incident.service';
 import { NetworkIncidentServiceMock } from '../services/mocks/NetworkIncidentService.mock';
-import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 //
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IIncident, Incident } from '../incident';
@@ -41,8 +42,9 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	let sut: IncidentDetailWindowComponent;
 	let fixture: ComponentFixture<IncidentDetailWindowComponent>;
 	let alertService: AlertsService;
+	let baseService: BaseCompService;
+	let consoleService: ConsoleLogService;
 	let servicesServiceMock: ServicesServiceMock;
-	let confirmService: ConfirmationServiceMock;
 	let netIncidentService: NetworkIncidentServiceMock;
 	let detailWindow: DetailWindowInput;
 	//
@@ -91,15 +93,19 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 				Dialog
 			],
 			providers: [
+				BaseCompService,
 				AlertsService,
+				ConsoleLogService,
+				ConfirmationService,
 				{ provide: ServicesService, useClass: ServicesServiceMock },
 				{ provide: NetworkIncidentService, useClass: NetworkIncidentServiceMock },
-				{ provide: ConfirmationService, useClass: ConfirmationServiceMock }
 			]
 		});
-		alertService =        TestBed.get( AlertsService );
+		// Setup injected pre service for each test
+		baseService = TestBed.inject( BaseCompService );
+		alertService = baseService._alerts;
+		consoleService = baseService._console;
 		servicesServiceMock = TestBed.get( ServicesService );
-		confirmService =      TestBed.get( ConfirmationService );
 		netIncidentService  = TestBed.get( NetworkIncidentService );
 		TestBed.compileComponents( );
 	}));

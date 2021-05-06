@@ -11,6 +11,8 @@ import { LazyLoadEvent } from 'primeng/api';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
+import { BaseComponent } from '../../common/base-comp/base-comp.component';
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IUser, User } from '../user';
 import { UserService } from '../services/user.service';
@@ -26,12 +28,11 @@ import { AppComponent } from '../../app.component';
 	templateUrl: './incident-grid.component.html',
 	styleUrls: ['./incident-grid.component.css']
 })
-export class IncidentGridComponent implements OnInit, OnDestroy {
+export class IncidentGridComponent extends BaseComponent implements OnInit, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
 	//
-	codeName = 'incident-grid-component';
 	// Window/dialog communication (also see onClose event)
 	windowIncident: Incident = undefined;
 	windowDisplay: boolean = false;
@@ -49,6 +50,12 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	mailed: boolean = false;
 	closed: boolean = false;
 	special: boolean = false;
+	// communicate to the AlertComponent
+	protected _alerts: AlertsService;
+	// to write console logs condition on environment log-level
+	protected _console: ConsoleLogService;
+	// PrimeNG's Ok/Cancel confirmation dialog service
+	protected _confirmationService: ConfirmationService;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -58,11 +65,19 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	@Input() user: User;
 	//
 	constructor(
-		private _alerts: AlertsService,
+		// inject the base components services
+		private _baseSrvc: BaseCompService,
 		private _data: IncidentService,
 		private _user: UserService,
-		private _confirmationService: ConfirmationService,
-		private _console: ConsoleLogService ) { }
+	) {
+		super( _baseSrvc );
+		// get the needed services from the base component
+		this._alerts = _baseSrvc._alerts;
+		this._console = _baseSrvc._console;
+		this._confirmationService = _baseSrvc._confirmationService;
+		this.codeName = 'incident-grid-component';
+		//
+	}
 	//
 	// On component initialization, get all data from the data service.
 	//
@@ -115,19 +130,9 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 			this._console.Information(
 				`${this.codeName}.deleteItemClicked: Entering, id: ${this.id}` );
 			// the p-confirmDialog in in app.component
-			this._confirmationService.confirm({
-				key: 'Delete',
-				message: 'Are you sure you want to delete incident id: ' + this.id + '?',
-				accept: () => {
-					this._console.Information(
-						`${this.codeName}.deleteItemClicked: User's response: true` );
-					this.deleteItem( );
-				},
-				reject: () => {
-					this._console.Information(
-						`${this.codeName}.deleteItemClicked: User's dismissed.` );
-				}
-			});
+			return this.baseDeleteConfirm<number>( this.id, (ident: number): boolean => {
+				return this.deleteItem( ident );
+			} );
 		} else {
 			this._alerts.setWhereWhatWarning(
 				this.codeName, 'Not authorized' );
@@ -182,7 +187,7 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// --------------------------------------------------------------------
 	// File access
 	// get user with user service
-	// getAll, delete & serviceErrorHandler
+	// getAll & delete
 	//
 	getUserServer( userName: string, serverShortName: string ) {
 		//
@@ -205,8 +210,8 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 				this.displayServersWindow = true;
 			}
 		},
-		error => this.serviceErrorHandler(
-			`User not found: ${userName}`, error ));
+		error => this.baseErrorHandler(
+			this.codeName, `User not found: ${userName}`, error ));
 		//
 	}
 	//
@@ -246,8 +251,8 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 				this.totalRecords = incidentPaginationData.totalRecords;
 			}, ( error ) => {
 				this.loading = false;
-				this.serviceErrorHandler(
-					`${this.codeName}.loadIncidentsLazy getIncidentsLazy`, error );
+				this.baseErrorHandler(
+					this.codeName, `loadIncidentsLazy`, error );
 			});
 		}, 0 );
 	}
@@ -255,9 +260,8 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 	// Call delete data service,
 	// if successful then delete the row from array
 	//
-	deleteItem( ): boolean {
-		const delId: number = this.id;
-		if( this.id !== 0 ) {
+	deleteItem( delId: number ): boolean {
+		if( delId !== 0 ) {
 			this._data.deleteIncident( delId )
 				.subscribe(
 					() => {
@@ -267,19 +271,10 @@ export class IncidentGridComponent implements OnInit, OnDestroy {
 						this._alerts.setWhereWhatSuccess(
 							'Incident-Grid', 'Deleted:' + delId);
 					},
-					error => this.serviceErrorHandler(
-						'Incident-Grid Delete', error ));
+					error => this.baseErrorHandler(
+						this.codeName, 'Incident-Grid Delete', error ));
 		}
 		return false;
-	}
-	//
-	// Handle an error from the data service.
-	//
-	serviceErrorHandler( where: string, error: string ) {
-		this._console.Error(
-			`${this.codeName}.serviceErrorHandler: ${where}, ${error}` );
-		this._alerts.setWhereWhatError( where,
-			'Incident-Service failed.', error || 'Server error');
 	}
 	//
 }

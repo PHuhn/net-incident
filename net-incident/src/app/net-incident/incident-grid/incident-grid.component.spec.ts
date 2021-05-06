@@ -19,6 +19,7 @@ import { Dropdown, DropdownModule } from 'primeng/dropdown';
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { Alerts } from '../../global/alerts/alerts';
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
 import { ServicesService } from '../services/services.service';
 import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { UserService } from '../../net-incident/services/user.service';
@@ -51,6 +52,8 @@ describe( 'IncidentGridComponent', ( ) => {
 	let fixture: ComponentFixture<IncidentGridComponent>;
 	let lazyLoading: LazyLoadingMock = new LazyLoadingMock();
 	let alertService: AlertsService;
+	let baseService: BaseCompService;
+	let consoleService: ConsoleLogService;
 	const selectionWindowTitleSelector: string =
 		'#serverSelectionWindow > div > div > div > span.p-dialog-title > p-header';
 	// document.querySelector('#serverSelectionWindow > div > div > div > span.p-dialog-title > p-header')
@@ -59,7 +62,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	let servicesServiceMock: ServicesServiceMock;
 	const incidentServiceSpy = jasmine.createSpyObj(
 		'IncidentService', ['emptyIncident', 'getIncidentsLazy', 'deleteIncident']);
-	let confirmService: ConfirmationServiceMock;
+	let confirmService: ConfirmationService;
 	const networkIncidentServiceSpy = jasmine.createSpyObj(
 		'NetworkIncidentService', ['validateIncident', 'validateNetworkLog',
 		'validateNetworkLogs', 'getNetworkIncident', 'createIncident', 'updateIncident']);
@@ -121,18 +124,21 @@ describe( 'IncidentGridComponent', ( ) => {
 				ConfirmDialog
 			],
 			providers: [
+				BaseCompService,
 				AlertsService,
 				ConsoleLogService,
+				ConfirmationService,
 				{ provide: UserService, useValue: userServiceSpy },
 				{ provide: ServicesService, useClass: ServicesServiceMock },
 				{ provide: IncidentService, useValue: incidentServiceSpy },
 				{ provide: NetworkIncidentService, useValue: networkIncidentServiceSpy },
-				{ provide: ConfirmationService, useClass: ConfirmationServiceMock }
 			]
 		});
-		alertService = TestBed.get( AlertsService );
+		baseService = TestBed.inject( BaseCompService );
+		alertService = baseService._alerts;
+		consoleService = baseService._console;
+		confirmService = baseService._confirmationService;
 		servicesServiceMock = TestBed.get( ServicesService );
-		confirmService =  TestBed.get( ConfirmationService );
 		TestBed.compileComponents( );
 	}));
 	//
@@ -315,14 +321,13 @@ describe( 'IncidentGridComponent', ( ) => {
 		const response = new HttpResponse( { status: 500, statusText: 'Fake Error' } );
 		incidentServiceSpy.deleteIncident.and.returnValue(of( response ));
 		const id = sut.incidents[1].IncidentId;
-		sut.id = id;
 		const subscription = alertService.getAlerts().subscribe(
 			(alertMsg: Alerts) => {
 				expect( alertMsg ).toBeTruthy( );
 		}, ( error ) => {
 			fail( 'delete error, failed: ' + error );
 		});
-		sut.deleteItem( );
+		sut.deleteItem( id );
 		//
 	}));
 	/*

@@ -68,15 +68,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 		this.authenticated = false;
 	}
 	//
-	// Handle an error from the data service.
-	//
-	serviceErrorHandler( where: string, error: string ) {
-		this._console.Error( error );
-		this._alerts.setWhereWhatError( where,
-			'User-Service failed.',
-			error || 'Server error');
-	}
-	//
 	fakeLogin() {
 		const server = new ServerData(
 			1, 1, 'Northern Software Group', 'NSG Memb', 'Members Web-site',

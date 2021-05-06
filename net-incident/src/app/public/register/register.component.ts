@@ -36,14 +36,5 @@ export class RegisterComponent implements OnInit {
 		this._alerts.setWhereWhatWarning( this.codeName, 'Not implemented.');
 	}
 	//
-	// Handle an error from the data service.
-	//
-	serviceErrorHandler( where: string, error: string ) {
-		console.error( error );
-		this._alerts.setWhereWhatError( where,
-			'User-Service failed.',
-			error || 'Server error');
-	}
-	//
 }
 // ===========================================================================

@@ -11,6 +11,8 @@ import { AlertsService } from '../../global/alerts/alerts.service';
 import { ServicesService } from '../services/services.service';
 import { NetworkIncidentService } from '../services/network-incident.service';
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
+import { BaseComponent } from '../../common/base-comp/base-comp.component';
 import { Message } from '../../global/alerts/message';
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IUser, User } from '../user';
@@ -28,12 +30,11 @@ import { IncidentNoteGridComponent } from '../incident-note-grid/incident-note-g
 	selector: 'app-incident-detail-window',
 	templateUrl: './incident-detail-window.component.html'
 })
-export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
+export class IncidentDetailWindowComponent extends BaseComponent implements OnInit, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
 	//
-	private codeName: string = 'Incident-Detail-Window';
 	private add: boolean = false;
 	private disableEdit: boolean = false;
 	id: number = -1;
@@ -130,14 +131,26 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 		}
 		//
 	}
+	// communicate to the AlertComponent
+	protected _alerts: AlertsService;
+	// to write console logs condition on environment log-level
+	protected _console: ConsoleLogService;
 	//
 	// Constructor used to inject services.
 	//
 	constructor(
-		private _alerts: AlertsService,
-		private _console: ConsoleLogService,
+		// inject the base components services
+		private _baseSrvc: BaseCompService,
 		private _netIncident: NetworkIncidentService,
-		private _services: ServicesService ) { }
+		private _services: ServicesService
+	) {
+		super( _baseSrvc );
+		// get the needed services from the base component
+		this._alerts = _baseSrvc._alerts;
+		this._console = _baseSrvc._console;
+		this.codeName = 'Incident-Detail-Window';
+		//
+	}
 	//
 	// On component initialization.
 	//
@@ -189,8 +202,8 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 				this.disableEdit = true;
 			}
 		}, ( error ) =>
-			this.serviceErrorHandler(
-				`${this.codeName}: Get Network Incident`, error ));
+			this.baseErrorHandler(
+				this.codeName, `Get Network Incident`, error ));
 	}
 	//
 	// Check against a common set of validation rules.
@@ -312,7 +325,7 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// File access
-	// create, update & serviceErrorHandler
+	// create & update
 	//
 	// Call create data service,
 	// if successful then emit to parent form success.
@@ -337,8 +350,8 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 					this.add = false;
 					this.id = this.networkIncident.incident.IncidentId;
 				},
-				error => this.serviceErrorHandler(
-					`${this.codeName} Create`, error ));
+				error => this.baseErrorHandler(
+					this.codeName, `Create`, error ));
 	}
 	//
 	// Call update data service,
@@ -359,17 +372,8 @@ export class IncidentDetailWindowComponent implements OnInit, OnDestroy {
 						this.onClose.emit( true );
 					}
 				},
-				error => this.serviceErrorHandler(
-					`${this.codeName} Update`, error ));
-	}
-	//
-	// Handle an error from the data service.
-	//
-	serviceErrorHandler( where: string, error: string ) {
-		console.error( error );
-		this._alerts.setWhereWhatError( where,
-			'Incident-Service failed.',
-			error || 'Server error');
+				error => this.baseErrorHandler(
+					this.codeName, `Update`, error ));
 	}
 	//
 }

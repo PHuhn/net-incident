@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { of, throwError } from 'rxjs';
 //
-import { SelectItem } from 'primeng/api';
+import { ConfirmationService, SelectItem } from 'primeng/api';
 import { Dialog } from 'primeng/dialog';
 import { Header, Footer } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -18,6 +18,8 @@ import { TokenResponse } from '../../net-incident/token-response';
 import { User } from '../../net-incident/user';
 import { UserService } from '../../net-incident/services/user.service';
 import { AuthService } from '../../net-incident/services/auth.service';
+import { ConsoleLogService } from '../../global/console-log/console-log.service';
+import { BaseCompService } from '../../common/base-comp/base-comp.service';
 import { LoginComponent } from './login.component';
 import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';
 //
@@ -25,6 +27,8 @@ describe('LoginComponent', () => {
 	let sut: LoginComponent;
 	let fixture: ComponentFixture<LoginComponent>;
 	let alertService: AlertsService;
+	let baseService: BaseCompService;
+	let consoleService: ConsoleLogService;
 	// Create a fake TwainService object with a `getQuote()` spy
 	const authServiceSpy = jasmine.createSpyObj('AuthService',
 				['authenticate', 'logout', 'isLoggedIn', 'isLoggedOut']);
@@ -46,12 +50,17 @@ describe('LoginComponent', () => {
 				ServerSelectionWindowComponent
 			],
 			providers: [
-				{ provide: AlertsService, useClass: AlertsService },
+				BaseCompService,
+				AlertsService,
+				ConsoleLogService,
+				ConfirmationService,
 				{ provide: AuthService, useValue: authServiceSpy },
 				{ provide: UserService, useValue: userServiceSpy }
 			]
 		} );
-		alertService = TestBed.get( AlertsService );
+		baseService = TestBed.inject( BaseCompService );
+		alertService = baseService._alerts;
+		consoleService = baseService._console;
 		TestBed.compileComponents();
 	}));
 	//
