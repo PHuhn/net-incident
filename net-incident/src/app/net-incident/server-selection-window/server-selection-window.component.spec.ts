@@ -50,20 +50,31 @@ describe('ServerSelectionWindowComponent', () => {
 		fixture.detectChanges();
 		fixture.whenStable( );
 	});
+	/*
+	** Cleanup so no dialog window will still be open
+	*/
+	function windowCleanup( ) {
+		sut.displayWin = false;
+		fixture.detectChanges( ); // trigger initial data binding
+		fixture.whenStable( );
+	}
 	//
 	it('should be created ...', () => {
 		console.log(
 			'===================================\n' +
 			'ServerSelectionWindowComponent should create ...' );
 		expect(sut).toBeTruthy();
-		});
+		windowCleanup( );
+	});
 	//
 	it('should initialize (input) with all server data ...', () => {
 		expect(sut.model.length).toEqual(mockData.length);
+		windowCleanup( );
 	});
 	//
 	it('should accept display window (input) ...', () => {
 		expect(sut.displayWin).toEqual(displayWindow);
+		windowCleanup( );
 	});
 	//
 	it('should launch window when display window set ...', () => {
@@ -72,7 +83,7 @@ describe('ServerSelectionWindowComponent', () => {
 		const title: HTMLDivElement = fixture.debugElement.query(By.css(
 			windowTitleSelector )).nativeElement;
 		expect( title.innerText ).toEqual( expectedWindowTitle );
-		sut.displayWin = false;
+		windowCleanup( );
 	});
 	//
 	it('should return selected server 0 ...', fakeAsync( () => {
@@ -88,7 +99,7 @@ describe('ServerSelectionWindowComponent', () => {
 		//
 		radio.click();
 		expect( sut.onClose.emit ).toHaveBeenCalledWith( value );
-		sut.displayWin = false;
+		windowCleanup( );
 	}));
 	//
 	it('should return selected server 1 ...', fakeAsync( () => {
@@ -104,7 +115,7 @@ describe('ServerSelectionWindowComponent', () => {
 		//
 		radio.click();
 		expect( sut.onClose.emit ).toHaveBeenCalledWith( value );
-		sut.displayWin = false;
+		windowCleanup( );
 	}));
 	//
 });

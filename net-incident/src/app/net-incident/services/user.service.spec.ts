@@ -4,7 +4,7 @@
 //
 import { TestBed, getTestBed, inject, waitForAsync } from '@angular/core/testing';
 //
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 //
 import { environment } from '../../../environments/environment';
@@ -126,12 +126,38 @@ describe('UserService', () => {
 	it( 'should throw an error...', waitForAsync(() => {
 		//
 		sut.handleError( errMsg ).subscribe( () => {
-				fail( 'handleError: expected error...' );
-			}, ( error ) => {
-				expect( error ).toEqual( errMsg );
+			fail( 'handleError: expected error...' );
+		}, ( error ) => {
+			expect( error ).toEqual( errMsg );
 		} );
 		//
 	}));
+	//
+	it( 'should throw an empty string error...', waitForAsync(() => {
+		//
+		sut.handleError( '' ).subscribe( () => {
+			fail( 'handleError: expected error...' );
+		}, ( error ) => {
+			expect( error ).toEqual( 'Service error' );
+		} );
+		//
+	}));
+	//
+	it( 'should throw a HttpErrorResponse error...', waitForAsync( ( ) => {
+		// given
+		const resp: HttpErrorResponse = new HttpErrorResponse({
+			error: {}, status: 599, statusText: errMsg
+		});
+		// when
+		sut.handleError( resp ).subscribe( () => {
+			console.log( JSON.stringify( resp ) );
+			fail( 'handleError: expected error...' );
+		}, ( error ) => {
+			// then
+			expect( error ).toEqual( errMsg );
+		} );
+		//
+	} ) );
 	//
 });
 // ===========================================================================

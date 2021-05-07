@@ -91,7 +91,7 @@ export class AuthService {
 	//
 	// General error handler
 	//
-	private handleError( error: any ) {
+	handleError( error: any ) {
 		this._console.Error( this.codeName + '.handleError: ' + error );
 		if ( error instanceof HttpErrorResponse ) {
 			return throwError( error.statusText || 'Service error' );

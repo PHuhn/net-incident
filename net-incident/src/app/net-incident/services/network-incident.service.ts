@@ -51,7 +51,7 @@ export class NetworkIncidentService {
 		if( model.NIC.length === 0 || model.NIC === undefined ) {
 			errMsgs.push( new Message( 'NIC-1', `'NIC' is required.` ) );
 		}
-		if( model.NIC.length > 50 ) {
+		if( model.NIC.length > 16 ) {
 			errMsgs.push( new Message( 'NIC-2', `'NIC' max length of 50.` ) );
 		}
 		if( model.NetworkName.length > 255 ) {
@@ -71,9 +71,6 @@ export class NetworkIncidentService {
 		}
 		if( model.Special === undefined || model.Special === null ) {
 			errMsgs.push( new Message( 'Special-1', `'Special' is required.` ) );
-		}
-		if( model.Notes.length > 1073741823 ) {
-			errMsgs.push( new Message( 'Notes-2', `'Notes' max length of 1073741823.` ) );
 		}
 		//
 		return errMsgs;
@@ -105,17 +102,13 @@ export class NetworkIncidentService {
 		if( model.Log.length === 0 || model.Log === undefined ) {
 			errMsgs.push( new Message( 'Log-1', `'Log' is required.` ) );
 		}
-		if( model.Log.length > 1073741823 ) {
-			errMsgs.push( new Message( 'Log-2', `'Log' max length of 1073741823.` ) );
-		}
 		if( model.IncidentTypeId === undefined || model.IncidentTypeId === null ) {
 			errMsgs.push( new Message( 'IncidentTypeId-1', `'Log Type Id' is required.` ) );
-		}
-		const types = incidentTypes.filter( (el) => {
-			return el.value !== model.IncidentTypeId;
-		});
-		if( types.length === 0 ) {
-			errMsgs.push( new Message( 'IncidentTypeId-2', `'Log Type' is not found.` ) );
+		} else {
+			const type = incidentTypes.find( (el) => el.value === model.IncidentTypeId );
+			if( type === undefined ) {
+				errMsgs.push( new Message( 'IncidentTypeId-2', `'Log Type' is not found.` ) );
+			}
 		}
 		//
 		return errMsgs;
@@ -157,7 +150,7 @@ export class NetworkIncidentService {
 	// Update (put) NetworkIncident
 	//
 	updateIncident( networkIncidentSave: NetworkIncidentSave ) {
-		const urlPath: string = this.url + '/' + String( networkIncidentSave.incident.IncidentId );
+		const urlPath: string = `${this.url}/${networkIncidentSave.incident.IncidentId}`;
 		this._console.Information( `${this.codeName}.updateIncident: ${urlPath}` );
 		return this.http.put<NetworkIncidentSave>( urlPath, networkIncidentSave )
 			.pipe( catchError( this.handleError.bind(this) ) );
