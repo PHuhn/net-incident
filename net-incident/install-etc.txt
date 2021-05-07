@@ -1731,6 +1731,13 @@ PROBLEM:
 SOLUTION:
 		npm audit fix --package-lock-only
 
+PROBLEM:
+========
+	In Jasmine:
+		Error: Export of name 'ngModel' not found
+SOLUTION:
+	Added import of FormsModule
+
 ===================================================
 Done:
 	service logging 12/22
