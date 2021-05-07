@@ -5,7 +5,7 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { IWhoIsAbuse, WhoIsAbuse } from './whois-abuse';
 //
-fdescribe('WhoIsAbuse', () => {
+describe('WhoIsAbuse', () => {
 	//
 	let sut: WhoIsAbuse;
 	//

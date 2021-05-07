@@ -40,7 +40,7 @@ import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.co
 import { IncidentNoteGridComponent } from '../incident-note-grid/incident-note-grid.component';
 import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-window/incident-note-detail-window.component';
 //
-fdescribe( 'IncidentDetailWindowComponent', ( ) => {
+describe( 'IncidentDetailWindowComponent', ( ) => {
 	let sut: IncidentDetailWindowComponent;
 	let fixture: ComponentFixture<IncidentDetailWindowComponent>;
 	let alertService: AlertsService;
