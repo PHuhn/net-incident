@@ -5,7 +5,7 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { IWhoIsAbuse, WhoIsAbuse } from './whois-abuse';
 //
-describe('WhoIsAbuse', () => {
+fdescribe('WhoIsAbuse', () => {
 	//
 	let sut: WhoIsAbuse;
 	//
@@ -49,6 +49,8 @@ network:Updated:20150331
 %ok
 
 `;
+	const whois_arin17_142_171_7: string =
+		`[Querying whois.arin.net]\r\n[whois.arin.net]\r\n\r\n#\r\nNetRange:       17.0.0.0 - 17.255.255.255\r\nCIDR:           17.0.0.0/8\r\nNetName:        APPLE-WWNET\r\nOrganization:   Apple Inc. (APPLEC-1-Z)\r\n \r\nOrgName:        Apple Inc.\r\nOrgId:          APPLEC-1-Z\r\nOrgAbuseHandle: APPLE11-ARIN\r\nOrgAbuseName:   Apple Abuse\r\nOrgAbusePhone:  +1-408-974-7777 \r\nOrgAbuseEmail:  abuse@apple.com\r\n#`;
 	//
 	beforeEach(() => {
 		sut = new WhoIsAbuse( );
@@ -244,4 +246,13 @@ network:Updated:20150331
 			'=================================' );
 	});
 	//
+	// GetNIC( raw: string ): string
+	//
+	it('should get NIC data for be arin 17 nic ...', ( ) => {
+		sut.GetNIC( whois_arin17_142_171_7 );
+		// console.log( `17.142.171.7: ${sut.nic}` );
+		expect( sut.nic ).toEqual( 'arin.net' );
+	});
+	//
 });
+// ===========================================================================

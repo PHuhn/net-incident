@@ -46,7 +46,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	private httpSubscription: Subscription;
 	private httpCreateSubscription: Subscription;
 	private httpUpdateSubscription: Subscription;
-	private detailWindow: DetailWindowInput;
+	detailWindow: DetailWindowInput;
 	networkIncident: NetworkIncident;
 	networkIncidentSave: NetworkIncidentSave;
 	user: User;
@@ -217,14 +217,16 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 		this.validateUser( errMsgs, this.networkIncidentSave.user );
 		//
 		if( errMsgs.length > 0 ) {
-			console.error( errMsgs );
+			this._console.Warning( `${this.codeName}.validate, ${JSON.stringify( errMsgs )}` );
 			this._alerts.warningSet( errMsgs );
 			return false;
 		}
 		return true;
 	}
 	//
-	initialize( model: IIncident ) {
+	// Set any undefined string to empty string 
+	//
+	initialize( model: IIncident ): void {
 		if( model.IPAddress === undefined || model.IPAddress === null ) {
 			model.IPAddress = '';
 		}
@@ -250,13 +252,13 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	validateUser( errMsgs: Message[], model: IUser ): void {
 		//
 		// from user
-		if( this.networkIncident.user.UserName === '' || this.networkIncident.user.UserName === undefined ) {
+		if( model.UserName === '' || model.UserName === undefined ) {
 			errMsgs.push( new Message( 'UserName-1', `From User, 'User Name' is required.` ) );
 		}
-		if( this.networkIncident.user.UserNicName === '' || this.networkIncident.user.UserNicName === undefined ) {
+		if( model.UserNicName === '' || model.UserNicName === undefined ) {
 			errMsgs.push( new Message( 'UserNicName-1', `From User, 'User Nic Name' is required.` ) );
 		}
-		if( this.networkIncident.user.Email === '' || this.networkIncident.user.Email === undefined ) {
+		if( model.Email === '' || model.Email === undefined ) {
 			errMsgs.push( new Message( 'Email-1', `From User, 'User Email Address' is required.` ) );
 		}
 		//
