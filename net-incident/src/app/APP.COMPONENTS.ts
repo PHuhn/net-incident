@@ -12,7 +12,6 @@ import { ServerSelectionWindowComponent } from './net-incident/server-selection-
 import { LoginComponent } from './public/login/login.component';
 import { RegisterComponent } from './public/register/register.component';
 import { HeaderComponent } from './public/header/header.component';
-import { HomeComponent } from './public/home/home.component';
 import { AboutComponent } from './public/about/about.component';
 import { ContactComponent } from './public/contact/contact.component';
 import { HelpComponent } from './public/help/help.component';
@@ -32,7 +31,6 @@ export const APP_COMPONENTS = [
 	LoginComponent,
 	RegisterComponent,
 	HeaderComponent,
-	HomeComponent,
 	AboutComponent,
 	ContactComponent,
 	HelpComponent,
