@@ -38,6 +38,9 @@ export interface IUser {
 	ServerShortName: string;
 	Server: ServerData;
 	Roles: string[];
+	//
+	toString(): string;
+	//
 }
 //
 export class User implements IUser {
@@ -60,6 +63,12 @@ export class User implements IUser {
 		public Server: ServerData,
 		public Roles: string[]
 	) { }
+	/*
+	** toString implementation for class AspNetUser
+	*/
+	public toString = (): string => {
+		return JSON.stringify( this );
+	}
 	//
 }
 // ===========================================================================

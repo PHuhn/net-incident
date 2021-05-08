@@ -27,6 +27,9 @@ export interface IIncident {
 	Notes: string;
 	CreatedDate: Date;
 	IsChanged: Boolean;
+	//
+	toString(): string;
+	//
 }
 //
 export class Incident implements IIncident {
@@ -49,4 +52,11 @@ export class Incident implements IIncident {
 	) {
 		this.IsChanged = false;
 	}
+	/*
+	** toString implementation for class Incident
+	*/
+	public toString = (): string => {
+		return JSON.stringify( this );
+	}
+	//
 }

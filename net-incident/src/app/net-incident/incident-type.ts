@@ -16,6 +16,9 @@ export interface IIncidentType {
 	IncidentTypeThanksTemplate: string;
 	IncidentTypeLogTemplate: string;
 	IncidentTypeTemplate: string;
+	//
+	toString(): string;
+	//
 }
 //
 export class IncidentType implements IIncidentType {
@@ -33,5 +36,12 @@ export class IncidentType implements IIncidentType {
 		public IncidentTypeLogTemplate: string,
 		public IncidentTypeTemplate: string
 	) { }
+	/*
+	** toString implementation for class Incident
+	*/
+	public toString = (): string => {
+		return JSON.stringify( this );
+	}
+	//
 }
 // ===========================================================================

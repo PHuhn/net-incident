@@ -13,6 +13,9 @@ export interface INetworkLog {
 	IncidentTypeShortDesc: string;
 	Selected: boolean;
 	IsChanged: boolean;
+	//
+	toString(): string;
+	//
 }
 //
 export class NetworkLog implements INetworkLog {
@@ -31,6 +34,12 @@ export class NetworkLog implements INetworkLog {
 		public Selected: boolean
 	) {
 		this.IsChanged = false;
+	}
+	/*
+	** toString implementation for class NetworkLog
+	*/
+	public toString = (): string => {
+		return JSON.stringify( this );
 	}
 }
 // ===========================================================================

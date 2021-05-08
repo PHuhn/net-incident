@@ -20,6 +20,9 @@ export interface IServerData {
 	TimeZone_DST: string;
 	DST_Start: Date;
 	DST_End: Date;
+	//
+	toString(): string;
+	//
 }
 //
 export class ServerData implements IServerData {
@@ -43,5 +46,12 @@ export class ServerData implements IServerData {
 		public DST_Start: Date,
 		public DST_End: Date
 	) { }
+	/*
+	** toString implementation for class Server
+	*/
+	public toString = (): string => {
+		return JSON.stringify( this );
+	}
+	//
 }
 // ===========================================================================

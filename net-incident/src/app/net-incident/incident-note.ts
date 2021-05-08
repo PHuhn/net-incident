@@ -9,6 +9,9 @@ export interface IIncidentNote {
 	Note: string;
 	CreatedDate: Date;
 	IsChanged: boolean;
+	//
+	toString(): string;
+	//
 }
 //
 export class IncidentNote implements IIncidentNote {
@@ -24,5 +27,12 @@ export class IncidentNote implements IIncidentNote {
 		public IsChanged: boolean = false
 	) {
 	}
+	/*
+	** toString implementation for class IncidentNote
+	*/
+	public toString = (): string => {
+		return JSON.stringify( this );
+	}
+	//
 }
 // ===========================================================================
