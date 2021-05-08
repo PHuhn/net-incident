@@ -8,15 +8,15 @@ import { By } from '@angular/platform-browser';
 //
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { UserService } from '../../net-incident/services/user.service';
-import { UserServiceMock } from '../../net-incident/services/mocks/UserService.mock';
 import { IUser, User } from '../../net-incident/user';
 import { RegisterComponent } from './register.component';
 //
 describe('RegisterComponent', () => {
 	let sut: RegisterComponent;
 	let alertService: AlertsService;
-	let userServiceMock: UserServiceMock;
 	let fixture: ComponentFixture<RegisterComponent>;
+	const userServiceSpy = jasmine.createSpyObj('UserService',
+		['emptyUser', 'getUser', 'getUserServer']);
 	//
 	beforeEach( waitForAsync( ( ) => {
 		//
@@ -28,11 +28,10 @@ describe('RegisterComponent', () => {
 			declarations: [ RegisterComponent ],
 			providers: [
 				AlertsService,
-				{ provide: UserService, useClass: UserServiceMock }
+				{ provide: UserService, useValue: userServiceSpy }
 			]
 		} );
-		alertService = TestBed.get( AlertsService );
-		userServiceMock = TestBed.get( UserService );
+		alertService = TestBed.inject( AlertsService );
 		TestBed.compileComponents();
 	} ) );
 	//

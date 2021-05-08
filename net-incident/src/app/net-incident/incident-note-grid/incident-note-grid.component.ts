@@ -30,8 +30,8 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 	private id: number;
 	private disableDelete: boolean = false;
 	public get DisableDelete( ): boolean {
-        return this.disableDelete;
-    }
+		return this.disableDelete;
+	}
 	// xfer to detail window
 	windowIncidentNoteInput: IIncidentNoteWindowInput | undefined;
 	// communicate to the AlertComponent

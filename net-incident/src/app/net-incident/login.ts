@@ -14,7 +14,7 @@ export class Login {
 	// Class validation rules.
 	//
 	validate( ): Message[] {
-		let errMsgs: Message[] = [];
+		const errMsgs: Message[] = [];
 		//
 		if( this.UserName.length === 0 || this.UserName === undefined ) {
 			errMsgs.push( new Message( 'UserName-1', `'User Name' is required.` ) );

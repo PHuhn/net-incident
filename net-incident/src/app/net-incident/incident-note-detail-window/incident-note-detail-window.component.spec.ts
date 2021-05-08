@@ -21,8 +21,6 @@ import { AlertLevel } from '../../global/alerts/alert-level.enum';
 import { Message } from '../../global/alerts/message';
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { ServicesService } from '../services/services.service';
-import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
-import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 import { SelectItemClass } from '../../global/select-item-class';
 import { IIncident, Incident } from '../incident';
 import { NetworkIncident } from '../network-incident';
@@ -37,7 +35,6 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	let fixture: ComponentFixture<IncidentNoteDetailWindowComponent>;
 	let alertService: AlertsService;
 	let baseService: BaseCompService;
-	let servicesService: ServicesService;
 	let consoleService: ConsoleLogService;
 	const incidentnoteServiceSpy = jasmine.createSpyObj(
 		'IncidentNoteService', ['emptyIncidentNote', 'validate', 'getIncidentNote', 'createIncidentNote', 'updateIncidentNote']);
@@ -105,8 +102,8 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 				BaseCompService,
 				AlertsService,
 				ConsoleLogService,
+				ConfirmationService,
 				{ provide: ServicesService, useValue: servicesServiceSpy },
-				{ provide: ConfirmationService, useClass: ConfirmationServiceMock }
 			]
 		});
 		// Setup injected pre service for each test
@@ -275,7 +272,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	it('performIncidentType: call the onChange event ...', fakeAsync(() => {
 		// given
 		const testInput = { ... testWindowIncidentNoteInput };
-		testInput.model = { ... emptyData }
+		testInput.model = { ... emptyData };
 		sut.incidentnote = testInput;
 		tickFakeWait( 10 );
 		const id: number = 1;
@@ -293,7 +290,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	it('performIncidentType: call whois event ...', fakeAsync(() => {
 		// given
 		const testInput = { ... testWindowIncidentNoteInput };
-		testInput.model = { ... emptyData }
+		testInput.model = { ... emptyData };
 		sut.incidentnote = testInput;
 		tickFakeWait( 10 );
 		const id: number = 1;
@@ -313,7 +310,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	it('performIncidentType: call ISP report event ...', fakeAsync(() => {
 		// given
 		const testInput = { ... testWindowIncidentNoteInput };
-		testInput.model = { ... emptyData }
+		testInput.model = { ... emptyData };
 		testInput.networkIncident.incident.ServerId = 0;
 		sut.incidentnote = testInput;
 		tickFakeWait( 10 );
@@ -347,7 +344,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	it('getPing: call the getPing server services ...', fakeAsync(() => {
 		// given
 		const testInput = { ... testWindowIncidentNoteInput };
-		testInput.model = { ... emptyData }
+		testInput.model = { ... emptyData };
 		sut.incidentnote = testInput;
 		tickFakeWait( 10 );
 		const resp: string = `Pinging USA.NET [${ipAddr}] with 32 bytes of data:`;
@@ -392,7 +389,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 	it('getWhoIs: call the getWhoIs server services ...', fakeAsync(() => {
 		// given
 		const testInput = { ... testWindowIncidentNoteInput };
-		testInput.model = { ... emptyData }
+		testInput.model = { ... emptyData };
 		sut.incidentnote = testInput;
 		tickFakeWait( 10 );
 		const resp: string = `Abuse contact for '${ipAddr} - ${ipAddr}' is 'noc@usa.net'`;

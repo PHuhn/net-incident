@@ -69,7 +69,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 		this._console.Information(
 			`${this.codeName}.authUser: ${this.model.UserName}` );
 		//
-		let errMsgs: Message[] = this.model.validate( );
+		const errMsgs: Message[] = this.model.validate( );
 		if( errMsgs.length > 0 ) {
 			this._alerts.setAlerts( AlertLevel.Error, errMsgs );
 			return -1;

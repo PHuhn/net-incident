@@ -77,10 +77,10 @@ describe('NetworkIncidentService', () => {
 			]
 		} );
 		// Setup injected pre service for each test
-		http = TestBed.get( HttpClient );
-		backend = TestBed.get( HttpTestingController );
+		http = TestBed.inject( HttpClient );
+		backend = TestBed.inject( HttpTestingController );
 		//
-		sut = getTestBed().get( NetworkIncidentService );
+		sut = TestBed.inject( NetworkIncidentService );
 		TestBed.compileComponents();
 	} ) );
 	//

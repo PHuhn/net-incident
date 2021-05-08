@@ -230,7 +230,7 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 	}
 	//
 	validateNote( model: IIncidentNote, add: boolean ): Message[] {
-		let errMsgs: Message[] = [];
+		const errMsgs: Message[] = [];
 		//
 		if( model.IncidentNoteId === undefined || model.IncidentNoteId === null ) {
 			errMsgs.push( new Message( 'IncidentNoteId-1', `'Incident Note Id' is required.` ) );

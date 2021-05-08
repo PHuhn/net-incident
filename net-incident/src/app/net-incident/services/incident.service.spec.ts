@@ -48,10 +48,10 @@ describe('IncidentService', () => {
 			]
 		} );
 		// Setup injected pre service for each test
-		http = TestBed.get( HttpClient );
-		backend = TestBed.get( HttpTestingController );
+		http = TestBed.inject( HttpClient );
+		backend = TestBed.inject( HttpTestingController );
 		// Setup sut
-		sut = getTestBed().get( IncidentService );
+		sut = TestBed.inject( IncidentService );
 		TestBed.compileComponents();
 	} ) );
 	//

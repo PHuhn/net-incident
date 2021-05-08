@@ -18,7 +18,7 @@ export class LoginViewModel {
 	//
 	/*
 	validate( ): Message[] {
-		let errMsgs: Message[] = [];
+		const errMsgs: Message[] = [];
 		//
 		if( this.username.length === 0 || this.username === undefined ) {
 			errMsgs.push( new Message( 'UserName-1', "'User Name' is required." ) );

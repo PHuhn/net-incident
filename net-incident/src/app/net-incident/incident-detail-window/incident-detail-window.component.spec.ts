@@ -21,9 +21,7 @@ import { Message } from '../../global/alerts/message';
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { ServicesService } from '../services/services.service';
-// import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { NetworkIncidentService } from '../services/network-incident.service';
-import { NetworkIncidentServiceMock } from '../services/mocks/NetworkIncidentService.mock';
 //
 import { DetailWindowInput } from '../DetailWindowInput';
 import { IIncident, Incident } from '../incident';
@@ -46,10 +44,10 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	let alertService: AlertsService;
 	let baseService: BaseCompService;
 	let consoleService: ConsoleLogService;
-	// let servicesServiceMock: ServicesServiceMock;
-	let netIncidentService: NetworkIncidentServiceMock;
 	let detailWindow: DetailWindowInput;
 	//
+	const networkIncidentServiceSpy = jasmine.createSpyObj(
+		'NetworkIncidentService', [ 'validateIncident', 'validateNetworkLogs', 'getNetworkIncident', 'createIncident', 'updateIncident' ]);
 	const servicesServiceSpy = jasmine.createSpyObj(
 		'ServicesService', ['getPing', 'getWhoIs']);
 	const whoisMockData_17_142_171_7: string =
@@ -113,16 +111,14 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 				ConsoleLogService,
 				ConfirmationService,
 				{ provide: ServicesService, useValue: servicesServiceSpy },
-				// { provide: ServicesService, useClass: ServicesServiceMock },
-				{ provide: NetworkIncidentService, useClass: NetworkIncidentServiceMock },
+				{ provide: NetworkIncidentService, useValue: networkIncidentServiceSpy },
 			]
 		});
 		// Setup injected pre service for each test
 		baseService = TestBed.inject( BaseCompService );
 		alertService = baseService._alerts;
 		consoleService = baseService._console;
-		// servicesServiceMock = TestBed.get( ServicesService );
-		netIncidentService  = TestBed.get( NetworkIncidentService );
+		// netIncidentService  = TestBed.get( NetworkIncidentService );
 		TestBed.compileComponents( );
 	}));
 	//
@@ -131,7 +127,8 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		sut = fixture.componentInstance;
 		//
 		const response: NetworkIncident = newNetworkIncident( mockData );
-		netIncidentService.mockGet = response;
+		// netIncidentService.mockGet = response;
+		networkIncidentServiceSpy.getNetworkIncident.and.returnValue( of( response ) );
 		// supply the input data
 		detailWindow = new DetailWindowInput( user, mockData );
 		sut.detailWindowInput = detailWindow;
@@ -209,12 +206,6 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	it('initialize: should set undefined string fields ...', fakeAsync( ( ) => {
 		//
 		// given
-		// model.IPAddress = '';
-		// model.NIC = '';
-		// model.NetworkName = '';
-		// model.AbuseEmailAddress = '';
-		// model.ISPTicketNumber = '';
-		// model.Notes = '';
 		const incident: IIncident =
 			new Incident( 76, 1, undefined, undefined, undefined, undefined, undefined, false, false, false, undefined, new Date( '2021-06-06' ) );
 		// when
@@ -235,7 +226,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	it('validate: should display alert when invalid ...', fakeAsync( ( ) => {
 		//
 		// given
-		const save = new NetworkIncidentSave()
+		const save = new NetworkIncidentSave();
 		save.incident =
 			new Incident( 76, 1, undefined, undefined, undefined, undefined, undefined, false, false, false, undefined, new Date( '2021-06-06' ) );
 		save.incidentNotes = [];
@@ -246,6 +237,8 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		save.message = '';
 		sut.networkIncidentSave = save;
 		spyOn( alertService, 'warningSet' );
+		networkIncidentServiceSpy.validateIncident.and.returnValue( [ new Message( 'id','message' ) ] );
+		networkIncidentServiceSpy.validateNetworkLogs.and.returnValue( [] );
 		// when
 		sut.validate( );
 		// then
@@ -259,7 +252,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	it('validateUser: should display alert when invalid ...', fakeAsync( ( ) => {
 		//
 		// given
-		let errMsgs: Message[] = [];
+		const errMsgs: Message[] = [];
 		const badUser = { ... user };
 		badUser.UserName = '';
 		badUser.UserNicName = '';
@@ -310,8 +303,11 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	*/
 	it('should update class when updateItem called ...', fakeAsync( ( ) => {
 		//
-		netIncidentService.mockCrudResponse = new HttpResponse(
+		const response = new HttpResponse(
 				{ status: 201, statusText: 'OK' } );
+		networkIncidentServiceSpy.updateIncident.and.returnValue( of( response ) );
+		networkIncidentServiceSpy.validateIncident.and.returnValue( [] );
+		networkIncidentServiceSpy.validateNetworkLogs.and.returnValue( [] );
 		sut.onClose.subscribe( saved => {
 			sut.displayWin = false;
 			expect( saved ).toBe( true );
@@ -344,8 +340,10 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 			new Date(Date.now()) // CreatedDate: Date,
 		);
 		const response: NetworkIncident = newNetworkIncident( createIncident );
-		netIncidentService.mockGet = response;
-		netIncidentService.mockCrudResponse = response;
+		networkIncidentServiceSpy.getNetworkIncident.and.returnValue( of( response ) );
+		networkIncidentServiceSpy.createIncident.and.returnValue( of( response ) );
+		networkIncidentServiceSpy.validateIncident.and.returnValue( [] );
+		networkIncidentServiceSpy.validateNetworkLogs.and.returnValue( [] );
 		createIncident.IncidentId = 0;
 		sut.networkIncident.incident = createIncident;
 		sut.windowClose( true );

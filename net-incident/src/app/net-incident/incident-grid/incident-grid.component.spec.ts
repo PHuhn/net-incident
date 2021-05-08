@@ -21,11 +21,9 @@ import { Alerts } from '../../global/alerts/alerts';
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { BaseCompService } from '../../common/base-comp/base-comp.service';
 import { ServicesService } from '../services/services.service';
-import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
 import { UserService } from '../../net-incident/services/user.service';
 import { IncidentService } from '../services/incident.service';
 import { NetworkIncidentService } from '../services/network-incident.service';
-import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 //
 import { TruncatePipe } from '../../global/truncate.pipe';
 import { DetailWindowInput } from '../DetailWindowInput';
@@ -50,7 +48,7 @@ import { Security } from '../security';
 describe( 'IncidentGridComponent', ( ) => {
 	let sut: IncidentGridComponent;
 	let fixture: ComponentFixture<IncidentGridComponent>;
-	let lazyLoading: LazyLoadingMock = new LazyLoadingMock();
+	const lazyLoading: LazyLoadingMock = new LazyLoadingMock();
 	let alertService: AlertsService;
 	let baseService: BaseCompService;
 	let consoleService: ConsoleLogService;
@@ -59,7 +57,8 @@ describe( 'IncidentGridComponent', ( ) => {
 	// document.querySelector('#serverSelectionWindow > div > div > div > span.p-dialog-title > p-header')
 	const userServiceSpy = jasmine.createSpyObj('UserService',
 			['emptyUser', 'getUser', 'getUserServer']);
-	let servicesServiceMock: ServicesServiceMock;
+	const servicesServiceSpy = jasmine.createSpyObj('ServicesService',
+		['getPing', 'getWhoIs', 'getService']);
 	const incidentServiceSpy = jasmine.createSpyObj(
 		'IncidentService', ['emptyIncident', 'getIncidentsLazy', 'deleteIncident']);
 	let confirmService: ConfirmationService;
@@ -128,7 +127,7 @@ describe( 'IncidentGridComponent', ( ) => {
 				ConsoleLogService,
 				ConfirmationService,
 				{ provide: UserService, useValue: userServiceSpy },
-				{ provide: ServicesService, useClass: ServicesServiceMock },
+				{ provide: ServicesService, useValue: servicesServiceSpy },
 				{ provide: IncidentService, useValue: incidentServiceSpy },
 				{ provide: NetworkIncidentService, useValue: networkIncidentServiceSpy },
 			]
@@ -137,14 +136,13 @@ describe( 'IncidentGridComponent', ( ) => {
 		alertService = baseService._alerts;
 		consoleService = baseService._console;
 		confirmService = baseService._confirmationService;
-		servicesServiceMock = TestBed.get( ServicesService );
 		TestBed.compileComponents( );
 	}));
 	//
 	beforeEach( waitForAsync( ( ) => {
 		// clone the array with slice( 0 )
 		const page = new IncidentPaginationData( );
-		const event = {"first":0,"rows":5,"sortField":"IncidentId","sortOrder":-1,"filters":{"ServerId":{"value":1,"matchMode":"equals"},"Mailed":{"value":false,"matchMode":"equals"},"Closed":{"value":false,"matchMode":"equals"},"Special":{"value":false,"matchMode":"equals"}},"globalFilter":null} as LazyLoadEvent;
+		const event = {'first':0,'rows':5,'sortField':'IncidentId','sortOrder':-1,'filters':{'ServerId':{'value':1,'matchMode':'equals'},'Mailed':{'value':false,'matchMode':'equals'},'Closed':{'value':false,'matchMode':'equals'},'Special':{'value':false,'matchMode':'equals'}},'globalFilter':null} as LazyLoadEvent;
 		page.incidents = lazyLoading.LazyLoading( mockDatum, event );
 		page.loadEvent = event;
 		page.totalRecords = page.incidents.length;
@@ -229,7 +227,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		//
 		const serverShortName = 'srv 2';
 		// setup response to _user.getUserServer service call
-		let user2 = {...user};
+		const user2 = { ... user };
 		user2.Server.ServerName = 'Server 2';
 		user2.Server.ServerShortName = serverShortName;
 		user2.ServerShortName = serverShortName;
@@ -250,7 +248,7 @@ describe( 'IncidentGridComponent', ( ) => {
 		//
 		const serverShortName = 'srv 2';
 		// setup response to _user.getUserServer service call
-		let user2 = {...user};
+		const user2 = { ... user };
 		user2.Server.ServerName = 'Server 2';
 		user2.Server.ServerShortName = serverShortName;
 		user2.ServerShortName = serverShortName;
@@ -280,7 +278,7 @@ describe( 'IncidentGridComponent', ( ) => {
 	** addItemClicked( )
 	*/
 	it('should launch detail window when addItemClicked is called ...', fakeAsync( () => {
-		let inc = new Incident( 0,0,'','','','','',false,false,false,'',testDate );
+		const inc = new Incident( 0,0,'','','','','',false,false,false,'',testDate );
 		incidentServiceSpy.emptyIncident.and.returnValue(of( inc ));
 		const response: NetworkIncident = newNetworkIncident(
 			inc

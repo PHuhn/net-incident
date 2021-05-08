@@ -29,7 +29,7 @@ describe('ServicesService', () => {
 				{ provide: ServicesService, useClass: ServicesService }
 			]
 		} );
-		sut = getTestBed().get( ServicesService );
+		sut = TestBed.inject( ServicesService );
 		TestBed.compileComponents();
 	} ) );
 	//

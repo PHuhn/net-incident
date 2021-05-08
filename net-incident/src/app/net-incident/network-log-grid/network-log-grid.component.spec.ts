@@ -14,7 +14,6 @@ import { ConfirmationService, Confirmation } from 'primeng/api';
 import { AlertsService } from '../../global/alerts/alerts.service';
 import { BaseCompService } from '../../common/base-comp/base-comp.service';
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
-import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 import { IIncident, Incident } from '../incident';
 import { INetworkIncident, NetworkIncident } from '../network-incident';
 import { INetworkLog, NetworkLog } from '../network-log';

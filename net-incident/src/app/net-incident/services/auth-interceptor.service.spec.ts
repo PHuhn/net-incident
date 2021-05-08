@@ -29,8 +29,8 @@ describe('AuthInterceptorService', () => {
 				},
 			],
 		});
-		http = TestBed.get(HttpTestingController);
-		httpClient = TestBed.get(HttpClient);
+		http = TestBed.inject(HttpTestingController);
+		httpClient = TestBed.inject(HttpClient);
 	});
 	//
 	beforeEach( inject( [ HttpClient, HttpTestingController ],

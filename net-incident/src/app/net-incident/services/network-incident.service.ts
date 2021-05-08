@@ -31,7 +31,7 @@ export class NetworkIncidentService {
 	// Class validation rules.
 	//
 	validateIncident( model: IIncident, add: boolean ): Message[] {
-		let errMsgs: Message[] = [];
+		const errMsgs: Message[] = [];
 		//
 		if( model.IncidentId === undefined || model.IncidentId === null ) {
 			errMsgs.push( new Message( 'IncidentId-1', `'Incident Id' is required.` ) );
@@ -79,7 +79,7 @@ export class NetworkIncidentService {
 	// Class validation rules.
 	//
 	validateNetworkLog( model: INetworkLog, add: boolean, incidentTypes: SelectItemClass[] ): Message[] {
-		let errMsgs: Message[] = [];
+		const errMsgs: Message[] = [];
 		//
 		if( model.NetworkLogId === undefined || model.NetworkLogId === null ) {
 			errMsgs.push( new Message( 'NetworkLogId-1', `'Network Log Id' is required.` ) );

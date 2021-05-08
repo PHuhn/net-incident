@@ -51,6 +51,10 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	networkIncidentSave: NetworkIncidentSave;
 	user: User;
 	displayWindow: boolean;
+	// communicate to the AlertComponent
+	protected _alerts: AlertsService;
+	// to write console logs condition on environment log-level
+	protected _console: ConsoleLogService;
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -131,10 +135,6 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 		}
 		//
 	}
-	// communicate to the AlertComponent
-	protected _alerts: AlertsService;
-	// to write console logs condition on environment log-level
-	protected _console: ConsoleLogService;
 	//
 	// Constructor used to inject services.
 	//
@@ -210,7 +210,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	//
 	validate( ): boolean {
 		this.initialize( this.networkIncidentSave.incident );
-		let errMsgs: Message[] = this._netIncident.validateIncident(
+		const errMsgs: Message[] = this._netIncident.validateIncident(
 			this.networkIncidentSave.incident, this.add );
 		// need at least one log selected
 		this._netIncident.validateNetworkLogs( errMsgs, this.networkIncidentSave.networkLogs );
@@ -224,7 +224,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 		return true;
 	}
 	//
-	// Set any undefined string to empty string 
+	// Set any undefined string to empty string
 	//
 	initialize( model: IIncident ): void {
 		if( model.IPAddress === undefined || model.IPAddress === null ) {

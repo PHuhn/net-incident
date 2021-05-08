@@ -31,10 +31,10 @@ describe('AuthService', () => {
 			]
 		} );
 		// Setup injected pre service for each test
-		http = TestBed.get( HttpClient );
-		backend = TestBed.get( HttpTestingController );
+		http = TestBed.inject( HttpClient );
+		backend = TestBed.inject( HttpTestingController );
 		//
-		sut = getTestBed().get( AuthService );
+		sut = TestBed.inject( AuthService );
 		TestBed.compileComponents();
 	} ) );
 	//

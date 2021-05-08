@@ -54,7 +54,7 @@ describe('UserService', () => {
 				{ provide: AlertsService, useClass: AlertsService }
 			]
 		} );
-		sut = getTestBed().get( UserService );
+		sut = TestBed.inject( UserService );
 		TestBed.compileComponents();
 	} ) );
 	//

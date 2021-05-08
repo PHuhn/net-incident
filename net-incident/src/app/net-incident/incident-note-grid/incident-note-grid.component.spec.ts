@@ -21,8 +21,6 @@ import { TruncatePipe } from '../../global/truncate.pipe';
 import { ServicesService } from '../services/services.service';
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { BaseCompService } from '../../common/base-comp/base-comp.service';
-import { ServicesServiceMock } from '../services/mocks/ServicesService.mock';
-import { ConfirmationServiceMock } from '../services/mocks/ConfirmationService.mock';
 //
 import { IIncident, Incident } from '../incident';
 import { INetworkIncident, NetworkIncident } from '../network-incident';
@@ -45,6 +43,8 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 	let confirmService: ConfirmationService;
 	let windowNoteInput: IIncidentNoteWindowInput;
 	//
+	const servicesServiceSpy = jasmine.createSpyObj('ServicesService',
+		['getPing', 'getWhoIs', 'getService']);
 	const expectedWindowTitle: string = 'Incident Note Detail: ';
 	const windowTitleSelector: string =
 		'app-incidentnote-detail-window > p-dialog > div > div.p-dialog-titlebar > span > p-header > div';
@@ -86,7 +86,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 				BaseCompService,
 				AlertsService,
 				ConfirmationService,
-				{ provide: ServicesService, useClass: ServicesServiceMock }
+				{ provide: ServicesService, useValue: servicesServiceSpy },
 			]
 		});
 		// Setup injected pre service for each test
@@ -103,7 +103,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 			model: { ... mockDatum[2] },
 			networkIncident: createNetworkIncident( ),
 			displayWin: true
-		}
+		};
 		fixture = TestBed.createComponent( IncidentNoteGridComponent );
 		sut = fixture.componentInstance;
 		// clone the array with slice( 0 )

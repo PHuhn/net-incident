@@ -56,7 +56,7 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 		let attr: string;
 		let colonPos: number;
 		let endTextStr: string = '';
-		let returnArray: any[] = [];
+		const returnArray: any[] = [];
 		//
 		data.split( '\n' ).forEach( ( part ) => {
 			if( !part ) { return; }
