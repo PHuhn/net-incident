@@ -40,7 +40,7 @@ import { ServerSelectionWindowComponent } from '../../net-incident/server-select
 import { NetworkLogGridComponent } from '../network-log-grid/network-log-grid.component';
 import { IncidentNoteGridComponent } from '../incident-note-grid/incident-note-grid.component';
 import { IncidentNoteDetailWindowComponent } from '../incident-note-detail-window/incident-note-detail-window.component';
-import { LazyLoadingMock } from '../services/mocks/LazyLoading.mock';
+import { LazyLoadingMock } from '../services/mocks/lazy-loading.mock';
 //
 import { AppComponent } from '../../app.component';
 import { Security } from '../security';

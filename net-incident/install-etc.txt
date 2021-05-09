@@ -1786,6 +1786,7 @@ Done:
 	V11.1.0.31 - Moved Message class & enum for Alerts to component folder
 	V11.1.0.32 - Moved Message class & enum for Alerts to component folder
 	V11.1.0.33 - Used console-log.service in more components and classes.
+	V11.1.0.34 - Implemented base component class, more code coverage, removed custom mocks, lint
 
 To Do's:
 	V - delete of network-log not working

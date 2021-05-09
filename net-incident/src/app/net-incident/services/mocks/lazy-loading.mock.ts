@@ -5,7 +5,9 @@ import { FilterMetadata } from 'primeng/api';
 //
 export class LazyLoadingMock {
 	//
-	public codeName: string = 'LazyLoading=Mock';
+	public codeName: string = 'lazy-loading.mock';
+	//
+	// apply filters, sort/ordered by, skip/take
 	//
 	LazyLoading( datasource: any[], event: LazyLoadEvent ): any[] {
 		//
@@ -84,7 +86,6 @@ export class LazyLoadingMock {
 				if( n1[key] < n2[key] ) {
 					return ( event.sortOrder === 1 ? -1: 1 );
 				}
-				return 0;
 			});
 		}
 		return data;
