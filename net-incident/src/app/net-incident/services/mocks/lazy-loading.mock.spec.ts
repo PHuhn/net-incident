@@ -16,7 +16,19 @@ describe('LazyLoadingMock', () => {
 		{ id: 4, name: 'four' },
 		{ id: 5, name: 'five' }
 	];
-	//
+	/*
+	** export interface LazyLoadEvent {
+	** 	first?: number;
+	** 	rows?: number;
+	** 	sortField?: string;
+	** 	sortOrder?: number;
+	** 	multiSortMeta?: SortMeta[];
+	** 	filters?: {
+	** 		[s: string]: FilterMetadata;
+	** 	};
+	** 	globalFilter?: any;
+	** }
+	*/
 	const mockEvent: LazyLoadEvent = {
 		first: 0,
 		rows: 10,
@@ -24,23 +36,31 @@ describe('LazyLoadingMock', () => {
 	/*
 	** LazyFilters( filtered: any[], event: LazyLoadEvent ): any[]
 	*/
-	it('LazyFilters: should filter equals ...', () => {
+	it(`LazyFilters: should filter 'equals' ...`, () => {
 		// given
-		const event = { ... mockEvent };
-		event.filters = {
-			id: { value: 3, matchMode: 'equals' }
-		};
+		const event: any = { ... mockEvent };
+		event.filters = { 'id': [{ value: 3, matchMode: 'equals' }] };
 		// when
 		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
 		// then
 		expect( ret.length ).toEqual( 1 );
 	});
 	//
-	it('LazyFilters: should filter greater than ...', () => {
+	it(`LazyFilters: should filter 'not equals' ...`, () => {
 		// given
-		const event = { ... mockEvent };
+		const event: any = { ... mockEvent };
+		event.filters = { 'id': [{ value: 3, matchMode: 'notEquals' }] };
+		// when
+		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
+		// then
+		expect( ret.length ).toEqual( 4 );
+	});
+	//
+	it(`LazyFilters: should filter 'greater than' ...`, () => {
+		// given
+		const event: any = { ... mockEvent };
 		event.filters = {
-			id: { value: 3, matchMode: 'gt' }
+			'id': [{ value: 3, matchMode: 'gt' }]
 		};
 		// when
 		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
@@ -50,9 +70,9 @@ describe('LazyLoadingMock', () => {
 	//
 	it(`LazyFilters: should filter 'less than' ...`, () => {
 		// given
-		const event = { ... mockEvent };
+		const event: any = { ... mockEvent };
 		event.filters = {
-			id: { value: 3, matchMode: 'lt' }
+			'id': [ { value: 3, matchMode: 'lt' } ]
 		};
 		// when
 		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
@@ -62,9 +82,57 @@ describe('LazyLoadingMock', () => {
 	//
 	it(`LazyFilters: should filter 'startswith' ...`, () => {
 		// given
-		const event = { ... mockEvent };
+		const event: any = { ... mockEvent };
 		event.filters = {
-			name: { value: 't', matchMode: 'startswith' }
+			'name': [ { value: 't', matchMode: 'startswith' } ]
+		};
+		// when
+		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
+		// then
+		expect( ret.length ).toEqual( 2 );
+	});
+	//
+	it(`LazyFilters: should filter 'endsWith' ...`, () => {
+		// given
+		const event: any = { ... mockEvent };
+		event.filters = {
+			'name': [ { value: 'e', matchMode: 'endsWith' } ]
+		};
+		// when
+		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
+		// then
+		expect( ret.length ).toEqual( 3 );
+	});
+	//
+	it(`LazyFilters: should filter 'contains' ...`, () => {
+		// given
+		const event: any = { ... mockEvent };
+		event.filters = {
+			'name': [ { value: 'o', matchMode: 'contains' } ]
+		};
+		// when
+		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
+		// then
+		expect( ret.length ).toEqual( 3 );
+	});
+	//
+	it(`LazyFilters: should filter 'notContains' ...`, () => {
+		// given
+		const event: any = { ... mockEvent };
+		event.filters = {
+			'name': [ { value: 'o', matchMode: 'notContains' } ]
+		};
+		// when
+		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
+		// then
+		expect( ret.length ).toEqual( 2 );
+	});
+	//
+	it(`LazyFilters: should handle legacy filter 'startswith' ...`, () => {
+		// given
+		const event: any = { ... mockEvent };
+		event.filters = {
+			'name': { value: 't', matchMode: 'startswith' }
 		};
 		// when
 		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
@@ -74,9 +142,9 @@ describe('LazyLoadingMock', () => {
 	//
 	it(`LazyFilters: should not filter with bad matchMode ...`, () => {
 		// given
-		const event = { ... mockEvent };
+		const event: any = { ... mockEvent };
 		event.filters = {
-			name: { value: 't', matchMode: 'xxxxx' }
+			'name': [ { value: 't', matchMode: 'xxxxx' } ]
 		};
 		// when
 		const ret = lazyLoading.LazyFilters( [ ... mockDatum ], event );
@@ -142,9 +210,9 @@ describe('LazyLoadingMock', () => {
 	*/
 	it(`LazyLoading: should filter 'in', sort ordered by ...`, () => {
 		// given
-		const event = { ... mockEvent };
+		const event: any = { ... mockEvent };
 		event.filters = {
-			name: { value: ['two', 'four'], matchMode: 'in' }
+			'name': [ { value: ['two', 'four'], matchMode: 'in' } ]
 		};
 		event.sortField = 'name';
 		event.sortOrder = -1;
@@ -161,21 +229,11 @@ describe('LazyLoadingMock', () => {
 		const ret = lazyLoading.LazyLoading( [ ... mockDatum ], {} );
 		// then
 		expect( ret.length ).toEqual( 5 );
-		console.warn( ret );
 		expect( ret[0].name ).toEqual( 'one' );
 		expect( ret[1].name ).toEqual( 'two' );
 		expect( ret[2].name ).toEqual( 'three' );
 		expect( ret[3].name ).toEqual( 'four' );
 		expect( ret[4].name ).toEqual( 'five' );
-	});
-	//
-	it('LazyLoading: should handled error ...', () => {
-		// given
-		const event = { ... mockEvent }; // skip/take
-		// when
-		const ret = lazyLoading.LazyLoading( undefined, event );
-		// then
-		expect( ret.length ).toEqual( 0 );
 	});
 	//
 });

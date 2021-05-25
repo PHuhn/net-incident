@@ -1738,6 +1738,17 @@ PROBLEM:
 SOLUTION:
 	Added import of FormsModule
 
+PROBLEM:
+========
+	In runtime:
+		Error: note-type-grid.component.html:4:4 - error NG8002: Can't bind to 'totalRecords'
+		 since it isn't a known property of 'p-table'.
+SOLUTION:
+	Added import of 
+		import { IncidentReactiveDetailComponent } from './net-incident/incident-reactive-detail/incident-reactive-detail.component';
+		and IncidentReactiveDetailComponent
+	to APP_COMPONENTS array
+
 ===================================================
 Done:
 	service logging 12/22
