@@ -11,8 +11,8 @@ export class AboutComponent implements OnInit {
 	companyName = 'Northern Software Group';
 	copyright ='Copyright © 2021';
 	// (angular version).major.minor.build
-	ng_version ='11';
-	version ='11.1.0.34';
+	ng_version ='12';
+	version ='12.1.0.34';
 	//
 	constructor() { }
 	//

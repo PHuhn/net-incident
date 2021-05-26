@@ -455,3 +455,105 @@ npm ERR!     C:\Users\Phil\AppData\Roaming\npm-cache\_logs\2021-05-25T20_51_05_2
 C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install primeng@latest[main 2021-05-25T20:59:23.679Z] update#setState checking for updates
 [main 2021-05-25T20:59:24.035Z] update#setState idle
 C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+
+=======================================================
+== After reinstall and C++/Make/Windows SDK installs ==
+=======================================================
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install primeng@latest
+npm WARN bootstrap@4.5.3 requires a peer of jquery@1.9.1 - 3 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@4.5.3 requires a peer of popper.js@^1.16.1 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@6.0.0 requires a peer of @angular/compiler@>=2.3.1 <11.0.0 || >9.0.0-beta <11.0.0 || >9.1.0-beta <11.0.0 || >9.2.0-beta <11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@6.0.0 requires a peer of @angular/core@>=2.3.1 <11.0.0 || >9.0.0-beta <11.0.0 || >9.1.0-beta <11.0.0 || >9.2.0-beta <11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.1 (node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\@angular-devkit\build-angular\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.1 (node_modules\watchpack\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\watchpack\node_modules\watchpack-chokidar2\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ primeng@12.0.0-rc.1
+added 1 package from 1 contributor, removed 1 package, updated 1 package and audited 2372 packages in 16.973s
+
+90 packages are looking for funding
+  run `npm fund` for details
+
+found 52 vulnerabilities (49 moderate, 3 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>ng update @angular/core@12 @angular/cli@12
+Repository is not clean. Please commit or stash any changes before updating.
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>ng update @angular/core@12 @angular/cli@12
+Using package manager: 'npm'
+Collecting installed dependencies...
+Found 44 dependencies.
+Fetching dependency metadata from registry...
+    Updating package.json with dependency @angular-devkit/build-angular @ "12.0.1" (was "0.1102.1")...
+    Updating package.json with dependency @angular/animations @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/cli @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/common @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/compiler @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/compiler-cli @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/core @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/forms @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/language-service @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/platform-browser @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/platform-browser-dynamic @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/platform-server @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/router @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency karma @ "6.3.2" (was "5.1.1")...
+    Updating package.json with dependency typescript @ "4.2.4" (was "4.0.5")...
+    Updating package.json with dependency zone.js @ "0.11.4" (was "0.10.3")...
+  UPDATE package.json (1863 bytes)
+√ Packages successfully installed.
+** Executing migrations of package '@angular/cli' **
+
+> Remove deprecated options from 'angular.json' that are no longer present in v12.
+  UPDATE angular.json (4334 bytes)
+  Migration completed.
+
+> Update 'zone.js' to version 0.11.x.
+  Read more about this here: https://github.com/angular/angular/blob/master/packages/zone.js/CHANGELOG.md#breaking-changes-since-zonejs-v0111
+  UPDATE src/polyfills.ts (2470 bytes)
+  UPDATE src/test.ts (1085 bytes)
+  Migration completed.
+
+> Remove 'emitDecoratorMetadata' TypeScript compiler option.
+  Decorator metadata is no longer needed by Angular.
+  Read more about this here: https://www.typescriptlang.org/docs/handbook/decorators.html#metadata
+  UPDATE tsconfig.base.json (407 bytes)
+  Migration completed.
+
+> Lazy loading syntax migration.
+  Update lazy loading string syntax to use dynamic imports.
+  Migration completed.
+
+> Remove deprecated ViewEngine-based i18n build and extract options.
+  Options present in the configuration will be converted to use non-deprecated options.
+  Migration completed.
+
+> Updates Web Worker consumer usage to use the new syntax supported directly by Webpack 5.
+  Migration completed.
+
+> Remove invalid 'skipTests' option in '@schematics/angular:module' Angular schematic options.
+  Migration completed.
+
+** Executing migrations of package '@angular/core' **
+
+> In Angular version 12, the type of ActivatedRouteSnapshot.fragment is nullable.
+  This migration automatically adds non-null assertions to it.
+  Migration completed.
+
+> `XhrFactory` has been moved from `@angular/common/http` to `@angular/common`.
+  Migration completed.
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+
