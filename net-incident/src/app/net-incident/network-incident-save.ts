@@ -6,19 +6,19 @@ import { INetworkLog, NetworkLog } from './network-log';
 //
 export class NetworkIncidentSave {
 	//
-	public incident: Incident;
+	public incident: Incident = Incident.empty( );
 	//
 	// public ipAddress: string;
 	//
-	public incidentNotes: IncidentNote[];
-	public deletedNotes: IncidentNote[];
+	public incidentNotes: IncidentNote[] = [];
+	public deletedNotes: IncidentNote[] = [];
 	//
-	public networkLogs: NetworkLog[];
-	public deletedLogs: NetworkLog[];
+	public networkLogs: NetworkLog[] = [];
+	public deletedLogs: NetworkLog[] = [];
 	//
-	public user: User;
+	public user: User = User.empty( );
 	//
-	public message: string;
+	public message: string = '';
 	//
 	/*
 	constructor( ) {

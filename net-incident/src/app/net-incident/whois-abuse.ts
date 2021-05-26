@@ -246,7 +246,7 @@ export class WhoIsAbuse implements IWhoIsAbuse {
 	//
 	//  Is this a valid email address.
 	//
-	ValidateEmail( email ): boolean {
+	ValidateEmail( email: string ): boolean {
 		return this.emailRE.test(String(email).toLowerCase());
 	}
 	//

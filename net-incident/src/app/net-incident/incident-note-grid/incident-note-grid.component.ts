@@ -19,15 +19,15 @@ import { IIncidentNoteWindowInput } from '../incident-note-detail-window/inciden
 	selector: 'app-incident-note-grid',
 	templateUrl: './incident-note-grid.component.html'
 })
-export class IncidentNoteGridComponent extends BaseComponent implements OnInit, AfterViewInit, OnDestroy {
+export class IncidentNoteGridComponent extends BaseComponent implements AfterViewInit {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
 	// Window/dialog communication (also see onClose event)
 	//
 	// Local variables
-	private totalRecords: number = 0;
-	private id: number;
+	totalRecords: number = 0;
+	private id: number = -1;
 	private disableDelete: boolean = false;
 	public get DisableDelete( ): boolean {
 		return this.disableDelete;
@@ -59,30 +59,17 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 		this._confirmationService = _baseSrvc._confirmationService;
 		this.codeName = 'Incident-Note-Grid';
 		//
-	}
-	//
-	// On component initialization, get all data from the data service.
-	//
-	ngOnInit() {
+		this.networkIncident = new NetworkIncident( );
+		//
 	}
 	//
 	ngAfterViewInit() {
 		// all records are passed in via @Input
 		this._console.Information( `${this.codeName}.ngAfterViewInit: ...` );
 		if( this.networkIncident.incident.Mailed === true || this.networkIncident.incident.Closed === true ) {
+			this.totalRecords = this.networkIncident.incidentNotes.length;
 			this.disableDelete = true;
 		}
-	}
-	//
-	// Cleanup
-	// * Stop interval timers (clearTimeout/clearInterval).
-	// * Unsubscribe Observables.
-	// * Detach event handlers (addEventListener > removeEventListener).
-	// * Free resources that will not be garbage collected automatically.
-	// * Unregister all callbacks.
-	//
-	ngOnDestroy() {
-		//
 	}
 	//
 	// --------------------------------------------------------------------
@@ -92,7 +79,7 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 	//
 	addItemClicked( ) {
 		this.windowIncidentNoteInput = {
-			model: this.emptyIncidentNote( ),
+			model: IncidentNote.empty( ),
 			networkIncident: this.networkIncident,
 			displayWin: true
 		};
@@ -101,9 +88,7 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 	}
 	//
 	emptyIncidentNote( ): IIncidentNote {
-		return new IncidentNote(
-			0,undefined,'','',new Date( Date.now() ), true
-		);
+		return IncidentNote.empty( );
 	}
 	//
 	// Edit button clicked, launch edit detail window.
@@ -137,11 +122,12 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 	//
 	// on edit window closed
 	//
-	onClose( saved: boolean ): void {
+	onCloseWin( saved: boolean ): void {
 		this._console.Information( `${this.codeName}.onClose: Entering: on close with: ${saved}` );
 		if( saved === true ) {
 			this._console.Information( `${this.codeName}.onClose: Refreshing...` );
 			this._console.Information( JSON.stringify( this.networkIncident.incidentNotes ) );
+			this.totalRecords = this.networkIncident.incidentNotes.length;
 		}
 		this.windowIncidentNoteInput = undefined;
 	}
@@ -161,6 +147,7 @@ export class IncidentNoteGridComponent extends BaseComponent implements OnInit, 
 				this.networkIncident.incidentNotes = this.networkIncident.incidentNotes.filter( (el) => {
 					return el.IncidentNoteId !== delId;
 				});
+				this.totalRecords = this.networkIncident.incidentNotes.length;
 				this._alerts.setWhereWhatSuccess(
 					this.codeName, `Deleted: ${delId}`);
 			} else {

@@ -38,9 +38,9 @@ export class NetworkLogGridComponent extends BaseComponent implements OnInit, Af
 	// Local variables
 	//
 	totalRecords: number = 0;
-	@ViewChild('dt', { static: true }) dt: Table;
+	@ViewChild('dt', { static: true }) dt: Table | undefined;
 	selectedLogs: NetworkLog[] = [];
-	disabled: boolean;
+	disabled: boolean = true;
 	expansionColSpan: number = 5;
 	// communicate to the AlertComponent
 	protected _alerts: AlertsService;
@@ -70,6 +70,7 @@ export class NetworkLogGridComponent extends BaseComponent implements OnInit, Af
 		this._confirmationService = _baseSrvc._confirmationService;
 		this.codeName = 'network-log-grid';
 		//
+		this.networkIncident = new NetworkIncident( );
 	}
 	//
 	// On component initialization, set ip address filter.
@@ -77,7 +78,7 @@ export class NetworkLogGridComponent extends BaseComponent implements OnInit, Af
 	ngOnInit() {
 		this._console.Information( `${this.codeName}.ngOnInit: entering ...` );
 		this.selectedLogs = [];
-		this.disabled = undefined;
+		this.disabled = true;
 	}
 	//
 	// Cleanup
@@ -173,7 +174,9 @@ export class NetworkLogGridComponent extends BaseComponent implements OnInit, Af
 	// Set the ip address filter for the p-table.
 	//
 	setTableFilter( ipAddress: string ): void {
-		this.dt.filterGlobal( ipAddress, 'contains' );
+		if( this.dt !== undefined ) {
+			this.dt.filterGlobal( ipAddress, 'contains' );
+		}
 		this._console.Information( `${this.codeName}.setTableFilter: global filtered with ${ipAddress}` );
 	}
 	//
@@ -185,7 +188,7 @@ export class NetworkLogGridComponent extends BaseComponent implements OnInit, Af
 	//
 	// selection column checked this row.
 	//
-	handleRowSelect( event ) {
+	handleRowSelect( event: any ) {
 		this._console.Information( `${this.codeName}.handleRowSelect: Entering: ${event} ...` );
 		this._console.Information( JSON.stringify( event ) );
 		if( !this.disabled ) {
@@ -211,7 +214,7 @@ export class NetworkLogGridComponent extends BaseComponent implements OnInit, Af
 	//
 	// selection column un-checked this row.
 	//
-	handleRowUnSelect( event ) {
+	handleRowUnSelect( event: any ) {
 		this._console.Information( `${this.codeName}.handleRowUnSelect: Entering: ${event} ...` );
 		this._console.Information( JSON.stringify( event ) );
 		if( !this.disabled ) {

@@ -22,6 +22,7 @@ import { ServicesService } from '../services/services.service';
 import { ConsoleLogService } from '../../global/console-log/console-log.service';
 import { BaseCompService } from '../../common/base-comp/base-comp.service';
 //
+import { IUser, User } from '../user';
 import { IIncident, Incident } from '../incident';
 import { INetworkIncident, NetworkIncident } from '../network-incident';
 import { IIncidentNote, IncidentNote } from '../incident-note';
@@ -120,7 +121,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 		networkIncident.deletedNotes = [];
 		networkIncident.incidentNotes = [ ... mockDatum ];
 		networkIncident.typeEmailTemplates = [];
-		networkIncident.user = undefined;
+		networkIncident.user = User.empty( );
 		return networkIncident;
 	}
 	/*

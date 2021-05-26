@@ -17,6 +17,11 @@ export interface IIncidentNote {
 export class IncidentNote implements IIncidentNote {
 	//
 	// public IsChanged: Boolean;
+	public static empty( ): IIncidentNote {
+		return new IncidentNote(
+			0, 0, '', '', new Date( Date.now() ), true
+		);
+	}
 	// using short-hand declaration...
 	constructor(
 		public IncidentNoteId: number,
