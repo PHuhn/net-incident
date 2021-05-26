@@ -1,0 +1,457 @@
+Angular Update Guide | 11.0 -> 12.0 for Basic Apps
+Before Updating
+There aren't currently any changes needed before moving between these versions.
+During the Update
+__ Run ng update @angular/core@12 @angular/cli@12 which should bring you to version 12 of Angular.
+__ Angular now requires TypeScript 4.2. ng update will update you automatically.
+__ IE11 support has been deprecated. Find details in the RFC for IE11 removal.
+__ You can no longer use Angular with Node.js version 10 or older
+After the Update
+There aren't currently any changes needed after moving between these versions.
+
+====================================================
+====================================================
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>ng update @angular/core@12 @angular/cli@12
+Using package manager: 'npm'
+Collecting installed dependencies...
+Found 43 dependencies.
+Fetching dependency metadata from registry...
+                  Package "primeng" has an incompatible peer dependency to "zone.js" (requires "^0.10.2", would install "0.11.4").
+× Migration failed: Incompatible peer dependencies found.
+Peer dependency warnings when installing dependencies means that those dependencies might not work correctly together.
+You can use the '--force' option to ignore incompatible peer dependencies and instead address these warnings later.
+  See "C:\Users\Phil\AppData\Local\Temp\ng-nj8JNr\angular-errors.log" for further details.
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install primeng@latest
+
+> fibers@4.0.2 install C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers
+> node build.js || nodejs build.js
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers>if not defined npm_config_node_gyp (node "C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin\\..\..\node_modules\node-gyp\bin\node-gyp.js" rebuild --release )  else (node "C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\bin\node-gyp.js" rebuild --release )
+gyp ERR! find VS
+gyp ERR! find VS msvs_version not set from command line or npm config
+gyp ERR! find VS VCINSTALLDIR not set, not running in VS Command Prompt
+gyp ERR! find VS checking VS2019 (16.10.31220.234) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview"
+gyp ERR! find VS - "Visual Studio C++ core features" missing
+gyp ERR! find VS checking VS2017 (15.9.28307.1500) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools"
+gyp ERR! find VS - "Visual Studio C++ core features" missing
+gyp ERR! find VS checking VS2017 (15.9.28307.1500) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community"
+gyp ERR! find VS - found "Visual Studio C++ core features"
+gyp ERR! find VS - missing any VC++ toolset
+gyp ERR! find VS could not find a version of Visual Studio 2017 or newer to use
+gyp ERR! find VS looking for Visual Studio 2015
+gyp ERR! find VS - not found
+gyp ERR! find VS not looking for VS2013 as it is only supported up to Node.js 8
+gyp ERR! find VS
+gyp ERR! find VS **************************************************************
+gyp ERR! find VS You need to install the latest version of Visual Studio
+gyp ERR! find VS including the "Desktop development with C++" workload.
+gyp ERR! find VS For more information consult the documentation at:
+gyp ERR! find VS https://github.com/nodejs/node-gyp#on-windows
+gyp ERR! find VS **************************************************************
+gyp ERR! find VS
+gyp ERR! configure error
+gyp ERR! stack Error: Could not find any Visual Studio installation to use
+gyp ERR! stack     at VisualStudioFinder.fail (C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:121:47)
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:74:16
+gyp ERR! stack     at VisualStudioFinder.findVisualStudio2013 (C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:351:14)
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:70:14
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:372:16
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\util.js:54:7
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\util.js:33:16
+gyp ERR! stack     at ChildProcess.exithandler (child_process.js:315:5)
+gyp ERR! stack     at ChildProcess.emit (events.js:315:20)
+gyp ERR! stack     at maybeClose (internal/child_process.js:1048:16)
+gyp ERR! System Windows_NT 10.0.19042
+gyp ERR! command "C:\\bin\\devel\\nodejs\\node.exe" "C:\\Users\\Phil\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild" "--release"
+gyp ERR! cwd C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers
+gyp ERR! node -v v14.15.5
+gyp ERR! node-gyp -v v5.1.0
+gyp ERR! not ok
+node-gyp exited with code: 1
+Please make sure you are using a supported platform and node version. If you
+would like to compile fibers on this machine please make sure you have setup your
+build environment--
+Windows + OS X instructions here: https://github.com/nodejs/node-gyp
+Ubuntu users please run: `sudo apt-get install g++ build-essential`
+RHEL users please run: `yum install gcc-c++` and `yum groupinstall 'Development Tools'`
+Alpine users please run: `sudo apk add python make g++`
+'nodejs' is not recognized as an internal or external command,
+operable program or batch file.
+npm WARN bootstrap@4.5.3 requires a peer of jquery@1.9.1 - 3 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@4.5.3 requires a peer of popper.js@^1.16.1 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@6.0.0 requires a peer of @angular/compiler@>=2.3.1 <11.0.0 || >9.0.0-beta <11.0.0 || >9.1.0-beta <11.0.0 || >9.2.0-beta <11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@6.0.0 requires a peer of @angular/core@>=2.3.1 <11.0.0 || >9.0.0-beta <11.0.0 || >9.1.0-beta <11.0.0 || >9.2.0-beta <11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.1 (node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\@angular-devkit\build-angular\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\watchpack\node_modules\watchpack-chokidar2\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.1 (node_modules\watchpack\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! fibers@4.0.2 install: `node build.js || nodejs build.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the fibers@4.0.2 install script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Phil\AppData\Roaming\npm-cache\_logs\2021-05-25T20_26_22_706Z-debug.log
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>ng update @angular/core@12 @angular/cli@12
+Using package manager: 'npm'
+Collecting installed dependencies...
+Found 43 dependencies.
+Fetching dependency metadata from registry...
+    Updating package.json with dependency @angular-devkit/build-angular @ "12.0.1" (was "0.1102.1")...
+    Updating package.json with dependency @angular/animations @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/cli @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/common @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/compiler @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/compiler-cli @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/core @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/forms @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/language-service @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/platform-browser @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/platform-browser-dynamic @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/platform-server @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency @angular/router @ "12.0.1" (was "11.2.1")...
+    Updating package.json with dependency karma @ "6.3.2" (was "5.1.1")...
+    Updating package.json with dependency typescript @ "4.2.4" (was "4.0.5")...
+    Updating package.json with dependency zone.js @ "0.11.4" (was "0.10.3")...
+  UPDATE package.json (1858 bytes)
+
+> net-incident@9.1.0 preinstall C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident
+> npx npm-force-resolutions
+
+npx: installed 6 in 6.064s
+npm WARN deprecated fsevents@1.2.13: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+
+> fibers@4.0.2 install C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers
+> node build.js || nodejs build.js
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers>if not defined npm_config_node_gyp (node "C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin\\..\..\node_modules\node-gyp\bin\node-gyp.js" rebuild --release )  else (node "C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\bin\node-gyp.js" rebuild --release )
+gyp ERR! find VS
+gyp ERR! find VS msvs_version not set from command line or npm config
+gyp ERR! find VS VCINSTALLDIR not set, not running in VS Command Prompt
+gyp ERR! find VS checking VS2019 (16.10.31220.234) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview"
+gyp ERR! find VS - "Visual Studio C++ core features" missing
+gyp ERR! find VS checking VS2017 (15.9.28307.1500) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools"
+gyp ERR! find VS - "Visual Studio C++ core features" missing
+gyp ERR! find VS checking VS2017 (15.9.28307.1500) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community"
+gyp ERR! find VS - found "Visual Studio C++ core features"
+gyp ERR! find VS - missing any VC++ toolset
+gyp ERR! find VS could not find a version of Visual Studio 2017 or newer to use
+gyp ERR! find VS looking for Visual Studio 2015
+gyp ERR! find VS - not found
+gyp ERR! find VS not looking for VS2013 as it is only supported up to Node.js 8
+gyp ERR! find VS
+gyp ERR! find VS **************************************************************
+gyp ERR! find VS You need to install the latest version of Visual Studio
+gyp ERR! find VS including the "Desktop development with C++" workload.
+gyp ERR! find VS For more information consult the documentation at:
+gyp ERR! find VS https://github.com/nodejs/node-gyp#on-windows
+gyp ERR! find VS **************************************************************
+gyp ERR! find VS
+gyp ERR! configure error
+gyp ERR! stack Error: Could not find any Visual Studio installation to use
+gyp ERR! stack     at VisualStudioFinder.fail (C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:121:47)
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:74:16
+gyp ERR! stack     at VisualStudioFinder.findVisualStudio2013 (C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:351:14)
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:70:14
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:372:16
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\util.js:54:7
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\util.js:33:16
+gyp ERR! stack     at ChildProcess.exithandler (child_process.js:315:5)
+gyp ERR! stack     at ChildProcess.emit (events.js:315:20)
+gyp ERR! stack     at maybeClose (internal/child_process.js:1048:16)
+gyp ERR! System Windows_NT 10.0.19042
+gyp ERR! command "C:\\bin\\devel\\nodejs\\node.exe" "C:\\Users\\Phil\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild" "--release"
+gyp ERR! cwd C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers
+gyp ERR! node -v v14.15.5
+gyp ERR! node-gyp -v v5.1.0
+gyp ERR! not ok
+node-gyp exited with code: 1
+Please make sure you are using a supported platform and node version. If you
+would like to compile fibers on this machine please make sure you have setup your
+build environment--
+Windows + OS X instructions here: https://github.com/nodejs/node-gyp
+Ubuntu users please run: `sudo apt-get install g++ build-essential`
+RHEL users please run: `yum install gcc-c++` and `yum groupinstall 'Development Tools'`
+Alpine users please run: `sudo apk add python make g++`
+'nodejs' is not recognized as an internal or external command,
+operable program or batch file.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@~2.3.1 (node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.2.7 (node_modules\@angular-devkit\build-angular\node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN @angular-devkit/build-webpack@0.1200.1 requires a peer of webpack@^5.30.0 but none is installed. You must install peer dependencies yourself.
+npm WARN @ngtools/webpack@12.0.1 requires a peer of webpack@^5.30.0 but none is installed. You must install peer dependencies yourself.
+npm WARN copy-webpack-plugin@8.1.1 requires a peer of webpack@^5.1.0 but none is installed. You must install peer dependencies yourself.
+npm WARN css-minimizer-webpack-plugin@3.0.0 requires a peer of webpack@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN less-loader@8.1.1 requires a peer of webpack@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-loader@5.2.0 requires a peer of webpack@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN sass-loader@11.0.1 requires a peer of webpack@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN source-map-loader@2.0.1 requires a peer of webpack@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN stylus-loader@5.0.0 requires a peer of webpack@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN terser-webpack-plugin@5.1.2 requires a peer of webpack@^5.1.0 but none is installed. You must install peer dependencies yourself.
+npm WARN cssnano@5.0.4 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN cssnano-preset-default@5.1.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN cssnano-utils@2.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-convert-values@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-discard-empty@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-colormin@5.1.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-discard-comments@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-discard-duplicates@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-merge-longhand@5.0.2 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-discard-overridden@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-merge-rules@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-minify-font-values@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-minify-gradients@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-minify-params@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-minify-selectors@5.1.0 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-normalize-charset@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-normalize-display-values@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-normalize-repeat-style@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-normalize-string@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-normalize-positions@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-normalize-timing-functions@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-ordered-values@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-normalize-url@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-normalize-unicode@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-normalize-whitespace@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-reduce-initial@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-reduce-transforms@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-svgo@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN postcss-unique-selectors@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN stylehacks@5.0.1 requires a peer of postcss@^8.2.15 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\watchpack\node_modules\watchpack-chokidar2\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.1 (node_modules\watchpack\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! fibers@4.0.2 install: `node build.js || nodejs build.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the fibers@4.0.2 install script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Phil\AppData\Roaming\npm-cache\_logs\2021-05-25T20_40_11_474Z-debug.log
+× Package install failed, see above.
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident> C:\Users\Phil\AppData\Roaming\npm-cache\_logs\2021-05-25T20_40_11_474Z-debug.log
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install fibers@4.0.2
+npm WARN rm not removing C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\.bin\karma.ps1 as it wasn't installed by C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\karma
+npm WARN rm not removing C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\.bin\karma.cmd as it wasn't installed by C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\karma
+npm WARN rm not removing C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\.bin\karma as it wasn't installed by C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\karma
+
+> fibers@4.0.2 install C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers
+> node build.js || nodejs build.js
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers>if not defined npm_config_node_gyp (node "C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin\\..\..\node_modules\node-gyp\bin\node-gyp.js" rebuild --release )  else (node "C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\bin\node-gyp.js" rebuild --release )
+gyp ERR! find VS
+gyp ERR! find VS msvs_version not set from command line or npm config
+gyp ERR! find VS VCINSTALLDIR not set, not running in VS Command Prompt
+gyp ERR! find VS checking VS2019 (16.10.31220.234) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview"
+gyp ERR! find VS - "Visual Studio C++ core features" missing
+gyp ERR! find VS checking VS2017 (15.9.28307.1500) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools"
+gyp ERR! find VS - "Visual Studio C++ core features" missing
+gyp ERR! find VS checking VS2017 (15.9.28307.1500) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community"
+gyp ERR! find VS - found "Visual Studio C++ core features"
+gyp ERR! find VS - missing any VC++ toolset
+gyp ERR! find VS could not find a version of Visual Studio 2017 or newer to use
+gyp ERR! find VS looking for Visual Studio 2015
+gyp ERR! find VS - not found
+gyp ERR! find VS not looking for VS2013 as it is only supported up to Node.js 8
+gyp ERR! find VS
+gyp ERR! find VS **************************************************************
+gyp ERR! find VS You need to install the latest version of Visual Studio
+gyp ERR! find VS including the "Desktop development with C++" workload.
+gyp ERR! find VS For more information consult the documentation at:
+gyp ERR! find VS https://github.com/nodejs/node-gyp#on-windows
+gyp ERR! find VS **************************************************************
+gyp ERR! find VS
+gyp ERR! configure error
+gyp ERR! stack Error: Could not find any Visual Studio installation to use
+gyp ERR! stack     at VisualStudioFinder.fail (C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:121:47)
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:74:16
+gyp ERR! stack     at VisualStudioFinder.findVisualStudio2013 (C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:351:14)
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:70:14
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:372:16
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\util.js:54:7
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\util.js:33:16
+gyp ERR! stack     at ChildProcess.exithandler (child_process.js:315:5)
+gyp ERR! stack     at ChildProcess.emit (events.js:315:20)
+gyp ERR! stack     at maybeClose (internal/child_process.js:1048:16)
+gyp ERR! System Windows_NT 10.0.19042
+gyp ERR! command "C:\\bin\\devel\\nodejs\\node.exe" "C:\\Users\\Phil\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild" "--release"
+gyp ERR! cwd C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers
+gyp ERR! node -v v14.15.5
+gyp ERR! node-gyp -v v5.1.0
+gyp ERR! not ok
+node-gyp exited with code: 1
+Please make sure you are using a supported platform and node version. If you
+would like to compile fibers on this machine please make sure you have setup your
+build environment--
+Windows + OS X instructions here: https://github.com/nodejs/node-gyp
+Ubuntu users please run: `sudo apt-get install g++ build-essential`
+RHEL users please run: `yum install gcc-c++` and `yum groupinstall 'Development Tools'`
+Alpine users please run: `sudo apk add python make g++`
+'nodejs' is not recognized as an internal or external command,
+operable program or batch file.
+npm WARN @angular/cdk@11.2.1 requires a peer of @angular/core@^11.0.0 || ^12.0.0-0 but none is installed. You must install peer dependencies yourself.
+npm WARN @angular/cdk@11.2.1 requires a peer of @angular/common@^11.0.0 || ^12.0.0-0 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@4.5.3 requires a peer of jquery@1.9.1 - 3 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@4.5.3 requires a peer of popper.js@^1.16.1 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@6.0.0 requires a peer of @angular/compiler@>=2.3.1 <11.0.0 || >9.0.0-beta <11.0.0 || >9.1.0-beta <11.0.0 || >9.2.0-beta <11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@6.0.0 requires a peer of @angular/core@>=2.3.1 <11.0.0 || >9.0.0-beta <11.0.0 || >9.1.0-beta <11.0.0 || >9.2.0-beta <11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN karma-jasmine@4.0.1 requires a peer of karma@* but none is installed. You must install peer dependencies yourself.
+npm WARN karma-jasmine-html-reporter@1.5.4 requires a peer of karma@>=0.9 but none is installed. You must install peer dependencies yourself.
+npm WARN primeng@11.2.3 requires a peer of @angular/core@^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN primeng@11.2.3 requires a peer of @angular/common@^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN primeng@11.2.3 requires a peer of @angular/forms@^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN tslint@6.1.3 requires a peer of typescript@>=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev || >= 3.1.0-dev || >= 3.2.0-dev || >= 4.0.0-dev but none is installed. You must install peer dependencies yourself.
+npm WARN tsutils@2.29.0 requires a peer of typescript@>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.1 (node_modules\watchpack\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\watchpack\node_modules\watchpack-chokidar2\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! fibers@4.0.2 install: `node build.js || nodejs build.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the fibers@4.0.2 install script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Phil\AppData\Roaming\npm-cache\_logs\2021-05-25T20_48_22_165Z-debug.log
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install primeng@latest
+
+> fibers@4.0.2 install C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers
+> node build.js || nodejs build.js
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers>if not defined npm_config_node_gyp (node "C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin\\..\..\node_modules\node-gyp\bin\node-gyp.js" rebuild --release )  else (node "C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\bin\node-gyp.js" rebuild --release )
+gyp ERR! find VS
+gyp ERR! find VS msvs_version not set from command line or npm config
+gyp ERR! find VS VCINSTALLDIR not set, not running in VS Command Prompt
+gyp ERR! find VS checking VS2019 (16.10.31220.234) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview"
+gyp ERR! find VS - "Visual Studio C++ core features" missing
+gyp ERR! find VS checking VS2017 (15.9.28307.1500) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools"
+gyp ERR! find VS - "Visual Studio C++ core features" missing
+gyp ERR! find VS checking VS2017 (15.9.28307.1500) found at:
+gyp ERR! find VS "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community"
+gyp ERR! find VS - found "Visual Studio C++ core features"
+gyp ERR! find VS - missing any VC++ toolset
+gyp ERR! find VS could not find a version of Visual Studio 2017 or newer to use
+gyp ERR! find VS looking for Visual Studio 2015
+gyp ERR! find VS - not found
+gyp ERR! find VS not looking for VS2013 as it is only supported up to Node.js 8
+gyp ERR! find VS
+gyp ERR! find VS **************************************************************
+gyp ERR! find VS You need to install the latest version of Visual Studio
+gyp ERR! find VS including the "Desktop development with C++" workload.
+gyp ERR! find VS For more information consult the documentation at:
+gyp ERR! find VS https://github.com/nodejs/node-gyp#on-windows
+gyp ERR! find VS **************************************************************
+gyp ERR! find VS
+gyp ERR! configure error
+gyp ERR! stack Error: Could not find any Visual Studio installation to use
+gyp ERR! stack     at VisualStudioFinder.fail (C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:121:47)
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:74:16
+gyp ERR! stack     at VisualStudioFinder.findVisualStudio2013 (C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:351:14)
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:70:14
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\find-visualstudio.js:372:16
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\util.js:54:7
+gyp ERR! stack     at C:\Users\Phil\AppData\Roaming\npm\node_modules\npm\node_modules\node-gyp\lib\util.js:33:16
+gyp ERR! stack     at ChildProcess.exithandler (child_process.js:315:5)
+gyp ERR! stack     at ChildProcess.emit (events.js:315:20)
+gyp ERR! stack     at maybeClose (internal/child_process.js:1048:16)
+gyp ERR! System Windows_NT 10.0.19042
+gyp ERR! command "C:\\bin\\devel\\nodejs\\node.exe" "C:\\Users\\Phil\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild" "--release"
+gyp ERR! cwd C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident\node_modules\fibers
+gyp ERR! node -v v14.15.5
+gyp ERR! node-gyp -v v5.1.0
+gyp ERR! not ok
+node-gyp exited with code: 1
+Please make sure you are using a supported platform and node version. If you
+would like to compile fibers on this machine please make sure you have setup your
+build environment--
+Windows + OS X instructions here: https://github.com/nodejs/node-gyp
+Ubuntu users please run: `sudo apt-get install g++ build-essential`
+RHEL users please run: `yum install gcc-c++` and `yum groupinstall 'Development Tools'`
+Alpine users please run: `sudo apk add python make g++`
+'nodejs' is not recognized as an internal or external command,
+operable program or batch file.
+npm WARN @angular/cdk@11.2.1 requires a peer of @angular/core@^11.0.0 || ^12.0.0-0 but none is installed. You must install peer dependencies yourself.
+npm WARN @angular/cdk@11.2.1 requires a peer of @angular/common@^11.0.0 || ^12.0.0-0 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@4.5.3 requires a peer of jquery@1.9.1 - 3 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@4.5.3 requires a peer of popper.js@^1.16.1 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@6.0.0 requires a peer of @angular/compiler@>=2.3.1 <11.0.0 || >9.0.0-beta <11.0.0 || >9.1.0-beta <11.0.0 || >9.2.0-beta <11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN codelyzer@6.0.0 requires a peer of @angular/core@>=2.3.1 <11.0.0 || >9.0.0-beta <11.0.0 || >9.1.0-beta <11.0.0 || >9.2.0-beta <11.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN karma-jasmine@4.0.1 requires a peer of karma@* but none is installed. You must install peer dependencies yourself.
+npm WARN karma-jasmine-html-reporter@1.5.4 requires a peer of karma@>=0.9 but none is installed. You must install peer dependencies yourself.
+npm WARN tslint@6.1.3 requires a peer of typescript@>=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev || >= 3.1.0-dev || >= 3.2.0-dev || >= 4.0.0-dev but none is installed. You must install peer dependencies yourself.
+npm WARN tsutils@2.29.0 requires a peer of typescript@>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev but none is installed. You must install peer dependencies yourself.
+npm WARN primeng@12.0.0-rc.1 requires a peer of @angular/core@^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN primeng@12.0.0-rc.1 requires a peer of @angular/common@^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN primeng@12.0.0-rc.1 requires a peer of @angular/forms@^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.1 (node_modules\watchpack\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\watchpack\node_modules\watchpack-chokidar2\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! fibers@4.0.2 install: `node build.js || nodejs build.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the fibers@4.0.2 install script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Phil\AppData\Roaming\npm-cache\_logs\2021-05-25T20_51_05_214Z-debug.log
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install primeng@latest[main 2021-05-25T20:59:23.679Z] update#setState checking for updates
+[main 2021-05-25T20:59:24.035Z] update#setState idle
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
