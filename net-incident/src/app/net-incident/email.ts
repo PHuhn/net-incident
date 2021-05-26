@@ -11,6 +11,7 @@ export class EmailAddress {
 	name: string;
 	constructor( email: string ) {
 		this.email = email;
+		this.name = '';
 	}
 }
 //
@@ -62,6 +63,10 @@ export class EmailRequest {
 		this.personalizations.push( new EmailPersonalization( to, subject ) );
 		this.contents.push( new EmailContent( body ) );
 		this.subject = subject;
+		//
+		this.attachments = [];
+		this.htmlContent = '';
+		this.plainTextContent = '';
 	}
 }
 // ===========================================================================

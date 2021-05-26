@@ -27,6 +27,13 @@ export interface IServerData {
 //
 export class ServerData implements IServerData {
 	//
+	public static empty( ): IServerData {
+		return new ServerData(
+			0, 0, '', '', '', '', '', '',
+			'', '', '', 'EST (UTC-5)', true, 'EDT (UTC-4)',
+			new Date('2018-03-11T02:00:00'), new Date('2018-11-04T02:00:00')
+		);
+	}
 	// using short-hand declaration...
 	constructor(
 		public ServerId: number,

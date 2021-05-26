@@ -1,6 +1,6 @@
 <!-- incident-note-detail-window.component.html -->
 <p-dialog id='NoteDetailWindow' name='NoteDetailWindow'
-    [(visible)]='displayWin' modal='modal' width='720'
+    [(visible)]='displayWin' [modal]='true' width='720'
     [closeOnEscape]='false' [closable]='false'>
   <p-header  id='NoteDetailWindowHeader' name='NoteDetailWindowHeader'>
     Incident Note Detail: {{id}}

@@ -36,9 +36,7 @@ export class IncidentService {
 	// Single place to create a new Incident.
 	//
 	emptyIncident( ): IIncident {
-		return new Incident(
-			0,0,'','','','','',false,false,false,'',new Date('2000-01-01T00:00:00')
-		);
+		return Incident.empty( );
 	}
 	//
 	// CRUD (Create/Read/Update/Delete)

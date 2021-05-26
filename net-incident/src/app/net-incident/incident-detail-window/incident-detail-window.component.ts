@@ -30,7 +30,7 @@ import { IncidentNoteGridComponent } from '../incident-note-grid/incident-note-g
 	selector: 'app-incident-detail-window',
 	templateUrl: './incident-detail-window.component.html'
 })
-export class IncidentDetailWindowComponent extends BaseComponent implements OnInit, OnDestroy {
+export class IncidentDetailWindowComponent extends BaseComponent implements OnDestroy {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
@@ -42,15 +42,15 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	private serverId: number = -1;
 	private userWaitTimeout: any;
 	private displayWinTimeout: any;
-	private paramsSubscription: Subscription;
-	private httpSubscription: Subscription;
-	private httpCreateSubscription: Subscription;
-	private httpUpdateSubscription: Subscription;
+	private paramsSubscription: Subscription | undefined;
+	private httpSubscription: Subscription | undefined;
+	private httpCreateSubscription: Subscription | undefined;
+	private httpUpdateSubscription: Subscription | undefined;
 	detailWindow: DetailWindowInput;
-	networkIncident: NetworkIncident;
-	networkIncidentSave: NetworkIncidentSave;
+	networkIncident: NetworkIncident | undefined;
+	networkIncidentSave: NetworkIncidentSave | undefined;
 	user: User;
-	displayWindow: boolean;
+	displayWindow: boolean = false;
 	// communicate to the AlertComponent
 	protected _alerts: AlertsService;
 	// to write console logs condition on environment log-level
@@ -110,22 +110,24 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	NetIncidentSave( stay: boolean ): void {
 		//
 		this.networkIncidentSave = new NetworkIncidentSave();
-		this.networkIncidentSave.incident = this.networkIncident.incident;
-		this.networkIncidentSave.incidentNotes =
-			this.networkIncident.incidentNotes.filter( nl => nl.IsChanged === true );
-		this.networkIncidentSave.deletedNotes = this.networkIncident.deletedNotes;
-		this.networkIncidentSave.networkLogs =
-			this.networkIncident.networkLogs.filter( nl => nl.IsChanged === true ||
-				nl.Selected === true );
-		this.networkIncidentSave.deletedLogs = this.networkIncident.deletedLogs;
-		this.networkIncidentSave.user = this.networkIncident.user;
-		this.networkIncidentSave.message = this.networkIncident.message;
+		if( this.networkIncident !== undefined ) {
+			this.networkIncidentSave.incident = this.networkIncident.incident;
+			this.networkIncidentSave.incidentNotes =
+				this.networkIncident.incidentNotes.filter( nl => nl.IsChanged === true );
+			this.networkIncidentSave.deletedNotes = this.networkIncident.deletedNotes;
+			this.networkIncidentSave.networkLogs =
+				this.networkIncident.networkLogs.filter( nl => nl.IsChanged === true ||
+					nl.Selected === true );
+			this.networkIncidentSave.deletedLogs = this.networkIncident.deletedLogs;
+			this.networkIncidentSave.user = this.networkIncident.user;
+			this.networkIncidentSave.message = this.networkIncident.message;
+			if( this.add === false ) {
+				this.networkIncident.incident.IncidentId = this.id;
+			}
+		}
 		//
 		this._console.Information(
 			JSON.stringify( this.networkIncidentSave ) );
-		if( this.add === false ) {
-			this.networkIncident.incident.IncidentId = this.id;
-		}
 		if( this.validate( ) ) {
 			if( this.add === true ) {
 				this.createItem( stay );
@@ -150,11 +152,9 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 		this._console = _baseSrvc._console;
 		this.codeName = 'Incident-Detail-Window';
 		//
-	}
-	//
-	// On component initialization.
-	//
-	ngOnInit() {
+		this.user = User.empty();
+		this.detailWindow = new DetailWindowInput( this.user, Incident.empty())
+		this.networkIncident = new NetworkIncident( );
 		//
 	}
 	//
@@ -209,6 +209,12 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	// Check against a common set of validation rules.
 	//
 	validate( ): boolean {
+		if( this.networkIncidentSave === undefined ) {
+			const msg = new Message( 'err1', 'Incident undefined.');
+			this._console.Warning( `${this.codeName}.validate, ${msg}` );
+			this._alerts.warningSet( [msg] );
+			return false;
+		}
 		this.initialize( this.networkIncidentSave.incident );
 		const errMsgs: Message[] = this._netIncident.validateIncident(
 			this.networkIncidentSave.incident, this.add );
@@ -277,6 +283,12 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	ipChanged( ipAddress: string ): void {
 		this._console.Information(
 			`${this.codeName}.ipChanged, IP address: ${ipAddress}` );
+		if( this.networkIncident === undefined ) {
+			const msg = new Message( 'err1', 'Incident undefined.');
+			this._console.Warning( `${this.codeName}.ipChanged, ${msg}` );
+			this._alerts.warningSet( [msg] );
+			return;
+		}
 		if( this.networkIncident.incident.IPAddress !== ipAddress ) {
 			this.networkIncident.incident.IPAddress = ipAddress;
 			this.ip = ipAddress;
@@ -284,7 +296,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 			this._console.Verbose(
 				`${this.codeName}.ipChanged: calling whois with ${ipAddress}` );
 			this._services.getWhoIs( ipAddress ).subscribe(( whoisData: string ) => {
-				if( whoisData !== '' ) {
+				if( whoisData !== '' && this.networkIncident !== undefined ) {
 					// instanciate WhoIsAbuse class
 					const whois: WhoIsAbuse = new WhoIsAbuse();
 					whois.GetWhoIsAbuse( whoisData );
@@ -318,9 +330,12 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	// a new note id needs to be -2 or less
 	//
 	newNoteId(): number {
-		let inId = Math.min.apply(Math,this.networkIncident.incidentNotes.map( (n) => n.IncidentNoteId )) - 1;
-		if( inId > -2 ) {
-			inId = -2;
+		let inId: number = -9999;
+		if( this.networkIncident !== undefined ) {
+			inId = Math.min.apply(Math,this.networkIncident.incidentNotes.map( (n) => n.IncidentNoteId )) - 1;
+			if( inId > -2 ) {
+				inId = -2;
+			}
 		}
 		return inId;
 	}
@@ -334,9 +349,9 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 	//
 	createItem( stay: boolean ): void {
 		this._console.Information( `${this.codeName}.createItem, Entering: ${stay}` );
-		this._netIncident.createIncident( this.networkIncidentSave )
-			.subscribe(
-				( netIncidentData: NetworkIncident ) => {
+		if( this.networkIncidentSave !== undefined ) {
+			this._netIncident.createIncident( this.networkIncidentSave )
+				.subscribe( ( netIncidentData: NetworkIncident ) => {
 					this._console.Verbose( `${this.codeName}.createItem, netIncidentData` );
 					this._console.Verbose( JSON.stringify( netIncidentData ) );
 					this.networkIncident = netIncidentData;
@@ -346,7 +361,8 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 						'Created:' + this.networkIncident.incident.IncidentId);
 					this.networkIncidentSave = undefined;
 					if( !stay ) {
-						this.detailWindow = undefined;
+						this.detailWindow = new DetailWindowInput( this.user, Incident.empty())
+						this.networkIncident = undefined;
 						this.onClose.emit( true );
 					}
 					this.add = false;
@@ -354,6 +370,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 				},
 				error => this.baseErrorHandler(
 					this.codeName, `Create`, error ));
+		}
 	}
 	//
 	// Call update data service,
@@ -370,6 +387,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnIn
 						'Updated:' + this.networkIncidentSave.incident.IncidentId);
 					this.networkIncidentSave = undefined;
 					if( !stay ) {
+						this.detailWindow = new DetailWindowInput( this.user, Incident.empty())
 						this.networkIncident = undefined;
 						this.onClose.emit( true );
 					}

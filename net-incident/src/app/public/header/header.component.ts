@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
 	//
 	// Prime NG menu
 	//
-	items: MenuItem[];
+	items: MenuItem[] = [];
 	/*
 		export interface MenuItem {
 			label?: string;

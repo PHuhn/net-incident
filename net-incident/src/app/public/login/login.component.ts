@@ -25,7 +25,7 @@ import { ConsoleLogService } from '../../global/console-log/console-log.service'
 })
 export class LoginComponent extends BaseComponent implements OnInit {
 	//
-	user: User = undefined;
+	user: User;
 	model: Login;
 	selectItemsWindow: SelectItem[];
 	displayServersWindow: boolean = false;
@@ -47,6 +47,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
 		this._alerts = _baseSrvc._alerts;
 		this._console = _baseSrvc._console;
 		this.codeName = 'Login-Component';
+		//
+		this.user = User.empty( );
+		this.model = new Login( '', '', '' );
+		this.selectItemsWindow = [];
 		//
 	}
 	//

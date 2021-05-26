@@ -10,7 +10,7 @@ import { ServerSelectionWindowComponent } from '../../net-incident/server-select
 	selector: 'app-testing',
 	templateUrl: './testing.component.html'
 })
-export class TestingComponent implements OnInit {
+export class TestingComponent {
 	//
 	private codeName: string = 'Testing-Component';
 	notetype: number = 1;
@@ -37,17 +37,13 @@ export class TestingComponent implements OnInit {
 		//
 	}
 	//
-	//
-	ngOnInit() {
-	}
-	//
 	// Window/dialog communication (also see onClose event)
 	//
 	showDialog() {
 		this.displayServersWindow = true;
 	}
 	//
-	serverSelected( event ) {
+	serverSelected( event: any ) {
 		console.log( 'selected: ' + event );
 		this.selected = event;
 	}

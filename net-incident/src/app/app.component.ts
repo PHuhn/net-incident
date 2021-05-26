@@ -20,20 +20,24 @@ export class AppComponent implements OnInit, AfterViewInit {
 	// --------------------------------------------------------------------
 	// Data declaration.
 	//
-	static securityManager: Security;
+	static securityManager: Security | undefined;
 	codeName: string = 'App-Component';
 	//
 	authenticated: boolean = false;
 	userAccount: string = environment.defaultUserAccount;
 	userPassword: string = '';
-	user: User = undefined;
+	user: User;
 	//
 	// Constructor of the this the app.component
 	//
 	constructor(
 		private _alerts: AlertsService,
 		private _console: ConsoleLogService,
-		private _auth: AuthService ) { }
+		private _auth: AuthService
+	) {
+		this.user = User.empty( );
+			
+	}
 	//
 	// On component initialization, get all data from the data service.
 	//
@@ -61,7 +65,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 	// (logout)='onAuthLogout($event)
 	// onClick of Logout button in the header.component
 	//
-	onAuthLogout(event): void {
+	onAuthLogout(event: any): void {
 		this._console.Information( `${this.codeName}.onAuthLogout: Logout clicked.`);
 		this._auth.logout( );
 		AppComponent.securityManager = undefined;

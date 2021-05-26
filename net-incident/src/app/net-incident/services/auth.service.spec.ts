@@ -114,7 +114,7 @@ describe('AuthService', () => {
 			expect( tokenData.userName ).toEqual( userName );
 			expect( tokenData.token_type ).toEqual( tokenType );
 			const expire: number = sut.getExpiration( );
-			const accessToken: string = localStorage.getItem( 'access_token' );
+			const accessToken: string | null = localStorage.getItem( 'access_token' );
 			expect( expire ).toBeGreaterThan( 10000 );
 			expect( accessToken ).toEqual( token );
 			unsetLocalStorage( );

@@ -45,6 +45,10 @@ export interface IUser {
 //
 export class User implements IUser {
 	//
+	public static empty( ): IUser {
+		return new User(
+			'','','','','','','',false,'',false,0,[],'', ServerData.empty( ), []);
+	}
 	// using short-hand declaration...
 	constructor(
 		public Id: string,

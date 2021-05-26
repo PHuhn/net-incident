@@ -17,7 +17,7 @@ export class ServerSelectionWindowComponent implements OnInit {
 	// Data declaration.
 	//
 	private codeName: string = 'Server-Selection-Component';
-	public model: SelectItem[];
+	public model: SelectItem[] = [];
 	//
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
@@ -33,7 +33,7 @@ export class ServerSelectionWindowComponent implements OnInit {
 	}
 	get selectItems(): SelectItem[] { return this.model; }
 	//
-	private displayWindow: boolean;
+	private displayWindow: boolean = false;
 	@Input() set displayWin( displayWin: boolean ) {
 		this._console.Information(
 			`${this.codeName}.displayWin setter: win: ${displayWin}` );
@@ -46,7 +46,7 @@ export class ServerSelectionWindowComponent implements OnInit {
 	// Radio button selected event.
 	// Emit a string of the selected server short name to the parent control.
 	//
-	serverSelected( event, shortName: string ) {
+	serverSelected( event: any, shortName: string ) {
 		this._console.Information( `${this.codeName}: selected: ${shortName}` );
 		event.target.checked = false;
 		this.onClose.emit( shortName );

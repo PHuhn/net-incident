@@ -29,6 +29,7 @@ export class AuthService {
 		// base_Url: 'http://localhost:9111/api/',
 		this.url = environment.base_Url + 'Token';
 		this.codeName = 'Auth-Service';
+		this.tokenResponse = new TokenResponse( '', '', 0, '' );
 	}
 	//
 	// Get authenticated with UserName and Pasword

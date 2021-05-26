@@ -35,6 +35,12 @@ export interface IIncident {
 export class Incident implements IIncident {
 	//
 	public IsChanged: Boolean;
+	//
+	public static empty( ): IIncident {
+		return new Incident(
+			0,0,'','','','','',false,false,false,'',new Date('2000-01-01T00:00:00')
+		);
+	}
 	// using short-hand declaration...
 	constructor(
 		public IncidentId: number,

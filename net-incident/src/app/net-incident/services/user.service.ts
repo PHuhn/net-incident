@@ -33,8 +33,7 @@ export class UserService {
 	// Single place to create a new User.
 	//
 	emptyUser( ): IUser {
-		return new User(
-			'','','','','','','',false,'',false,0,[],'',undefined, []);
+		return User.empty( );
 	}
 	//
 	// CRUD (Create/Read/Update/Delete)

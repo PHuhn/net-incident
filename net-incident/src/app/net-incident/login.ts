@@ -3,7 +3,15 @@
 //
 import { Message } from '../global/alerts/message';
 //
-export class Login {
+export interface ILogin {
+	UserName: string;
+	Password: string;
+	ServerShortName: string,
+	//
+	validate( ): Message[]
+}
+//
+export class Login implements ILogin {
 	// using short-hand declaration...
 	constructor(
 		public UserName: string,
