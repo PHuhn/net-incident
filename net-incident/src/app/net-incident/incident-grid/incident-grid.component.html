@@ -8,18 +8,20 @@
 				[lazy]='true' (onLazyLoad)='loadIncidentsLazy($event)' [loading]='loading'>
 			<ng-template pTemplate='caption'>
 				<div class='row nsg-primary-color'>
-					&nbsp;
-					<label for='Mailed'>Mailed:&nbsp;</label>
-					<input type='checkbox' id='mailed' name='mailed' [(ngModel)]='mailed' (change)="dt.filter($event.target.value, 'Mailed', 'equals')" />
-					&nbsp; &nbsp;
-					<label for='Closed'>Closed:&nbsp;</label>
-					<input type='checkbox' id='closed' name='closed' [(ngModel)]='closed' (change)="dt.filter($event.target.value, 'Closed', 'equals')" />
-					&nbsp; &nbsp;
-					<label for='Special'>Special:&nbsp;</label>
-					<input type='checkbox' id='special' name='special' [(ngModel)]='special' (change)="dt.filter($event.target.value, 'Special', 'equals')" />
-					&nbsp; &nbsp;
-					<div class='nsg-primary-color'>
-						<div class='nsg-column-container'><label for='ServerName'>Server:&nbsp;</label></div>
+					<div class='col-auto'>
+						&nbsp;
+						<label for='Mailed'>Mailed:&nbsp;</label>
+						<input type='checkbox' id='mailed' name='mailed' [(ngModel)]='mailed' (input)="dt.filter($event.target.value, 'Mailed', 'equals')" />
+						&nbsp; &nbsp;
+						<label for='Closed'>Closed:&nbsp;</label>
+						<input type='checkbox' id='closed' name='closed' [(ngModel)]='closed' (input)="dt.filter($event.target.value, 'Closed', 'equals')" />
+						&nbsp; &nbsp;
+						<label for='Special'>Special:&nbsp;</label>
+						<input type='checkbox' id='special' name='special' [(ngModel)]='special' (input)="dt.filter($event.target.value, 'Special', 'equals')" />
+						&nbsp; &nbsp;
+					</div>
+					<div class='col-auto'>
+						<label for='ServerName'>Server:&nbsp;</label>
 						<a class='nsg-link-div' id='ServerName' (click)='onChangeServer( $event )'>{{user.Server.ServerName}} ({{user.Server.ServerShortName}})</a>
 					</div>
 				</div>
@@ -32,23 +34,23 @@
 					</th>
 					<th style='width: 60px;' [pSortableColumn]='"IncidentId"'>
 						Id
-						<p-sortIcon [field]='IncidentId'></p-sortIcon>
+						<p-sortIcon [field]='"IncidentId"'></p-sortIcon>
 					</th>
 					<th style='width: 150px;' [pSortableColumn]='"IPAddress"'>
 						IP Address
-						<p-sortIcon [field]='IPAddress'></p-sortIcon>
+						<p-sortIcon [field]='"IPAddress"'></p-sortIcon>
 					</th>
 					<th style='width: 100px;' [pSortableColumn]='"NIC"'>
 						NIC
-						<p-sortIcon [field]='NIC'></p-sortIcon>
+						<p-sortIcon [field]='"NIC"'></p-sortIcon>
 					</th>
 					<th style='width: 200px;' [pSortableColumn]='"NetworkName"'>
 						Network Name
-						<p-sortIcon [field]='NetworkName'></p-sortIcon>
+						<p-sortIcon [field]='"NetworkName"'></p-sortIcon>
 					</th>
 					<th [pSortableColumn]='"AbuseEmailAddress"'>
 						Abuse Email Address
-						<p-sortIcon [field]='AbuseEmailAddress'></p-sortIcon>
+						<p-sortIcon [field]='"AbuseEmailAddress"'></p-sortIcon>
 					</th>
 					<th style='width: 60px;'>
 						Mailed

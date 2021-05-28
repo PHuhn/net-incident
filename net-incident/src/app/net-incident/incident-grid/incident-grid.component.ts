@@ -28,22 +28,22 @@ import { AppComponent } from '../../app.component';
 	templateUrl: './incident-grid.component.html',
 	styleUrls: ['./incident-grid.component.css']
 })
-export class IncidentGridComponent extends BaseComponent implements OnInit, OnDestroy {
+export class IncidentGridComponent extends BaseComponent implements OnInit {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
 	//
 	// Window/dialog communication (also see onClose event)
 	windowDisplay: boolean = false;
-	selectItemsWindow: SelectItem[];
+	selectItemsWindow: SelectItem[] = [];
 	displayServersWindow: boolean = false;
-	detailWindow: DetailWindowInput;
+	detailWindow: DetailWindowInput | undefined;
 	// Local variables
-	incidents: Incident[];
+	incidents: Incident[] = [];
 	totalRecords: number = 0;
-	id: number;
-	loading: boolean;
-	@ViewChild('dt') dt: Table;
+	id: number = -1;
+	loading: boolean = false;
+	@ViewChild('dt') dt: Table | undefined;
 	visible: boolean = true;
 	//
 	mailed: boolean = false;
@@ -76,6 +76,9 @@ export class IncidentGridComponent extends BaseComponent implements OnInit, OnDe
 		this._confirmationService = _baseSrvc._confirmationService;
 		this.codeName = 'incident-grid-component';
 		//
+		this.user = User.empty( );
+		this.detailWindow = undefined;
+		//
 	}
 	//
 	// On component initialization, get all data from the data service.
@@ -84,10 +87,6 @@ export class IncidentGridComponent extends BaseComponent implements OnInit, OnDe
 		this._console.Information(
 			`${this.codeName}.ngOnInit: Entering ...` );
 		this.loading = true;
-	}
-	//
-	ngOnDestroy() {
-		//
 	}
 	//
 	// --------------------------------------------------------------------
@@ -99,46 +98,55 @@ export class IncidentGridComponent extends BaseComponent implements OnInit, OnDe
 		this._console.Information(
 			`${this.codeName}.addItemClicked: Entering ...` );
 		this._console.Information( JSON.stringify( this.user ) );
-		if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
-			const empty: Incident = this._data.emptyIncident( );
-			empty.ServerId = this.user.Server.ServerId;
-			this.editItemClicked( empty );
-		} else {
-			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
-		}
+		if( AppComponent.securityManager !== undefined ) {
+			if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
+				const empty: Incident = this._data.emptyIncident( );
+				empty.ServerId = this.user.Server.ServerId;
+				this.editItemClicked( empty );
+			} else {
+				this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
+			}
+		}		
 	}
 	//
 	// Edit button clicked, launch edit detail window.
 	//
 	editItemClicked( item: Incident ) {
 		//
-		if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
-			this.id = item.IncidentId;
-			this._console.Information(
-				`${this.codeName}.editItemClicked: Entering, id: ${this.id}` );
-			this.detailWindow = new DetailWindowInput( this.user, item );
-			this.windowDisplay = true;
-			this._console.Information(
-				`${this.codeName}.editItemClicked: ${this.windowDisplay}` );
-		} else {
-			this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
-		}
+		if( AppComponent.securityManager !== undefined ) {
+			if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
+				this.id = item.IncidentId;
+				this._console.Information(
+					`${this.codeName}.editItemClicked: Entering, id: ${this.id}` );
+				this.detailWindow = new DetailWindowInput( this.user, item );
+				this.windowDisplay = true;
+				this._console.Information(
+					`${this.codeName}.editItemClicked: ${this.windowDisplay}` );
+			} else {
+				this._alerts.setWhereWhatWarning( this.codeName, 'Not authorized' );
+			}
+		}		
 	}
 	//
 	// Confirm component (delete)
 	//
 	deleteItemClicked( item: Incident ): boolean {
-		if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
-			this.id = item.IncidentId;
-			this._console.Information(
-				`${this.codeName}.deleteItemClicked: Entering, id: ${this.id}` );
-			// the p-confirmDialog in in app.component
-			return this.baseDeleteConfirm<number>( this.id, (ident: number): boolean => {
-				return this.deleteItem( ident );
-			} );
+		if( AppComponent.securityManager !== undefined ) {
+			if( AppComponent.securityManager.isValidIncidentDetail( ) ) {
+				this.id = item.IncidentId;
+				this._console.Information(
+					`${this.codeName}.deleteItemClicked: Entering, id: ${this.id}` );
+				// the p-confirmDialog in in app.component
+				return this.baseDeleteConfirm<number>( this.id, (ident: number): boolean => {
+					return this.deleteItem( ident );
+				}, '' );
+			} else {
+				this._alerts.setWhereWhatWarning(
+					this.codeName, 'Not authorized' );
+			}
 		} else {
-			this._alerts.setWhereWhatWarning(
-				this.codeName, 'Not authorized' );
+			this._alerts.setWhereWhatError(
+				this.codeName, 'deleteItemClicked', 'securityManager undefined' );
 		}
 		return false;
 	}
@@ -155,12 +163,13 @@ export class IncidentGridComponent extends BaseComponent implements OnInit, OnDe
 		}
 		this.windowDisplay = false;
 		this.detailWindow = undefined;
+		this.incidents = [ ... this.incidents ];
 	}
 	//
 	// onChangeServer( "server" )
 	// Launch server selection window
 	//
-	onChangeServer( event ) {
+	onChangeServer( event: any ) {
 		this._console.Information(
 			`${this.codeName}.onChangeServer: entering: ${event}` );
 		this.selectItemsWindow = this.user.ServerShortNames;
@@ -247,6 +256,16 @@ export class IncidentGridComponent extends BaseComponent implements OnInit, OnDe
 				value: this.special,
 				matchMode: 'equals'
 			};
+			// const ev: any = { ... event };
+			// ev.filters = { 'ServerId':
+			// 	[{ value: this.user.Server.ServerId, matchMode: 'equals' }] };
+			// ev.filters = { 'Mailed':
+			// 	[{ value: this.mailed, matchMode: 'equals' }] };
+			// ev.filters = { 'Closed':
+			// 	[{ value: this.closed, matchMode: 'equals' }] };
+			// ev.filters = { 'Special':
+			// 	[{ value: this.special, matchMode: 'equals' }] };
+			//
 			this._data.getIncidentsLazy( event ).subscribe((incidentPaginationData) => {
 				this.loading = false;
 				this.incidents = incidentPaginationData.incidents;

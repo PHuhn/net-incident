@@ -360,13 +360,14 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnDe
 						this.codeName,
 						'Created:' + this.networkIncident.incident.IncidentId);
 					this.networkIncidentSave = undefined;
+					this.add = false;
+					if( this.networkIncident !== undefined ) {
+						this.id = this.networkIncident.incident.IncidentId;
+					}
 					if( !stay ) {
-						this.detailWindow = new DetailWindowInput( this.user, Incident.empty())
-						this.networkIncident = undefined;
 						this.onClose.emit( true );
 					}
-					this.add = false;
-					this.id = this.networkIncident.incident.IncidentId;
+					console.warn( 'Exiting ...' );
 				},
 				error => this.baseErrorHandler(
 					this.codeName, `Create`, error ));
@@ -383,8 +384,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnDe
 					this.networkIncident = netIncidentData;
 					this.networkIncident.user = this.user;
 					this._alerts.setWhereWhatSuccess(
-						this.codeName,
-						'Updated:' + this.networkIncidentSave.incident.IncidentId);
+						this.codeName, `Updated: + ${this.id}`);
 					this.networkIncidentSave = undefined;
 					if( !stay ) {
 						this.detailWindow = new DetailWindowInput( this.user, Incident.empty())
