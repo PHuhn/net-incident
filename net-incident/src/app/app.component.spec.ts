@@ -82,7 +82,7 @@ describe('AppComponent', () => {
 		const confirm: ConfirmDialog = fixture.debugElement.query(
 			By.css( 'p-confirmdialog' )).componentInstance;
 		// then
-		expect( confirm.key ).toEqual( 'Delete' );
+		expect( confirm.key ).toEqual( 'delete' );
 	});
 	//
 	it('should contain Alert component ...', () => {

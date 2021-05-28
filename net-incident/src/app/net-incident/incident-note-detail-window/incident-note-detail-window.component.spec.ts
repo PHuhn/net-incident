@@ -191,7 +191,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		tickFakeWait( 10 );
 		const response = new HttpResponse( { status: 201, statusText: 'OK' } );
 		incidentnoteServiceSpy.updateIncidentNote.and.returnValue(of( response ));
-		sut.onClose.subscribe( saved => {
+		sut.emitCloseWin.subscribe( saved => {
 			sut.displayWin = false;
 			expect( saved ).toBe( true );
 		} );
@@ -219,7 +219,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		sut.model.CreatedDate = new Date( '2000-01-01T00:00:00' );
 		const count = sut.networkIncident.incidentNotes.length;
 		incidentnoteServiceSpy.createIncidentNote.and.returnValue(of( response ));
-		sut.onClose.subscribe( saved => {
+		sut.emitCloseWin.subscribe( saved => {
 			sut.displayWin = false;
 			expect( saved ).toBe( true );
 		} );
@@ -241,7 +241,7 @@ describe( 'IncidentNoteDetailWindowComponent', ( ) => {
 		incidentnoteServiceSpy.updateIncidentNote.and.returnValue(of( response ));
 		sut.incidentnote = { ... testWindowIncidentNoteInput };
 		tickFakeWait( 10 );
-		sut.onClose.subscribe( ( saved: boolean ) => {
+		sut.emitCloseWin.subscribe( ( saved: boolean ) => {
 			// then
 			expect( saved ).toBe( true );
 			windowCleanup( );

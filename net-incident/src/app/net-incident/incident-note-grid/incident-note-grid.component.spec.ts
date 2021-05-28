@@ -247,7 +247,7 @@ describe( 'IncidentNoteGridComponent', ( ) => {
 		sut.windowIncidentNoteInput = windowNoteInput;
 		tickFakeWait( 1 );
 		// when
-		sut.onClose( true );
+		sut.onCloseWin( true );
 		// then
 		tickFakeWait( 1 );
 		expect( sut.windowIncidentNoteInput ).toBeUndefined( );

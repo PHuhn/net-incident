@@ -34,13 +34,13 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 	// --------------------------------------------------------------------
 	// Data declaration.
 	//
-	private httpSubscription: Subscription;
+	private httpSubscription: Subscription | undefined;
 	model: IIncidentNote;
 	networkIncident: NetworkIncident;
 	add: boolean = false;
 	id: number = 0;
 	incidentnoteWindowInput: IIncidentNoteWindowInput | undefined;
-	displayWin: boolean;
+	displayWin: boolean = false;
 	// communicate to the AlertComponent
 	protected _alerts: AlertsService;
 	// to write console logs condition on environment log-level
@@ -49,7 +49,7 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
 	//  inputs: incidentnote and displayWin
-	//  outputs: onClose
+	//  outputs: emitCloseWin
 	//
 	@Input() set incidentnote( input: IIncidentNoteWindowInput | undefined ) {
 		if( input !== undefined ) {
@@ -70,7 +70,7 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 	}
 	get incidentnote(): IIncidentNoteWindowInput | undefined { return this.incidentnoteWindowInput; }
 	//
-	@Output() onClose = new EventEmitter<boolean>();
+	@Output() emitCloseWin = new EventEmitter<boolean>();
 	//
 	constructor(
 		// inject the base components services
@@ -83,6 +83,9 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 		this._alerts = _baseSrvc._alerts;
 		this._console = _baseSrvc._console;
 		this.codeName = 'Incident-Note-Detail-Window';
+		//
+		this.model = IncidentNote.empty( );
+		this.networkIncident = new NetworkIncident( );
 		//
 	}
 	//
@@ -116,7 +119,7 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 	windowClose(saved: boolean) {
 		this._console.Information( `${this.codeName}: windowClose: ${saved}` );
 		if( saved === false ) {
-			this.onClose.emit( saved );
+			this.emitCloseWin.emit( saved );
 			this.displayWin = false;
 			return;
 		}
@@ -138,10 +141,12 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 		this._console.Information( `${this.codeName}: onTypeIdDropdownChanged: ${selected}` );
 		if( selected > 0 ) {
 			this.model.NoteTypeId = selected;
-			this.model.NoteTypeShortDesc =
-				this.networkIncident.noteTypes.find( t => t.value === selected ).label;
-			if( this.add ) {
-				this.performIncidentType( this.model.NoteTypeId, this.model.NoteTypeShortDesc );
+			const noteType: SelectItem | undefined = this.networkIncident.noteTypes.find( t => t.value === selected );
+			if( noteType !== undefined && noteType.label !== undefined) {
+				this.model.NoteTypeShortDesc = noteType.label;
+				if( this.add ) {
+					this.performIncidentType( this.model.NoteTypeId, this.model.NoteTypeShortDesc );
+				}
 			}
 		}
 	}
@@ -263,7 +268,7 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 			// this reassignment (spread), tells angular to update view
 			this.networkIncident.incidentNotes =
 				[...this.networkIncident.incidentNotes, this.model];
-			this.onClose.emit( true );
+			this.emitCloseWin.emit( true );
 			this.displayWin = false;
 		} else {
 			const msg = `Id should be 0: ${this.model.IncidentNoteId}`;
@@ -294,7 +299,7 @@ export class IncidentNoteDetailWindowComponent extends BaseComponent implements 
 				this.model.IsChanged = true;
 				this.networkIncident.incidentNotes = this.networkIncident.incidentNotes.map(
 					( el ) => el.IncidentNoteId === this.model.IncidentNoteId ? this.model : el );
-				this.onClose.emit( true );
+				this.emitCloseWin.emit( true );
 				this.displayWin = false;
 			} else {
 				const msg = `Id not found: ${this.model.IncidentNoteId}`;

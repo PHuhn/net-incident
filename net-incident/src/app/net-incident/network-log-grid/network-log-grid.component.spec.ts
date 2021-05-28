@@ -104,39 +104,39 @@ describe('NetworkLogGridComponent', () => {
 	//
 	// Component instantiates
 	//
-	it('should be created ...', () => {
+	it('should be created ...', fakeAsync( () => {
 		sut.networkIncident = createNetworkIncident( );
 		sut.ngAfterContentInit( );
-		fixture.detectChanges( ); // trigger initial data binding
-		fixture.whenStable( );
+		tickFakeWait( 1000 );
+		tickFakeWait( 1000 );
 		//
 		console.log(
 			'===================================\n' +
 			'NetworkLogGridComponent should create ...' );
 		expect( sut ).toBeTruthy();
-	});
+	} ) );
 	//
-	it('default data should have all columns ...', () => {
+	it('default data should have all columns ...', fakeAsync( () => {
 		sut.networkIncident = createNetworkIncident( );
-		fixture.detectChanges( ); // trigger initial data binding
-		fixture.whenStable( );
+		tickFakeWait( 1000 );
+		tickFakeWait( 1000 );
 		//
 		const numCols: number = 7;
 		const netLogBodyCols = fixture.debugElement.queryAll(By.css(
 			'#netLogTable > div > div > table > tbody > tr:nth-child(1) > td' ));
 		expect( netLogBodyCols.length ).toBe( numCols );
-	});
+	} ) );
 	//
-	it('default data should have all rows ...', () => {
+	it('default data should have all rows ...', fakeAsync( () => {
 		sut.networkIncident = createNetworkIncident( );
-		fixture.detectChanges( ); // trigger initial data binding
-		fixture.whenStable( );
+		tickFakeWait( 1000 );
+		tickFakeWait( 1000 );
 		//
 		const numRows: number = mockDatum.length;
 		const netLogBodyRows = fixture.debugElement.queryAll(By.css(
 			'#netLogTable > div > div > table > tbody > tr' ));
 		expect( netLogBodyRows.length ).toBe( numRows );
-	});
+	} ) );
 	//
 	it('mailed incident should have no selection column ...', fakeAsync( () => {
 		const testNetInc: INetworkIncident= createNetworkIncident( );
@@ -144,8 +144,10 @@ describe('NetworkLogGridComponent', () => {
 		testNetInc.networkLogs[3].Selected = true;
 		testNetInc.incident.IPAddress = testNetInc.networkLogs[3].IPAddress;
 		sut.networkIncident = testNetInc;
+		sut.dt.globalFilterFields = ['IPAddress'];
 		sut.ngAfterContentInit( );
-		tickFakeWait( 1 );
+		tickFakeWait( 1000 );
+		tickFakeWait( 1000 );
 		const loop = [1,2,3,4];
 		loop.forEach( i => {
 			if ( sut.disabled === undefined ) {
@@ -181,6 +183,7 @@ describe('NetworkLogGridComponent', () => {
 	it('should filter on ip-address when selected ...', fakeAsync( () => {
 		sut.networkIncident = createNetworkIncident( );
 		sut.ngAfterContentInit( );
+		tickFakeWait( 1000 );
 		tickFakeWait( 1000 );
 		//
 		const netLogCheckbox: HTMLInputElement = fixture.debugElement.query(By.css(

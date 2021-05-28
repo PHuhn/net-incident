@@ -5,7 +5,7 @@
 <!-- global/menu/menu.component.html -->
 <router-outlet></router-outlet>
 <!-- modal comfirmation popup -->
-<p-confirmDialog key='Delete' header='Delete Confirmation' icon='pi pi-trash'></p-confirmDialog>
+<p-confirmDialog key='delete' header='Delete Confirmation' icon='pi pi-trash'></p-confirmDialog>
 <!-- content -->
 <app-header (logout)='onAuthLogout($event)'></app-header>
 <div *ngIf='authenticated === false'>

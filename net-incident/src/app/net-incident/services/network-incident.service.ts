@@ -139,7 +139,8 @@ export class NetworkIncidentService {
 	}
 	//
 	// Create (post) NetworkIncident
-	//
+	// netIncidentData: NetworkIncident
+	// 	createIncident( incident: IIncident ): Observable<IIncident | undefined> {
 	createIncident( networkIncidentSave: NetworkIncidentSave ) {
 		this._console.Information(
 			`${this.codeName}: ${networkIncidentSave}` );

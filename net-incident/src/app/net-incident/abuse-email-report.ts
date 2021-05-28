@@ -30,7 +30,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 	public errMsgs: Message[] = [];
 	//
 	private selectedLogs: NetworkLog[];
-	private incidTypes: number[];
+	private incidTypes: number[] = [];
 	private _console: ConsoleLogService;
 	//
 	// constructor require the passing a full NetworkIncident,
@@ -43,13 +43,10 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 			return el.Selected === true;
 		});
 		this._console.Information( `${this.codeName}.ctor: ${JSON.stringify(this.selectedLogs)}` );
+		//
 		if( this.selectedLogs.length > 0 ) {
-			this.incidTypes = this.selectedLogs.reduce( (u, current ) => {
-				if( u.indexOf( current.IncidentTypeId ) < 0 ) {
-					u.push( current.IncidentTypeId );
-				}
-				return u;
-			}, [] );
+			const incTypes: number[] = this.selectedLogs.map( sl => sl.IncidentTypeId ).filter( it => it > 0 );
+			this.incidTypes = [ ... new Set( incTypes )];
 		}
 	}
 	//
@@ -117,7 +114,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 	//  ƒ anonymous(IncidentId,IPAddress /*``*/) { return `SQL Injection from ${IPAddress}`; }
 	//
 	public Renderer( content: string, locals: any ): string {
-		const compile = (contentString: string, keys) =>
+		const compile = (contentString: string, keys: any) =>
 				Function(keys, 'return `' + contentString + '`;');
 		const localsKeys: string[] = Object.keys(locals);
 		this._console.Information( `${this.codeName}.Render: ${JSON.stringify(localsKeys)}` );
@@ -159,7 +156,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 		if( !this.IsValid( ) ) {
 			return this.errMsgs.join( ';  ' );
 		}
-		const template: IncidentType = this.GetTemplate( );
+		const template: IncidentType | undefined = this.GetTemplate( );
 		if( template === undefined ) {
 			return 'Email Template error: not found.';
 		}
@@ -249,7 +246,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 	// get the appropriate template...
 	// if a single incident type then use it, else use 0/all template
 	//
-	private GetTemplate( ): IncidentType {
+	private GetTemplate( ): IncidentType | undefined {
 		// get a list of incident log types
 		this._console.Information( `${this.codeName}.GetTemplate: ${this.incidTypes.join(', ')}` );
 		const tmpId: number = ( this.incidTypes.length > 1 ? this.GetMultipleTemplateId( ) : this.incidTypes[0] );
