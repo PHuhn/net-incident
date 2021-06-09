@@ -3,8 +3,6 @@ import { ComponentFixture, TestBed, inject, fakeAsync, tick, getTestBed, waitFor
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient, HttpErrorResponse, HttpRequest } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { HttpResponse } from '@angular/common/http';
 //
 import { Observable, of, throwError } from 'rxjs';
