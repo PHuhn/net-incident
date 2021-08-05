@@ -1812,6 +1812,7 @@ Done:
 	V11.1.0.33 - Used console-log.service in more components and classes.
 	V11.1.0.34 - Implemented base component class, more code coverage, removed custom mocks, lint
 	V12.1.0.34 - Upgraged from Angular 11 to 12, moving to ES-Lint
+	V12.1.0.35 - Changes per ES-Lint
 
 To Do's:
 	V - delete of network-log not working
