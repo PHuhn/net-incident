@@ -1749,6 +1749,19 @@ SOLUTION:
 		and IncidentReactiveDetailComponent
 	to APP_COMPONENTS array
 
+PROBLEM:
+========
+	In Jasmine:
+		Failed: R3InjectorError(CompilerModule)[HttpClient -> HttpClient]: 
+		  NullInjectorError: No provider for HttpClient!
+SOLUTION:
+	Removed in beforeEach (left http undefined for fake service):
+		http = TestBed.inject( HttpClient );
+		backend = TestBed.inject( HttpTestingController );
+
+ProjectProjectTaskFakeService > validateProject: should handle a validation Active required error...
+Failed: NG0200: Circular dependency in DI detected for DataManagerService. Find more at https://angular.io/errors/NG0200
+
 ===================================================
 Done:
 	service logging 12/22

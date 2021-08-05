@@ -59,7 +59,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnDe
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
 	// 	inputs: incident and displayWin
-	// 	outputs: onClose
+	// 	outputs: emitClose
 	//
 	// setter/getter for incident & user
 	@Input() set detailWindowInput( detailInput: DetailWindowInput ) {
@@ -96,10 +96,10 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnDe
 	}
 	get displayWin(): boolean { return this.displayWindow; }
 	//
-	@Output() onClose = new EventEmitter<boolean>();
+	@Output() emitClose = new EventEmitter<boolean>();
 	windowClose(saved: boolean) {
 		if( saved === false ) {
-			this.onClose.emit( saved ); // cancel
+			this.emitClose.emit( saved ); // cancel
 			return;
 		}
 		this.NetIncidentSave( false );
@@ -365,7 +365,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnDe
 						this.id = this.networkIncident.incident.IncidentId;
 					}
 					if( !stay ) {
-						this.onClose.emit( true );
+						this.emitClose.emit( true );
 					}
 					console.warn( 'Exiting ...' );
 				},
@@ -389,7 +389,7 @@ export class IncidentDetailWindowComponent extends BaseComponent implements OnDe
 					if( !stay ) {
 						this.detailWindow = new DetailWindowInput( this.user, Incident.empty())
 						this.networkIncident = undefined;
-						this.onClose.emit( true );
+						this.emitClose.emit( true );
 					}
 				},
 				error => this.baseErrorHandler(

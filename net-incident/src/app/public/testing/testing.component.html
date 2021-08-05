@@ -6,5 +6,5 @@
 <p>Server: {{selected}}</p>
 <p></p>
 <app-server-selection-window [selectItems]='model'
-	[displayWin]='displayServersWindow' (onClose)='onClose($event)'></app-server-selection-window>
+	[displayWin]='displayServersWindow' (emitClose)='onClose($event)'></app-server-selection-window>
 <!-- End of testing.component.html -->

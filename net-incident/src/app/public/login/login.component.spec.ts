@@ -128,7 +128,7 @@ describe('LoginComponent', () => {
 			'','','','','','','',false,'',false,0,[],'',undefined, []);
 		emptyUser.ServerShortName = sut.model.ServerShortName;
 		userServiceSpy.getUserServer.and.returnValue(of( emptyUser ));
-		sut.onClose.subscribe( user => {
+		sut.emitClose.subscribe( user => {
 			expect( user ).toBe( emptyUser );
 		} );
 		const ret: number = sut.loginUser();
@@ -146,7 +146,7 @@ describe('LoginComponent', () => {
 			'','','','','','','',false,'',false,0,[],'',undefined, []);
 		emptyUser.ServerShortName = sut.model.ServerShortName;
 		userServiceSpy.getUserServer.and.returnValue(of( emptyUser ));
-		sut.onClose.subscribe( user => {
+		sut.emitClose.subscribe( user => {
 			expect( user ).toBe( emptyUser );
 		} );
 		sut.getUserServer( sut.model.UserName, sut.model.ServerShortName );
@@ -165,7 +165,7 @@ describe('LoginComponent', () => {
 			'','','','','','','',false,'',false,0,[],'',undefined, []);
 		emptyUser.ServerShortName = serverShortName;
 		userServiceSpy.getUserServer.and.returnValue(of( emptyUser ));
-		sut.onClose.subscribe( user => {
+		sut.emitClose.subscribe( user => {
 			expect( sut.model.ServerShortName ).toEqual( serverShortName );
 		} );
 		sut.onServerSelected( serverShortName );

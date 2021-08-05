@@ -1,6 +1,6 @@
 <!-- NetworkLog-Grid.component.html -->
 <div class='nsg-text-left' style='width: 99%;'>
-	<p-table #dt id='netLogTable' name='netLogTable' [value]='networkIncident.networkLogs' [totalRecords]='totalRecords'
+	<p-table #dt id='netLogTable' name='netLogTable' [value]='networkIncident.networkLogs'
 			expandableRows='true' dataKey='NetworkLogId'
 			(onRowSelect)='handleRowSelect($event)' (onRowUnselect)='handleRowUnSelect($event)'
 			[(selection)]='selectedLogs' [globalFilterFields]="['IPAddress']">

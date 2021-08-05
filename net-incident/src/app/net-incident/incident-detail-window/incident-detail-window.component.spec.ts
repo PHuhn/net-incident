@@ -306,7 +306,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 		networkIncidentServiceSpy.updateIncident.and.returnValue( of( response ) );
 		networkIncidentServiceSpy.validateIncident.and.returnValue( [] );
 		networkIncidentServiceSpy.validateNetworkLogs.and.returnValue( [] );
-		sut.onClose.subscribe( saved => {
+		sut.emitClose.subscribe( saved => {
 			sut.displayWin = false;
 			expect( saved ).toBe( true );
 		} );
@@ -359,7 +359,7 @@ describe( 'IncidentDetailWindowComponent', ( ) => {
 	//
 	it('should emit when canceled ...', fakeAsync( () => {
 		//
-		sut.onClose.subscribe( saved => {
+		sut.emitClose.subscribe( saved => {
 			sut.displayWin = false;
 			expect( saved ).toBe( false );
 		} );

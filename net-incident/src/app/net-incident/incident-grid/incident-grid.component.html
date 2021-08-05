@@ -148,7 +148,7 @@
 </div><!-- -->
 <!-- modal edit window -->
 <app-incident-detail-window id='detailWindow' name='detailWindow' [displayWin]='windowDisplay' 
-	[detailWindowInput]='detailWindow' (onClose)='onClose($event)'></app-incident-detail-window>
+	[detailWindowInput]='detailWindow' (emitClose)='onClose($event)'></app-incident-detail-window>
 <app-server-selection-window id='selectionWindow' [selectItems]='selectItemsWindow'
-	[displayWin]='displayServersWindow' (onClose)='onServerSelected($event)'></app-server-selection-window>
+	[displayWin]='displayServersWindow' (emitClose)='onServerSelected($event)'></app-server-selection-window>
 <!-- End of incident.grid.component.html -->

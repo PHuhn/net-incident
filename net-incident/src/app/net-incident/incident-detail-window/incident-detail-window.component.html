@@ -4,7 +4,7 @@
 		Incident Detail: {{id}}, IP Address: {{ip}}
 	</p-header>
 	<form #form='ngForm' novalidate>
-		<div *ngIf='networkIncident != undefined'>
+		<div *ngIf='networkIncident !== undefined'>
 			<div class='col-lg-6 col-md-6 col-sm-12 nsg-primary-color nsg-text-right nsg-inc-det-left-side'>
 				<div class='row' [class.has-error]='NIC.invalid && NIC.touched'>
 					<div class='col-lg-3 col-md-4 col-sm-12 nsg-primary-color nsg-text-right'><label for='NIC'>NIC:&nbsp;</label></div>

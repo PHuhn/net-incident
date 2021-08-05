@@ -94,11 +94,11 @@ describe('ServerSelectionWindowComponent', () => {
 			`div.p-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
-		spyOn( sut.onClose, 'emit' );
+		spyOn( sut.emitClose, 'emit' );
 		expect( radio.checked ).toBeFalsy(); // default state
 		//
 		radio.click();
-		expect( sut.onClose.emit ).toHaveBeenCalledWith( value );
+		expect( sut.emitClose.emit ).toHaveBeenCalledWith( value );
 		windowCleanup( );
 	}));
 	//
@@ -110,11 +110,11 @@ describe('ServerSelectionWindowComponent', () => {
 			`div.p-dialog-content > div > div > div:nth-child(${idx + 1}) > input[type=radio]`;
 		const radio: HTMLInputElement = fixture.debugElement.query(By.css(
 			radioSelector )).nativeElement;
-		spyOn( sut.onClose, 'emit' );
+		spyOn( sut.emitClose, 'emit' );
 		expect( radio.checked ).toBeFalsy(); // default state
 		//
 		radio.click();
-		expect( sut.onClose.emit ).toHaveBeenCalledWith( value );
+		expect( sut.emitClose.emit ).toHaveBeenCalledWith( value );
 		windowCleanup( );
 	}));
 	//

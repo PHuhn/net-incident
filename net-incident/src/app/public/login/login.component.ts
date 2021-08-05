@@ -54,7 +54,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 		//
 	}
 	//
-	@Output() onClose = new EventEmitter<User>();
+	@Output() emitClose = new EventEmitter<User>();
 	//
 	// authenticate user
 	//
@@ -115,7 +115,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 				if( serverShortName !== ''
 						&& userData.ServerShortName.toLowerCase()
 							=== serverShortName.toLowerCase() ) {
-					this.onClose.emit( this.user );
+					this.emitClose.emit( this.user );
 				} else {
 					this._console.Information(
 						`${this.codeName}.getUserServer: Returned: ${userData.ServerShortName}` );

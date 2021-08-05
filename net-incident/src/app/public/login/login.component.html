@@ -33,6 +33,6 @@
 		</div>
 	</div>
 	<app-server-selection-window [selectItems]='selectItemsWindow'
-	[displayWin]='displayServersWindow' (onClose)='onServerSelected($event)'></app-server-selection-window>
+	[displayWin]='displayServersWindow' (emitClose)='onServerSelected($event)'></app-server-selection-window>
 </div>
 <!-- -->

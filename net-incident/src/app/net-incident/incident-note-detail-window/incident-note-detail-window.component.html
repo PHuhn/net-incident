@@ -6,7 +6,7 @@
     Incident Note Detail: {{id}}
   </p-header>
   <form #form='ngForm' novalidate>
-    <div *ngIf='model != undefined' class='nsg-text-left'>
+    <div *ngIf='model !== undefined' class='nsg-text-left'>
       <div class='row' [class.has-error]='NoteTypeId.invalid && NoteTypeId.touched'>
         <div class='col-lg-1 col-md-1 col-sm-12 nsg-primary-color nsg-text-right'><label for='NoteTypeId'>Type:</label></div>
         <div class='col-lg-8 col-md-8 col-sm-12'>

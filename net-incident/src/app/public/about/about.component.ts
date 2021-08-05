@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 	selector: 'app-about',
 	templateUrl: './about.component.html'
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
 	//
 	applicationName = 'Network Incident';
 	companyName = 'Northern Software Group';
@@ -15,9 +15,6 @@ export class AboutComponent implements OnInit {
 	version ='12.1.0.34';
 	//
 	constructor() { }
-	//
-	ngOnInit() {
-	}
 	//
 }
 // ===========================================================================

@@ -11,7 +11,7 @@ import { ConsoleLogService } from '../../global/console-log/console-log.service'
 	selector: 'app-server-selection-window',
 	templateUrl: './server-selection-window.component.html'
 })
-export class ServerSelectionWindowComponent implements OnInit {
+export class ServerSelectionWindowComponent {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
@@ -22,7 +22,7 @@ export class ServerSelectionWindowComponent implements OnInit {
 	// --------------------------------------------------------------------
 	// Inputs and emitted outputs
 	// inputs: server and displayWin
-	// outputs: onClose
+	// outputs: emitClose
 	//
 	@Input() set selectItems( selectItems: SelectItem[] ) {
 		if( selectItems !== undefined ) {
@@ -41,7 +41,7 @@ export class ServerSelectionWindowComponent implements OnInit {
 	}
 	get displayWin(): boolean { return this.displayWindow; }
 	//
-	@Output() onClose = new EventEmitter<string>();
+	@Output() emitClose = new EventEmitter<string>();
 	//
 	// Radio button selected event.
 	// Emit a string of the selected server short name to the parent control.
@@ -49,7 +49,7 @@ export class ServerSelectionWindowComponent implements OnInit {
 	serverSelected( event: any, shortName: string ) {
 		this._console.Information( `${this.codeName}: selected: ${shortName}` );
 		event.target.checked = false;
-		this.onClose.emit( shortName );
+		this.emitClose.emit( shortName );
 	}
 	//
 	// Constructor (inject services).
@@ -57,10 +57,6 @@ export class ServerSelectionWindowComponent implements OnInit {
 	constructor(
 			private _console: ConsoleLogService
 		) { }
-	//
-	// On component initialization.
-	//
-	ngOnInit() { }
 	//
 }
 // ===========================================================================

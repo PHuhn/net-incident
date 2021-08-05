@@ -10,7 +10,7 @@ import { IUser, User } from '../../net-incident/user';
 	selector: 'app-register',
 	templateUrl: './register.component.html'
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 	//
 	// local variables
 	//
@@ -28,9 +28,6 @@ export class RegisterComponent implements OnInit {
 	constructor(
 		private _alerts: AlertsService,
 		private _user: UserService ) { }
-	//
-	ngOnInit() {
-	}
 	//
 	registerUser() {
 		this._alerts.setWhereWhatWarning( this.codeName, 'Not implemented.');

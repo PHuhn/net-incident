@@ -9,7 +9,7 @@
 <!-- content -->
 <app-header (logout)='onAuthLogout($event)'></app-header>
 <div *ngIf='authenticated === false'>
-  <app-login (onClose)='onAuthenticated($event)'></app-login>
+  <app-login (emitClose)='onAuthenticated($event)'></app-login>
 </div>
 <div *ngIf='authenticated === true'>
   <app-incident-grid [user]='user'></app-incident-grid>

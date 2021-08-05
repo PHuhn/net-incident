@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "demo-mg12": {
+    "net-incident": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/demo-mg12",
+            "outputPath": "dist/net-incident",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "demo-mg12:build:production"
+              "browserTarget": "net-incident:build:production"
             },
             "development": {
-              "browserTarget": "demo-mg12:build:development"
+              "browserTarget": "net-incident:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "demo-mg12:build"
+            "browserTarget": "net-incident:build"
           }
         },
         "test": {
@@ -115,7 +115,7 @@
       }
     }
   },
-  "defaultProject": "demo-mg12",
+  "defaultProject": "net-incident",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }

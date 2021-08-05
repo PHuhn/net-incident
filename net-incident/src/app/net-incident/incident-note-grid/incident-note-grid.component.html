@@ -1,5 +1,5 @@
 <!-- IncidentNote-Grid.component.html -->
-<div *ngIf='networkIncident != undefined' class='nsg-text-left'>
+<div *ngIf='networkIncident !== undefined' class='nsg-text-left'>
 	<p-table id='incidentnotes-grid' [value]='networkIncident.incidentNotes' [totalRecords]='totalRecords'
 			expandableRows='true' dataKey='IncidentNoteId'
 			[rows]='5' [paginator]='true' [rowsPerPageOptions]='[5,10,50]'>

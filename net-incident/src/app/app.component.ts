@@ -15,7 +15,7 @@ import { SelectItemClass } from './global/select-item-class';
 	selector: 'app-root',
 	templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
@@ -43,9 +43,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 	//
 	ngOnInit() {
 		this._console.Information( `${this.codeName}.ngOnInit: ...`);
-	}
-	//
-	ngAfterViewInit() {
 	}
 	//
 	// (onClose)='onAuthenticated($event)

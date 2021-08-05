@@ -31,13 +31,12 @@ import { NetworkIncident } from '../network-incident';
 	selector: 'app-networklog-grid',
 	templateUrl: './network-log-grid.component.html'
 })
-export class NetworkLogGridComponent extends BaseComponent implements OnInit, AfterContentInit, OnChanges, OnDestroy {
+export class NetworkLogGridComponent extends BaseComponent implements OnInit, AfterContentInit, OnChanges {
 	//
 	// --------------------------------------------------------------------
 	// Data declaration.
 	// Local variables
 	//
-	totalRecords: number = 0;
 	@ViewChild('dt', { static: true }) dt: Table | undefined;
 	selectedLogs: NetworkLog[] = [];
 	disabled: boolean = true;
@@ -87,10 +86,7 @@ export class NetworkLogGridComponent extends BaseComponent implements OnInit, Af
 	// * Detach event handlers (addEventListener > removeEventListener).
 	// * Free resources that will not be garbage collected automatically.
 	// * Unregister all callbacks.
-	//
-	ngOnDestroy() {
-		//
-	}
+	// ngOnDestroy() { }
 	//
 	ngOnChanges(changes: SimpleChanges): void {
 		if(changes['networkIncident']) {
