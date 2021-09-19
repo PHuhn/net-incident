@@ -37,7 +37,9 @@ this application groups the incidents by IP address, lookup the ISP abuse e-mail
 ### Wiki Documentation
 
 [UI Documentation](https://github.com/PHuhn/net-incident/wiki/UI-Help)
+
 [UI Installation](https://github.com/PHuhn/net-incident/wiki/Installation-of-Angular-net-incident)
+
 [Manual UI Testing](https://github.com/PHuhn/net-incident/wiki/Testing-Angular-net-incident-application)
 
 ### Construction
