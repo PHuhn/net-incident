@@ -11,7 +11,7 @@
 @REM   -m, --max [NUMBER]     Max number of e-mails to keep (Default is 10)
 @REM   -a, --auth [String]    Authentication details in USERNAME:PASSWORD format
 @REM Ports of 25, 465 or 587 (unencryped/SSL/TSL)
-fake-smtp-server --smtp-port 25 --http-port 10080 --max 10
+fake-smtp-server --smtp-port 25 --http-port 9980 --max 10
 @REM
 @REM You can filter emails with the following parameters:
 @REM	from: filter sender

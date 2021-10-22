@@ -34,13 +34,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Given classified incident logs (like SQL injection, XSS or PHP vulnerabilities),
 this application groups the incidents by IP address, lookup the ISP abuse e-mail address, ISP name and NIC (Network Information Center). Can generate an e-mail message via the incident type template.  If mail is configured, it will send the message to the ISP’s abuse e-mail address.
 
-### Wiki Documentation
+### NetIncident Documentation
 
-[UI Documentation](https://github.com/PHuhn/net-incident/wiki/UI-Help)
+* [UI Documentation](https://github.com/PHuhn/net-incident/wiki/UI-Help)
 
-[UI Installation](https://github.com/PHuhn/net-incident/wiki/Installation-of-Angular-net-incident)
+* [UI Installation](https://github.com/PHuhn/net-incident/wiki/Installation-of-Angular-net-incident)
 
-[Manual UI Testing](https://github.com/PHuhn/net-incident/wiki/Testing-Angular-net-incident-application)
+* [Manual UI Testing](https://github.com/PHuhn/net-incident/wiki/Testing-Angular-net-incident-application)
 
 ### Construction
 
