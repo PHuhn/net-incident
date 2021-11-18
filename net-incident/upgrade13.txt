@@ -1,0 +1,485 @@
+ npm install --save-dev @angular-eslint/schematics@13.0.0-alpha.0
+ npm install --save-dev @angular-eslint/builder@13.0.0-alpha.0
+ npm install --save-dev @angular-eslint/eslint-plugin@13.0.0-alpha.0
+ npm install --save-dev @angular-eslint/eslint-plugin-template@13.0.0-alpha.0
+ npm install --save-dev @angular-eslint/template-parser@13.0.0-alpha.0
+ npx @angular/cli@13 update @angular/core@13 @angular/cli@13
+ npm install --save-dev primeng@13.0.0-rc.2
+ npm install @angular/cdk@latest --save-dev
+ 
+====================================================
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install --save-dev @angular-eslint/schematics@13.0.0-alpha.0
+npm WARN notsup Unsupported engine for @typescript-eslint/experimental-utils@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/experimental-utils@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/experimental-utils@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/experimental-utils@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/scope-manager@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/scope-manager@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/typescript-estree@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/typescript-estree@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/types@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/types@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/visitor-keys@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/visitor-keys@5.3.0
+npm WARN notsup Unsupported engine for eslint-visitor-keys@3.1.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: eslint-visitor-keys@3.1.0
+npm WARN notsup Unsupported engine for @typescript-eslint/types@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/types@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/scope-manager@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/scope-manager@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/typescript-estree@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/typescript-estree@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/visitor-keys@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/visitor-keys@5.3.0
+npm WARN notsup Unsupported engine for eslint-visitor-keys@3.1.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: eslint-visitor-keys@3.1.0
+npm WARN ajv-keywords@3.5.2 requires a peer of ajv@^6.9.1 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@5.0.1 requires a peer of @popperjs/core@^2.9.2 but none is installed. You must install peer dependencies yourself.
+npm WARN @angular-eslint/schematics@13.0.0-alpha.0 requires a peer of @angular/cli@>= 13.0.0-rc.2 < 14.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-arm64@0.13.8 (node_modules\esbuild-darwin-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-arm64@0.13.8: wanted {"os":"darwin","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-32@0.13.8 (node_modules\esbuild-linux-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-32@0.13.8: wanted {"os":"linux","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-android-arm64@0.13.8 (node_modules\esbuild-android-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-android-arm64@0.13.8: wanted {"os":"android","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-64@0.13.8 (node_modules\esbuild-darwin-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-64@0.13.8: wanted {"os":"darwin","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-64@0.13.8 (node_modules\esbuild-freebsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-64@0.13.8: wanted {"os":"freebsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-arm64@0.13.8 (node_modules\esbuild-freebsd-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-arm64@0.13.8: wanted {"os":"freebsd","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm@0.13.8 (node_modules\esbuild-linux-arm):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm@0.13.8: wanted {"os":"linux","arch":"arm"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm64@0.13.8 (node_modules\esbuild-linux-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm64@0.13.8: wanted {"os":"linux","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-64@0.13.8 (node_modules\esbuild-linux-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-64@0.13.8: wanted {"os":"linux","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-netbsd-64@0.13.8 (node_modules\esbuild-netbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-netbsd-64@0.13.8: wanted {"os":"netbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-openbsd-64@0.13.8 (node_modules\esbuild-openbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-openbsd-64@0.13.8: wanted {"os":"openbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-ppc64le@0.13.8 (node_modules\esbuild-linux-ppc64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-ppc64le@0.13.8: wanted {"os":"linux","arch":"ppc64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-mips64le@0.13.8 (node_modules\esbuild-linux-mips64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-mips64le@0.13.8: wanted {"os":"linux","arch":"mips64el"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-32@0.13.8 (node_modules\esbuild-windows-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-32@0.13.8: wanted {"os":"win32","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-arm64@0.13.8 (node_modules\esbuild-windows-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-arm64@0.13.8: wanted {"os":"win32","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-sunos-64@0.13.8 (node_modules\esbuild-sunos-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-sunos-64@0.13.8: wanted {"os":"sunos","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: nice-napi@1.0.2 (node_modules\nice-napi):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for nice-napi@1.0.2: wanted {"os":"!win32","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @angular-eslint/schematics@13.0.0-alpha.0
+added 35 packages from 24 contributors, removed 5 packages, updated 9 packages, moved 1 package and audited 1675 packages in 60.453s
+
+118 packages are looking for funding
+  run `npm fund` for details
+
+found 8 vulnerabilities (6 moderate, 2 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+
+   ╭───────────────────────────────────────────────────────────────╮
+   │                                                               │
+   │     New major version of npm available! 6.14.11 -> 8.1.4      │
+   │   Changelog: https://github.com/npm/cli/releases/tag/v8.1.4   │
+   │               Run npm install -g npm to update!               │
+   │                                                               │
+   ╰───────────────────────────────────────────────────────────────╯
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install --save-dev @angular-eslint/builder@13.0.0-alpha.0
+npm WARN @angular-eslint/schematics@13.0.0-alpha.0 requires a peer of @angular/cli@>= 13.0.0-rc.2 < 14.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN ajv-keywords@3.5.2 requires a peer of ajv@^6.9.1 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@5.0.1 requires a peer of @popperjs/core@^2.9.2 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-64@0.13.8 (node_modules\esbuild-darwin-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-64@0.13.8: wanted {"os":"darwin","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-arm64@0.13.8 (node_modules\esbuild-darwin-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-arm64@0.13.8: wanted {"os":"darwin","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-64@0.13.8 (node_modules\esbuild-freebsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-64@0.13.8: wanted {"os":"freebsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-android-arm64@0.13.8 (node_modules\esbuild-android-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-android-arm64@0.13.8: wanted {"os":"android","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm64@0.13.8 (node_modules\esbuild-linux-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm64@0.13.8: wanted {"os":"linux","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-arm64@0.13.8 (node_modules\esbuild-freebsd-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-arm64@0.13.8: wanted {"os":"freebsd","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-32@0.13.8 (node_modules\esbuild-linux-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-32@0.13.8: wanted {"os":"linux","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-64@0.13.8 (node_modules\esbuild-linux-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-64@0.13.8: wanted {"os":"linux","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm@0.13.8 (node_modules\esbuild-linux-arm):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm@0.13.8: wanted {"os":"linux","arch":"arm"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-mips64le@0.13.8 (node_modules\esbuild-linux-mips64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-mips64le@0.13.8: wanted {"os":"linux","arch":"mips64el"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-netbsd-64@0.13.8 (node_modules\esbuild-netbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-netbsd-64@0.13.8: wanted {"os":"netbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-ppc64le@0.13.8 (node_modules\esbuild-linux-ppc64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-ppc64le@0.13.8: wanted {"os":"linux","arch":"ppc64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-sunos-64@0.13.8 (node_modules\esbuild-sunos-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-sunos-64@0.13.8: wanted {"os":"sunos","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-32@0.13.8 (node_modules\esbuild-windows-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-32@0.13.8: wanted {"os":"win32","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-arm64@0.13.8 (node_modules\esbuild-windows-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-arm64@0.13.8: wanted {"os":"win32","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-openbsd-64@0.13.8 (node_modules\esbuild-openbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-openbsd-64@0.13.8: wanted {"os":"openbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: nice-napi@1.0.2 (node_modules\nice-napi):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for nice-napi@1.0.2: wanted {"os":"!win32","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @angular-eslint/builder@13.0.0-alpha.0
+added 21 packages from 12 contributors, updated 1 package and audited 1696 packages in 14.214s
+
+119 packages are looking for funding
+  run `npm fund` for details
+
+found 8 vulnerabilities (6 moderate, 2 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install --save-dev @angular-eslint/eslint-plugin@13.0.0-alpha.0
+npm WARN notsup Unsupported engine for @typescript-eslint/experimental-utils@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/experimental-utils@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/types@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/types@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/scope-manager@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/scope-manager@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/typescript-estree@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/typescript-estree@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/visitor-keys@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/visitor-keys@5.3.0
+npm WARN notsup Unsupported engine for eslint-visitor-keys@3.1.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: eslint-visitor-keys@3.1.0
+npm WARN @angular-eslint/schematics@13.0.0-alpha.0 requires a peer of @angular/cli@>= 13.0.0-rc.2 < 14.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN ajv-keywords@3.5.2 requires a peer of ajv@^6.9.1 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@5.0.1 requires a peer of @popperjs/core@^2.9.2 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-android-arm64@0.13.8 (node_modules\esbuild-android-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-android-arm64@0.13.8: wanted {"os":"android","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-64@0.13.8 (node_modules\esbuild-darwin-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-64@0.13.8: wanted {"os":"darwin","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-64@0.13.8 (node_modules\esbuild-freebsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-64@0.13.8: wanted {"os":"freebsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-32@0.13.8 (node_modules\esbuild-linux-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-32@0.13.8: wanted {"os":"linux","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm64@0.13.8 (node_modules\esbuild-linux-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm64@0.13.8: wanted {"os":"linux","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-arm64@0.13.8 (node_modules\esbuild-freebsd-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-arm64@0.13.8: wanted {"os":"freebsd","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-64@0.13.8 (node_modules\esbuild-linux-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-64@0.13.8: wanted {"os":"linux","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-arm64@0.13.8 (node_modules\esbuild-darwin-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-arm64@0.13.8: wanted {"os":"darwin","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-mips64le@0.13.8 (node_modules\esbuild-linux-mips64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-mips64le@0.13.8: wanted {"os":"linux","arch":"mips64el"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-ppc64le@0.13.8 (node_modules\esbuild-linux-ppc64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-ppc64le@0.13.8: wanted {"os":"linux","arch":"ppc64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm@0.13.8 (node_modules\esbuild-linux-arm):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm@0.13.8: wanted {"os":"linux","arch":"arm"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-netbsd-64@0.13.8 (node_modules\esbuild-netbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-netbsd-64@0.13.8: wanted {"os":"netbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-openbsd-64@0.13.8 (node_modules\esbuild-openbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-openbsd-64@0.13.8: wanted {"os":"openbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-arm64@0.13.8 (node_modules\esbuild-windows-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-arm64@0.13.8: wanted {"os":"win32","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-32@0.13.8 (node_modules\esbuild-windows-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-32@0.13.8: wanted {"os":"win32","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-sunos-64@0.13.8 (node_modules\esbuild-sunos-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-sunos-64@0.13.8: wanted {"os":"sunos","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: nice-napi@1.0.2 (node_modules\nice-napi):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for nice-napi@1.0.2: wanted {"os":"!win32","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @angular-eslint/eslint-plugin@13.0.0-alpha.0
+added 12 packages from 15 contributors, updated 1 package and audited 1708 packages in 15.339s
+
+119 packages are looking for funding
+  run `npm fund` for details
+
+found 8 vulnerabilities (6 moderate, 2 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install --save-dev @angular-eslint/eslint-plugin-template@13.0.0-alpha.0
+npm WARN notsup Unsupported engine for @typescript-eslint/experimental-utils@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/experimental-utils@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/types@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/types@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/scope-manager@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/scope-manager@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/typescript-estree@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/typescript-estree@5.3.0
+npm WARN notsup Unsupported engine for @typescript-eslint/visitor-keys@5.3.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: @typescript-eslint/visitor-keys@5.3.0
+npm WARN notsup Unsupported engine for eslint-visitor-keys@3.1.0: wanted: {"node":"^12.22.0 || ^14.17.0 || >=16.0.0"} (current: {"node":"14.15.5","npm":"6.14.11"})
+npm WARN notsup Not compatible with your version of node/npm: eslint-visitor-keys@3.1.0
+npm WARN @angular-eslint/schematics@13.0.0-alpha.0 requires a peer of @angular/cli@>= 13.0.0-rc.2 < 14.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN ajv-keywords@3.5.2 requires a peer of ajv@^6.9.1 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@5.0.1 requires a peer of @popperjs/core@^2.9.2 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-arm64@0.13.8 (node_modules\esbuild-darwin-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-arm64@0.13.8: wanted {"os":"darwin","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-android-arm64@0.13.8 (node_modules\esbuild-android-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-android-arm64@0.13.8: wanted {"os":"android","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-32@0.13.8 (node_modules\esbuild-linux-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-32@0.13.8: wanted {"os":"linux","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-64@0.13.8 (node_modules\esbuild-darwin-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-64@0.13.8: wanted {"os":"darwin","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-64@0.13.8 (node_modules\esbuild-freebsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-64@0.13.8: wanted {"os":"freebsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-arm64@0.13.8 (node_modules\esbuild-freebsd-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-arm64@0.13.8: wanted {"os":"freebsd","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-mips64le@0.13.8 (node_modules\esbuild-linux-mips64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-mips64le@0.13.8: wanted {"os":"linux","arch":"mips64el"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm64@0.13.8 (node_modules\esbuild-linux-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm64@0.13.8: wanted {"os":"linux","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-64@0.13.8 (node_modules\esbuild-linux-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-64@0.13.8: wanted {"os":"linux","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-netbsd-64@0.13.8 (node_modules\esbuild-netbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-netbsd-64@0.13.8: wanted {"os":"netbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-ppc64le@0.13.8 (node_modules\esbuild-linux-ppc64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-ppc64le@0.13.8: wanted {"os":"linux","arch":"ppc64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-sunos-64@0.13.8 (node_modules\esbuild-sunos-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-sunos-64@0.13.8: wanted {"os":"sunos","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm@0.13.8 (node_modules\esbuild-linux-arm):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm@0.13.8: wanted {"os":"linux","arch":"arm"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-arm64@0.13.8 (node_modules\esbuild-windows-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-arm64@0.13.8: wanted {"os":"win32","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-openbsd-64@0.13.8 (node_modules\esbuild-openbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-openbsd-64@0.13.8: wanted {"os":"openbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-32@0.13.8 (node_modules\esbuild-windows-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-32@0.13.8: wanted {"os":"win32","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: nice-napi@1.0.2 (node_modules\nice-napi):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for nice-napi@1.0.2: wanted {"os":"!win32","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @angular-eslint/eslint-plugin-template@13.0.0-alpha.0
+added 12 packages from 15 contributors, updated 1 package and audited 1720 packages in 12.211s
+
+119 packages are looking for funding
+  run `npm fund` for details
+
+found 8 vulnerabilities (6 moderate, 2 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install --save-dev @angular-eslint/template-parser@13.0.0-alpha.0
+npm WARN @angular-eslint/schematics@13.0.0-alpha.0 requires a peer of @angular/cli@>= 13.0.0-rc.2 < 14.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN ajv-keywords@3.5.2 requires a peer of ajv@^6.9.1 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@5.0.1 requires a peer of @popperjs/core@^2.9.2 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-64@0.13.8 (node_modules\esbuild-darwin-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-64@0.13.8: wanted {"os":"darwin","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-android-arm64@0.13.8 (node_modules\esbuild-android-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-android-arm64@0.13.8: wanted {"os":"android","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-arm64@0.13.8 (node_modules\esbuild-darwin-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-arm64@0.13.8: wanted {"os":"darwin","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-64@0.13.8 (node_modules\esbuild-freebsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-64@0.13.8: wanted {"os":"freebsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-32@0.13.8 (node_modules\esbuild-linux-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-32@0.13.8: wanted {"os":"linux","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-64@0.13.8 (node_modules\esbuild-linux-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-64@0.13.8: wanted {"os":"linux","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm@0.13.8 (node_modules\esbuild-linux-arm):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm@0.13.8: wanted {"os":"linux","arch":"arm"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm64@0.13.8 (node_modules\esbuild-linux-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm64@0.13.8: wanted {"os":"linux","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-arm64@0.13.8 (node_modules\esbuild-freebsd-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-arm64@0.13.8: wanted {"os":"freebsd","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-mips64le@0.13.8 (node_modules\esbuild-linux-mips64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-mips64le@0.13.8: wanted {"os":"linux","arch":"mips64el"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-ppc64le@0.13.8 (node_modules\esbuild-linux-ppc64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-ppc64le@0.13.8: wanted {"os":"linux","arch":"ppc64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-openbsd-64@0.13.8 (node_modules\esbuild-openbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-openbsd-64@0.13.8: wanted {"os":"openbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-netbsd-64@0.13.8 (node_modules\esbuild-netbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-netbsd-64@0.13.8: wanted {"os":"netbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-32@0.13.8 (node_modules\esbuild-windows-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-32@0.13.8: wanted {"os":"win32","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-arm64@0.13.8 (node_modules\esbuild-windows-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-arm64@0.13.8: wanted {"os":"win32","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-sunos-64@0.13.8 (node_modules\esbuild-sunos-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-sunos-64@0.13.8: wanted {"os":"sunos","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: nice-napi@1.0.2 (node_modules\nice-napi):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for nice-napi@1.0.2: wanted {"os":"!win32","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @angular-eslint/template-parser@13.0.0-alpha.0
+updated 1 package and audited 1720 packages in 9.112s
+
+119 packages are looking for funding
+  run `npm fund` for details
+
+found 8 vulnerabilities (6 moderate, 2 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npx @angular/cli@13 update @angular/core@13 @angular/cli@13
+Repository is not clean. Please commit or stash any changes before updating.
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npx @angular/cli@13 update @angular/core@13 @angular/cli@13
+Using package manager: 'npm'
+Collecting installed dependencies...
+Found 36 dependencies.
+Fetching dependency metadata from registry...
+    Updating package.json with dependency @angular-devkit/build-angular @ "13.0.3" (was "12.2.11")...
+    Updating package.json with dependency @angular/animations @ "13.0.2" (was "12.2.11")...
+    Updating package.json with dependency @angular/cli @ "13.0.3" (was "12.2.11")...
+    Updating package.json with dependency @angular/common @ "13.0.2" (was "12.2.11")...
+    Updating package.json with dependency @angular/compiler @ "13.0.2" (was "12.2.11")...
+    Updating package.json with dependency @angular/compiler-cli @ "13.0.2" (was "12.2.11")...
+    Updating package.json with dependency @angular/core @ "13.0.2" (was "12.2.11")...
+    Updating package.json with dependency @angular/forms @ "13.0.2" (was "12.2.11")...
+    Updating package.json with dependency @angular/platform-browser @ "13.0.2" (was "12.2.11")...
+    Updating package.json with dependency @angular/platform-browser-dynamic @ "13.0.2" (was "12.2.11")...
+    Updating package.json with dependency @angular/router @ "13.0.2" (was "12.2.11")...
+    Updating package.json with dependency typescript @ "4.4.4" (was "4.2.4")...
+  UPDATE package.json (1819 bytes)
+√ Packages successfully installed.
+** Executing migrations of package '@angular/cli' **
+
+> Remove polyfills required only for Internet Explorer which is no longer supported.
+  UPDATE src/polyfills.ts (2081 bytes)
+  Migration completed.
+
+> Remove no longer valid Angular schematic options from `angular.json`.
+  Migration completed.
+
+> Remove deprecated options from 'angular.json' that are no longer present in v13.
+  Migration completed.
+
+> Updating '.gitignore' to include '.angular/cache'.
+    Could not find '.gitignore'.
+  Migration completed.
+
+> Update library projects to be published in partial mode and removed deprecated options from ng-packagr configuration.
+  Migration completed.
+
+** Executing migrations of package '@angular/core' **
+
+> Migrates `[routerLink]=""` in templates to `[routerLink]="[]"` because these links are likely intended to route to the current page with updated fragment/query params.
+  Migration completed.
+
+> In Angular version 13, the `teardown` flag in `TestBed` will be enabled by default.
+  This migration automatically opts out existing apps from the new teardown behavior.
+  UPDATE src/test.ts (1134 bytes)
+  Migration completed.
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install --save-dev primeng@13.0.0-rc.2
+npm notice save primeng is being moved from dependencies to devDependencies
+npm WARN ajv-keywords@3.5.2 requires a peer of ajv@^6.9.1 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@5.0.1 requires a peer of @popperjs/core@^2.9.2 but none is installed. You must install peer dependencies yourself.
+npm WARN primeng@13.0.0-rc.2 requires a peer of primeicons@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-64@0.13.12 (node_modules\esbuild-darwin-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-64@0.13.12: wanted {"os":"darwin","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-android-arm64@0.13.12 (node_modules\esbuild-android-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-android-arm64@0.13.12: wanted {"os":"android","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-32@0.13.12 (node_modules\esbuild-linux-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-32@0.13.12: wanted {"os":"linux","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-arm64@0.13.12 (node_modules\esbuild-darwin-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-arm64@0.13.12: wanted {"os":"darwin","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-arm64@0.13.12 (node_modules\esbuild-freebsd-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-arm64@0.13.12: wanted {"os":"freebsd","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-64@0.13.12 (node_modules\esbuild-linux-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-64@0.13.12: wanted {"os":"linux","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-64@0.13.12 (node_modules\esbuild-freebsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-64@0.13.12: wanted {"os":"freebsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm@0.13.12 (node_modules\esbuild-linux-arm):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm@0.13.12: wanted {"os":"linux","arch":"arm"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-ppc64le@0.13.12 (node_modules\esbuild-linux-ppc64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-ppc64le@0.13.12: wanted {"os":"linux","arch":"ppc64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm64@0.13.12 (node_modules\esbuild-linux-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm64@0.13.12: wanted {"os":"linux","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-mips64le@0.13.12 (node_modules\esbuild-linux-mips64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-mips64le@0.13.12: wanted {"os":"linux","arch":"mips64el"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-openbsd-64@0.13.12 (node_modules\esbuild-openbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-openbsd-64@0.13.12: wanted {"os":"openbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-netbsd-64@0.13.12 (node_modules\esbuild-netbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-netbsd-64@0.13.12: wanted {"os":"netbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-32@0.13.12 (node_modules\esbuild-windows-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-32@0.13.12: wanted {"os":"win32","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-sunos-64@0.13.12 (node_modules\esbuild-sunos-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-sunos-64@0.13.12: wanted {"os":"sunos","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-arm64@0.13.12 (node_modules\esbuild-windows-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-arm64@0.13.12: wanted {"os":"win32","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: nice-napi@1.0.2 (node_modules\nice-napi):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for nice-napi@1.0.2: wanted {"os":"!win32","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ primeng@13.0.0-rc.2
+added 1 package from 1 contributor, updated 1 package and audited 1449 packages in 18.346s
+
+122 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>npm install @angular/cdk@latest --save-dev
+npm WARN ajv-keywords@3.5.2 requires a peer of ajv@^6.9.1 but none is installed. You must install peer dependencies yourself.
+npm WARN bootstrap@5.0.1 requires a peer of @popperjs/core@^2.9.2 but none is installed. You must install peer dependencies yourself.
+npm WARN primeng@13.0.0-rc.2 requires a peer of primeicons@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-android-arm64@0.13.12 (node_modules\esbuild-android-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-android-arm64@0.13.12: wanted {"os":"android","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-arm64@0.13.12 (node_modules\esbuild-freebsd-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-arm64@0.13.12: wanted {"os":"freebsd","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-arm64@0.13.12 (node_modules\esbuild-darwin-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-arm64@0.13.12: wanted {"os":"darwin","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-32@0.13.12 (node_modules\esbuild-linux-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-32@0.13.12: wanted {"os":"linux","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-freebsd-64@0.13.12 (node_modules\esbuild-freebsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-freebsd-64@0.13.12: wanted {"os":"freebsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm@0.13.12 (node_modules\esbuild-linux-arm):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm@0.13.12: wanted {"os":"linux","arch":"arm"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-darwin-64@0.13.12 (node_modules\esbuild-darwin-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-darwin-64@0.13.12: wanted {"os":"darwin","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-arm64@0.13.12 (node_modules\esbuild-linux-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-arm64@0.13.12: wanted {"os":"linux","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-64@0.13.12 (node_modules\esbuild-linux-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-64@0.13.12: wanted {"os":"linux","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-mips64le@0.13.12 (node_modules\esbuild-linux-mips64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-mips64le@0.13.12: wanted {"os":"linux","arch":"mips64el"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-linux-ppc64le@0.13.12 (node_modules\esbuild-linux-ppc64le):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-linux-ppc64le@0.13.12: wanted {"os":"linux","arch":"ppc64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-openbsd-64@0.13.12 (node_modules\esbuild-openbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-openbsd-64@0.13.12: wanted {"os":"openbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-netbsd-64@0.13.12 (node_modules\esbuild-netbsd-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-netbsd-64@0.13.12: wanted {"os":"netbsd","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-sunos-64@0.13.12 (node_modules\esbuild-sunos-64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-sunos-64@0.13.12: wanted {"os":"sunos","arch":"x64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-arm64@0.13.12 (node_modules\esbuild-windows-arm64):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-arm64@0.13.12: wanted {"os":"win32","arch":"arm64"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: nice-napi@1.0.2 (node_modules\nice-napi):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for nice-napi@1.0.2: wanted {"os":"!win32","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: esbuild-windows-32@0.13.12 (node_modules\esbuild-windows-32):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for esbuild-windows-32@0.13.12: wanted {"os":"win32","arch":"ia32"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @angular/cdk@13.0.2
+added 1 package from 1 contributor, updated 1 package and audited 1450 packages in 18.102s
+
+122 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+
+C:\Dat\Nsg\L\Web\Ng\NetIncidents3\net-incident>

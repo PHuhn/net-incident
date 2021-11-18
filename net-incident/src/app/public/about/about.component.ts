@@ -11,7 +11,7 @@ export class AboutComponent {
 	companyName = 'Northern Software Group';
 	copyright ='Copyright © 2021';
 	// (angular version).major.minor.build
-	ng_version ='12';
+	ng_version ='13';
 	version = `${this.ng_version}.1.0.35`;
 	//
 	constructor() { }
