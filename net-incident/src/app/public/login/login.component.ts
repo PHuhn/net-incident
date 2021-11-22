@@ -13,7 +13,6 @@ import { AuthService } from '../../net-incident/services/auth.service';
 import { BaseCompService } from '../../common/base-comp/base-comp.service';
 import { BaseComponent } from '../../common/base-comp/base-comp.component';
 import { IUser, User } from '../../net-incident/user';
-import { LoginViewModel } from '../../net-incident/login-view-model';
 import { TokenResponse } from '../../net-incident/token-response';
 import { Login } from '../../net-incident/login';
 import { ServerSelectionWindowComponent } from '../../net-incident/server-selection-window/server-selection-window.component';

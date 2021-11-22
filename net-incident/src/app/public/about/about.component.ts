@@ -12,7 +12,7 @@ export class AboutComponent {
 	copyright ='Copyright © 2021';
 	// (angular version).major.minor.build
 	ng_version ='13';
-	version = `${this.ng_version}.1.0.35`;
+	version = `${this.ng_version}.1.0.36`;
 	//
 	constructor() { }
 	//
