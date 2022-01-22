@@ -128,7 +128,7 @@ export class AbuseEmailReport implements IAbuseEmailReport {
 	}
 	//
 	// Compose an abuse email report from the network incident that was passed
-	// in the constructor.  The followin is a sample e-mail message:
+	// in the constructor.  The following is a sample e-mail message:
 	//
 	// Hi
 	//
