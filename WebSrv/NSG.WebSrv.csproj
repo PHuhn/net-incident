@@ -308,6 +308,11 @@
     <Compile Include="Identity\Startup.cs" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.5.1.js" />
+    <Content Include="Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Views\CompanyEmailTemplate\Create.cshtml" />
     <Content Include="Views\CompanyEmailTemplate\Delete.cshtml" />
     <Content Include="Views\CompanyEmailTemplate\Details.cshtml" />
@@ -333,9 +338,8 @@
     <None Include="InstallNotes.txt" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\BaseController.js" />
-    <Content Include="Scripts\jquery-2.1.1.js" />
-    <Content Include="Scripts\jquery-2.1.1.min.js" />
-    <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.5.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

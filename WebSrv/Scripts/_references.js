@@ -1,5 +1,5 @@
 ﻿/// <autosync enabled="true" />
-/// <reference path="jquery-2.1.1.min.js" />
+/// <reference path="jquery-3.5.1.min.js" />
 /// <reference path="bootstrap.min.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.min.js" />
