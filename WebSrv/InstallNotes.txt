@@ -7,13 +7,14 @@ and:
 Install-Package Microsoft.AspNet.Identity.Owin
 Install-Package Microsoft.AspNet.Identity.EntityFramework
 Install-Package EntityFramework
-Install-Package Microsoft.Owin.Security
+Install-Package Microsoft.Owin -Version 4.2.2
+Install-Package Microsoft.Owin.Cors -Version 4.2.2
+Install-Package Microsoft.Owin.Host.SystemWeb -Version 4.2.2
+Install-Package Microsoft.Owin.Security -Version 4.2.2
 Install-Package Microsoft.Owin.Security.Cookies
 Install-Package Microsoft.Owin.Security.OAuth
 Install-Package Microsoft.Owin.Security.Google
 Install-Package Microsoft.Owin.Security.MicrosoftAccount
-Install-Package Microsoft.Owin.Host.SystemWeb
-Install-Package Microsoft.Owin.Cors
 Install-Package Microsoft.AspNet.WebApi.Owin
 Install-Package Microsoft.AspNet.WebApi.WebHost
 Install-Package Microsoft.AspNet.WebApi.Cors
