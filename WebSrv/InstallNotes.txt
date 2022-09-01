@@ -261,3 +261,15 @@ PROBLEM:
 	Bump System.Net.Http from 4.0.0 to 4.3.4 in /WebSrv (#11)
 SOLUTION:
 	Install-Package System.Net.Http -version 4.3.4
+
+PROBLEM:
+========
+	Install-Package Microsoft.Owin.Security -Version 4.2.2
+	Install-Package : Failed to add reference. The package 'Microsoft.Owin.Security' tried to add a 
+	framework reference to 'System.Security' which was not found in the GAC. This is possibly a bug 
+	in the package. Please contact the package owners for assistance.
+SOLUTION:
+	Did not work:
+		As an administrator:
+		gacutil -i C:\Windows\Microsoft.NET\Framework64\v4.0.30319\System.Security.dll
+	In Solution explorer double clicked on System.dll
