@@ -115,8 +115,9 @@
       }
     }
   },
-  "defaultProject": "net-incident",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
