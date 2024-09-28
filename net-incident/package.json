@@ -16,7 +16,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.10",
+    "@angular-devkit/build-angular": "^14.2.13",
     "@angular-eslint/builder": "^14.1.2",
     "@angular-eslint/eslint-plugin": "^14.1.2",
     "@angular-eslint/eslint-plugin-template": "^14.1.2",
@@ -37,6 +37,7 @@
     "@types/node": "^16.11.21",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
+    "core-js": "^3.32.2",
     "css-what": "^5.0.1",
     "eslint": "^8.26.0",
     "jasmine-core": "^4.5.0",
