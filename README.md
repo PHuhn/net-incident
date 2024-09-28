@@ -1,4 +1,4 @@
-# Net-Incident
+# Net-Incident (DEPRECATED)
 ## Overview
 This solution contains two projects as follows:
 - net-incident - Angular 12 CLI SPA UI,
