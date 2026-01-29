@@ -1,0 +1,222 @@
+C:\Dat\NSG\L\Web\Ng\NetIncidents3\net-incident>npm audit
+# npm audit report
+
+@angular/common  <=19.2.15
+Severity: high
+Depends on vulnerable versions of @angular/core
+Angular is Vulnerable to XSRF Token Leakage via Protocol-Relative URLs in Angular HTTP Client - https://github.com/advisories/GHSA-58c5-g7wp-6w37
+fix available via `npm audit fix --force`
+Will install @angular/common@21.1.2, which is a breaking change
+node_modules/@angular/common
+  @angular/cdk  <=6.4.7 || 8.0.0-beta.0 - 17.3.10
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  node_modules/@angular/cdk
+  @angular/forms  <=19.2.15
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @angular/platform-browser
+  node_modules/@angular/forms
+  @angular/platform-browser  <=19.2.15
+  Depends on vulnerable versions of @angular/animations
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  node_modules/@angular/platform-browser
+  @angular/platform-browser-dynamic  <=19.2.15
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/compiler
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @angular/platform-browser
+  node_modules/@angular/platform-browser-dynamic
+  @angular/router  <=0.0.0-ROUTERPLACEHOLDER || 2.0.0-rc.0 - 19.2.15
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @angular/platform-browser
+  node_modules/@angular/router
+  primeng  9.0.0-rc.1 - 18.0.7-lts
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @angular/forms
+  node_modules/primeng
+
+@angular/compiler  <=18.2.14
+Severity: high
+Depends on vulnerable versions of @angular/core
+Angular Stored XSS Vulnerability via SVG Animation, SVG URL and MathML Attributes - https://github.com/advisories/GHSA-v4hv-rgfq-gp49
+Angular has XSS Vulnerability via Unsanitized SVG Script Attributes - https://github.com/advisories/GHSA-jrmj-c5cx-3cw6
+fix available via `npm audit fix --force`
+Will install @angular/compiler@21.1.2, which is a breaking change
+node_modules/@angular/compiler
+  @angular/compiler-cli  <=18.2.14
+  Depends on vulnerable versions of @angular/compiler
+  node_modules/@angular/compiler-cli
+    @angular-devkit/build-angular  <=19.2.14 || 20.0.0-next.0 - 20.0.0-rc.4
+    Depends on vulnerable versions of @angular-devkit/build-webpack
+    Depends on vulnerable versions of @angular/compiler-cli
+    Depends on vulnerable versions of @babel/runtime
+    Depends on vulnerable versions of @ngtools/webpack
+    Depends on vulnerable versions of cacache
+    Depends on vulnerable versions of esbuild
+    Depends on vulnerable versions of inquirer
+    Depends on vulnerable versions of webpack
+    Depends on vulnerable versions of webpack-dev-middleware
+    Depends on vulnerable versions of webpack-dev-server
+    node_modules/@angular-devkit/build-angular
+    @ngtools/webpack  <=1.2.13 || 7.0.0-beta.0 - 18.2.21
+    Depends on vulnerable versions of @angular/compiler-cli
+    node_modules/@ngtools/webpack
+
+@angular/core  <=18.2.14
+Severity: high
+Angular has XSS Vulnerability via Unsanitized SVG Script Attributes - https://github.com/advisories/GHSA-jrmj-c5cx-3cw6
+fix available via `npm audit fix --force`
+Will install @angular/core@21.1.2, which is a breaking change
+node_modules/@angular/core
+  @angular/animations  <=18.2.14
+  Depends on vulnerable versions of @angular/core
+  node_modules/@angular/animations
+
+@babel/runtime  <7.26.10
+Severity: moderate
+Babel has inefficient RegExp complexity in generated code with .replace when transpiling named capturing groups - https://github.com/advisories/GHSA-968p-4wvh-cqc8
+fix available via `npm audit fix --force`
+Will install @angular-devkit/build-angular@21.1.2, which is a breaking change
+node_modules/@babel/runtime
+
+esbuild  <=0.24.2
+Severity: moderate
+esbuild enables any website to send any requests to the development server and read the response - https://github.com/advisories/GHSA-67mh-4wv8-2f99
+fix available via `npm audit fix --force`
+Will install @angular-devkit/build-angular@21.1.2, which is a breaking change
+node_modules/esbuild
+
+eslint  <9.26.0
+Severity: moderate
+eslint has a Stack Overflow when serializing objects with circular references - https://github.com/advisories/GHSA-p5wg-g6qr-c7cg
+fix available via `npm audit fix --force`
+Will install eslint@9.39.2, which is a breaking change
+node_modules/eslint
+  @angular-eslint/builder  12.7.1-alpha.0 - 17.5.3
+  Depends on vulnerable versions of eslint
+  node_modules/@angular-eslint/builder
+  @angular-eslint/eslint-plugin  12.7.1-alpha.0 - 18.0.0
+  Depends on vulnerable versions of @angular-eslint/utils
+  Depends on vulnerable versions of @typescript-eslint/utils
+  Depends on vulnerable versions of eslint
+  node_modules/@angular-eslint/eslint-plugin
+    @angular-eslint/schematics  1.2.1-alpha.0 - 18.0.0-alpha.16
+    Depends on vulnerable versions of @angular-eslint/eslint-plugin
+    Depends on vulnerable versions of @angular-eslint/eslint-plugin-template
+    Depends on vulnerable versions of @angular/cli
+    Depends on vulnerable versions of tmp
+    node_modules/@angular-eslint/schematics
+  @angular-eslint/eslint-plugin-template  12.7.1-alpha.0 - 18.0.0
+  Depends on vulnerable versions of @angular-eslint/utils
+  Depends on vulnerable versions of @typescript-eslint/type-utils
+  Depends on vulnerable versions of @typescript-eslint/utils
+  Depends on vulnerable versions of eslint
+  node_modules/@angular-eslint/eslint-plugin-template
+  @angular-eslint/template-parser  12.7.1-alpha.0 - 17.5.3
+  Depends on vulnerable versions of eslint
+  node_modules/@angular-eslint/template-parser
+  @angular-eslint/utils  12.7.1-alpha.0 - 18.0.0
+  Depends on vulnerable versions of @typescript-eslint/utils
+  Depends on vulnerable versions of eslint
+  node_modules/@angular-eslint/utils
+  @typescript-eslint/eslint-plugin  <=8.0.0-alpha.62
+  Depends on vulnerable versions of @typescript-eslint/parser
+  Depends on vulnerable versions of @typescript-eslint/type-utils
+  Depends on vulnerable versions of @typescript-eslint/utils
+  Depends on vulnerable versions of eslint
+  node_modules/@typescript-eslint/eslint-plugin
+  @typescript-eslint/parser  1.1.1-alpha.0 - 8.0.0-alpha.62
+  Depends on vulnerable versions of eslint
+  node_modules/@typescript-eslint/parser
+  @typescript-eslint/utils  <=8.0.0-alpha.62
+  Depends on vulnerable versions of eslint
+  node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/utils
+  node_modules/@typescript-eslint/utils
+    @typescript-eslint/type-utils  5.9.2-alpha.0 - 8.0.0-alpha.62
+    Depends on vulnerable versions of @typescript-eslint/utils
+    node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/type-utils
+    node_modules/@typescript-eslint/type-utils
+
+tar  <=7.5.6
+Severity: high
+node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization - https://github.com/advisories/GHSA-8qq5-rm4j-mr97
+Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS - https://github.com/advisories/GHSA-r6q2-hw4h-h46w
+node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal - https://github.com/advisories/GHSA-34x7-hfp2-rc4v
+fix available via `npm audit fix --force`
+Will install @angular-devkit/build-angular@21.1.2, which is a breaking change
+node_modules/tar
+  cacache  14.0.0 - 18.0.4
+  Depends on vulnerable versions of tar
+  node_modules/cacache
+    make-fetch-happen  7.1.1 - 14.0.0
+    Depends on vulnerable versions of cacache
+    node_modules/make-fetch-happen
+      node-gyp  <=10.3.1
+      Depends on vulnerable versions of make-fetch-happen
+      Depends on vulnerable versions of tar
+      node_modules/node-gyp
+        @npmcli/run-script  1.1.1 - 9.0.1
+        Depends on vulnerable versions of node-gyp
+        node_modules/@npmcli/run-script
+          pacote  5.0.0 - 21.0.0
+          Depends on vulnerable versions of @npmcli/run-script
+          Depends on vulnerable versions of cacache
+          Depends on vulnerable versions of npm-registry-fetch
+          Depends on vulnerable versions of tar
+          node_modules/pacote
+            @angular/cli  <=1.4.0-rc.2 || 6.2.9 - 20.3.14 || 21.0.0-next.0 - 21.0.0-rc.6
+            Depends on vulnerable versions of inquirer
+            Depends on vulnerable versions of pacote
+            node_modules/@angular/cli
+      npm-registry-fetch  7.0.0 - 18.0.0
+      Depends on vulnerable versions of make-fetch-happen
+      node_modules/npm-registry-fetch
+
+tmp  <=0.2.3
+tmp allows arbitrary temporary file / directory write via symbolic link `dir` parameter - https://github.com/advisories/GHSA-52f5-9888-hmc6
+fix available via `npm audit fix --force`
+Will install @angular-eslint/schematics@21.2.0, which is a breaking change
+node_modules/external-editor/node_modules/tmp
+node_modules/tmp
+  external-editor  >=1.1.1
+  Depends on vulnerable versions of tmp
+  node_modules/external-editor
+    inquirer  3.0.0 - 8.2.6 || 9.0.0 - 9.3.7
+    Depends on vulnerable versions of external-editor
+    node_modules/inquirer
+
+webpack  5.0.0-alpha.0 - 5.93.0
+Severity: moderate
+Webpack's AutoPublicPathRuntimeModule has a DOM Clobbering Gadget that leads to XSS - https://github.com/advisories/GHSA-4vvj-4cpr-p986
+fix available via `npm audit fix --force`
+Will install @angular-devkit/build-angular@21.1.2, which is a breaking change
+node_modules/@angular-devkit/build-angular/node_modules/webpack
+
+webpack-dev-middleware  <=5.3.3
+Severity: high
+Path traversal in webpack-dev-middleware - https://github.com/advisories/GHSA-wr3j-pwj9-hqq6
+fix available via `npm audit fix --force`
+Will install @angular-devkit/build-angular@21.1.2, which is a breaking change
+node_modules/webpack-dev-middleware
+
+webpack-dev-server  <=5.2.0
+Severity: moderate
+webpack-dev-server users' source code may be stolen when they access a malicious web site with non-Chromium based browser - https://github.com/advisories/GHSA-9jgg-88mc-972h
+webpack-dev-server users' source code may be stolen when they access a malicious web site - https://github.com/advisories/GHSA-4v9v-hfq4-rm2v
+fix available via `npm audit fix --force`
+Will install @angular-devkit/build-angular@21.1.2, which is a breaking change
+node_modules/webpack-dev-server
+  @angular-devkit/build-webpack  <=0.1703.17
+  Depends on vulnerable versions of webpack-dev-server
+  node_modules/@angular-devkit/build-webpack
+
+41 vulnerabilities (3 low, 15 moderate, 23 high)
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+C:\Dat\NSG\L\Web\Ng\NetIncidents3\net-incident>
